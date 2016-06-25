@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Makigas</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
+
+  <title>makigas</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <div class="container">
+  <% if notice %><p class="alert alert-info"><%= notice %></p><% end %>
+  <% if alert %><p class="alert alert-warning"><%= alert %></p><% end %>
+  <%= yield %>
+  </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
