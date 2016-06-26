@@ -11,6 +11,8 @@ gem 'devise'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'friendly_id'
+gem 'acts_as_list'
+gem 'rails_admin_duration'
 
 group :development, :test do
   gem 'byebug'
