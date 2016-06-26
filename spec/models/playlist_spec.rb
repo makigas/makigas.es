@@ -36,6 +36,11 @@ RSpec.describe Playlist, type: :model do
       playlist = FactoryGirl.build(:playlist, youtube_id: 'A' * 101)
       expect(playlist).not_to be_valid
     end
+
+    it 'is not valid without a photo' do
+      playlist = FactoryGirl.build(:playlist, photo: nil)
+      expect(playlist).not_to be_valid
+    end
   end
 
   context 'slug' do

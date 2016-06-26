@@ -7,6 +7,9 @@ class Playlist < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
 
+  has_attached_file :photo, styles: { hd: "1280x720>", hq: "854x480>", md: "480x270>", thumbnail: "160x90>" }
+  validates_attachment :photo, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..2.megabytes }
+
   rails_admin do
     list do
       field :title
@@ -19,6 +22,7 @@ class Playlist < ActiveRecord::Base
       field :youtube_id do
         label 'Playlist ID'
       end
+      field :photo
     end
 
     configure :youtube_id do
