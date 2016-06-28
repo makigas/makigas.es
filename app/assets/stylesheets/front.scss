@@ -1,3 +1,89 @@
-// Place all the styles related to the front controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.front.sticky-navbar .navbar-makigas {
+  background: transparent !important;
+  position: absolute !important;
+  top: 0;
+  width: 100%;
+  
+  .active { background: transparent !important; }
+}
+
+@keyframes fixed-navbar-on-front {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+.front.fixed-navbar .navbar-makigas {
+  animation: fixed-navbar-on-front 0.25s ease-out;
+}
+
+.makigas-tron {
+  background: image-url('desk.jpg');
+  background-size: cover;
+  background-position: bottom;
+  color: white;
+  
+  font-family: 'Fira Sans';
+  text-align: center;
+  margin-bottom: 0;
+  
+  padding-top: 0;
+  padding-bottom: 0;
+  
+  .makigas-tron-inner {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    background: rgba(desaturate(#003399, 80%), 0.6);
+    
+    @media screen and (min-width: 768px) {
+      padding-top: 160px;
+      padding-bottom: 80px;
+    }
+  }
+  
+  h1 {
+    font-size: 32px;
+    font-weight: normal;
+  }
+  
+  p {
+    font-size: 24px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    h1 { font-size: 48px; }
+    p { font-size: 32px; }
+  }
+}
+
+.about-makigas {
+
+  h1 {
+    font-size: 24px;
+    line-height: 40px;
+    @media screen and (min-width: 768px) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: 900;
+      text-align: center;
+      font-size: 30px;
+      line-height: 80px;
+    }
+  }
+  
+  .container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .row {
+    @media screen and (min-width: 992px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .laptop-image {
+    max-width: 100%;
+  }
+}

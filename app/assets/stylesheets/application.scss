@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  font-family: 'Lato';
+  font-size: 16px;
+}
+
+.main-header {
+  background: #303030;
+  
+  .navbar-brand {
+    font-family: 'C64 Pro';
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+  }
+
+  .navbar-makigas {
+    background: desaturate(#003399, 80%);
+    border-bottom: none;
+    margin-bottom: 0;
+  
+    .navbar-toggle {
+      .icon-bar { background: white; }
+    }
+    
+    a { color: white; }
+    
+    .navbar-nav {
+      margin-top: 0;
+      margin-bottom: 0;
+      /* Safari bug. */
+      -webkit-font-smoothing: subpixel-antialiased;
+      .active { background: lighten(#993300, 10%); }
+      a:hover, a:focus { background: #993300; }
+    }
+  }
+}
+
+.navbar-fixed-top + .main-page {
+  margin-top: 50px;
+}
+
+.main-footer {
+  font-weight: 300;
+  background: #303030;
+  color: white;
+  margin-top: 40px;
+  padding-top: 10px;
+  
+  a {
+    color: lighten(#003399, 60%);
+  }
+  
+  .footer-links {
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    h3 {
+      font-family: 'Fira Sans';
+      font-weight: normal;
+    }
+  }
+  
+  .copyright-info {
+    background: desaturate(#003399, 50%);
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    
+    .row {
+      text-align: center;
+      @media screen and (min-width: 992px) {
+        display: flex;
+        > div { align-self: flex-end;}
+      }
+    }
+    
+    p {
+      line-height: 20px;
+      @media screen and (min-width: 992px) { line-height: 12px; }
+    }
+    
+    .copyright-links {
+      @media screen and (min-width: 992px) { text-align: left; }
+    }
+    
+    .year {
+      line-height: 150%;
+      font-size: 1.1em;
+    }
+    
+    .made-in-spain {
+      @media screen and (min-width: 992px) {
+        text-align: right;
+        p {
+          display: inline-block;
+          padding-right: 24px;
+          background: image-url('spain.png');
+          background-position: right;
+          background-size: auto 100%;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
