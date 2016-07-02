@@ -9,12 +9,23 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="no-js">
+<body class="no-js fixed-navbar">
   
   <%= render 'layouts/header' %>
   
-  <div class="main-page container">
+  <div class="main-page <%= 'with-hero' if content_for?(:hero) %>">
+    
+    <% if content_for?(:hero) %>
+    <div class="jumbotron hero-tron">
+      <div class="container">
+        <%= yield :hero %>
+      </div>
+    </div>
+    <% end %>
+    
+    <div class="main-page-inner container">
     <%= yield %>
+    </div>
   </div>
   
   <%= render 'layouts/footer' %>

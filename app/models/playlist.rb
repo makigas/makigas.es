@@ -11,6 +11,10 @@ class Playlist < ActiveRecord::Base
   validates_attachment :photo, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..2.megabytes }
 
   has_many :videos, -> { order(position: :asc) }
+  
+  def total_length
+    videos.map { |v| v.duration }.reduce(0, :+)
+  end
 
   rails_admin do
     list do

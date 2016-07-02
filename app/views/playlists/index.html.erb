@@ -1,0 +1,23 @@
+<% content_for :hero do %>
+  <h1>Todas las listas de reproducción</h1>
+<% end %>
+
+<div class="row">
+<% @playlists.each do |pl| %>
+<div class="col-sm-6 col-md-4">
+<div class="panel panel-default">
+  <%= link_to image_tag(pl.photo.url(:md)), pl %>
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to pl.title, pl %></h3>
+  </div>
+  <div class="panel-body">
+    <p><%= pl.description %></p>
+    <p>
+      Duración: <%= running_time(pl.total_length) %>,
+      <%= pluralize(pl.videos.count, 'episodio', 'episodios') %>.
+    </p>
+  </div>
+</div>
+</div>
+<% end %>
+</div>

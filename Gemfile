@@ -13,11 +13,13 @@ gem 'paperclip'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'rails_admin_duration'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development do

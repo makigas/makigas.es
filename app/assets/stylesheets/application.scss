@@ -55,15 +55,66 @@ body {
   }
 }
 
-.navbar-fixed-top + .main-page {
+.fixed-navbar .main-page {
   margin-top: 50px;
+}
+
+.hero-tron {
+  background-color: desaturate(lighten(#003399, 40%), 70%);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  @media screen and (min-width: 992px) {
+    padding-top: 45px;
+    padding-bottom: 120px;
+  }
+  
+  h1 {
+    font-family: 'Fira Sans';
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 32px;
+    
+    @media screen and (min-width: 992px) {
+      font-size: 40px;
+      line-height: 40px;
+    }
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 24px;
+    
+    @media screen and (min-width: 992px) {
+      font-size: 22px;
+      line-height: 30px;
+    }
+  }
+}
+
+.with-hero.main-page {
+  @media screen and (min-width: 992px) {
+    background: #f0f0e0;
+  }
+}
+
+.panel-default > img, .panel-default > a > img {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .hero-tron + .main-page-inner {
+    margin-top: -100px;
+    padding-top: 20px;
+    background: white;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .main-footer {
   font-weight: 300;
   background: #303030;
   color: white;
-  margin-top: 40px;
   padding-top: 10px;
   
   a {

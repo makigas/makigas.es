@@ -8,4 +8,18 @@ module ApplicationHelper
     end
   end
   
+  def running_time sec
+    if sec >= 3600
+      '%02d:%02d:%02d' % [ sec / 3600, (sec % 3600) / 60, sec % 60]
+    else
+      '%02d:%02d' % [ sec / 60, sec % 60]
+    end
+  end
+  
+  def to_markdown text
+    render = Redcarpet::Render::HTML.new()
+    markdown = Redcarpet::Markdown.new(render)
+    markdown.render(text).html_safe
+  end
+  
 end

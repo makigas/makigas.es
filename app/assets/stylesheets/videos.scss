@@ -1,0 +1,21 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.video-toolbar {
+  margin-bottom: 1em;
+}
+
+.embed-responsive, .video-description {
+  margin-bottom: 1em;
+}
+
+.invideo-playlist {
+  h3 {
+    font-family: 'Fira Sans';
+    line-height: 30px;
+    font-size: 25px;
+    font-weight: 300;
+    margin-left: 15px;
+  }
+}

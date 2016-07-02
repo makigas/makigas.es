@@ -1,0 +1,43 @@
+<%= content_for :hero do %>
+  <h1><%= @video.position %>. <%= @video.title %></h1>
+<% end %>
+
+<div class="row video-toolbar">
+  <div class="col-md-8">
+  <% unless @video.first? %>
+  <%= link_to 'Anterior', playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
+  <% end %>
+  
+  <% unless @video.last? %>
+  <%= link_to 'Siguiente', playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
+  <% end %>
+  </div>
+  <div class="col-md-4 hidden-sm hidden-xs">
+    <a href="javascript:void(0);" class="btn btn-default btn-block" id="toggle-description">Toggle description</a>
+  </div>
+</div>
+
+  <div class="row video-row">
+    <div class="video-player col-md-8">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
+        </iframe>
+      </div>
+      <p>
+        <a class="btn btn-default" href="http://youtu.be/<%= @video.youtube_id %>" target="_blank">Ver en YouTube</a>
+      </p>
+    </div>
+    
+    <div class="video-description col-md-4">
+      <%= to_markdown @video.description %>
+    </div>
+  </div>
+
+<div class="invideo-playlist">
+  <h3><%= link_to @playlist.title, @playlist %></h3>
+<div class="list-group">
+  <% @in_playlist.each do |v| %>
+    <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
+  <% end %>
+</div>
+</div>
