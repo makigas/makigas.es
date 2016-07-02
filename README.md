@@ -15,6 +15,8 @@ This is the small web application where I'll upload all the metadata about
 the videos that are already listed on my YouTube channel, but... you know,
 with more extras.
 
+![makigas.es front page](doc/images/front.png)
+
 ## Setting up
 
 ### Cloning and installing the application locally
