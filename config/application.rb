@@ -31,5 +31,7 @@ module Makigas
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # On validation, use a different class name for wrong fields.
   end
 end

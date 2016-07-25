@@ -1,0 +1,58 @@
+<%= content_for :hero do %>
+  <h1>Crear lista de reproducción</h1>
+<% end %>
+
+<%= form_for @playlist, class: 'form-horizontal' do |f| %>
+
+  <% if @playlist.errors.any? %>
+    <div class="alert alert-danger">Hay errores que impiden guardar esta lista de reproducción.</div>
+  <% end %>
+
+  <fieldset>
+    <legend>Información básica</legend>
+
+    <div class="form-group row">
+      <%= f.label :title, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :description, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :youtube_id, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <span class="input-group-addon">youtube.com/playlist?list=</span>
+          <%= f.text_field :youtube_id, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :photo, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.label :photo, class: 'btn btn-primary' do %>
+          Buscar <%= f.file_field :photo, style: 'display: none' %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Administración</legend>
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-4">
+        <%= f.submit 'Guardar', class: 'btn btn-success' %>
+      </div>
+    </fieldset>
+  </div>
+
+<% end %>

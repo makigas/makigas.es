@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'front#index'
   
   get :videos, to: 'videos#index'
+
+  resources :playlists, path: 'series', only: [:new, :create, :edit, :update, :destroy]
   
   resources :playlists, path: 'series', only: [:index, :show] do
     resources :videos, path: '/', only: [:show]

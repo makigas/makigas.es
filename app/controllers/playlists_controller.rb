@@ -10,5 +10,24 @@ class PlaylistsController < ApplicationController
       redirect_to @playlist, status: 301
     end
   end
+
+  def new
+    @playlist = Playlist.new
+  end
+
+  def create
+    @playlist = Playlist.new(playlist_attributes)
+    if @playlist.save
+      redirect_to playlist_path(@playlist)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def playlist_attributes
+    params.require(:playlist).permit(:title, :description, :youtube_id, :photo)
+  end
   
 end
