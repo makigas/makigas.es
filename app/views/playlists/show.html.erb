@@ -10,6 +10,11 @@
   </div>
 <% end %>
 
+<div class="text-right">
+<%= link_to 'Editar lista', edit_playlist_path(@playlist), class: 'btn btn-default' %>
+<%= button_to 'Borrar lista', playlist_path(@playlist), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará para siempre la lista.' } %>
+</div>
+
 <div class="list-group">
   <% @playlist.videos.each do |v| %>
   <div class="list-group-item">

@@ -24,6 +24,28 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def edit
+    @playlist = Playlist.friendly.find(params[:id])
+  end
+
+  def update
+    @playlist = Playlist.friendly.find(params[:id])
+    if @playlist.update_attributes(playlist_attributes)
+      redirect_to playlist_path(@playlist)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @playlist = Playlist.friendly.find(params[:id])
+    if @playlist.destroy
+      redirect_to playlists_path, notice: 'Borrado con éxito'
+    else
+      raise Errors::UnprocessableEntity
+    end
+  end
+
   private
 
   def playlist_attributes

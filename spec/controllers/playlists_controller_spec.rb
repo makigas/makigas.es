@@ -100,4 +100,86 @@ RSpec.describe PlaylistsController, type: :controller do
       end
     end
   end
+
+  context 'GET #edit' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+    end
+
+    it 'should be success' do
+      get :edit, id: @playlist
+      expect(response).to be_success
+    end
+
+    it 'should use the edit layout' do
+      get :edit, id: @playlist
+      expect(response).to render_template :edit
+    end
+
+    it 'should assign the playlist' do
+      get :edit, id: @playlist
+      expect(assigns(:playlist)).to eq @playlist
+    end
+  end
+
+  context 'PUT #update' do
+    context 'when providing valid arguments' do
+      before(:each) do
+        @playlist = FactoryGirl.create(:playlist)
+        @updated = FactoryGirl.attributes_for(:playlist, title: 'Updated')
+      end
+
+      it 'should update the data' do
+        put :update, id: @playlist, playlist: @updated
+        @playlist.reload
+        expect(@playlist.title).to eq @updated[:title]
+      end
+
+      it 'should redirect to the playlist page' do
+        put :update, id: @playlist, playlist: @updated
+        expect(response).to redirect_to playlist_path(@playlist)
+      end
+    end
+
+    context 'when providing invalid arguments' do
+      before(:each) do
+        @playlist = FactoryGirl.create(:playlist)
+        @updated = FactoryGirl.attributes_for(:playlist, title: nil)
+        @before = @playlist.title
+      end
+
+      it 'should not update the data' do
+        put :update, id: @playlist, playlist: @updated
+        @playlist.reload
+        expect(@playlist.title).to eq @before
+      end
+
+      it 'should render the edit template' do
+        put :update, id: @playlist, playlist: @updated
+        expect(response).to render_template :edit
+      end
+
+      it 'should assign the model' do
+        put :update, id: @playlist, playlist: @updated
+        expect(assigns(:playlist)).to be
+      end
+    end
+  end
+
+  context 'DELETE #destroy' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+    end
+
+    it 'should remove the item from the database' do
+      expect {
+        delete :destroy, id: @playlist
+      }.to change { Playlist.count }.by -1
+    end
+
+    it 'should redirect to the playlists page' do
+      delete :destroy, id: @playlist
+      expect(response).to redirect_to playlists_path
+    end
+  end
 end

@@ -2,6 +2,10 @@
   <h1>Todas las listas de reproducción</h1>
 <% end %>
 
+<div class="text-right">
+  <%= link_to 'Nueva lista', new_playlist_path, class: 'btn btn-success' %>
+</div>
+
 <div class="row">
 <% @playlists.each do |pl| %>
 <div class="col-sm-6 col-md-4">
