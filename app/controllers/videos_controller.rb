@@ -1,5 +1,9 @@
 class VideosController < ApplicationController
   
+  def index
+    @videos = Video.all.order(created_at: :desc)
+  end
+  
   def show
     @playlist = Playlist.friendly.find(params[:playlist_id])
     @video = @playlist.videos.friendly.find(params[:id])

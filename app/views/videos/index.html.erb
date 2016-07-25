@@ -1,0 +1,25 @@
+<% content_for :hero do %>
+  <h1>Todos los vídeos</h1>
+<% end %>
+
+<div class="text-right">
+  <%= link_to 'Nuevo vídeo', new_video_path, class: 'btn btn-success' %>
+</div>
+
+<div class="row">
+  <% @videos.each do |v| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <%= link_to image_tag(v.thumbnail.url(:md)), v %>
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= link_to v.title, v %></h3>
+        </div>
+        <div class="panel-body">
+          <p><%= v.description %></p>
+          <p>Duración: <%= running_time(v.duration) %></p>
+          <p>En la lista <%= link_to v.playlist.title, v.playlist %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
