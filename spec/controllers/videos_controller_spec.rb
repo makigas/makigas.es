@@ -73,7 +73,8 @@ RSpec.describe VideosController, type: :controller do
     context 'when providing valid arguments' do
       before(:each) do
         @playlist = FactoryGirl.create(:playlist)
-        @video = FactoryGirl.attributes_for(:video, playlist_id: @playlist)
+        @video = FactoryGirl.attributes_for(:video)
+        @video["playlist_id"] = @playlist.id
       end
 
       it 'should update the database' do

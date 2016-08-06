@@ -28,6 +28,6 @@ class VideosController < ApplicationController
   def video_attributes
     params.require(:video).permit(:title, :description, :youtube_id,
                                   :thumbnail, :playlist_id, :position,
-                                  :natural_duration)
+                                  :duration, :natural_duration)
   end
 end
