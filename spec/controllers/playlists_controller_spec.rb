@@ -31,17 +31,17 @@ RSpec.describe PlaylistsController, type: :controller do
     end
 
     it 'should be success' do
-      get :show, id: @playlist
+      get :show, params: { id: @playlist }
       expect(response).to be_success
     end
 
     it 'should render the show template' do
-      get :show, id: @playlist
+      get :show, params: { id: @playlist }
       expect(response).to render_template :show
     end
 
     it 'should assign the given playlist' do
-      get :show, id: @playlist
+      get :show, params: { id: @playlist }
       expect(assigns(:playlist)).to eq @playlist
     end
   end
@@ -67,17 +67,17 @@ RSpec.describe PlaylistsController, type: :controller do
     context 'when providing valid attributes' do
       it 'should save the playlist' do
         expect {
-          post :create, playlist: FactoryGirl.attributes_for(:playlist)
+          post :create, params: { playlist: FactoryGirl.attributes_for(:playlist) }
         }.to change { Playlist.count }.by 1
       end
 
       it 'should assign the just saved playlist' do
-        post :create, playlist: FactoryGirl.attributes_for(:playlist)
+        post :create, params: { playlist: FactoryGirl.attributes_for(:playlist) }
         expect(assigns(:playlist)).to be
       end
 
       it 'should redirect to the playlist' do
-        post :create, playlist: FactoryGirl.attributes_for(:playlist)
+        post :create, params: { playlist: FactoryGirl.attributes_for(:playlist) }
         expect(response).to redirect_to playlist_path(assigns(:playlist))
       end
     end
@@ -85,17 +85,17 @@ RSpec.describe PlaylistsController, type: :controller do
     context 'when providing invalid attributes' do
       it 'should not save the playlist' do
         expect {
-          post :create, playlist: FactoryGirl.attributes_for(:playlist, title: nil)
+          post :create, params: { playlist: FactoryGirl.attributes_for(:playlist, title: nil) }
         }.to change { Playlist.count}.by 0
       end
 
       it 'should assign the playlist' do
-        post :create, playlist: FactoryGirl.attributes_for(:playlist, title: nil)
+        post :create, params: { playlist: FactoryGirl.attributes_for(:playlist, title: nil) }
         expect(assigns(:playlist)).to be
       end
 
       it 'should render the new template again' do
-        post :create, playlist: FactoryGirl.attributes_for(:playlist, title: nil)
+        post :create, params: { playlist: FactoryGirl.attributes_for(:playlist, title: nil) }
         expect(response).to render_template :new
       end
     end
@@ -107,17 +107,17 @@ RSpec.describe PlaylistsController, type: :controller do
     end
 
     it 'should be success' do
-      get :edit, id: @playlist
+      get :edit, params: { id: @playlist }
       expect(response).to be_success
     end
 
     it 'should use the edit layout' do
-      get :edit, id: @playlist
+      get :edit, params: { id: @playlist }
       expect(response).to render_template :edit
     end
 
     it 'should assign the playlist' do
-      get :edit, id: @playlist
+      get :edit, params: { id: @playlist }
       expect(assigns(:playlist)).to eq @playlist
     end
   end
@@ -130,13 +130,13 @@ RSpec.describe PlaylistsController, type: :controller do
       end
 
       it 'should update the data' do
-        put :update, id: @playlist, playlist: @updated
+        put :update, params: { id: @playlist, playlist: @updated }
         @playlist.reload
         expect(@playlist.title).to eq @updated[:title]
       end
 
       it 'should redirect to the playlist page' do
-        put :update, id: @playlist, playlist: @updated
+        put :update, params: { id: @playlist, playlist: @updated }
         expect(response).to redirect_to playlist_path(@playlist)
       end
     end
@@ -149,18 +149,18 @@ RSpec.describe PlaylistsController, type: :controller do
       end
 
       it 'should not update the data' do
-        put :update, id: @playlist, playlist: @updated
+        put :update, params: { id: @playlist, playlist: @updated }
         @playlist.reload
         expect(@playlist.title).to eq @before
       end
 
       it 'should render the edit template' do
-        put :update, id: @playlist, playlist: @updated
+        put :update, params: { id: @playlist, playlist: @updated }
         expect(response).to render_template :edit
       end
 
       it 'should assign the model' do
-        put :update, id: @playlist, playlist: @updated
+        put :update, params: { id: @playlist, playlist: @updated }
         expect(assigns(:playlist)).to be
       end
     end
@@ -173,12 +173,12 @@ RSpec.describe PlaylistsController, type: :controller do
 
     it 'should remove the item from the database' do
       expect {
-        delete :destroy, id: @playlist
+        delete :destroy, params: { id: @playlist }
       }.to change { Playlist.count }.by -1
     end
 
     it 'should redirect to the playlists page' do
-      delete :destroy, id: @playlist
+      delete :destroy, params: { id: @playlist }
       expect(response).to redirect_to playlists_path
     end
   end

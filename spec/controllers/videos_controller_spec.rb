@@ -32,22 +32,22 @@ RSpec.describe VideosController, type: :controller do
     end
     
     it 'should be success' do
-      get :show, id: @video, playlist_id: @playlist
+      get :show, params: { id: @video, playlist_id: @playlist }
       expect(response).to be_success
     end
 
     it 'should render the show template' do
-      get :show, id: @video, playlist_id: @playlist
+      get :show, params: { id: @video, playlist_id: @playlist }
       expect(page).to render_template :show
     end
     
     it 'should assign the video' do
-      get :show, id: @video, playlist_id: @playlist
+      get :show, params: { id: @video, playlist_id: @playlist }
       expect(assigns(:video)).to eq @video
     end
     
     it 'should assign the playlist' do
-      get :show, id: @video, playlist_id: @playlist
+      get :show, params: { id: @video, playlist_id: @playlist }
       expect(assigns(:playlist)).to eq @playlist
     end
   end
@@ -79,17 +79,17 @@ RSpec.describe VideosController, type: :controller do
 
       it 'should update the database' do
         expect {
-          post :create, video: @video
+          post :create, params: { video: @video }
         }.to change { Video.count }.by 1
       end
 
       it 'should assign the saved video' do
-        post :create, video: @video
+        post :create, params: { video: @video }
         expect(assigns(:video).title).to eq @video[:title]
       end
 
       it 'should redirect' do
-        post :create, video: @video
+        post :create, params: { video: @video }
         expect(response).to have_http_status 302
       end
     end
@@ -101,41 +101,41 @@ RSpec.describe VideosController, type: :controller do
 
       it 'should not update the database' do
         expect {
-          post :create, video: @video
+          post :create, params: { video: @video }
         }.to change { Video.count }.by 0
       end
 
       it 'should assign the half-saved video' do
-        post :create, video: @video
+        post :create, params: { video: @video }
         expect(assigns(:video)).to be
       end
 
       it 'should render the new template' do
-        post :create, video: @video
+        post :create, params: { video: @video }
         expect(response).to render_template :new
       end
     end
   end
 
-  context 'GET #update' do
+  context 'GET #edit' do
     before(:each) do
       @playlist = FactoryGirl.create(:playlist)
       @video = FactoryGirl.create(:video, playlist: @playlist)
     end
 
     it 'should be success' do
-      get :edit, id: @video.id, playlist_id: @playlist.id
+      get :edit, params: { id: @video.id, playlist_id: @playlist.id }
       expect(response).to be_success
     end
 
     it 'should assign the video and the playlist' do
-      get :edit, id: @video.id, playlist_id: @playlist.id
+      get :edit, params: { id: @video.id, playlist_id: @playlist.id }
       expect(assigns(:video)).to eq @video
       expect(assigns(:playlist)).to eq @playlist
     end
 
     it 'should render the edit template' do
-      get :edit, id: @video.id, playlist_id: @playlist.id
+      get :edit, params: { id: @video.id, playlist_id: @playlist.id }
       expect(response).to render_template :edit
     end
   end
@@ -144,44 +144,43 @@ RSpec.describe VideosController, type: :controller do
     before(:each) do
       @playlist = FactoryGirl.create(:playlist)
       @video = FactoryGirl.create(:video, title: 'Foo', playlist: @playlist)
-      @updated = @video.attributes
     end
 
     context 'when given correct arguments' do
       before(:each) do
-        @updated[:title] = 'Bar'
+        @updated = FactoryGirl.attributes_for(:video, title: 'Bar', playlist: @playlist)
       end
 
       it 'should update the item' do
-        put :update, id: @video, playlist_id: @playlist, video: @updated
-        @video.reload
-        expect(@video.title).to eq 'Bar'
+        put :update, params: { id: @video, playlist_id: @playlist, video: @updated }
+        video = Video.find(@video.id)
+        expect(video.title).to eq 'Bar'
       end
 
       it 'should redirect to the video page' do
-        put :update, id: @video, playlist_id: @playlist, video: @updated
+        put :update, params: { id: @video, playlist_id: @playlist, video: @updated }
         expect(response).to redirect_to playlist_video_path(@video, playlist_id: @playlist)
       end
     end
 
     context 'when given wrong arguments' do
       before(:each) do
-        @updated[:title] = nil
+        @updated = FactoryGirl.attributes_for(:video, title: nil, playlist: @playlist)
       end
 
       it 'should not update the item' do
-        put :update, id: @video, playlist_id: @playlist, video: @updated
+        put :update, params: { id: @video, playlist_id: @playlist, video: @updated }
         @video.reload
         expect(@video.title).to eq 'Foo'
       end
 
       it 'should not redirect' do
-        put :update, id: @video, playlist_id: @playlist, video: @updated
+        put :update, params: { id: @video, playlist_id: @playlist, video: @updated }
         expect(response.status).to eq 200
       end
 
       it 'should render the edit template again' do
-        put :update, id: @video, playlist_id: @playlist, video: @updated
+        put :update, params: { id: @video, playlist_id: @playlist, video: @updated }
         expect(response).to render_template :edit
       end
     end
@@ -195,12 +194,12 @@ RSpec.describe VideosController, type: :controller do
 
     it 'should remove the item from the database' do
       expect {
-        delete :destroy, id: @video, playlist_id: @playlist
+        delete :destroy, params: { id: @video, playlist_id: @playlist }
       }.to change { Video.count }.by -1
     end
 
     it 'should redirect to the playlist page' do
-      delete :destroy, id: @video, playlist_id: @playlist
+      delete :destroy, params: { id: @video, playlist_id: @playlist }
       expect(response).to redirect_to playlist_path(@playlist)
     end
   end

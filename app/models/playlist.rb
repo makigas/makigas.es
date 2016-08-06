@@ -1,4 +1,4 @@
-class Playlist < ActiveRecord::Base
+class Playlist < ApplicationRecord
   extend FriendlyId
 
   friendly_id :title, use: :slugged
@@ -14,25 +14,5 @@ class Playlist < ActiveRecord::Base
   
   def total_length
     videos.map { |v| v.duration }.reduce(0, :+)
-  end
-
-  rails_admin do
-    list do
-      field :title
-      field :description
-    end
-
-    edit do
-      field :title
-      field :description
-      field :youtube_id do
-        label 'Playlist ID'
-      end
-      field :photo
-    end
-
-    configure :youtube_id do
-      label 'Playlist ID'
-    end
   end
 end

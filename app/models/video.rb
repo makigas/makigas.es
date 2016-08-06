@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Video < ApplicationRecord
   extend FriendlyId
 
   # Videos are sorted in a playlist.
@@ -27,28 +27,6 @@ class Video < ActiveRecord::Base
   def natural_duration
     if duration
       "%02d:%02d:%02d" % [duration / 3600, (duration % 3600) / 60, duration % 60]
-    end
-  end
-
-  rails_admin do
-    list do
-      field :title
-      field :playlist
-      field :position
-    end
-
-    edit do
-      field :title
-      field :description
-      field :youtube_id
-      field :playlist
-      field :duration, :duration
-      field :thumbnail
-      field :position
-    end
-
-    configure :youtube_id do
-      label 'Playlist ID'
     end
   end
 end

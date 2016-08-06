@@ -18,7 +18,7 @@
     <p><%= pl.description %></p>
     <p>
       Duración: <%= running_time(pl.total_length) %>,
-      <%= pluralize(pl.videos.count, 'episodio', 'episodios') %>.
+      <%= pluralize(pl.videos.count, 'episodio', plural: 'episodios') %>.
     </p>
   </div>
 </div>
