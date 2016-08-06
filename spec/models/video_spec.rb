@@ -90,13 +90,13 @@ RSpec.describe Video, type: :model do
   context 'natural duration' do
     it 'should convert from duration to natural duration' do 
       expect(FactoryGirl.build(:video, duration: 12).natural_duration).
-        to eq '0:12'
+        to eq '00:00:12'
       expect(FactoryGirl.build(:video, duration: 61).natural_duration).
-        to eq '1:01'
+        to eq '00:01:01'
       expect(FactoryGirl.build(:video, duration: 102).natural_duration).
-        to eq '1:42'
+        to eq '00:01:42'
       expect(FactoryGirl.build(:video, duration: 3600).natural_duration).
-        to eq '1:00:00'
+        to eq '01:00:00'
     end
 
     it 'should convert from natural duration to duration' do
