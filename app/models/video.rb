@@ -19,6 +19,15 @@ class Video < ActiveRecord::Base
   has_attached_file :thumbnail, styles: { hd: "1280x720>", hq: "854x480>", md: "480x270>", mini: "160x90>" }
   validates_attachment :thumbnail, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..2.megabytes }
 
+  # Natural duration
+  def natural_duration= dur
+    self.duration = ApplicationController.helpers.extract_time dur
+  end
+
+  def natural_duration
+    ApplicationController.helpers.running_time self.duration if self.duration
+  end
+
   rails_admin do
     list do
       field :title

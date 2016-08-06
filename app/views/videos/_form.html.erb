@@ -1,0 +1,71 @@
+<%= form_for @video, class: 'form-horizontal' do |f| %>
+
+  <% if @video.errors.any? %>
+    <div class="alert alert-danger">Hay errores que impiden guardar esta lista de reproducción.</div>
+    <%= @video.errors.full_messages %>
+  <% end %>
+
+  <fieldset>
+    <legend>Información básica</legend>
+
+    <div class="form-group row">
+      <%= f.label :title, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :description, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :youtube_id, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <div class="input-group">
+          <span class="input-group-addon">www.youtube.com/watch?v=</span>
+          <%= f.text_field :youtube_id, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :natural_duration, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.time_field :natural_duration, step: 1 %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :playlist, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+      <%= f.select :playlist_id,
+          options_from_collection_for_select(Playlist.all, :id, :title),
+          {}, { class: 'form-control' } %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :thumbnail, class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.label :thumbnail, class: 'btn btn-primary' do %>
+          Buscar <%= f.file_field :thumbnail, style: 'display: none;' %>
+        <% end %>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>Administración</legend>
+    <div class="form-group row">
+      <div class="col-sm-8 col-sm-offset-4">
+        <%= f.submit 'Guardar', class: 'btn btn-success' %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>

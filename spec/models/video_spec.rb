@@ -86,4 +86,29 @@ RSpec.describe Video, type: :model do
       expect(video1.slug).to eq video2.slug
     end
   end
+
+  context 'natural duration' do
+    it 'should convert from duration to natural duration' do 
+      expect(FactoryGirl.build(:video, duration: 12).natural_duration).
+        to eq '0:12'
+      expect(FactoryGirl.build(:video, duration: 61).natural_duration).
+        to eq '1:01'
+      expect(FactoryGirl.build(:video, duration: 102).natural_duration).
+        to eq '1:42'
+      expect(FactoryGirl.build(:video, duration: 3600).natural_duration).
+        to eq '1:00:00'
+    end
+
+    it 'should convert from natural duration to duration' do
+      video = FactoryGirl.build(:video)
+      video.natural_duration = '0:12'
+      expect(video.duration).to eq 12
+      video.natural_duration = '1:01'
+      expect(video.duration).to eq 61
+      video.natural_duration = '1:42'
+      expect(video.duration).to eq 102
+      video.natural_duration = '1:00:00'
+      expect(video.duration).to eq 3600
+    end
+  end
 end
