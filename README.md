@@ -1,4 +1,5 @@
-# makigas.es
+# makigas.es [![Build Status](https://travis-ci.org/makigas/makigas.svg?branch=master)](https://travis-ci.org/makigas/makigas) [![Dependency Status](https://gemnasium.com/badges/github.com/makigas/makigas.svg)](https://gemnasium.com/github.com/makigas/makigas)
+
 
 **NOTE**: This is a work in progress. The source code for this application
 hasn't been published yet because the web application is not even remotely
@@ -21,13 +22,12 @@ with more extras.
 
 ### Cloning and installing the application locally
 
-Please note that official support exists only for Linux and MacOS X. This code
-will probably run fine on Windows 10 with WSL (the Bash thingy), but since that
-is a developer preview I won't take a look at it until is fully done. The
-code is unlikely to run on vanilla Windows, although I haven't checked and I
-don't actually care about it. (Server runs Linux, anyway, right?).
+Official support exists for Linux and MacOS X. It will most likely run on
+Windows 10 with WSL, although no official support is given. I don't expect
+this code to work with vanilla Windows and actually I don't care about
+Windows at all (servers run Linux anyway).
 
-The web application uses Ruby 2.2 / Rails 4.2 so you should install that
+The web application uses Ruby 2.2 / Rails 4.2 (*) so you should install that
 beforehand. I recommend to use RVM since it will make your life better in so
 many ways, specially when it comes to managing all the gems. It is easy to
 set up:
@@ -35,6 +35,10 @@ set up:
     $ git clone http://github.com/makigas/makigas
     $ cd makigas
     $ bundle install
+
+(*) The application development started weeks before Rails 5.0 was announced.
+I will work on upgrading the codebase to Rails 5.0 as soon as I finish a stable
+version.
 
 ### Database
 
