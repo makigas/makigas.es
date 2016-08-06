@@ -1,4 +1,4 @@
-<%= form_for @video, class: 'form-horizontal' do |f| %>
+<%= form_for @video, url: @video.persisted? ? playlist_video_path(@video, playlist_id: @playlist) : videos_path, class: 'form-horizontal' do |f| %>
 
   <% if @video.errors.any? %>
     <div class="alert alert-danger">Hay errores que impiden guardar esta lista de reproducción.</div>
@@ -35,7 +35,7 @@
     <div class="form-group row">
       <%= f.label :natural_duration, class: 'col-sm-4 control-label' %>
       <div class="col-sm-8">
-        <%= f.time_field :natural_duration, step: 1 %>
+        <%= f.time_field :natural_duration, step: 1, value: @video.natural_duration %>
       </div>
     </div>
 

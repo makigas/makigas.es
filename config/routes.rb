@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   root to: 'front#index'
 
   # These routes should be limited to authorized users.
-  resources :playlists, path: 'series', only: [:new, :create, :edit, :update, :destroy]
-  resources :videos, only: [:new, :create, :edit, :update, :destroy]
-
+  resources :playlists, path: 'series', only: [:new, :create, :edit, :update, :destroy] do
+    resources :videos, path: '/', only: [:edit, :update, :destroy]
+  end
+  resources :videos, only: [:new, :create]
+  
   # These are the public routes for my application.
   get :videos, to: 'videos#index'
   resources :playlists, path: 'series', only: [:index, :show] do

@@ -116,4 +116,74 @@ RSpec.describe VideosController, type: :controller do
       end
     end
   end
+
+  context 'GET #update' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+      @video = FactoryGirl.create(:video, playlist: @playlist)
+    end
+
+    it 'should be success' do
+      get :edit, id: @video.id, playlist_id: @playlist.id
+      expect(response).to be_success
+    end
+
+    it 'should assign the video and the playlist' do
+      get :edit, id: @video.id, playlist_id: @playlist.id
+      expect(assigns(:video)).to eq @video
+      expect(assigns(:playlist)).to eq @playlist
+    end
+
+    it 'should render the edit template' do
+      get :edit, id: @video.id, playlist_id: @playlist.id
+      expect(response).to render_template :edit
+    end
+  end
+
+  context 'PUT #update' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+      @video = FactoryGirl.create(:video, title: 'Foo', playlist: @playlist)
+      @updated = @video.attributes
+    end
+
+    context 'when given correct arguments' do
+      before(:each) do
+        @updated[:title] = 'Bar'
+      end
+
+      it 'should update the item' do
+        put :update, id: @video, playlist_id: @playlist, video: @updated
+        @video.reload
+        expect(@video.title).to eq 'Bar'
+      end
+
+      it 'should redirect to the video page' do
+        put :update, id: @video, playlist_id: @playlist, video: @updated
+        expect(response).to redirect_to playlist_video_path(@video, playlist_id: @playlist)
+      end
+    end
+
+    context 'when given wrong arguments' do
+      before(:each) do
+        @updated[:title] = nil
+      end
+
+      it 'should not update the item' do
+        put :update, id: @video, playlist_id: @playlist, video: @updated
+        @video.reload
+        expect(@video.title).to eq 'Foo'
+      end
+
+      it 'should not redirect' do
+        put :update, id: @video, playlist_id: @playlist, video: @updated
+        expect(response.status).to eq 200
+      end
+
+      it 'should render the edit template again' do
+        put :update, id: @video, playlist_id: @playlist, video: @updated
+        expect(response).to render_template :edit
+      end
+    end
+  end
 end

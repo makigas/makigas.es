@@ -28,6 +28,9 @@
           <span class="small">&bull; <%= running_time(v.duration )%></span>
         </h4>
         <p class="list-group-item-text"><%= v.description %></p>
+        <p class="list-group-item-text">
+          <%= link_to 'Editar', edit_playlist_video_path(v, playlist_id: @playlist), class: 'btn btn-default btn-xs' %>
+        </p>
       </div>
     </div>
   </div>

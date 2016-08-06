@@ -23,6 +23,21 @@ class VideosController < ApplicationController
     end
   end
 
+  def edit
+    @playlist = Playlist.friendly.find(params[:playlist_id])
+    @video = @playlist.videos.friendly.find(params[:id])
+  end
+
+  def update
+    @playlist = Playlist.friendly.find(params[:playlist_id])
+    @video = @playlist.videos.friendly.find(params[:id])
+    if @video.update_attributes(video_attributes)
+      redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def video_attributes
