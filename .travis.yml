@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.2
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - 'bundle exec rake secret | xargs printf "test:\n  secret_key_base: %s\n" > config/secrets.yml'
+  - bundle exec rake db:create
+script: bundle exec rspec spec
