@@ -186,4 +186,22 @@ RSpec.describe VideosController, type: :controller do
       end
     end
   end
+
+  context 'DELETE #destroy' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+      @video = FactoryGirl.create(:video, playlist: @playlist)
+    end
+
+    it 'should remove the item from the database' do
+      expect {
+        delete :destroy, id: @video, playlist_id: @playlist
+      }.to change { Video.count }.by -1
+    end
+
+    it 'should redirect to the playlist page' do
+      delete :destroy, id: @video, playlist_id: @playlist
+      expect(response).to redirect_to playlist_path(@playlist)
+    end
+  end
 end

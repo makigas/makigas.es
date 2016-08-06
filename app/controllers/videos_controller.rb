@@ -38,6 +38,17 @@ class VideosController < ApplicationController
     end
   end
 
+  def destroy
+    @playlist = Playlist.friendly.find(params[:playlist_id])
+    @video = @playlist.videos.friendly.find(params[:id])
+    if @video.destroy
+      redirect_to playlist_path(@playlist)
+    else
+      # TODO: Something should be actually done.
+      redirect_to video_playlist_path(@video, playlist_id: @playlist)
+    end
+  end
+
   private
 
   def video_attributes

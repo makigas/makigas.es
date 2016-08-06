@@ -28,9 +28,10 @@
           <span class="small">&bull; <%= running_time(v.duration )%></span>
         </h4>
         <p class="list-group-item-text"><%= v.description %></p>
-        <p class="list-group-item-text">
+        <div class="list-group-item-text">
           <%= link_to 'Editar', edit_playlist_video_path(v, playlist_id: @playlist), class: 'btn btn-default btn-xs' %>
-        </p>
+          <%= button_to 'Borrar', playlist_video_path(v, playlist_id: @playlist), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Esto borrará para siempre el vídeo' } %>
+        </div>
       </div>
     </div>
   </div>
