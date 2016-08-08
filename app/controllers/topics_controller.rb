@@ -33,6 +33,21 @@ class TopicsController < ApplicationController
     end
   end
 
+  def insert
+    @topic = Topic.friendly.find(params[:id])
+    @playlists = Playlist.where(topic: nil)
+  end
+
+  def do_insert
+    @topic = Topic.friendly.find(params[:id])
+    @playlist = Playlist.find(params[:playlist])
+    if @playlist.update_attribute(:topic, @topic)
+      redirect_to topic_path(@topic)
+    else
+      redirect_to insert_topic_path(@topic)
+    end
+  end
+
   private
 
   def topic_attributes

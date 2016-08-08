@@ -156,4 +156,50 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
   end
+
+  context 'GET #insert' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist_on = FactoryGirl.create(:playlist, topic: @topic)
+      @playlist_off = FactoryGirl.create(:playlist, topic: nil)
+    end
+
+    it 'should be success' do
+      get :insert, params: { id: @topic }
+      expect(response).to be_success
+    end
+
+    it 'should assign the topic' do
+      get :insert, params: { id: @topic }
+      expect(assigns(:topic)).to eq @topic
+    end
+
+    it 'should assign playlists not in a topic' do
+      get :insert, params: { id: @topic }
+      expect(assigns(:playlists)).to match_array [@playlist_off]
+    end
+
+    it 'should render the insert template' do
+      get :insert, params: { id: @topic }
+      expect(response).to render_template :insert
+    end
+  end
+
+  context 'POST #do_insert' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist = FactoryGirl.create(:playlist)
+    end
+
+    it 'should update the topic for the playlist' do
+      post :do_insert, params: { id: @topic, playlist: @playlist.id }
+      @playlist.reload
+      expect(@playlist.topic).to eq @topic
+    end
+
+    it 'should redirect to the topic' do
+      post :do_insert, params: { id: @topic, playlist: @playlist.id }
+      expect(response).to redirect_to topic_path(@topic)
+    end
+  end
 end
