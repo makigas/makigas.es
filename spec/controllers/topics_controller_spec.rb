@@ -226,4 +226,22 @@ RSpec.describe TopicsController, type: :controller do
       expect(response).to redirect_to topic_path(@topic)
     end
   end
+
+  context 'DELETE #release' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+    end
+
+    it 'should remove the playlist from the topic' do
+      delete :release, params: { id: @topic, playlist: @playlist.id }
+      @playlist.reload
+      expect(@playlist.topic).to eq nil
+    end
+
+    it 'should redirect to the topic' do
+      delete :release, params: { id: @topic, playlist: @playlist.id }
+      expect(response).to redirect_to topic_path(@topic)
+    end
+  end
 end

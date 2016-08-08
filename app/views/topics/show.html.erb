@@ -34,6 +34,9 @@
           <span class="small">&bull; <%= pluralize(p.videos.length, 'video', plural: 'videos') %></span>
         </h4>
         <p class="list-group-item-text"><%= p.description %></p>
+        <p class="list-group-item-text">
+          <%= button_to 'Eliminar lista', release_topic_path(@topic, playlist: p.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Esto liberará esta lista de este tema. ' } %>
+        </p>
       </div>
     </div>
   </div>

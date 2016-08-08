@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :insert, to: 'topics#insert'
       post :insert, to: 'topics#do_insert'
+      delete :release, to: 'topics#release'
     end
   end
   

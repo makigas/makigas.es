@@ -72,4 +72,18 @@ RSpec.feature "Topics", type: :feature do
       expect(page).to have_select 'Playlist', options: [@playlist_off.title]
     end
   end
+
+  context 'removing a playlist from a topic' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+    end
+
+    it 'should have a valid workflow' do
+      visit topic_path(@topic)
+      click_button 'Eliminar lista'
+      expect(page).to have_content @topic.title
+      expect(page).not_to have_content @playlist.title
+    end
+  end
 end

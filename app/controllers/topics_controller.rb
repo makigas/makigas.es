@@ -57,6 +57,16 @@ class TopicsController < ApplicationController
     end
   end
 
+  def release
+    @topic = Topic.friendly.find(params[:id])
+    @playlist = Playlist.find(params[:playlist])
+    if @playlist.update_attribute(:topic, nil)
+      redirect_to topic_path(@topic)
+    else
+      redirect_to topic_path(@topic)
+    end
+  end
+
   private
 
   def topic_attributes
