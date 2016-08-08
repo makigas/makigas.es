@@ -1,0 +1,16 @@
+<% content_for :hero do %>
+  <div class="row">
+    <div class="col-md-9 col-sm-8">
+      <h1><%= @topic.title %></h1>
+      <p><%= @topic.description %></p>
+    </div>
+    <div class="col-md-3 col-sm-4 hidden-xs">
+      <%= image_tag @topic.photo.url(:medium), class: 'img-responsive' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="pull-right">
+<%= link_to 'Editar tema', edit_topic_path(@topic), class: 'btn btn-default' %>
+<%= button_to 'Borrar tema', topic_path(@topic), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará para siempre la lista.' } %>
+</div>
