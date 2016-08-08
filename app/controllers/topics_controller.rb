@@ -33,6 +33,15 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    @topic = Topic.friendly.find(params[:id])
+    if @topic.destroy
+      redirect_to topics_path
+    else
+      redirect_to topic_path(@topic)
+    end
+  end
+
   def insert
     @topic = Topic.friendly.find(params[:id])
     @playlists = Playlist.where(topic: nil)

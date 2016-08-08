@@ -14,10 +14,10 @@
   <div class="pull-left">
   <%= link_to 'Agregar listas', insert_topic_path(@topic), class: 'btn btn-success' %>
   </div>
-  
+
   <div class="pull-right">
   <%= link_to 'Editar tema', edit_topic_path(@topic), class: 'btn btn-default' %>
-  <%= button_to 'Borrar tema', topic_path(@topic), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará para siempre la lista.' } %>
+  <%= button_to 'Borrar tema', topic_path(@topic), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará para siempre la temática.' } %>
   </div>
 </div>
 

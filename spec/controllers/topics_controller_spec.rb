@@ -157,6 +157,30 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
+  context 'DELETE #destroy' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+    end
+
+    it 'should remove the topic' do
+      expect {
+        delete :destroy, params: { id: @topic }
+      }.to change { Topic.count }.by -1
+    end
+
+    it 'should nullify the playlist topic' do
+      delete :destroy, params: { id: @topic }
+      @playlist.reload
+      expect(@playlist.topic).to eq nil
+    end
+
+    it 'should redirect to the topics' do
+      delete :destroy, params: { id: @topic }
+      expect(response).to redirect_to topics_path
+    end
+  end
+
   context 'GET #insert' do
     before(:each) do
       @topic = FactoryGirl.create(:topic)
