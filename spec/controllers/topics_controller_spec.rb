@@ -90,4 +90,70 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
   end
+
+  context 'GET #edit' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+    
+    it 'should be success' do
+      get :edit, params: { id: @topic }
+      expect(response).to be_success
+    end
+
+    it 'should assign the topic' do
+      get :edit, params: { id: @topic }
+      expect(assigns(:topic)).to eq @topic
+    end
+
+    it 'should render the edit template' do
+      get :edit, params: { id: @topic }
+      expect(response).to render_template :edit
+    end
+  end
+
+  context 'PUT #update' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic, title: 'Foo')
+    end
+
+    context 'when providing valid arguments' do
+      before(:each) do
+        @updated = FactoryGirl.attributes_for(:topic, title: 'Bar')
+      end
+
+      it 'should update the item' do
+        put :update, params: { id: @topic, topic: @updated }
+        @topic.reload
+        expect(@topic.title).to eq 'Bar'
+      end
+
+      it 'should redirect to the topic' do
+        put :update, params: { id: @topic, topic: @updated }
+        expect(response).to redirect_to topic_path(@topic)
+      end
+    end
+    
+    context 'when not providing valid arguments' do
+      before(:each) do
+        @updated = FactoryGirl.attributes_for(:topic, title: nil)
+      end
+
+      it 'should not update the item' do
+        put :update, params: { id: @topic, topic: @updated }
+        @topic.reload
+        expect(@topic.title).to eq 'Foo'
+      end
+
+      it 'should be success' do
+        put :update, params: { id: @topic, topic: @updated }
+        expect(response.status).to eq 200
+      end
+
+      it 'should render the edit template' do
+        put :update, params: { id: @topic, topic: @updated }
+        expect(response).to render_template :edit
+      end
+    end
+  end
 end

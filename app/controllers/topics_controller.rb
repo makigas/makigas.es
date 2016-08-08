@@ -20,6 +20,19 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+    @topic = Topic.friendly.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.friendly.find(params[:id])
+    if @topic.update_attributes(topic_attributes)
+      redirect_to topic_path(@topic)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def topic_attributes
