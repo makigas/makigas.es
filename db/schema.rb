@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626093711) do
+ActiveRecord::Schema.define(version: 20160808112832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +26,22 @@ ActiveRecord::Schema.define(version: 20160626093711) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "topic_id"
+    t.index ["slug"], name: "index_playlists_on_slug", unique: true, using: :btree
   end
 
-  add_index "playlists", ["slug"], name: "index_playlists_on_slug", unique: true, using: :btree
+  create_table "topics", force: :cascade do |t|
+    t.string   "title",              null: false
+    t.string   "description",        null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "slug",               null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["slug"], name: "index_topics_on_slug", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -44,10 +56,9 @@ ActiveRecord::Schema.define(version: 20160626093711) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.string   "title",                  null: false
@@ -63,9 +74,8 @@ ActiveRecord::Schema.define(version: 20160626093711) do
     t.integer  "position",               null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["slug"], name: "index_videos_on_slug", using: :btree
+    t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true, using: :btree
   end
-
-  add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree
-  add_index "videos", ["youtube_id"], name: "index_videos_on_youtube_id", unique: true, using: :btree
 
 end
