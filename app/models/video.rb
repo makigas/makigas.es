@@ -16,7 +16,7 @@ class Video < ApplicationRecord
   validates :playlist, presence: true
 
   # Has thumbnail, which might be displayed through the site.
-  has_attached_file :thumbnail, styles: { hd: "1280x720>", hq: "854x480>", md: "480x270>", mini: "160x90>" }
+  has_attached_file :thumbnail, styles: { hd: "1280x720>", hq: "854x480>", md: "480x270>", mini_hdpi: "320x180>", mini: "160x90>" }
   validates_attachment :thumbnail, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..2.megabytes }
 
   # Natural duration

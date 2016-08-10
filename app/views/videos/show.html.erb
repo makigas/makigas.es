@@ -1,9 +1,11 @@
 <%= content_for :hero do %>
   <h1><%= @video.position %>. <%= @video.title %></h1>
+  <p>Un episodio de <%= link_to @video.playlist.title, playlist_path(@video.playlist) %></p>
 <% end %>
 
+
 <div class="row video-toolbar">
-  <div class="col-md-8">
+  <div class="col-lg-10 col-lg-offset-1">
   <% unless @video.first? %>
   <%= link_to 'Anterior', playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
   <% end %>
@@ -12,32 +14,59 @@
   <%= link_to 'Siguiente', playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
   <% end %>
   </div>
-  <div class="col-md-4 hidden-sm hidden-xs">
-    <a href="javascript:void(0);" class="btn btn-default btn-block" id="toggle-description">Toggle description</a>
+</div>
+
+<div class="row video-player">
+  <div class="video-player-column col-lg-10 col-lg-offset-1">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
+      </iframe>
+    </div>
   </div>
 </div>
 
-  <div class="row video-row">
-    <div class="video-player col-md-8">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
-        </iframe>
+<div class="row video-information">
+  <div class="col-lg-10 col-lg-offset-1">
+    <div class="col-sm-3">
+      <ul class="nav nav-pills nav-stacked" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Descripción</a>
+        </li>
+        <li role="presentation">
+          <a href="#playlist" aria-controls="playlist" role="tab" data-toggle="tab">Playlist</a>
+        </li>
+        <li role="presentation">
+          <a href="#transcription" aria-controls="transcription" role="tab" data-toggle="tab">Transcripción</a>
+        </li>
+        <li role="presentation">
+          <a href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab">Descargas</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <div class="tab-content">
+        <div class="tab-pane active" role="tabpanel" id="description">
+          <h4>Descripción</h4>
+          <%= to_markdown @video.description %>
+          <p><%= link_to 'Ver en YouTube', "https://youtu.be/#{@video.youtube_id}", target: :blank, class: "btn btn-default" %></p>
+        </div>
+        <div class="tab-pane" role="tabpanel" id="playlist">
+          <h4>Lista de reproducción</h4>
+          <div class="playlist-container">
+          <% @playlist.videos.each do |v| %>
+            <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
+          <% end %>
+          </div>
+        </div>
+        <div class="tab-pane" role="tabpanel" id="transcription">
+          <h4>Transcripción</h4>
+          <p>Este contenido no está disponible en este momento.</p>
+        </div>
+        <div class="tab-pane" role="tabpanel" id="downloads">
+          <h4>Descargas</h4>
+          <p>Este contenido no está disponible en este momento.</p>
+        </div>
       </div>
-      <p>
-        <a class="btn btn-default" href="http://youtu.be/<%= @video.youtube_id %>" target="_blank">Ver en YouTube</a>
-      </p>
-    </div>
-    
-    <div class="video-description col-md-4">
-      <%= to_markdown @video.description %>
     </div>
   </div>
-
-<div class="invideo-playlist">
-  <h3><%= link_to @playlist.title, @playlist %></h3>
-<div class="list-group">
-  <% @in_playlist.each do |v| %>
-    <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
-  <% end %>
-</div>
 </div>

@@ -1,19 +1,11 @@
-.front.sticky-navbar .navbar-makigas {
-  background: transparent !important;
-  position: absolute !important;
+.page-front .navbar-makigas {
+  position: absolute;
   top: 0;
   width: 100%;
-  
-  .active { background: transparent !important; }
 }
 
-@keyframes fixed-navbar-on-front {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(0); }
-}
-
-.front.fixed-navbar .navbar-makigas {
-  animation: fixed-navbar-on-front 0.25s ease-out;
+.navbar-transparent .navbar-makigas {
+  background: transparent !important;
 }
 
 .makigas-tron {
@@ -22,43 +14,81 @@
   background-position: bottom;
   color: white;
   
-  font-family: 'Fira Sans';
-  text-align: center;
-  margin-bottom: 0;
+  font-family: 'Montserrat';
   
+  margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
   
   .makigas-tron-inner {
-    padding-top: 60px;
-    padding-bottom: 30px;
-    background: rgba(desaturate(#003399, 80%), 0.6);
+    padding-top: 90px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: rgba(desaturate(#003399, 50%), 0.7);
     
-    @media screen and (min-width: 768px) {
-      padding-top: 160px;
+    @media screen and (min-width: 767px) and (max-width: 1199px) {
+      padding-top: 130px;
       padding-bottom: 80px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding-top: 170px;
+      padding-bottom: 120px;
     }
   }
   
   h1 {
     font-size: 32px;
-    font-weight: normal;
+    margin-bottom: 2rem;
+    @media screen and (min-width: 767px) {
+      font-weight: bold;
+      line-height: 120%;
+      margin-bottom: 3rem;
+    }
+    text-shadow: 0 1px 0 black;
   }
   
   p {
     font-size: 24px;
+    text-shadow: 0 1px 0 black;
   }
   
   @media screen and (min-width: 768px) {
     h1 { font-size: 48px; }
     p { font-size: 32px; }
   }
+
+  .cta-buttons {
+    margin-top: 1em;
+    text-shadow: none;
+    font-size: 18px;
+    font-weight: normal;
+
+    a { color: white; }
+  }
 }
 
-.about-makigas {
+.front-block {
+
+  &:nth-child(odd) {
+    color: #303030;
+    background: white;
+  }
+  &:nth-child(even) {
+    background: desaturate(#003399, 50%);
+    color: #f0f0f0;
+  }
+
+  .container {
+    padding-top: 10px;
+    padding-bottom: 40px;
+  }
 
   h1 {
+    font-family: 'Montserrat';
     font-size: 24px;
+    font-weight: bold;
     line-height: 40px;
     @media screen and (min-width: 768px) {
       margin-top: 20px;
@@ -66,24 +96,56 @@
       font-weight: 900;
       text-align: center;
       font-size: 30px;
-      line-height: 80px;
+      line-height: 1.5;
     }
   }
-  
-  .container {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  
-  .row {
-    @media screen and (min-width: 992px) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+  &.how-to-follow {
+    text-align: center;
+    .btn-hero {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 1em;
+      padding: 0.5em 3em;
     }
   }
+
+  &.recent-videos {
+    img { width: 100%; }
+  }
+
+  &.about-makigas {
+    .row {
+      @media screen and (min-width: 992px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    
+    .laptop-image {
+      max-width: 100%;
+    }
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 150%;
+    font-family: 'Montserrat';
+  }
   
-  .laptop-image {
-    max-width: 100%;
+  p {
+    font-size: 1.3em;
+  }
+}
+
+.btn-hero {
+  border: 1px solid white;
+  color: white;
+  background: rgba(white, 0.1);
+
+  &:hover {
+    background: rgba(black, 0.5);
+    color: white;
   }
 }

@@ -2,26 +2,24 @@
   <h1>Todas las listas de reproducción</h1>
 <% end %>
 
+<div class="buttons-bar">
 <div class="text-right">
   <%= link_to 'Nueva lista', new_playlist_path, class: 'btn btn-success' %>
 </div>
+</div>
 
-<div class="row">
+<div class="grid-table row">
 <% @playlists.each do |pl| %>
-<div class="col-sm-6 col-md-4">
-<div class="panel panel-default">
-  <%= link_to image_tag(pl.photo.url(:md)), pl %>
+<div class="col-xs-6 col-sm-4 col-lg-3">
+<%= link_to pl do %>
+<div class="playlist panel panel-default">
+  <span class="badge"><%= pluralize(pl.videos.count, 'episodio', plural: 'episodios') %></span>
+  <%= image_tag pl.photo.url(:md), srcset: "#{pl.photo.url(:hd)} 2x" %>
   <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to pl.title, pl %></h3>
-  </div>
-  <div class="panel-body">
-    <p><%= pl.description %></p>
-    <p>
-      Duración: <%= running_time(pl.total_length) %>,
-      <%= pluralize(pl.videos.count, 'episodio', plural: 'episodios') %>.
-    </p>
+    <h3 class="panel-title"><%= pl.title %></h3>
   </div>
 </div>
+<% end %>
 </div>
 <% end %>
 </div>

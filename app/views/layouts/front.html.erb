@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body class="no-js front sticky-navbar">
+<body class="no-js navbar-transparent <%= "page-#{controller.controller_name}" %>">
   
   <%= render 'layouts/header', front: true %>
   

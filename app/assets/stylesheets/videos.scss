@@ -3,19 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .video-toolbar {
-  margin-bottom: 1em;
+  overflow: auto;
+  margin-bottom: 15px;
 }
 
-.embed-responsive, .video-description {
-  margin-bottom: 1em;
-}
-
-.invideo-playlist {
-  h3 {
-    font-family: 'Fira Sans';
+.video-information {
+  margin-top: 15px;
+  h4 {
+    font-family: 'Montserrat';
     line-height: 30px;
     font-size: 25px;
     font-weight: 300;
-    margin-left: 15px;
   }
 }

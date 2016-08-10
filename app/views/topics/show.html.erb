@@ -1,13 +1,6 @@
 <% content_for :hero do %>
-  <div class="row">
-    <div class="col-md-9 col-sm-8">
-      <h1><%= @topic.title %></h1>
-      <p><%= @topic.description %></p>
-    </div>
-    <div class="col-md-3 col-sm-4 hidden-xs">
-      <%= image_tag @topic.photo.url(:medium), class: 'img-responsive' %>
-    </div>
-  </div>
+  <h1><%= @topic.title %></h1>
+  <p><%= @topic.description %></p>
 <% end %>
 
 <div class="buttons-bar">
@@ -21,24 +14,30 @@
   </div>
 </div>
 
-<div class="list-group">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+  <div class="episodes-table list-group">
   <% @topic.playlists.each do |p| %>
-  <div class="list-group-item">
-    <div class="media">
-      <div class="media-left hidden-xs">
-        <%= image_tag p.photo.url(:md) %>
+    <%= link_to playlist_path(p), class: 'list-group-item' do %>
+      <div class="media">
+        <div class="media-left hidden-xs">
+          <%= image_tag p.photo.url(:thumbnail), srcset: "#{p.photo.url(:thumbnail_hdpi)} 2x" %>
+        </div>
+        <div class="media-body">
+          <h4 class="list-group-item-heading">
+            <%= p.title %>
+            <span class="small">&bull; <%= pluralize(p.videos.length, 'video', plural: 'videos') %></span>
+          </h4>
+          <p class="list-group-item-text"><%= p.description %></p>
+        </div>
       </div>
-      <div class="media-body">
-        <h4 class="list-group-item-heading">
-          <%= link_to p.title, playlist_path(p) %>
-          <span class="small">&bull; <%= pluralize(p.videos.length, 'video', plural: 'videos') %></span>
-        </h4>
-        <p class="list-group-item-text"><%= p.description %></p>
-        <p class="list-group-item-text">
+      <div class="list-group-buttons">
+        <div class="pull-right">
           <%= button_to 'Eliminar lista', release_topic_path(@topic, playlist: p.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Esto liberará esta lista de este tema. ' } %>
-        </p>
+        </div>
       </div>
-    </div>
-  </div>
+    <% end %>
   <% end %>
+  </div>
+</div>
 </div>

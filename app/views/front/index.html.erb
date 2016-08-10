@@ -2,24 +2,73 @@
   <div class="makigas-tron-inner">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <h1>Tutoriales de programación gratuitos y en castellano</h1>
+        <div class="col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
+          <h1>Tutoriales de programación <span class="highlighted">gratuitos</span> y en castellano</h1>
           <p>En esto tan simple consiste makigas</p>
+          <h1 class="cta-buttons">
+            <%= link_to 'Explora las temáticas', topics_path, class: 'btn btn-lg btn-hero' %>
+            <%= link_to 'Seguir leyendo', '#about-makigas', id: 'hero-scroller', class: 'btn btn-lg' %>
+          </h1>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container about-makigas">
-  <h1 class="title">¿Qué es makigas?</h1>
-  <div class="row">
-    <div class="col-md-6 col-md-push-6">
-      <p class="lead">makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.</p>
-      <p class="lead">En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.</p>
+<div id="about-makigas" class="about-makigas front-block">
+  <div class="container">
+    <h1 class="title">¿Qué es makigas?</h1>
+    <div class="row">
+      <div class="col-md-6 hidden-xs hidden-sm">
+        <%= image_tag 'laptop.png', class: 'laptop-image' %>
+      </div>
+      <div class="col-md-6">
+        <p>makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.</p>
+        <p>En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.</p>
+      </div>
     </div>
-    <div class="col-md-6 col-md-pull-6 hidden-xs">
-      <%= image_tag 'laptop.png', class: 'laptop-image' %>
+  </div>
+</div>
+
+<div class="how-to-follow front-block">
+  <div class="container">
+    <h1 class="title">¿Cómo obtengo acceso?</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>En YouTube</h3>
+        <p>
+          Todo el material lo encontrarás en YouTube. Si quieres ser de los primeros
+          en enterarte, puedes suscribirte al canal para enterarte de lo nuevo.
+        </p>
+        <p><%= link_to 'Ir al canal', 'http://www.youtube.com/makigas', class: 'btn btn-hero' %></p>
+      </div>
+      <div class="col-sm-6">
+        <h3>En makigas.es</h3>
+        <p>
+          Para una mejor experiencia explorando contenido y para poder encontrar
+          próximamente contenido adicional y material extra para seguir los cursos.
+        </p>
+        <p><%= link_to 'Ver contenidos', topics_path, class: 'btn btn-hero' %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="recent-videos front-block">
+  <div class="container">
+    <h1 class="title">Últimos vídeos</h1>
+    <div class="row">
+      <% @recent.each do |v| %>
+        <div class="video col-md-3 col-xs-6">
+          <p><%= link_to image_tag(v.thumbnail(:md), class: 'img-thumbnail', srcset: "#{v.thumbnail(:hd)} 2x"), playlist_video_path(v, playlist_id: v.playlist) %></p>
+          <p><%= link_to v.title, playlist_video_path(v, playlist_id: v.playlist) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3">
+        <%= link_to 'Explorar vídeos recientes...', videos_path, class: 'btn btn-lg btn-block btn-primary' %>
+      </div>
     </div>
   </div>
 </div>

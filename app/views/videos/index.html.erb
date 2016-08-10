@@ -2,24 +2,24 @@
   <h1>Todos los vídeos</h1>
 <% end %>
 
+<div class="buttons-bar">
 <div class="text-right">
   <%= link_to 'Nuevo vídeo', new_video_path, class: 'btn btn-success' %>
 </div>
+</div>
 
-<div class="row">
+<div class="row grid-table">
   <% @videos.each do |v| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="panel panel-default">
-        <%= link_to image_tag(v.thumbnail.url(:md)), playlist_video_path(v, playlist_id: v.playlist) %>
+    <div class="col-xs-6 col-sm-4 col-lg-3">
+      <%= link_to playlist_video_path(v, playlist_id: v.playlist) do %>
+      <div class="video panel panel-default">
+        <span class="badge"><%= running_time(v.duration) %></span>
+        <%= image_tag v.thumbnail.url(:md), srcset: "#{v.thumbnail.url(:hd)} 2x" %>
         <div class="panel-heading">
-          <h3 class="panel-title"><%= link_to v.title, playlist_video_path(v, playlist_id: v.playlist) %></h3>
-        </div>
-        <div class="panel-body">
-          <p><%= v.description %></p>
-          <p>Duración: <%= running_time(v.duration) %></p>
-          <p>En la lista <%= link_to v.playlist.title, v.playlist %></p>
+          <h3 class="panel-title"><%= v.title %></h3>
         </div>
       </div>
+      <% end %>
     </div>
   <% end %>
 </div>

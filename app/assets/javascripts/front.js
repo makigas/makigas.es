@@ -2,43 +2,20 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  $('body.front .navbar-collapse').on('hidden.bs.collapse', function() {
-    console.log('hola');
-    $('body').addClass('sticky-navbar');
+  // When the navbar is toggled on mobile phone, turn on the background color.
+  $('body.page-front .navbar-collapse').on('show.bs.collapse', function() {
+    $('body').removeClass('navbar-transparent');
   });
 
-  $('body.front .navbar-collapse').on('show.bs.collapse', function() {
-    console.log('hola');
-    $('body').removeClass('sticky-navbar');
+  // When the navbar is removed from mobile phone, turn off background again.
+  $('body.page-front .navbar-collapse').on('hidden.bs.collapse', function() {
+    $('body').addClass('navbar-transparent');
   });
-});
 
-$(document).ready(function() {
-  if (! $('body').hasClass('front')) return;
-
-  var needsRestick = false;
-  setInterval(function() {
-    if (needsRestick) {
-      var sticky = $('body').hasClass('sticky-navbar');
-      var top = $(window).scrollTop();
-      var required = $('.makigas-tron').height();
-
-      if (sticky) {
-        if (top >= required - 50) {
-          $('body').removeClass('sticky-navbar');
-          $('body').addClass('fixed-navbar');
-        }
-      } else {
-        if (top < required - 50) {
-          $('body').addClass('sticky-navbar');
-          $('body').removeClass('fixed-navbar');
-        }
-      }
-      needsRestick = false;
-    }
-  }, 60);
-  
-  $(document).scroll(function() {
-    needsRestick = true;
+  // Instead of cold-jumping into the about, use an animation.
+  $('#hero-scroller').click(function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    $('html, body').animate({ scrollTop: $(target).position().top }, 400);
   });
 });
