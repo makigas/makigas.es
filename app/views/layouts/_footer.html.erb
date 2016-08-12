@@ -3,26 +3,22 @@
     <div class="container">
     <div class="row">
       <div class="footer-info col-md-6 col-sm-8">
-        <h3>Esto es makigas</h3>
-        <p>
-        makigas es un sitio web y un canal de YouTube con tutoriales y
-        videotutoriales en castellano sobre distintos temas relacionados
-        con la programación y el desarrollo de software.
-        </p>
-        <p><%= link_to 'Acerca del proyecto', root_path %></p>
+        <h3><%= t('.footer_info.title') %></h3>
+        <p><%= t('.footer_info.description') %></p>
+        <p><%= link_to t('.footer_info.about.text'), root_path, title: t('.footer_info.about.title') %></p>
       </div>
       <div class="footer-col col-sm-2 col-xs-6 col-lg-offset-2 col-md-offset-2">
-        <h3>Sitio</h3>
+        <h3><%= t('.navigation.title') %></h3>
         <ul>
-          <li><%= link_to 'Principal', root_path %></li>
-          <li><%= link_to 'Vídeos', videos_path %></li>
-          <li><%= link_to 'Listas', playlists_path %></li>
-          <li><%= link_to 'Temas', topics_path %></li>
-          <li><%= link_to 'Comunidad', 'https://www.facebook.com/groups/makigas', target: 'blank' %></li>
+          <li><%= link_to t('.navigation.front'), root_path %></li>
+          <li><%= link_to t('.navigation.videos'), videos_path %></li>
+          <li><%= link_to t('.navigation.playlists'), playlists_path %></li>
+          <li><%= link_to t('.navigation.topics'), topics_path %></li>
+          <li><%= link_to t('.navigation.community'), 'https://www.facebook.com/groups/makigas', target: 'blank' %></li>
         </ul>
       </div>
       <div class="footer-col col-sm-2 col-xs-6">
-        <h3>Social</h3>
+        <h3><%= t('.social.title') %></h3>
         <ul>
           <li><%= link_to 'Facebook', 'https://www.facebook.com/makigas', target: 'blank' %></li>
           <li><%= link_to 'Twitter', 'https://twitter.com/makigas', target: 'blank' %></li>
@@ -40,10 +36,10 @@
       <div class="col-md-9 copyright-links">
         <p class="year"><strong>&copy; 2012 - 2016 makigas</strong></p>
         <p>
-          <%= link_to 'Aviso legal', root_path %> &bull;
-          <%= link_to 'Privacidad', root_path %> &bull;
-          <%= link_to 'Limitación de responsabilidad', root_path %> &bull;
-          <%= link_to 'Cookies (EU)', root_path %>
+          <%= link_to t('.copyright.legal'), root_path %> &bull;
+          <%= link_to t('.copyright.privacy'), root_path %> &bull;
+          <%= link_to t('.copyright.disclaimer'), root_path %> &bull;
+          <%= link_to t('.copyright.cookies'), root_path %>
         </p>
       </div>
       <div class="col-md-3 made-in-spain">

@@ -34,3 +34,31 @@ es:
       topics:
         button: Explora las temáticas
         title: Visualiza las listas de temas disponibles en esta página web.
+  layouts:
+    header:
+      front: Principal
+      navigation: Desplegar navegación
+      playlists: Listas
+      topics: Temas
+      videos: Vídeos
+    footer:
+      copyright:
+        cookies: Uso de cookies (EU)
+        disclaimer: Limitación de responsabilidad
+        legal: Aviso legal
+        privacy: Privacidad
+      footer_info:
+        about:
+          text: Acerca del proyecto
+          title: Haz clic aquí para obtener más información acerca del proyecto makigas.
+        description: makigas es un sitio web y un canal de YouTube con tutoriales y videotutoriales en castellano sobre distintos temas relacionados con la programación y el desarrollo de software.
+        title: Esto es makigas
+      navigation:
+        community: Comunidad
+        front: Principal
+        playlists: Listas
+        title: Sitio
+        topics: Temas
+        videos: Vídeos
+      social:
+        title: Social
