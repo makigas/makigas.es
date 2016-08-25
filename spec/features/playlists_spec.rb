@@ -15,11 +15,6 @@ RSpec.feature "Playlists", type: :feature do
       visit playlists_path
       expect(page).to have_content @playlist.title
     end
-    
-    it 'should list playlists description' do
-      visit playlists_path
-      expect(page).to have_content @playlist.description
-    end
   end
   
   context 'showing playlist page' do
@@ -67,21 +62,21 @@ RSpec.feature "Playlists", type: :feature do
 
     scenario 'user should create a playlist' do
       visit playlists_path
-      click_link 'Nueva lista'
-      fill_in "Title", with: "My test playlist"
-      fill_in "Description", with: "This is a sample playlist"
-      fill_in "Youtube", with: "1928374098120379"
-      attach_file "Buscar", Rails.root + "spec/fixtures/playlist.jpg", visible: false
-      click_button "Guardar"
+      click_link I18n.t('playlists.index.new')
+      fill_in Playlist.human_attribute_name(:title), with: "My test playlist"
+      fill_in Playlist.human_attribute_name(:description), with: "This is a sample playlist"
+      fill_in Playlist.human_attribute_name(:youtube_id), with: "1928374098120379"
+      attach_file I18n.t('playlists.form.search'), Rails.root + "spec/fixtures/playlist.jpg", visible: false
+      click_button I18n.t('playlists.form.save')
       expect(page).to have_content "My test playlist"
     end
 
     scenario 'user should not create a wrong playlist' do
       visit playlists_path
-      click_link 'Nueva lista'
-      fill_in "Description", with: "I forgot the title"
-      click_button "Guardar"
-      expect(page).to have_content "Hay errores que impiden guardar esta lista de reproducción"
+      click_link I18n.t('playlists.index.new')
+      fill_in Playlist.human_attribute_name(:description), with: "I forgot the title"
+      click_button I18n.t('playlists.form.save')
+      expect(page).to have_content I18n.t('playlists.form.errors')
     end
   end
 
@@ -97,18 +92,18 @@ RSpec.feature "Playlists", type: :feature do
 
     scenario 'user should edit a playlist' do
       visit playlist_path(@playlist)
-      click_link 'Editar lista'
-      fill_in 'Title', with: 'My new test playlist'
-      click_button 'Guardar'
+      click_link I18n.t('playlists.show.edit')
+      fill_in Playlist.human_attribute_name(:title), with: 'My new test playlist'
+      click_button I18n.t('playlists.form.save')
       expect(page).to have_current_path playlist_path(@playlist)
     end
 
     scenario 'user cannot edit wrong a playlist' do
       visit playlist_path(@playlist)
-      click_link 'Editar lista'
-      fill_in 'Title', with: ''
-      click_button 'Guardar'
-      expect(page).to have_content 'Hay errores que impiden guardar esta lista de reproducción'
+      click_link I18n.t('playlists.show.edit')
+      fill_in Playlist.human_attribute_name(:title), with: ''
+      click_button I18n.t('playlists.form.save')
+      expect(page).to have_content I18n.t('playlists.form.errors')
     end
   end
 
@@ -125,7 +120,7 @@ RSpec.feature "Playlists", type: :feature do
 
     it 'should be deleted' do
       visit playlist_path(@playlist)
-      click_button 'Borrar lista'
+      click_button I18n.t('playlists.show.delete')
       expect(page).to have_current_path playlists_path
       expect(page).not_to have_content @title
     end

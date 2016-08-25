@@ -15,11 +15,6 @@ RSpec.feature "Topics", type: :feature do
       visit topics_path
       expect(page).to have_content @topic.title
     end
-    
-    it 'should list playlists description' do
-      visit topics_path
-      expect(page).to have_content @topic.description
-    end
   end
 
   context 'creating a topic' do
@@ -30,19 +25,19 @@ RSpec.feature "Topics", type: :feature do
 
     it 'should be able to insert data' do
       visit topics_path
-      click_link 'Nueva temática'
-      fill_in 'Title', with: 'My sample topic'
-      fill_in 'Description', with: 'This topic is an example to test the feature'
-      attach_file 'Buscar', Rails.root + 'spec/fixtures/topic.jpg', visible: false
-      click_button 'Guardar'
+      click_link I18n.t('topics.index.new')
+      fill_in Topic.human_attribute_name(:title), with: 'My sample topic'
+      fill_in Topic.human_attribute_name(:description), with: 'This topic is an example to test the feature'
+      attach_file I18n.t('topics.form.search'), Rails.root + 'spec/fixtures/topic.jpg', visible: false
+      click_button I18n.t('topics.form.save')
       expect(page).to have_content 'My sample topic'
     end
 
     it 'should detect invalid data' do
       visit new_topic_path
-      fill_in 'Description', with: 'Look, no title!'
-      click_button 'Guardar'
-      expect(page).to have_content 'Hay errores que impiden guardar'
+      fill_in Topic.human_attribute_name(:description), with: 'Look, no title!'
+      click_button I18n.t('topics.form.save')
+      expect(page).to have_content I18n.t('topics.form.errors')
     end
   end
 
@@ -60,16 +55,16 @@ RSpec.feature "Topics", type: :feature do
 
     it 'should have a valid workflow' do
       visit topic_path(@topic)
-      click_link 'Agregar listas'
-      select @playlist_off.title, from: 'Playlist'
-      click_button 'Insertar'
+      click_link I18n.t('topics.show.insert_list')
+      select @playlist_off.title, from: I18n.t('topics.insert.playlist')
+      click_button I18n.t('topics.insert.insert')
       expect(page).to have_content @topic.title
       expect(page).to have_content @playlist_off.title
     end
 
     it 'should not suggest playlists already in a playlist' do
       visit insert_topic_path(@topic)
-      expect(page).to have_select 'Playlist', options: [@playlist_off.title]
+      expect(page).to have_select I18n.t('topics.insert.playlist'), options: [@playlist_off.title]
     end
   end
 
@@ -81,7 +76,7 @@ RSpec.feature "Topics", type: :feature do
 
     it 'should have a valid workflow' do
       visit topic_path(@topic)
-      click_button 'Eliminar lista'
+      click_button I18n.t('topics.show.remove_list')
       expect(page).to have_content @topic.title
       expect(page).not_to have_content @playlist.title
     end
