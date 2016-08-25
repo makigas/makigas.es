@@ -1,10 +1,10 @@
 <% content_for :hero do %>
-  <h1>Todos los vídeos</h1>
+  <h1><%= t('.title') %></h1>
 <% end %>
 
 <div class="buttons-bar">
 <div class="text-right">
-  <%= link_to 'Nuevo vídeo', new_video_path, class: 'btn btn-success' %>
+  <%= link_to t('.new'), new_video_path, class: 'btn btn-success' %>
 </div>
 </div>
 

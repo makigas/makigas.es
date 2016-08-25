@@ -1,11 +1,11 @@
 <%= form_for @playlist, class: 'form-horizontal' do |f| %>
 
   <% if @playlist.errors.any? %>
-    <div class="alert alert-danger">Hay errores que impiden guardar esta lista de reproducción.</div>
+    <div class="alert alert-danger"><%= t('.errors') %></div>
   <% end %>
 
   <fieldset>
-    <legend>Información básica</legend>
+    <legend><%= t('.basic_information') %></legend>
 
     <div class="form-group row">
       <%= f.label :title, class: 'col-sm-4 control-label' %>
@@ -35,7 +35,7 @@
       <%= f.label :photo, class: 'col-sm-4 control-label' %>
       <div class="col-sm-8">
         <p><%= f.label :photo, class: 'btn btn-primary' do %>
-          Buscar <%= f.file_field :photo, style: 'display: none' %>
+          <%= t('.search') %> <%= f.file_field :photo, style: 'display: none' %>
         <% end %></p>
 
         <% if @playlist.photo.present? %>
@@ -46,11 +46,11 @@
   </fieldset>
 
   <fieldset>
-    <legend>Administración</legend>
+    <legend><%= t('.management') %></legend>
 
     <div class="row">
       <div class="col-sm-8 col-sm-offset-4">
-        <%= f.submit 'Guardar', class: 'btn btn-success' %>
+        <%= f.submit t('.save'), class: 'btn btn-success' %>
       </div>
     </fieldset>
   </div>

@@ -1,17 +1,16 @@
 <%= content_for :hero do %>
   <h1><%= @video.position %>. <%= @video.title %></h1>
-  <p>Un episodio de <%= link_to @video.playlist.title, playlist_path(@video.playlist) %></p>
+  <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
-
 
 <div class="row video-toolbar">
   <div class="col-lg-10 col-lg-offset-1">
   <% unless @video.first? %>
-  <%= link_to 'Anterior', playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
+  <%= link_to t('.previous'), playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
   <% end %>
   
   <% unless @video.last? %>
-  <%= link_to 'Siguiente', playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
+  <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
   <% end %>
   </div>
 </div>
@@ -30,28 +29,28 @@
     <div class="col-sm-3">
       <ul class="nav nav-pills nav-stacked" role="tablist">
         <li role="presentation" class="active">
-          <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Descripción</a>
+          <a href="#description" aria-controls="description" role="tab" data-toggle="tab"><%= t('.description') %></a>
         </li>
         <li role="presentation">
-          <a href="#playlist" aria-controls="playlist" role="tab" data-toggle="tab">Playlist</a>
+          <a href="#playlist" aria-controls="playlist" role="tab" data-toggle="tab"><%= t('.playlist') %></a>
         </li>
         <li role="presentation">
-          <a href="#transcription" aria-controls="transcription" role="tab" data-toggle="tab">Transcripción</a>
+          <a href="#transcription" aria-controls="transcription" role="tab" data-toggle="tab"><%= t('.transcription') %></a>
         </li>
         <li role="presentation">
-          <a href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab">Descargas</a>
+          <a href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"><%= t('.downloads') %></a>
         </li>
       </ul>
     </div>
     <div class="col-sm-9">
       <div class="tab-content">
         <div class="tab-pane active" role="tabpanel" id="description">
-          <h4>Descripción</h4>
+          <h4><%= t('.description') %></h4>
           <%= to_markdown @video.description %>
-          <p><%= link_to 'Ver en YouTube', "https://youtu.be/#{@video.youtube_id}", target: :blank, class: "btn btn-default" %></p>
+          <p><%= link_to t('.watch_on_youtube'), "https://youtu.be/#{@video.youtube_id}", target: :blank, class: "btn btn-default" %></p>
         </div>
         <div class="tab-pane" role="tabpanel" id="playlist">
-          <h4>Lista de reproducción</h4>
+          <h4><%= t('.playlist') %></h4>
           <div class="playlist-container">
           <% @playlist.videos.each do |v| %>
             <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
@@ -59,12 +58,12 @@
           </div>
         </div>
         <div class="tab-pane" role="tabpanel" id="transcription">
-          <h4>Transcripción</h4>
-          <p>Este contenido no está disponible en este momento.</p>
+          <h4><%= t('.transcription') %></h4>
+          <p><%= t('.content_not_available') %></p>
         </div>
         <div class="tab-pane" role="tabpanel" id="downloads">
-          <h4>Descargas</h4>
-          <p>Este contenido no está disponible en este momento.</p>
+          <h4><%= t('.downloads') %></h4>
+          <p><%= t('.content_not_available') %></p>
         </div>
       </div>
     </div>

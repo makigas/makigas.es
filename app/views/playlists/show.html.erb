@@ -5,8 +5,8 @@
 
 <div class="buttons-bar">
 <div class="text-right">
-<%= link_to 'Editar lista', edit_playlist_path(@playlist), class: 'btn btn-default' %>
-<%= button_to 'Borrar lista', playlist_path(@playlist), method: :delete, class: 'btn btn-danger', data: { confirm: 'Esto borrará para siempre la lista.' } %>
+<%= link_to t('.edit'), edit_playlist_path(@playlist), class: 'btn btn-default' %>
+<%= button_to t('.delete'), playlist_path(@playlist), method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_delete') } %>
 </div>
 </div>
 
@@ -27,8 +27,6 @@
       </div>
       <div class="list-group-buttons">
         <div class="pull-right">
-          <%= button_to 'Editar', edit_playlist_video_path(v, playlist_id: @playlist), method: :get, class: 'btn btn-default btn-xs' %>
-          <%= button_to 'Borrar', playlist_video_path(v, playlist_id: @playlist), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Esto borrará para siempre el vídeo' } %>
         </div>
       </div>
     <% end %>
