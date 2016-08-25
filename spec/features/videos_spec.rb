@@ -20,12 +20,8 @@ RSpec.feature "Videos", type: :feature do
       expect(page).to have_content @videos[1].title
       expect(page).to have_content @videos[2].title
     end
-
-    it 'should render a link to the playlist' do
-      visit videos_path
-      expect(page).to have_link(@playlist.title, href: playlist_path(@playlist))
-    end
   end
+  
   describe 'showing the video page' do
     before(:each) do
       @playlist = FactoryGirl.create(:playlist)

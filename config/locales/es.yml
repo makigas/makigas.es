@@ -1,0 +1,174 @@
+es:
+  activerecord:
+    attributes:
+      models:
+        playlist:
+          one: Lista de reproducción
+          other: Listas de reproducción
+        topic: Temática
+        video: Vídeo
+      playlist:
+        description: Descripción
+        photo: Miniatura
+        slug: URL
+        title: Título
+        youtube_id: ID de YouTube
+      topic:
+        description: Descripción
+        photo: Miniatura
+        slug: URL
+        title: Título
+      video:
+        title: Título
+        description: Descripción
+        duration: Duración
+        position: Posición
+        natural_duration: Duración
+        slug: URL
+        thumbnail: Miniatura
+        playlist: Lista de reproducción
+        youtube_id: ID de YouTube
+  front:
+    index:
+      about_makigas:
+        about:
+          line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
+          line1: En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
+        laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
+        title: ¿Qué es makigas?
+      how_to_follow:
+        makigas:
+          to_content:
+            alt: Haz clic aquí para ir a la lista de contenidos disponibles en esta página web.
+            text: Ver contenidos
+          text: Para una mejor experiencia explorando contenido y para poder encontrar próximamente contenido adicional y material extra para seguir los cursos.
+          title: En makigas.es
+        title: ¿Cómo obtengo acceso?
+        youtube:
+          to_youtube:
+            alt: Haz clic aquí para ver el canal de YouTube de makigas.
+            text: Ir al canal
+          text: Todo el material lo encontrarás en YouTube. Si quieres ser de los primeros en enterarte, puedes suscribirte al canal para enterarte de lo nuevo.
+          title: En YouTube
+      reading:
+        button: Seguir leyendo
+        title: Lee más información acerca del proyecto makigas
+      recent_videos:
+        recent_videos:
+          alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
+          text: Explorar vídeos recientes...
+        title: Últimos vídeos
+      subtitle: En esto tan simple consiste makigas
+      title_html: Tutoriales de programación <span class="highlighted">gratuitos</span> y en castellano
+      topics:
+        button: Explora las temáticas
+        title: Visualiza las listas de temas disponibles en esta página web.
+  layouts:
+    header:
+      front: Principal
+      navigation: Desplegar navegación
+      playlists: Listas
+      topics: Temas
+      videos: Vídeos
+    footer:
+      copyright:
+        cookies: Uso de cookies (EU)
+        disclaimer: Limitación de responsabilidad
+        legal: Aviso legal
+        privacy: Privacidad
+      footer_info:
+        about:
+          text: Acerca del proyecto
+          title: Haz clic aquí para obtener más información acerca del proyecto makigas.
+        description: makigas es un sitio web y un canal de YouTube con tutoriales y videotutoriales en castellano sobre distintos temas relacionados con la programación y el desarrollo de software.
+        title: Esto es makigas
+      made_in_spain: Made in Spain
+      navigation:
+        community: Comunidad
+        front: Principal
+        playlists: Listas
+        title: Sitio
+        topics: Temas
+        videos: Vídeos
+      social:
+        facebook: Facebook
+        github: GitHub
+        telegram: Telegram
+        title: Social
+        twitter: Twitter
+        youtube: YouTube
+  playlists:
+    form:
+      basic_information: Información básica
+      errors: Hay errores que impiden guardar el formulario.
+      management: Administración
+      save: Guardar
+      search: Buscar
+    edit:
+      title: Editar lista de reproducción
+    index:
+      episode:
+        one: 1 episodio
+        other: "%{count} episodios"
+      new: Nueva lista
+      title: Todas las listas de reproducción
+    new:
+      title: Crear lista de reproducción
+    show:
+      delete: Borrar lista
+      edit: Editar lista
+      really_delete: Esto borrará la lista para siempre. ¿Estás seguro?
+  topics:
+    form:
+      basic_information: Información básica
+      errors: Hay errores que impiden guardar el formulario.
+      management: Administración
+      save: Guardar
+      search: Buscar
+    edit:
+      title: Editar tema
+    index:
+      new: Nueva temática
+      title: Todas las temáticas
+    insert:
+      insert: Insertar
+      insert_playlist: Insertar lista de reproducción
+      title: Insertar una lista
+      playlist: Lista de reproducción
+      topic: Temática
+    new:
+      title: Crear tema
+    show:
+      delete: Borrar tema
+      edit: Editar tema
+      insert_list: Insertar una lista
+      really_delete: Esto borrará el tema para siempre. ¿Estás seguro?
+      really_remove: "Esto retirará la lista de este tema, sin borrar nada." 
+      remove_list: Retirar lista
+      videos:
+        one: 1 vídeo
+        other: "%{count} vídeos"
+  videos:
+    form:
+      basic_information: Información básica
+      errors: Hay errores que impiden guardar el formulario.
+      management: Administración
+      save: Guardar
+      search: Buscar
+    edit:
+      title: Editar vídeo
+    index:
+      new: Nuevo vídeo
+      title: Todos los vídeos
+    new:
+      title: Crear vídeo
+    show:
+      content_not_available: Este contenido no está disponible en este momento.
+      description: Descripción
+      downloads: Descargas
+      next: Siguiente
+      part_of_series_html: "Un episodio de %{playlist}"
+      playlist: Lista
+      previous: Anterior
+      transcription: Transcripción
+      watch_on_youtube: Ver en YouTube
