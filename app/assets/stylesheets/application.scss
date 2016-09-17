@@ -239,3 +239,8 @@ body {
 form.button_to {
   display: inline;
 }
+
+.table-default {
+  .col-expand { width: 100%; }
+  .col-mini { white-space: nowrap; }
+}

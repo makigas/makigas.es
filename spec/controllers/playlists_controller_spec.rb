@@ -182,4 +182,47 @@ RSpec.describe PlaylistsController, type: :controller do
       expect(response).to redirect_to playlists_path
     end
   end
+
+  context 'GET #contents' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+    end
+
+    it 'should not fail' do
+      get :contents, params: { id: @playlist }
+      expect(response).to be_success
+    end
+
+    it 'should assign the playlist' do
+      get :contents, params: { id: @playlist }
+      expect(assigns(:playlist)).to eq @playlist
+    end
+  end
+
+  context 'PUT #sort' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+      @video1 = FactoryGirl.create(:video, playlist: @playlist)
+      @video2 = FactoryGirl.create(:video, playlist: @playlist, youtube_id: 'asdf')
+    end
+
+    it 'should move the video up when requested' do
+      expect(@video2.position).to eq 2 # I don't trust this library.
+      put :sort, params: { id: @playlist, video: @video2.id, operation: :up }
+      @video2.reload
+      expect(@video2.position).to eq 1
+    end
+
+    it 'should move the video down when requested' do
+      expect(@video1.position).to eq 1 # I don't trust this library.
+      put :sort, params: { id: @playlist, video: @video1.id, operation: :down }
+      @video1.reload
+      expect(@video1.position).to eq 2
+    end
+
+    it 'should redirect after operation' do
+      put :sort, params: { id: @playlist, video: @video1.id, operation: :down }
+      expect(response).to redirect_to contents_playlist_path(@playlist)
+    end
+  end
 end
