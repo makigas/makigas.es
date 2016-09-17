@@ -202,19 +202,17 @@ RSpec.describe PlaylistsController, type: :controller do
   context 'PUT #sort' do
     before(:each) do
       @playlist = FactoryGirl.create(:playlist)
-      @video1 = FactoryGirl.create(:video, playlist: @playlist)
-      @video2 = FactoryGirl.create(:video, playlist: @playlist, youtube_id: 'asdf')
+      @video1 = FactoryGirl.create(:video, playlist: @playlist, position: 1)
+      @video2 = FactoryGirl.create(:video, playlist: @playlist, youtube_id: 'asdf', position: 2)
     end
 
     it 'should move the video up when requested' do
-      expect(@video2.position).to eq 2 # I don't trust this library.
       put :sort, params: { id: @playlist, video: @video2.id, operation: :up }
       @video2.reload
       expect(@video2.position).to eq 1
     end
 
     it 'should move the video down when requested' do
-      expect(@video1.position).to eq 1 # I don't trust this library.
       put :sort, params: { id: @playlist, video: @video1.id, operation: :down }
       @video1.reload
       expect(@video1.position).to eq 2
