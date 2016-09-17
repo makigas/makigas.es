@@ -10,5 +10,5 @@ class Topic < ApplicationRecord
   validates_attachment :photo, presence: true, content_type: { content_type: /\Aimage\/.*\Z/ }, size: { in: 0..2.megabytes }
 
   # Playlists can survive without a topic, so on delete set the topic to null.
-  has_many :playlists, dependent: :nullify
+  has_many :playlists, -> { order(position: :asc) }, dependent: :nullify
 end

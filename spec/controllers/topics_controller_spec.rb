@@ -244,4 +244,53 @@ RSpec.describe TopicsController, type: :controller do
       expect(response).to redirect_to topic_path(@topic)
     end
   end
+
+  context 'GET #contents' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+    end
+
+    it 'should assign the topic' do
+      get :contents, params: { id: @topic }
+      expect(assigns(:topic)).to eq @topic
+    end
+
+    it 'should be success' do
+      get :contents, params: { id: @topic }
+      expect(response).to be_success
+    end
+  end
+
+  context 'PUT #sort' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist1 = FactoryGirl.create(:playlist, topic: @topic, position: 1)
+      @playlist2 = FactoryGirl.create(:playlist, topic: @topic, position: 2)
+    end
+
+    it 'should move the playlist up when requested' do
+      put :sort, params: { id: @topic, playlist: @playlist2.id, operation: :up }
+      @playlist2.reload
+      expect(@playlist2.position).to eq 1
+    end
+
+    it 'should move the playlist down when requested' do
+      put :sort, params: { id: @topic, playlist: @playlist1.id, operation: :down }
+      @playlist1.reload
+      expect(@playlist1.position).to eq 2
+    end
+
+    it 'should unlinke the playlist when requested' do
+      put :sort, params: { id: @topic, playlist: @playlist1.id, operation: :unlink }
+      @playlist1.reload
+      expect(@playlist1.topic).to be nil
+      @playlist2.reload
+      expect(@playlist2.position).to eq 1
+    end
+
+    it 'should redirect to the editor' do
+      put :sort, params: { id: @topic, playlist: @playlist1.id, operation: :up }
+      expect(request).to redirect_to contents_topic_path(@topic)
+    end
+  end
 end

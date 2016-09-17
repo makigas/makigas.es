@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get :insert, to: 'topics#insert'
       post :insert, to: 'topics#do_insert'
       delete :release, to: 'topics#release'
+      get :contents # Lets authorized users to organize topic contents
+      put :sort # Saves changes made in contents
     end
   end
   
