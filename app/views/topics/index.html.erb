@@ -2,12 +2,6 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
-<div class="buttons-bar">
-  <div class="text-right">
-    <%= link_to t('.new'), new_topic_path, class: 'btn btn-success' %>
-  </div>
-</div>
-
 <div class="grid-table row">
 <% @topics.each do |tp| %>
 <div class="topic col-xs-6 col-sm-4 col-lg-3">

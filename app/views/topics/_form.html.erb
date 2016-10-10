@@ -1,9 +1,0 @@
-<%= horizontal_form_for @topic do |form| %>
-  <%= form.input :title %>
-  <%= form.input :description, as: :text %>
-  <%= form.input :photo %>
-  <%= content_tag :div, class: 'form-group' do %>
-    <%= image_tag @topic.photo(:medium), class: 'col-sm-offset-3 img-thumbnail' %>
-  <% end if @topic.photo.present? %>
-  <%= form.button :submit, class: 'btn-primary col-sm-offset-3' %>
-<% end %>
