@@ -4,22 +4,22 @@
 <% end %>
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-  <div class="episodes-table list-group">
-  <% @playlist.videos.each do |v| %>
-    <%= link_to playlist_video_path(v, playlist_id: @playlist), class: 'list-group-item' do %>
-      <div class="media">
-        <div class="media-left hidden-xs">
-          <%= image_tag v.thumbnail.url(:mini), srcset: "#{v.thumbnail.url(:mini_hdpi)} 2x", class: 'media-object' %>
-        </div>
-        <div class="media-body">
-          <div class="badge video-duration"><%= running_time(v.duration) %></div>
-          <h4 class="list-group-item-heading"><%= v.position %>. <%= v.title %></h4>
-          <p><%= v.description %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="episodes-table list-group">
+      <% @playlist.videos.each do |video| %>
+        <%= link_to video, class: 'list-group-item' do %>
+          <div class="media">
+            <div class="media-left hidden-xs">
+              <%= image_tag video.thumbnail.url(:mini), srcset: "#{video.thumbnail.url(:mini_hdpi)} 2x", class: 'media-object' %>
+            </div>
+            <div class="media-body">
+              <div class="badge video-duration"><%= running_time(video.duration) %></div>
+              <h4 class="list-group-item-heading"><%= video.position %>. <%= video.title %></h4>
+              <p><%= video.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

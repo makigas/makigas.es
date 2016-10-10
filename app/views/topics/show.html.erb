@@ -4,24 +4,24 @@
 <% end %>
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-  <div class="episodes-table list-group">
-  <% @topic.playlists.each do |p| %>
-    <%= link_to playlist_path(p), class: 'list-group-item' do %>
-      <div class="media">
-        <div class="media-left hidden-xs">
-          <%= image_tag p.photo.url(:thumbnail), srcset: "#{p.photo.url(:thumbnail_hdpi)} 2x" %>
-        </div>
-        <div class="media-body">
-          <h4 class="list-group-item-heading">
-            <%= p.title %>
-            <span class="small">&bull; <%= t('.videos', count: p.videos.length) %></span>
-          </h4>
-          <p class="list-group-item-text"><%= p.description %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="episodes-table list-group">
+      <% @topic.playlists.each do |playlist| %>
+        <%= link_to playlist, class: 'list-group-item' do %>
+          <div class="media">
+            <div class="media-left hidden-xs">
+              <%= image_tag playlist.photo.url(:thumbnail), srcset: "#{playlist.photo.url(:thumbnail_hdpi)} 2x" %>
+            </div>
+            <div class="media-body">
+              <h4 class="list-group-item-heading">
+                <%= playlist.title %>
+                <span class="small">&bull; <%= t('.videos', count: playlist.videos.length) %></span>
+              </h4>
+              <p class="list-group-item-text"><%= playlist.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

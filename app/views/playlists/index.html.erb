@@ -3,17 +3,17 @@
 <% end %>
 
 <div class="grid-table row">
-<% @playlists.each do |pl| %>
-<div class="col-xs-6 col-sm-4 col-lg-3">
-<%= link_to pl do %>
-<div class="playlist panel panel-default">
-  <span class="badge"><%= t('.episode', count: pl.videos.count) %></span>
-  <%= image_tag pl.photo.url(:md), srcset: "#{pl.photo.url(:hd)} 2x" %>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= pl.title %></h3>
-  </div>
-</div>
-<% end %>
-</div>
-<% end %>
+  <% @playlists.each do |playlist| %>
+    <div class="col-xs-6 col-sm-4 col-lg-3">
+      <%= link_to playlist do %>
+        <div class="playlist panel panel-default">
+          <span class="badge"><%= t('.episode', count: playlist.videos.count) %></span>
+          <%= image_tag playlist.photo.url(:md), srcset: "#{playlist.photo.url(:hd)} 2x" %>
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= playlist.title %></h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
