@@ -21,4 +21,26 @@ RSpec.describe TopicsController, type: :controller do
       expect(assigns(:topics)).to match_array @topics
     end
   end
+
+  context 'GET #show' do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+    end
+
+    it 'should be success' do
+      get :show, params: { id: @topic }
+      expect(response).to be_success
+    end
+
+    it 'should render the show layout' do
+      get :show, params: { id: @topic }
+      expect(response).to render_template :show
+    end
+
+    it 'should assign the topic' do
+      get :show, params: { id: @topic }
+      expect(assigns(:topic)).to eq @topic
+    end
+  end
 end
