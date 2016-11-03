@@ -1,0 +1,9 @@
+<%= simple_form_for [:dashboard, @playlist] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :youtube_id %>
+  <%= f.input :photo %>
+  <p><%= image_tag @playlist.photo.url, class: 'img-thumbnail' unless @playlist.photo.blank? %></p>
+  <%= f.association :topic, include_blank: '(Sin temática)' %>
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>
