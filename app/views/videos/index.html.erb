@@ -2,22 +2,52 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
-<div class="list-group video-list-group">
-  <% @videos.each do |v| %>
-    <div class="list-group-item">
-      <h4 class="list-group-item-heading"><%= link_to v.title, v %></h4>
-      <p><%= v.description %></p>
-      <p class="metadata">
-        <%= t('.duration', duration: running_time(v.duration)) %> &bull;
-        <%= t('.playlist_html', playlist: link_to(v.playlist.title, v.playlist)) %>
-        <% if v.playlist.topic %>
-          &bull; <%= t('.topic_html', topic: link_to(v.playlist.topic.title, v.playlist.topic)) %>
-        <% end %>
-      </p>
-    </div>
-  <% end %>
-</div>
+<div class="row">
+  <div class="col-md-4 col-md-push-8">
+    <%= form_tag :videos, method: :GET, id: 'videos_filter' do %>
+      <fieldset data-autosearch>
+        <legend><%= t('.filter.by_length') %></legend>
+        <ul>
+        <li><%= radio_button_tag 'length', 'all', params[:length].nil? || params[:length] == "all", id: 'length_all' %> <%= label_tag 'length_all', t('.filter.any_length') %></li>
+        <li><%= radio_button_tag 'length', 'short', params[:length] == "short", id: 'length_short' %> <%= label_tag 'length_short', t('.filter.short_videos') %></li>
+        <li><%= radio_button_tag 'length', 'medium', params[:length] == "medium", id: 'length_medium' %> <%= label_tag 'length_medium', t('.filter.medium_videos') %></li>
+        <li><%= radio_button_tag 'length', 'long', params[:length] == "long", id: 'length_long' %> <%= label_tag 'length_long', t('.filter.long_videos') %></li>
+        </ul>
+      </fieldset>
 
-<div class="paginator">
-  <%= paginate @videos %>
+      <fieldset data-autosearch>
+        <legend><%= t('.filter.by_topic') %></legend>
+        <ul>
+        <% Topic.all.each do |topic| %>
+        <li><%= check_box_tag 'topic[]', topic.slug, (params[:topic].include?(topic.slug) rescue false), id: "topic_#{topic.slug}" %> <%= label_tag "topic_#{topic.slug}", topic.title %></li>
+        <% end %>
+        </ul>
+      </fieldset>
+
+      <%= button_tag t('.filter.apply_filters'), type: :submit, name: nil, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+
+  <div class="col-md-8 col-md-pull-4">
+    <div class="list-group video-list-group">
+      <% @videos.each do |v| %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading"><%= link_to v.title, v %></h4>
+          <p><%= v.description %></p>
+          <p class="metadata">
+            <%= t('.duration', duration: running_time(v.duration)) %> &bull;
+            <%= t('.playlist_html', playlist: link_to(v.playlist.title, v.playlist)) %>
+            <% if v.playlist.topic %>
+              &bull; <%= t('.topic_html', topic: link_to(v.playlist.topic.title, v.playlist.topic)) %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="paginator">
+      <%= paginate @videos %>
+    </div>
+
+  </div>
 </div>
