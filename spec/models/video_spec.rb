@@ -52,11 +52,6 @@ RSpec.describe Video, type: :model do
       expect(video).not_to be_valid
     end
 
-    it 'is not valid without thumbnail' do
-      video = FactoryGirl.build(:video, thumbnail: nil)
-      expect(video).not_to be_valid
-    end
-
     it 'is not valid without being in a playlist' do
       video = FactoryGirl.build(:video, playlist: nil)
       expect(video).not_to be_valid
