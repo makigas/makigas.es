@@ -4,6 +4,22 @@ es:
     dashboard:
       index:
         dashboard: Panel de control
+        manage_videos: Gestionar vídeos
+        manage_playlists: Gestionar listas
+        manage_topics: Gestionar temas
+        manage_users: Gestionar usuarios
+        videos:
+          one: vídeo
+          other: vídeos
+        playlists:
+          one: lista
+          other: listas
+        topic:
+          one: temas
+          other: temas
+        user:
+          one: usuario
+          other: usuarios
     playlists:
       create:
         created: Lista creada correctamente.
