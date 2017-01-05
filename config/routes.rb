@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :topics
     resources :videos, only: [:index, :new, :create]
     resources :playlists do
-      resources :videos, except: [:index, :new, :create]
+      get :videos, on: :member
+      resources :videos, except: [:index, :new, :create] do
+        put :move, on: :member
+      end
     end
   end
 

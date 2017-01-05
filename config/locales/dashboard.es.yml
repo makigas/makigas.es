@@ -42,6 +42,20 @@ es:
         youtube_id: ID de YouTube
       update:
         updated: Lista de reproducción actualizada correctamente.
+      videos:
+        position: Posición
+        dashboard: Panel de control
+        playlists: Listas de reproducción
+        videos: Vídeos
+        public: Ver público
+        edit: Editar
+        destroy: Destruir
+        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas de reproducción, que quedarán huérfanas y sin tema.
+        title: Título
+        move: Mover
+        operations: Operaciones
+        up: Subir
+        down: Bajar
     topics:
       create:
         created: Tema creado correctamente.
@@ -101,6 +115,8 @@ es:
         release_date: Fecha de publicación
         title: Título
         videos: Vídeos
+      move:
+        moved: Vídeo movido correctamente.
       new:
         cancel: Cancelar
         dashboard: Panel de control

@@ -1,6 +1,6 @@
 class Dashboard::PlaylistsController < ApplicationController
 
-  before_action :playlist_set, only: [:show, :edit, :update, :destroy]
+  before_action :playlist_set, only: [:show, :edit, :update, :destroy, :videos]
 
   def index
     @playlists = Playlist.order(updated_at: :desc).page(params[:page])
@@ -30,6 +30,10 @@ class Dashboard::PlaylistsController < ApplicationController
   def destroy
     @playlist.destroy!
     redirect_to [:dashboard, :playlists], notice: t('.destroyed')
+  end
+
+  def videos
+    @videos = @playlist.videos
   end
 
   private

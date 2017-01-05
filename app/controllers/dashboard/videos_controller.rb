@@ -1,6 +1,6 @@
 class Dashboard::VideosController < ApplicationController
 
-  before_action :video_set, only: [:show, :edit, :update, :destroy]
+  before_action :video_set, only: [:show, :edit, :update, :destroy, :move]
 
   def index
     @videos = Video.order(created_at: :desc).page(params[:page])
@@ -30,6 +30,20 @@ class Dashboard::VideosController < ApplicationController
   def destroy
     @video.destroy!
     redirect_to [:dashboard, :videos], notice: t('.destroyed')
+  end
+
+  def move
+    respond_to do |format|
+      if params[:direction] == "up"
+        @video.move_higher
+        format.json { render json: { position: @video.position, direction: "up" } }
+        format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
+      elsif params[:direction] == "down"
+        @video.move_lower
+        format.json { render json: { position: @video.position, direction: "down" } }
+        format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
+      end
+    end
   end
 
   private

@@ -1,3 +1,28 @@
 // Place all the styles related to the Dashboard/Playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@keyframes move-row-up {
+  from { transform: translate(0); }
+  to { transform: translateY(-100%); }
+};
+
+@keyframes move-row-down {
+  from { transform: translate(0); }
+  to { transform: translateY(100%); }
+}
+
+body.page-playlists {
+  tr.moving-up {
+    animation-name: move-row-up;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    opacity: 0.5;
+  }
+  tr.moving-down {
+    animation-name: move-row-down;
+    animation-duration: 0.25s;
+    animation-fill-mode: forwards;
+    opacity: 0.5;
+  }
+}
