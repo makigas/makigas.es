@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require_directory .
  *= require_self
  */
 
@@ -236,6 +236,30 @@ body {
   margin-bottom: 15px;
 }
 
-form.button_to {
-  display: inline;
+/* Authentication. */
+body.auth {
+  background: desaturate(#003399, 25%);
+
+  .panel-default {
+    box-shadow: 0 0 4px #303030;
+    border-radius: 0;
+
+    .panel-heading {
+      h2 { font-size: 1.5em; }
+    }
+  }
+
+  .auth-header {
+    margin-top: 4em;
+    margin-bottom: 4em;
+
+    h1.brand {
+      text-align: center;
+      color: white;
+      font-family: 'C64 Pro';
+      font-size: 40px;
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
 }

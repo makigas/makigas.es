@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require_tree .
+//= require_directory .
 
 $(document).ready(function() {
   // Tell the stylesheet that JavaScript is on.

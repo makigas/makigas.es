@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def paginate objects, options = {}
+    options.reverse_merge!(theme: 'twitter-bootstrap-3')
+    super(objects, options)
+  end
+
   # This helper automatically will add "current" class on to a <li> item
   # as required by Bootstrap to show the navbar item using 'current' style.
   def navigation_link text, url

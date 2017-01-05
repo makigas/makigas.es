@@ -1,0 +1,41 @@
+# This translation file is reserved for ActiveRecord models and attributes.
+es:
+  activerecord:
+    attributes:
+      models:
+        playlist:
+          one: Lista de reproducción
+          other: Listas de reproducción
+        topic: Temática
+        video: Vídeo
+        user: Usuario
+      playlist:
+        description: Descripción
+        photo: Miniatura
+        slug: URL
+        title: Título
+        youtube_id: ID de YouTube
+        topic: Tema
+      topic:
+        description: Descripción
+        photo: Miniatura
+        slug: URL
+        title: Título
+      user:
+        email: E-mail
+        password: Contraseña
+        remember_me: Mantener sesión abierta
+      video:
+        title: Título
+        description: Descripción
+        duration: Duración
+        position: Posición
+        natural_duration: Duración
+        slug: URL
+        thumbnail: Miniatura
+        playlist: Lista de reproducción
+        youtube_id: ID de YouTube
+  simple_form:
+    include_blanks:
+      playlist:
+        topic: (Sin tema concreto)

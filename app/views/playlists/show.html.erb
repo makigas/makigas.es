@@ -3,32 +3,14 @@
   <p><%= @playlist.description %></p>
 <% end %>
 
-<div class="buttons-bar">
-<div class="text-right">
-<%= link_to t('.edit'), edit_playlist_path(@playlist), class: 'btn btn-default' %>
-<%= button_to t('.delete'), playlist_path(@playlist), method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_delete') } %>
-</div>
-</div>
-
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
   <div class="episodes-table list-group">
   <% @playlist.videos.each do |v| %>
     <%= link_to playlist_video_path(v, playlist_id: @playlist), class: 'list-group-item' do %>
-      <div class="media">
-        <div class="media-left hidden-xs">
-          <%= image_tag v.thumbnail.url(:mini), srcset: "#{v.thumbnail.url(:mini_hdpi)} 2x", class: 'media-object' %>
-        </div>
-        <div class="media-body">
-          <div class="badge video-duration"><%= running_time(v.duration) %></div>
-          <h4 class="list-group-item-heading"><%= v.position %>. <%= v.title %></h4>
-          <p><%= v.description %></p>
-        </div>
-      </div>
-      <div class="list-group-buttons">
-        <div class="pull-right">
-        </div>
-      </div>
+      <div class="badge video-duration"><%= running_time(v.duration) %></div>
+      <h4 class="list-group-item-heading"><%= v.position %>. <%= v.title %></h4>
+      <p><%= v.description %></p>
     <% end %>
   <% end %>
   </div>

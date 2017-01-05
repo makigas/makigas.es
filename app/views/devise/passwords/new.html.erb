@@ -1,0 +1,14 @@
+<div class="panel-heading">
+  <h2 class="panel-title"><%= t('.recover_password') %></h2>
+</div>
+
+<div class="panel-body">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :email, required: true, autofocus: true %>
+    <div class="clearfix">
+      <%= f.button :submit, t('.send_instructions'), class: 'pull-right btn btn-info' %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

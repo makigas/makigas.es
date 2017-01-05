@@ -1,0 +1,35 @@
+<header role="banner" class="main-header">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#makigas-navbar" aria-expanded="false">
+              <span class="sr-only"><%= t('.header.navigation') %></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to 'makigas', :dashboard, class: 'navbar-brand'%>
+          </div>
+      <div class="collapse navbar-collapse" id="makigas-navbar">
+        <ul class="nav navbar-nav">
+          <%= navigation_link t('.videos'), [:dashboard, :videos] %>
+          <%= navigation_link t('.playlists'), [:dashboard, :playlists] %>
+          <%= navigation_link t('.topics'), [:dashboard, :topics] %>
+          <%= navigation_link t('.users'), [:dashboard, :users] %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('.view_site'), root_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to t('.log_out'), destroy_user_session_path %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+</header>
+

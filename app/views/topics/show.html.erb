@@ -3,37 +3,21 @@
   <p><%= @topic.description %></p>
 <% end %>
 
-<div class="buttons-bar">
-  <div class="pull-left">
-  <%= link_to t('.insert_list'), insert_topic_path(@topic), class: 'btn btn-success' %>
-  </div>
-
-  <div class="pull-right">
-  <%= link_to t('.edit'), edit_topic_path(@topic), class: 'btn btn-default' %>
-  <%= button_to t('.delete'), topic_path(@topic), method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_delete') } %>
-  </div>
-</div>
-
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
   <div class="episodes-table list-group">
   <% @topic.playlists.each do |p| %>
     <%= link_to playlist_path(p), class: 'list-group-item' do %>
       <div class="media">
-        <div class="media-left hidden-xs">
-          <%= image_tag p.photo.url(:thumbnail), srcset: "#{p.photo.url(:thumbnail_hdpi)} 2x" %>
+        <div class="media-left media-middle hidden-xs">
+          <%= image_tag "http://placehold.it/180x180", srcset: "http://placehold.it/360x360 2x" %>
         </div>
-        <div class="media-body">
+        <div class="media-body media-middle">
           <h4 class="list-group-item-heading">
             <%= p.title %>
             <span class="small">&bull; <%= t('.videos', count: p.videos.length) %></span>
           </h4>
           <p class="list-group-item-text"><%= p.description %></p>
-        </div>
-      </div>
-      <div class="list-group-buttons">
-        <div class="pull-right">
-          <%= button_to t('.remove_list'), release_topic_path(@topic, playlist: p.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_remove') } %>
         </div>
       </div>
     <% end %>

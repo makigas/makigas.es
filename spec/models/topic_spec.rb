@@ -26,11 +26,6 @@ RSpec.describe Topic, type: :model do
       topic = FactoryGirl.build(:topic, description: 'A' * 251)
       expect(topic).not_to be_valid
     end
-
-    it 'is not valid without a photo' do
-      topic = FactoryGirl.build(:topic, photo: nil)
-      expect(topic).not_to be_valid
-    end
   end
 
   describe 'slug' do

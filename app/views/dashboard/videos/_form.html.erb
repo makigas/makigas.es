@@ -1,0 +1,15 @@
+<%= simple_form_for [:dashboard, @video] do |form| %>
+  <%= form.input :title %>
+  <%= form.input :description, as: :text %>
+  <%= form.input :youtube_id %>
+  <%= form.input :duration, as: :numeric do %>
+    <%= form.hidden_field :duration %>
+    <p class="form-inline">
+    <%= number_field_tag 'duration[hours]', ((@video.duration / 3600) rescue "0"), class: 'form-control', min: 0, max: 9 %> :
+    <%= number_field_tag 'duration[minutes]', (((@video.duration % 3600) / 60) rescue 0), class: 'form-control', min: 0, max: 59 %> :
+    <%= number_field_tag 'duration[seconds]', ((@video.duration % 60) rescue 0), class: 'form-control', min: 0, max: 59 %>
+    </p>
+  <% end %>
+  <%= form.association :playlist, include_blank: :translate %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>

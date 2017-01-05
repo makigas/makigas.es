@@ -54,7 +54,7 @@
     <div class="row">
       <% @recent.each do |v| %>
         <div class="video col-md-3 col-xs-6">
-          <p><%= link_to image_tag(v.thumbnail(:md), class: 'img-thumbnail', srcset: "#{v.thumbnail(:hd)} 2x"), playlist_video_path(v, playlist_id: v.playlist) %></p>
+          <p><%= link_to image_tag("http://placehold.it/640x360", class: 'img-thumbnail', srcset: "http://placehold.it/1280x720 2x"), playlist_video_path(v, playlist_id: v.playlist) %></p>
           <p><%= link_to v.title, playlist_video_path(v, playlist_id: v.playlist) %></p>
         </div>
       <% end %>

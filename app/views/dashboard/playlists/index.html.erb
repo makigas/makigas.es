@@ -1,0 +1,39 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="current"><%= t('.playlists') %></li>
+  </ol>
+  <h1><%= t('.playlists') %></h1>
+<% end %>
+
+<% content_for :toolbar do %>
+  <%= link_to t('.new_playlist'), [:new, :dashboard, :playlist], class: 'btn btn-success' %>
+<% end %>
+
+<table class="table table-default">
+  <thead>
+    <tr>
+      <th><%= t('.title') %></th>
+      <th><%= t('.topic') %></th>
+      <th><%= t('.videos') %></th>
+      <th><%= t('.operations') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @playlists.each do |playlist| %>
+    <tr>
+      <td><%= link_to playlist.title, [:dashboard, playlist] %></td>
+      <td><%= link_to playlist.topic.title, [:dashboard, playlist.topic] rescue t('.no_topic') %></td>
+      <td><%= link_to playlist.videos.length, [:videos, :dashboard, playlist] %></td>
+      <td>
+        <%= link_to t('.edit'), [:edit, :dashboard, playlist], class: 'btn btn-xs btn-default' %>
+        <%= button_to t('.destroy'), [:dashboard, playlist], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="paginator">
+  <%= paginate @playlists %>
+</div>

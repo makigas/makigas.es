@@ -1,0 +1,33 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="current"><%= t('.dashboard') %></li>
+  </ol>
+
+  <h1><%= t('.dashboard') %></h1>
+<% end %>
+
+<div class="row data-dashboard">
+  <div class="col-xs-6 col-sm-3">
+    <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @videos %></h1>
+    <p class="lead"><%= t('.videos', count: @videos) %></p>
+    <p><%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-default btn-block' %></p>
+  </div>
+
+  <div class="col-xs-6 col-sm-3">
+    <h1><span class="glyphicon glyphicon-list"></span> <%= @playlists %></h1>
+    <p class="lead"><%= t('.playlists', count: @playlists) %></p>
+    <p><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-default btn-block' %></p>
+  </div>
+
+  <div class="col-xs-6 col-sm-3">
+    <h1><span class="glyphicon glyphicon-book"></span> <%= @topics %></h1>
+    <p class="lead"><%= t('.topics', count: @topics) %></p>
+    <p><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-default btn-block' %></p>
+  </div>
+
+  <div class="col-xs-6 col-sm-3">
+    <h1><span class="glyphicon glyphicon-user"></span> <%= @users %></h1>
+    <p class="lead"><%= t('.users', count: @users) %></p>
+    <p><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-default btn-block' %></p>
+  </div>
+</div>

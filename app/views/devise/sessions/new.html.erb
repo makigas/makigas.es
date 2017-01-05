@@ -1,0 +1,17 @@
+<div class="panel-heading">
+  <h2 class="panel-title"><%= t('.log_in') %></h2>
+</div>
+
+<div class="panel-body">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
+    <%= content_tag(:div, flash[:alert], class: 'alert alert-danger') if flash[:alert] %>
+    <%= f.input :email, required: false, autofocus: true %>
+    <%= f.input :password, required: false %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <div class="clearfix">
+      <%= f.button :submit, t('.log_in'), class: 'pull-right btn btn-info' %>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
