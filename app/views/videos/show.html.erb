@@ -5,13 +5,8 @@
 
 <div class="row video-toolbar">
   <div class="col-lg-10 col-lg-offset-1">
-  <% unless @video.first? %>
-  <%= link_to t('.previous'), playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
-  <% end %>
-  
-  <% unless @video.last? %>
-  <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
-  <% end %>
+    <%= link_to t('.previous'), @video.higher_item, class: 'pull-left btn btn-default' unless @video.first? %>
+    <%= link_to t('.next'), @video.lower_item, class: 'pull-right btn btn-default' unless @video.last? %>
   </div>
 </div>
 
@@ -44,27 +39,32 @@
     </div>
     <div class="col-sm-9">
       <div class="tab-content">
+
         <div class="tab-pane active" role="tabpanel" id="description">
           <h4><%= t('.description') %></h4>
           <%= to_markdown @video.description %>
           <p><%= link_to t('.watch_on_youtube'), "https://youtu.be/#{@video.youtube_id}", target: :blank, class: "btn btn-default" %></p>
         </div>
+
         <div class="tab-pane" role="tabpanel" id="playlist">
           <h4><%= t('.playlist') %></h4>
           <div class="playlist-container">
-          <% @playlist.videos.each do |v| %>
-            <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
-          <% end %>
+            <% @playlist.videos.each do |video| %>
+              <%= link_to raw("#{video.position}. #{video.title} <span class=\"text-muted\">&bull; #{running_time(video.duration)}</span>"), video, class: "list-group-item #{'list-group-item-info' if video == @video}" %>
+            <% end %>
           </div>
         </div>
+
         <div class="tab-pane" role="tabpanel" id="transcription">
           <h4><%= t('.transcription') %></h4>
           <p><%= t('.content_not_available') %></p>
         </div>
+
         <div class="tab-pane" role="tabpanel" id="downloads">
           <h4><%= t('.downloads') %></h4>
           <p><%= t('.content_not_available') %></p>
         </div>
+
       </div>
     </div>
   </div>

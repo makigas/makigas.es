@@ -1,0 +1,7 @@
+<%= simple_form_for [:dashboard, @topic], wrapper: :vertical_form do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :photo %>
+  <p><%= image_tag @topic.photo, class: 'img-thumbnail' unless @topic.photo.blank? %></p>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

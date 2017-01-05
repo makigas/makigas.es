@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t('.all_playlists') %></h3>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t('.title') %></th>
+        <th><%= t('.videos') %></th>
+        <th><%= t('.actions') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @playlists.each do |playlist| %>
+      <tr>
+        <td><%= playlist.title %></td>
+        <td><%= playlist.videos.count %></td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('.actions') %> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('.edit'), [:edit, :dashboard, playlist] %></li>
+              <li><%= link_to t('.destroy'), [:dashboard, playlist], method: :delete, data: { confirm: t('.really_destroy') } %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="panel-footer">
+    <div class="text-center"><%= paginate @playlists %></div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'kaminari', '~> 0.17'
 
 group :development, :test do
   gem 'byebug'
