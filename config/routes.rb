@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'front#index'
 
+  # Routes for the dashboard
+  namespace :dashboard do
+    root to: 'dashboard#index', as: ''
+
+    resources :topics
+    resources :playlists
+  end
+
   # These routes should be limited to authorized users.
   resources :playlists, path: 'series', only: [:new, :create, :edit, :update, :destroy] do
     resources :videos, path: '/', only: [:edit, :update, :destroy]

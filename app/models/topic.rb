@@ -8,4 +8,8 @@ class Topic < ApplicationRecord
 
   # Playlists can survive without a topic, so on delete set the topic to null.
   has_many :playlists, dependent: :nullify
+
+  def to_s
+    title
+  end
 end

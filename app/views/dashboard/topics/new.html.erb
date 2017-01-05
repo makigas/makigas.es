@@ -1,0 +1,12 @@
+<ol class="breadcrumb">
+  <li><%= link_to t('.dashboard'), :dashboard %></li>
+  <li><%= link_to t('.topics'), [:dashboard, :topics] %></li>
+  <li class="current"><%= t('.new_topic') %></li>
+</ol>
+
+<div class="page-header">
+  <%= link_to t('.cancel'), [:dashboard, :topics], class: 'btn btn-default pull-right' %>
+  <h1><%= t('.new_topic') %></h1>
+</div>
+
+<%= render 'form' %>

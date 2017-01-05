@@ -1,0 +1,41 @@
+# This translation file is reserved for dashboard strings.
+es:
+  dashboard:
+    topics:
+      create:
+        created: Tema creado correctamente.
+      destroy:
+        destroyed: Tema eliminado correctamente.
+      edit:
+        cancel: Cancelar
+        dashboard: Panel de control
+        edit: Editar
+        topics: Temas
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        new_topic: Nuevo Tema
+        operations: Operaciones
+        playlists: Listas de reproducción
+        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas de reproducción, que quedarán huérfanas y sin tema.
+        title: Título
+        topics: Temas
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_topic: Nuevo Tema
+        topics: Temas
+      show:
+        dashboard: Panel de control
+        description: Descripción
+        destroy: Destruir
+        edit: Editar
+        playlists: Listas de reproducción
+        public: Ver público
+        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas de reproducción, que quedarán huérfanas y sin tema.
+        title: Título
+        topics: Temas
+        view_topic: Ver Tema
+      update:
+        updated: Tema actualizado correctamente.

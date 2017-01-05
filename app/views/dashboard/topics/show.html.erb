@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+  <li><%= link_to t('.dashboard'), :dashboard %></li>
+  <li><%= link_to t('.topics'), [:dashboard, :topics] %></li>
+  <li class="current"><%= @topic %></li>
+</ol>
+
+<div class="page-header">
+  <div class="pull-right">
+    <%= link_to t('.public'), @topic, class: 'btn btn-default' %>
+    <%= link_to t('.edit'), [:edit, :dashboard, @topic], class: 'btn btn-default' %>
+    <%= button_to t('.destroy'), [:dashboard, @topic], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
+  </div>
+  <h1><%= @topic %></h1>
+</div>
+
+<table class="table table-default">
+  <tr>
+    <td><%= t('.title') %></td>
+    <td><%= @topic.title %></td>
+  </tr>
+  <tr>
+    <td><%= t('.description') %></td>
+    <td><%= @topic.description %></td>
+  </tr>
+  <tr>
+    <td><%= t('.playlists') %></td>
+    <td>
+      <ul>
+      <% @topic.playlists.each do |playlist| %>
+        <li><%= link_to playlist.title, [:dashboard, playlist] %></li>
+      <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>
