@@ -98,14 +98,21 @@ es:
         twitter: Twitter
         youtube: YouTube
   playlists:
+    contents:
+      down: Bajar
+      episode: Episodio
+      operations: Operaciones
+      position: Posición
+      title: Organizar contenidos de la lista
+      up: Subir
+    edit:
+      title: Editar lista de reproducción
     form:
       basic_information: Información básica
       errors: Hay errores que impiden guardar el formulario.
       management: Administración
       save: Guardar
       search: Buscar
-    edit:
-      title: Editar lista de reproducción
     index:
       episode:
         one: 1 episodio
@@ -118,7 +125,16 @@ es:
       delete: Borrar lista
       edit: Editar lista
       really_delete: Esto borrará la lista para siempre. ¿Estás seguro?
+      sort: Organizar lista
   topics:
+    contents:
+      title: Ordenar listas
+      position: Posición
+      playlist: Lista de reproducción
+      operations: Operaciones
+      up: Subir
+      down: Bajar
+      unlink: Retirar
     form:
       basic_information: Información básica
       errors: Hay errores que impiden guardar el formulario.
@@ -141,6 +157,7 @@ es:
     show:
       delete: Borrar tema
       edit: Editar tema
+      sort: Ordenar listas
       insert_list: Insertar una lista
       really_delete: Esto borrará el tema para siempre. ¿Estás seguro?
       really_remove: "Esto retirará la lista de este tema, sin borrar nada." 

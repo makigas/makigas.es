@@ -46,6 +46,22 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def contents
+    @playlist = Playlist.friendly.find(params[:id])
+  end
+
+  def sort
+    @playlist = Playlist.friendly.find(params[:id])
+    @video = @playlist.videos.find(params[:video])
+    case params[:operation]
+    when 'up'
+      @video.move_higher
+    when 'down'
+      @video.move_lower
+    end
+    redirect_to contents_playlist_path(@playlist)
+  end
+
   private
 
   def playlist_attributes

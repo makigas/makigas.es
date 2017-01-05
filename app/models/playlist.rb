@@ -12,6 +12,7 @@ class Playlist < ApplicationRecord
 
   has_many :videos, -> { order(position: :asc) }
   belongs_to :topic
+  acts_as_list scope: :topic
   
   def total_length
     videos.map { |v| v.duration }.reduce(0, :+)

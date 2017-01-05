@@ -1,0 +1,34 @@
+<h1><%= link_to @playlist.title, playlist_path(@playlist) %>
+<h2><%= t('.title') %></h2>
+
+<table class="table table-default">
+  <thead>
+    <tr>
+      <th><%= t('.position') %></th>
+      <th><%= t('.episode') %></th>
+      <th colspan="2"><%= t('.operations') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @playlist.videos.each do |video| %>
+    <tr>
+      <td><%= video.position %></td>
+      <td class="col-expand"><%= link_to video.title, playlist_video_path(video, playlist_id: @playlist) %></td>
+      <td class="col-mini">
+        <%= button_to sort_playlist_path(@playlist), class: 'btn btn-default btn-xs', method: :put do %>
+          <%= hidden_field_tag :video, video.id %>
+          <%= hidden_field_tag :operation, :up %>
+          <%= t('.up') %>
+        <% end unless video.first? %>
+      </td>
+      <td class="col-mini">
+        <%= button_to sort_playlist_path(@playlist), class: 'btn btn-default btn-xs', method: :put do %>
+          <%= hidden_field_tag :video, video.id %>
+          <%= hidden_field_tag :operation, :down %>
+          <%= t('.down') %>
+        <% end unless video.last? %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

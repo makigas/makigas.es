@@ -1,0 +1,41 @@
+<h1><%= link_to @topic.title, topic_path(@topic) %></h1>
+<h2><%= t('.title') %></h2>
+
+<table class="table table-default">
+  <thead>
+    <tr>
+      <th><%= t('.position') %></th>
+      <th><%= t('.playlist') %></th>
+      <th colspan="3"><%= t('.operations') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topic.playlists.each do |playlist| %>
+    <tr>
+      <td><%= playlist.position %></td>
+      <td class="col-expand"><%= playlist.title %></td>
+      <td class="col-mini">
+        <%= button_to sort_topic_path(@topic), method: :put, class: 'btn btn-default btn-xs' do %>
+          <%= hidden_field_tag :playlist, playlist.id %>
+          <%= hidden_field_tag :operation, :up %>
+          <%= t('.up') %>
+        <% end unless playlist.first? %>
+      </td>
+      <td class="col-mini">
+        <%= button_to sort_topic_path(@topic), method: :put, class: 'btn btn-default btn-xs' do %>
+          <%= hidden_field_tag :playlist, playlist.id %>
+          <%= hidden_field_tag :operation, :down %>
+          <%= t('.down') %>
+        <% end unless playlist.last? %>
+      </td>
+      <td class="col-mini">
+        <%= button_to sort_topic_path(@topic), method: :put, class: 'btn btn-danger btn-xs' do %>
+          <%= hidden_field_tag :playlist, playlist.id %>
+          <%= hidden_field_tag :operation, :unlink %>
+          <%= t('.unlink') %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

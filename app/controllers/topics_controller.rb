@@ -67,6 +67,26 @@ class TopicsController < ApplicationController
     end
   end
 
+  def contents
+    @topic = Topic.friendly.find(params[:id])
+  end
+
+  def sort
+    @topic = Topic.friendly.find(params[:id])
+    @playlist = @topic.playlists.find(params[:playlist])
+    case params[:operation]
+    when 'up'
+      @playlist.move_higher
+    when 'down'
+      @playlist.move_lower
+    when 'unlink'
+      @playlist.remove_from_list
+      @playlist.topic = nil
+    end
+    @playlist.save
+    redirect_to contents_topic_path(@topic)
+  end
+
   private
 
   def topic_attributes

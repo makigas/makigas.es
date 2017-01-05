@@ -10,6 +10,7 @@
 
   <div class="pull-right">
   <%= link_to t('.edit'), edit_topic_path(@topic), class: 'btn btn-default' %>
+  <%= link_to t('.sort'), contents_topic_path(@topic), class: 'btn btn-default' %>
   <%= button_to t('.delete'), topic_path(@topic), method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_delete') } %>
   </div>
 </div>
@@ -29,11 +30,6 @@
             <span class="small">&bull; <%= t('.videos', count: p.videos.length) %></span>
           </h4>
           <p class="list-group-item-text"><%= p.description %></p>
-        </div>
-      </div>
-      <div class="list-group-buttons">
-        <div class="pull-right">
-          <%= button_to t('.remove_list'), release_topic_path(@topic, playlist: p.id), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_remove') } %>
         </div>
       </div>
     <% end %>

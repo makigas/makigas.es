@@ -6,6 +6,7 @@
 <div class="buttons-bar">
 <div class="text-right">
 <%= link_to t('.edit'), edit_playlist_path(@playlist), class: 'btn btn-default' %>
+<%= link_to t('.sort'), contents_playlist_path(@playlist), class: 'btn btn-default' %>
 <%= button_to t('.delete'), playlist_path(@playlist), method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_delete') } %>
 </div>
 </div>

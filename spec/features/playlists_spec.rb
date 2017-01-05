@@ -125,4 +125,63 @@ RSpec.feature "Playlists", type: :feature do
       expect(page).not_to have_content @title
     end
   end
+
+  context 'sorting a playlist' do
+    before(:each) do
+      @playlist = FactoryGirl.create(:playlist)
+      @videos = [
+        FactoryGirl.create(:video, playlist: @playlist,
+          position: 1, title: 'Video A', youtube_id: '1234'),
+        FactoryGirl.create(:video, playlist: @playlist,
+          position: 2, title: 'Video B', youtube_id: '1235')
+      ]
+    end
+
+    it 'is possible to access the sorting page for a playlist' do
+      visit playlist_path(@playlist)
+      expect(page).to have_content I18n.t('playlists.show.sort')
+      click_link I18n.t('playlists.show.sort')
+      expect(page).to have_current_path contents_playlist_path(@playlist)
+    end
+
+    it 'should have a valid view' do
+      visit contents_playlist_path(@playlist)
+      expect(page).to have_http_status :success
+    end
+
+    it 'should list the videos' do
+      visit contents_playlist_path(@playlist)
+      @videos.each { |v| expect(page).to have_content v.title }
+    end
+
+    it 'should be possible to higher the position of a video' do
+      visit contents_playlist_path(@playlist)
+      within find('tr', text: @videos[1].title) do
+        click_button I18n.t('playlists.contents.up')
+      end
+      @videos[1].reload
+      expect(@videos[1].position).to eq 1
+    end
+
+    it 'should be possible to lower the position of a video' do
+      visit contents_playlist_path(@playlist)
+      within find('tr', text: @videos[0].title) do
+        click_button I18n.t('playlists.contents.down')
+      end
+      @videos[0].reload
+      expect(@videos[0].position).to eq 2
+    end
+
+    it 'should not be possible to higher the position of first video' do
+      visit contents_playlist_path(@playlist)
+      row = find('tr', text: @videos[0].title)
+      expect(row).not_to have_content I18n.t('playlists.contents.up')
+    end
+
+    it 'should not be possible to lower the position of last video' do
+      visit contents_playlist_path(@playlist)
+      row = find('tr', text: @videos[1].title)
+      expect(row).not_to have_content I18n.t('playlists.contents.down')
+    end
+  end
 end
