@@ -14,6 +14,7 @@ es:
         slug: URL
         title: Título
         youtube_id: ID de YouTube
+        topic: Tema
       topic:
         description: Descripción
         photo: Miniatura
@@ -29,3 +30,7 @@ es:
         thumbnail: Miniatura
         playlist: Lista de reproducción
         youtube_id: ID de YouTube
+  simple_form:
+    include_blanks:
+      playlist:
+        topic: (Sin tema concreto)

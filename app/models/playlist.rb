@@ -13,4 +13,8 @@ class Playlist < ApplicationRecord
   def total_length
     videos.map { |v| v.duration }.reduce(0, :+)
   end
+
+  def to_s
+    title
+  end
 end

@@ -1,0 +1,7 @@
+<%= simple_form_for [:dashboard, @playlist] do |form| %>
+  <%= form.input :title %>
+  <%= form.input :description %>
+  <%= form.input :youtube_id %>
+  <%= form.association :topic, include_blank: :translate %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>

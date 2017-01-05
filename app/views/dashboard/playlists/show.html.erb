@@ -1,0 +1,33 @@
+<ol class="breadcrumb">
+  <li><%= link_to t('.dashboard'), :dashboard %></li>
+  <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
+  <li class="current"><%= @playlist %></li>
+</ol>
+
+<div class="page-header">
+  <div class="pull-right">
+    <%= link_to t('.public'), @playlist, class: 'btn btn-default' %>
+    <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-default' %>
+    <%= button_to t('.destroy'), [:dashboard, @playlist], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
+  </div>
+  <h1><%= @playlist %></h1>
+</div>
+
+<table class="table table-default">
+  <tr>
+    <td><%= t('.title') %></td>
+    <td><%= @playlist.title %></td>
+  </tr>
+  <tr>
+    <td><%= t('.description') %></td>
+    <td><%= @playlist.description %></td>
+  </tr>
+  <tr>
+    <td><%= t('.youtube_id') %></td>
+    <td><%= link_to @playlist.youtube_id, "https://www.youtube.com/playlist?list=#{@playlist.youtube_id}" %></td>
+  </tr>
+  <tr>
+    <td><%= t('.topic') %></td>
+    <td><%= link_to @playlist.topic.title, [:dashboard, @playlist.topic] rescue t('.no_topic') %></td>
+  </tr>
+</table>

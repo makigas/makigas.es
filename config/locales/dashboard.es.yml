@@ -1,6 +1,43 @@
 # This translation file is reserved for dashboard strings.
 es:
   dashboard:
+    playlists:
+      create:
+        created: Lista de reproducción creada correctamente.
+      destroy:
+        destroyed: Lista de reproducción eliminada correctamente.
+      edit:
+        cancel: Cancelar
+        dashboard: Panel de control
+        edit: Editar
+        playlists: Listas de reproducción
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        new_playlist: Nueva Lista de reproducción
+        operations: Operaciones
+        playlists: Listas de reproducción
+        really_destroy: Eliminar una lista de reproducción no tiene vuelta atrás. Sólo puedes eliminar listas de reproducción que no tengan vídeos en su interior.
+        title: Título
+        video: Vídeos
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_playlist: Nueva Lista de reproducción
+        playlists: Listas de reproducción
+      show:
+        dashboard: Panel de control
+        playlists: Listas de reproducción
+        edit: Editar
+        destroy: Destruir
+        really_destroy: Eliminar una lista de reproducción no tiene vuelta atrás. Sólo puedes eliminar listas de reproducción que no tengan vídeos en su interior.
+        title: Título
+        description: Descripción
+        youtube_id: ID de YouTube
+        topic: Tema
+        no_topic: "(sin tema)"
+        public: Ver público
     topics:
       create:
         created: Tema creado correctamente.
