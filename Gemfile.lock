@@ -44,6 +44,9 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.2)
     byebug (9.0.6)
     capybara (2.11.0)
@@ -86,6 +89,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -207,6 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  bootstrap-kaminari-views (~> 0.0.5)
   byebug
   capybara
   devise
@@ -214,6 +221,7 @@ DEPENDENCIES
   friendly_id
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   paperclip
   pg
   rails (= 5.0.1)

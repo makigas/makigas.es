@@ -3,7 +3,7 @@ class Dashboard::TopicsController < ApplicationController
   before_action :topic_set, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.order(updated_at: :desc).page(params[:page])
   end
 
   def new

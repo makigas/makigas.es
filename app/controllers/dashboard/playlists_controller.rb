@@ -3,7 +3,7 @@ class Dashboard::PlaylistsController < ApplicationController
   before_action :playlist_set, only: [:show, :edit, :update, :destroy]
 
   def index
-    @playlists = Playlist.all
+    @playlists = Playlist.order(updated_at: :desc).page(params[:page])
   end
 
   def new

@@ -3,7 +3,7 @@ class Dashboard::VideosController < ApplicationController
   before_action :video_set, only: [:show, :edit, :update, :destroy]
 
   def index
-    @videos = Video.order(created_at: :desc)
+    @videos = Video.order(created_at: :desc).page(params[:page])
   end
 
   def new

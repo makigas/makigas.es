@@ -14,6 +14,9 @@ gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
 
+gem 'kaminari'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
