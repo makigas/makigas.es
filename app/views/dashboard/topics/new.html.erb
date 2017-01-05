@@ -1,12 +1,14 @@
-<ol class="breadcrumb">
-  <li><%= link_to t('.dashboard'), :dashboard %></li>
-  <li><%= link_to t('.topics'), [:dashboard, :topics] %></li>
-  <li class="current"><%= t('.new_topic') %></li>
-</ol>
-
-<div class="page-header">
-  <%= link_to t('.cancel'), [:dashboard, :topics], class: 'btn btn-default pull-right' %>
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to t('.topics'), [:dashboard, :topics] %></li>
+    <li class="current"><%= t('.new_topic') %></li>
+  </ol>
   <h1><%= t('.new_topic') %></h1>
+<% end %>
+
+<div class="dashboard-toolbar">
+  <%= link_to t('.cancel'), [:dashboard, :topics], class: 'btn btn-default' %>  
 </div>
 
 <%= render 'form' %>

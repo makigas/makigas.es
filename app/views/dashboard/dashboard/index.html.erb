@@ -1,5 +1,7 @@
-<ul>
-  <li><%= link_to t('.topics'), [:dashboard, :topics] %></li>
-  <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
-  <li><%= link_to t('.videos'), [:dashboard, :videos] %></li>
-</ul>
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="current"><%= t('.dashboard') %></li>
+  </ol>
+
+  <h1><%= t('.dashboard') %></h1>
+<% end %>

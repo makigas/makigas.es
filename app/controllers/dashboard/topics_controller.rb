@@ -1,4 +1,4 @@
-class Dashboard::TopicsController < ApplicationController
+class Dashboard::TopicsController < Dashboard::DashboardController
 
   before_action :topic_set, only: [:show, :edit, :update, :destroy]
 

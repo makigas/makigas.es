@@ -1,4 +1,4 @@
-class Dashboard::VideosController < ApplicationController
+class Dashboard::VideosController < Dashboard::DashboardController
 
   before_action :video_set, only: [:show, :edit, :update, :destroy, :move]
 

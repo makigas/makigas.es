@@ -1,4 +1,4 @@
-class Dashboard::PlaylistsController < ApplicationController
+class Dashboard::PlaylistsController < Dashboard::DashboardController
 
   before_action :playlist_set, only: [:show, :edit, :update, :destroy, :videos]
 

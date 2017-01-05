@@ -1,12 +1,14 @@
-<ol class="breadcrumb">
-  <li><%= link_to t('.dashboard'), :dashboard %></li>
-  <li><%= link_to t('.videos'), [:dashboard, :videos] %></li>
-  <li class="current"><%= t('.new_video') %></li>
-</ol>
-
-<div class="page-header">
-  <%= link_to t('.cancel'), [:dashboard, :videos], class: 'btn btn-default pull-right' %>
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to t('.videos'), [:dashboard, :videos] %></li>
+    <li class="current"><%= t('.new_video') %></li>
+  </ol>
   <h1><%= t('.new_video') %></h1>
+<% end %>
+
+<div class="dashboard-toolbar">
+  <%= link_to t('.cancel'), [:dashboard, :videos], class: 'btn btn-default' %>
 </div>
 
 <%= render 'form' %>

@@ -1,6 +1,9 @@
 # This translation file is reserved for dashboard strings.
 es:
   dashboard:
+    dashboard:
+      index:
+        dashboard: Panel de control
     playlists:
       create:
         created: Lista de reproducción creada correctamente.
@@ -137,3 +140,11 @@ es:
         title: Título
         videos: Vídeos
         youtube_id: ID de YouTube
+  layouts:
+    dashboard:
+      header:
+        topics: Temas
+        videos: Vídeos
+        playlists: Listas
+        view_site: Ver sitio
+        log_out: Salir

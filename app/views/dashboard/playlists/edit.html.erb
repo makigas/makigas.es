@@ -1,13 +1,15 @@
-<ol class="breadcrumb">
-  <li><%= link_to t('.dashboard'), :dashboard %></li>
-  <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
-  <li><%= link_to @playlist, [:dashboard, @playlist] %></li>
-  <li class="current"><%= t('.edit') %></li>
-</ol>
-
-<div class="page-header">
-  <%= link_to t('.cancel'), [:new, :dashboard, @playlist], class: 'btn btn-default pull-right' %>
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
+    <li><%= link_to @playlist, [:dashboard, @playlist] %></li>
+    <li class="current"><%= t('.edit') %></li>
+  </ol>
   <h1><%= t('.edit') %></h1>
+<% end %>
+
+<div class="dashboard-toolbar">
+  <%= link_to t('.cancel'), [:new, :dashboard, @playlist], class: 'btn btn-default' %>
 </div>
 
 <%= render 'form' %>

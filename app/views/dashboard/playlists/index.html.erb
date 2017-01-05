@@ -1,11 +1,13 @@
-<ol class="breadcrumb">
-  <li><%= link_to t('.dashboard'), :dashboard %></li>
-  <li class="current"><%= t('.playlists') %></li>
-</ol>
-
-<div class="page-header">
-  <%= link_to t('.new_playlist'), [:new, :dashboard, :playlist], class: 'btn btn-success pull-right' %>
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="current"><%= t('.playlists') %></li>
+  </ol>
   <h1><%= t('.playlists') %></h1>
+<% end %>
+
+<div class="dashboard-toolbar">
+  <%= link_to t('.new_playlist'), [:new, :dashboard, :playlist], class: 'btn btn-success' %>
 </div>
 
 <table class="table table-default">
@@ -22,7 +24,7 @@
     <tr>
       <td><%= link_to playlist.title, [:dashboard, playlist] %></td>
       <td><%= link_to playlist.topic.title, [:dashboard, playlist.topic] rescue t('.no_topic') %></td>
-      <td><%= playlist.videos.length %></td>
+      <td><%= link_to playlist.videos.length, [:videos, :dashboard, playlist] %></td>
       <td>
         <%= link_to t('.edit'), [:edit, :dashboard, playlist], class: 'btn btn-xs btn-default' %>
         <%= button_to t('.destroy'), [:dashboard, playlist], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
