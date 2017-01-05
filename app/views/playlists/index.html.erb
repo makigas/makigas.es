@@ -2,19 +2,13 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
-<div class="buttons-bar">
-<div class="text-right">
-  <%= link_to t('.new'), new_playlist_path, class: 'btn btn-success' %>
-</div>
-</div>
-
 <div class="grid-table row">
 <% @playlists.each do |pl| %>
 <div class="col-xs-6 col-sm-4 col-lg-3">
 <%= link_to pl do %>
 <div class="playlist panel panel-default">
   <span class="badge"><%= t('.episode', count: pl.videos.count) %></span>
-  <%= image_tag pl.photo.url(:md), srcset: "#{pl.photo.url(:hd)} 2x" %>
+  <%= image_tag "http://placehold.it/360x360", srcset: "http://placehold.it/720x720 2x" %>
   <div class="panel-heading">
     <h3 class="panel-title"><%= pl.title %></h3>
   </div>
