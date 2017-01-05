@@ -96,6 +96,46 @@ es:
         view_topic: Ver Tema
       update:
         updated: Tema actualizado correctamente.
+    users:
+      create:
+        created: Usuario creado correctamente
+      destroy:
+        current_user: No se puede eliminar este usuario porque es el actual.
+        destroyed: Usuario eliminado correctamente
+      edit:
+        cancel: Cancelar
+        dashboard: Panel de control
+        users: Usuarios
+        edit: Editar
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        email: E-mail
+        last_sign_in: Último inicio de sesión
+        new_user: Nuevo usuario
+        operations: Operaciones
+        really_destroy: Eliminar un usuario no tiene vuelta atrás. Una vez eliminado, no podrá iniciar sesión en el sistema.
+        users: Usuarios
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_user: Nuevo Usuario
+        users: Usuarios
+      show:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        e-mail: E-mail
+        sign_in_count: Número de veces iniciada sesión
+        current_sign_in_at: Hora de inicio de sesión actual
+        last_sign_in_at: Hora del último inicio de sesión
+        current_sign_in_ip: IP del inicio de sesión actual
+        last_sign_in_at: IP del último inicio de sesión
+        really_destroy: Eliminar un usuario no tiene vuelta atrás. Una vez eliminado, no podrá iniciar sesión en el sistema.
+        users: Usuarios
+      update:
+        updated: Usuario actualizado correctamente
     videos:
       create:
         created: Vídeo creado correctamente.
@@ -141,8 +181,9 @@ es:
   layouts:
     dashboard:
       header:
-        topics: Temas
-        videos: Vídeos
-        playlists: Listas
-        view_site: Ver sitio
         log_out: Salir
+        playlists: Listas
+        topics: Temas
+        users: Usuarios
+        videos: Vídeos
+        view_site: Ver sitio

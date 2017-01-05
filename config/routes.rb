@@ -15,6 +15,7 @@ Rails.application.routes.draw do
           put :move, on: :member
         end
       end
+      resources :users
     end
   end
 

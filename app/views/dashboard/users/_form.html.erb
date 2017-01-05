@@ -1,0 +1,6 @@
+<%= simple_form_for [:dashboard, @user] do |form| %>
+  <%= form.input :email %>
+  <%= form.input :password %>
+  <%= form.input :password_confirmation %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>

@@ -1,0 +1,40 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to t('.users'), [:dashboard, :users] %></li>
+    <li class="current"><%= @user %></li>
+  </ol>
+  <h1><%= @user %></h1>
+<% end %>
+
+<% content_for :toolbar do %>
+  <%= link_to t('.edit'), [:edit, :dashboard, @user], class: 'btn btn-success' %>
+  <%= button_to t('.destroy'), [:dashboard, @user], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == @user %>
+<% end %>
+
+<table class="table table-default">
+  <tr>
+    <td><%= t('.email') %></td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td><%= t('.sign_in_count') %></td>
+    <td><%= @user.sign_in_count %></td>
+  </tr>
+  <tr>
+    <td><%= t('.current_sign_in_at') %></td>
+    <td><%= @user.current_sign_in_at %></td>
+  </tr>
+  <tr>
+    <td><%= t('.last_sign_in_at') %></td>
+    <td><%= @user.last_sign_in_at %></td>
+  </tr>
+  <tr>
+    <td><%= t('.current_sign_in_ip') %></td>
+    <td><%= @user.current_sign_in_ip %></td>
+  </tr>
+  <tr>
+    <td><%= t('.last_sign_in_ip') %></td>
+    <td><%= @user.last_sign_in_ip %></td>
+  </tr>
+</table>
