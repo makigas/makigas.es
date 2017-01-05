@@ -30,6 +30,14 @@ es:
       failure: "No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: \"%{reason}\"."
       success: "Te autentificaste correctamente con tu cuenta de %{kind}."
     passwords:
+      new:
+        recover_password: Recuperar contraseña
+        send_instructions: Enviar instrucciones
+      edit:
+        change_password: Cambiar contraseña
+        new_password: Nueva contraseña
+        confirm_new_password: Confirmar nueva contraseña
+        change_password: Cambiar contraseña
       no_token: "No puedes acceder a esta página sin venir desde el email de reinicio de contraseña. Si vienes desde ahí, por favor asegúrate de usar la url completa que aparece."
       send_instructions: "Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
       send_paranoid_instructions: "Si tu email existe en el sistema, recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos."
@@ -47,6 +55,16 @@ es:
       signed_in: "Iniciaste sesión correctamente."
       signed_out: "Cerraste sesión correctamente."
       already_signed_out: "Se cerró sesión correctamente."
+      new:
+        log_in: Iniciar sesión
+    shared:
+      links:
+        log_in: Iniciar sesión
+        sign_up: Registrarse
+        forgot_password: ¿Contraseña olvidada?
+        no_confirm: "¿No has recibido instrucciones de confirmación?"
+        no_unlock: "¿No has recibido instrucciones de desbloqueo?"
+        log_in_with: "Iniciar sesión con %{provider}"
     unlocks:
       send_instructions: "Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"
       send_paranoid_instructions: "Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos"

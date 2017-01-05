@@ -8,6 +8,7 @@ es:
           other: Listas de reproducción
         topic: Temática
         video: Vídeo
+        user: Usuario
       playlist:
         description: Descripción
         photo: Miniatura
@@ -20,6 +21,10 @@ es:
         photo: Miniatura
         slug: URL
         title: Título
+      user:
+        email: E-mail
+        password: Contraseña
+        remember_me: Mantener sesión abierta
       video:
         title: Título
         description: Descripción

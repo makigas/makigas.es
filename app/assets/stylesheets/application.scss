@@ -235,3 +235,31 @@ body {
   overflow: auto;
   margin-bottom: 15px;
 }
+
+/* Authentication. */
+body.auth {
+  background: desaturate(#003399, 25%);
+
+  .panel-default {
+    box-shadow: 0 0 4px #303030;
+    border-radius: 0;
+
+    .panel-heading {
+      h2 { font-size: 1.5em; }
+    }
+  }
+
+  .auth-header {
+    margin-top: 4em;
+    margin-bottom: 4em;
+
+    h1.brand {
+      text-align: center;
+      color: white;
+      font-family: 'C64 Pro';
+      font-size: 40px;
+      -webkit-font-smoothing: none;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}
