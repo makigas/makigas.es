@@ -25,4 +25,8 @@ class Video < ApplicationRecord
       "%02d:%02d:%02d" % [duration / 3600, (duration % 3600) / 60, duration % 60]
     end
   end
+
+  def to_s
+    title
+  end
 end

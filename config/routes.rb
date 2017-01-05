@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     root to: 'dashboard#index', as: ''
 
     resources :topics
-    resources :playlists
+    resources :videos, only: [:index, :new, :create]
+    resources :playlists do
+      resources :videos, except: [:index, :new, :create]
+    end
   end
 
   # These routes should be limited to authorized users.

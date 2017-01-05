@@ -1,0 +1,13 @@
+<ol class="breadcrumb">
+  <li><%= link_to t('.dashboard'), :dashboard %></li>
+  <li><%= link_to t('.videos'), [:dashboard, :videos] %></li>
+  <li><%= link_to @video, [:dashboard, @video] %></li>
+  <li class="current"><%= t('.edit') %></li>
+</ol>
+
+<div class="page-header">
+  <%= link_to t('.cancel'), [:dashboard, @video], class: 'btn btn-default pull-right' %>
+  <h1><%= t('.edit') %></h1>
+</div>
+
+<%= render 'form' %>

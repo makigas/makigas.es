@@ -16,10 +16,12 @@ es:
         destroy: Destruir
         edit: Editar
         new_playlist: Nueva Lista de reproducción
+        no_topic: "(sin tema)"
         operations: Operaciones
         playlists: Listas de reproducción
         really_destroy: Eliminar una lista de reproducción no tiene vuelta atrás. Sólo puedes eliminar listas de reproducción que no tengan vídeos en su interior.
         title: Título
+        topic: Tema
         video: Vídeos
       new:
         cancel: Cancelar
@@ -28,16 +30,18 @@ es:
         playlists: Listas de reproducción
       show:
         dashboard: Panel de control
-        playlists: Listas de reproducción
-        edit: Editar
+        description: Descripción
         destroy: Destruir
+        edit: Editar
+        no_topic: "(sin tema)"
+        playlists: Listas de reproducción
+        public: Ver público
         really_destroy: Eliminar una lista de reproducción no tiene vuelta atrás. Sólo puedes eliminar listas de reproducción que no tengan vídeos en su interior.
         title: Título
-        description: Descripción
-        youtube_id: ID de YouTube
         topic: Tema
-        no_topic: "(sin tema)"
-        public: Ver público
+        youtube_id: ID de YouTube
+      update:
+        updated: Lista de reproducción actualizada correctamente.
     topics:
       create:
         created: Tema creado correctamente.
@@ -76,3 +80,44 @@ es:
         view_topic: Ver Tema
       update:
         updated: Tema actualizado correctamente.
+    videos:
+      create:
+        created: Vídeo creado correctamente.
+      destroy:
+        destroyed: Vídeo destruido correctamente.
+      edit:
+        cancel: Cancelar
+        dashboard: Panel de control
+        videos: Vídeos
+        edit: Editar
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        new_video: Nuevo Vídeo
+        operations: Operaciones
+        playlist: Lista de reproducción
+        really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
+        release_date: Fecha de publicación
+        title: Título
+        videos: Vídeos
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_video: Nuevo vídeo
+        videos: Vídeos
+      show:
+        dashboard: Panel de control
+        description: Descripción
+        destroy: Destruir
+        duration: Duración
+        edit: Editar
+        playlist: Lista de reproducción
+        public: Ver público
+        really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
+        seconds:
+          one: "%{count} segundo"
+          other: "%{count} segundos"
+        title: Título
+        videos: Vídeos
+        youtube_id: ID de YouTube

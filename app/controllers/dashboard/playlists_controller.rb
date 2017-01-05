@@ -13,7 +13,7 @@ class Dashboard::PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
     if @playlist.save
-      redirect_to [:dashboard, @playlist]
+      redirect_to [:dashboard, @playlist], notice: t('.created')
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Dashboard::PlaylistsController < ApplicationController
 
   def update
     if @playlist.update_attributes(playlist_params)
-      redirect_to [:dashboard, @playlist]
+      redirect_to [:dashboard, @playlist], notice: t('.updated')
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class Dashboard::PlaylistsController < ApplicationController
 
   def destroy
     @playlist.destroy!
-    redirect_to [:dashboard, :playlists]
+    redirect_to [:dashboard, :playlists], notice: t('.destroyed')
   end
 
   private
