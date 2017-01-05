@@ -132,6 +132,9 @@ es:
     index:
       new: Nuevo vídeo
       title: Todos los vídeos
+      duration: "Duración: %{duration}"
+      topic_html: "Tema: %{topic}"
+      playlist_html: "Serie: %{playlist}"
     new:
       title: Crear vídeo
     show:

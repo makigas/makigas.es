@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.video-list-group {
+  .list-group-item {
+    border-left: none;
+    border-right: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  h4 {
+    line-height: 1.5;
+    font-family: Montserrat;
+    font-weight: normal;
+  }
+  .metadata {
+    font-size: 0.9em;
+  }
+}
+
 .video-toolbar {
   overflow: auto;
   margin-bottom: 15px;
