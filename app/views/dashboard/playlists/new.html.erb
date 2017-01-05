@@ -7,8 +7,8 @@
   <h1><%= t('.new_playlist') %></h1>
 <% end %>
 
-<div class="dashboard-toolbar">
+<% content_for :toolbar do %>
   <%= link_to t('.cancel'), [:dashboard, :playlists], class: 'btn btn-default' %>
-</div>
+<% end %>
 
 <%= render 'form' %>

@@ -7,11 +7,11 @@
   <h1><%= @playlist %></h1>
 <% end %>
 
-<div class="dashboard-toolbar">
-  <%= link_to t('.public'), @playlist, class: 'btn btn-default' %>
+<% content_for :toolbar do %>
+  <%= link_to t('.videos'), [:videos, :dashboard, @playlist], class: 'btn btn-default' %>
   <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-default' %>
   <%= button_to t('.destroy'), [:dashboard, @playlist], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
-</div>
+<% end %>
 
 <table class="table table-default">
   <tr>

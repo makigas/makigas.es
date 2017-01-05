@@ -5,11 +5,11 @@
     <li><%= link_to @playlist, [:dashboard, @playlist] %></li>
     <li class="current"><%= t('.edit') %></li>
   </ol>
-  <h1><%= t('.edit') %></h1>
+  <h1><%= @playlist %></h1>
 <% end %>
 
-<div class="dashboard-toolbar">
-  <%= link_to t('.cancel'), [:new, :dashboard, @playlist], class: 'btn btn-default' %>
-</div>
+<% content_for :toolbar do %>
+  <%= link_to t('.cancel'), [:dashboard, @playlist], class: 'btn btn-default' %>
+<% end %>
 
 <%= render 'form' %>

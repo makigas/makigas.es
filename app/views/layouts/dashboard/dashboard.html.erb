@@ -16,9 +16,13 @@
   <div class="dashboard-page">
     <header class="dashboard-header">
       <div class="container">
+        <div class="dashboard-toolbar pull-right">
+          <%= content_for :toolbar %>
+        </div>
         <%= content_for :header %>
       </div>
     </header>
+
     <main class="container">
       <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
       <%= yield %>

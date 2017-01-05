@@ -38,19 +38,19 @@ es:
         edit: Editar
         no_topic: "(sin tema)"
         playlists: Listas
-        public: Ver público
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         title: Título
         topic: Tema
+        videos: Vídeos
         youtube_id: ID de YouTube
       update:
         updated: Lista actualizada correctamente.
       videos:
+        back: Atrás
         position: Posición
         dashboard: Panel de control
         playlists: Listas
         videos: Vídeos
-        public: Ver público
         edit: Editar
         destroy: Destruir
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
@@ -90,7 +90,6 @@ es:
         destroy: Destruir
         edit: Editar
         playlists: Listas
-        public: Ver público
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
         title: Título
         topics: Temas
@@ -105,8 +104,8 @@ es:
       edit:
         cancel: Cancelar
         dashboard: Panel de control
-        videos: Vídeos
         edit: Editar
+        videos: Vídeos
       index:
         dashboard: Panel de control
         destroy: Destruir
@@ -132,7 +131,6 @@ es:
         duration: Duración
         edit: Editar
         playlist: Lista
-        public: Ver público
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
         seconds:
           one: "%{count} segundo"

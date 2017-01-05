@@ -7,8 +7,8 @@
   <h1><%= t('.new_topic') %></h1>
 <% end %>
 
-<div class="dashboard-toolbar">
+<% content_for :toolbar do %>
   <%= link_to t('.cancel'), [:dashboard, :topics], class: 'btn btn-default' %>  
-</div>
+<% end %>
 
 <%= render 'form' %>
