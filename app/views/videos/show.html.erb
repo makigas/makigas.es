@@ -1,3 +1,9 @@
+<style>
+/* Override default page colors with my own. */
+.main-header, .hero-tron { background: <%= @video.playlist.topic.color %>; }
+.main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
+</style>
+
 <%= content_for :hero do %>
   <h1><%= @video.position %>. <%= @video.title %></h1>
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
