@@ -22,6 +22,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get :terms, to: 'pages#terms'
+  get :privacy, to: 'pages#privacy'
+  get :disclaimer, to: 'pages#disclaimer'
+  get :cookies, to: 'pages#cookies'
+
   get :videos, to: 'videos#index', constraints: { format: :html }
   resources :playlists, path: 'series', only: [:index, :show], constraints: { format: :html } do
     resources :videos, path: '/', only: [:show], constraints: { format: :html }
