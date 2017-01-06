@@ -16,6 +16,13 @@
 
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,400i,700,700i';
 
+@font-face {
+  font-family: "Commodore64";
+  src: url('c64.eot'),
+       url('c64.ttf') format('truetype'),
+       url('c64.woff') format('woff');
+}
+
 body {
   font-family: 'Open Sans';
   font-size: 14px;
@@ -24,7 +31,7 @@ body {
 .main-header {
   // This sets how the logo is displayed on the top of the page.
   .navbar-brand {
-    font-family: 'C64 Pro';
+    font-family: 'Commodore64';
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     font-weight: normal;
@@ -256,7 +263,7 @@ body.auth {
     h1.brand {
       text-align: center;
       color: white;
-      font-family: 'C64 Pro';
+      font-family: 'Commodore64';
       font-size: 40px;
       -webkit-font-smoothing: none;
       -moz-osx-font-smoothing: grayscale;
