@@ -1,43 +1,41 @@
 # makigas.es [![Build Status](https://travis-ci.org/makigas/makigas.svg?branch=master)](https://travis-ci.org/makigas/makigas) [![Dependency Status](https://gemnasium.com/badges/github.com/makigas/makigas.svg)](https://gemnasium.com/github.com/makigas/makigas)
 
-**NOTE**: This is a work in progress. The source code for this application
-hasn't been published yet because the web application is not even remotely
-finished. If you want to browse the website, just do it using the actual
-version of the website.
-
 ## About
 
-This is the public source code for the makigas.es website. This is the first
-iteration that uses a dynamic website that is not using PHP or WordPress.
-The whole application has been redesigned using the Rails framework.
-
-This is the small web application where I'll upload all the metadata about
-the videos that are already listed on my YouTube channel, but... you know,
-with more extras.
+This is the public source code for the makigas.es website. The whole application
+has been redesigned using the Rails framework. It can display information about
+all the videos in the system, all the playlists, all the topics... plus, there
+is a web application dashboard for managing that information.
 
 ## Setting up
 
 ### Cloning and installing the application locally
 
-Official support exists for Linux and MacOS X. It will most likely run on
-Windows 10 with WSL, although no official support is given. I don't expect
-this code to work with vanilla Windows and actually I don't care about
-Windows at all (servers run Linux anyway).
+There is only official support for GNU/Linux. MacOS X is supported, although
+only on development mode; i.e., it is not expected to support deploying to
+a MacOS X server and therefore it hasn't been tested. Microsoft Windows is not
+officially supported although the application should run fine on
+Windows 10 + WSL provided that WSL works.
 
-The web application uses Ruby 2.2.3 / Rails 5 so you should install that
+The web application uses Ruby 2.3.3 / Rails 5 so you should install that
 beforehand. I recommend to use RVM since it will make your life better in so
 many ways, specially when it comes to managing all the gems. It is easy to
-set up:
+set up on development mode.
 
     $ git clone http://github.com/makigas/makigas
     $ cd makigas
     $ bundle install
 
+### Dependencies
+
+* imagemagick (required for image manipulation for thumbnails).
+* libpq (if `bundle install` fails, it is most probably because of this).
+
 ### Database
 
 Upstream database is PostgreSQL and that is the officially supported one.
-Said that, if you can get this to run under MySQL or sqlite3 (should do without
-further issues), that is totally fine.
+Said that, if you can get this to run under MySQL or sqlite3 it is totally
+fine.
 
 **Note that no database.yml has been committed.** Copy the example file and
 modify it to suit your needs. **It is important not to commit sensitive
@@ -64,11 +62,20 @@ Make sure all the migrations are up to date and run `rails server` to start
 the server locally in development mode. Note that the database should be
 empty and you might need to create all your local data first.
 
+### Creating administration users
+
+Accounts cannot be created via a web interface for anonymous users. Therefore,
+in order to start the development, if you need to access the dashboard, you
+will need to create a new user via Rails console:
+
+    > User.create(email: 'foo@example.com', password: '123456')
+
+Passwords must be 6 characters or greater.
 
 ## License
 
     makigas v5 - source code for the makigas.es application
-    Copyright (C) 2016 Dani Rodríguez
+    Copyright (C) 2016-2017 Dani Rodríguez
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
