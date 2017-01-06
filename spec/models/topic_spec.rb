@@ -27,11 +27,6 @@ RSpec.describe Topic, type: :model do
       expect(topic).not_to be_valid
     end
 
-    it 'is not valid without a thumbnail' do
-      topic = FactoryGirl.build(:topic, thumbnail: nil)
-      expect(topic).not_to be_valid
-    end
-
     it 'is not valid without color' do
       topic = FactoryGirl.build(:topic, color: nil)
       expect(topic).not_to be_valid

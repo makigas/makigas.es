@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     end
   end
 
-  get :videos, to: 'videos#index'
-  resources :playlists, path: 'series', only: [:index, :show] do
-    resources :videos, path: '/', only: [:show]
+  get :videos, to: 'videos#index', constraints: { format: :html }
+  resources :playlists, path: 'series', only: [:index, :show], constraints: { format: :html } do
+    resources :videos, path: '/', only: [:show], constraints: { format: :html }
   end
-  resources :topics, only: [:index, :show]
+  resources :topics, only: [:index, :show], constraints: { format: :html }
 end

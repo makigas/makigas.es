@@ -8,13 +8,12 @@ class Playlist < ApplicationRecord
     small: "180x180>",
     default: "360x360>",
     hidef: "720x720>"
-  }, default_url: "defaults/thumbnails/:style.png"
+  }, default_url: "/makigas.png"
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
-  validates_attachment :thumbnail, presence: true,
-    content_type: { content_type: /\Aimage\/.*\z/ }
+  validates_attachment :thumbnail, content_type: { content_type: /\Aimage\/.*\z/ }
 
   has_many :videos, -> { order(position: :asc) }
   belongs_to :topic
