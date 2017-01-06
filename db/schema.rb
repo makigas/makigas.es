@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106104354) do
+ActiveRecord::Schema.define(version: 20170106111532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,16 @@ ActiveRecord::Schema.define(version: 20170106104354) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.string   "description", null: false
-    t.string   "slug",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "title",                  null: false
+    t.string   "description",            null: false
+    t.string   "slug",                   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.string   "color"
     t.index ["slug"], name: "index_topics_on_slug", unique: true, using: :btree
   end
 

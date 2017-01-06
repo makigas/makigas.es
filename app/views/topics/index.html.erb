@@ -7,7 +7,7 @@
 <div class="topic col-xs-6 col-sm-4 col-lg-3">
   <%= link_to tp do %>
   <div class="panel panel-default">
-    <%= image_tag("http://placehold.it/360x360", srcset: "http://placehold.it/720x720 2x", class: 'img-responsive') %>
+    <%= image_tag(tp.thumbnail.url(:default), srcset: "#{tp.thumbnail.url(:hidef)} 2x", class: 'img-responsive') %>
     <div class="panel-heading">
       <h3 class="panel-title"><%= tp.title %></h3>
     </div>
