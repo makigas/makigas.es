@@ -132,6 +132,17 @@ es:
     index:
       new: Nuevo vídeo
       title: Todos los vídeos
+      duration: "Duración: %{duration}"
+      topic_html: "Tema: %{topic}"
+      playlist_html: "Serie: %{playlist}"
+      filter:
+        by_length: Por duración
+        any_length: Cualquier duración
+        short_videos: Cortos (<5 min)
+        medium_videos: Medios (5..15 min)
+        long_videos: Largos (>15 min)
+        by_topic: Por tema
+        apply_filters: Aplicar filtros
     new:
       title: Crear vídeo
     show:
