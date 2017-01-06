@@ -14,6 +14,7 @@ namespace :makigas do
               "title" => video.title,
               "description" => video.description,
               "slug" => video.slug,
+              "duration" => video.duration,
               "youtube_id" => video.youtube_id,
               "position" => video.position,
               "created_at" => video.created_at.to_time.iso8601
