@@ -70,70 +70,21 @@ es:
         twitter: Twitter
         youtube: YouTube
   playlists:
-    form:
-      basic_information: Información básica
-      errors: Hay errores que impiden guardar el formulario.
-      management: Administración
-      save: Guardar
-      search: Buscar
-    edit:
-      title: Editar lista de reproducción
     index:
       episode:
         one: 1 episodio
         other: "%{count} episodios"
-      new: Nueva lista
       title: Todas las listas de reproducción
-    new:
-      title: Crear lista de reproducción
-    show:
-      delete: Borrar lista
-      edit: Editar lista
-      really_delete: Esto borrará la lista para siempre. ¿Estás seguro?
   topics:
-    form:
-      basic_information: Información básica
-      errors: Hay errores que impiden guardar el formulario.
-      management: Administración
-      save: Guardar
-      search: Buscar
-    edit:
-      title: Editar tema
     index:
-      new: Nueva temática
       title: Todas las temáticas
-    insert:
-      insert: Insertar
-      insert_playlist: Insertar lista de reproducción
-      title: Insertar una lista
-      playlist: Lista de reproducción
-      topic: Temática
-    new:
-      title: Crear tema
     show:
-      delete: Borrar tema
-      edit: Editar tema
-      insert_list: Insertar una lista
-      really_delete: Esto borrará el tema para siempre. ¿Estás seguro?
-      really_remove: "Esto retirará la lista de este tema, sin borrar nada." 
-      remove_list: Retirar lista
-      videos:
-        one: 1 vídeo
-        other: "%{count} vídeos"
+      episode:
+        one: 1 episodio
+        other: "%{count} episodios"
   videos:
-    form:
-      basic_information: Información básica
-      errors: Hay errores que impiden guardar el formulario.
-      management: Administración
-      save: Guardar
-      search: Buscar
-    edit:
-      title: Editar vídeo
     index:
-      new: Nuevo vídeo
       title: Todos los vídeos
-    new:
-      title: Crear vídeo
     show:
       content_not_available: Este contenido no está disponible en este momento.
       description: Descripción
