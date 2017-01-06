@@ -2,6 +2,8 @@
 es:
   front:
     index:
+      meta:
+        title: Tutoriales gratuitos de proogramación en castellano
       about_makigas:
         about:
           line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
@@ -71,12 +73,16 @@ es:
         youtube: YouTube
   playlists:
     index:
+      meta:
+        title: Todas las listas de reproducción
       episode:
         one: 1 episodio
         other: "%{count} episodios"
       title: Todas las listas de reproducción
   topics:
     index:
+      meta:
+        title: Todos los temas
       title: Todas las temáticas
     show:
       episode:
@@ -84,6 +90,8 @@ es:
         other: "%{count} episodios"
   videos:
     index:
+      meta:
+        title: Todos los vídeos
       title: Todos los vídeos
       duration: "Duración: %{duration}"
       topic_html: "Tema: %{topic}"
