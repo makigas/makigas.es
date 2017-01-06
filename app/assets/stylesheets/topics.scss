@@ -1,3 +1,35 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topic-list {
+
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+      .media { box-shadow: 0 1px 3px #c0c0c0; }
+      h4 { text-decoration: underline; }
+    }
+  }
+
+  .media {
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    margin-bottom: 1em;
+  }
+
+  img {
+    width: 160px;
+    height: 160px;
+  }
+
+  h4 {
+    font-family: "Montserrat";
+    line-height: 1.8;
+  }
+
+  .media-body {
+    padding: 5px;
+  }
+}
