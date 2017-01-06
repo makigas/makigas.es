@@ -56,7 +56,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    climate_control (0.0.3)
+    climate_control (0.0.4)
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -140,6 +140,9 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.2)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     railties (5.0.1)
       actionpack (= 5.0.1)
       activesupport (= 5.0.1)
@@ -178,7 +181,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.3.1)
+    simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     sprockets (3.7.1)
@@ -226,6 +229,7 @@ DEPENDENCIES
   pg
   rails (= 5.0.1)
   rails-controller-testing
+  rails-i18n (~> 5.0.0)
   redcarpet
   rspec-rails (~> 3.4)
   sass-rails (~> 5.0)
