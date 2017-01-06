@@ -2,17 +2,20 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
-<div class="grid-table row">
-<% @topics.each do |tp| %>
-<div class="topic col-xs-6 col-sm-4 col-lg-3">
-  <%= link_to tp do %>
-  <div class="panel panel-default">
-    <%= image_tag("http://placehold.it/360x360", srcset: "http://placehold.it/720x720 2x", class: 'img-responsive') %>
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= tp.title %></h3>
+<div class="grid-table topic-list row">
+  <% @topics.each do |tp| %>
+    <div class="topic col-md-6">
+      <%= link_to tp do %>
+        <div class="media">
+          <div class="media-left">
+            <%= image_tag tp.thumbnail.url(:small), srcset: "#{tp.thumbnail.url(:default)} 2x" %>
+          </div>
+          <div class="media-body media-middle">
+            <h4 class="media-heading"><%= tp.title %></h4>
+            <p><%= tp.description %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
   <% end %>
-</div>
-<% end %>
 </div>

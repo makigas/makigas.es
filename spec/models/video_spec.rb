@@ -56,7 +56,7 @@ RSpec.describe Video, type: :model do
       video = FactoryGirl.build(:video, playlist: nil)
       expect(video).not_to be_valid
     end
-    
+
     # Note: I don't have to test whether videos are valid without position or
     # when positions are negative since apparently acts_as_list checks this.
   end

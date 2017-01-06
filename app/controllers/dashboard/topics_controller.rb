@@ -35,7 +35,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :description)
+    params.require(:topic).permit(:title, :description, :color, :thumbnail)
   end
 
   def topic_set

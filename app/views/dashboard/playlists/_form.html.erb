@@ -3,5 +3,6 @@
   <%= form.input :description, as: :text %>
   <%= form.input :youtube_id %>
   <%= form.association :topic, include_blank: :translate %>
+  <%= form.input :thumbnail, as: :file %>
   <%= form.submit class: 'btn btn-success' %>
 <% end %>

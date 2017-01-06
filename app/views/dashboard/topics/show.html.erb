@@ -22,6 +22,14 @@
     <td><%= @topic.description %></td>
   </tr>
   <tr>
+    <td><%= t('.thumbnail') %></td>
+    <td><%= image_tag @topic.thumbnail.url(:small) %></td>
+  </tr>
+  <tr>
+    <td><%= t('.color') %></td>
+    <td><%= content_tag(:span, @topic.color, class: 'label', style: "background-color: #{@topic.color}") %></td>
+  </tr>
+  <tr>
     <td><%= t('.playlists') %></td>
     <td>
       <ul>

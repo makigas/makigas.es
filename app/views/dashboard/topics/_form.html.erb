@@ -1,5 +1,11 @@
 <%= simple_form_for [:dashboard, @topic] do |form| %>
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
+  <%= form.input :color do %>
+    <p>
+      <%= form.color_field :color %>
+    </p>
+  <% end %>
+  <%= form.input :thumbnail, as: :file %>
   <%= form.submit class: 'btn btn-success' %>
 <% end %>

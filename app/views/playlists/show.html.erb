@@ -1,6 +1,21 @@
+<% if @playlist.topic %>
+<style>
+/* Override default page colors with my own. */
+.main-header, .hero-tron { background: <%= @playlist.topic.color %>; }
+.main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
+</style>
+<% end %>
+
 <% content_for :hero do %>
-  <h1><%= @playlist.title %></h1>
-  <p><%= @playlist.description %></p>
+  <div class="media playlist-data">
+    <div class="media-body media-middle">
+      <h1 class="playlist-title"><%= @playlist.title %></h1>
+      <p class="playlist-description"><%= @playlist.description %></p>
+    </div>
+    <div class="media-right media-middle hidden-xs">
+      <%= image_tag @playlist.thumbnail.url(:small), srcset: "#{@playlist.thumbnail.url(:default)} 2x" %>
+    </div>
+  </div>
 <% end %>
 
 <div class="row">

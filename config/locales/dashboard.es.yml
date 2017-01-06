@@ -48,6 +48,7 @@ es:
         new_playlist: Nueva Lista
         playlists: Listas
       show:
+        color: Color
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir
@@ -55,6 +56,7 @@ es:
         no_topic: "(sin tema)"
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
+        thumbnail: Miniatura
         title: Título
         topic: Tema
         videos: Vídeos
