@@ -11,7 +11,7 @@ es:
         user: Usuario
       playlist:
         description: Descripción
-        photo: Miniatura
+        thumbnail: Miniatura
         slug: URL
         title: Título
         youtube_id: ID de YouTube

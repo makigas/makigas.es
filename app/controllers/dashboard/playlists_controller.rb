@@ -39,7 +39,7 @@ class Dashboard::PlaylistsController < Dashboard::DashboardController
   private
 
   def playlist_params
-    params.require(:playlist).permit(:title, :description, :youtube_id, :topic_id)
+    params.require(:playlist).permit(:title, :description, :youtube_id, :topic_id, :thumbnail)
   end
 
   def playlist_set

@@ -30,4 +30,8 @@
     <td><%= t('.topic') %></td>
     <td><%= link_to @playlist.topic.title, [:dashboard, @playlist.topic] rescue t('.no_topic') %></td>
   </tr>
+  <tr>
+    <td><%= t('.thumbnail') %></td>
+    <td><%= image_tag @playlist.thumbnail %></td>
+  </tr>
 </table>

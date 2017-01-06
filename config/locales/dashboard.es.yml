@@ -55,6 +55,7 @@ es:
         no_topic: "(sin tema)"
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
+        thumbnail: Miniatura
         title: Título
         topic: Tema
         videos: Vídeos
