@@ -71,11 +71,11 @@
 
 .front-block {
 
-  &:nth-child(odd) {
+  &.about-makigas, &.recent-videos{
     color: #303030;
     background: white;
   }
-  &:nth-child(even) {
+  &.how-to-follow {
     background: desaturate(#003399, 50%);
     color: #f0f0f0;
   }
