@@ -48,6 +48,7 @@ es:
         new_playlist: Nueva Lista
         playlists: Listas
       show:
+        color: Color
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir

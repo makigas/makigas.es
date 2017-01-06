@@ -17,6 +17,7 @@ es:
         youtube_id: ID de YouTube
         topic: Tema
       topic:
+        color: Color
         description: Descripción
         photo: Miniatura
         slug: URL
