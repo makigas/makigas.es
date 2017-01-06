@@ -18,9 +18,9 @@
 
 @font-face {
   font-family: "Commodore64";
-  src: url('c64.eot'),
-       url('c64.ttf') format('truetype'),
-       url('c64.woff') format('woff');
+  src: font-url('c64.eot'),
+       font-url('c64.ttf') format('truetype'),
+       font-url('c64.woff') format('woff');
 }
 
 body {
