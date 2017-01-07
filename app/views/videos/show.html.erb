@@ -15,6 +15,7 @@
 <meta property="og:site_name" content="makigas">
 <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
+<% content_for :body_classes, 'video-player-page' %>
 
 <% if @video.playlist.topic %>
 <style>

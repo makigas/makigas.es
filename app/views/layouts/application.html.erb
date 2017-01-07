@@ -3,7 +3,7 @@
 <head>
   <%= render 'layouts/head' %>
 </head>
-<body class="no-js <%= "page-#{controller.controller_name}" %>">
+<body class="no-js <%= "page-#{controller.controller_name}" %> <%= content_for(:body_classes) %>">
   
   <%= render 'layouts/header' %>
   

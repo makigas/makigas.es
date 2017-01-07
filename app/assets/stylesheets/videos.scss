@@ -39,3 +39,16 @@
 #videos_filter {
   margin-bottom: 1em;
 }
+
+body.video-player-page {
+  @media screen and (max-width: 767px) {
+    .hero-tron {
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .hero-tron + .main-page-inner {
+      padding-top: 0;
+    }
+  }
+}
