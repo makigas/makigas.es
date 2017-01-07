@@ -1,78 +1,80 @@
-# makigas.es [![Build Status](https://travis-ci.org/makigas/makigas.svg?branch=master)](https://travis-ci.org/makigas/makigas) [![Dependency Status](https://gemnasium.com/badges/github.com/makigas/makigas.svg)](https://gemnasium.com/github.com/makigas/makigas)
+<p align="center">
+  <a href="https://travis-ci.org/makigas/makigas"><img src="https://travis-ci.org/makigas/makigas.svg?branch=master" alt="Build Status"></a>
+  <a href="https://gemnasium.com/github.com/makigas/makigas"><img src="https://gemnasium.com/badges/github.com/makigas/makigas.svg" alt="Dependency Status" /></a>
+  <a href="https://github.com/makigas/makigas/releases"><img src="https://img.shields.io/github/tag/makigas/makigas.svg" alt="Latest release"></a>
+  <a href="https://github.com/makigas/makigas/blob/master/COPYING"><img src="https://img.shields.io/github/license/makigas/makigas.svg" alt="License"></a>
+</p>
 
-## About
+<p align="center">
+<img src="http://i.imgur.com/GPJvkq1.png" alt="makigas">
+</p>
 
-This is the public source code for the makigas.es website. The whole application
-has been redesigned using the Rails framework. It can display information about
-all the videos in the system, all the playlists, all the topics... plus, there
-is a web application dashboard for managing that information.
+# About
 
-## Setting up
+This is the public source code for makigas.es. The whole application was recently redesigned from scratch using the Ruby on Rails framework. This web site, just like previous iterations, still displays information about videos and playlists in the system.
 
-### Cloning and installing the application locally
+# Setting up
 
-There is only official support for GNU/Linux. MacOS X is supported, although
-only on development mode; i.e., it is not expected to support deploying to
-a MacOS X server and therefore it hasn't been tested. Microsoft Windows is not
-officially supported although the application should run fine on
-Windows 10 + WSL provided that WSL works.
+## Requirements
 
-The web application uses Ruby 2.3.3 / Rails 5 so you should install that
-beforehand. I recommend to use RVM since it will make your life better in so
-many ways, specially when it comes to managing all the gems. It is easy to
-set up on development mode.
+Supported operating systems:
 
-    $ git clone http://github.com/makigas/makigas
+* Production environments: GNU/Linux.
+* Development environments: GNU/Linux, MacOS X.
+
+Requirements:
+
+* Ruby 2.3.3 + Bundler. May suggest getting it via [rvm](https://rvm.io).
+* PostgreSQL 9.4. May work on MySQL and sqlite3, although hasn't been tested.
+* `libpq-dev`. If `bundle install` refuses to install pg, may be because of this.
+* `imagemagick`. Required for image manipulation when creating playlists and topics.
+
+## Getting the code
+
+To install the web application:
+
+    $ git clone https://github.com/makigas/makigas
     $ cd makigas
     $ bundle install
 
-### Dependencies
+## Database
 
-* imagemagick (required for image manipulation for thumbnails).
-* libpq (if `bundle install` fails, it is most probably because of this).
+Upstream database is PostgreSQL and that is the officially supported one. Said that, this web application may work on MySQL and sqlite3 as well, although I haven't tested this.
 
-### Database
-
-Upstream database is PostgreSQL and that is the officially supported one.
-Said that, if you can get this to run under MySQL or sqlite3 it is totally
-fine.
-
-**Note that no database.yml has been committed.** Copy the example file and
-modify it to suit your needs. **It is important not to commit sensitive
-information such as passwords to the repository**.
+**Note that no database.yml has been committed.** Copy the example file `config/database.yml.example` and modify it to suit your needs. **It is important not to commit sensitive information such as passwords to the repository**.
 
     $ cp config/database.yml.example config/database.yml
     $ vim config/database.yml
-    $ rake db:migrate
+    $ rake db:setup
 
-### secrets.yml
+## secrets.yml
 
-There is no secrets.yml file committed either. And please don't do that. Again
-just copy config/secrets.yml.example and fill the commented keys with the
-secret keys that you want to use.
+There is no secrets.yml file committed to the project because it is dangerous to track secret keys in public open source projects. Copy the example file `config/secrets.yml.example` and fill the commented keys with the secret keys that you want to use.
 
     $ cp config/secrets.yml.example config/secrets.yml
     $ vim config/secrets.yml
 
 You can generate new secret keys using `rake secret` command.
 
-### Starting up
+## Creating administration users
 
-Make sure all the migrations are up to date and run `rails server` to start
-the server locally in development mode. Note that the database should be
-empty and you might need to create all your local data first.
+Because the dashboard is a private system, it is not possible to create users via a web interface. Only an user can create new users. Therefore, in order to set up the first user, you will have to use the Rails console to seed the first user, like so:
 
-### Creating administration users
-
-Accounts cannot be created via a web interface for anonymous users. Therefore,
-in order to start the development, if you need to access the dashboard, you
-will need to create a new user via Rails console:
-
+    $ rails console
+    ...
     > User.create(email: 'foo@example.com', password: '123456')
 
 Passwords must be 6 characters or greater.
 
-## License
+# Contributing
+
+If you find a bug in this source code or an issue or visual glitch on the web site, please file a bug. If you find a security vulnerability on this source code, please disclose it in a private way to me. [My e-mail address and my PGP key is on my personal website](https://www.danirod.es/about.html#contact).
+
+This project follows the [code of merit](https://github.com/rosarior/Code-of-Merit). At this repository, I care about code, not about personal opinions nor feelings. I expect to deal with adults.
+
+Before sending a chunk of code or a new functionality, please discuss it with the team beforehand. This is not a general purpose project nor a framework – these are just the guts of my website. Therefore, I have my own roadmap.
+
+# License
 
     makigas v5 - source code for the makigas.es application
     Copyright (C) 2016-2017 Dani Rodríguez
@@ -91,28 +93,10 @@ Passwords must be 6 characters or greater.
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-## Frequently Asked Questions
+# Frequently Asked Questions
+
+* **Why did you rewrite makigas.es again?**
+  Previous versions of makigas.es used a blogging engine such as WordPress with a lot of plugins and hacks in order to work as general purpose CMS systems. This version was crafted specifically for the data structures required for the web site and therefore it is more concise, flexible and easy to develop and maintain.
 
 * **What is the point on sharing the source code?**
-  As I said before, I don't have any particular interest in the source code
-  at the moment. I just want some app that will let me manage my videos and
-  keep the information about them up to date.
-
-* **Will you open source earlier versions of your web site?**
-  That is something that I'm looking forward to. However, I'd have to clean
-  the source code for them first since there might be things that I don't want
-  to show you.
-
-* **Can I use this source code for creating my own video website?**
-  You'll have to do a lot of work beforehand since the source code is not
-  designed for general purpose applications and therefore there are a lot of
-  source code that is only valid for my website plus probably a lot of
-  hardcoded strings plus my own templates.
-
-* **Can I use this source code for creating a clone of your website?**
-  Even if the source code is public, I'd politely ask you to not do that,
-  at least without getting in touch with me first. There are a few restrictions
-  that I would like to keep on letting other people use the 'makigas' name
-  plus creating copies of my web page might be bad for SEO purposes. Again,
-  you should get in touch with me before trying to do something _real_ with
-  my code.
+  I don't have any particular interest in this source code at this moment. I just want an app that works and that allows me to manage my videos and keep my information up to date.
