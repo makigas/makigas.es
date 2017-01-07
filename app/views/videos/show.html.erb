@@ -29,6 +29,15 @@
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
 
+<div class="row video-player">
+  <div class="video-player-column col-lg-10 col-lg-offset-1">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
+      </iframe>
+    </div>
+  </div>
+</div>
+
 <div class="row video-toolbar">
   <div class="col-lg-10 col-lg-offset-1">
   <% unless @video.first? %>
@@ -38,15 +47,6 @@
   <% unless @video.last? %>
   <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
   <% end %>
-  </div>
-</div>
-
-<div class="row video-player">
-  <div class="video-player-column col-lg-10 col-lg-offset-1">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
-      </iframe>
-    </div>
   </div>
 </div>
 
