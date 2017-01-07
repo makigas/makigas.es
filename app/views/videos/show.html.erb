@@ -30,7 +30,7 @@
 <% end %>
 
 <div class="row video-player">
-  <div class="video-player-column col-lg-10 col-lg-offset-1">
+  <div class="video-player-column">
     <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>">
       </iframe>
@@ -38,60 +38,73 @@
   </div>
 </div>
 
-<div class="row video-toolbar">
-  <div class="col-lg-10 col-lg-offset-1">
+<div class="video-toolbar">
   <% unless @video.first? %>
   <%= link_to t('.previous'), playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
+  <% else %>
+  <%= link_to t('.previous'), '#', disabled: true, class: 'disabled pull-left btn btn-default' %>
   <% end %>
   
   <% unless @video.last? %>
   <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
+  <% else %>
+  <%= link_to t('.next'), '#', disabled: true, class: 'disabled pull-right btn btn-default' %>
   <% end %>
-  </div>
+
+  <%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}", class: 'btn btn-default' %>
 </div>
 
-<div class="row video-information">
-  <div class="col-lg-10 col-lg-offset-1">
-    <div class="col-sm-3">
-      <ul class="nav nav-pills nav-stacked" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#description" aria-controls="description" role="tab" data-toggle="tab"><%= t('.description') %></a>
-        </li>
-        <li role="presentation">
-          <a href="#playlist" aria-controls="playlist" role="tab" data-toggle="tab"><%= t('.playlist') %></a>
-        </li>
-        <li role="presentation">
-          <a href="#transcription" aria-controls="transcription" role="tab" data-toggle="tab"><%= t('.transcription') %></a>
-        </li>
-        <li role="presentation">
-          <a href="#downloads" aria-controls="downloads" role="tab" data-toggle="tab"><%= t('.downloads') %></a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-sm-9">
-      <div class="tab-content">
-        <div class="tab-pane active" role="tabpanel" id="description">
-          <h4><%= t('.description') %></h4>
-          <%= to_markdown @video.description %>
-          <p><%= link_to t('.watch_on_youtube'), "https://youtu.be/#{@video.youtube_id}", target: :blank, class: "btn btn-default" %></p>
-        </div>
-        <div class="tab-pane" role="tabpanel" id="playlist">
-          <h4><%= t('.playlist') %></h4>
-          <div class="playlist-container">
-          <% @playlist.videos.each do |v| %>
-            <%= link_to raw("#{v.position}. #{v.title} <span class=\"text-muted\">&bull; #{running_time(v.duration)}</span>"), playlist_video_path(v, playlist_id: @playlist), class: "list-group-item #{'list-group-item-info' if v == @video}" %>
+<div class="video-information">
+<div class="row">
+
+      <div class="col-md-7">
+        <%= to_markdown @video.description %>
+        <p>
+          <%= t('.release_date_html', date: content_tag(:time, l(@video.created_at, format: :short), datetime: @video.created_at.to_time.iso8601)) %> &bull;
+          <%= t('.duration', duration: running_time(@video.duration)) %>
+        </p>
+
+        <h4 class="card-header"><%= t('.this_playlist') %></h4>
+        <div class="media media-summary-card media-summary-card-with-hover">
+          <%= link_to @video.playlist do %>
+            <div class="media-left hidden-xs">
+              <%= image_tag @video.playlist.thumbnail.url(:small), srcset: "#{@video.playlist.thumbnail.url(:default)} 2x" %>
+            </div>
+            <div class="media-body media-middle">
+              <h4 class="media-heading"><%= @video.playlist.title %></h4>
+              <p><%= t('.explore_other_videos', count: @video.playlist.videos.count) %></p>
+            </div>
           <% end %>
-          </div>
         </div>
-        <div class="tab-pane" role="tabpanel" id="transcription">
-          <h4><%= t('.transcription') %></h4>
-          <p><%= t('.content_not_available') %></p>
+
+        <h4 class="card-header"><%= t('.this_topic') %></h4>
+        <% if @video.playlist.topic %>
+        <div class="media media-summary-card media-summary-card-with-hover">
+          <%= link_to @video.playlist.topic do %>
+            <div class="media-left hidden-xs">
+              <%= image_tag @video.playlist.topic.thumbnail.url(:small), srcset: "#{@video.playlist.topic.thumbnail.url(:default)} 2x" %>
+            </div>
+            <div class="media-body media-middle">
+              <h4 class="media-heading"><%= @video.playlist.topic.title %></h4>
+              <p><%=  @video.playlist.topic.description %></p>
+            </div>
+          <% end %>
         </div>
-        <div class="tab-pane" role="tabpanel" id="downloads">
-          <h4><%= t('.downloads') %></h4>
-          <p><%= t('.content_not_available') %></p>
-        </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-5">
+        <div id="disqus_thread"></div>
+        <script>
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//makigas.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
     </div>
-  </div>
+</div>
 </div>

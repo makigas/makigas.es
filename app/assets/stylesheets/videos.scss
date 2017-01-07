@@ -23,11 +23,12 @@
   overflow: auto;
   margin-top: 15px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .video-information {
   margin-top: 15px;
-  h4 {
+  .card-header {
     font-family: 'Montserrat';
     line-height: 30px;
     font-size: 25px;
