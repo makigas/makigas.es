@@ -1,4 +1,20 @@
 <% content_for :title, "#{@video.position}. #{@video.title} – #{@video.playlist.title} – makigas" %>
+<% content_for :description, @video.description %>
+<% content_for :twitter do %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@makigas">
+<meta name="twitter:title" content="<%= @video.position %>. <%= @video.title %>">
+<meta name="twitter:description" content="<%= @video.description %>">
+<meta name="twitter:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+<% end %>
+<% content_for :facebook do %>
+<meta property="og:url" content="<%= canonical_url %>">
+<meta property="og:title" content="<%= @video.position %>. <%= @video.title %>">
+<meta property="og:type" content="website">
+<meta property="og:description" content="<%= @video.description %>">
+<meta property="og:site_name" content="makigas">
+<meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+<% end %>
 
 <% if @video.playlist.topic %>
 <style>

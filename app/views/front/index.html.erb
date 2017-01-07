@@ -1,4 +1,20 @@
 <% content_for :title, "makigas – #{t('.meta.title')}" %>
+<% content_for :description, t('.meta.description') %>
+<% content_for :twitter do %>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@makigas">
+<meta name="twitter:title" content="makigas.es">
+<meta name="twitter:description" content="<%= t('.meta.title') %>">
+<meta name="twitter:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+<% end %>
+<% content_for :facebook do %>
+<meta property="og:url" content="<%= canonical_url %>">
+<meta property="og:title" content="makigas.es">
+<meta property="og:type" content="website">
+<meta property="og:description" content="<%= t('.meta.description') %>">
+<meta property="og:site_name" content="makigas">
+<meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+<% end %>
 
 <div class="makigas-tron jumbotron">
   <div class="makigas-tron-inner">

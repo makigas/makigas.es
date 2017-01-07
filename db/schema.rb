@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106111532) do
+ActiveRecord::Schema.define(version: 20170107000736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20170106111532) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.string   "card_file_name"
+    t.string   "card_content_type"
+    t.integer  "card_file_size"
+    t.datetime "card_updated_at"
     t.index ["position"], name: "index_playlists_on_position", using: :btree
     t.index ["slug"], name: "index_playlists_on_slug", unique: true, using: :btree
   end

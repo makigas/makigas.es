@@ -5,6 +5,11 @@ module ApplicationHelper
     super(objects, options)
   end
 
+  def canonical_url
+    parameters = Rack::Utils.parse_nested_query request.query_string
+    url_for only_path: false, params: parameters
+  end
+
   # This helper automatically will add "current" class on to a <li> item
   # as required by Bootstrap to show the navbar item using 'current' style.
   def navigation_link text, url

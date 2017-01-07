@@ -4,6 +4,7 @@ es:
     index:
       meta:
         title: Tutoriales gratuitos de proogramación en castellano
+        description: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software. En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
       about_makigas:
         about:
           line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
@@ -79,6 +80,7 @@ es:
     index:
       meta:
         title: Todas las listas de reproducción
+        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
       episode:
         one: 1 episodio
         other: "%{count} episodios"
@@ -87,8 +89,11 @@ es:
     index:
       meta:
         title: Todos los temas
+        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
       title: Todas las temáticas
     show:
+      meta:
+        description: Explora las listas de reproducción que hay dentro de esta categoría o encuentra contenido adicional.
       episode:
         one: 1 episodio
         other: "%{count} episodios"
@@ -96,6 +101,7 @@ es:
     index:
       meta:
         title: Todos los vídeos
+        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
       title: Todos los vídeos
       duration: "Duración: %{duration}"
       topic_html: "Tema: %{topic}"

@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title><%= content_for?(:title) ? content_for(:title) : "makigas" %></title>
+<%= tag(:meta, name: 'description', content: content_for(:description)) if content_for?(:description) %>
+<%= tag(:link, rel: 'canonical', href: canonical_url) %>
+<%= content_for(:twitter) -%>
+<%= content_for(:facebook) -%>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<%= stylesheet_link_tag 'application', media: 'all' %>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4d6699">
+<meta name="theme-color" content="#4d6699">
+
+<%= csrf_meta_tags %>
