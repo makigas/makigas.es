@@ -115,12 +115,14 @@ es:
         by_topic: Por tema
         apply_filters: Aplicar filtros
     show:
-      content_not_available: Este contenido no está disponible en este momento.
-      description: Descripción
-      downloads: Descargas
       next: Siguiente
       part_of_series_html: "Un episodio de %{playlist}"
-      playlist: Lista
       previous: Anterior
-      transcription: Transcripción
       watch_on_youtube: Ver en YouTube
+      release_date_html: "Fecha de emisión: %{date}"
+      duration: "Duración: %{duration}"
+      explore_other_videos:
+        one: Explora el resto de vídeos de esta lista de reproducción.
+        other: Una lista de reproducción de %{count} episodios.
+      this_playlist: Lista de reproducción
+      this_topic: Este tema

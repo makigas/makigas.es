@@ -8,8 +8,8 @@
 <div class="grid-table topic-list row">
   <% @topics.each do |tp| %>
     <div class="topic col-md-6">
-      <%= link_to tp do %>
-        <div class="media">
+      <div class="media media-summary-card media-summary-card-with-hover">
+        <%= link_to tp do %>
           <div class="media-left">
             <%= image_tag tp.thumbnail.url(:small), srcset: "#{tp.thumbnail.url(:default)} 2x" %>
           </div>
@@ -17,8 +17,8 @@
             <h4 class="media-heading"><%= tp.title %></h4>
             <p><%= tp.description %></p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

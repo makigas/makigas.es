@@ -21,12 +21,14 @@
 
 .video-toolbar {
   overflow: auto;
+  margin-top: 15px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .video-information {
   margin-top: 15px;
-  h4 {
+  .card-header {
     font-family: 'Montserrat';
     line-height: 30px;
     font-size: 25px;
@@ -36,4 +38,17 @@
 
 #videos_filter {
   margin-bottom: 1em;
+}
+
+body.video-player-page {
+  @media screen and (max-width: 767px) {
+    .hero-tron {
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .hero-tron + .main-page-inner {
+      padding-top: 0;
+    }
+  }
 }
