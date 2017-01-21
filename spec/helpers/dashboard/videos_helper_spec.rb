@@ -1,15 +1,20 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the Dashboard::VideosHelper. For example:
-#
-# describe Dashboard::VideosHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe Dashboard::VideosHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) { @video = FactoryGirl.create(:video) }
+  
+  context 'dashboard_video' do
+    it { expect(dashboard_video_path @video).to eq dashboard_playlist_video_path(@video, playlist_id: @video.playlist) }
+    it { expect(dashboard_video_url @video).to eq dashboard_playlist_video_url(@video, playlist_id: @video.playlist) }
+  end
+
+  context 'move_dashboard_video' do
+    it { expect(move_dashboard_video_path @video).to eq move_dashboard_playlist_video_path(@video, playlist_id: @video.playlist) }
+    it { expect(move_dashboard_video_url @video).to eq move_dashboard_playlist_video_url(@video, playlist_id: @video.playlist) }
+  end
+
+  context 'edit_dashboard_video' do
+    it { expect(edit_dashboard_video_path @video).to eq edit_dashboard_playlist_video_path(@video, playlist_id: @video.playlist) }
+    it { expect(edit_dashboard_video_url @video).to eq edit_dashboard_playlist_video_url(@video, playlist_id: @video.playlist) }
+  end
 end
