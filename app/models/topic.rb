@@ -13,6 +13,7 @@ class Topic < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 250 }
   validates :color, presence: true
+  validates :thumbnail, presence: true
   validates_attachment :thumbnail, content_type: { content_type: /\Aimage\/.*\z/ }
 
   # Playlists can survive without a topic, so on delete set the topic to null.
