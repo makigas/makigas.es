@@ -45,5 +45,17 @@ RSpec.feature "Topics page", type: :feature do
       visit videos_path
       expect(page).to have_link @video.playlist.title, href: playlist_path(@video.playlist)
     end
+
+    context "when the video is on a playlist" do
+      before(:each) {
+        @topic = FactoryGirl.create(:topic)
+        @video.playlist.update_attributes(topic: @topic)
+      }
+
+      it "links to the topic for this video" do
+        visit videos_path
+        expect(page).to have_link @topic.title, href: topic_path(@topic)
+      end
+    end
   end
 end
