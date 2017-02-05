@@ -5,7 +5,6 @@ branches:
     - master
 rvm:
   - 2.3.3
-  - 2.4.0
 services:
   - postgresql
 before_script:
