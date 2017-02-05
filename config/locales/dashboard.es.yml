@@ -196,6 +196,8 @@ es:
         title: Título
         videos: Vídeos
         youtube_id: ID de YouTube
+      update:
+        updated: Vídeo actualizado correctamente.
   layouts:
     dashboard:
       header:
