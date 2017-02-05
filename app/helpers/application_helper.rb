@@ -47,6 +47,7 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
   
+  # TODO: Remove this method after it has been tested that is not used.
   def horizontal_form_for(resource, options = {}, &block)
     options[:html] = { class: 'form-horizontal' }
     options[:wrapper] = :horizontal_form
@@ -58,5 +59,4 @@ module ApplicationHelper
     }
     simple_form_for(resource, options, &block)
   end
-
 end

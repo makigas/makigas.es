@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-  context 'validation' do
-    it 'has a valid factory' do
-      video = FactoryGirl.build(:video)
-      expect(video).to be_valid
-    end
+  
+  it 'has a valid factory' do
+    video = FactoryGirl.build(:video)
+    expect(video).to be_valid
+  end
 
+  context 'validation' do
     it 'is not valid without title' do
       video = FactoryGirl.build(:video, title: nil)
       expect(video).not_to be_valid
@@ -102,8 +103,14 @@ RSpec.describe Video, type: :model do
       expect(video.duration).to eq 61
       video.natural_duration = '1:42'
       expect(video.duration).to eq 102
+      video.natural_duration = '59:59'
+      expect(video.duration).to eq 3599
       video.natural_duration = '1:00:00'
       expect(video.duration).to eq 3600
+      video.natural_duration = '9:59:59'
+      expect(video.duration).to eq 35999
+      video.natural_duration = '10:00:00'
+      expect(video.duration).to eq 36000
     end
   end
 end

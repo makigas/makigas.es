@@ -1,17 +1,18 @@
 # This translation file is reserved for ActiveRecord models and attributes.
 es:
   activerecord:
+    models:
+      playlist:
+        one: Lista de reproducción
+        other: Listas de reproducción
+      topic: Tema
+      video: Vídeo
+      user: Usuario
     attributes:
-      models:
-        playlist:
-          one: Lista de reproducción
-          other: Listas de reproducción
-        topic: Temática
-        video: Vídeo
-        user: Usuario
       playlist:
         description: Descripción
         thumbnail: Miniatura
+        card: Tarjeta
         slug: URL
         title: Título
         youtube_id: ID de YouTube
@@ -19,7 +20,7 @@ es:
       topic:
         color: Color
         description: Descripción
-        photo: Miniatura
+        thumbnail: Miniatura
         slug: URL
         title: Título
       user:
