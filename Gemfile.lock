@@ -188,6 +188,8 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    sitemap_generator (5.2.0)
+      builder (~> 3.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -238,6 +240,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form
+  sitemap_generator
   uglifier (>= 1.3.0)
   web-console
 

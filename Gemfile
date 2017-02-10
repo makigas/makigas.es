@@ -15,6 +15,7 @@ gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'sitemap_generator'
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
