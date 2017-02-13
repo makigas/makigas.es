@@ -5,6 +5,7 @@ class Dashboard::DashboardController < ApplicationController
     @playlists = Playlist.count
     @topics = Topic.count
     @users = User.count
+    @opinions = Opinion.count
   end
 
 end

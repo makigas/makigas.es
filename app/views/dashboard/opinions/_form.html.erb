@@ -1,0 +1,7 @@
+<%= simple_form_for [:dashboard, @opinion] do |form| %>
+  <%= form.input :from %>
+  <%= form.input :message, as: :text %>
+  <%= form.input :url, as: :url %>
+  <%= form.input :photo, as: :file %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>

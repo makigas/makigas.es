@@ -20,6 +20,44 @@ es:
         user:
           one: usuario
           other: usuarios
+    opinions:
+      create:
+        created: Opinión creada correctamente.
+      destroy:
+        destroyed: Opinión destruida correctamente.
+      edit:
+        cancel: Cancelar
+        dashboard: Panel de control
+        edit: Editar
+        topics: Opiniones
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        new_opinion: Nueva Opinión
+        operations: Operaciones
+        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
+        from: De
+        opinions: Opiniones
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_opinion: Nueva Opinión
+        opinions: Opiniones
+      show:
+        dashboard: Panel de control
+        description: Descripción
+        destroy: Destruir
+        edit: Editar
+        from: De
+        message: Mensaje
+        url: URL
+        photo: Imagen
+        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
+        opinions: Opinión
+        view_opinion: Ver Opinión
+      update:
+        updated: Opinión actualizada correctamente.
     playlists:
       create:
         created: Lista creada correctamente.
