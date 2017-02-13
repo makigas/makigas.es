@@ -1,0 +1,19 @@
+.about-opinions.front-block
+  .container
+    %h1.title= t('.title')
+    .row
+      - @opinions.each do |opinion|
+        .col-md-6.col-md-offset-0.col-sm-8.col-sm-offset-2
+          .media
+            .media-left.media-middle
+              - if opinion.url.present?
+                =link_to image_tag(opinion.photo.url, alt: t('.image', from: opinion.from), class: 'media-object'), opinion.url, target: '_blank'
+              - else
+                = image_tag opinion.photo.url, alt: t('.image', from: opinion.from), class: 'img-circle media-object'
+            .media-body.media-middle
+              %h4.media-heading
+                - if opinion.url.present?
+                  = link_to opinion.from, opinion.url
+                - else
+                  = opinion.from
+              %p= opinion.message

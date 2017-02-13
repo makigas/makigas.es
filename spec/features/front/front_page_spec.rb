@@ -11,6 +11,26 @@ RSpec.feature "Front page", type: :feature do
     expect(page).to have_text "¿Qué es makigas?"
   end
 
+  context "can show opinions" do
+    it "with link" do
+      @opinion = FactoryGirl.create(:opinion)
+      visit root_path
+      expect(page).to have_link @opinion.from, href: @opinion.url
+    end
+
+    it "without link" do
+      @opinion = FactoryGirl.create(:opinion, url: nil)
+      visit root_path
+      expect(page).to have_text @opinion.from
+    end
+
+    it "with description" do
+      @opinion = FactoryGirl.create(:opinion)
+      visit root_path
+      expect(page).to have_text @opinion.message
+    end
+  end
+
   it "navigates to topics" do
     visit root_path
     expect(page).to have_link "Explora las temáticas", href: topics_path

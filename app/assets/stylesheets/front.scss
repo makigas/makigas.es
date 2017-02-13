@@ -139,6 +139,23 @@
   }
 }
 
+.about-opinions {
+  img {
+    width: 160px;
+    opacity: 0.4;
+    transition: opacity 0.1s ease-in-out, filter 0.1s ease-in-out;
+    filter: grayscale(100%);
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
+  h4 {
+    font-weight: bold;
+    line-height: 1.5;
+  }
+}
+
 .btn-hero {
   border: 1px solid white;
   color: white;

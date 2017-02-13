@@ -48,6 +48,8 @@
   </div>
 </div>
 
+<%= render 'opinions' unless @opinions.empty? %>
+
 <div class="how-to-follow front-block">
   <div class="container">
     <h1 class="title"><%= t('.how_to_follow.title') %></h1>
