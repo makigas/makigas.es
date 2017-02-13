@@ -16,6 +16,8 @@ gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'haml-rails', '~> 0.9'
+gem 'sitemap_generator'
+gem 'whenever'
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
