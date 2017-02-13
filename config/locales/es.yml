@@ -49,6 +49,11 @@ es:
       topics:
         button: Explora las temáticas
         title: Visualiza las listas de temas disponibles en esta página web.
+    behind:
+      title: ¿Qué clase de mente retorcida ideó todo esto?
+      image:
+        alt: Fotografía de Dani hablándole a un micrófono
+        title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
     index:
       meta:
         title: Tutoriales gratuitos de proogramación en castellano
