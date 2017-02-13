@@ -4,6 +4,20 @@ es:
     opinions:
       title: No lo digo yo, ellos también lo dicen
       photo: Logotipo de %{from}
+    features:
+      title: Piénsalo, ¿cuántas páginas conoces que te enseñen a programar...?
+      free:
+        alt: Pictograma de un billete de dolar
+        title: Gratis
+        text: Lo creas o no, el material es gratuito. Por ahora se financia con anuncios.
+      spanish:
+        alt: Pictograma de una bandera
+        title: En español
+        text: No debemos ocultar la lengua que nos une. Todo está en completo español.
+      informal:
+        alt: Pictograma de un grupo de personas
+        title: Informal
+        text: Educado pero sin formalismos. Con el estilo que a tanta gente le gusta.
     index:
       meta:
         title: Tutoriales gratuitos de proogramación en castellano
