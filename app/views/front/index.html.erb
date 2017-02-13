@@ -16,71 +16,11 @@
 <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
 
-<div class="makigas-tron jumbotron">
-  <div class="makigas-tron-inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-push-1 col-lg-8 col-lg-push-2">
-          <h1><%= t('.title_html') %></h1>
-          <p><%= t('.subtitle') %></p>
-          <h1 class="cta-buttons">
-            <%= link_to t('.topics.button'), topics_path, class: 'btn btn-lg btn-hero', title: t('.topics.title') %>
-            <%= link_to t('.reading.button'), '#about-makigas', id: 'hero-scroller', class: 'btn btn-lg', title: t('.reading.title') %>
-          </h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'jumbotron' %>
 
-<div id="about-makigas" class="about-makigas front-block">
-  <div class="container">
-    <h1 class="title"><%= t('.about_makigas.title') %></h1>
-    <div class="row">
-      <div class="col-md-6 hidden-xs hidden-sm">
-        <%= image_tag 'laptop.png', class: 'laptop-image', alt: t('.about_makigas.laptop') %>
-      </div>
-      <div class="col-md-6">
-        <p><%= t('.about_makigas.about.line0') %></p>
-        <p><%= t('.about_makigas.about.line1') %></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="how-to-follow front-block">
-  <div class="container">
-    <h1 class="title"><%= t('.how_to_follow.title') %></h1>
-    <div class="row">
-      <div class="col-sm-6">
-        <h3><%= t('.how_to_follow.youtube.title') %></h3>
-        <p><%= t('.how_to_follow.youtube.text') %></p>
-        <p><%= link_to t('.how_to_follow.youtube.to_youtube.text'), 'http://www.youtube.com/makigas', class: 'btn btn-hero', title: t('.how_to_follow.youtube.to_youtube.alt') %></p>
-      </div>
-      <div class="col-sm-6">
-        <h3><%= t('.how_to_follow.makigas.title') %></h3>
-        <p><%= t('.how_to_follow.makigas.text') %></p>
-        <p><%= link_to t('.how_to_follow.makigas.to_content.text'), topics_path, class: 'btn btn-hero', title: t('.how_to_follow.makigas.to_content.alt') %></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="recent-videos front-block">
-  <div class="container">
-    <h1 class="title"><%= t('.recent_videos.title') %></h1>
-    <div class="row">
-      <% @recent.each do |v| %>
-        <div class="video col-md-3 col-xs-6">
-          <p><%= link_to image_tag("https://i1.ytimg.com/vi/#{v.youtube_id}/mqdefault.jpg", class: 'img-thumbnail', srcset: "https://i1.ytimg.com/vi/#{v.youtube_id}/maxresdefault.jpg 2x"), playlist_video_path(v, playlist_id: v.playlist) %></p>
-          <p><%= link_to v.title, playlist_video_path(v, playlist_id: v.playlist) %></p>
-        </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-sm-push-3">
-        <%= link_to t('.recent_videos.recent_videos.text'), videos_path, class: 'btn btn-lg btn-block btn-primary', title: t('.recent_videos.recent_videos.alt') %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'about' %>
+<%= render 'features' %>
+<%= render 'opinions' unless @opinions.empty? %>
+<%= render 'follow' %>
+<%= render 'videos' %>
+<%= render 'behind' %>

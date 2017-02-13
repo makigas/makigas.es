@@ -79,6 +79,13 @@
     background: desaturate(#003399, 50%);
     color: #f0f0f0;
   }
+  &.about-behind {
+    background: desaturate(#003399, 100%);
+    background-image: asset-url('code.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #f0f0f0;
+  }
 
   .container {
     padding-top: 10px;
@@ -128,6 +135,30 @@
     }
   }
 
+  &.about-behind {
+    text-shadow: 0 1px 1px #303030;
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      font-weight: 100;
+    }
+    a {
+      color: desaturate(lighten(#003399, 60%), 30%);
+    }
+    strong { font-weight: 500; }
+
+    img {
+      width: 320px;
+      height: 320px;
+      margin-left: 20px;
+    }
+    .img-circle {
+      border: 4px solid white;
+      box-shadow: 0 0 4px 1px black;
+      margin: 4px;
+    }
+  }
+
   h3 {
     font-size: 22px;
     line-height: 150%;
@@ -136,6 +167,28 @@
   
   p {
     font-size: 1.3em;
+  }
+}
+
+.about-features {
+  img { max-width: 100%; }
+  h3, p { text-align: center; }
+}
+
+.about-opinions {
+  img {
+    width: 160px;
+    opacity: 0.4;
+    transition: opacity 0.1s ease-in-out, filter 0.1s ease-in-out;
+    filter: grayscale(100%);
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
+  h4 {
+    font-weight: bold;
+    line-height: 1.5;
   }
 }
 

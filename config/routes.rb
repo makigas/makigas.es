@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         end
       end
       resources :users
+      resources :opinions
     end
   end
 

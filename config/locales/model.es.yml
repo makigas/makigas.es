@@ -6,6 +6,9 @@ es:
         one: Lista de reproducción
         other: Listas de reproducción
       topic: Tema
+      opinion:
+        one: Opinión
+        other: Opiniones
       video: Vídeo
       user: Usuario
     attributes:
@@ -17,6 +20,11 @@ es:
         title: Título
         youtube_id: ID de YouTube
         topic: Tema
+      opinion:
+        from: De
+        message: Mensaje
+        url: URL
+        photo: Imagen
       topic:
         color: Color
         description: Descripción

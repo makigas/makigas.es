@@ -30,4 +30,10 @@
     <p class="lead"><%= t('.users', count: @users) %></p>
     <p><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-default btn-block' %></p>
   </div>
+
+  <div class="col-xs-6 col-sm-3">
+    <h1><span class="glyphicon glyphicon-user"></span> <%= @opinions %></h1>
+    <p class="lead"><%= t('.opinions', count: @opinions) %></p>
+    <p><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-default btn-block' %></p>
+  </div>
 </div>

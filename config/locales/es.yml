@@ -1,43 +1,63 @@
 # This translation file is reserved for public strings.
 es:
   front:
-    index:
-      meta:
-        title: Tutoriales gratuitos de proogramación en castellano
-        description: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software. En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
-      about_makigas:
-        about:
-          line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
-          line1: En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
-        laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
-        title: ¿Qué es makigas?
-      how_to_follow:
-        makigas:
-          to_content:
-            alt: Haz clic aquí para ir a la lista de contenidos disponibles en esta página web.
-            text: Ver contenidos
-          text: Para una mejor experiencia explorando contenido y para poder encontrar próximamente contenido adicional y material extra para seguir los cursos.
-          title: En makigas.es
-        title: ¿Cómo obtengo acceso?
-        youtube:
-          to_youtube:
-            alt: Haz clic aquí para ver el canal de YouTube de makigas.
-            text: Ir al canal
-          text: Todo el material lo encontrarás en YouTube. Si quieres ser de los primeros en enterarte, puedes suscribirte al canal para enterarte de lo nuevo.
-          title: En YouTube
+    opinions:
+      title: No lo digo yo, ellos también lo dicen
+      photo: Logotipo de %{from}
+    features:
+      title: Piénsalo, ¿cuántas páginas conoces que te enseñen a programar...?
+      free:
+        alt: Pictograma de un billete de dolar
+        title: Gratis
+        text: Lo creas o no, el material es gratuito. Por ahora se financia con anuncios.
+      spanish:
+        alt: Pictograma de una bandera
+        title: En español
+        text: No debemos ocultar la lengua que nos une. Todo está en completo español.
+      informal:
+        alt: Pictograma de un grupo de personas
+        title: Informal
+        text: Educado pero sin formalismos. Con el estilo que a tanta gente le gusta.
+    about:
+      laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
+      title: ¿Qué es makigas?
+      about:
+        line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
+        line1: En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
+    follow:
+      makigas:
+        alt: Haz clic aquí para ir a la lista de contenidos disponibles en esta página web.
+        button: Ver contenidos
+        text: Para una mejor experiencia explorando contenido y para poder encontrar próximamente contenido adicional y material extra para seguir los cursos.
+        title: En makigas.es
+      title: ¿Cómo obtengo acceso?
+      youtube:
+        alt: Haz clic aquí para ver el canal de YouTube de makigas.
+        button: Ir al canal
+        text: Todo el material lo encontrarás en YouTube. Si quieres ser de los primeros en enterarte, puedes suscribirte al canal para enterarte de lo nuevo.
+        title: En YouTube
+    videos:
+      recent_videos_alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
+      recent_videos: Explorar vídeos recientes...
+      title: Últimos vídeos
+    jumbotron:
       reading:
         button: Seguir leyendo
         title: Lee más información acerca del proyecto makigas
-      recent_videos:
-        recent_videos:
-          alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
-          text: Explorar vídeos recientes...
-        title: Últimos vídeos
       subtitle: En esto tan simple consiste makigas
       title_html: Tutoriales de programación <span class="highlighted">gratuitos</span> y en castellano
       topics:
         button: Explora las temáticas
         title: Visualiza las listas de temas disponibles en esta página web.
+    behind:
+      title: ¿Qué clase de mente retorcida ideó todo esto?
+      image:
+        alt: Fotografía de Dani hablándole a un micrófono
+        title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
+    index:
+      meta:
+        title: Tutoriales gratuitos de proogramación en castellano
+        description: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software. En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
   layouts:
     cookies:
       message: "Me obligan a informarte que este sitio usa cookies."
