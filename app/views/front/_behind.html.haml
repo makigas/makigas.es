@@ -1,0 +1,8 @@
+.about-behind.front-block
+  .container
+    %h1 ¿Qué clase de mente retorcida ideó todo esto?
+    .media
+      .media-body.media-middle
+        = render 'author'
+      .media-right.media-middle.hidden-xs.hidden-sm
+        = image_tag 'dani.jpg', class: 'img-circle media-object', alt: t('.alt'), title: t('.title')
