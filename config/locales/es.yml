@@ -17,7 +17,7 @@ es:
       informal:
         alt: Pictograma de un grupo de personas
         title: Informal
-        text: Educado pero sin formalismos. Con el estilo que a tanta gente le gusta.
+        text: Educado pero informal. Con el estilo que aparentemente a la gente le gusta.
     about:
       laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
       title: ¿Qué es makigas?
@@ -54,6 +54,8 @@ es:
       image:
         alt: Fotografía de Dani hablándole a un micrófono
         title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
+    disclaimer:
+      disclaimer: "Disclaimer. Las reseñas incluidas en esta página presentan únicamente a modo informativo opiniones que otros autores o individuales han emitido acerca del canal y la página web. No representan necesariamente aprobaciones o relaciones entre el canal y los autores de dichas opiniones y viceversa."
     index:
       meta:
         title: Tutoriales gratuitos de programación en castellano
