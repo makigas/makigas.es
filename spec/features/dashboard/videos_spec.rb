@@ -41,6 +41,30 @@ RSpec.feature "Dashboard videos", type: :feature do
       expect(@playlist.videos.count).to eq 1
     end
 
+    scenario "user can create unfeatured videos" do
+      @playlist = FactoryGirl.create(:playlist)
+      visit dashboard_videos_path
+
+      expect {
+        click_link 'Nuevo Vídeo'
+        fill_in 'Título', with: 'My video title'
+        fill_in 'Descripción', with: 'This is my newest and coolest video'
+        fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
+        # TODO: Should test the actual interaction with duration controls.
+        # (They require JavaScript and I'll prefer to finish this test suite
+        # before adding extra dependencies that could break existing tests)
+        find(:xpath, "//input[@id='video_duration']", visible: false).set '212'
+        select @playlist.title, from: 'Lista de reproducción'
+        check 'video_unfeatured'
+        click_button 'Crear Vídeo'
+      }.to change { Video.count }.by 1
+
+      visit root_path
+      within '.recent-videos' do
+        expect(page).not_to have_link 'My video title'
+      end
+    end
+
     scenario "user cannot create videos with invalid data" do
       @playlist = FactoryGirl.create(:playlist)
       visit dashboard_videos_path
