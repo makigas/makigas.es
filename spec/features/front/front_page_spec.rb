@@ -57,7 +57,8 @@ RSpec.feature "Front page", type: :feature do
 
     it "doesn't show videos hidden from front" do
       @hidden = FactoryGirl.create(:video, title: 'Hidden', youtube_id: 'AABBCC', unfeatured: true)
-      within('.recent-videos') do
+      visit root_path
+      within '.recent-videos' do
         expect(page).to have_link @video.title
         expect(page).not_to have_link @hidden.title
       end
