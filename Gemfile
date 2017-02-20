@@ -22,14 +22,19 @@ gem 'whenever'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
+group :development do
+  gem 'web-console'
+  gem 'capistrano'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
   gem 'capybara'
-end
-
-group :development do
-  gem 'web-console'
 end
 

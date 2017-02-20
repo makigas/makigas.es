@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 config/database.yml
+config/deploy.yml
 config/secrets.yml
 public/sitemap.xml
 public/system
