@@ -9,7 +9,8 @@
     <%= number_field_tag 'duration[minutes]', (((@video.duration % 3600) / 60) rescue 0), class: 'form-control', min: 0, max: 59 %> :
     <%= number_field_tag 'duration[seconds]', ((@video.duration % 60) rescue 0), class: 'form-control', min: 0, max: 59 %>
     </p>
-  <% end %>
+  <% end %>  
   <%= form.association :playlist, include_blank: :translate %>
+  <%= form.input :unfeatured %>
   <%= form.submit class: 'btn btn-success' %>
 <% end %>

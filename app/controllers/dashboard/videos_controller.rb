@@ -54,7 +54,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
   end
 
   def video_params
-    params.require(:video).permit(:title, :description, :youtube_id, :duration, :playlist_id, :created_at)
+    params.require(:video).permit(:title, :description, :youtube_id, :duration, :playlist_id, :unfeatured, :created_at)
   end
 
 end

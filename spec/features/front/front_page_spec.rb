@@ -43,12 +43,25 @@ RSpec.feature "Front page", type: :feature do
 
     it "shows the video thumbnail" do
       visit root_path
-      expect(page).to have_css "img[src='https://i1.ytimg.com/vi/#{@video.youtube_id}/mqdefault.jpg']"
+      within '.recent-videos' do
+        expect(page).to have_css "img[src='https://i1.ytimg.com/vi/#{@video.youtube_id}/mqdefault.jpg']"
+      end
     end
 
     it "links to the video" do
       visit root_path
-      expect(page).to have_link @video.title, href: playlist_video_path(@video, playlist_id: @video.playlist)
+      within '.recent-videos' do
+        expect(page).to have_link @video.title, href: playlist_video_path(@video, playlist_id: @video.playlist)
+      end
+    end
+
+    it "doesn't show videos hidden from front" do
+      @hidden = FactoryGirl.create(:video, title: 'Hidden', youtube_id: 'AABBCC', unfeatured: true)
+      visit root_path
+      within '.recent-videos' do
+        expect(page).to have_link @video.title
+        expect(page).not_to have_link @hidden.title
+      end
     end
   end
 end
