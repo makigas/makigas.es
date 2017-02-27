@@ -2,9 +2,21 @@ require 'rails_helper'
 
 RSpec.describe Video, type: :model do
   
-  it 'has a valid factory' do
-    video = FactoryGirl.build(:video)
-    expect(video).to be_valid
+  context 'is valid when instanciated via' do
+    it ':video factory' do
+      video = FactoryGirl.build(:video)
+      expect(video).to be_valid
+    end
+
+    it ':yesterday_video factory' do
+      video = FactoryGirl.build(:yesterday_video)
+      expect(video).to be_valid
+    end
+
+    it ':tomorrow_video factory' do
+      video = FactoryGirl.build(:tomorrow_video)
+      expect(video).to be_valid
+    end
   end
 
   context 'validation' do
@@ -55,6 +67,11 @@ RSpec.describe Video, type: :model do
 
     it 'is not valid without being in a playlist' do
       video = FactoryGirl.build(:video, playlist: nil)
+      expect(video).not_to be_valid
+    end
+    
+    it 'is not valid without a publishing date' do
+      video = FactoryGirl.build(:video, published_at: nil)
       expect(video).not_to be_valid
     end
 

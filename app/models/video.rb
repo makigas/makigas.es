@@ -14,6 +14,7 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, length: { maximum: 15 }
   validates :duration, presence: true, numericality: { greater_than: 0 }
   validates :playlist, presence: true
+  validates :published_at, presence: true
 
   # Natural duration
   def natural_duration= dur
