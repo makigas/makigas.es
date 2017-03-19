@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['MAKIGAS_DATABASE_HOST'] %>
+  database: <%= ENV['MAKIGAS_DATABASE_DATABASE'] %>
+  username: <%= ENV['MAKIGAS_DATABASE_USER'] %>
+  password: <%= ENV['MAKIGAS_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

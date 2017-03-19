@@ -1,0 +1,7 @@
+config/database.yml
+config/secrets.yml
+log
+tmp
+public/system
+.dockerignore
+Dockerfile
