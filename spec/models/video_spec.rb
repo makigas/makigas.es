@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-  
+
   context 'is valid when instanciated via' do
     it ':video factory' do
       video = FactoryGirl.build(:video)
@@ -69,7 +69,7 @@ RSpec.describe Video, type: :model do
       video = FactoryGirl.build(:video, playlist: nil)
       expect(video).not_to be_valid
     end
-    
+
     it 'is not valid without a publishing date' do
       video = FactoryGirl.build(:video, published_at: nil)
       expect(video).not_to be_valid
@@ -101,7 +101,7 @@ RSpec.describe Video, type: :model do
   end
 
   context 'natural duration' do
-    it 'should convert from duration to natural duration' do 
+    it 'should convert from duration to natural duration' do
       expect(FactoryGirl.build(:video, duration: 12).natural_duration).
         to eq '00:00:12'
       expect(FactoryGirl.build(:video, duration: 61).natural_duration).

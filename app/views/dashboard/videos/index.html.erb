@@ -16,6 +16,7 @@
       <th><%= t('.title') %></th>
       <th><%= t('.playlist') %></th>
       <th><%= t('.release_date') %></th>
+      <th><%= t('.last_update') %></th>
       <th><%= t('.operations') %></th>
     </tr>
   </thead>
@@ -24,7 +25,8 @@
     <tr>
       <td><%= link_to video.title, [:dashboard, video] %></td>
       <td><%= link_to video.playlist.title, [:dashboard, video.playlist] %></td>
-      <td><%= video.created_at %></td>
+      <td><%= l video.published_at, format: :long %></td>
+      <td><%= distance_of_time_in_words video.updated_at, DateTime.now %></td>
       <td>
         <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-default' %>
         <%= button_to t('.destroy'), [:dashboard, video], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>

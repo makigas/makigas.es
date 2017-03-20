@@ -61,7 +61,7 @@
       <div class="col-md-7">
         <%= to_markdown @video.description %>
         <p>
-          <%= t('.release_date_html', date: content_tag(:time, l(@video.created_at, format: :short), datetime: @video.created_at.to_time.iso8601)) %> &bull;
+          <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
           <%= t('.duration', duration: running_time(@video.duration)) %>
         </p>
 

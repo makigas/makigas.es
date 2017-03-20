@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170227184939) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "topic_id"
+    t.integer  "position"
     t.string   "thumbnail_file_name"
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170227184939) do
     t.string   "card_content_type"
     t.integer  "card_file_size"
     t.datetime "card_updated_at"
+    t.index ["position"], name: "index_playlists_on_position", using: :btree
     t.index ["slug"], name: "index_playlists_on_slug", unique: true, using: :btree
   end
 
