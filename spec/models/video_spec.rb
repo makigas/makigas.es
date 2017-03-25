@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-
   context 'is valid when instanciated via' do
     it ':video factory' do
       video = FactoryGirl.build(:video)
@@ -128,6 +127,53 @@ RSpec.describe Video, type: :model do
       expect(video.duration).to eq 35999
       video.natural_duration = '10:00:00'
       expect(video.duration).to eq 36000
+    end
+  end
+
+  describe '.visible?' do
+    let(:published) { FactoryGirl.build(:video, published_at: 2.days.ago) }
+    let(:scheduled) { FactoryGirl.build(:video, published_at: 6.weeks.from_now) }
+
+    context 'when publishing date has been reached' do
+      subject { published.visible? }
+      it { is_expected.to eq true }
+    end
+
+    context 'when publishing date has not been reached' do
+      subject { scheduled.visible? }
+      it { is_expected.to eq false }
+    end
+  end
+
+  describe '.scheduled?' do
+    let(:published) { FactoryGirl.build(:video, published_at: 2.days.ago) }
+    let(:scheduled) { FactoryGirl.build(:video, published_at: 6.weeks.from_now) }
+
+    context 'when publishing date has been reached' do
+      subject { published.scheduled? }
+      it { is_expected.to eq false }
+    end
+
+    context 'when publishing date has not been reached' do
+      subject { scheduled.scheduled? }
+      it { is_expected.to eq true }
+    end
+  end
+
+  describe '.visible' do
+    before(:each) do
+      @published = FactoryGirl.create(:video, youtube_id: 'ASDF', published_at: 2.days.ago)
+      @scheduled = FactoryGirl.create(:video, youtube_id: 'ASDQ', published_at: 2.days.from_now)
+    end
+
+    it 'should contain a video published yesterday' do
+      videos = Video.visible.collect
+      expect(videos).to include @published
+    end
+
+    it 'should not contain a video published tomorrow' do
+      videos = Video.visible.collect
+      expect(videos).not_to include @scheduled
     end
   end
 end
