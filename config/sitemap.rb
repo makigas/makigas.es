@@ -12,7 +12,7 @@ SitemapGenerator::Sitemap.create do
   add playlists_path, priority: 0.9, changefreq: 'daily'
   Playlist.find_each do |playlist|
     add playlist_path(playlist), priority: 0.8, changefreq: 'weekly'
-    playlist.videos.find_each do |video|
+    playlist.videos.visible.find_each do |video|
       add playlist_video_path(video, playlist_id: playlist), priority: 0.8
     end
   end
