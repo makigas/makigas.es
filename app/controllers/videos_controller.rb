@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.joins(:playlist).all
+    @videos = Video.visible.joins(:playlist).all
     if params[:length]
       @videos = @videos.where('duration <= 300') if params[:length] == "short"
       @videos = @videos.where('duration > 300 and duration <= 900') if params[:length] == "medium"

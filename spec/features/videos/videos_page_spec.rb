@@ -1,61 +1,36 @@
 require 'rails_helper'
 
 RSpec.feature "Topics page", type: :feature do
-  context "when there are no videos" do
-    it "is success" do
-      visit videos_path
-      expect(page.status_code).to be 200
-    end
+  scenario "still loads without videos" do
+    visit videos_path
+    expect(page.status_code).to be 200
   end
 
-  context "when there are videos" do
-    before(:each) { @video = FactoryGirl.create(:video, duration: 133) }
+  scenario "displays information about videos" do
+    video = FactoryGirl.create(:video, duration: 133)
 
-    it "is success" do
-      visit videos_path
-      expect(page.status_code).to be 200
-    end
+    visit videos_path
+    expect(page).to have_link video.title, href: playlist_video_path(video, playlist_id: video.playlist)
+    expect(page).to have_text video.description
+    expect(page).to have_text "Duración: 2:13"
+    expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
+  end
 
-    it "shows the video title" do
-      visit videos_path
-      expect(page).to have_text @video.title
-    end
+  scenario "displays topic if the playlist has one" do
+    topic = FactoryGirl.create(:topic)
+    playlist = FactoryGirl.create(:playlist, topic: topic)
+    video = FactoryGirl.create(:video, playlist: playlist)
+    
+    visit videos_path
+    expect(page).to have_link topic.title, href: topic_path(topic)
+  end
 
-    it "shows the video description" do
-      visit videos_path
-      expect(page).to have_text @video.description
-    end
+  scenario "scheduled videos are not displayed" do
+    published = FactoryGirl.create(:yesterday_video, youtube_id: 'PUBLISHED', title: 'Published')
+    scheduled = FactoryGirl.create(:tomorrow_video, youtube_id: 'TOMORROW', title: 'Scheduled')
 
-    it "shows the video duration" do
-      visit videos_path
-      expect(page).to have_text "Duración: 2:13"
-    end
-
-    it "shows the video playlist" do
-      visit videos_path
-      expect(page).to have_text "Serie: #{@video.playlist.title}"
-    end
-
-    it "links to the video" do
-      visit videos_path
-      expect(page).to have_link @video.title, href: playlist_video_path(@video, playlist_id: @video.playlist)
-    end
-
-    it "links to the playlist for this video" do
-      visit videos_path
-      expect(page).to have_link @video.playlist.title, href: playlist_path(@video.playlist)
-    end
-
-    context "when the video is on a playlist" do
-      before(:each) {
-        @topic = FactoryGirl.create(:topic)
-        @video.playlist.update_attributes(topic: @topic)
-      }
-
-      it "links to the topic for this video" do
-        visit videos_path
-        expect(page).to have_link @topic.title, href: topic_path(@topic)
-      end
-    end
+    visit videos_path
+    expect(page).to have_text published.title
+    expect(page).not_to have_text scheduled.title
   end
 end
