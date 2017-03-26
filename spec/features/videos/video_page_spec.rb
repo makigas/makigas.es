@@ -20,7 +20,7 @@ RSpec.feature "Video page", type: :feature do
 
   it "has an embed to YouTube" do
     visit_video @video
-    expect(page).to have_css "iframe[src*='www.youtube.com/embed/#{@video.youtube_id}']"
+    expect(page).to have_css "iframe[src*='www.youtube-nocookie.com/embed/#{@video.youtube_id}']"
   end
 
   it "shows the video description" do
