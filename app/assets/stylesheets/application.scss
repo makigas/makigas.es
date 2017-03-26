@@ -16,26 +16,15 @@
 
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,400i,700,700i';
 
-@font-face {
-  font-family: "Commodore64";
-  src: font-url('c64.eot'),
-       font-url('c64.ttf') format('truetype'),
-       font-url('c64.woff') format('woff');
-}
-
 body {
   font-family: 'Open Sans';
   font-size: 14px;
 }
 
 .main-header {
-  // This sets how the logo is displayed on the top of the page.
-  .navbar-brand {
-    font-family: 'Commodore64';
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: normal;
-    font-size: 24px;
+  // Render makigas logo using white SVG.
+  svg.makigas-logo {
+    fill: white;
   }
 
   // My custom navbar decoration.
@@ -258,15 +247,11 @@ body.auth {
 
   .auth-header {
     margin-top: 4em;
-    margin-bottom: 4em;
+    margin-bottom: 2em;
+    text-align: center;
 
-    h1.brand {
-      text-align: center;
-      color: white;
-      font-family: 'Commodore64';
-      font-size: 40px;
-      -webkit-font-smoothing: none;
-      -moz-osx-font-smoothing: grayscale;
+    svg {
+      fill: white;
     }
   }
 }
