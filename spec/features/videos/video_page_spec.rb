@@ -1,34 +1,27 @@
 require 'rails_helper'
 
 RSpec.feature "Video page", type: :feature do
-  before(:each) { @video = FactoryGirl.create(:video, duration: 133) }
+  before { @video = FactoryGirl.create(:video, duration: 133) }
 
-  it "is success" do
-    visit_video @video
-    expect(page.status_code). to be 200
-  end
-
-  it "shows the video title" do
+  scenario 'there is information about the video' do
     visit_video @video
     expect(page).to have_text @video.title
-  end
-
-  it "links to the playlist" do
-    visit_video @video
+    expect(page).to have_content @video.description
     expect(page).to have_link @video.playlist.title, href: playlist_path(@video.playlist)
   end
 
-  it "has an embed to YouTube" do
+  scenario 'the page is indexable' do
     visit_video @video
+    expect(page).not_to have_css 'meta[name="robots"][content="noindex"]', visible: false
+  end
+
+  scenario 'there is a player embedded in' do
+    visit_video @video
+
     expect(page).to have_css "iframe[src*='www.youtube-nocookie.com/embed/#{@video.youtube_id}']"
   end
 
-  it "shows the video description" do
-    visit_video @video
-    expect(page).to have_content @video.description
-  end
-
-  it "links to the playlist in a box" do
+  scenario 'there is a playlist card' do
     visit_video @video
     within("//div[@class='video-information']") do
       expect(page).to have_content @video.playlist.title
@@ -36,18 +29,39 @@ RSpec.feature "Video page", type: :feature do
     end
   end
 
-  context "when there is a topic for this playlist" do
-    before(:each) do
+  context 'a topic has been assigned' do
+    before do
       @topic = FactoryGirl.create(:topic)
       @video.playlist.update_attributes(topic: @topic)
     end
 
-    it "links to the topic in a box" do
+    scenario 'there is a topic card' do
       visit_video @video
       within("//div[@class='video-information']") do
         expect(page).to have_content @topic.title
         expect(page).to have_content @topic.description
         expect(page).to have_css "img[src*='#{@topic.thumbnail.url(:small)}']"
+      end
+    end
+  end
+
+  context 'video is scheduled' do
+    before { @video.update_attributes(published_at: 2.days.from_now) }
+
+    scenario 'the page requires authorization' do
+      visit_video @video
+      expect(current_path).not_to eq playlist_video_path(@video, playlist_id: @video.playlist)
+    end
+
+    context 'user is logged in' do
+      before do
+        @user = FactoryGirl.create(:user)
+        login_as @user, scope: :user
+      end
+
+      scenario 'the page is not indexable' do
+        visit_video @video
+        expect(page).to have_css 'meta[name="robots"][content="noindex"]', visible: false
       end
     end
   end
@@ -58,3 +72,4 @@ private
 def visit_video(video)
   visit playlist_video_path(video, playlist_id: video.playlist)
 end
+

@@ -1,50 +1,71 @@
 require 'rails_helper'
 
 RSpec.feature "Topic page", type: :feature do
-  before(:each) {
-    @topic = FactoryGirl.create(:topic)
-  }
+  before { @topic = FactoryGirl.create(:topic) }
 
-  context "visiting a topic page" do
-    it "is success" do
-      visit topic_path(@topic)
-      expect(page.status_code).to be 200
+  scenario 'shows information about a topic' do
+    visit topic_path(@topic)
+    expect(page).to have_text @topic.title
+    expect(page).to have_text @topic.description
+    expect(page).to have_css "img[src*='#{@topic.thumbnail.url(:small)}']"
+  end
+
+  scenario 'shows playlists in a topic' do
+    @playlist = FactoryGirl.create(:playlist, topic: @topic)
+
+    visit topic_path(@topic)
+
+    expect(page).to have_text @playlist.title
+    expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:default)}']"
+    expect(page).to have_css "a[href*='#{playlist_path(@playlist)}']"
+  end
+
+  context 'on empty playlists' do
+    before do
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
     end
 
-    it "shows the topic title" do
+    scenario 'shows the playlist length' do
       visit topic_path(@topic)
-      expect(page).to have_text @topic.title
-    end
-
-    it "shows the topic description" do
-      visit topic_path(@topic)
-      expect(page).to have_text @topic.description
-    end
-
-    it "shows the topic image" do
-      visit topic_path(@topic)
-      expect(page).to have_css "img[src*='#{@topic.thumbnail.url(:small)}']"
+      expect(page).to have_text '0 episodios'
     end
   end
 
-  context "when the topic has playlists" do
-    before(:each) {
+  context 'on playlists with a single video' do
+    before do
       @playlist = FactoryGirl.create(:playlist, topic: @topic)
-    }
+      FactoryGirl.create(:video, playlist: @playlist)
 
-    it "shows the playlist title" do
-      visit topic_path(@topic)
-      expect(page).to have_text @playlist.title
+      scenario 'shows the playlist length' do
+        visit topic_path(@topic)
+        expect(page).to have_text '1 episodio'
+      end
+    end
+  end
+
+  context 'on playlists with many videos' do
+    before do
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1235')
     end
 
-    it "shows the playlist image" do
+    scenario 'shows the playlist length' do
       visit topic_path(@topic)
-      expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:default)}']"
+      expect(page).to have_text '2 episodios'
+    end
+  end
+
+  context 'on playlists with scheduled videos' do
+    before do
+      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1235', published_at: 2.days.from_now)
     end
 
-    it "links to the playlist" do
+    scenario 'scheduled videos are not counted' do
       visit topic_path(@topic)
-      expect(page).to have_css "a[href*='#{playlist_path(@playlist)}']"
+      expect(page).to have_text '1 episodio'
     end
   end
 end

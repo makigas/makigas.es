@@ -5,6 +5,17 @@ FactoryGirl.define do
     youtube_id '2vjPBrBU-TM'
     duration 232
     association :playlist, factory: :playlist
-    position 1
+    published_at { DateTime.now }
+
+    trait :published_yesterday do
+      published_at { 1.day.ago }
+    end
+
+    trait :published_tomorrow do
+      published_at { 1.day.from_now }
+    end
+
+    factory :yesterday_video, traits: [:published_yesterday]
+    factory :tomorrow_video, traits: [:published_tomorrow]
   end
 end

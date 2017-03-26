@@ -15,6 +15,11 @@
 <meta property="og:site_name" content="makigas">
 <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
+<% content_for :meta do %>
+  <% if @video.scheduled? %>
+  <meta name="robots" content="noindex">
+  <% end %>
+<% end %>
 <% content_for :body_classes, 'video-player-page' %>
 
 <% if @video.playlist.topic %>
@@ -45,7 +50,7 @@
   <% else %>
   <%= link_to t('.previous'), '#', disabled: true, class: 'disabled pull-left btn btn-default' %>
   <% end %>
-  
+
   <% unless @video.last? %>
   <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
   <% else %>
@@ -61,7 +66,7 @@
       <div class="col-md-7">
         <%= to_markdown @video.description %>
         <p>
-          <%= t('.release_date_html', date: content_tag(:time, l(@video.created_at, format: :short), datetime: @video.created_at.to_time.iso8601)) %> &bull;
+          <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
           <%= t('.duration', duration: running_time(@video.duration)) %>
         </p>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219113217) do
+ActiveRecord::Schema.define(version: 20170227184939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,16 +80,17 @@ ActiveRecord::Schema.define(version: 20170219113217) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",                       null: false
-    t.text     "description",                 null: false
-    t.string   "youtube_id",                  null: false
-    t.integer  "duration",                    null: false
-    t.string   "slug",                        null: false
-    t.integer  "playlist_id",                 null: false
-    t.integer  "position",                    null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "unfeatured",  default: false, null: false
+    t.string   "title",                        null: false
+    t.text     "description",                  null: false
+    t.string   "youtube_id",                   null: false
+    t.integer  "duration",                     null: false
+    t.string   "slug",                         null: false
+    t.integer  "playlist_id",                  null: false
+    t.integer  "position",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "unfeatured",   default: false, null: false
+    t.datetime "published_at",                 null: false
     t.index ["slug"], name: "index_videos_on_slug", using: :btree
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true, using: :btree
   end

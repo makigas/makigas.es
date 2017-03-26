@@ -1,66 +1,46 @@
 require 'rails_helper'
 
 RSpec.feature "Playlists page", type: :feature do
-  context "when there are no playlists" do
-    it "is success" do
-      visit playlists_path
-      expect(page.status_code).to be 200
-    end
+  before { @playlist = FactoryGirl.create(:playlist) }
+
+  scenario 'displays information about playlists' do
+    visit playlists_path
+
+    expect(page).to have_link @playlist.title, href: playlist_path(@playlist)
+    expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:default)}']"
   end
-  
-  context "when there are playlists" do
-    before(:each) {
-      @playlist = FactoryGirl.create(:playlist)
-    }
 
-    it "it is success" do
+  feature 'number of videos' do
+    scenario 'empty playlist' do
       visit playlists_path
-      expect(page.status_code).to be 200
+
+      expect(page).to have_text '0 episodios'
     end
 
-    it "shows the playlists" do
+    scenario 'single video' do
+      FactoryGirl.create(:video, playlist: @playlist)
+
       visit playlists_path
-      expect(page).to have_text @playlist.title
+
+      expect(page).to have_text '1 episodio'
     end
 
-    it "has the playlist photo" do
+    scenario 'many videos' do
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1238')
+
       visit playlists_path
-      expect(page).to have_css("img[src*='#{@playlist.thumbnail.url(:default)}']")
+
+      expect(page).to have_text '2 episodios'
     end
 
-    it "links to a playlist" do
+    scenario 'scheduled videos are not counted' do
+      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryGirl.create(:tomorrow_video, playlist: @playlist, youtube_id: '1238')
+
       visit playlists_path
-      expect(page).to have_link @playlist.title, href: playlist_path(@playlist)
-    end
 
-    context "when the playlist is empty" do
-      it "counts the episodes" do
-        visit playlists_path
-        expect(page).to have_text "0 episodios"
-      end
-    end
-
-    context "when the playlist has a video" do
-      before(:each) {
-        @video = FactoryGirl.create(:video, playlist: @playlist)
-      }
-
-      it "counts the episodes" do
-        visit playlists_path
-        expect(page).to have_text "1 episodio"
-      end
-    end
-
-    context "when the playlist has two videos" do
-      before(:each) {
-        @video1 = FactoryGirl.create(:video, playlist: @playlist)
-        @video2 = FactoryGirl.create(:video, playlist: @playlist, youtube_id: "#{@video1.youtube_id}A")
-      }
-
-      it "counts the episodes" do
-        visit playlists_path
-        expect(page).to have_text "#{@playlist.videos.count} episodios"
-      end
+      expect(page).to have_text '1 episodio'
     end
   end
 end

@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.joins(:playlist).all
+    @videos = Video.visible.joins(:playlist).all
     if params[:length]
       @videos = @videos.where('duration <= 300') if params[:length] == "short"
       @videos = @videos.where('duration > 300 and duration <= 900') if params[:length] == "medium"
@@ -14,7 +14,7 @@ class VideosController < ApplicationController
   def show
     @playlist = Playlist.friendly.find(params[:playlist_id])
     @video = @playlist.videos.friendly.find(params[:id])
+    authenticate_user! if @video.scheduled?
     @in_playlist = @video.higher_items(5) + [@video] + @video.lower_items(5)
   end
-  
 end

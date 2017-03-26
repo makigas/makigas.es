@@ -39,7 +39,7 @@
 <div class="col-xs-6 col-sm-4 col-lg-3">
 <%= link_to pl do %>
 <div class="playlist panel panel-default">
-  <span class="badge"><%= t('.episode', count: pl.videos.count) %></span>
+  <span class="badge"><%= t('.episode', count: pl.videos.visible.count) %></span>
   <%= image_tag pl.thumbnail.url(:default), srcset: "#{pl.thumbnail.url(:hidef)} 2x" %>
   <div class="panel-heading">
     <h3 class="panel-title"><%= pl.title %></h3>

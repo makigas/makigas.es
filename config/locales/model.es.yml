@@ -44,6 +44,7 @@ es:
         slug: URL
         thumbnail: Miniatura
         playlist: Lista de reproducción
+        published_at: Fecha de publicación
         youtube_id: ID de YouTube
         unfeatured: No destacar
   simple_form:
