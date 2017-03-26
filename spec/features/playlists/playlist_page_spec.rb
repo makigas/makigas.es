@@ -1,51 +1,46 @@
 require 'rails_helper'
 
 RSpec.feature "Playlist page", type: :feature do
-  before(:each) { @playlist = FactoryGirl.create(:playlist) }
+  before { @playlist = FactoryGirl.create(:playlist) }
 
-  context "visiting a playlist" do
-    it "is success" do
-      visit playlist_path(@playlist)
-      expect(page.status_code).to eq 200
-    end
+  scenario 'displays playlist information' do
+    visit playlist_path(@playlist)
 
-    it "shows playlist title" do
-      visit playlist_path(@playlist)
-      expect(page).to have_text @playlist.title
-    end
+    expect(page).to have_text @playlist.title
+    expect(page).to have_text @playlist.description
+    expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:small)}']"
+  end
 
-    it "shows playlist description" do
-      visit playlist_path(@playlist)
-      expect(page).to have_text @playlist.description
-    end
+  scenario 'displays information about videos in this playlist' do
+    @video = FactoryGirl.create(:video, playlist: @playlist, duration: 133)
 
-    it "shows playlist image" do
-      visit playlist_path(@playlist)
-      expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:small)}']"
-    end
+    visit playlist_path(@playlist)
 
-    context "when the playlist is populated" do
-      before(:each) { @video = FactoryGirl.create(:video, playlist: @playlist, duration: 133) }
+    expect(page).to have_text video_title(@video)
+    expect(page).to have_text @video.description
+    expect(page).to have_text '2:13'
+    expect(page).to have_css "a[href*='#{video_path(@video)}']"
+  end
 
-      it "shows the video index and title" do
-        visit playlist_path(@playlist)
-        expect(page).to have_text "#{@video.position}. #{@video.title}"
-      end
+  scenario 'scheduled videos are not displayed' do
+    @published = FactoryGirl.create(:yesterday_video, playlist: @playlist, title: 'Yesterday', youtube_id: 'YESTERDAY')
+    @scheduled = FactoryGirl.create(:tomorrow_video, playlist: @playlist, title: 'Tomorrow', youtube_id: 'TOMORROW')
 
-      it "shows the video description" do
-        visit playlist_path(@playlist)
-        expect(page).to have_text @playlist.description
-      end
+    visit playlist_path(@playlist)
 
-      it "shows the video duration" do
-        visit playlist_path(@playlist)
-        expect(page).to have_text "2:13"
-      end
+    expect(page).to have_text video_title(@published)
+    expect(page).to have_css "a[href*='#{video_path(@published)}']"
+    expect(page).not_to have_text video_title(@scheduled)
+    expect(page).not_to have_css "a[href*='#{video_path(@scheduled)}']"
+  end
 
-      it "links to the video page" do
-        visit playlist_path(@playlist)
-        expect(page).to have_css "a[href*='#{playlist_video_path(@video, playlist_id: @playlist)}']"
-      end
-    end
+  private
+
+  def video_title(video)
+    "#{video.position}. #{video.title}"
+  end
+
+  def video_path(video)
+    playlist_video_path(video, playlist_id: video.playlist)
   end
 end

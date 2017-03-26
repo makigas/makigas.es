@@ -39,7 +39,7 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
   <div class="episodes-table list-group">
-  <% @playlist.videos.each do |v| %>
+  <% @playlist.videos.visible.each do |v| %>
     <%= link_to playlist_video_path(v, playlist_id: @playlist), class: 'list-group-item' do %>
       <div class="badge video-duration"><%= running_time(v.duration) %></div>
       <h4 class="list-group-item-heading"><%= v.position %>. <%= v.title %></h4>
