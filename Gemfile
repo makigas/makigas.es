@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.1'
+gem 'rails', '5.0.2'
 gem 'rails-i18n', '~> 5.0.0'
 
 gem 'pg'
@@ -25,7 +25,7 @@ gem 'bootstrap-kaminari-views', '~> 0.0.5'
 group :development do
   gem 'web-console'
   gem 'capistrano'
-  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails', '~> 1.2.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
