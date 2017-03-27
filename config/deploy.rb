@@ -14,7 +14,7 @@ set :deploy_to, deploy_param(:deploy_to)
 set :repo_url, deploy_param(:repo_url)
 
 # Shared settings
-append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, ".env"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Misc settings

@@ -1,7 +1,0 @@
-# These settings are used to make Travis-CI DB setup more straightforward.
-
-test:
-  adapter: postgresql
-  database: makigas_test
-  username: postgres
-  password:
