@@ -1,0 +1,24 @@
+default: &default
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  port: <%= ENV['DB_PORT'] || '5432' %>
+  adapter: <%= ENV['DB_ADAPTER'] || 'postgresql' %>
+  encoding: unicode
+  pool: <%= ENV['DB_POOL'] || 5 %>
+
+development:
+  <<: *default
+  database: <%= ENV['DB_NAME'] || 'makigas_development' %>
+  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  password: <%= ENV['DB_PASSWORD'] || '' %>
+
+test:
+  <<: *default
+  database: <%= ENV['DB_NAME'] || 'makigas_test' %>
+  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  password: <%= ENV['DB_PASSWORD'] || '' %>
+
+production:
+  <<: *default
+  database: <%= ENV['DB_NAME'] || 'makigas_production' %>
+  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  password: <%= ENV['DB_PASSWORD'] %>

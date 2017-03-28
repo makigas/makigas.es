@@ -5,14 +5,17 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
+log/*
 !/log/.keep
-/tmp
-config/database.yml
+tmp/
+
+# Sensible file
 config/deploy.yml
-config/secrets.yml
+
+# Ignore local instance data.
+.env
 public/sitemap.xml
 public/system
