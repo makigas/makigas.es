@@ -8,16 +8,20 @@ es:
         manage_playlists: Gestionar listas
         manage_topics: Gestionar temas
         manage_users: Gestionar usuarios
+        manage_opinions: Gestionar opiniones
         videos:
           one: vídeo
           other: vídeos
+        opinions:
+          one: opinión
+          other: opiniones
         playlists:
           one: lista
           other: listas
-        topic:
-          one: temas
+        topics:
+          one: tema
           other: temas
-        user:
+        users:
           one: usuario
           other: usuarios
     opinions:
@@ -29,6 +33,7 @@ es:
         cancel: Cancelar
         dashboard: Panel de control
         edit: Editar
+        opinions: Opiniones
         topics: Opiniones
       index:
         dashboard: Panel de control
@@ -79,13 +84,14 @@ es:
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         title: Título
         topic: Tema
-        video: Vídeos
+        videos: Vídeos
       new:
         cancel: Cancelar
         dashboard: Panel de control
         new_playlist: Nueva Lista
         playlists: Listas
       show:
+        card: Tarjeta
         color: Color
         dashboard: Panel de control
         description: Descripción
@@ -141,6 +147,7 @@ es:
         new_topic: Nuevo Tema
         topics: Temas
       show:
+        color: Color
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir
@@ -149,6 +156,7 @@ es:
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
         title: Título
         topics: Temas
+        thumbnail: Miniatura
         view_topic: Ver Tema
       update:
         updated: Tema actualizado correctamente.
@@ -227,12 +235,14 @@ es:
         destroy: Destruir
         duration: Duración
         edit: Editar
+        published_at: Fecha de publicación
         playlist: Lista
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
         seconds:
           one: "%{count} segundo"
           other: "%{count} segundos"
         title: Título
+        thumbnail: Miniatura
         videos: Vídeos
         youtube_id: ID de YouTube
       update:
@@ -246,3 +256,4 @@ es:
         users: Usuarios
         videos: Vídeos
         view_site: Ver sitio
+        navigation: Navegación
