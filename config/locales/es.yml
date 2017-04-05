@@ -3,7 +3,7 @@ es:
   front:
     opinions:
       title: No lo digo yo, ellos también lo dicen
-      photo: Logotipo de %{from}
+      image: Logotipo de %{from}
     features:
       title: Piénsalo, ¿cuántas páginas conoces que te enseñen a programar...?
       free:
