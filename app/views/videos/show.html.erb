@@ -33,8 +33,6 @@
 <%= content_for :hero do %>
   <h1><%= @video.position %>. <%= @video.title %></h1>
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
-
-  <p class="alert alert-warning"><strong><%= t('.preview') %></strong> <%= t('.unlisted') %></p>
 <% end %>
 
 <div class="row video-player">
@@ -46,14 +44,15 @@
   </div>
 </div>
 
+<% unless @video.scheduled? %>
 <div class="video-toolbar">
-  <% unless @video.first? %>
+  <% unless @video == @playlist.videos.visible.first %>
   <%= link_to t('.previous'), playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
   <% else %>
   <%= link_to t('.previous'), '#', disabled: true, class: 'disabled pull-left btn btn-default' %>
   <% end %>
 
-  <% unless @video.last? %>
+  <% unless @video == @playlist.videos.visible.last %>
   <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
   <% else %>
   <%= link_to t('.next'), '#', disabled: true, class: 'disabled pull-right btn btn-default' %>
@@ -61,6 +60,9 @@
 
   <%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}", class: 'btn btn-default' %>
 </div>
+<% else %>
+  <p class="alert alert-warning"><strong><%= t('.preview') %></strong> <%= t('.unlisted') %></p>
+<% end %>
 
 <div class="video-information">
 <div class="row">
