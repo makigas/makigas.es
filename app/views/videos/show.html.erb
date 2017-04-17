@@ -33,8 +33,6 @@
 <%= content_for :hero do %>
   <h1><%= @video.position %>. <%= @video.title %></h1>
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
-
-  <p class="alert alert-warning"><strong><%= t('.preview') %></strong> <%= t('.unlisted') %></p>
 <% end %>
 
 <div class="row video-player">

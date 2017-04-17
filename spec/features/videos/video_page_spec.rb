@@ -45,59 +45,8 @@ RSpec.feature "Video page", type: :feature do
     end
   end
 
-  context 'video is scheduled but not private' do
+  context 'video is scheduled' do
     before { @video.update_attributes(published_at: 2.days.from_now) }
-
-    scenario 'there is information about the video' do
-      visit_video @video
-      expect(page).to have_text @video.title
-      expect(page).to have_content @video.description
-      expect(page).to have_link @video.playlist.title, href: playlist_path(@video.playlist)
-    end
-
-    scenario 'the page is marked as scheduled' do
-      visit_video @video
-      expect(page).to have_text 'Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).'
-    end
-
-    scenario 'the page is NOT indexable' do
-      visit_video @video
-      expect(page).to have_css 'meta[name="robots"][content="noindex"]', visible: false
-    end
-
-    scenario 'there is a player embedded in' do
-      visit_video @video
-
-      expect(page).to have_css "iframe[src*='www.youtube-nocookie.com/embed/#{@video.youtube_id}']"
-    end
-
-    scenario 'there is a playlist card' do
-      visit_video @video
-      within("//div[@class='video-information']") do
-        expect(page).to have_content @video.playlist.title
-        expect(page).to have_css "img[src*='#{@video.playlist.thumbnail.url(:small)}']"
-      end
-    end
-
-    context 'a topic has been assigned' do
-      before do
-        @topic = FactoryGirl.create(:topic)
-        @video.playlist.update_attributes(topic: @topic)
-      end
-
-      scenario 'there is a topic card' do
-        visit_video @video
-        within("//div[@class='video-information']") do
-          expect(page).to have_content @topic.title
-          expect(page).to have_content @topic.description
-          expect(page).to have_css "img[src*='#{@topic.thumbnail.url(:small)}']"
-        end
-      end
-    end
-  end
-
-  context 'video is scheduled and private' do
-    before { @video.update_attributes(published_at: 2.days.from_now, private: true) }
 
     scenario 'the page requires authorization' do
       visit_video @video
