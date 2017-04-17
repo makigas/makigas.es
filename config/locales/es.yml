@@ -143,8 +143,6 @@ es:
       watch_on_youtube: Ver en YouTube
       release_date_html: "Fecha de emisión: %{date}"
       duration: "Duración: %{duration}"
-      preview: Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).
-      unlisted: Este vídeo está sin listar y por ello no lo encontrarás ni en el canal de YouTube ni en las listas de esta web, en este momento.
       explore_other_videos:
         one: Explora el resto de vídeos de esta lista de reproducción.
         other: Una lista de reproducción de %{count} episodios.
