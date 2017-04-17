@@ -41,6 +41,12 @@
 }
 
 body.video-player-page {
+  .hero-tron .alert {
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.3;
+  }
+
   @media screen and (max-width: 767px) {
     .hero-tron {
       margin-bottom: 0;
