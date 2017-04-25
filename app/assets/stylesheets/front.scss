@@ -5,13 +5,10 @@
 }
 
 .navbar-transparent .navbar-makigas {
-  background: transparent !important;
+  background: rgba(black, 0.25) !important;
 }
 
 .makigas-tron {
-  background: image-url('desk.jpg');
-  background-size: cover;
-  background-position: bottom;
   color: white;
   
   font-family: 'Montserrat';
@@ -25,7 +22,9 @@
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    background: rgba(desaturate(#003399, 50%), 0.7);
+    background: desaturate(#003399, 50%);
+    background-image: linear-gradient(to bottom right, adjust-hue(desaturate(lighten(#003399, 30%), 25%), -25%), #003399);
+    box-shadow: 0 -4px 4px -2px rgba(black, 0.5) inset;
     
     @media screen and (min-width: 767px) and (max-width: 1199px) {
       padding-top: 130px;
