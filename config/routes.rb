@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Application error routes
   get '/404', to: 'error#not_found', via: :all
+  get '/422', to: 'error#unprocessable_entity', via: :all
   get '/500', to: 'error#internal_server_error', via: :all
 
   devise_for :users, controllers: {

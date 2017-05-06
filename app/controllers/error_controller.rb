@@ -1,5 +1,4 @@
 class ErrorController < ApplicationController
-
   def not_found
     render status: 404
   end
@@ -8,4 +7,7 @@ class ErrorController < ApplicationController
     render status: 500
   end
 
+  def unprocessable_entity
+    render status: 422
+  end
 end
