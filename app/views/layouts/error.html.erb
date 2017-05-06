@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= render 'layouts/head' %>
+</head>
+<body class="no-js <%= "page-#{controller.controller_name}" %> <%= content_for(:body_classes) %>">
+
+  <%= render 'layouts/header' %>
+
+  <div class="main-page <%= 'with-hero' if content_for?(:hero) %>">
+
+    <% if content_for?(:hero) %>
+    <div class="jumbotron hero-tron">
+      <div class="container">
+        <%= yield :hero %>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="main-page-inner container">
+
+    <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
+
+    <%= yield %>
+    </div>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <%= javascript_include_tag 'application' %>
+
+</body>
+</html>
