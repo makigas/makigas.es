@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.2'
+gem 'rails', '5.0.3'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'dotenv-rails'
 
@@ -17,7 +17,7 @@ gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'haml-rails', '~> 0.9'
+gem 'haml-rails', '~> 1.0'
 gem 'sitemap_generator'
 gem 'whenever'
 
