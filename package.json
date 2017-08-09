@@ -1,0 +1,13 @@
+{
+  "name": "makigas",
+  "version": "5.0.2",
+  "description": "Upstream source code for makigas.es",
+  "repository": "https://github.com/makigas/makigas",
+  "author": "Dani Rodríguez",
+  "license": "GPLv3",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^1.11.3"
+  }
+}
