@@ -69,9 +69,7 @@ Passwords must be 6 characters or greater.
 
 If you find a bug in this source code or an issue or visual glitch on the web site, please file a bug. If you find a security vulnerability on this source code, please disclose it in a private way to me. [My e-mail address and my PGP key is on my personal website](https://www.danirod.es/about.html#contact).
 
-This project follows the [code of merit](https://github.com/rosarior/Code-of-Merit). At this repository, I care about code, not about personal opinions nor feelings. I expect to deal with adults.
-
-Before sending a chunk of code or a new functionality, please discuss it with the team beforehand. This is not a general purpose project nor a framework – these are just the guts of my website. Therefore, I have my own roadmap.
+Please, do not send chunks of code or new functionalities before talking with Dani first. Create an issue so that it gets properly documented. This is not a general purpose framework, it is a unique website. Therefore I have my own roadmap.
 
 # License
 
