@@ -11,8 +11,8 @@ services:
 env:
   - DB_USERNAME=postgres
 before_install:
-  - nvm install --lts
-  - nvm use --lts
+  - nvm install 6
+  - nvm use 6
   - node -v
   - npm install -g yarn
 before_script: bundle exec rake db:create yarn:install
