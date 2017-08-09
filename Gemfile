@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
 group :development do
+  gem 'listen', '~> 3.1'
   gem 'web-console'
   gem 'capistrano'
   gem 'capistrano-rails', '~> 1.2.0'
