@@ -25,6 +25,7 @@ Requirements:
 
 * Ruby 2.3.3 + Bundler. May suggest getting it via [rvm](https://rvm.io).
 * PostgreSQL 9.4. May work on MySQL and sqlite3, although hasn't been tested.
+* Node.js + Yarn are required for front-end dependencies.
 * `libpq-dev`. If `bundle install` refuses to install pg, may be because of this.
 * `imagemagick`. Required for image manipulation when creating playlists and topics.
 
@@ -35,6 +36,17 @@ To install the web application:
     $ git clone https://github.com/makigas/makigas
     $ cd makigas
     $ bundle install
+
+## Yarn dependencies
+
+Rails 5.1 has adopted JavaScript and now it has first class support for Yarn,
+Webpack and other JavaScript related tools. At the moment Yarn is used for
+fetching front-end dependencies (Bootstrap, jQuery...), but I expect to use it
+more and more in the future.
+
+Make sure Node.js is installed on your system. LTS versions are recommended
+for production servers. Make sure that Yarn is installed. Install front-end
+dependencies using `bundle exec rake yarn:install` or simply `yarn`.
 
 ## Database
 
