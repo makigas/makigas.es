@@ -1,6 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
 $(document).ready(function() {
   // When the navbar is toggled on mobile phone, turn on the background color.
   $('body.page-front .navbar-collapse').on('show.bs.collapse', function() {
