@@ -291,7 +291,7 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-cookieconsent2@^1.0.10:
+cookieconsent2@1.0.10-2:
   version "1.0.10-2"
   resolved "https://registry.yarnpkg.com/cookieconsent2/-/cookieconsent2-1.0.10-2.tgz#d8dd818fb881a76b25206762c3688cad41dbced5"
   dependencies:
