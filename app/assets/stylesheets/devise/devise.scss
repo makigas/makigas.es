@@ -1,0 +1,28 @@
+/*
+ *= require bootstrap/dist/css/bootstrap.min
+ *= require_self
+ */
+
+/* Authentication. */
+body.auth {
+  background: desaturate(#003399, 25%);
+
+  .panel-default {
+    box-shadow: 0 0 4px #303030;
+    border-radius: 0;
+
+    .panel-heading {
+      h2 { font-size: 1.5em; }
+    }
+  }
+
+  .auth-header {
+    margin-top: 4em;
+    margin-bottom: 2em;
+    text-align: center;
+
+    svg {
+      fill: white;
+    }
+  }
+}
