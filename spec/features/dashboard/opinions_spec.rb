@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Dashboard opinions", type: :feature do
+  before { Capybara.default_host = "http://admin.example.com" }
+  after { Capybara.default_host = "http://www.example.com" }
+  
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_opinions_path

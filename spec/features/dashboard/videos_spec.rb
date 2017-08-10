@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Dashboard videos", type: :feature do
+  before { Capybara.default_host = "http://admin.example.com" }
+  after { Capybara.default_host = "http://www.example.com" }
+
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_videos_path
@@ -59,6 +62,8 @@ RSpec.feature "Dashboard videos", type: :feature do
         click_button 'Crear Vídeo'
       }.to change { Video.count }.by 1
 
+      # Test the video does not appear
+      Capybara.default_host = "http://www.example.com"
       visit root_path
       within '.recent-videos' do
         expect(page).not_to have_link 'My video title'
