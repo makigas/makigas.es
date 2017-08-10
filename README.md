@@ -92,14 +92,21 @@ you will have to use the Rails console to seed the first user, like so:
 
 # Contributing
 
+Read the [CONTRIBUTING.md][1] file for more information on how to contribute to
+the project. Follow the [Code of Conduct][2]. My two favourite guidelines from
+the Contributing file:
+
+* Send as many issues as you need, but please, keep one topic per issue
+  in order to keep things clean and easy to track.
+* Don't submit surprise PRs with new code. Always discuss your intentions
+  in a tracking issue before starting to work so that we can provide you all
+  the help you need, allocate your idea into the roadmap, or politely reject
+  your idea if we consider it's outside the scope of the project.
+
 If you find a bug in this source code or an issue or visual glitch on the web
 site, please file a bug. If you find a security vulnerability on this source
 code, please disclose it in a private way to me. [My e-mail address and my
-PGP key is on my personal website](https://www.danirod.es/contact/).
-
-Please, do not send chunks of code or new functionalities before talking with
-Dani first. Create an issue so that it gets properly documented. This is not
-a general purpose framework, it is a unique website. Therefore I have my own roadmap.
+PGP key is on my personal website][3].
 
 # License
 
@@ -123,7 +130,17 @@ a general purpose framework, it is a unique website. Therefore I have my own roa
 # Frequently Asked Questions
 
 * **Why did you rewrite makigas.es again?**
-  Previous versions of makigas.es used a blogging engine such as WordPress with a lot of plugins and hacks in order to work as general purpose CMS systems. This version was crafted specifically for the data structures required for the web site and therefore it is more concise, flexible and easy to develop and maintain.
+  Previous versions of makigas.es used a blogging engine such as WordPress with
+  a lot of plugins and hacks in order to work as general purpose CMS systems.
+  This version was crafted specifically for the data structures required for
+  the web site and therefore it is more concise, flexible and easy to develop
+  and maintain.
 
 * **What is the point on sharing the source code?**
-  I don't have any particular interest in this source code at this moment. I just want an app that works and that allows me to manage my videos and keep my information up to date.
+  I don't have any particular interest in this source code at this moment. I
+  just want an app that works and that allows me to manage my videos and keep
+  my information up to date.
+
+[1]: https://github.com/makigas/makigas/blob/master/CONTRIBUTING.md
+[2]: https://github.com/makigas/makigas/blob/master/CODE_OF_CONDUCT.md
+[3]: https://www.danirod.es/contact/
