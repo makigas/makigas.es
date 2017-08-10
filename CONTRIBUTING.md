@@ -4,9 +4,13 @@ Thank you for taking your time to contribute in some way to this project,
 reporting issues or providing suggestions or performing code reviews. These
 are the contributing guidelines for this project.
 
-## Reporting issues
+By contributing to this project we assume you have already read this
+contributing guidelines and you agree to them. Please, do not contribute to
+the project if you don't agree with the contents of this document.
 
-### What belongs on the issue tracker?
+## 1. Reporting issues
+
+### 1.1 What belongs on the issue tracker?
 
 The issue tracker is the homeplace for bug reports, suggestions, discussions
 about the project and such. If there is something **related to the source code
@@ -21,18 +25,21 @@ Examples of things that don't belong on the issue tracker: questions about the
 content of the tutorials on the website. Hasn't happened so far, but it's a
 warning. Use the official communities for that, please.
 
-### Multiple issues
+### 1.2 Multiple issues
 
-If you have multiple topics to report, send multiple issues. Issues are free,
-don't worry. It's all good sending 5 issues on a batch.
+If you have multiple topics to report, send multiple issues. Issues are free
+to create, and no one has to pay for them, don't worry. Send 5 issues in a batch
+if you need.
 
-The issue tracker will assign an unique number to each issue. It is important
-to keep the issues limited to one topic per issue because it makes tracking
-the issues easier, specially when it comes to bug reports. If you send a single
-issue with a lot of questions or unrelated bugs, you may be requested to submit
-again your question split through multiple issues.
+Why? Well: the issue tracker will assign an unique number to each issue. It is
+important to keep the issues limited to one topic per issue because it makes
+tracing the reports easier, specially when it comes to bug reports. If you send
+a single issue with a lot of questions or unrelated bugs, it makes hard to know
+when an issue is actually _fixed_. If you send a single issue with a lot of
+unrelated issues inside, you may be requested to submit again your issue
+following this rule and your original issue may be closed.
 
-### Technical specs
+### 1.3 Technical specs
 
 Bug reports should include as much technical information as you can provide.
 It is required to know how did you reach the bug so that it can be replicated.
@@ -58,9 +65,9 @@ instance, or an older version of the Ruby platform), your issue may be marked
 as `wontfix`. Use updated versions of the assets required to run the
 application.
 
-## Sending pull requests
+## 2. Sending pull requests
 
-### What belongs on a pull request
+### 2.1 What belongs on a pull request
 
 If you want to submit code to this project, use the pull request. Pull requests
 can be reviewed by the project owner, and in fact you'll be likely asked
@@ -69,11 +76,11 @@ already running on a web server, it is required that the code you submit is
 considered safe to run on a live application, without causing bad experience for
 final users or introducing application or security issues.
 
-### Always create a tracking issue before starting your work
+### 2.2 Always create a tracking issue before starting your work
 
 This project is not a general purpose framework for creating channel websites.
-There is a private roadmap specific to this channel. Therefore, not all ideas
-fit in this project source code.
+There is a roadmap specific to this project designed by the project owners.
+Therefore, unfortunatelly not all ideas fit in this project source code.
 
 **Always create a tracking issue before starting to work in a PR**. Don't just
 send a surprise PR with a lot of work, it's not funny and may cause your PR to
@@ -87,7 +94,7 @@ communicate that beforehand also. For instance, send a comment to the issue
 telling you want to help on that or you want to do that if it's not assigned.
 Again, it's all about avoiding surprises.
 
-### Never work on master branch
+### 2.3 Never work on master branch
 
 This repository protects `master` branch. Even owners cannot push directly
 into `master`, a pull request is always required. The reason is that code
@@ -104,9 +111,10 @@ is not up to date with upstream cannot be safely merged.
 It doesn't matter how many commits you do. It doesn't matter how many
 _merge master into my-branch_ commits you do. Pull requests are always merged
 using a squash, so even a PR with 100 commits will be merged as a single
-commit.
+commit. So don't be afraid to work as atomically as possible on your feature.
+It won't cause clutter once merged.
 
-### Always provide tests
+### 2.4 Always provide tests
 
 Because code merged into `master` is automatically deployed to the servers,
 it is required to know beforehand whether the new code is safe to run in the
@@ -115,9 +123,13 @@ experience.
 
 Therefore, **always provide tests for your code**. There are model tests,
 controller tests, even integration tests check that the generated HTML code
-works as expected. Pull requests that don't provide tests and that don't have
-a way for prodiving it may be closed.
+works as expected. Pull requests that don't provide tests and that refuse
+to cooperate in this rule may be closed.
 
-### Always link to a tracking issue on a pull request
+### 2.5 Always link to a tracking issue on a pull request
 
 Because you made a tracking issue, right? Untracked pull requests may be closed.
+
+To link to a tracking issue on GitHub, type `#` followed by the number for the
+issue. So if your tracking issue is number 55, provide a link to the issue by
+adding `#55` into your pull request description, so that a link is generated.
