@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "jquery": "^1.11.3",
-    "cookieconsent2": "1.0.10-2"
+    "cookieconsent": "^3.0.4",
+    "jquery": "^3.0.0"
   }
 }

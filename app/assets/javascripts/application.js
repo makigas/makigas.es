@@ -2,7 +2,7 @@
 //= require bootstrap/dist/js/bootstrap.min
 //= require jquery_ujs
 //= require_directory .
-//= require cookieconsent2/build/cookieconsent.min
+//= require cookieconsent/build/cookieconsent.min
 
 $(document).ready(function() {
   // Tell the stylesheet that JavaScript is on.
