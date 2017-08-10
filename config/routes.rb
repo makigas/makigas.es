@@ -13,20 +13,18 @@ Rails.application.routes.draw do
   root to: 'front#index'
 
   # Routes for the dashboard
-  authenticate :user do
-    namespace :dashboard do
-      root to: 'dashboard#index', as: ''
-      resources :topics
-      resources :videos, only: [:index, :new, :create]
-      resources :playlists do
-        get :videos, on: :member
-        resources :videos, except: [:index, :new, :create] do
-          put :move, on: :member
-        end
+  namespace :dashboard do
+    root to: 'dashboard#index', as: ''
+    resources :topics
+    resources :videos, only: [:index, :new, :create]
+    resources :playlists do
+      get :videos, on: :member
+      resources :videos, except: [:index, :new, :create] do
+        put :move, on: :member
       end
-      resources :users
-      resources :opinions
     end
+    resources :users
+    resources :opinions
   end
 
   get :terms, to: 'pages#terms'
