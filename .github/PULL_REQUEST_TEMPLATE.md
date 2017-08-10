@@ -1,0 +1,1 @@
+[ALWAYS link to the tracking issue for your pull request. Don't send pull requests for features that don't have a prior discussion. As much as code contributions are loved, there is a roadmap to follow and new ideas should be notified to the project leaders so that we can allocate it into the roadmap or reject it if it's out of scope.]
