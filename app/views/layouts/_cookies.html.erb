@@ -1,9 +1,23 @@
 <script>
-window.cookieconsent_options = {
-  "message":"<%= t('.message') %>",
-  "dismiss":"<%= t('.dismiss') %>",
-  "learnMore":"<%= t('.learn_more') %>",
-  "link":"https://www.makigas.es/cookies",
-  "theme":"dark-bottom"
-};
+window.cookieconsent.hasTransition = false;
+window.cookieconsent.initialise({
+  'theme': 'classic',
+  'position': 'bottom',
+  'palette': {
+    'popup': {
+      'background': '#f1d600',
+      'text': '#222',
+    },
+    'button': {
+      'background': '#264073',
+      'text': 'white'
+    }
+  },
+  'content': {
+    'message': '<%= t('.message') %>',
+    'dismiss': '<%= t('.dismiss') %>',
+    'link': '<%= t('.learn_more') %>',
+    'href': 'https://www.makigas.es/cookies'
+  }
+});
 </script>
