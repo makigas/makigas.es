@@ -1,0 +1,1 @@
+[Please, limit your issue to a single topic. If you have multiple questions or want to report multiple bugs, open one issue per topic. It makes issues easier to follow. If you break this rule, your issue may be closed.]

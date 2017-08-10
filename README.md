@@ -10,7 +10,10 @@
 
 # About
 
-This is the public source code for makigas.es. The whole application was recently redesigned from scratch using the Ruby on Rails framework. This web site, just like previous iterations, still displays information about videos and playlists in the system.
+This is the public source code for makigas.es. The whole application was
+recently redesigned from scratch using the Ruby on Rails framework. This web
+site, just like previous iterations, still displays information about videos
+and playlists in the system.
 
 # Setting up
 
@@ -23,11 +26,11 @@ Supported operating systems:
 
 Requirements:
 
-* Ruby 2.3.3 + Bundler. May suggest getting it via [rvm](https://rvm.io).
-* PostgreSQL 9.4. May work on MySQL and sqlite3, although hasn't been tested.
-* Node.js + Yarn are required for front-end dependencies.
-* `libpq-dev`. If `bundle install` refuses to install pg, may be because of this.
-* `imagemagick`. Required for image manipulation when creating playlists and topics.
+* Ruby 2.4+ and Bundler. Older Ruby versions are not supported.
+* PostgreSQL 9.1+. Other SQL engines such as MySQL or sqlite3 are not supported.
+* Node.js + Yarn, for the front-end dependencies.
+* `libpq-dev`. If `bundle install` refuses to install pg, check this.
+* `imagemagick`. Required for image manipulation on thumbnails and such.
 
 ## Getting the code
 
@@ -50,9 +53,15 @@ dependencies using `bundle exec rake yarn:install` or simply `yarn`.
 
 ## Database
 
-Upstream database is PostgreSQL and that is the officially supported one. Said that, this web application may work on MySQL and sqlite3 as well, although I haven't tested this.
+Upstream database is PostgreSQL and that is the officially supported one. Said
+that, this web application may work on MySQL and sqlite3 as well, although I
+haven't tested this, and it's not officially supported. If you experience bugs
+by using MySQL, they cannot be fix.
 
-**Note that no database.yml has been committed.** Copy the example file `config/database.yml.example` and modify it to suit your needs. **It is important not to commit sensitive information such as passwords to the repository**.
+**Note that no database.yml has been committed.** Copy the example file
+`config/database.yml.example` and modify it to suit your needs. **It is
+important not to commit sensitive information such as passwords to the
+repository**.
 
     $ cp config/database.yml.example config/database.yml
     $ vim config/database.yml
@@ -60,7 +69,10 @@ Upstream database is PostgreSQL and that is the officially supported one. Said t
 
 ## secrets.yml
 
-There is no secrets.yml file committed to the project because it is dangerous to track secret keys in public open source projects. Copy the example file `config/secrets.yml.example` and fill the commented keys with the secret keys that you want to use.
+There is no secrets.yml file committed to the project because it is dangerous
+to track secret keys in public open source projects. Copy the example file
+`config/secrets.yml.example` and fill the commented keys with the secret keys
+that you want to use.
 
     $ cp config/secrets.yml.example config/secrets.yml
     $ vim config/secrets.yml
@@ -69,19 +81,32 @@ You can generate new secret keys using `rake secret` command.
 
 ## Creating administration users
 
-Because the dashboard is a private system, it is not possible to create users via a web interface. Only an user can create new users. Therefore, in order to set up the first user, you will have to use the Rails console to seed the first user, like so:
+Because the dashboard is a private system, it is not possible for you to
+register as a new user using a web interface. Only an existing user can create
+new users using the dashboard. Therefore, in order to set up the first user,
+you will have to use the Rails console to seed the first user, like so:
 
     $ rails console
     ...
     > User.create(email: 'foo@example.com', password: '123456')
 
-Passwords must be 6 characters or greater.
-
 # Contributing
 
-If you find a bug in this source code or an issue or visual glitch on the web site, please file a bug. If you find a security vulnerability on this source code, please disclose it in a private way to me. [My e-mail address and my PGP key is on my personal website](https://www.danirod.es/about.html#contact).
+Read the [CONTRIBUTING.md][1] file for more information on how to contribute to
+the project. Follow the [Code of Conduct][2]. My two favourite guidelines from
+the Contributing file:
 
-Please, do not send chunks of code or new functionalities before talking with Dani first. Create an issue so that it gets properly documented. This is not a general purpose framework, it is a unique website. Therefore I have my own roadmap.
+* Send as many issues as you need, but please, keep one topic per issue
+  in order to keep things clean and easy to track.
+* Don't submit surprise PRs with new code. Always discuss your intentions
+  in a tracking issue before starting to work so that we can provide you all
+  the help you need, allocate your idea into the roadmap, or politely reject
+  your idea if we consider it's outside the scope of the project.
+
+If you find a bug in this source code or an issue or visual glitch on the web
+site, please file a bug. If you find a security vulnerability on this source
+code, please disclose it in a private way to me. [My e-mail address and my
+PGP key is on my personal website][3].
 
 # License
 
@@ -105,7 +130,17 @@ Please, do not send chunks of code or new functionalities before talking with Da
 # Frequently Asked Questions
 
 * **Why did you rewrite makigas.es again?**
-  Previous versions of makigas.es used a blogging engine such as WordPress with a lot of plugins and hacks in order to work as general purpose CMS systems. This version was crafted specifically for the data structures required for the web site and therefore it is more concise, flexible and easy to develop and maintain.
+  Previous versions of makigas.es used a blogging engine such as WordPress with
+  a lot of plugins and hacks in order to work as general purpose CMS systems.
+  This version was crafted specifically for the data structures required for
+  the web site and therefore it is more concise, flexible and easy to develop
+  and maintain.
 
 * **What is the point on sharing the source code?**
-  I don't have any particular interest in this source code at this moment. I just want an app that works and that allows me to manage my videos and keep my information up to date.
+  I don't have any particular interest in this source code at this moment. I
+  just want an app that works and that allows me to manage my videos and keep
+  my information up to date.
+
+[1]: https://github.com/makigas/makigas/blob/master/CONTRIBUTING.md
+[2]: https://github.com/makigas/makigas/blob/master/CODE_OF_CONDUCT.md
+[3]: https://www.danirod.es/contact/
