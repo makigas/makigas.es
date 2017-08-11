@@ -6,8 +6,8 @@ RSpec.feature "Dashboard videos", type: :feature do
 
   context "when not logged in" do
     it "should not be success" do
-      visit dashboard_videos_path
-      expect(page.current_path).not_to eq dashboard_playlists_path
+      visit videos_path
+      expect(page.current_path).not_to eq playlists_path
     end
   end
 
@@ -19,14 +19,14 @@ RSpec.feature "Dashboard videos", type: :feature do
 
     scenario "user can list videos" do
       @video = FactoryGirl.create(:video)
-      visit dashboard_videos_path
+      visit videos_path
       expect(page).to have_link @video.title
     end
 
     scenario "user can create videos" do
       @playlist = FactoryGirl.create(:playlist)
       
-      visit dashboard_videos_path
+      visit videos_path
       expect {
         click_link 'Nuevo Vídeo'
         fill_in 'Título', with: 'My video title'
@@ -46,7 +46,7 @@ RSpec.feature "Dashboard videos", type: :feature do
 
     scenario "user can create unfeatured videos" do
       @playlist = FactoryGirl.create(:playlist)
-      visit dashboard_videos_path
+      visit videos_path
 
       expect {
         click_link 'Nuevo Vídeo'
@@ -72,7 +72,7 @@ RSpec.feature "Dashboard videos", type: :feature do
 
     scenario "user cannot create videos with invalid data" do
       @playlist = FactoryGirl.create(:playlist)
-      visit dashboard_videos_path
+      visit videos_path
       expect {
         click_link 'Nuevo Vídeo'
         fill_in 'Descripción', with: 'This is my newest and coolest video'
@@ -84,7 +84,7 @@ RSpec.feature "Dashboard videos", type: :feature do
     end
 
     scenario "user cannot create videos without setting a playlist" do
-      visit dashboard_videos_path
+      visit videos_path
       expect {
         click_link 'Nuevo Vídeo'
         fill_in 'Título', with: 'My video title'
@@ -102,7 +102,7 @@ RSpec.feature "Dashboard videos", type: :feature do
     scenario "user can edit videos" do
       @video = FactoryGirl.create(:video, title: 'My old video')
 
-      visit dashboard_videos_path
+      visit videos_path
       within(:xpath, "//tr[.//a[text() = 'My old video']]") do
         click_link 'Editar'
       end
@@ -115,7 +115,7 @@ RSpec.feature "Dashboard videos", type: :feature do
     scenario "user can destroy videos" do
       @video = FactoryGirl.create(:video, title: 'My cool video')
 
-      visit dashboard_videos_path
+      visit videos_path
       expect {
         within(:xpath, "//tr[.//a[text() = '#{@video.title}']]") do
           click_button 'Destruir'

@@ -1,4 +1,4 @@
-<%= simple_form_for [:dashboard, @video] do |form| %>
+<%= simple_form_for @video do |form| %>
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
   <%= form.input :youtube_id %>

@@ -13,7 +13,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      redirect_to [:dashboard, @topic], notice: t('.created')
+      redirect_to @topic, notice: t('.created')
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
 
   def update
     if @topic.update_attributes(topic_params)
-      redirect_to [:dashboard, @topic], notice: t('.updated')
+      redirect_to @topic, notice: t('.updated')
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
 
   def destroy
     @topic.destroy!
-    redirect_to [:dashboard, :topics], notice: t('.destroyed')
+    redirect_to :topics, notice: t('.destroyed')
   end
 
   private

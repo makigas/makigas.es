@@ -6,8 +6,8 @@ RSpec.feature "Dashboard opinions", type: :feature do
   
   context "when not logged in" do
     it "should not be success" do
-      visit dashboard_opinions_path
-      expect(page.current_path).not_to eq dashboard_topics_path
+      visit opinions_path
+      expect(page.current_path).not_to eq topics_path
     end
   end
 
@@ -19,12 +19,12 @@ RSpec.feature "Dashboard opinions", type: :feature do
 
     scenario "user can list the opinions" do
       @opinion = FactoryGirl.create(:opinion)
-      visit dashboard_opinions_path
-      expect(page).to have_link @opinion.from, href: dashboard_opinion_path(@opinion)
+      visit opinions_path
+      expect(page).to have_link @opinion.from, href: opinion_path(@opinion)
     end
 
     scenario "user can create opinions" do
-      visit dashboard_opinions_path
+      visit opinions_path
       click_link "Nueva Opinión"
 
       expect {
@@ -41,7 +41,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
     scenario "user can edit opinions" do
       @opinion = FactoryGirl.create(:opinion, from: "Programming n Co")
 
-      visit dashboard_opinions_path
+      visit opinions_path
       within(:xpath, "//tr[.//td//a[text() = 'Programming n Co']]") do
         click_link "Editar"
       end
@@ -56,7 +56,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
     scenario "user can destroy opinions" do
       @opinion = FactoryGirl.create(:opinion)
       
-      visit dashboard_opinions_path
+      visit opinions_path
       expect {
         within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do
           click_button "Destruir"
@@ -67,7 +67,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
     end
 
     scenario "user cannot create invalid opinion" do
-      visit dashboard_opinions_path
+      visit opinions_path
       click_link "Nueva Opinión"
       expect {
         fill_in "De", with: "Programming and Co"

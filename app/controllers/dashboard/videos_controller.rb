@@ -13,7 +13,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
   def create
     @video = Video.new(video_params)
     if @video.save
-      redirect_to [:dashboard, @video.playlist, @video], notice: t('.created')
+      redirect_to [@video.playlist, @video], notice: t('.created')
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
 
   def update
     if @video.update_attributes(video_params)
-      redirect_to [:dashboard, @video.playlist, @video], notice: t('.updated')
+      redirect_to [@video.playlist, @video], notice: t('.updated')
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
 
   def destroy
     @video.destroy!
-    redirect_to [:dashboard, :videos], notice: t('.destroyed')
+    redirect_to :videos, notice: t('.destroyed')
   end
 
   def move
@@ -37,11 +37,11 @@ class Dashboard::VideosController < Dashboard::DashboardController
       if params[:direction] == "up"
         @video.move_higher
         format.json { render json: { position: @video.position, direction: "up" } }
-        format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
+        format.html { redirect_to [:videos, @video.playlist], notice: t('.moved') }
       elsif params[:direction] == "down"
         @video.move_lower
         format.json { render json: { position: @video.position, direction: "down" } }
-        format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
+        format.html { redirect_to [:videos, @video.playlist], notice: t('.moved') }
       end
     end
   end

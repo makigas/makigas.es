@@ -14,8 +14,8 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
 
   context "when not logged in" do
     it "should not be success" do
-      visit videos_dashboard_playlist_path(@playlist)
-      expect(page.current_path).not_to eq videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
+      expect(page.current_path).not_to eq videos_playlist_path(@playlist)
     end
   end
 
@@ -26,24 +26,24 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     }
 
     scenario "user can access this page via dashboard video page" do
-      visit dashboard_playlists_path
+      visit playlists_path
       click_link @playlist.title
       within(".dashboard-page") do
         click_link "Vídeos"
       end
-      expect(page.current_path).to eq videos_dashboard_playlist_path(@playlist)
+      expect(page.current_path).to eq videos_playlist_path(@playlist)
     end
 
     scenario "user can access this page via video count link" do
-      visit dashboard_playlists_path
+      visit playlists_path
       within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
         click_link @playlist.videos.count
       end
-      expect(page.current_path).to eq videos_dashboard_playlist_path(@playlist)
+      expect(page.current_path).to eq videos_playlist_path(@playlist)
     end
 
     scenario "this page lists videos in the right order" do
-      visit videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
       within(".dashboard-page tbody") do
         expect(page).to have_xpath("//tr[1]/td[2]/a", text: @videos[0].title)
         expect(page).to have_xpath("//tr[2]/td[2]/a", text: @videos[1].title)
@@ -51,7 +51,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     end
 
     scenario "user can move a video down" do
-      visit videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@videos[0].title}']]") do
         click_button "Bajar"
       end
@@ -62,7 +62,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     end
 
     scenario "user can move a video down" do
-      visit videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@videos[1].title}']]") do
         click_button "Subir"
       end
@@ -73,7 +73,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     end
 
     scenario "moving first video up changes nothing" do
-      visit videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@videos[0].title}']]") do
         click_button "Subir"
       end
@@ -84,7 +84,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     end
 
     scenario "moving last video down changes nothing" do
-      visit videos_dashboard_playlist_path(@playlist)
+      visit videos_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@videos[1].title}']]") do
         click_button "Bajar"
       end

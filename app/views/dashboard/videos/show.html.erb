@@ -1,15 +1,15 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to t('.videos'), [:dashboard, :videos] %></li>
+    <li><%= link_to t('.dashboard'), :root %></li>
+    <li><%= link_to t('.videos'), :videos %></li>
     <li class="current"><%= @video %></li>
   </ol>
   <h1><%= @video %></h1>
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= link_to t('.edit'), [:edit, :dashboard, @video], class: 'btn btn-default' %>
-  <%= button_to t('.destroy'), [:dashboard, @video], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
+  <%= link_to t('.edit'), [:edit, @video], class: 'btn btn-default' %>
+  <%= button_to t('.destroy'), @video, method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
 <% end %>
 
 <table class="table table-default">
@@ -31,7 +31,7 @@
   </tr>
   <tr>
     <td><%= t('.playlist') %></td>
-    <td><%= link_to @video.playlist.title, [:dashboard, @video.playlist] %></td>
+    <td><%= link_to @video.playlist.title, @video.playlist %></td>
   </tr>
   <tr>
     <td><%= t('.published_at') %></td>

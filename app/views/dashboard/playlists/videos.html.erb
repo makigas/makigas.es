@@ -1,17 +1,17 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
-    <li><%= link_to @playlist, [:dashboard, @playlist] %></li>
+    <li><%= link_to t('.dashboard'), :root %></li>
+    <li><%= link_to t('.playlists'), :playlists %></li>
+    <li><%= link_to @playlist, @playlist %></li>
     <li class="current"><%= t('.videos') %></li>
   </ol>
   <h1><%= @playlist %></h1>
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= link_to t('.back'), [:dashboard, @playlist], class: 'btn btn-default' %>
-  <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-default' %>
-  <%= button_to t('.destroy'), [:dashboard, @playlist], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
+  <%= link_to t('.back'), @playlist, class: 'btn btn-default' %>
+  <%= link_to t('.edit'), [:edit, @playlist], class: 'btn btn-default' %>
+  <%= button_to t('.destroy'), @playlist, method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
 <% end %>
 
 <table class="table table-default">
@@ -27,13 +27,13 @@
     <% @videos.each do |video| %>
     <tr>
       <td><%= video.position %></td>
-      <td><%= link_to video.title, [:dashboard, video] %></td>
+      <td><%= link_to video.title, video %></td>
       <td>
-        <%= button_to t('.up'), move_dashboard_video_path(video), params: { direction: 'up' }, remote: true, method: :put, class: 'video-move-up btn btn-xs btn-info' %>
-        <%= button_to t('.down'), move_dashboard_video_path(video), params: { direction: 'down' }, remote: true, method: :put, class: 'video-move-down btn btn-xs btn-info' %>
+        <%= button_to t('.up'), [:move, video], params: { direction: 'up' }, remote: true, method: :put, class: 'video-move-up btn btn-xs btn-info' %>
+        <%= button_to t('.down'), [:move, video], params: { direction: 'down' }, remote: true, method: :put, class: 'video-move-down btn btn-xs btn-info' %>
       </td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, video], class: 'btn btn-xs btn-default' %>
       </td>
     </tr>
     <% end %>

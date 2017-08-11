@@ -1,15 +1,15 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to t('.opinions'), [:dashboard, :opinions] %></li>
+    <li><%= link_to t('.dashboard'), :root %></li>
+    <li><%= link_to t('.opinions'), :opinions %></li>
     <li class="current"><%= @opinion %></li>
   </ol>
   <h1><%= @opinion %></h1>
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= link_to t('.edit'), [:edit, :dashboard, @opinion], class: 'btn btn-default' %>
-  <%= button_to t('.destroy'), [:dashboard, @opinion], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
+  <%= link_to t('.edit'), [:edit, @opinion], class: 'btn btn-default' %>
+  <%= button_to t('.destroy'), @opinion, method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
 <% end %>
 
 <table class="table table-default">

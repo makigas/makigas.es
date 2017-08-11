@@ -8,14 +8,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <%= link_to 'makigas', :dashboard, class: 'navbar-brand'%>
+            <%= link_to 'makigas', :root, class: 'navbar-brand'%>
           </div>
       <div class="collapse navbar-collapse" id="makigas-navbar">
         <ul class="nav navbar-nav">
-          <%= navigation_link t('.videos'), [:dashboard, :videos] %>
-          <%= navigation_link t('.playlists'), [:dashboard, :playlists] %>
-          <%= navigation_link t('.topics'), [:dashboard, :topics] %>
-          <%= navigation_link t('.users'), [:dashboard, :users] %>
+          <%= navigation_link t('.videos'), :videos %>
+          <%= navigation_link t('.playlists'), :playlists %>
+          <%= navigation_link t('.topics'), :topics %>
+          <%= navigation_link t('.users'), :users %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="navbar-text hidden-xs"><%= current_user.email %></li>

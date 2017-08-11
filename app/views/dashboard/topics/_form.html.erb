@@ -1,4 +1,4 @@
-<%= simple_form_for [:dashboard, @topic] do |form| %>
+<%= simple_form_for @topic do |form| %>
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
   <%= form.input :color do %>
