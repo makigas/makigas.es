@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Dashboard videos", type: :feature do
-  before { Capybara.default_host = "http://admin.example.com" }
+  before { Capybara.default_host = "http://dashboard.example.com" }
   after { Capybara.default_host = "http://www.example.com" }
 
   context "when not logged in" do
