@@ -6,8 +6,8 @@ RSpec.feature "Dashboard playlists", type: :feature do
   
   context "when not logged in" do
     it "should not be success" do
-      visit playlists_path
-      expect(page.current_path).not_to eq playlists_path
+      visit dashboard_playlists_path
+      expect(page.current_path).not_to eq dashboard_playlists_path
     end
   end
 
@@ -21,15 +21,15 @@ RSpec.feature "Dashboard playlists", type: :feature do
       @playlist = FactoryGirl.create(:playlist)
       @video = FactoryGirl.create(:video, playlist: @playlist)
 
-      visit playlists_path
-      expect(page).to have_link @playlist.title, href: playlist_path(@playlist)
+      visit dashboard_playlists_path
+      expect(page).to have_link @playlist.title, href: dashboard_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
         expect(page).to have_xpath "//td", text: @playlist.videos.count
       end
     end
 
     scenario "user can create playlists" do
-      visit playlists_path
+      visit dashboard_playlists_path
       click_link "Nueva Lista"
       expect {
         fill_in "Título", with: "My Playlist"
@@ -45,7 +45,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
     scenario "user can attach a playlist to a topic" do
       @topic = FactoryGirl.create(:topic)
 
-      visit playlists_path
+      visit dashboard_playlists_path
       click_link "Nueva Lista"
       fill_in "Título", with: "My Playlist"
       fill_in "Descripción", with: "This is a playlist part of my site"
@@ -62,7 +62,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
     scenario "user can edit a playlist" do
       @playlist = FactoryGirl.create(:playlist, title: 'My old title')
 
-      visit playlists_path
+      visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = 'My old title']]") do
         click_link "Editar"
       end
@@ -78,7 +78,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
     scenario "user can destroy a playlist" do
       @playlist = FactoryGirl.create(:playlist)
       
-      visit playlists_path
+      visit dashboard_playlists_path
       expect {
         within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
           click_button "Destruir"

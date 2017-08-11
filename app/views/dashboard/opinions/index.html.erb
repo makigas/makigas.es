@@ -1,13 +1,13 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :root %></li>
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
     <li class="current"><%= t('.opinions') %></li>
   </ol>
   <h1><%= t('.opinions') %></h1>
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= link_to t('.new_opinion'), [:new, :opinion], class: 'btn btn-success' %>
+  <%= link_to t('.new_opinion'), [:new, :dashboard, :opinion], class: 'btn btn-success' %>
 <% end %>
 
 <table class="table table-default">
@@ -20,10 +20,10 @@
   <tbody>
     <% @opinions.each do |opinion| %>
     <tr>
-      <td><%= link_to opinion.from, opinion %></td>
+      <td><%= link_to opinion.from, [:dashboard, opinion] %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, opinion], class: 'btn btn-xs btn-default' %>
-        <%= button_to t('.destroy'), opinion, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
+        <%= link_to t('.edit'), [:edit, :dashboard, opinion], class: 'btn btn-xs btn-default' %>
+        <%= button_to t('.destroy'), [:dashboard, opinion], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
       </td>
     </tr>
     <% end %>

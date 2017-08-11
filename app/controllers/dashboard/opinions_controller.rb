@@ -13,7 +13,7 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
   def create
     @opinion = Opinion.new(opinion_params)
     if @opinion.save
-      redirect_to :opinions, notice: t('.created')
+      redirect_to [:dashboard, :opinions], notice: t('.created')
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
 
   def update
     if @opinion.update_attributes(opinion_params)
-      redirect_to :opinions, notice: t('.updated')
+      redirect_to [:dashboard, :opinions], notice: t('.updated')
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
 
   def destroy
     @opinion.destroy!
-    redirect_to :opinions, notice: t('.destroyed')
+    redirect_to [:dashboard, :opinions], notice: t('.destroyed')
   end
 
   private

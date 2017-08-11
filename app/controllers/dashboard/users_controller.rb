@@ -13,7 +13,7 @@ class Dashboard::UsersController < Dashboard::DashboardController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: t('.created')
+      redirect_to [:dashboard, @user], notice: t('.created')
     else
       render :new
     end
@@ -21,7 +21,7 @@ class Dashboard::UsersController < Dashboard::DashboardController
 
   def update
     if @user.update_attributes(user_params)
-      redirect_to @user, notice: t('.updated')
+      redirect_to [:dashboard, @user], notice: t('.updated')
     else
       render :edit
     end
@@ -30,9 +30,9 @@ class Dashboard::UsersController < Dashboard::DashboardController
   def destroy
     if @user != current_user
       @user.destroy!
-      redirect_to :users, notice: t('.destroyed')
+      redirect_to [:dashboard, :users], notice: t('.destroyed')
     else
-      redirect_to :users, error: t('.current_user')
+      redirect_to [:dashboard, :users], error: t('.current_user')
     end
   end
 

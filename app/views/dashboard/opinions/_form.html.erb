@@ -1,4 +1,4 @@
-<%= simple_form_for @opinion do |form| %>
+<%= simple_form_for [:dashboard, @opinion] do |form| %>
   <%= form.input :from %>
   <%= form.input :message, as: :text %>
   <%= form.input :url, as: :url %>

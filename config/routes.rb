@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Dashboard routes
   constraints subdomain: 'dashboard' do
     devise_for :users, controllers: { sessions: 'users/sessions', passwords: 'users/passwords' }
-    scope :module => :dashboard do
+    namespace :dashboard, path: '' do
       root to: 'dashboard#index', as: ''
       resources :topics
       resources :videos, only: [:index, :new, :create]
