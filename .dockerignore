@@ -1,0 +1,12 @@
+.bundle
+.git
+.github
+.vscode
+config/deploy.yml
+config/deploy.yml.example
+log/
+node_modules/
+public/assets/*
+public/system/*
+public/sitemap.xml
+tmp/
