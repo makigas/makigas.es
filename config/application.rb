@@ -1,4 +1,6 @@
 require_relative 'boot'
+require_relative '../lib/makigas/version_header'
+require_relative '../lib/makigas/revision_header'
 
 require 'rails/all'
 
@@ -19,5 +21,9 @@ module Makigas
     # Configure internationalization. What if one day I translate my channel?
     config.i18n.default_locale = :es
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.yml"]
+
+    # Extra middleware
+    config.middleware.use Makigas::VersionHeader
+    config.middleware.use Makigas::RevisionHeader
   end
 end
