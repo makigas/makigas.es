@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Dashboard playlist videos", type: :feature do
+  before { Capybara.default_host = "http://dashboard.example.com" }
+  after { Capybara.default_host = "http://www.example.com" }
+  
   before(:each) {
     @playlist = FactoryGirl.create(:playlist)
     @videos = [

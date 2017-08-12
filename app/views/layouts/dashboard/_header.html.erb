@@ -18,7 +18,8 @@
           <%= navigation_link t('.users'), [:dashboard, :users] %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t('.view_site'), root_path %></li>
+          <li class="navbar-text hidden-xs"><%= current_user.email %></li>
+          <li><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank %></li>
           <li><%= link_to t('.log_out'), destroy_user_session_path %></li>
         </ul>
       </div>
