@@ -2,6 +2,7 @@
 .git
 .github
 .vscode
+config/database.yml
 config/deploy.yml
 config/deploy.yml.example
 log/

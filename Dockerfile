@@ -17,10 +17,11 @@ RUN mkdir /makigas
 WORKDIR /makigas
 
 # Install dependencies
-ADD Gemfile /makigas/Gemfile
-ADD Gemfile.lock /makigas/Gemfile.lock
-ADD package.json /makigas/package.json
-ADD yarn.lock /makigas/yarn.lock
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+ADD package.json package.json
+ADD docker/database.yml config/database.yml
+ADD yarn.lock yarn.lock
 RUN bundle install && yarn
 
 # Remaining files.

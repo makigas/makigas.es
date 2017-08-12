@@ -1,0 +1,12 @@
+<%= ENV['RAILS_ENV'] %>:
+  # Database connection
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  port: <%= ENV['DB_PORT'] || '5432' %>
+  database: <%= ENV['DB_NAME'] || "makigas_#{ENV['RAILS_ENV']}" %>
+  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  password: <%= ENV['DB_PASSWORD'] || '' %>
+
+  # Adapter settings
+  adapter: <%= ENV['DB_ADAPTER'] || 'postgresql' %>
+  encoding: unicode
+  pool: <%= ENV['DB_POOL'] || 5 %>
