@@ -1,0 +1,27 @@
+# Development & Testing docker-compose, not suitable for production.
+
+version: '3'
+
+services:
+  database:
+    image: postgres
+    volumes:
+    - './docker_data/postgres:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: 'makigas'
+      POSTGRES_PASSWORD: 'makigas'
+  web:
+    build: .
+    restart: always
+    depends_on:
+      - database
+    volumes:
+    - '.:/makigas'
+    ports:
+      - '3000:3000'
+    environment:
+      RAILS_ENV: development
+      DB_HOST: database
+      DB_NAME: makigas
+      DB_USERNAME: makigas
+      DB_PASSWORD: makigas

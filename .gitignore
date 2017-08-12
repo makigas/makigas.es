@@ -22,3 +22,6 @@ config/deploy.yml
 .env
 public/sitemap.xml
 public/system
+
+# Ignore Docker
+docker_data/
