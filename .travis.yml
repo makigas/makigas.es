@@ -12,7 +12,9 @@ before_install:
   - nvm use 6
   - node -v
   - npm install -g yarn
-before_script: bundle exec rake db:create yarn:install
+before_script:
+- bundle exec rake db:create yarn:install
+- RAILS_ENV=test bundle exec rails webpacker:compile
 script: bundle exec rspec spec
 cache:
   bundler: true

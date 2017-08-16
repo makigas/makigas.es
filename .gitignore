@@ -17,9 +17,11 @@ config/deploy.yml
 
 # Ignore local instance data.
 .env
+/public/assets/
 public/sitemap.xml
 public/system
 
 # Ignore this Node thingy.
 node_modules/
 /public/packs/
+/public/packs-test/
