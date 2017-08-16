@@ -7,9 +7,6 @@
 # Ignore bundler config.
 .bundle
 
-# Ignore Node thingy.
-node_modules/
-
 # Ignore all logfiles and tempfiles.
 log/*
 !/log/.keep
@@ -22,3 +19,7 @@ config/deploy.yml
 .env
 public/sitemap.xml
 public/system
+
+# Ignore this Node thingy.
+node_modules/
+/public/packs/
