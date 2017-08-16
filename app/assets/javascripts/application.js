@@ -1,6 +1,3 @@
-//= require jquery/dist/jquery.min
-//= require bootstrap/dist/js/bootstrap.min
-//= require cookieconsent/build/cookieconsent.min
 //= require_self
 //= require_directory .
 

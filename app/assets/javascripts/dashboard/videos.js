@@ -1,5 +1,10 @@
-if (document.body.classList.contains('page-videos')) {
+window.addEventListener('load', function() {
+  if (!document.body.classList.contains('page-videos')) return;
+
   var form = document.querySelector('form.simple_form');
+
+  // Check that there is actually a form in this page.
+  if (form == null) return;
 
   /**
    * Updates the hidden duration field using the sexagesimal values.
@@ -38,4 +43,4 @@ if (document.body.classList.contains('page-videos')) {
       }
     });
   });
-}
+});

@@ -10,6 +10,7 @@
   <%= yield %>
   
   <%= render 'layouts/footer' %>
+  <%= javascript_pack_tag 'vendor' %>
   <%= javascript_include_tag 'application' %>
   <%= render 'layouts/analytics' %>
   <%= render 'layouts/cookies' %>
