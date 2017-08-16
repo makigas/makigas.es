@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id           :integer          not null, primary key
+#  title        :string           not null
+#  description  :text             not null
+#  youtube_id   :string           not null
+#  duration     :integer          not null
+#  slug         :string           not null
+#  playlist_id  :integer          not null
+#  position     :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  unfeatured   :boolean          default(FALSE), not null
+#  published_at :datetime         not null
+#  private      :boolean          default(FALSE), not null
+#
+# Indexes
+#
+#  index_videos_on_slug        (slug)
+#  index_videos_on_youtube_id  (youtube_id) UNIQUE
+#
+
 FactoryGirl.define do
   factory :video do
     title 'Chandelier'

@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id                     :integer          not null, primary key
+#  title                  :string           not null
+#  description            :string           not null
+#  slug                   :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  thumbnail_file_name    :string
+#  thumbnail_content_type :string
+#  thumbnail_file_size    :integer
+#  thumbnail_updated_at   :datetime
+#  color                  :string
+#
+# Indexes
+#
+#  index_topics_on_slug  (slug) UNIQUE
+#
+
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
