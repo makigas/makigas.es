@@ -4,6 +4,7 @@
     "node_modules/**/*": true,
     "log/**/*": true,
     "tmp/**/*": true,
+    "public/packs/**/*": true,
     "public/system/**/*": true
   }
 }
