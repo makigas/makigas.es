@@ -29,6 +29,9 @@ class Video < ApplicationRecord
   belongs_to :playlist
   acts_as_list scope: :playlist
 
+  # Videos can have links
+  has_many :links
+
   # Slug. Can be repeated as long as it's on different playlists.
   friendly_id :title, use: [:slugged, :scoped], scope: :playlist
 
