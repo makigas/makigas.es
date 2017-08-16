@@ -14,11 +14,15 @@ body.page-playlists {
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
     opacity: 0.5;
+    pointer-events: none;
+    touch-action: none;
   }
   tr.moving-down {
     animation-name: move-row-down;
     animation-duration: 0.25s;
     animation-fill-mode: forwards;
     opacity: 0.5;
+    pointer-events: none;
+    touch-action: none;
   }
 }

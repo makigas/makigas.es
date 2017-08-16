@@ -3,9 +3,9 @@
 <head>
 <%= render 'layouts/head' %>
 </head>
-<body class="no-js navbar-transparent <%= "page-#{controller.controller_name}" %>">
+<body class="no-js <%= "page-#{controller.controller_name}" %>">
   
-  <%= render 'layouts/header', front: true %>
+  <%= render 'layouts/header' %>
   
   <%= yield %>
   

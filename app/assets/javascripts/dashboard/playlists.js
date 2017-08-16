@@ -1,51 +1,77 @@
-$(document).ready(function() {
-  $('.video-move-up').each(function() {
-    $button = $(this);
-    $(this).closest('form').on('ajax:success', function(e) {
-      $row = $(this).closest('tr');
-      $previous = $row.prev();
-      $row.addClass('moving-up');
-      $previous.addClass('moving-down');
+if (document.body.classList.contains('page-playlists')) {
+  /**
+   * Swaps the numbers displayed in row1 and row2. This function is
+   * highly dependent on the table structure. It only works on the
+   * videos table because it expects each row to have the first
+   * column being the position number.
+   * 
+   * @param {HTMLTableRowElement} row1
+   * @param {HTMLTableRowElement} row2
+   */
+  var swapNumbers = function(row1, row2) {
+    column1 = row1.querySelector('td:first-child');
+    column2 = row2.querySelector('td:first-child');
 
-      setTimeout(function() {
-        // Fetch position numbers as they will change as well.
-        $rowNumber = $row.find('td:first-child').text();
-        $prevNumber = $previous.find('td:first-child').text();
+    // Your classic swap algorithm.
+    tmp = column1.innerText;
+    column1.innerText = column2.innerText;
+    column2.innerText = tmp;
+  };
 
-        // Actually do the swap.
-        $row.find('td:first-child').text($prevNumber);
-        $previous.find('td:first-child').text($rowNumber);
-        $previous.insertAfter($row);
+  // When the move up button is pressed and the request is success,
+  // perform the animation where this item and the above up have
+  // their position changed.
+  document.querySelectorAll('.video-move-up').forEach(function(btn) {
+    btn.closest('form').addEventListener('ajax:success', function(e) {
+      row = btn.closest('tr');
+      previous = row.previousElementSibling;
+      tbody = btn.closest('tbody');
 
-        // Remove class.
-        $row.removeClass('moving-up');
-        $previous.removeClass('moving-down');
-      }, 250);
+      // Make sure this is not the first position.
+      if (previous == null) {
+        return;
+      }
+
+      // Swap the video positions.
+      swapNumbers(row, previous);
+
+      // Start animating.
+      row.classList.add('moving-up');
+      previous.classList.add('moving-down');
+
+      // Once the animation is finished, do the actual row swap.
+      row.addEventListener('animationend', function(e) {
+        row.classList.remove('moving-up');
+        previous.classList.remove('moving-down');
+        tbody.insertBefore(row, previous);
+      });
     });
   });
 
-  $('.video-move-down').each(function() {
-    $button = $(this);
-    $(this).closest('form').on('ajax:success', function(e) {
-      $row = $(this).closest('tr');
-      $next = $row.next();
-      $row.addClass('moving-down');
-      $next.addClass('moving-up');
+  document.querySelectorAll('.video-move-down').forEach(function(btn) {
+    btn.closest('form').addEventListener('ajax:success', function(e) {
+      row = btn.closest('tr');
+      next = row.nextElementSibling;
+      tbody = btn.closest('tbody');
 
-      setTimeout(function() {
-        // Fetch position numbers.
-        $rowNumber = $row.find('td:first-child').text();
-        $nextNumber = $next.find('td:first-child').text();
+      // Make sure this is not the last position.
+      if (next == null) {
+        return;
+      }
 
-        // Do the swap.
-        $row.find('td:first-child').text($nextNumber);
-        $next.find('td:first-child').text($rowNumber);
-        $row.insertAfter($next);
+      // Swap the video positions.
+      swapNumbers(row, next);
 
-        // Remove class.
-        $row.removeClass('moving-down');
-        $next.removeClass('moving-up');
-      }, 250);
+      // Start animating.
+      row.classList.add('moving-down');
+      next.classList.add('moving-up');
+
+      // Once the animation is finished, do the actual row swap.
+      row.addEventListener('animationend', function(e) {
+        row.classList.remove('moving-down');
+        next.classList.remove('moving-up');
+        tbody.insertBefore(next, row);
+      });
     });
   });
-});
+}
