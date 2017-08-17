@@ -1,11 +1,7 @@
-//= require jquery/dist/jquery.min
-//= require bootstrap/dist/js/bootstrap.min
-//= require jquery_ujs
+//= require_self
 //= require_directory .
-//= require cookieconsent/build/cookieconsent.min
 
-$(document).ready(function() {
-  // Tell the stylesheet that JavaScript is on.
-  $('body').removeClass('no-js');
-  $('body').addClass('js');
+window.addEventListener('load', function(e) {
+  document.body.classList.remove('no-js');
+  document.body.classList.add('js');
 });
