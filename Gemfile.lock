@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: 7a1d306f367174e39c815bd298ab5d61cbbde72e
+  revision: c6106c4d1bdb05a5d0df1caa0edb7ddeceab5463
   specs:
     webpacker (2.0)
       activesupport (>= 4.2)
@@ -179,7 +179,7 @@ GEM
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
     public_suffix (2.0.5)
-    puma (3.9.1)
+    puma (3.10.0)
     rack (2.0.3)
     rack-proxy (0.6.2)
       rack
@@ -271,7 +271,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.8.0)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     tzinfo (1.2.3)

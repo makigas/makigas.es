@@ -19,10 +19,7 @@ before_install:
       tar -xvf $PWD/phantomjs-2.1-linux-x86_64.tar.bz2 -C $PWD/travis-phantomjs --strip-components 2 phantomjs-2.1.1-linux-x86_64/bin/phantomjs;
     fi
 
-before_script:
-- bundle exec rake db:create yarn:install
-- RAILS_ENV=test bundle exec rails webpacker:compile
-
+before_script: bundle exec rake db:create yarn:install
 script: PATH=$PWD/travis-phantomjs:$PATH bundle exec rspec spec
 
 cache:
