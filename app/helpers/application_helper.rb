@@ -10,14 +10,6 @@ module ApplicationHelper
     url_for only_path: false, params: parameters
   end
 
-  # This helper automatically will add "current" class on to a <li> item
-  # as required by Bootstrap to show the navbar item using 'current' style.
-  def navigation_link text, url
-    content_tag(:li, class: "nav-item #{current_page?(url) ? 'active' : ''}") do
-      link_to text, url, class: 'nav-link'
-    end
-  end
-
   def running_time sec, options = {}
     if sec >= 3600 || (!options[:full].nil? && options[:full] == true)
       '%d:%02d:%02d' % [ sec / 3600, (sec % 3600) / 60, sec % 60]
@@ -45,18 +37,5 @@ module ApplicationHelper
     render = Redcarpet::Render::HTML.new()
     markdown = Redcarpet::Markdown.new(render)
     markdown.render(text).html_safe
-  end
-  
-  # TODO: Remove this method after it has been tested that is not used.
-  def horizontal_form_for(resource, options = {}, &block)
-    options[:html] = { class: 'form-horizontal' }
-    options[:wrapper] = :horizontal_form
-    options[:wrapper_mappings] = {
-      check_boxes: :horizontal_radio_and_checkboxes,
-      radio_buttons: :horizontal_radio_and_checkboxes,
-      file: :horizontal_file_input,
-      boolean: :horizontal_boolean
-    }
-    simple_form_for(resource, options, &block)
   end
 end
