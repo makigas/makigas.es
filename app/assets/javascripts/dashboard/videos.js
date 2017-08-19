@@ -1,9 +1,12 @@
-window.addEventListener('load', function() {
-  if (!document.body.classList.contains('page-videos')) return;
+/*
+ * On form submission, the sexagesimal components for the video
+ * length should be extracted and the duration in seconds should be
+ * calculated, as that is what has to be sent to the backend.
+ */
+var form = document.querySelector('body.page-videos form.simple_form');
 
-  /* On form submission, update the video duration hidden field. */
-  var form = document.querySelector('form.simple_form');
-  form && form.addEventListener('submit', function() {
+if (form) {
+  form.addEventListener('submit', function(e) {
     // Extract sexagesimal time values.
     var hh = form.querySelector('#duration_hours').value || 0;
     var mm = form.querySelector('#duration_minutes').value || 0;
@@ -13,4 +16,4 @@ window.addEventListener('load', function() {
     var time = parseInt(hh) * 3600 + parseInt(mm) * 60 + parseInt(ss);
     form.querySelector('#video_duration').value = time;
   });
-});
+}
