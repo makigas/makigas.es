@@ -1,49 +1,50 @@
 <footer class="main-footer">
   <div class="footer-links">
     <div class="container">
-    <div class="row">
-      <div class="footer-info col-md-6 col-sm-8">
-        <h3><%= t('.footer_info.title') %></h3>
-        <p><%= t('.footer_info.description') %></p>
-        <p><%= link_to t('.footer_info.about.text'), root_path, title: t('.footer_info.about.title') %></p>
+      <div class="row">
+        <div class="footer-info col-md-6 col-sm-8">
+          <h3><%= t('.footer_info.title') %></h3>
+          <p><%= t('.footer_info.description') %></p>
+          <p><%= link_to t('.footer_info.about.text'), root_path, title: t('.footer_info.about.title') %></p>
+        </div>
+        <div class="footer-col col-sm-2 col-xs-6 col-lg-offset-2 col-md-offset-2">
+          <h3><%= t('.navigation.title') %></h3>
+          <ul>
+            <li><%= link_to t('.navigation.front'), root_path %></li>
+            <li><%= link_to t('.navigation.videos'), videos_path %></li>
+            <li><%= link_to t('.navigation.playlists'), playlists_path %></li>
+            <li><%= link_to t('.navigation.topics'), topics_path %></li>
+            <li><%= link_to t('.navigation.community'), 'https://www.facebook.com/groups/makigas', target: 'blank' %></li>
+          </ul>
+        </div>
+        <div class="footer-col col-sm-2 col-xs-6">
+          <h3><%= t('.social.title') %></h3>
+          <ul>
+            <li><%= link_to t('.social.facebook'), 'https://www.facebook.com/makigas', target: 'blank' %></li>
+            <li><%= link_to t('.social.twitter'), 'https://twitter.com/makigas', target: 'blank' %></li>
+            <li><%= link_to t('.social.youtube'), 'https://youtube.com/makigas', target: 'blank' %></li>
+            <li><%= link_to t('.social.github'), 'https://github.com/makigas', target: 'blank' %></li>
+            <li><%= link_to t('.social.telegram'), 'https://www.telegram.me/makigas', target: 'blank' %></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col col-sm-2 col-xs-6 col-lg-offset-2 col-md-offset-2">
-        <h3><%= t('.navigation.title') %></h3>
-        <ul>
-          <li><%= link_to t('.navigation.front'), root_path %></li>
-          <li><%= link_to t('.navigation.videos'), videos_path %></li>
-          <li><%= link_to t('.navigation.playlists'), playlists_path %></li>
-          <li><%= link_to t('.navigation.topics'), topics_path %></li>
-          <li><%= link_to t('.navigation.community'), 'https://www.facebook.com/groups/makigas', target: 'blank' %></li>
-        </ul>
-      </div>
-      <div class="footer-col col-sm-2 col-xs-6">
-        <h3><%= t('.social.title') %></h3>
-        <ul>
-          <li><%= link_to t('.social.facebook'), 'https://www.facebook.com/makigas', target: 'blank' %></li>
-          <li><%= link_to t('.social.twitter'), 'https://twitter.com/makigas', target: 'blank' %></li>
-          <li><%= link_to t('.social.youtube'), 'https://youtube.com/makigas', target: 'blank' %></li>
-          <li><%= link_to t('.social.github'), 'https://github.com/makigas', target: 'blank' %></li>
-          <li><%= link_to t('.social.telegram'), 'https://www.telegram.me/makigas', target: 'blank' %></li>
-        </ul>
-      </div>
-    </div>
     </div>
   </div>
   <div class="copyright-info">
     <div class="container">
-    <div class="row">
-      <div class="col-md-9 copyright-links">
-        <p class="year"><strong>&copy; 2012 - <%= Time.now.year %> makigas</strong></p>
-        <p>
-          <%= link_to t('.copyright.legal'), terms_path %> &bull;
-          <%= link_to t('.copyright.privacy'), privacy_path %> &bull;
-          <%= link_to t('.copyright.disclaimer'), disclaimer_path %> &bull;
-          <%= link_to t('.copyright.cookies'), cookies_path %>
-        </p>
-      </div>
-      <div class="col-md-3 made-in-spain">
-        <p><%= t('.made_in_spain') %></p>
+      <div class="row">
+        <div class="col-md-9 copyright-links">
+          <p class="year"><strong>&copy; 2012 - <%= Time.now.year %> makigas</strong></p>
+          <p>
+            <%= link_to t('.copyright.legal'), terms_path %> &bull;
+            <%= link_to t('.copyright.privacy'), privacy_path %> &bull;
+            <%= link_to t('.copyright.disclaimer'), disclaimer_path %> &bull;
+            <%= link_to t('.copyright.cookies'), cookies_path %>
+          </p>
+        </div>
+        <div class="col-md-3 made-in-spain">
+          <p><%= t('.made_in_spain') %></p>
+        </div>
       </div>
     </div>
   </div>
