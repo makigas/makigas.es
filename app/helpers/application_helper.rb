@@ -10,14 +10,6 @@ module ApplicationHelper
     url_for only_path: false, params: parameters
   end
 
-  # This helper automatically will add "current" class on to a <li> item
-  # as required by Bootstrap to show the navbar item using 'current' style.
-  def navigation_link text, url
-    content_tag(:li, class: "nav-item #{current_page?(url) ? 'active' : ''}") do
-      link_to text, url, class: 'nav-link'
-    end
-  end
-
   def running_time sec, options = {}
     if sec >= 3600 || (!options[:full].nil? && options[:full] == true)
       '%d:%02d:%02d' % [ sec / 3600, (sec % 3600) / 60, sec % 60]

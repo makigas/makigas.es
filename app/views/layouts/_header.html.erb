@@ -21,11 +21,10 @@
             <% end %>
           </div>
       <div class="collapse navbar-collapse" id="makigas-navbar">
-        <ul class="nav navbar-nav navbar-right">
-          <%= navigation_link t('.front'), root_path %>
-          <%= navigation_link t('.videos'), videos_path %>
-          <%= navigation_link t('.playlists'), playlists_path %>
-          <%= navigation_link t('.topics'), '/topics' %>
+        <ul class="nav navbar-nav">
+          <li class="nav-item"><%= link_to t('.videos'), :videos, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.playlists'), :playlists, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.topics'), :topics, class: 'nav-link' %></li>
         </ul>
       </div>
     </div>
