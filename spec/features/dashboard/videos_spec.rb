@@ -6,6 +6,11 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     Capybara.server_port = 9080
   end
 
+  after do
+    Capybara.app_host = nil
+    Capybara.server_port = nil
+  end
+
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_videos_path
