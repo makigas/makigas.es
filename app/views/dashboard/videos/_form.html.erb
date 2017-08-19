@@ -5,9 +5,9 @@
   <%= form.input :duration, as: :numeric do %>
     <%= form.hidden_field :duration %>
     <p class="form-inline">
-    <%= number_field_tag 'duration[hours]', ((@video.duration / 3600) rescue "0"), class: 'form-control', min: 0, max: 9 %> :
-    <%= number_field_tag 'duration[minutes]', (((@video.duration % 3600) / 60) rescue 0), class: 'form-control', min: 0, max: 59 %> :
-    <%= number_field_tag 'duration[seconds]', ((@video.duration % 60) rescue 0), class: 'form-control', min: 0, max: 59 %>
+    <%= number_field_tag nil, ((@video.duration / 3600) rescue "0"), id: 'duration_hours', class: 'form-control', min: 0, max: 9 %> :
+    <%= number_field_tag nil, (((@video.duration % 3600) / 60) rescue 0), id: 'duration_minutes', class: 'form-control', min: 0, max: 59 %> :
+    <%= number_field_tag nil, ((@video.duration % 60) rescue 0), id: 'duration_seconds', class: 'form-control', min: 0, max: 59 %>
     </p>
   <% end %>
   <%= form.association :playlist, include_blank: :translate %>

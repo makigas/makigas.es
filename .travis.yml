@@ -5,19 +5,26 @@ branches:
 rvm: 2.4.1
 services:
   - postgresql
+
 env:
   - DB_USERNAME=postgres
+
 before_install:
   - nvm install 6
   - nvm use 6
   - node -v
   - npm install -g yarn
-before_script:
-- bundle exec rake db:create yarn:install
-- RAILS_ENV=test bundle exec rails webpacker:compile
-script: bundle exec rspec spec
+  - if [ ! -f $PWD/travis-phantomjs/phantomjs ]; then
+      wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O $PWD/phantomjs-2.1-linux-x86_64.tar.bz2;
+      tar -xvf $PWD/phantomjs-2.1-linux-x86_64.tar.bz2 -C $PWD/travis-phantomjs --strip-components 2 phantomjs-2.1.1-linux-x86_64/bin/phantomjs;
+    fi
+
+before_script: bundle exec rake db:create yarn:install
+script: PATH=$PWD/travis-phantomjs:$PATH bundle exec rspec spec
+
 cache:
   bundler: true
   directories:
   - node_modules
+  - $PWD/travis-phantomjs
   yarn: true
