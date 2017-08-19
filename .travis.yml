@@ -8,7 +8,6 @@ services:
 
 env:
   - DB_USERNAME=postgres
-  - PATH=$PWD/travis-phantomjs:$PATH
 
 before_install:
   - nvm install 6
@@ -24,7 +23,7 @@ before_script:
 - bundle exec rake db:create yarn:install
 - RAILS_ENV=test bundle exec rails webpacker:compile
 
-script: bundle exec rspec spec
+script: PATH=$PWD/travis-phantomjs:$PATH bundle exec rspec spec
 
 cache:
   bundler: true
