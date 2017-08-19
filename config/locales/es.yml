@@ -66,11 +66,13 @@ es:
       dismiss: "Me entero"
       learn_more: "Lee más sobre las cookies"
     header:
-      front: Principal
       navigation: Desplegar navegación
       playlists: Listas
       topics: Temas
       videos: Vídeos
+      community: Comunidad
+      discord: Discord
+      new: Nuevo
     footer:
       copyright:
         cookies: Uso de cookies (EU)
