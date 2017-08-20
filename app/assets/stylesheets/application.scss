@@ -24,7 +24,18 @@ body {
   
     .navbar-toggle .icon-bar { background: white; }
 
+    .navbar-brand { padding-right: 40px; }
+
     a { color: white; }
+
+    .label {
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 80%;
+      padding-top: 0.3em;
+      margin-left: 6px;
+      background: lighten(#993300, 10%);
+    }
     
     .navbar-nav {
       margin-top: 0;

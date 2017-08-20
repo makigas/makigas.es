@@ -20,3 +20,4 @@
 <meta name="theme-color" content="#4d6699">
 
 <%= csrf_meta_tags %>
+<%= content_for(:header) if content_for?(:header) %>
