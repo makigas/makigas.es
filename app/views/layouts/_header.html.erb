@@ -25,11 +25,10 @@
           <li class="nav-item"><%= link_to t('.videos'), :videos, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.playlists'), :playlists, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.topics'), :topics, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to t('.community'), 'https://www.facebook.com/groups/makigas', target: :blank, class: 'nav-link' %></li>
           <li class="nav-item">
-            <%= link_to 'https://discord.gg/Mq7TBAB', target: :blank, class: 'nav-link' do %>
+            <%= link_to :discord, target: :blank, class: 'nav-link' do %>
               <%= t('.discord') %>
-              <span class="label"><%= t('.new') %></span>
+              <small><span class="label"><%= t('.new') %></span></small>
             <% end %>
           </li>
         </ul>

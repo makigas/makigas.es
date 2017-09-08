@@ -1,0 +1,94 @@
+<% content_for :title, 'Únete al servidor de Discord – makigas' %>
+
+<% content_for :body_classes, 'discord-page' %>
+<% content_for :hero do %>
+  <div class="container">
+    <div class="col-md-7 about-server">
+      <h1>¡Pásate por el Discord oficial!</h1>
+      <h2>
+        Habla con otras personas, comparte ideas, enseña el proyecto
+        en el que estés trabajando, o plantea preguntas.
+      </h2>
+    </div>
+
+    <div class="col-md-5">
+      <p class="buttons">
+        <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_invite}", class: 'btn btn-default btn-lg' %><br>
+        <small>(¡es gratuito y funciona muy bien!)</small>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-md-7">
+
+<h1>¿Qué es esto de Discord?</h1>
+
+<p>
+  Discord es una aplicación integrada de chat que integra lo mejor de otros sistemas
+  de chat como IRC (grupos de discusión, múltiples usuarios...) con otras características
+  más modernas como compartir links, imágenes, archivos, además de ofrecer chats
+  de voz similares a los de Skype o TeamSpeak.
+</p>
+
+<p>
+  Es una aplicación gratuita que puedes usar desde tu navegador web y que también
+  puedes descargar en tu PC con Windows, Linux o macOS o en tu dispositivo
+  Android para poder utilizarlo más cómodamente además de, por ejemplo, integrarlo
+  con juegos que tengas en tu PC.
+</p>
+
+<h1>¿Cómo funciona el servidor de Discord de makigas?</h1>
+
+<p>
+  El servidor de Discord de makigas está estructurado en varios canales que permiten
+  clasificar las temáticas del chat: programación de escritorio, programación web,
+  Linux... además de otros canales típicos como un rincón off-topic o un canal
+  de anuncios importantes.
+</p>
+
+<p>
+  Este servidor también tiene un canal para la promoción del contenido original
+  producido por usuarios, como un proyecto de código abierto, una aplicación
+  o una página web que hayas desarrollado y que quieras enseñar a los demás para
+  pedir opiniones, por ejemplo.
+</p>
+
+<h1>¿Tengo que registrarme para usar Discord?</h1>
+
+<p>
+  Aunque puedes hacer clic en el enlace sin tener una cuenta de Discord, es muy
+  probable que en algún momento necesites introducir un correo electrónico y una
+  contraseña para poder iniciar sesión y guardar tus preferencias y servidores
+  a los que te hayas conectado.
+</p>
+
+<p>
+  Lo bueno es que una vez que tengas cuenta de Discord puedes buscar más servidores
+  a los que unirte o hablar con otros usuarios mediante mensajería privada.
+  Existen multitud de servidores de Discord sobre distintas temáticas, muchos
+  relacionados con juegos, pero también con otros hobbies y comunidades.
+</p>
+
+<h1>¿Esto no es parecido a Slack?</h1>
+
+<p>
+  Sí, es similar a Slack en el sentido de que puedes unirte a múltiples servidores
+  y cada servidor puede tener múltiples canales de discusión donde hablar de
+  distintos temas.
+</p>
+
+<p>
+  Entonces, ¿por qué no usamos Slack en su lugar? En su momento se valoraron
+  las opciones disponibles con ayuda de más personas que aportaron su opinión,
+  y se consideró que Discord era una opción más atractiva por ser más informal,
+  por ser más fácil unirse a servidores nuevos, y por no requerir un inicio de
+  sesión por cada servidor, además de permitir chat de voz gratuito.
+</p>
+
+</div>
+
+<div class="col-md-5">
+  <iframe src="https://discordapp.com/widget?id=<% Rails.application.secrets.discord_key %>"
+    id="discord_widget" allowtransparency="true" frameborder="0"></iframe>
+</div>

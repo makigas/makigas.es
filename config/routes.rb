@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get :privacy, to: 'pages#privacy'
   get :disclaimer, to: 'pages#disclaimer'
   get :cookies, to: 'pages#cookies'
+  get :discord, to: 'pages#discord'
 
   # Legacy routes (redirect only).
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
