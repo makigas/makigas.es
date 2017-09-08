@@ -13,7 +13,7 @@
 
     <div class="col-md-5">
       <p class="buttons">
-        <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_invite}", class: 'btn btn-default btn-lg' %><br>
+        <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'btn btn-default btn-lg' %><br>
         <small>(¡es gratuito y funciona muy bien!)</small>
       </p>
     </div>
@@ -89,6 +89,6 @@
 </div>
 
 <div class="col-md-5">
-  <iframe src="https://discordapp.com/widget?id=<% Rails.application.secrets.discord_key %>"
+  <iframe src="https://discordapp.com/widget?id=<% Rails.application.secrets.discord_server_id %>"
     id="discord_widget" allowtransparency="true" frameborder="0"></iframe>
 </div>
