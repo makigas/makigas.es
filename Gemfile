@@ -24,6 +24,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 
 group :development do
+  gem 'annotate'
   gem 'listen', '~> 3.1'
   gem 'web-console'
   gem 'capistrano'
@@ -34,9 +35,13 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'poltergeist'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.4'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 

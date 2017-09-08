@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id           :integer          not null, primary key
+#  title        :string           not null
+#  description  :text             not null
+#  youtube_id   :string           not null
+#  duration     :integer          not null
+#  slug         :string           not null
+#  playlist_id  :integer          not null
+#  position     :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  unfeatured   :boolean          default(FALSE), not null
+#  published_at :datetime         not null
+#  private      :boolean          default(FALSE), not null
+#
+# Indexes
+#
+#  index_videos_on_slug        (slug)
+#  index_videos_on_youtube_id  (youtube_id) UNIQUE
+#
+
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
@@ -19,63 +43,23 @@ RSpec.describe Video, type: :model do
   end
 
   context 'validation' do
-    it 'is not valid without title' do
-      video = FactoryGirl.build(:video, title: nil)
-      expect(video).not_to be_valid
-    end
+    it { is_expected.to validate_presence_of :title }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_presence_of :youtube_id }
+    it { is_expected.to validate_presence_of :duration }
+    it { is_expected.to validate_presence_of :playlist }
+    it { is_expected.to validate_presence_of :published_at }
 
-    it 'is not valid with a long title' do
-      video = FactoryGirl.build(:video, title: 'A' * 101)
-      expect(video).not_to be_valid
-    end
+    it { is_expected.to validate_length_of(:title).is_at_most 100 }
+    it { is_expected.to validate_length_of(:description).is_at_most 1500 }
+    it { is_expected.to validate_length_of(:youtube_id).is_at_most 15 }
+    
+    it { is_expected.to validate_numericality_of(:duration).is_greater_than 0 }
+  end
 
-    it 'is not valid without description' do
-      video = FactoryGirl.build(:video, description: nil)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid without a long description' do
-      video = FactoryGirl.build(:video, description: 'A' * 1501)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid without YouTube ID' do
-      video = FactoryGirl.build(:video, youtube_id: nil)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid with a long YouTube ID' do
-      video = FactoryGirl.build(:video, youtube_id: 'A' * 16)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid without duration' do
-      video = FactoryGirl.build(:video, duration: nil)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid with zero duration' do
-      video = FactoryGirl.build(:video, duration: 0)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid with negative duration' do
-      video = FactoryGirl.build(:video, duration: -1)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid without being in a playlist' do
-      video = FactoryGirl.build(:video, playlist: nil)
-      expect(video).not_to be_valid
-    end
-
-    it 'is not valid without a publishing date' do
-      video = FactoryGirl.build(:video, published_at: nil)
-      expect(video).not_to be_valid
-    end
-
-    # Note: I don't have to test whether videos are valid without position or
-    # when positions are negative since apparently acts_as_list checks this.
+  context 'relationship' do
+    it { is_expected.to belong_to :playlist }
+    it { is_expected.to have_many :links }
   end
 
   context 'slug' do

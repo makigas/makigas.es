@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: playlists
+#
+#  id                     :integer          not null, primary key
+#  title                  :string           not null
+#  description            :text             not null
+#  youtube_id             :string           not null
+#  slug                   :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  topic_id               :integer
+#  thumbnail_file_name    :string
+#  thumbnail_content_type :string
+#  thumbnail_file_size    :integer
+#  thumbnail_updated_at   :datetime
+#  card_file_name         :string
+#  card_content_type      :string
+#  card_file_size         :integer
+#  card_updated_at        :datetime
+#
+# Indexes
+#
+#  index_playlists_on_slug  (slug) UNIQUE
+#
+
 class Playlist < ApplicationRecord
   extend FriendlyId
 
