@@ -12,6 +12,8 @@ services:
       POSTGRES_PASSWORD: 'makigas'
   web:
     build: .
+    image: danirod/makigas
+    container_name: makigas
     restart: always
     depends_on:
       - database
@@ -25,3 +27,4 @@ services:
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
+    command: ["rails", "server", "-b", "0.0.0.0"]

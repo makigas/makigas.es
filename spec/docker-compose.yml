@@ -3,7 +3,7 @@
 version: '3'
 
 services:
-  database-test:
+  dbtest:
     image: postgres
     volumes:
       - '../docker_data/postgres-test:/var/lib/postgresql/data'
@@ -11,14 +11,15 @@ services:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
   test:
-    build: ..
+    image: danirod/makigas
     depends_on:
-      - database-test
+      - dbtest
     volumes:
       - '..:/makigas'
     environment:
       RAILS_ENV: test
-      DB_HOST: database-test
+      DB_HOST: dbtest
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
+

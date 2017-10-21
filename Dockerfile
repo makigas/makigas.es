@@ -26,4 +26,3 @@ RUN bundle install && yarn
 
 # Remaining files.
 ADD . .
-CMD ["rails", "server", "-b", "0.0.0.0"]
