@@ -19,6 +19,7 @@ services:
       - database
     volumes:
     - '.:/makigas'
+    tmpfs: /makigas/tmp
     ports:
       - '3000:3000'
     environment:
