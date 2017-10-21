@@ -3,13 +3,11 @@
 # develop or test the application in a standalone application
 # without having to install the stuff.
 
-FROM ruby:2.4.1
+FROM ruby:2.4.1-alpine
 MAINTAINER Dani Rodríguez <dani@danirod.es>
 
-# Installs required dependencies. Node.js 6.x repository is added.
-# Also, every other backend and JavaScript dependency is installed.
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
-    apt-get install -y build-essential libpq-dev imagemagick nodejs && \
+# Install dependencies.
+RUN apk add --update alpine-sdk postgresql-dev imagemagick nodejs tzdata && \
     npm install -g yarn
 
 # Initializes the working directory.

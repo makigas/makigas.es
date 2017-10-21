@@ -4,7 +4,7 @@ version: '3'
 
 services:
   dbtest:
-    image: postgres
+    image: postgres:alpine
     volumes:
       - '../docker_data/postgres-test:/var/lib/postgresql/data'
     environment:
