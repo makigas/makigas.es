@@ -12,13 +12,14 @@
           </div>
       <div class="collapse navbar-collapse" id="makigas-navbar">
         <ul class="nav navbar-nav">
-          <%= navigation_link t('.videos'), [:dashboard, :videos] %>
-          <%= navigation_link t('.playlists'), [:dashboard, :playlists] %>
-          <%= navigation_link t('.topics'), [:dashboard, :topics] %>
-          <%= navigation_link t('.users'), [:dashboard, :users] %>
+          <li class="nav-item"><%= link_to t('.videos'), [:dashboard, :videos], class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.playlists'), [:dashboard, :playlists], class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.topics'), [:dashboard, :topics], class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.opinions'), [:dashboard, :opinions], class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to t('.users'), [:dashboard, :users], class: 'nav-link' %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-text hidden-xs"><%= current_user.email %></li>
+          <li class="navbar-text hidden-sm hidden-xs"><%= current_user.email %></li>
           <li><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank %></li>
           <li><%= link_to t('.log_out'), destroy_user_session_path %></li>
         </ul>

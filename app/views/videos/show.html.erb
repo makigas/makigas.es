@@ -23,11 +23,12 @@
 <% content_for :body_classes, 'video-player-page' %>
 
 <% if @video.playlist.topic %>
+<% content_for :header do %>
 <style>
-/* Override default page colors with my own. */
 .main-header, .hero-tron { background: <%= @video.playlist.topic.color %>; }
 .main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
 </style>
+<% end %>
 <% end %>
 
 <%= content_for :hero do %>

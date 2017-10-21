@@ -16,11 +16,12 @@
 <meta property="og:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
 <% end %>
 
+<% content_for :header do %>
 <style>
-/* Override default page colors with my own. */
 .main-header, .hero-tron { background: <%= @topic.color %>; }
 .main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
 </style>
+<% end %>
 
 <% content_for :hero do %>
   <div class="media playlist-data">

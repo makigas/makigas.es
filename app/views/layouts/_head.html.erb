@@ -9,6 +9,7 @@
 <%= content_for(:twitter) -%>
 <%= content_for(:facebook) -%>
 
+<%= stylesheet_pack_tag 'vendor' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,3 +20,4 @@
 <meta name="theme-color" content="#4d6699">
 
 <%= csrf_meta_tags %>
+<%= content_for(:header) if content_for?(:header) %>

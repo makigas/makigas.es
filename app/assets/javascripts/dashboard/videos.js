@@ -1,22 +1,19 @@
-$(document).ready(function() {
-  var form = 'body.page-videos form.simple_form';
+/*
+ * On form submission, the sexagesimal components for the video
+ * length should be extracted and the duration in seconds should be
+ * calculated, as that is what has to be sent to the backend.
+ */
+var form = document.querySelector('body.page-videos form.simple_form');
 
-  var updateDuration = function() {
-    hours = parseInt($(form).find('#duration_hours').val() || 0);
-    minutes = parseInt($(form).find('#duration_minutes').val() || 0);
-    seconds = parseInt($(form).find('#duration_seconds').val() || 0);
-    $(form).find('#video_duration').val(hours * 3600 + minutes * 60 + seconds);
-  };
+if (form) {
+  form.addEventListener('submit', function(e) {
+    // Extract sexagesimal time values.
+    var hh = form.querySelector('#duration_hours').value || 0;
+    var mm = form.querySelector('#duration_minutes').value || 0;
+    var ss = form.querySelector('#duration_seconds').value || 0;
 
-  var formatComponent = function() {
-    var value = parseInt($(this).val() || 0);
-    if (value < 10) {
-      $(this).val("0" + value);
-    }
-  }
-
-  var timer = $(form).find('#duration_hours, #duration_minutes, #duration_seconds');
-  timer.change(updateDuration);
-  timer.keyup(updateDuration);
-  timer.blur(formatComponent);
-});
+    // Convert to seconds.
+    var time = parseInt(hh) * 3600 + parseInt(mm) * 60 + parseInt(ss);
+    form.querySelector('#video_duration').value = time;
+  });
+}

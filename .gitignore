@@ -7,9 +7,6 @@
 # Ignore bundler config.
 .bundle
 
-# Ignore Node thingy.
-node_modules/
-
 # Ignore all logfiles and tempfiles.
 log/*
 !/log/.keep
@@ -20,8 +17,12 @@ config/deploy.yml
 
 # Ignore local instance data.
 .env
+/public/assets/
 public/sitemap.xml
 public/system
 
 # Ignore Docker
 docker_data/
+node_modules/
+/public/packs/
+/public/packs-test/

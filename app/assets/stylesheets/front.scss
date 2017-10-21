@@ -1,13 +1,3 @@
-.page-front .navbar-makigas {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.navbar-transparent .navbar-makigas {
-  background: rgba(black, 0.25) !important;
-}
-
 .makigas-tron {
   color: white;
   
@@ -18,22 +8,20 @@
   padding-bottom: 0;
   
   .makigas-tron-inner {
-    padding-top: 90px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     padding-left: 20px;
     padding-right: 20px;
-    background: desaturate(#003399, 50%);
-    background-image: linear-gradient(to bottom right, adjust-hue(desaturate(lighten(#003399, 30%), 25%), -25%), #003399);
+    background: #4d6699;
+    background-image: asset-url('background.png');
+    background-position: center;
+    background-size: 212px;
     box-shadow: 0 -4px 4px -2px rgba(black, 0.5) inset;
+    text-align: center;
     
     @media screen and (min-width: 767px) and (max-width: 1199px) {
-      padding-top: 130px;
-      padding-bottom: 80px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      padding-top: 170px;
-      padding-bottom: 120px;
+      padding-top: 60px;
+      padding-bottom: 60px;
     }
   }
   
@@ -41,7 +29,6 @@
     font-size: 32px;
     margin-bottom: 2rem;
     @media screen and (min-width: 767px) {
-      font-weight: bold;
       line-height: 120%;
       margin-bottom: 3rem;
     }
