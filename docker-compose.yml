@@ -29,4 +29,3 @@ services:
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
-    command: ["rails", "server", "-b", "0.0.0.0"]

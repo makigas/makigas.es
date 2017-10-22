@@ -16,10 +16,13 @@ services:
       - dbtest
     volumes:
       - '..:/makigas'
+      - '/makigas/node_modules'
+      - '/makigas/tmp'
     environment:
       RAILS_ENV: test
       DB_HOST: dbtest
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
+    command: /bin/true
 

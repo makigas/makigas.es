@@ -4,7 +4,7 @@
 # without having to install the stuff.
 
 FROM ruby:2.4.1-alpine
-MAINTAINER Dani Rodríguez <dani@danirod.es>
+LABEL maintainer="dani@danirod.es"
 
 # Install dependencies.
 RUN apk add --update alpine-sdk postgresql-dev imagemagick nodejs tzdata && \
@@ -24,3 +24,4 @@ RUN bundle install && yarn install
 
 # Remaining files.
 ADD . .
+CMD ["rails", "server", "-b", "0.0.0.0"]
