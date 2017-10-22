@@ -21,7 +21,8 @@ config/deploy.yml
 public/sitemap.xml
 public/system
 
-# Ignore this Node thingy.
+# Ignore Docker
+docker_data/
 node_modules/
 /public/packs/
 /public/packs-test/

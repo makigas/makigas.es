@@ -1,0 +1,28 @@
+# Testing file for Docker
+
+version: '3'
+
+services:
+  dbtest:
+    image: postgres:alpine
+    volumes:
+      - '../docker_data/postgres-test:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: 'makigas'
+      POSTGRES_PASSWORD: 'makigas'
+  test:
+    image: danirod/makigas
+    depends_on:
+      - dbtest
+    volumes:
+      - '..:/makigas'
+      - '/makigas/node_modules'
+      - '/makigas/tmp'
+    environment:
+      RAILS_ENV: test
+      DB_HOST: dbtest
+      DB_NAME: makigas
+      DB_USERNAME: makigas
+      DB_PASSWORD: makigas
+    command: /bin/true
+

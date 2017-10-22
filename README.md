@@ -17,6 +17,8 @@ and playlists in the system.
 
 # Setting up
 
+**To use the experimental Docker images, see below.**
+
 ## Requirements
 
 Supported operating systems:
@@ -89,6 +91,68 @@ you will have to use the Rails console to seed the first user, like so:
     $ rails console
     ...
     > User.create(email: 'foo@example.com', password: '123456')
+
+# Development and testing using Docker
+
+This repository uses Docker and Docker Compose. Docker Swarm is being closely
+evaluated, but it is not officially supported and it may or may not work right
+away.
+
+## Workflows
+
+* The Dockerfile for the makigas web application is located at `/Dockerfile`.
+  It builds the system image by packaging the web application code and required
+  dependencies (Node.js, Ruby, Imagemagick...) into a Docker image that, once
+  started, starts the Puma server.
+
+* `/docker-compose.yml` sets up a complete development platform including
+  PostgreSQL as a database running on another container. This is the one that
+  you will always use to operate the machine as it already sets up the
+  environment so that the web application image built by the Dockerfile can use
+  the database.
+
+* `/spec/docker-compose.yml` sets up a second development platform including
+  another PostgreSQL instance. This is the one that you'll use when running
+  tests since it's connected to a **different** database, so it doesn't
+  matter if the testing database gets trashed, it won't affect development
+  (or production) databases.
+
+## Development commands
+
+Start a development session using `docker-compose up -d`. First issue of this
+command will take significantly longer as it has to pull PostgreSQL and
+build the web application. Then, it will boot the required containers. Once
+they are ready, you can browse the server at the URL `http://localhost:3000`.
+
+**Migrations are pending** (a.k.a. how do I run commands on this VM?):
+Use `docker-compose exec web [command]`. Examples:
+
+* Attach a shell: `docker-compose exec web /bin/sh`
+* Attach another shell: `docker-compose exec web /bin/bash`
+* Run a rake task: `docker-compose exec web rake -T`
+* Migration: `docker-compose exec web rake db:migrate`
+
+Stop a development session by using `docker-compose stop` or
+`docker-compose down`. First command will stop the containers but won't delete
+them. Second command will also delete the containers.
+
+## Testing commands
+
+* Change directory to `spec` to use `spec/docker-compose.yml`. This compose
+  file uses a different database to avoid destroying data on development or
+  production databases. Additionally, it doesn't run `rails server` as it's
+  not required.
+
+* Start a testing session using `docker-compose up -d`.
+
+* Run RSpec: `docker-compose run --rm test rspec`. Since `run` will create
+  an additional container, keep the `--rm` parameter to remove that container
+  once RSpec ends.
+
+* Stop the testing session using `docker-compose down`.
+
+`docker-compose run` will return the status code of the given command. So,
+if RSpec fails, `docker-compose run` will also return 1.
 
 # Contributing
 

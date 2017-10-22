@@ -1,0 +1,16 @@
+.bundle
+.git
+.github
+.vscode
+config/database.yml
+config/deploy.yml
+config/deploy.yml.example
+docker_data
+log
+node_modules
+public/assets
+public/packs
+public/packs-test
+public/system
+public/sitemap.xml
+tmp
