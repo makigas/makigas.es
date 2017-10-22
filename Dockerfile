@@ -20,7 +20,7 @@ ADD Gemfile.lock Gemfile.lock
 ADD package.json package.json
 ADD docker/database.yml config/database.yml
 ADD yarn.lock yarn.lock
-RUN bundle install && yarn
+RUN bundle install && yarn install
 
 # Remaining files.
 ADD . .
