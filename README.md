@@ -94,35 +94,9 @@ you will have to use the Rails console to seed the first user, like so:
 
 # Development and testing using Docker
 
-## A rationale for Docker
-
-Docker allows a cleaner host environment by defering all the development and
-testing to some containers running the database engine, Ruby, and all the
-required dependencies. No assets are installed in your host system, and cleaning
-up the server is as easy as pruning the Docker images and containers the
-application left.
-
-Wait a second. Virtual machines also keep the host system in pristine condition.
-Why should I use Docker and not Vagrant / VirtualBox?
-
-* Vagrant spins up an entire GNU/Linux virtual box, having its own Linux kernel
-  and its own userspace. If you run three Vagrant boxes, you are running three Linux kernel instances plus your host kernel (I'm assuming Linux).
-
-* Docker uses a Linux kernel feature named LXC. When a Docker box is spinned
-  inside a host computer running Linux, the Docker box shares your host's Linux
-  kernel. If you run three Docker containers, only one Linux kernel instance
-  is active – your host's; however, multiple userlands including different
-  applications, mountpoints and process tables can coexist.
-
-So, this has an interesting consequence: booting an entire GNU/Linux VM requires
-a lot of time; while booting a Docker container requires seconds, since the
-Linux kernel is already provided by your host.
-
-If you are not using GNU/Linux as a host, the Docker daemon running on your
-host computer will still create a global and invisible VM running the Moby Linux
-distribution and use that VM as the shared Linux kernel. This VM runs using
-the operating system native hypervisor engine – HyperV on Windows and
-Hypervisor.framework on macOS.
+This repository uses Docker and Docker Compose. Docker Swarm is being closely
+evaluated, but it is not officially supported and it may or may not work right
+away.
 
 ## Workflows
 
