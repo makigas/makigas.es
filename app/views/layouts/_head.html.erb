@@ -2,6 +2,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="dns-prefetch" href="//cdn.makigas.es">
+<link rel="dns-prefetch" href="//static.makigas.es">
+<link rel="dns-prefetch" href="//disqus.com">
+<link rel="dns-prefetch" href="//i1.ytimg.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="dns-prefetch" href="//www.youtube-nocookie.com">
+<link rel="dns-prefetch" href="//makigas.disqus.com">
+
 <title><%= content_for?(:title) ? content_for(:title) : "makigas" %></title>
 <%= tag(:meta, name: 'description', content: content_for(:description)) if content_for?(:description) %>
 <%= tag(:link, rel: 'canonical', href: canonical_url) %>
