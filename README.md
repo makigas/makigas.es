@@ -136,6 +136,18 @@ Stop a development session by using `docker-compose stop` or
 `docker-compose down`. First command will stop the containers but won't delete
 them. Second command will also delete the containers.
 
+**It's slow**. First request may be slow if Webpacker needs compiling the
+application. This has to do more with Webpacker than Docker, but the fact that
+restarting Docker containers may make compiled assets to be lost, makes this
+thing happen more.
+
+**A server is already running. Check /makigas/tmp/pids/server.pid.**
+This bug happens some times when a Docker container is not gracefully stopped
+or the container is not clean up anyway. I still don't know a more proper way
+to deal with this other than opening a second shell and running
+`docker-compose exec web rm /makigas/tmp/pids/server.pid` to delete the old
+PID file.
+
 ## Testing commands
 
 * Change directory to `spec` to use `spec/docker-compose.yml`. This compose
