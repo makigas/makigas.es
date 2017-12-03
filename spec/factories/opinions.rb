@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :opinion do
     from 'Programación & Co.'
     message 'Estamos encantados con el trabajo que hace este chico.'

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :topic do
     title 'Popular musics'
     description 'Popular musics of all kinds of styles and genres'

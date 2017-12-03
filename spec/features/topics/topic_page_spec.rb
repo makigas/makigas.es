@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Topic page", type: :feature do
-  before { @topic = FactoryGirl.create(:topic) }
+  before { @topic = FactoryBot.create(:topic) }
 
   scenario 'shows information about a topic' do
     visit topic_path(@topic)
@@ -11,7 +11,7 @@ RSpec.feature "Topic page", type: :feature do
   end
 
   scenario 'shows playlists in a topic' do
-    @playlist = FactoryGirl.create(:playlist, topic: @topic)
+    @playlist = FactoryBot.create(:playlist, topic: @topic)
 
     visit topic_path(@topic)
 
@@ -22,7 +22,7 @@ RSpec.feature "Topic page", type: :feature do
 
   context 'on empty playlists' do
     before do
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
     end
 
     scenario 'shows the playlist length' do
@@ -33,8 +33,8 @@ RSpec.feature "Topic page", type: :feature do
 
   context 'on playlists with a single video' do
     before do
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
-      FactoryGirl.create(:video, playlist: @playlist)
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
+      FactoryBot.create(:video, playlist: @playlist)
 
       scenario 'shows the playlist length' do
         visit topic_path(@topic)
@@ -45,9 +45,9 @@ RSpec.feature "Topic page", type: :feature do
 
   context 'on playlists with many videos' do
     before do
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1235')
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1235')
     end
 
     scenario 'shows the playlist length' do
@@ -58,9 +58,9 @@ RSpec.feature "Topic page", type: :feature do
 
   context 'on playlists with scheduled videos' do
     before do
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1235', published_at: 2.days.from_now)
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1235', published_at: 2.days.from_now)
     end
 
     scenario 'scheduled videos are not counted' do
