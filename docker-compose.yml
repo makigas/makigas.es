@@ -10,6 +10,18 @@ services:
     environment:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
+  storage:
+    image: minio/minio
+    volumes:
+    - './docker_data/minio/data:/data'
+    - './docker_data/minio/config:/root/.minio'
+    ports:
+      - 9000:9000
+    environment:
+      # Randomly generated using KeePassXC. Do not use in production.
+      MINIO_ACCESS_KEY: 4j7anyzy
+      MINIO_SECRET_KEY: NM8R5pozNkfHUgFNRx2Zxuxv
+    command: server /data
   web:
     build: .
     image: danirod/makigas
@@ -17,6 +29,7 @@ services:
     restart: always
     depends_on:
       - database
+      - storage
     volumes:
     - '.:/makigas'
     - '/makigas/node_modules/'
@@ -25,7 +38,14 @@ services:
       - '3000:3000'
     environment:
       RAILS_ENV: development
+      RAILS_USE_S3: 'true'
+      RAILS_LOG_TO_STDOUT: 'true'
       DB_HOST: database
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
+      S3_BUCKET_NAME: 'makigas'
+      S3_HOST_NAME: 'localhost:9000'
+      S3_ENDPOINT: 'http://storage:9000'
+      AWS_ACCESS_KEY_ID: 4j7anyzy
+      AWS_SECRET_ACCESS_KEY: NM8R5pozNkfHUgFNRx2Zxuxv
