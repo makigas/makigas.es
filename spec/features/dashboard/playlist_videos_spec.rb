@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.feature "Dashboard playlist videos", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
   after { Capybara.default_host = "http://www.example.com" }
-  
+
   before(:each) {
-    @playlist = FactoryGirl.create(:playlist)
+    @playlist = FactoryBot.create(:playlist)
     @videos = [
-      FactoryGirl.create(:video, playlist: @playlist, title: 'Primero', position: 1, youtube_id: '1'),
-      FactoryGirl.create(:video, playlist: @playlist, title: 'Segundo', position: 2, youtube_id: '2')
+      FactoryBot.create(:video, playlist: @playlist, title: 'Primero', position: 1, youtube_id: '1'),
+      FactoryBot.create(:video, playlist: @playlist, title: 'Segundo', position: 2, youtube_id: '2')
     ]
   }
 
@@ -21,7 +21,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
 
   context "when logged in" do
     before(:each) {
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 

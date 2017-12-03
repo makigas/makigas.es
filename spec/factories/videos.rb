@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :video do
     title 'Chandelier'
     description 'Music video for Chandelier'

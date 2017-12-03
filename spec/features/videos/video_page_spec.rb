@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Video page", type: :feature do
-  before { @video = FactoryGirl.create(:video, duration: 133) }
+  before { @video = FactoryBot.create(:video, duration: 133) }
 
   scenario 'there is information about the video' do
     visit_video @video
@@ -31,7 +31,7 @@ RSpec.feature "Video page", type: :feature do
 
   context 'a topic has been assigned' do
     before do
-      @topic = FactoryGirl.create(:topic)
+      @topic = FactoryBot.create(:topic)
       @video.playlist.update_attributes(topic: @topic)
     end
 
@@ -81,7 +81,7 @@ RSpec.feature "Video page", type: :feature do
 
     context 'a topic has been assigned' do
       before do
-        @topic = FactoryGirl.create(:topic)
+        @topic = FactoryBot.create(:topic)
         @video.playlist.update_attributes(topic: @topic)
       end
 
@@ -106,7 +106,7 @@ RSpec.feature "Video page", type: :feature do
 
     context 'user is logged in' do
       before do
-        @user = FactoryGirl.create(:user)
+        @user = FactoryBot.create(:user)
         login_as @user, scope: :user
       end
 

@@ -20,19 +20,19 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
 
   context "when logged in" do
     before(:each) {
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 
     scenario "user can list videos" do
-      @video = FactoryGirl.create(:video)
+      @video = FactoryBot.create(:video)
       visit dashboard_videos_path
       expect(page).to have_link @video.title
     end
 
     scenario "user can create videos" do
-      @playlist = FactoryGirl.create(:playlist)
-      
+      @playlist = FactoryBot.create(:playlist)
+
       visit dashboard_videos_path
       expect {
         click_link 'Nuevo Vídeo'
@@ -50,9 +50,9 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     end
 
     scenario "user can set the duration of a video" do
-      @playlist = FactoryGirl.create(:playlist)
+      @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
-      
+
       click_link 'Nuevo Vídeo'
       fill_in 'Título', with: 'My video title'
       fill_in 'Descripción', with: 'This is a long video'
@@ -68,7 +68,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     end
 
     scenario "user can create unfeatured videos" do
-      @playlist = FactoryGirl.create(:playlist)
+      @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
 
       expect {
@@ -92,7 +92,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     end
 
     scenario "user cannot create videos with invalid data" do
-      @playlist = FactoryGirl.create(:playlist)
+      @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
       expect {
         click_link 'Nuevo Vídeo'
@@ -119,7 +119,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     end
 
     scenario "user can edit videos" do
-      @video = FactoryGirl.create(:video, title: 'My old video')
+      @video = FactoryBot.create(:video, title: 'My old video')
 
       visit dashboard_videos_path
       within(:xpath, "//tr[.//a[text() = 'My old video']]") do
@@ -132,7 +132,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     end
 
     scenario "user can destroy videos" do
-      @video = FactoryGirl.create(:video, title: 'My cool video')
+      @video = FactoryBot.create(:video, title: 'My cool video')
 
       visit dashboard_videos_path
       expect {

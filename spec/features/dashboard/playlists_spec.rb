@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Dashboard playlists", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
   after { Capybara.default_host = "http://www.example.com" }
-  
+
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_playlists_path
@@ -13,13 +13,13 @@ RSpec.feature "Dashboard playlists", type: :feature do
 
   context "when logged in" do
     before(:each) {
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 
     scenario "user can list the playlists" do
-      @playlist = FactoryGirl.create(:playlist)
-      @video = FactoryGirl.create(:video, playlist: @playlist)
+      @playlist = FactoryBot.create(:playlist)
+      @video = FactoryBot.create(:video, playlist: @playlist)
 
       visit dashboard_playlists_path
       expect(page).to have_link @playlist.title, href: dashboard_playlist_path(@playlist)
@@ -43,7 +43,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
     end
 
     scenario "user can attach a playlist to a topic" do
-      @topic = FactoryGirl.create(:topic)
+      @topic = FactoryBot.create(:topic)
 
       visit dashboard_playlists_path
       click_link "Nueva Lista"
@@ -60,7 +60,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
     end
 
     scenario "user can edit a playlist" do
-      @playlist = FactoryGirl.create(:playlist, title: 'My old title')
+      @playlist = FactoryBot.create(:playlist, title: 'My old title')
 
       visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = 'My old title']]") do
@@ -76,8 +76,8 @@ RSpec.feature "Dashboard playlists", type: :feature do
     end
 
     scenario "user can destroy a playlist" do
-      @playlist = FactoryGirl.create(:playlist)
-      
+      @playlist = FactoryBot.create(:playlist)
+
       visit dashboard_playlists_path
       expect {
         within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do

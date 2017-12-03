@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Dashboard opinions", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
   after { Capybara.default_host = "http://www.example.com" }
-  
+
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_opinions_path
@@ -13,12 +13,12 @@ RSpec.feature "Dashboard opinions", type: :feature do
 
   context "when logged in" do
     before(:each) {
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 
     scenario "user can list the opinions" do
-      @opinion = FactoryGirl.create(:opinion)
+      @opinion = FactoryBot.create(:opinion)
       visit dashboard_opinions_path
       expect(page).to have_link @opinion.from, href: dashboard_opinion_path(@opinion)
     end
@@ -39,7 +39,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
     end
 
     scenario "user can edit opinions" do
-      @opinion = FactoryGirl.create(:opinion, from: "Programming n Co")
+      @opinion = FactoryBot.create(:opinion, from: "Programming n Co")
 
       visit dashboard_opinions_path
       within(:xpath, "//tr[.//td//a[text() = 'Programming n Co']]") do
@@ -54,8 +54,8 @@ RSpec.feature "Dashboard opinions", type: :feature do
     end
 
     scenario "user can destroy opinions" do
-      @opinion = FactoryGirl.create(:opinion)
-      
+      @opinion = FactoryBot.create(:opinion)
+
       visit dashboard_opinions_path
       expect {
         within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do

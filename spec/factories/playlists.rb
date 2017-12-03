@@ -1,6 +1,6 @@
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :playlist do
     title 'Popular music videos'
     description 'This list contains a lot of musical videos'

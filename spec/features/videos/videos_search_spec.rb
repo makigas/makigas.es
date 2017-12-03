@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.feature "Videos search", type: :feature do
   context "searching by length" do
     before(:each) do
-      @short = FactoryGirl.create(:video, duration: 200, title: 'Short', youtube_id: '1')
-      @medium = FactoryGirl.create(:video, duration: 600, title: 'Medium', youtube_id: '2')
-      @long = FactoryGirl.create(:video, duration: 1200, title: 'Long', youtube_id: '3')
+      @short = FactoryBot.create(:video, duration: 200, title: 'Short', youtube_id: '1')
+      @medium = FactoryBot.create(:video, duration: 600, title: 'Medium', youtube_id: '2')
+      @long = FactoryBot.create(:video, duration: 1200, title: 'Long', youtube_id: '3')
     end
-    
+
     scenario "can search for short length videos" do
       visit videos_path
       choose 'Cortos'
@@ -38,12 +38,12 @@ RSpec.feature "Videos search", type: :feature do
 
   context "searching by topic" do
     before(:each) do
-      @topic1 = FactoryGirl.create(:topic, title: 'First Topic')
-      @topic2 = FactoryGirl.create(:topic, title: 'Second Topic')
-      @playlist1 = FactoryGirl.create(:playlist, topic: @topic1)
-      @playlist2 = FactoryGirl.create(:playlist, topic: @topic2)
-      @video1 = FactoryGirl.create(:video, title: 'First', youtube_id: 'A', playlist: @playlist1)
-      @video2 = FactoryGirl.create(:video, title: 'Second', youtube_id: 'B', playlist: @playlist2)
+      @topic1 = FactoryBot.create(:topic, title: 'First Topic')
+      @topic2 = FactoryBot.create(:topic, title: 'Second Topic')
+      @playlist1 = FactoryBot.create(:playlist, topic: @topic1)
+      @playlist2 = FactoryBot.create(:playlist, topic: @topic2)
+      @video1 = FactoryBot.create(:video, title: 'First', youtube_id: 'A', playlist: @playlist1)
+      @video2 = FactoryBot.create(:video, title: 'Second', youtube_id: 'B', playlist: @playlist2)
     end
 
     scenario "can search for videos in a topic" do

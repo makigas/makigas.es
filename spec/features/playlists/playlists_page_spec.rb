@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Playlists page", type: :feature do
-  before { @playlist = FactoryGirl.create(:playlist) }
+  before { @playlist = FactoryBot.create(:playlist) }
 
   scenario 'displays information about playlists' do
     visit playlists_path
@@ -18,7 +18,7 @@ RSpec.feature "Playlists page", type: :feature do
     end
 
     scenario 'single video' do
-      FactoryGirl.create(:video, playlist: @playlist)
+      FactoryBot.create(:video, playlist: @playlist)
 
       visit playlists_path
 
@@ -26,8 +26,8 @@ RSpec.feature "Playlists page", type: :feature do
     end
 
     scenario 'many videos' do
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1238')
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1238')
 
       visit playlists_path
 
@@ -35,8 +35,8 @@ RSpec.feature "Playlists page", type: :feature do
     end
 
     scenario 'scheduled videos are not counted' do
-      FactoryGirl.create(:video, playlist: @playlist, youtube_id: '1234')
-      FactoryGirl.create(:tomorrow_video, playlist: @playlist, youtube_id: '1238')
+      FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')
+      FactoryBot.create(:tomorrow_video, playlist: @playlist, youtube_id: '1238')
 
       visit playlists_path
 

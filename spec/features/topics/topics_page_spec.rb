@@ -7,10 +7,10 @@ RSpec.feature "Topics page", type: :feature do
       expect(page.status_code).to be 200
     end
   end
-  
+
   context "when there are topics" do
     before(:each) {
-      @topic = FactoryGirl.create(:topic)
+      @topic = FactoryBot.create(:topic)
     }
 
     it "it is success" do

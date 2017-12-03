@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Dashboard topics", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
   after { Capybara.default_host = "http://www.example.com" }
-  
+
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_topics_path
@@ -13,13 +13,13 @@ RSpec.feature "Dashboard topics", type: :feature do
 
   context "when logged in" do
     before(:each) {
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 
     scenario "user can list the topics" do
-      @topic = FactoryGirl.create(:topic)
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
+      @topic = FactoryBot.create(:topic)
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
 
       visit dashboard_topics_path
       expect(page).to have_link @topic.title, href: dashboard_topic_path(@topic)
@@ -44,7 +44,7 @@ RSpec.feature "Dashboard topics", type: :feature do
     end
 
     scenario "user can edit topics" do
-      @topic = FactoryGirl.create(:topic, title: "My old title")
+      @topic = FactoryBot.create(:topic, title: "My old title")
 
       visit dashboard_topics_path
       within(:xpath, "//tr[.//td//a[text() = 'My old title']]") do
@@ -59,9 +59,9 @@ RSpec.feature "Dashboard topics", type: :feature do
     end
 
     scenario "user can destroy topics" do
-      @topic = FactoryGirl.create(:topic)
-      @playlist = FactoryGirl.create(:playlist, topic: @topic)
-      
+      @topic = FactoryBot.create(:topic)
+      @playlist = FactoryBot.create(:playlist, topic: @topic)
+
       visit dashboard_topics_path
       expect {
         within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do

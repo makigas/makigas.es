@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Front opinions', type: :feature do
-  let!(:opinion) { FactoryGirl.create(:opinion) }
+  let!(:opinion) { FactoryBot.create(:opinion) }
 
   scenario 'displays link' do
     visit root_path
