@@ -38,7 +38,16 @@ services:
       - '3000:3000'
     environment:
       RAILS_ENV: development
+      RAILS_USE_S3: 'true'
+      RAILS_LOG_TO_STDOUT: 'true'
       DB_HOST: database
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
+      S3_BUCKET_NAME: 'cdn.makigas.es'
+      S3_HOST_NAME: 's3-us-west-2.amazonaws.com'
+      S3_HOST_ALIAS: 'cdn.makigas.es'
+      S3_ENDPOINT: 'http://minio.danirod.es'
+      S3_BUCKET_DOMAIN: 'true'
+      AWS_ACCESS_KEY_ID: 25HVKL4CS60Z785UUQSX
+      AWS_SECRET_ACCESS_KEY: xLI8/Fa6yiWbdtZoQdchVXnhg86Xp2gm7H2gUxUp
