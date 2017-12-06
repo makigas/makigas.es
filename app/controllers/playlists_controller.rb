@@ -7,7 +7,7 @@ class PlaylistsController < ApplicationController
   end
 
   def feed
-    @videos = @playlist.videos.reverse
+    @videos = @playlist.videos.includes(:playlist, playlist: [:topic]).visible.reverse
     @updated_at = Video.order(updated_at: :desc).limit(1).pluck(:updated_at).first
     render format: :xml, template: 'playlists/feed.xml.erb', layout: false
   end

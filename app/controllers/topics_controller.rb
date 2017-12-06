@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def feed
-    @videos = Video.joins(:playlist).where(playlists: { topic: @topic }).order(published_at: :desc).limit(15)
+    @videos = Video.visible.joins(:playlist).includes(:playlist, playlist: [:topic]).where(playlists: { topic: @topic }).order(published_at: :desc).limit(15)
     @updated_at = Video.order(updated_at: :desc).limit(1).pluck(:updated_at).first
     render format: :xml, template: 'topics/feed.xml.erb', layout: false
   end
