@@ -65,6 +65,8 @@ es:
       message: "Me obligan a informarte que este sitio usa cookies."
       dismiss: "Me entero"
       learn_more: "Lee más sobre las cookies"
+    head:
+      videos_feed: Vídeos recientes (ATOM)
     header:
       navigation: Desplegar navegación
       playlists: Listas
@@ -108,6 +110,10 @@ es:
         one: 1 episodio
         other: "%{count} episodios"
       title: Todas las listas de reproducción
+    show:
+      meta:
+        playlist_feed: "Lista: %{playlist} (ATOM)"
+        topic_feed: "Tema: %{topic} (ATOM)"
   topics:
     index:
       meta:
@@ -117,6 +123,7 @@ es:
     show:
       meta:
         description: Explora las listas de reproducción que hay dentro de esta categoría o encuentra contenido adicional.
+        topic_feed: "Tema: %{topic} (ATOM)"
       episode:
         one: 1 episodio
         other: "%{count} episodios"
@@ -151,3 +158,6 @@ es:
         other: Una lista de reproducción de %{count} episodios.
       this_playlist: Lista de reproducción
       this_topic: Este tema
+      meta:
+        playlist_feed: "Lista: %{playlist} (ATOM)"
+        topic_feed: "Tema: %{topic} (ATOM)"

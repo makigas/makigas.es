@@ -16,6 +16,11 @@
 <meta property="og:image" content="<%= image_url(@playlist.card.url, only_path: false) %>">
 <% end %>
 
+<% content_for :meta do %>
+<%= tag(:link, rel: :alternate, href: feed_playlist_url(@playlist), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
+<%= tag(:link, rel: :alternate, href: feed_topic_url(@playlist.topic), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
+<% end %>
+
 <% if @playlist.topic %>
 <% content_for :header do %>
 <style>
