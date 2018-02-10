@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: https://www.makigas.es/robots.txt
+Sitemap: https://www.makigas.es/sitemap.xml.gz
