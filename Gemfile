@@ -4,9 +4,9 @@ gem 'rails', '5.1.4'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0.0', group: :doc
 gem 'puma', '~> 3.0'
-gem 'pg'
+gem 'pg', '< 1.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.0'
