@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.10.0"
+lock "3.10.1"
 
 # Keep sensitive deployment informatino out of the repo. As seen on:
 # https://github.com/AyuntamientoMadrid/transparencia/blob/master/config/deploy.rb
