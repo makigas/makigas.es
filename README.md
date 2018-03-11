@@ -94,9 +94,9 @@ you will have to use the Rails console to seed the first user, like so:
 
 # Development and testing using Docker
 
-This repository uses Docker and Docker Compose. Docker Swarm is being closely
-evaluated, but it is not officially supported and it may or may not work right
-away.
+This repository has support for Docker. I still don't know exactly why, but I
+try to support it. The official supported environment is Docker and Docker
+Compose. Although Docker Swarm looks interesting, it's not supported yet.
 
 ## Workflows
 
@@ -106,49 +106,42 @@ away.
   started, starts the Puma server.
 
 * `/docker-compose.yml` sets up a complete development platform including
-  PostgreSQL as a database running on another container. This is the one that
-  you will always use to operate the machine as it already sets up the
-  environment so that the web application image built by the Dockerfile can use
-  the database.
+  PostgreSQL as the server database or Minio as a local S3 alternative. This
+  is the docker-compose file that you can use to hack the application.
 
-* `/spec/docker-compose.yml` sets up a second development platform including
-  another PostgreSQL instance. This is the one that you'll use when running
-  tests since it's connected to a **different** database, so it doesn't
-  matter if the testing database gets trashed, it won't affect development
-  (or production) databases.
+* `/spec/docker-compose.yml` starts a different development environment that
+  spawns a separate database instance for testing to avoid trashing the
+  development database. **Running RSpec in Docker is still ugly, but it
+  works**.
 
-## Development commands
+## How to develop using Docker
 
-Start a development session using `docker-compose up -d`. First issue of this
-command will take significantly longer as it has to pull PostgreSQL and
-build the web application. Then, it will boot the required containers. Once
-they are ready, you can browse the server at the URL `http://localhost:3000`.
+Start a development session using `docker-compose up`. First issue of this
+command will take longer because it has to download dependencies and build the
+containers. Then, it will start the required containers.
 
-**Migrations are pending** (a.k.a. how do I run commands on this VM?):
-Use `docker-compose exec web [command]`. Examples:
+### Running migrations
 
-* Attach a shell: `docker-compose exec web /bin/sh`
-* Attach another shell: `docker-compose exec web /bin/bash`
-* Run a rake task: `docker-compose exec web rake -T`
-* Migration: `docker-compose exec web rake db:migrate`
+The web application will refuse to work unless the database has been seeded.
+You can run one-offs such as `docker-compose exec web rake db:schema:load`
+to load the schema into the database.
 
-Stop a development session by using `docker-compose stop` or
-`docker-compose down`. First command will stop the containers but won't delete
-them. Second command will also delete the containers.
+### Minio refuses to serve files
 
-**It's slow**. First request may be slow if Webpacker needs compiling the
-application. This has to do more with Webpacker than Docker, but the fact that
-restarting Docker containers may make compiled assets to be lost, makes this
-thing happen more.
+There is a Minio container in the default development Dockerfile to simulate
+a S3 service. The web application environment is configured to send uploaded
+files such as thumbnails to the Minio service into a bucket named `makigas`.
 
-**A server is already running. Check /makigas/tmp/pids/server.pid.**
-This bug happens some times when a Docker container is not gracefully stopped
-or the container is not clean up anyway. I still don't know a more proper way
-to deal with this other than opening a second shell and running
-`docker-compose exec web rm /makigas/tmp/pids/server.pid` to delete the old
-PID file.
+However, the bucket won't have public permissions by default, so files won't
+be served via web browser. You need to manually set those public permissions
+to the bucket, either using the `mc` client or using the Minio web interface
+at localhost:9000.
 
 ## Testing commands
+
+Testing in Docker sucks at the moment. There is a second docker-compose file
+to avoid messing with the development database, but the process is still
+not pleasant and it may not properly work with CI environments yet.
 
 * Change directory to `spec` to use `spec/docker-compose.yml`. This compose
   file uses a different database to avoid destroying data on development or
