@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.0'
 
 gem 'devise'
-gem 'paperclip'
+gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '< 3.0'
 gem 'friendly_id'
 gem 'acts_as_list'
