@@ -6,7 +6,7 @@ if ENV["RAILS_USE_S3"].present?
       bucket: ENV['S3_BUCKET_NAME'],
       region: ENV.fetch('AWS_REGION') { 'us-east-1' },
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_key_id: ENV['AWS_SECRET_KEY_ID']
+      secret_key_id: ENV['AWS_SECRET_ACCESS_KEY']
     }
   )
 

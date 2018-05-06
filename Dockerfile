@@ -24,4 +24,4 @@ RUN bundle install && yarn install
 
 # Remaining files.
 ADD . .
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["sh", "docker/rails_start.sh"]
