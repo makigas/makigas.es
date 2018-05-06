@@ -1,18 +1,17 @@
 <header>
   <h1>HTTP 500</h1>
-  <h2>😨 ¡Has roto makigas!</h2>
+  <h2>😨 ¡Algo va mal!</h2>
 </header>
 
 <p>
-  Es broma. Puede que sea un problema temporal. O puede que sea un error de
-  código en la programación de esta web. O puede que verdaderamente algo que
-  hayas hecho haya causado un error en el servidor.
+  El servidor web no ha podido completar correctamente la petición que ha
+  enviado tu navegador. Prueba a recargar la página transcurridos unos
+  momentos. Si continúas viendo este mensaje de error, puede deberse a un
+  problema interno con la configuración de la página web o del servidor que
+  deba ser revisado por un administrador del sistema.
 </p>
 
 <p>
-  Vuelve a intentarlo más adelante. Si continúas recibiendo este mensaje de
-  error y consideras que no debería fallar nada, ponte en contacto para que
-  podamos estar al tanto de esto.
+  Si quieres reportar este error por e-mail o Twitter, recuerda indicar
+  que ID de este mensaje de error ha sido: <code><%= request.uuid %></code>
 </p>
-
-<p>El ID de esta request fue: <%= request.uuid %></p>
