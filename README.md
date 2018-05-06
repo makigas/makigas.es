@@ -126,17 +126,6 @@ The web application will refuse to work unless the database has been seeded.
 You can run one-offs such as `docker-compose exec web rake db:schema:load`
 to load the schema into the database.
 
-### Minio refuses to serve files
-
-There is a Minio container in the default development Dockerfile to simulate
-a S3 service. The web application environment is configured to send uploaded
-files such as thumbnails to the Minio service into a bucket named `makigas`.
-
-However, the bucket won't have public permissions by default, so files won't
-be served via web browser. You need to manually set those public permissions
-to the bucket, either using the `mc` client or using the Minio web interface
-at localhost:9000.
-
 ## Testing commands
 
 Testing in Docker sucks at the moment. There is a second docker-compose file
