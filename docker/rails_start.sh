@@ -10,5 +10,11 @@ set -e
 # Remove PID-file if the container was forced to shutdown.
 rm -vf tmp/pids/server.pid
 
+# Reinitialize Minio/S3 permissions.
+if [ -n "${MINIO_INIT_BUCKET+set}" ]; then
+  echo "Setting up Minio bucket policy..."
+  bin/rake makigas:minio:init_bucket
+fi
+
 # Start the server
 exec bin/rails server -b 0.0.0.0
