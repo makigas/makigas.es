@@ -1,4 +1,4 @@
-class CreateVideos < ActiveRecord::Migration
+class CreateVideos < ActiveRecord::Migration[4.2]
   def change
     create_table :videos do |t|
       # This is the basic information about the video.
@@ -9,14 +9,14 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :duration, null: false
       t.string :slug, null: false
       t.attachment :thumbnail
-      
+
       # Videos are part of a playlist.
       t.belongs_to :playlist, null: false
       t.integer :position, null: false
 
       t.timestamps null: false
     end
-    
+
     # Slug cannot be unique this time since there might be repetitions.
     add_index :videos, :slug
     add_index :videos, :youtube_id, unique: true
