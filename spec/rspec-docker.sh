@@ -20,7 +20,7 @@ docker network create --driver bridge railsnet || exit 1
 # Run PostgreSQL in a separate instance
 docker run --rm -d --name $DB_HOST \
   -e POSTGRES_USER=$DB_USERNAME -e POSTGRES_PASSWORD=$DB_PASSWORD \
-    --network railsnet postgres:alpine || exit 1
+    --network railsnet postgres:alpine || (docker network rm railsnet && exit 1)
 
 # Set up cleanup to remove additional containers on exit.
 function cleanup() {
