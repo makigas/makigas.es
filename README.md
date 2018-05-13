@@ -34,6 +34,13 @@ Requirements:
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
 * `imagemagick`. Required for image manipulation on thumbnails and such.
 
+Additional testing dependencies:
+
+* ChromeDriver. It's required to run the system tests. It's not in the Gemfile,
+  so you'll have to manually get it either from your package manager if present
+  or by downloading it for your operating system (Windows, Linux, macOS) at
+  http://chromedriver.chromium.org/.
+
 ## Getting the code
 
 To install the web application:
