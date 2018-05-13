@@ -99,61 +99,44 @@ you will have to use the Rails console to seed the first user, like so:
     ...
     > User.create(email: 'foo@example.com', password: '123456')
 
-# Development and testing using Docker
+# Docker support
 
-This repository has support for Docker. I still don't know exactly why, but I
-try to support it. The official supported environment is Docker and Docker
-Compose. Although Docker Swarm looks interesting, it's not supported yet.
+This repository has support for Docker. At the moment Docker helps during
+development and testing of the web application because external dependencies
+such as PostgreSQL or Minio can be set up without user intervention.
 
-## Workflows
-
-* The Dockerfile for the makigas web application is located at `/Dockerfile`.
-  It builds the system image by packaging the web application code and required
-  dependencies (Node.js, Ruby, Imagemagick...) into a Docker image that, once
-  started, starts the Puma server.
-
-* `/docker-compose.yml` sets up a complete development platform including
-  PostgreSQL as the server database or Minio as a local S3 alternative. This
-  is the docker-compose file that you can use to hack the application.
-
-* `/spec/docker-compose.yml` starts a different development environment that
-  spawns a separate database instance for testing to avoid trashing the
-  development database. **Running RSpec in Docker is still ugly, but it
-  works**.
+Later on I want to add production support for my Dockerfile so that I can run
+the web application inside a Docker container in my server. This is still not
+finished so running the Docker image in production is not recommended at the
+moment.
 
 ## How to develop using Docker
 
-Start a development session using `docker-compose up`. First issue of this
-command will take longer because it has to download dependencies and build the
-containers. Then, it will start the required containers.
+* Start a development session: `docker-compose up`. This will also start
+  PostgreSQL and Minio. The web application will be available as usual at
+  `http://localhost:3000` once the Docker image is built and up.
 
-### Running migrations
+* Run migrations: `docker-compose exec web rake db:schema:load`. The web
+  application will refuse to work until the schema is loaded into the database.
+  Run this one-off command in a second terminal.
 
-The web application will refuse to work unless the database has been seeded.
-You can run one-offs such as `docker-compose exec web rake db:schema:load`
-to load the schema into the database.
+## How to test using Docker
 
-## Testing commands
+There is a second Dockerfile in the spec directory that compiles the web
+application with some additional dependencies such as Chrome and ChromeDriver
+(which is required for running system tests).
 
-Testing in Docker sucks at the moment. There is a second docker-compose file
-to avoid messing with the development database, but the process is still
-not pleasant and it may not properly work with CI environments yet.
+It's tricky to run tests in Docker because you probably want a second database
+to run your tests without breaking your development database. However, you
+probably don't want your second database to stay after running unit tests.
 
-* Change directory to `spec` to use `spec/docker-compose.yml`. This compose
-  file uses a different database to avoid destroying data on development or
-  production databases. Additionally, it doesn't run `rails server` as it's
-  not required.
-
-* Start a testing session using `docker-compose up -d`.
-
-* Run RSpec: `docker-compose run --rm test rspec`. Since `run` will create
-  an additional container, keep the `--rm` parameter to remove that container
-  once RSpec ends.
-
-* Stop the testing session using `docker-compose down`.
-
-`docker-compose run` will return the status code of the given command. So,
-if RSpec fails, `docker-compose run` will also return 1.
+There is a helper script at `spec/rspec-docker.sh` that you can use to
+orchestrate tests inside Docker. It builds and runs the testing Dockerfile
+and manages a Docker image for PostgreSQL, destroying the database container
+after unit tests are run, to clean up. The testing image is kept in your local
+image registry, but the contianers are removed after RSpec are run. The exit
+code of the RSpec command is kept and exited by the `rspec-docker.sh` script
+itself.
 
 # Contributing
 
