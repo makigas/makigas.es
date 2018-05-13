@@ -35,9 +35,12 @@ end
 
 group :development, :test do
   gem 'byebug'
+end
+
+group :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_bot_rails'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'headless'
 end
-
