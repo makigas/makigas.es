@@ -13,8 +13,8 @@ env:
   - DB_USERNAME=postgres
 
 before_install:
-  - nvm install 6
-  - nvm use 6
+  - nvm install 8
+  - nvm use 8
   - node -v
   - npm install -g yarn
   - if [ ! -f $PWD/chromedriver/chromedriver ]; then
