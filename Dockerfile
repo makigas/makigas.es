@@ -7,7 +7,7 @@ FROM ruby:2.4.1-alpine
 LABEL maintainer="dani@danirod.es"
 
 # Install dependencies.
-RUN apk add --update alpine-sdk postgresql-dev imagemagick nodejs tzdata && \
+RUN apk add --update build-base file postgresql-dev imagemagick nodejs tzdata && \
     npm install -g yarn
 
 # Initializes the working directory.
