@@ -23,6 +23,10 @@ public/system
 
 # Ignore Docker
 docker_data/
+
+# Ignore JavaScript
 node_modules/
 /public/packs/
 /public/packs-test/
+yarn-debug.log*
+.yarn-integrity
