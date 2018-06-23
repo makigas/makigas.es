@@ -1,6 +1,6 @@
 # The Dockerfile used for testing makigas.
 
-FROM ruby:2.4.4-alpine3.7
+FROM ruby:2.4-alpine3.7
 LABEL maintainer="dani@danirod.es"
 
 # Install runtime dependencies

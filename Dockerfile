@@ -3,7 +3,7 @@
 # develop or test the application in a standalone application
 # without having to install the stuff.
 
-FROM ruby:2.4.1-alpine
+FROM ruby:2.4-alpine3.7
 LABEL maintainer="dani@danirod.es"
 
 # Install dependencies.
