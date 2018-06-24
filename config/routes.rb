@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get :cookies, to: 'pages#cookies'
   get :discord, to: 'pages#discord'
 
+  get :dnt, path: 'about/dnt', to: 'pages#dnt'
+
   # Legacy routes (redirect only).
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
   get '/videos/:topic/:playlist' => redirect('/series/%{playlist}')
