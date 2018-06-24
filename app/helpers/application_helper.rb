@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def dnt_requested
-    request.headers['DNT'] == '1'
+    request.headers.include?('DNT') && request.headers['DNT'].starts_with?('1')
   end
 
   def dnt_acknowledged
