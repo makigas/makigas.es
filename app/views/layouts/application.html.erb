@@ -4,11 +4,11 @@
   <%= render 'layouts/head' %>
 </head>
 <body class="no-js <%= "page-#{controller.controller_name}" %> <%= content_for(:body_classes) %>">
-  
+
   <%= render 'layouts/header' %>
-  
+
   <div class="main-page <%= 'with-hero' if content_for?(:hero) %>">
-    
+
     <% if content_for?(:hero) %>
     <div class="jumbotron hero-tron">
       <div class="container">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <% end %>
-    
+
     <div class="main-page-inner container">
 
     <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
@@ -24,10 +24,10 @@
     <%= yield %>
     </div>
   </div>
-  
+
   <%= render 'layouts/footer' %>
   <%= javascript_pack_tag 'vendor' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'app' %>
   <%= render 'layouts/analytics' %>
   <%= render 'layouts/cookies' %>
 

@@ -4,14 +4,14 @@
 <%= render 'layouts/head' %>
 </head>
 <body class="no-js <%= "page-#{controller.controller_name}" %>">
-  
+
   <%= render 'layouts/header' %>
-  
+
   <%= yield %>
-  
+
   <%= render 'layouts/footer' %>
   <%= javascript_pack_tag 'vendor' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'app' %>
   <%= render 'layouts/analytics' %>
   <%= render 'layouts/cookies' %>
 
