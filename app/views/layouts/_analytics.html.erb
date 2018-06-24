@@ -1,3 +1,4 @@
+<% unless dnt_requested %>
 <% if Rails.application.secrets.analytics_key %>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -9,4 +10,7 @@
   ga('send', 'pageview');
 
 </script>
+<% end %>
+<% else %>
+<!-- Aquí iría el código analítico de Google Analytics, pero tu navegador está pidiendo no ser rastreado. -->
 <% end %>
