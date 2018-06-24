@@ -107,29 +107,17 @@
       </div>
 
       <div class="col-md-5">
-        <% if dnt_requested %>
-          <div class="alert alert-info">
-          <p>
-          Aquí normalmente verías el plugin de Disqus para poder comentar
-          en este vídeo, pero tu navegador está indicándonos que no quieres
-          ser rastreado (DNT) y Disqus tiene un agridulce pasado en cuanto a
-          no respetar la privacidad de sus usuarios, por lo que no se te está
-          mostrando.
-          </p>
-          </div>
-        <% else %>
-          <div id="disqus_thread"></div>
-            <script>
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = '//makigas.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              (d.head || d.body).appendChild(s);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          </div>
-        <% end %>
+        <div id="disqus_thread"></div>
+        <script>
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//makigas.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
     </div>
 </div>
 </div>
