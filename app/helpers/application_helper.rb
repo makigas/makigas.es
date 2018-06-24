@@ -38,4 +38,12 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(render)
     markdown.render(text).html_safe
   end
+
+  def dnt_requested
+    request.headers.include?('DNT') && request.headers['DNT'].starts_with?('1')
+  end
+
+  def dnt_acknowledged
+    cookies[:dnt_ack] == 'ack'
+  end
 end

@@ -21,7 +21,7 @@ body {
     background: desaturate(#003399, 50%);
     border-bottom: none;
     margin-bottom: 0;
-  
+
     .navbar-toggle .icon-bar { background: white; }
 
     .navbar-brand { padding-right: 40px; }
@@ -36,7 +36,7 @@ body {
       margin-left: 6px;
       background: lighten(#993300, 10%);
     }
-    
+
     .navbar-nav {
       margin-top: 0;
       margin-bottom: 0;
@@ -57,11 +57,11 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
-  
+
   @media screen and (min-width: 992px) {
     padding-bottom: 90px;
   }
-  
+
   h1 {
     font-family: 'Montserrat';
     font-weight: 500;
@@ -69,19 +69,19 @@ body {
     line-height: 32px;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    
+
     @media screen and (min-width: 992px) {
       font-size: 40px;
       line-height: 40px;
     }
   }
-  
+
   p {
     font-size: 18px;
     line-height: 24px;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    
+
     @media screen and (min-width: 992px) {
       font-size: 22px;
       line-height: 30px;
@@ -111,9 +111,9 @@ body {
   background: #303030;
   color: white;
   padding-top: 10px;
-  
+
   a { color: lighten(#003399, 60%); }
-  
+
   .footer-links {
     text-align: center;
     @media screen and (min-width: 768px) {
@@ -124,7 +124,7 @@ body {
       list-style: none;
       padding-left: 0;
     }
-    
+
     h3 {
       font-family: 'Montserrat';
       font-weight: normal;
@@ -132,13 +132,13 @@ body {
       margin-bottom: 1.2rem;
     }
   }
-  
+
   .copyright-info {
     background: desaturate(#003399, 50%);
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 10px;
-    
+
     .row {
       text-align: center;
       @media screen and (min-width: 992px) {
@@ -146,21 +146,21 @@ body {
         & > div { align-self: flex-end; }
       }
     }
-    
+
     p {
       line-height: 20px;
       @media screen and (min-width: 992px) { line-height: 12px; }
     }
-    
+
     .copyright-links {
       @media screen and (min-width: 992px) { text-align: left; }
     }
-    
+
     .year {
       line-height: 150%;
       font-size: 1.1em;
     }
-    
+
     .made-in-spain {
       @media screen and (min-width: 992px) {
         text-align: right;
@@ -270,5 +270,14 @@ body.discord-page {
     }
     .about-server { text-align: left; }
     .hero-tron a { margin-top: 0; }
+  }
+}
+
+.dnt-banner {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .close {
+    opacity: 0.6;
   }
 }
