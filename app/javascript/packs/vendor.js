@@ -1,3 +1,4 @@
+import 'jquery/src/jquery';
 import 'bootstrap';
 import 'cookieconsent';
 import 'rails-ujs';
