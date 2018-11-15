@@ -1,14 +1,3 @@
-<% if dnt_requested && !dnt_acknowledged %>
-<div class="alert alert-success alert-dismissible dnt-banner" role="alert">
-  <div class="container">
-    <button type="button" class="close" id="ack_dnt" data-dismiss="alert" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
-    Tu navegador ha enviado la señal DNT para indicar que no quieres ser rastreado
-    y makigas.es respetará tu decisión.
-    <%= link_to 'Conoce más sobre esto', '/about/dnt' %>.
-  </div>
-</div>
-<% end %>
-
 <header role="banner" class="main-header">
   <nav class="navbar navbar-makigas navbar-static-top">
     <div class="container">
