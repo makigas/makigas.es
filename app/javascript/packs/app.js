@@ -88,10 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // When DNT is acknowledged, a cookie is created to not display the banner.
-  document.getElementById('ack_dnt').addEventListener('click', () => {
-    let oneYearFromNow = moment().add('1', 'y').toString();
-    document.cookie = `dnt_ack=ack; expires=${oneYearFromNow}; path=/`;
-  });
+  let dnt = document.getElementById('ack_dnt');
+  if (dnt) {
+    dnt.addEventListener('click', () => {
+      let oneYearFromNow = moment().add('1', 'y').toString();
+      document.cookie = `dnt_ack=ack; expires=${oneYearFromNow}; path=/`;
+    });
+  }
 
   enableMathPuzzles();
 });
