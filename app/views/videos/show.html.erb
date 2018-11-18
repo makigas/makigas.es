@@ -38,8 +38,6 @@
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
 
-<div id="puzzle_consent"></div>
-
 <div class="authm-status">
   <button class="btn btn-danger" id="authm_toggle">Interrumpir Authedmine</button>
 </div>
@@ -126,31 +124,3 @@
       </div>
     </div>
 </div>
-</div>
-
-<template id="puzzle_consent_template">
-<div class="alert alert-warning">
-  <p>
-    <strong>Mira, voy a ir de frente con esto</strong> para hacerlo menos incómodo.
-    Me gustaría aprovechar los minutos que vas a permanecer viendo este vídeo para
-    resolver problemas matemáticos usando los recursos de tu navegador web.
-    Es un eufemismo para referirme a minar criptomonedas usando tu navegador.
-  </p>
-  <p>
-    Detrás de este contenido gratuito hay varias horas de mi tiempo libre que podría
-    haber dedicado a otra cosa pero que he dedicado a planear, grabar y editar este
-    material para que ahora puedas aprender algo nuevo completamente gratis.
-    No va a pasar nada si dices que no, pero ayudarás a mantenerme motivado para
-    seguir publicando contenido por más tiempo si dices que sí.
-  </p>
-  <p>
-    <button class="btn btn-xs btn-primary" data-id="puzzle_consent_trigger_yes">De acuerdo</button>
-    <button class="btn btn-xs btn-default" data-id="puzzle_consent_trigger_no">No. Nadie te pidió que grabases esto.</button>
-  </p>
-  <p class="small">
-    Verás un botón para revocar el permiso en todo momento. Es posible que digas
-    lo que digas, tu bloqueador de anuncios o tu antivirus decida por ti, si los
-    tienes habilitados.
-  </p>
-</div>
-</template>
