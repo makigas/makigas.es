@@ -31,10 +31,13 @@ group :development do
   gem 'capistrano-rails', '~> 1.4.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
+
+  gem 'rubocop', '~> 0.60.0', require: false
 end
 
 group :development, :test do
   gem 'byebug'
+  gem 'rubocop-rspec', '~> 1.30'
 end
 
 group :test do
