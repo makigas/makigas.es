@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :video do
-    title 'Chandelier'
-    description 'Music video for Chandelier'
-    youtube_id '2vjPBrBU-TM'
-    duration 232
+    title { 'Chandelier' }
+    description { 'Music video for Chandelier' }
+    youtube_id { '2vjPBrBU-TM' }
+    duration { 232 }
     association :playlist, factory: :playlist
     published_at { DateTime.now }
 
