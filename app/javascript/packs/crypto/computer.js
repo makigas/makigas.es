@@ -132,6 +132,13 @@ function displayComputerInterface() {
     }
 }
 
+function displayBlockerInterface() {
+    const template = document.getElementById('cryptosupport-error');
+    if (template && 'content' in template) {
+        document.body.appendChild(template.content.cloneNode(true));
+    }
+}
+
 function getAuthedMineScript() {
     const tag = document.querySelector('link[rel="makigas:authedmine.script"]');
     return tag ? tag.getAttribute('href') : null;
@@ -146,13 +153,16 @@ export default function() {
     let hiveURL = getAuthedMineScript();
     let hiveToken = getAuthedMineToken();
     if (hiveURL && hiveToken) {
-        displayComputerInterface();
         const scriptTag = document.createElement('script');
         scriptTag.src = hiveURL;
         scriptTag.onload = () => {
+            displayComputerInterface();
             const computer = new ComputerInstance(hiveToken);
             computer.updateUI();
             computer.updateMiningStatus();
+        }
+        scriptTag.onerror = () => {
+            displayBlockerInterface();
         }
         document.body.appendChild(scriptTag);
     }
