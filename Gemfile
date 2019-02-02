@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.1.4'
-gem 'rails-i18n', '~> 5.0.0'
+gem 'rails', '5.1.6'
+gem 'rails-i18n', '~> 5.1.3'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 1.0.0', group: :doc
@@ -32,7 +32,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
 
-  gem 'rubocop', '~> 0.60.0', require: false
+  gem 'rubocop', '~> 0.63.1', require: false
 end
 
 group :development, :test do
