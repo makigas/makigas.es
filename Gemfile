@@ -32,7 +32,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
 
-  gem 'rubocop', '~> 0.60.0', require: false
+  gem 'rubocop', '~> 0.67.2', require: false
 end
 
 group :development, :test do
