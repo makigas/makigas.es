@@ -30,10 +30,5 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4d6699">
 <meta name="theme-color" content="#4d6699">
 
-<% if Rails.application.secrets.authedmine_key.present? %>
-<%= tag :meta, name: 'makigas:authedmine.token', content: Rails.application.secrets.authedmine_key %>
-<%= tag :link, rel: 'makigas:authedmine.script', href: 'https://authedmine.com/lib/authedmine.min.js' %>
-<% end %>
-
 <%= csrf_meta_tags %>
 <%= content_for(:header) if content_for?(:header) %>
