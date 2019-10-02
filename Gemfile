@@ -5,7 +5,7 @@ gem 'rails-i18n', '~> 5.1.3'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.9'
 gem 'sdoc', '~> 1.0.0', group: :doc
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.0'
 gem 'pg', '~> 1.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
