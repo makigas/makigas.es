@@ -7,18 +7,18 @@ gem 'jbuilder', '~> 2.9'
 gem 'sdoc', '~> 1.0.0', group: :doc
 gem 'puma', '~> 4.0'
 gem 'pg', '~> 1.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 4.0'
 
 gem 'devise'
-gem 'paperclip', '~> 5.0'
-gem 'aws-sdk', '< 3.0'
+gem 'paperclip', '~> 6.0'
+gem 'aws-sdk-s3', '~> 1.48.0'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'haml-rails', '~> 1.0'
+gem 'haml-rails', '~> 2.0'
 gem 'sitemap_generator'
 gem 'whenever'
 gem 'kaminari'
@@ -32,7 +32,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
 
-  gem 'rubocop', '~> 0.63.1', require: false
+  gem 'rubocop', '~> 0.75', require: false
 end
 
 group :development, :test do
