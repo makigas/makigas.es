@@ -39,5 +39,5 @@ jobs:
         env:
           RAILS_ENV: test
           DB_NAME: postgres
-          DB_PASSWORD: postgres
+          DB_USERNAME: postgres
           DB_PASSWORD: postgres
