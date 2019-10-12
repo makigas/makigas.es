@@ -1,0 +1,33 @@
+name: Ruby
+
+on: [push]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['2.4.x', '2.5.x']
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Set up ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: rspec
+        run: bundle exec rspec
