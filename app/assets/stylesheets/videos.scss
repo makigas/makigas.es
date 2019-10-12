@@ -52,14 +52,3 @@ body.video-player-page {
     }
   }
 }
-
-.authm-status {
-  position: absolute;
-  top: -45px;
-  right: 0;
-  display: none;
-}
-
-body.with-authm-active .authm-status {
-  display: block;
-}
