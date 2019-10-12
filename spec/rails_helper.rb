@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'selenium/webdriver'
+require 'webdrivers/chromedriver'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -60,10 +61,5 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Warden::Test::Helpers
 
-  Capybara.register_driver(:headless_chrome) do |app|
-    caps =  { args: ["--no-sandbox", "--headless", "--disable-gpu", "--window-size=1024,768"] }
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: caps)
-    Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: capabilities)
-  end
-  Capybara.javascript_driver = :headless_chrome
+  Capybara.javascript_driver = :selenium_chrome_headless
 end

@@ -45,5 +45,5 @@ group :test do
   gem 'factory_bot_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'headless'
+  gem 'webdrivers', '~> 4.0'
 end
