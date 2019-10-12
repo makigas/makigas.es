@@ -1,0 +1,48 @@
+name: Ruby
+
+on: [push]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Set up ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.5.x'
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler:1.17.2
+          npm install -g yarn
+          bundle install --jobs 4 --retry 3
+      - name: setup application
+        run: bundle exec rake db:create db:schema:load yarn:install
+        env:
+          RAILS_ENV: test
+          DB_NAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+      - name: rspec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
+          DB_NAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
