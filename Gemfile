@@ -9,7 +9,7 @@ gem 'puma', '~> 4.3'
 gem 'pg', '~> 1.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 4.1'
+gem 'webpacker', '~> 4.2'
 
 gem 'devise'
 gem 'paperclip', '~> 6.0'
