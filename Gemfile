@@ -13,7 +13,7 @@ gem 'webpacker', '~> 4.2'
 
 gem 'devise'
 gem 'paperclip', '~> 6.0'
-gem 'aws-sdk-s3', '~> 1.54.0'
+gem 'aws-sdk-s3', '~> 1.55.0'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
