@@ -33,6 +33,7 @@ group :development do
   gem 'capistrano-rvm'
 
   gem 'rubocop', '~> 0.75', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development, :test do
