@@ -1,9 +1,9 @@
-name: RSpec
+name: Ruby
 
 on: [push]
 
 jobs:
-  rspec:
+  RSpec:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -26,23 +26,39 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '10.x'
-      - name: install dependencies
+      - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler:1.17.2
           npm install -g yarn
           bundle install --jobs 4 --retry 3
-      - name: setup application
+      - name: Setup application
         run: bundle exec rake db:create db:schema:load yarn:install
         env:
           RAILS_ENV: test
           DB_NAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
-      - name: rspec
+      - name: Run tests
         run: bundle exec rspec
         env:
           RAILS_ENV: test
           DB_NAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
+  Rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Set up ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.5.x'
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler:1.17.2
+          bundle install --jobs 4 --retry 3 --with ci
+      - name: Run Rubocop
+        run: bundle exec rubocop
