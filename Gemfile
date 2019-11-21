@@ -5,15 +5,15 @@ gem 'rails-i18n', '~> 5.1.3'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.9'
 gem 'sdoc', '~> 1.0.0', group: :doc
-gem 'puma', '~> 4.2'
+gem 'puma', '~> 4.3'
 gem 'pg', '~> 1.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 4.2'
 
 gem 'devise'
 gem 'paperclip', '~> 6.0'
-gem 'aws-sdk-s3', '~> 1.49.0'
+gem 'aws-sdk-s3', '~> 1.56.0'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
@@ -33,7 +33,7 @@ group :development do
   gem 'capistrano-rvm'
 
   gem 'rubocop', '~> 0.76', group: :ci, require: false
-  gem 'rubocop-rails', group: :ci, require: false
+  gem 'rubocop-rails', '~> 2.3.2', group: :ci, require: false
 end
 
 group :development, :test do
