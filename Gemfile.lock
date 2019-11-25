@@ -47,8 +47,8 @@ GEM
     arel (8.0.0)
     ast (2.4.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.240.0)
-    aws-sdk-core (3.78.0)
+    aws-partitions (1.242.0)
+    aws-sdk-core (3.80.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -56,7 +56,7 @@ GEM
     aws-sdk-kms (1.25.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.56.0)
+    aws-sdk-s3 (1.57.0)
       aws-sdk-core (~> 3, >= 3.77.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.1)
@@ -135,7 +135,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    jaro_winkler (1.5.3)
+    jaro_winkler (1.5.4)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jmespath (1.4.0)
@@ -180,7 +180,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    parallel (1.18.0)
+    parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
     pg (1.1.4)
@@ -253,7 +253,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-rspec (1.36.0)
+    rubocop-rails (2.3.2)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
+    rubocop-rspec (1.37.0)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.0)
@@ -329,7 +332,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
-  aws-sdk-s3 (~> 1.56.0)
+  aws-sdk-s3 (~> 1.57.0)
   bootstrap-kaminari-views (~> 0.0.5)
   byebug
   capistrano
@@ -353,7 +356,8 @@ DEPENDENCIES
   redcarpet
   rspec-rails (~> 3.9)
   rubocop (~> 0.76)
-  rubocop-rspec (~> 1.30)
+  rubocop-rails (~> 2.3.2)
+  rubocop-rspec (~> 1.37)
   sass-rails (~> 6.0)
   sdoc (~> 1.0.0)
   selenium-webdriver

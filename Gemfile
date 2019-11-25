@@ -13,7 +13,7 @@ gem 'webpacker', '~> 4.2'
 
 gem 'devise'
 gem 'paperclip', '~> 6.0'
-gem 'aws-sdk-s3', '~> 1.56.0'
+gem 'aws-sdk-s3', '~> 1.57.0'
 gem 'friendly_id'
 gem 'acts_as_list'
 gem 'redcarpet'
@@ -32,12 +32,13 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
 
-  gem 'rubocop', '~> 0.76', require: false
+  gem 'rubocop', '~> 0.76', group: :ci, require: false
+  gem 'rubocop-rails', '~> 2.3.2', group: :ci, require: false
 end
 
 group :development, :test do
   gem 'byebug'
-  gem 'rubocop-rspec', '~> 1.30'
+  gem 'rubocop-rspec', '~> 1.37', group: :ci, require: false
 end
 
 group :test do
