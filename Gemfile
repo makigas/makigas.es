@@ -38,7 +38,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'rubocop-rspec', '~> 1.30', group: :ci, require: false
+  gem 'rubocop-rspec', '~> 1.37', group: :ci, require: false
 end
 
 group :test do
