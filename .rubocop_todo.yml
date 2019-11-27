@@ -37,7 +37,7 @@ Capybara/FeatureMethods:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: with_first_argument, with_fixed_indentation
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Exclude:
     - 'bin/rubocop'
     - 'bin/webpack'
@@ -49,7 +49,7 @@ Layout/AlignArguments:
 # SupportedHashRocketStyles: key, separator, table
 # SupportedColonStyles: key, separator, table
 # SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - 'config/initializers/simple_form.rb'
     - 'lib/makigas/video_import.rb'
@@ -155,7 +155,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: final_newline, final_blank_line
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Exclude:
     - 'app/models/application_record.rb'
     - 'config/deploy/production.rb'
@@ -244,7 +244,7 @@ Metrics/MethodLength:
 # Offense count: 3
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip, db, os
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Exclude:
     - 'lib/makigas/data_migrator.rb'
 
