@@ -118,24 +118,6 @@ moment.
   application will refuse to work until the schema is loaded into the database.
   Run this one-off command in a second terminal.
 
-## How to test using Docker
-
-There is a second Dockerfile in the spec directory that compiles the web
-application with some additional dependencies such as Chrome and ChromeDriver
-(which is required for running system tests).
-
-It's tricky to run tests in Docker because you probably want a second database
-to run your tests without breaking your development database. However, you
-probably don't want your second database to stay after running unit tests.
-
-There is a helper script at `spec/rspec-docker.sh` that you can use to
-orchestrate tests inside Docker. It builds and runs the testing Dockerfile
-and manages a Docker image for PostgreSQL, destroying the database container
-after unit tests are run, to clean up. The testing image is kept in your local
-image registry, but the contianers are removed after RSpec are run. The exit
-code of the RSpec command is kept and exited by the `rspec-docker.sh` script
-itself.
-
 # Contributing
 
 Read the [CONTRIBUTING.md][1] file for more information on how to contribute to
