@@ -37,7 +37,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
     scenario "user can access this page via video count link" do
       visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
-        click_link @playlist.videos.count
+        click_link @playlist.videos.count.to_s
       end
       expect(page.current_path).to eq videos_dashboard_playlist_path(@playlist)
     end
