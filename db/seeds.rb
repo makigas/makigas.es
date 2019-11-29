@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# frozen_string_literal: true
+
+User.create(email: 'root@makigas.es', password: 'password')
+
+topic = Topic.create(title: 'Mejora tus skills', color: '#2196f3',
+                     description: 'Para mejorar tus skills',
+                     thumbnail: File.open(Rails.root.join('spec/fixtures/topic.png')))
+playlist = Playlist.create(title: 'Tutorial de Git', description: 'Para aprender Git',
+                           youtube_id: 'PLTd5ehIj0goMCnj6V5NdzSIHBgrIXckGU', topic: topic,
+                           thumbnail: File.open(Rails.root.join('spec/fixtures/playlist.png')),
+                           card: File.open(Rails.root.join('spec/fixtures/card.jpg')))
+video = Video.create(title: 'Cómo instalar Git', description: 'Cómo instalar Git',
+                     youtube_id: '1PiYqxog8mc', duration: 533, playlist: playlist, position: 1)
+video.update(published_at: video.created_at)
