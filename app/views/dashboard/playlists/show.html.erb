@@ -36,6 +36,6 @@
   </tr>
   <tr>
     <td><%= t('.thumbnail') %></td>
-    <td><%= image_tag @playlist.thumbnail %></td>
+    <td><%= image_tag @playlist.thumbnail.url(:thumbnail) %></td>
   </tr>
 </table>
