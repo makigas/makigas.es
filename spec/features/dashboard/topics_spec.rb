@@ -7,7 +7,7 @@ RSpec.feature "Dashboard topics", type: :feature do
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_topics_path
-      expect(page.current_path).not_to eq dashboard_topics_path
+      expect(page).to have_no_current_path dashboard_topics_path
     end
   end
 

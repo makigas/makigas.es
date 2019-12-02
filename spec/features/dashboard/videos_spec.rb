@@ -14,7 +14,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
   context "when not logged in" do
     it "should not be success" do
       visit dashboard_videos_path
-      expect(page.current_path).not_to eq dashboard_playlists_path
+      expect(page).to have_no_current_path dashboard_playlists_path
     end
   end
 

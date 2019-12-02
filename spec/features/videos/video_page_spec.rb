@@ -101,7 +101,7 @@ RSpec.feature "Video page", type: :feature do
 
     scenario 'the page requires authorization' do
       visit_video @video
-      expect(current_path).not_to eq playlist_video_path(@video, playlist_id: @video.playlist)
+      expect(page).to have_no_current_path playlist_video_path(@video, playlist_id: @video.playlist)
     end
 
     context 'user is logged in' do
