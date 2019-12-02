@@ -2,4 +2,9 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'node_modules/**/*'
+
 inherit_from: .rubocop_todo.yml
