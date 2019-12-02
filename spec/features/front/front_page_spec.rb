@@ -14,6 +14,6 @@ RSpec.feature "Front page", type: :feature do
   scenario "allows the user to navigate for topics" do
     visit root_path
     click_link 'Explora las temáticas'
-    expect(current_path).to eq topics_path
+    expect(page).to have_current_path topics_path
   end
 end

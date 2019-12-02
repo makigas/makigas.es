@@ -15,7 +15,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
   context "when not logged in" do
     it "should not be success" do
       visit videos_dashboard_playlist_path(@playlist)
-      expect(page.current_path).not_to eq videos_dashboard_playlist_path(@playlist)
+      expect(page).to have_no_current_path videos_dashboard_playlist_path(@playlist)
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
       within(".dashboard-page") do
         click_link "Vídeos"
       end
-      expect(page.current_path).to eq videos_dashboard_playlist_path(@playlist)
+      expect(page).to have_current_path videos_dashboard_playlist_path(@playlist)
     end
 
     scenario "user can access this page via video count link" do
@@ -39,7 +39,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
       within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
         click_link @playlist.videos.count.to_s
       end
-      expect(page.current_path).to eq videos_dashboard_playlist_path(@playlist)
+      expect(page).to have_current_path videos_dashboard_playlist_path(@playlist)
     end
 
     scenario "this page lists videos in the right order" do

@@ -14,19 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 10
-# Cop supports --auto-correct.
-Capybara/CurrentPathExpectation:
-  Exclude:
-    - 'spec/features/dashboard/dashboard_spec.rb'
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/front/front_page_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
-
 # Offense count: 93
 # Cop supports --auto-correct.
 # Configuration parameters: EnabledMethods.
