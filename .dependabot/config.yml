@@ -36,15 +36,3 @@ update_configs:
     commit_message:
       prefix: "chore"
       include_scope: true
-  - package_manager: docker
-    directory: /spec
-    update_schedule: weekly
-    default_reviewers:
-    - danirod
-    default_assignees:
-    - danirod
-    default_labels:
-    - dependencies
-    commit_message:
-      prefix: "chore"
-      include_scope: true
