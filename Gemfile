@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.4'
+gem 'rails', '5.2.4.1'
 
 gem 'bootsnap', '~> 1.4.5'
 gem 'rails-i18n', '~> 5.1.3'
