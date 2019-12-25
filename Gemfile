@@ -8,7 +8,7 @@ gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.9'
 gem 'sdoc', '~> 1.0.0', group: :doc
 gem 'puma', '~> 4.3'
-gem 'pg', '~> 1.0'
+gem 'pg', '~> 1.2'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 4.2'
