@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
 
-  before_action :topic_set, only: [:show, :feed]
+  before_action :topic_set, only: %i[show feed]
 
   def index
     @topics = Topic.all

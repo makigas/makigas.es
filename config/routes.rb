@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     namespace :dashboard, path: '' do
       root to: 'dashboard#index', as: ''
       resources :topics
-      resources :videos, only: [:index, :new, :create]
+      resources :videos, only: %i[index new create]
       resources :playlists do
         get :videos, on: :member
-        resources :videos, except: [:index, :new, :create] do
+        resources :videos, except: %i[index new create] do
           put :move, on: :member
         end
       end
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
-  resources :topics, only: [:index, :show], constraints: { format: :html } do
+  resources :topics, only: %i[index show], constraints: { format: :html } do
     get :feed, on: :member
   end
 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get :feed, on: :collection
   end
 
-  resources :playlists, path: 'series', only: [:index, :show], constraints: { format: :html } do
+  resources :playlists, path: 'series', only: %i[index show], constraints: { format: :html } do
     get :feed, on: :member
     resources :videos, path: '/', only: [:show], constraints: { format: :html }
   end

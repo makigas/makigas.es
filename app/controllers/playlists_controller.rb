@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
 
-  before_action :playlist_set, only: [:show, :feed]
+  before_action :playlist_set, only: %i[show feed]
 
   def index
     @playlists = Playlist.all.order(created_at: :desc)

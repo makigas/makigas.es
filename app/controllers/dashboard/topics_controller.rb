@@ -1,6 +1,6 @@
 class Dashboard::TopicsController < Dashboard::DashboardController
 
-  before_action :topic_set, only: [:show, :edit, :update, :destroy]
+  before_action :topic_set, only: %i[show edit update destroy]
 
   def index
     @topics = Topic.order(updated_at: :desc).page(params[:page])
@@ -29,7 +29,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
 
   def destroy
     @topic.destroy!
-    redirect_to [:dashboard, :topics], notice: t('.destroyed')
+    redirect_to %i[dashboard topics], notice: t('.destroyed')
   end
 
   private

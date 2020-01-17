@@ -1,6 +1,6 @@
 class Dashboard::VideosController < Dashboard::DashboardController
 
-  before_action :video_set, only: [:show, :edit, :update, :destroy, :move]
+  before_action :video_set, only: %i[show edit update destroy move]
 
   def index
     @videos = Video.order(created_at: :desc).page(params[:page])
@@ -29,7 +29,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
 
   def destroy
     @video.destroy!
-    redirect_to [:dashboard, :videos], notice: t('.destroyed')
+    redirect_to %i[dashboard videos], notice: t('.destroyed')
   end
 
   def move

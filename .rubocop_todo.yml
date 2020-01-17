@@ -671,13 +671,6 @@ Style/StringLiteralsInInterpolation:
     - 'lib/makigas/data_migrator.rb'
     - 'node_modules/node-sass/src/libsass/extconf.rb'
 
-# Offense count: 21
-# Cop supports --auto-correct.
-# Configuration parameters: MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
