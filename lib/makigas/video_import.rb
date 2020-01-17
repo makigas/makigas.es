@@ -2,7 +2,7 @@ import 'yaml'
 
 class Makigas::VideoImport
 
-  def initialize schema
+  def initialize(schema)
     @schema = YAML.load(File.read(schema))
     @schema.map do |playlist|
       pl = Playlist.create!(title: playlist['title'],

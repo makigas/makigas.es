@@ -581,18 +581,6 @@ Style/MethodCallWithoutArgsParentheses:
   Exclude:
     - 'app/helpers/application_helper.rb'
 
-# Offense count: 11
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: require_parentheses, require_no_parentheses, require_no_parentheses_except_multiline
-Style/MethodDefParentheses:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/video.rb'
-    - 'lib/makigas/data_migrator.rb'
-    - 'lib/makigas/topic_import.rb'
-    - 'lib/makigas/video_import.rb'
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
