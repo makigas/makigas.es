@@ -678,14 +678,6 @@ Style/StringLiteralsInInterpolation:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoredMethods.
-# IgnoredMethods: respond_to, define_method
-Style/SymbolProc:
-  Exclude:
-    - 'app/models/playlist.rb'
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

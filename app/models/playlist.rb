@@ -28,7 +28,7 @@ class Playlist < ApplicationRecord
   belongs_to :topic, required: false
   
   def total_length
-    videos.map { |v| v.duration }.reduce(0, :+)
+    videos.map(&:duration).reduce(0, :+)
   end
 
   def to_s
