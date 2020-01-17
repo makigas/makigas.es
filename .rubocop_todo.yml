@@ -593,13 +593,6 @@ Style/MethodDefParentheses:
     - 'lib/makigas/topic_import.rb'
     - 'lib/makigas/video_import.rb'
 
-# Offense count: 3
-Style/MixinUsage:
-  Exclude:
-    - 'bin/setup'
-    - 'bin/update'
-    - 'spec/factories/playlists.rb'
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
