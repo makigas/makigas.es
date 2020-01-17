@@ -661,16 +661,6 @@ Style/StderrPuts:
 Style/StringLiterals:
   Enabled: false
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiteralsInInterpolation:
-  Exclude:
-    - 'bin/yarn'
-    - 'lib/makigas/data_migrator.rb'
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
