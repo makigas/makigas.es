@@ -25,9 +25,7 @@ class Video < ApplicationRecord
   end
 
   def natural_duration
-    if duration
-      '%02d:%02d:%02d' % [duration / 3600, (duration % 3600) / 60, duration % 60]
-    end
+    '%02d:%02d:%02d' % [duration / 3600, (duration % 3600) / 60, duration % 60] if duration
   end
 
   # Visible videos are those whose publication date has been already reached.
