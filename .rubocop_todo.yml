@@ -615,16 +615,6 @@ Style/NestedParenthesizedCalls:
 Style/NumericLiterals:
   MinDigits: 15
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'config/deploy/production.rb'
-    - 'config/deploy/staging.rb'
-    - 'config/initializers/assets.rb'
-    - 'config/spring.rb'
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
