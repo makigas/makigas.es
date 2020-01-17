@@ -13,7 +13,7 @@ class Playlist < ApplicationRecord
   has_attached_file :card, styles: {
     thumbnail: "320x180>",
     small: "640x360>",
-    default: "1280x720>",
+    default: "1280x720>"
   }
 
   validates :title, presence: true, length: { maximum: 100 }
