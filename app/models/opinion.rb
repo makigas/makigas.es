@@ -7,7 +7,7 @@ class Opinion < ApplicationRecord
   validates :from, presence: true, length: { maximum: 50 }
   validates :message, presence: true, length: { maximum: 200 }
   validates :photo, presence: true
-  validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\z/ }
+  validates_attachment :photo, content_type: { content_type: %r{\Aimage/.*\z} }
 
   def to_s
     from

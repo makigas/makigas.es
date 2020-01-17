@@ -21,8 +21,8 @@ class Playlist < ApplicationRecord
   validates :youtube_id, presence: true, length: { maximum: 100 }
   validates :thumbnail, presence: true
   validates :card, presence: true
-  validates_attachment :thumbnail, content_type: { content_type: /\Aimage\/.*\z/ }
-  validates_attachment :card, content_type: { content_type: /\Aimage\/.*\z/ }
+  validates_attachment :thumbnail, content_type: { content_type: %r{\Aimage/.*\z} }
+  validates_attachment :card, content_type: { content_type: %r{\Aimage/.*\z} }
 
   has_many :videos, -> { order(position: :asc) }
   belongs_to :topic, required: false
