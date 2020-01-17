@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature "Videos search", type: :feature do
-  context "searching by length" do
+RSpec.feature 'Videos search', type: :feature do
+  context 'searching by length' do
     before(:each) do
       @short = FactoryBot.create(:video, duration: 200, title: 'Short', youtube_id: '1')
       @medium = FactoryBot.create(:video, duration: 600, title: 'Medium', youtube_id: '2')
       @long = FactoryBot.create(:video, duration: 1200, title: 'Long', youtube_id: '3')
     end
 
-    scenario "can search for short length videos" do
+    scenario 'can search for short length videos' do
       visit videos_path
       choose 'Cortos'
       click_button 'Aplicar filtros'
@@ -17,7 +17,7 @@ RSpec.feature "Videos search", type: :feature do
       expect(page).not_to have_link @long.title, href: video_path(@long)
     end
 
-    scenario "can search for medium length videos" do
+    scenario 'can search for medium length videos' do
       visit videos_path
       choose 'Medios'
       click_button 'Aplicar filtros'
@@ -26,7 +26,7 @@ RSpec.feature "Videos search", type: :feature do
       expect(page).not_to have_link @long.title, href: video_path(@long)
     end
 
-    scenario "can search for long length videos" do
+    scenario 'can search for long length videos' do
       visit videos_path
       choose 'Largos'
       click_button 'Aplicar filtros'
@@ -36,7 +36,7 @@ RSpec.feature "Videos search", type: :feature do
     end
   end
 
-  context "searching by topic" do
+  context 'searching by topic' do
     before(:each) do
       @topic1 = FactoryBot.create(:topic, title: 'First Topic')
       @topic2 = FactoryBot.create(:topic, title: 'Second Topic')
@@ -46,7 +46,7 @@ RSpec.feature "Videos search", type: :feature do
       @video2 = FactoryBot.create(:video, title: 'Second', youtube_id: 'B', playlist: @playlist2)
     end
 
-    scenario "can search for videos in a topic" do
+    scenario 'can search for videos in a topic' do
       visit videos_path
 
       check 'First Topic'
@@ -55,7 +55,7 @@ RSpec.feature "Videos search", type: :feature do
       expect(page).not_to have_link @video2.title, href: video_path(@video2)
     end
 
-    scenario "can search for videos in multiple topics" do
+    scenario 'can search for videos in multiple topics' do
       visit videos_path
 
       check 'First Topic'

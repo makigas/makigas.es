@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.11.2"
+lock '3.11.2'
 
 # Keep sensitive deployment informatino out of the repo. As seen on:
 # https://github.com/AyuntamientoMadrid/transparencia/blob/master/config/deploy.rb
@@ -9,7 +9,7 @@ def deploy_param(key)
 end
 
 # Deploy settings
-set :application, "makigas"
+set :application, 'makigas'
 set :deploy_to, deploy_param(:deploy_to)
 set :repo_url, deploy_param(:repo_url)
 
@@ -24,8 +24,8 @@ namespace :deploy do
 end
 
 # Shared settings
-append :linked_files, ".env"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_files, '.env'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
 
 # Misc settings
 after 'deploy:finishing', 'deploy:cleanup'

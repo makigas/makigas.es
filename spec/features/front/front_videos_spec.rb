@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Videos listed in front page", type: :feature do
+RSpec.feature 'Videos listed in front page', type: :feature do
   let!(:video) { FactoryBot.create(:video) }
 
   scenario 'displays thumbnail' do
@@ -10,7 +10,7 @@ RSpec.feature "Videos listed in front page", type: :feature do
       end
   end
 
-  scenario "links to the video" do
+  scenario 'links to the video' do
     visit root_path
     within '.recent-videos' do
       expect(page).to have_link video.title, href: playlist_video_path(video, playlist_id: video.playlist)

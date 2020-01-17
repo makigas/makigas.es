@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Playlist page", type: :feature do
+RSpec.feature 'Playlist page', type: :feature do
   before { @playlist = FactoryBot.create(:playlist) }
 
   scenario 'displays playlist information' do

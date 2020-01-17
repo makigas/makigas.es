@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Video page", type: :feature do
+RSpec.feature 'Video page', type: :feature do
   before { @video = FactoryBot.create(:video, duration: 133) }
 
   scenario 'there is information about the video' do

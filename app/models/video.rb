@@ -26,7 +26,7 @@ class Video < ApplicationRecord
 
   def natural_duration
     if duration
-      "%02d:%02d:%02d" % [duration / 3600, (duration % 3600) / 60, duration % 60]
+      '%02d:%02d:%02d' % [duration / 3600, (duration % 3600) / 60, duration % 60]
     end
   end
 

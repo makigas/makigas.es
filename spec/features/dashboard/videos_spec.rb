@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Dashboard videos", type: :feature, js: true do
+RSpec.feature 'Dashboard videos', type: :feature, js: true do
   before do
     Capybara.app_host = 'http://dashboard.lvh.me:9080'
     Capybara.server_port = 9080
@@ -11,26 +11,26 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
     Capybara.server_port = nil
   end
 
-  context "when not logged in" do
-    it "should not be success" do
+  context 'when not logged in' do
+    it 'should not be success' do
       visit dashboard_videos_path
       expect(page).to have_no_current_path dashboard_playlists_path
     end
   end
 
-  context "when logged in" do
+  context 'when logged in' do
     before(:each) {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
 
-    scenario "user can list videos" do
+    scenario 'user can list videos' do
       @video = FactoryBot.create(:video)
       visit dashboard_videos_path
       expect(page).to have_link @video.title
     end
 
-    scenario "user can create videos" do
+    scenario 'user can create videos' do
       @playlist = FactoryBot.create(:playlist)
 
       visit dashboard_videos_path
@@ -49,7 +49,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       expect(@playlist.videos.count).to eq 1
     end
 
-    scenario "user can set the duration of a video" do
+    scenario 'user can set the duration of a video' do
       @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
 
@@ -67,7 +67,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       expect(page).to have_text '1:05:40'
     end
 
-    scenario "user can create unfeatured videos" do
+    scenario 'user can create unfeatured videos' do
       @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
 
@@ -84,14 +84,14 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       }.to change { Video.count }.by 1
 
       # Test the video does not appear
-      Capybara.app_host = "http://www.lvh.me:9080"
+      Capybara.app_host = 'http://www.lvh.me:9080'
       visit root_path
       within '.recent-videos' do
         expect(page).not_to have_link 'My video title'
       end
     end
 
-    scenario "user cannot create videos with invalid data" do
+    scenario 'user cannot create videos with invalid data' do
       @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
       expect {
@@ -104,7 +104,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
-    scenario "user cannot create videos without setting a playlist" do
+    scenario 'user cannot create videos without setting a playlist' do
       visit dashboard_videos_path
       expect {
         click_link 'Nuevo Vídeo'
@@ -118,7 +118,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
-    scenario "user can edit videos" do
+    scenario 'user can edit videos' do
       @video = FactoryBot.create(:video, title: 'My old video')
 
       visit dashboard_videos_path
@@ -131,7 +131,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
       expect(page).to have_text 'Vídeo actualizado correctamente'
     end
 
-    scenario "user can destroy videos" do
+    scenario 'user can destroy videos' do
       @video = FactoryBot.create(:video, title: 'My cool video')
 
       visit dashboard_videos_path
