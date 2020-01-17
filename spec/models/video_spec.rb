@@ -124,9 +124,9 @@ RSpec.describe Video, type: :model do
       video.natural_duration = '1:00:00'
       expect(video.duration).to eq 3600
       video.natural_duration = '9:59:59'
-      expect(video.duration).to eq 35999
+      expect(video.duration).to eq 35_999
       video.natural_duration = '10:00:00'
-      expect(video.duration).to eq 36000
+      expect(video.duration).to eq 36_000
     end
   end
 

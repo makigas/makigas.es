@@ -609,12 +609,6 @@ Style/NestedParenthesizedCalls:
     - 'spec/helpers/application_helper_spec.rb'
     - 'spec/helpers/dashboard/videos_helper_spec.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: Strict.
-Style/NumericLiterals:
-  MinDigits: 15
-
 # Offense count: 167
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
