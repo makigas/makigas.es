@@ -12,3 +12,10 @@ AllCops:
     - 'tmp/**/*'
 
 inherit_from: .rubocop_todo.yml
+
+# Rails actually suggests using this approach when setting redirect rules.
+# https://guides.rubyonrails.org/routing.html#redirection. Therefore, I'll
+# be ignoring config/routes.rb.
+Style/FormatStringToken:
+  Exclude:
+    - config/routes.rb
