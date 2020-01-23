@@ -29,8 +29,6 @@ module ApplicationHelper
     elsif match = sec.match(/^([0-5]?[0-9])$/)
       seconds = match.captures[0]
       seconds.to_i
-    else
-      nil
     end
   end
 
