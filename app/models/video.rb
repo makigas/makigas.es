@@ -27,10 +27,8 @@ class Video < ApplicationRecord
   def natural_duration
     return nil if duration.blank?
 
-    hours = duration / 3600
-    minutes = duration % 3600
-    seconds = duration % 60
-    [hours.to_s.rjust(2, '0'), minutes.to_s.rjust(2, '0'), seconds.to_s.rjust(2, '0')].join(':')
+    timestamps = [duration / 3600, (duration % 3600) / 60, duration % 60]
+    timestamps.map { |ts| ts.to_s.rjust(2, '0') }.join(':')
   end
 
   # Visible videos are those whose publication date has been already reached.
