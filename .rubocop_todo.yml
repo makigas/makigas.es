@@ -12,7 +12,7 @@
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 93
 # Cop supports --auto-correct.
@@ -26,9 +26,9 @@ Capybara/FeatureMethods:
 # SupportedStyles: with_first_argument, with_fixed_indentation
 Layout/ArgumentAlignment:
   Exclude:
-    - 'bin/rubocop'
-    - 'bin/webpack'
-    - 'bin/webpack-dev-server'
+    - "bin/rubocop"
+    - "bin/webpack"
+    - "bin/webpack-dev-server"
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -38,14 +38,14 @@ Layout/ArgumentAlignment:
 # SupportedLastArgumentHashStyles: always_inspect, always_ignore, ignore_implicit, ignore_explicit
 Layout/HashAlignment:
   Exclude:
-    - 'config/initializers/simple_form.rb'
-    - 'lib/makigas/video_import.rb'
+    - "config/initializers/simple_form.rb"
+    - "lib/makigas/video_import.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/CommentIndentation:
   Exclude:
-    - 'app/controllers/users/sessions_controller.rb'
+    - "app/controllers/users/sessions_controller.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -53,24 +53,24 @@ Layout/CommentIndentation:
 # SupportedStyles: leading, trailing
 Layout/DotPosition:
   Exclude:
-    - 'spec/models/video_spec.rb'
+    - "spec/models/video_spec.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
 Layout/EmptyLineAfterGuardClause:
   Exclude:
-    - 'lib/makigas/data_migrator.rb'
-    - 'lib/tasks/data_migrate.rake'
-    - 'lib/tasks/import_topics.rake'
-    - 'lib/tasks/import_videos.rake'
+    - "lib/makigas/data_migrator.rb"
+    - "lib/tasks/data_migrate.rake"
+    - "lib/tasks/import_topics.rake"
+    - "lib/tasks/import_videos.rake"
 
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLines:
   Exclude:
-    - 'app/models/video.rb'
-    - 'bin/setup'
-    - 'db/migrate/20160625180750_devise_create_users.rb'
+    - "app/models/video.rb"
+    - "bin/setup"
+    - "db/migrate/20160625180750_devise_create_users.rb"
 
 # Offense count: 8
 # Cop supports --auto-correct.
@@ -78,12 +78,12 @@ Layout/EmptyLines:
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'db/migrate/20160626001601_create_playlists.rb'
-    - 'db/schema.rb'
-    - 'spec/models/opinion_spec.rb'
-    - 'spec/models/playlist_spec.rb'
-    - 'spec/models/topic_spec.rb'
-    - 'spec/models/user_spec.rb'
+    - "db/migrate/20160626001601_create_playlists.rb"
+    - "db/schema.rb"
+    - "spec/models/opinion_spec.rb"
+    - "spec/models/playlist_spec.rb"
+    - "spec/models/topic_spec.rb"
+    - "spec/models/user_spec.rb"
 
 # Offense count: 22
 # Cop supports --auto-correct.
@@ -91,19 +91,19 @@ Layout/EmptyLinesAroundBlockBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
 Layout/EmptyLinesAroundClassBody:
   Exclude:
-    - 'app/controllers/dashboard/dashboard_controller.rb'
-    - 'app/controllers/dashboard/opinions_controller.rb'
-    - 'app/controllers/dashboard/playlists_controller.rb'
-    - 'app/controllers/dashboard/topics_controller.rb'
-    - 'app/controllers/dashboard/users_controller.rb'
-    - 'app/controllers/dashboard/videos_controller.rb'
-    - 'app/controllers/playlists_controller.rb'
-    - 'app/controllers/topics_controller.rb'
-    - 'app/controllers/videos_controller.rb'
-    - 'app/models/video.rb'
-    - 'lib/makigas/data_migrator.rb'
-    - 'lib/makigas/topic_import.rb'
-    - 'lib/makigas/video_import.rb'
+    - "app/controllers/dashboard/dashboard_controller.rb"
+    - "app/controllers/dashboard/opinions_controller.rb"
+    - "app/controllers/dashboard/playlists_controller.rb"
+    - "app/controllers/dashboard/topics_controller.rb"
+    - "app/controllers/dashboard/users_controller.rb"
+    - "app/controllers/dashboard/videos_controller.rb"
+    - "app/controllers/playlists_controller.rb"
+    - "app/controllers/topics_controller.rb"
+    - "app/controllers/videos_controller.rb"
+    - "app/models/video.rb"
+    - "lib/makigas/data_migrator.rb"
+    - "lib/makigas/topic_import.rb"
+    - "lib/makigas/video_import.rb"
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -111,22 +111,22 @@ Layout/EmptyLinesAroundClassBody:
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
 Layout/EmptyLinesAroundModuleBody:
   Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/videos_helper.rb'
+    - "app/helpers/application_helper.rb"
+    - "app/helpers/videos_helper.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
 Layout/IndentationWidth:
   Exclude:
-    - 'spec/features/front/front_videos_spec.rb'
+    - "spec/features/front/front_videos_spec.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle.
 Layout/LeadingCommentSpace:
   Exclude:
-    - 'node_modules/node-sass/src/libsass/extconf.rb'
+    - "node_modules/node-sass/src/libsass/extconf.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -135,8 +135,8 @@ Layout/LeadingCommentSpace:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'config/environments/production.rb'
+    - "app/helpers/application_helper.rb"
+    - "config/environments/production.rb"
 
 # Offense count: 14
 # Cop supports --auto-correct.
@@ -144,74 +144,74 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # SupportedStyles: final_newline, final_blank_line
 Layout/TrailingEmptyLines:
   Exclude:
-    - 'app/models/application_record.rb'
-    - 'config/deploy/production.rb'
-    - 'config/initializers/session_store.rb'
-    - 'config/schedule.rb'
-    - 'lib/makigas/data_migrator.rb'
-    - 'lib/makigas/topic_import.rb'
-    - 'lib/makigas/video_import.rb'
-    - 'lib/tasks/data_migrate.rake'
-    - 'lib/tasks/export_topics.rake'
-    - 'lib/tasks/export_videos.rake'
-    - 'lib/tasks/import_topics.rake'
-    - 'lib/tasks/import_videos.rake'
-    - 'spec/features/dashboard/dashboard_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
+    - "app/models/application_record.rb"
+    - "config/deploy/production.rb"
+    - "config/initializers/session_store.rb"
+    - "config/schedule.rb"
+    - "lib/makigas/data_migrator.rb"
+    - "lib/makigas/topic_import.rb"
+    - "lib/makigas/video_import.rb"
+    - "lib/tasks/data_migrate.rake"
+    - "lib/tasks/export_topics.rake"
+    - "lib/tasks/export_videos.rake"
+    - "lib/tasks/import_topics.rake"
+    - "lib/tasks/import_videos.rake"
+    - "spec/features/dashboard/dashboard_spec.rb"
+    - "spec/features/videos/video_page_spec.rb"
 
 # Offense count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'app/models/playlist.rb'
-    - 'app/models/user.rb'
-    - 'db/migrate/20170106104354_add_thumbnail_to_playlist.rb'
-    - 'db/migrate/20170106110213_add_thumbnail_to_topic.rb'
+    - "app/models/playlist.rb"
+    - "app/models/user.rb"
+    - "db/migrate/20170106104354_add_thumbnail_to_playlist.rb"
+    - "db/migrate/20170106110213_add_thumbnail_to_topic.rb"
 
 # Offense count: 4
 Lint/AmbiguousBlockAssociation:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
 
 # Offense count: 4
 Lint/AmbiguousOperator:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
 
 # Offense count: 3
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
   Exclude:
-    - 'app/helpers/application_helper.rb'
+    - "app/helpers/application_helper.rb"
 
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.
 Lint/UnusedBlockArgument:
   Exclude:
-    - 'lib/tasks/data_migrate.rake'
-    - 'lib/tasks/import_topics.rake'
-    - 'lib/tasks/import_videos.rake'
+    - "lib/tasks/data_migrate.rake"
+    - "lib/tasks/import_topics.rake"
+    - "lib/tasks/import_videos.rake"
 
 # Offense count: 5
 Lint/UselessAssignment:
   Exclude:
-    - 'spec/features/videos/videos_page_spec.rb'
-    - 'spec/models/playlist_spec.rb'
-    - 'spec/models/topic_spec.rb'
-    - 'spec/models/user_spec.rb'
+    - "spec/features/videos/videos_page_spec.rb"
+    - "spec/models/playlist_spec.rb"
+    - "spec/models/topic_spec.rb"
+    - "spec/models/user_spec.rb"
 
 # Offense count: 1
 # Configuration parameters: CheckForMethodsWithNoSideEffects.
 Lint/Void:
   Exclude:
-    - 'config/sitemap.rb'
+    - "config/sitemap.rb"
 
 # Offense count: 8
 Metrics/AbcSize:
@@ -233,23 +233,23 @@ Metrics/MethodLength:
 # AllowedNames: io, id, to, by, on, in, at, ip, db, os
 Naming/MethodParameterName:
   Exclude:
-    - 'lib/makigas/data_migrator.rb'
+    - "lib/makigas/data_migrator.rb"
 
 # Offense count: 30
 # Configuration parameters: Prefixes.
 # Prefixes: when, with, without
 RSpec/ContextWording:
   Exclude:
-    - 'spec/features/topics/topic_page_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
-    - 'spec/features/videos/videos_search_spec.rb'
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/helpers/dashboard/videos_helper_spec.rb'
-    - 'spec/models/opinion_spec.rb'
-    - 'spec/models/playlist_spec.rb'
-    - 'spec/models/topic_spec.rb'
-    - 'spec/models/user_spec.rb'
-    - 'spec/models/video_spec.rb'
+    - "spec/features/topics/topic_page_spec.rb"
+    - "spec/features/videos/video_page_spec.rb"
+    - "spec/features/videos/videos_search_spec.rb"
+    - "spec/helpers/application_helper_spec.rb"
+    - "spec/helpers/dashboard/videos_helper_spec.rb"
+    - "spec/models/opinion_spec.rb"
+    - "spec/models/playlist_spec.rb"
+    - "spec/models/topic_spec.rb"
+    - "spec/models/user_spec.rb"
+    - "spec/models/video_spec.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -257,56 +257,56 @@ RSpec/ContextWording:
 # SupportedStyles: described_class, explicit
 RSpec/DescribedClass:
   Exclude:
-    - 'spec/models/video_spec.rb'
+    - "spec/models/video_spec.rb"
 
 # Offense count: 5
 # Cop supports --auto-correct.
 RSpec/EmptyLineAfterHook:
   Exclude:
-    - 'spec/features/dashboard/dashboard_spec.rb'
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
+    - "spec/features/dashboard/dashboard_spec.rb"
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
 RSpec/EmptyLineAfterSubject:
   Exclude:
-    - 'spec/models/video_spec.rb'
+    - "spec/models/video_spec.rb"
 
 # Offense count: 39
 # Configuration parameters: Max.
 RSpec/ExampleLength:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/front/front_videos_spec.rb'
-    - 'spec/features/playlists/playlist_page_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
-    - 'spec/features/videos/videos_page_spec.rb'
-    - 'spec/features/videos/videos_search_spec.rb'
-    - 'spec/models/video_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
+    - "spec/features/front/front_videos_spec.rb"
+    - "spec/features/playlists/playlist_page_spec.rb"
+    - "spec/features/videos/video_page_spec.rb"
+    - "spec/features/videos/videos_page_spec.rb"
+    - "spec/features/videos/videos_search_spec.rb"
+    - "spec/models/video_spec.rb"
 
 # Offense count: 34
 # Cop supports --auto-correct.
 # Configuration parameters: CustomTransform, IgnoredWords.
 RSpec/ExampleWording:
   Exclude:
-    - 'spec/features/dashboard/dashboard_spec.rb'
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/topics/topics_page_spec.rb'
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/helpers/videos_helper_spec.rb'
-    - 'spec/models/topic_spec.rb'
-    - 'spec/models/video_spec.rb'
+    - "spec/features/dashboard/dashboard_spec.rb"
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
+    - "spec/features/topics/topics_page_spec.rb"
+    - "spec/helpers/application_helper_spec.rb"
+    - "spec/helpers/videos_helper_spec.rb"
+    - "spec/models/topic_spec.rb"
+    - "spec/models/video_spec.rb"
 
 # Offense count: 13
 # Cop supports --auto-correct.
@@ -314,15 +314,15 @@ RSpec/ExampleWording:
 # SupportedStyles: method_call, block
 RSpec/ExpectChange:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
 
 # Offense count: 1
 RSpec/ExpectInHook:
   Exclude:
-    - 'spec/features/topics/topic_page_spec.rb'
+    - "spec/features/topics/topic_page_spec.rb"
 
 # Offense count: 11
 # Cop supports --auto-correct.
@@ -330,33 +330,33 @@ RSpec/ExpectInHook:
 # SupportedStyles: implicit, each, example
 RSpec/HookArgument:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/topics/topics_page_spec.rb'
-    - 'spec/features/videos/videos_search_spec.rb'
-    - 'spec/helpers/dashboard/videos_helper_spec.rb'
-    - 'spec/models/video_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
+    - "spec/features/topics/topics_page_spec.rb"
+    - "spec/features/videos/videos_search_spec.rb"
+    - "spec/helpers/dashboard/videos_helper_spec.rb"
+    - "spec/models/video_spec.rb"
 
 # Offense count: 207
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/playlists/playlist_page_spec.rb'
-    - 'spec/features/playlists/playlists_page_spec.rb'
-    - 'spec/features/topics/topic_page_spec.rb'
-    - 'spec/features/topics/topics_page_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
-    - 'spec/features/videos/videos_search_spec.rb'
-    - 'spec/helpers/dashboard/videos_helper_spec.rb'
-    - 'spec/models/video_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
+    - "spec/features/playlists/playlist_page_spec.rb"
+    - "spec/features/playlists/playlists_page_spec.rb"
+    - "spec/features/topics/topic_page_spec.rb"
+    - "spec/features/topics/topics_page_spec.rb"
+    - "spec/features/videos/video_page_spec.rb"
+    - "spec/features/videos/videos_search_spec.rb"
+    - "spec/helpers/dashboard/videos_helper_spec.rb"
+    - "spec/models/video_spec.rb"
 
 # Offense count: 52
 # Configuration parameters: AggregateFailuresByDefault.
@@ -366,83 +366,83 @@ RSpec/MultipleExpectations:
 # Offense count: 2
 RSpec/RepeatedDescription:
   Exclude:
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
+    - "spec/features/dashboard/playlist_videos_spec.rb"
 
 # Offense count: 2
 RSpec/ScatteredSetup:
   Exclude:
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
+    - "spec/features/dashboard/playlist_videos_spec.rb"
 
 # Offense count: 10
 # Cop supports --auto-correct.
 Rails/ActiveRecordAliases:
   Exclude:
-    - 'app/controllers/dashboard/opinions_controller.rb'
-    - 'app/controllers/dashboard/playlists_controller.rb'
-    - 'app/controllers/dashboard/topics_controller.rb'
-    - 'app/controllers/dashboard/users_controller.rb'
-    - 'app/controllers/dashboard/videos_controller.rb'
-    - 'spec/features/front/front_opinions_spec.rb'
-    - 'spec/features/videos/video_page_spec.rb'
+    - "app/controllers/dashboard/opinions_controller.rb"
+    - "app/controllers/dashboard/playlists_controller.rb"
+    - "app/controllers/dashboard/topics_controller.rb"
+    - "app/controllers/dashboard/users_controller.rb"
+    - "app/controllers/dashboard/videos_controller.rb"
+    - "spec/features/front/front_opinions_spec.rb"
+    - "spec/features/videos/video_page_spec.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Rails/BelongsTo:
   Exclude:
-    - 'app/models/playlist.rb'
+    - "app/models/playlist.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: NilOrEmpty, NotPresent, UnlessPresent.
 Rails/Blank:
   Exclude:
-    - 'lib/tasks/reset_minio_policy.rake'
+    - "lib/tasks/reset_minio_policy.rake"
 
 # Offense count: 15
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: slashes, arguments
 Rails/FilePath:
   Exclude:
-    - 'config/application.rb'
-    - 'config/environments/development.rb'
-    - 'spec/factories/opinions.rb'
-    - 'spec/factories/playlists.rb'
-    - 'spec/factories/topics.rb'
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
+    - "config/application.rb"
+    - "config/environments/development.rb"
+    - "spec/factories/opinions.rb"
+    - "spec/factories/playlists.rb"
+    - "spec/factories/topics.rb"
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
 
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
 Rails/InverseOf:
   Exclude:
-    - 'app/models/playlist.rb'
+    - "app/models/playlist.rb"
 
 # Offense count: 7
 # Configuration parameters: Include.
 # Include: app/controllers/**/*.rb
 Rails/LexicallyScopedActionFilter:
   Exclude:
-    - 'app/controllers/dashboard/opinions_controller.rb'
-    - 'app/controllers/dashboard/playlists_controller.rb'
-    - 'app/controllers/dashboard/topics_controller.rb'
-    - 'app/controllers/dashboard/users_controller.rb'
-    - 'app/controllers/dashboard/videos_controller.rb'
-    - 'app/controllers/playlists_controller.rb'
-    - 'app/controllers/topics_controller.rb'
+    - "app/controllers/dashboard/opinions_controller.rb"
+    - "app/controllers/dashboard/playlists_controller.rb"
+    - "app/controllers/dashboard/topics_controller.rb"
+    - "app/controllers/dashboard/users_controller.rb"
+    - "app/controllers/dashboard/videos_controller.rb"
+    - "app/controllers/playlists_controller.rb"
+    - "app/controllers/topics_controller.rb"
 
 # Offense count: 1
 Rails/OutputSafety:
   Exclude:
-    - 'app/helpers/application_helper.rb'
+    - "app/helpers/application_helper.rb"
 
 # Offense count: 1
 # Configuration parameters: Blacklist, Whitelist.
 # Blacklist: decrement!, decrement_counter, increment!, increment_counter, toggle!, touch, update_all, update_attribute, update_column, update_columns, update_counters
 Rails/SkipsModelValidations:
   Exclude:
-    - 'db/migrate/20170227184939_add_published_at_to_videos.rb'
+    - "db/migrate/20170227184939_add_published_at_to_videos.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -450,20 +450,20 @@ Rails/SkipsModelValidations:
 # SupportedStyles: strict, flexible
 Rails/TimeZone:
   Exclude:
-    - 'lib/makigas/video_import.rb'
+    - "lib/makigas/video_import.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Security/YAMLLoad:
   Exclude:
-    - 'lib/makigas/topic_import.rb'
-    - 'lib/makigas/video_import.rb'
+    - "lib/makigas/topic_import.rb"
+    - "lib/makigas/video_import.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/BlockComments:
   Exclude:
-    - 'spec/spec_helper.rb'
+    - "spec/spec_helper.rb"
 
 # Offense count: 20
 # Cop supports --auto-correct.
@@ -474,12 +474,12 @@ Style/BlockComments:
 # IgnoredMethods: lambda, proc, it
 Style/BlockDelimiters:
   Exclude:
-    - 'spec/features/dashboard/opinions_spec.rb'
-    - 'spec/features/dashboard/playlist_videos_spec.rb'
-    - 'spec/features/dashboard/playlists_spec.rb'
-    - 'spec/features/dashboard/topics_spec.rb'
-    - 'spec/features/dashboard/videos_spec.rb'
-    - 'spec/features/topics/topics_page_spec.rb'
+    - "spec/features/dashboard/opinions_spec.rb"
+    - "spec/features/dashboard/playlist_videos_spec.rb"
+    - "spec/features/dashboard/playlists_spec.rb"
+    - "spec/features/dashboard/topics_spec.rb"
+    - "spec/features/dashboard/videos_spec.rb"
+    - "spec/features/topics/topics_page_spec.rb"
 
 # Offense count: 14
 # Cop supports --auto-correct.
@@ -487,26 +487,26 @@ Style/BlockDelimiters:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/controllers/dashboard/dashboard_controller.rb'
-    - 'app/controllers/dashboard/opinions_controller.rb'
-    - 'app/controllers/dashboard/playlists_controller.rb'
-    - 'app/controllers/dashboard/topics_controller.rb'
-    - 'app/controllers/dashboard/users_controller.rb'
-    - 'app/controllers/dashboard/videos_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
-    - 'app/helpers/dashboard/opinions_helper.rb'
-    - 'app/helpers/dashboard/videos_helper.rb'
-    - 'lib/makigas/data_migrator.rb'
-    - 'lib/makigas/topic_import.rb'
-    - 'lib/makigas/video_import.rb'
+    - "app/controllers/dashboard/dashboard_controller.rb"
+    - "app/controllers/dashboard/opinions_controller.rb"
+    - "app/controllers/dashboard/playlists_controller.rb"
+    - "app/controllers/dashboard/topics_controller.rb"
+    - "app/controllers/dashboard/users_controller.rb"
+    - "app/controllers/dashboard/videos_controller.rb"
+    - "app/controllers/users/passwords_controller.rb"
+    - "app/controllers/users/sessions_controller.rb"
+    - "app/controllers/users/unlocks_controller.rb"
+    - "app/helpers/dashboard/opinions_helper.rb"
+    - "app/helpers/dashboard/videos_helper.rb"
+    - "lib/makigas/data_migrator.rb"
+    - "lib/makigas/topic_import.rb"
+    - "lib/makigas/video_import.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/ColonMethodCall:
   Exclude:
-    - 'lib/makigas/data_migrator.rb'
+    - "lib/makigas/data_migrator.rb"
 
 # Offense count: 42
 Style/Documentation:
@@ -518,27 +518,18 @@ Style/Documentation:
 # SupportedStyles: empty, nil, both
 Style/EmptyElse:
   Exclude:
-    - 'app/helpers/application_helper.rb'
+    - "app/helpers/application_helper.rb"
 
 # Offense count: 6
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
-    - 'Rakefile'
-    - 'bin/bundle'
-    - 'bin/rubocop'
-    - 'bin/setup'
-    - 'bin/update'
-    - 'spec/rails_helper.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: format, sprintf, percent
-Style/FormatString:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/video.rb'
+    - "Rakefile"
+    - "bin/bundle"
+    - "bin/rubocop"
+    - "bin/setup"
+    - "bin/update"
+    - "spec/rails_helper.rb"
 
 # Offense count: 124
 # Cop supports --auto-correct.
