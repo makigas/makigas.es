@@ -5,7 +5,7 @@ gem 'rake', '~> 13.0.1'
 # Base Ruby on Rails distribution
 gem 'bootsnap', '~> 1.4.5'
 gem 'dotenv-rails'
-gem 'jbuilder', '~> 2.9'
+gem 'jbuilder', '~> 2.10'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
 gem 'rails', '5.2.4.1'
