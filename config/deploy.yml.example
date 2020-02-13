@@ -1,6 +1,0 @@
-production:
-  deploy_to: # where is the application root
-  repo_url: # repository URL
-  branch: # branch to deploy
-  server: # server name
-  user: # username to deploy as

@@ -12,9 +12,6 @@ log/*
 !/log/.keep
 tmp/
 
-# Sensible file
-config/deploy.yml
-
 # Ignore local instance data.
 .env
 /public/assets/

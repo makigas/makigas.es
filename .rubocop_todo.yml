@@ -137,7 +137,6 @@ Layout/SpaceInsideArrayLiteralBrackets:
 Layout/TrailingEmptyLines:
   Exclude:
     - "app/models/application_record.rb"
-    - "config/deploy/production.rb"
     - "config/initializers/session_store.rb"
     - "config/schedule.rb"
     - "lib/makigas/data_migrator.rb"
@@ -612,8 +611,6 @@ Style/NumericLiterals:
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - "config/deploy/production.rb"
-    - "config/deploy/staging.rb"
     - "config/initializers/assets.rb"
     - "config/spring.rb"
 

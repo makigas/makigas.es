@@ -35,12 +35,6 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console'
 
-  # Deployment tools
-  gem 'capistrano'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.4.0'
-  gem 'capistrano-rvm'
-
   # Lint tools
   gem 'rubocop', '~> 0.79', require: false
   gem 'rubocop-rails', '~> 2.4.2', require: false

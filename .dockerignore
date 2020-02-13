@@ -2,8 +2,6 @@
 .git
 .github
 .vscode
-config/deploy.yml
-config/deploy.yml.example
 docker_data
 log
 node_modules
