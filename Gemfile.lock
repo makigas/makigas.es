@@ -254,7 +254,7 @@ GEM
     rubocop-rails (2.4.2)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
-    rubocop-rspec (1.37.1)
+    rubocop-rspec (1.38.1)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
     ruby_parser (3.14.0)
@@ -351,7 +351,7 @@ DEPENDENCIES
   rspec-rails (~> 3.9)
   rubocop (~> 0.80)
   rubocop-rails (~> 2.4.2)
-  rubocop-rspec (~> 1.37)
+  rubocop-rspec (~> 1.38)
   sass-rails (~> 6.0)
   sdoc (~> 1.0.0)
   selenium-webdriver
