@@ -61,7 +61,7 @@ RSpec.describe Playlist, type: :model do
       video2 = FactoryBot.create(:video, youtube_id: '12346', duration: 90, playlist: playlist)
       expect(playlist.total_length).to eq 150
     end
-    
+
     it 'has many videos' do
       playlist = FactoryBot.create(:playlist)
       expect(playlist).to respond_to(:videos)
