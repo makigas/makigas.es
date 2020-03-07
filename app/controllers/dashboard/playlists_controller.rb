@@ -20,7 +20,7 @@ class Dashboard::PlaylistsController < Dashboard::DashboardController
   end
 
   def update
-    if @playlist.update_attributes(playlist_params)
+    if @playlist.update(playlist_params)
       redirect_to [:dashboard, @playlist], notice: t('.updated')
     else
       render :edit

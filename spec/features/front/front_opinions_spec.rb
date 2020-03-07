@@ -18,7 +18,7 @@ RSpec.feature 'Front opinions', type: :feature do
   end
 
   scenario 'may not have a link' do
-    opinion.update_attributes(url: nil)
+    opinion.update(url: nil)
     visit root_path
     within('.about-opinions') do
       expect(page).to have_text opinion.from

@@ -20,7 +20,7 @@ class Dashboard::VideosController < Dashboard::DashboardController
   end
 
   def update
-    if @video.update_attributes(video_params)
+    if @video.update(video_params)
       redirect_to [:dashboard, @video.playlist, @video], notice: t('.updated')
     else
       render :edit

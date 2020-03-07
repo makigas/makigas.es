@@ -20,7 +20,7 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
   end
 
   def update
-    if @opinion.update_attributes(opinion_params)
+    if @opinion.update(opinion_params)
       redirect_to [:dashboard, :opinions], notice: t('.updated')
     else
       render :edit

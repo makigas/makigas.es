@@ -20,7 +20,7 @@ class Dashboard::TopicsController < Dashboard::DashboardController
   end
 
   def update
-    if @topic.update_attributes(topic_params)
+    if @topic.update(topic_params)
       redirect_to [:dashboard, @topic], notice: t('.updated')
     else
       render :edit

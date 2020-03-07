@@ -20,7 +20,7 @@ class Dashboard::UsersController < Dashboard::DashboardController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       redirect_to [:dashboard, @user], notice: t('.updated')
     else
       render :edit

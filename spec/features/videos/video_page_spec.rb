@@ -32,7 +32,7 @@ RSpec.feature "Video page", type: :feature do
   context 'a topic has been assigned' do
     before do
       @topic = FactoryBot.create(:topic)
-      @video.playlist.update_attributes(topic: @topic)
+      @video.playlist.update(topic: @topic)
     end
 
     scenario 'there is a topic card' do
@@ -46,7 +46,7 @@ RSpec.feature "Video page", type: :feature do
   end
 
   context 'video is scheduled but not private' do
-    before { @video.update_attributes(published_at: 2.days.from_now) }
+    before { @video.update(published_at: 2.days.from_now) }
 
     scenario 'there is information about the video' do
       visit_video @video
@@ -82,7 +82,7 @@ RSpec.feature "Video page", type: :feature do
     context 'a topic has been assigned' do
       before do
         @topic = FactoryBot.create(:topic)
-        @video.playlist.update_attributes(topic: @topic)
+        @video.playlist.update(topic: @topic)
       end
 
       scenario 'there is a topic card' do
@@ -97,7 +97,7 @@ RSpec.feature "Video page", type: :feature do
   end
 
   context 'video is scheduled and private' do
-    before { @video.update_attributes(published_at: 2.days.from_now, private: true) }
+    before { @video.update(published_at: 2.days.from_now, private: true) }
 
     scenario 'the page requires authorization' do
       visit_video @video
