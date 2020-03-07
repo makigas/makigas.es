@@ -24,7 +24,7 @@ class Playlist < ApplicationRecord
   validates_attachment :thumbnail, content_type: { content_type: /\Aimage\/.*\z/ }
   validates_attachment :card, content_type: { content_type: /\Aimage\/.*\z/ }
 
-  has_many :videos, -> { order(position: :asc) }
+  has_many :videos, -> { order(position: :asc) }, inverse_of: :video
   belongs_to :topic, optional: true
   
   def total_length

@@ -364,13 +364,6 @@ RSpec/ScatteredSetup:
   Exclude:
     - "spec/features/dashboard/playlist_videos_spec.rb"
 
-# Offense count: 1
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/InverseOf:
-  Exclude:
-    - "app/models/playlist.rb"
-
 # Offense count: 7
 # Configuration parameters: Include.
 # Include: app/controllers/**/*.rb
