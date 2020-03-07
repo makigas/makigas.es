@@ -364,20 +364,6 @@ RSpec/ScatteredSetup:
   Exclude:
     - "spec/features/dashboard/playlist_videos_spec.rb"
 
-# Offense count: 15
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - "config/application.rb"
-    - "config/environments/development.rb"
-    - "spec/factories/opinions.rb"
-    - "spec/factories/playlists.rb"
-    - "spec/factories/topics.rb"
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-
 # Offense count: 1
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
