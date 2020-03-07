@@ -12,10 +12,10 @@ RSpec.feature 'Dashboard playlists', type: :feature do
   end
 
   context 'when logged in' do
-    before(:each) {
+    before(:each) do
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
-    }
+    end
 
     scenario 'user can list the playlists' do
       @playlist = FactoryBot.create(:playlist)
@@ -31,14 +31,14 @@ RSpec.feature 'Dashboard playlists', type: :feature do
     scenario 'user can create playlists' do
       visit dashboard_playlists_path
       click_link 'Nueva Lista'
-      expect {
+      expect do
         fill_in 'Título', with: 'My Playlist'
         fill_in 'Descripción', with: 'This is a playlist part of my site'
         fill_in 'ID de YouTube', with: 'AABBCCDDEEFF'
         attach_file 'Miniatura', Rails.root.join('spec/fixtures/playlist.png')
         attach_file 'Tarjeta', Rails.root.join('spec/fixtures/card.jpg')
         click_button 'Crear Lista de reproducción'
-      }.to change { Playlist.count }.by 1
+      end.to change { Playlist.count }.by 1
       expect(page).to have_text 'Lista creada correctamente'
     end
 
@@ -79,11 +79,11 @@ RSpec.feature 'Dashboard playlists', type: :feature do
       @playlist = FactoryBot.create(:playlist)
 
       visit dashboard_playlists_path
-      expect {
+      expect do
         within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
           click_button 'Destruir'
         end
-      }.to change { Playlist.count }.by -1
+      end.to change { Playlist.count }.by -1
 
       expect(page).to have_text 'Lista eliminada correctamente'
     end

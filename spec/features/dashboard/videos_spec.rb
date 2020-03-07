@@ -19,10 +19,10 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
   end
 
   context 'when logged in' do
-    before(:each) {
+    before(:each) do
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
-    }
+    end
 
     scenario 'user can list videos' do
       @video = FactoryBot.create(:video)
@@ -34,7 +34,7 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
       @playlist = FactoryBot.create(:playlist)
 
       visit dashboard_videos_path
-      expect {
+      expect do
         click_link 'Nuevo Vídeo'
         fill_in 'Título', with: 'My video title'
         fill_in 'Descripción', with: 'This is my newest and coolest video'
@@ -43,7 +43,7 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
         fill_in 'duration_seconds', with: '32'
         select @playlist.title, from: 'Lista de reproducción'
         click_button 'Crear Vídeo'
-      }.to change { Video.count }.by 1
+      end.to change { Video.count }.by 1
 
       expect(page).to have_text 'Vídeo creado correctamente'
       expect(@playlist.videos.count).to eq 1
@@ -71,7 +71,7 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
       @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
 
-      expect {
+      expect do
         click_link 'Nuevo Vídeo'
         fill_in 'Título', with: 'My video title'
         fill_in 'Descripción', with: 'This is my newest and coolest video'
@@ -81,7 +81,7 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
         select @playlist.title, from: 'Lista de reproducción'
         check 'video_unfeatured'
         click_button 'Crear Vídeo'
-      }.to change { Video.count }.by 1
+      end.to change { Video.count }.by 1
 
       # Test the video does not appear
       Capybara.app_host = 'http://www.lvh.me:9080'
@@ -94,19 +94,19 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
     scenario 'user cannot create videos with invalid data' do
       @playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
-      expect {
+      expect do
         click_link 'Nuevo Vídeo'
         fill_in 'Descripción', with: 'This is my newest and coolest video'
         fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
         select @playlist.title, from: 'Lista de reproducción'
         click_button 'Crear Vídeo'
-      }.not_to change { Video.count }
+      end.not_to change { Video.count }
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
     scenario 'user cannot create videos without setting a playlist' do
       visit dashboard_videos_path
-      expect {
+      expect do
         click_link 'Nuevo Vídeo'
         fill_in 'Título', with: 'My video title'
         fill_in 'Descripción', with: 'This is my newest and coolest video'
@@ -114,7 +114,7 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
         fill_in 'duration_minutes', with: '3'
         fill_in 'duration_seconds', with: '32'
         click_button 'Crear Vídeo'
-      }.not_to change { Video.count }
+      end.not_to change { Video.count }
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
@@ -135,11 +135,11 @@ RSpec.feature 'Dashboard videos', type: :feature, js: true do
       @video = FactoryBot.create(:video, title: 'My cool video')
 
       visit dashboard_videos_path
-      expect {
+      expect do
         within(:xpath, "//tr[.//a[text() = '#{@video.title}']]") do
           click_button 'Destruir'
         end
-      }.to change { Video.count }.by -1
+      end.to change { Video.count }.by -1
 
       expect(page).to have_text 'Vídeo destruido correctamente'
       expect(page).not_to have_link 'My cool video'
