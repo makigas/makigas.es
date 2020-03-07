@@ -12,7 +12,8 @@ class Makigas::VideoImport
         Video.create!(playlist: pl, title: video["title"],
           description: video["description"], slug: video["slug"],
           youtube_id: video["youtube_id"], duration: video["duration"],
-          position: video["position"], created_at: Time.parse(video["created_at"]))
+          position: video["position"],
+          created_at: Time.parse(video["created_at"]).utc)
       end
     end
   end
