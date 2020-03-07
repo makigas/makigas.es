@@ -480,10 +480,6 @@ Style/ClassAndModuleChildren:
     - "lib/makigas/topic_import.rb"
     - "lib/makigas/video_import.rb"
 
-# Offense count: 42
-Style/Documentation:
-  Enabled: false
-
 # Offense count: 124
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
