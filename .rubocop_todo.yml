@@ -366,12 +366,6 @@ RSpec/ScatteredSetup:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Rails/BelongsTo:
-  Exclude:
-    - "app/models/playlist.rb"
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: NilOrEmpty, NotPresent, UnlessPresent.
 Rails/Blank:
   Exclude:
