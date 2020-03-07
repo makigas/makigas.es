@@ -364,13 +364,6 @@ RSpec/ScatteredSetup:
   Exclude:
     - "spec/features/dashboard/playlist_videos_spec.rb"
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: NilOrEmpty, NotPresent, UnlessPresent.
-Rails/Blank:
-  Exclude:
-    - "lib/tasks/reset_minio_policy.rake"
-
 # Offense count: 15
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: slashes, arguments
