@@ -28,7 +28,7 @@ require 'json'
 class Makigas::DataMigrator
 
   def initialize(schema, thumbnails)
-    raise 'Not a thumbnails folder' unless File::directory?(thumbnails)
+    raise 'Not a thumbnails folder' unless File.directory?(thumbnails)
     @schema = JSON.parse!(File.read(schema))
     @thumbnails = thumbnails
   end
