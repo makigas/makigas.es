@@ -6,6 +6,8 @@ class Dashboard::PlaylistsController < Dashboard::DashboardController
     @playlists = Playlist.order(updated_at: :desc).page(params[:page])
   end
 
+  def show; end
+
   def new
     @playlist = Playlist.new
   end
@@ -18,6 +20,8 @@ class Dashboard::PlaylistsController < Dashboard::DashboardController
       render :new
     end
   end
+
+  def edit; end
 
   def update
     if @playlist.update(playlist_params)

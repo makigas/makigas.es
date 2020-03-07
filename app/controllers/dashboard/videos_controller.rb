@@ -1,10 +1,11 @@
 class Dashboard::VideosController < Dashboard::DashboardController
-
   before_action :video_set, only: [:show, :edit, :update, :destroy, :move]
 
   def index
     @videos = Video.order(created_at: :desc).page(params[:page])
   end
+
+  def show; end
 
   def new
     @video = Video.new
@@ -18,6 +19,8 @@ class Dashboard::VideosController < Dashboard::DashboardController
       render :new
     end
   end
+
+  def edit; end
 
   def update
     if @video.update(video_params)
@@ -56,5 +59,4 @@ class Dashboard::VideosController < Dashboard::DashboardController
   def video_params
     params.require(:video).permit(:title, :description, :youtube_id, :duration, :playlist_id, :unfeatured, :published_at)
   end
-
 end

@@ -1,10 +1,11 @@
 class Dashboard::UsersController < Dashboard::DashboardController
-
   before_action :user_set, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all.page(params[:page])
   end
+
+  def show; end
 
   def new
     @user = User.new
@@ -18,6 +19,8 @@ class Dashboard::UsersController < Dashboard::DashboardController
       render :new
     end
   end
+
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -45,5 +48,4 @@ class Dashboard::UsersController < Dashboard::DashboardController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
-
 end

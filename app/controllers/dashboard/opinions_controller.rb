@@ -1,10 +1,11 @@
 class Dashboard::OpinionsController < Dashboard::DashboardController
-
   before_action :opinion_set, only: [:show, :edit, :update, :destroy]
 
   def index
     @opinions = Opinion.order(updated_at: :desc).page(params[:page])
   end
+
+  def show; end
 
   def new
     @opinion = Opinion.new
@@ -18,6 +19,8 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
       render :new
     end
   end
+
+  def edit; end
 
   def update
     if @opinion.update(opinion_params)
@@ -41,5 +44,4 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
   def opinion_set
     @opinion = Opinion.find(params[:id])
   end
-
 end

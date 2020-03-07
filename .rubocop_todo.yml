@@ -364,19 +364,6 @@ RSpec/ScatteredSetup:
   Exclude:
     - "spec/features/dashboard/playlist_videos_spec.rb"
 
-# Offense count: 7
-# Configuration parameters: Include.
-# Include: app/controllers/**/*.rb
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - "app/controllers/dashboard/opinions_controller.rb"
-    - "app/controllers/dashboard/playlists_controller.rb"
-    - "app/controllers/dashboard/topics_controller.rb"
-    - "app/controllers/dashboard/users_controller.rb"
-    - "app/controllers/dashboard/videos_controller.rb"
-    - "app/controllers/playlists_controller.rb"
-    - "app/controllers/topics_controller.rb"
-
 # Offense count: 1
 Rails/OutputSafety:
   Exclude:

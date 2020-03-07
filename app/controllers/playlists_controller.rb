@@ -1,10 +1,11 @@
 class PlaylistsController < ApplicationController
-
   before_action :playlist_set, only: [:show, :feed]
 
   def index
     @playlists = Playlist.all.order(created_at: :desc)
   end
+
+  def show; end
 
   def feed
     @videos = @playlist.videos.includes(:playlist, playlist: [:topic]).visible.reverse
@@ -18,5 +19,4 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.friendly.find(params[:id])
     redirect_to @playlist, status: 301 if params[:id] != @playlist.slug
   end
-
 end

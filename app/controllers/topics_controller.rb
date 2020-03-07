@@ -1,10 +1,11 @@
 class TopicsController < ApplicationController
-
   before_action :topic_set, only: [:show, :feed]
 
   def index
     @topics = Topic.all
   end
+
+  def show; end
 
   def feed
     @videos = Video.visible.joins(:playlist).includes(:playlist, playlist: [:topic]).where(playlists: { topic: @topic }).order(published_at: :desc).limit(15)
