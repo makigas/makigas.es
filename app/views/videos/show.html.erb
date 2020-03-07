@@ -71,7 +71,7 @@
 <div class="row">
 
       <div class="col-md-7">
-        <%= to_markdown @video.description %>
+        <%= to_markdown(@video.description).html_safe %>
         <p>
           <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
           <%= t('.duration', duration: running_time(@video.duration)) %>

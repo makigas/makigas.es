@@ -365,11 +365,6 @@ RSpec/ScatteredSetup:
     - "spec/features/dashboard/playlist_videos_spec.rb"
 
 # Offense count: 1
-Rails/OutputSafety:
-  Exclude:
-    - "app/helpers/application_helper.rb"
-
-# Offense count: 1
 # Configuration parameters: Blacklist, Whitelist.
 # Blacklist: decrement!, decrement_counter, increment!, increment_counter, toggle!, touch, update_all, update_attribute, update_column, update_columns, update_counters
 Rails/SkipsModelValidations:
