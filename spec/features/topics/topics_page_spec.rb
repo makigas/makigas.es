@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Topics page", type: :feature do
   context "when there are no topics" do
-    it "should be success" do
+    it "is success" do
       visit topics_path
       expect(page.status_code).to be 200
     end
   end
 
   context "when there are topics" do
-    before(:each) {
+    before {
       @topic = FactoryBot.create(:topic)
     }
 
-    it "it is success" do
+    it "is success" do
       visit topics_path
       expect(page.status_code).to be 200
     end

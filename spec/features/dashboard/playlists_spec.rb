@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Dashboard playlists", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
+
   after { Capybara.default_host = "http://www.example.com" }
 
   context "when not logged in" do
-    it "should not be success" do
+    it "is not success" do
       visit dashboard_playlists_path
       expect(page).to have_no_current_path dashboard_playlists_path
     end
   end
 
   context "when logged in" do
-    before(:each) {
+    before {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
@@ -38,7 +39,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
         attach_file "Miniatura", Rails.root.join('spec/fixtures/playlist.png')
         attach_file "Tarjeta", Rails.root.join('spec/fixtures/card.jpg')
         click_button "Crear Lista de reproducción"
-      }.to change { Playlist.count }.by 1
+      }.to change(Playlist, :count).by 1
       expect(page).to have_text "Lista creada correctamente"
     end
 
@@ -83,7 +84,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
           click_button "Destruir"
         end
-      }.to change { Playlist.count }.by -1
+      }.to change(Playlist, :count).by -1
 
       expect(page).to have_text "Lista eliminada correctamente"
     end

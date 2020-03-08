@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Dashboard topics", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
+
   after { Capybara.default_host = "http://www.example.com" }
 
   context "when not logged in" do
-    it "should not be success" do
+    it "is not success" do
       visit dashboard_topics_path
       expect(page).to have_no_current_path dashboard_topics_path
     end
   end
 
   context "when logged in" do
-    before(:each) {
+    before {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
@@ -38,7 +39,7 @@ RSpec.feature "Dashboard topics", type: :feature do
         fill_in "Color", with: "#ff0000"
         attach_file "Miniatura", Rails.root.join('spec/fixtures/topic.png')
         click_button "Crear Tema"
-      }.to change { Topic.count }.by 1
+      }.to change(Topic, :count).by 1
 
       expect(page).to have_text "Tema creado correctamente"
     end
@@ -67,7 +68,7 @@ RSpec.feature "Dashboard topics", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do
           click_button "Destruir"
         end
-      }.to change { Topic.count }.by -1
+      }.to change(Topic, :count).by -1
 
       expect(page).to have_text "Tema eliminado correctamente"
     end
@@ -80,7 +81,7 @@ RSpec.feature "Dashboard topics", type: :feature do
         fill_in "Color", with: "#ff0000"
         attach_file "Miniatura", Rails.root.join('spec/fixtures/topic.png')
         click_button "Crear Tema"
-      }.not_to change { Topic.count }
+      }.not_to change(Topic, :count)
 
       expect(page).not_to have_text "Tema creado correctamente"
     end

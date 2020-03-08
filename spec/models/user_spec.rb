@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  context 'validation' do
+  describe 'validation' do
     it 'is not valid without e-mail' do
       user = FactoryBot.build(:user, email: nil)
       expect(user).not_to be_valid

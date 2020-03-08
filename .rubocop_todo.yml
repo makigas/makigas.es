@@ -6,12 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 93
-# Cop supports --auto-correct.
-# Configuration parameters: EnabledMethods.
-Capybara/FeatureMethods:
-  Enabled: false
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
@@ -226,111 +220,6 @@ Naming/MethodParameterName:
   Exclude:
     - "lib/makigas/data_migrator.rb"
 
-# Offense count: 30
-# Configuration parameters: Prefixes.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Exclude:
-    - "spec/features/topics/topic_page_spec.rb"
-    - "spec/features/videos/video_page_spec.rb"
-    - "spec/features/videos/videos_search_spec.rb"
-    - "spec/helpers/application_helper_spec.rb"
-    - "spec/helpers/dashboard/videos_helper_spec.rb"
-    - "spec/models/opinion_spec.rb"
-    - "spec/models/playlist_spec.rb"
-    - "spec/models/topic_spec.rb"
-    - "spec/models/user_spec.rb"
-    - "spec/models/video_spec.rb"
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: SkipBlocks, EnforcedStyle.
-# SupportedStyles: described_class, explicit
-RSpec/DescribedClass:
-  Exclude:
-    - "spec/models/video_spec.rb"
-
-# Offense count: 5
-# Cop supports --auto-correct.
-RSpec/EmptyLineAfterHook:
-  Exclude:
-    - "spec/features/dashboard/dashboard_spec.rb"
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlist_videos_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-
-# Offense count: 4
-# Cop supports --auto-correct.
-RSpec/EmptyLineAfterSubject:
-  Exclude:
-    - "spec/models/video_spec.rb"
-
-# Offense count: 39
-# Configuration parameters: Max.
-RSpec/ExampleLength:
-  Exclude:
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlist_videos_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-    - "spec/features/dashboard/videos_spec.rb"
-    - "spec/features/front/front_videos_spec.rb"
-    - "spec/features/playlists/playlist_page_spec.rb"
-    - "spec/features/videos/video_page_spec.rb"
-    - "spec/features/videos/videos_page_spec.rb"
-    - "spec/features/videos/videos_search_spec.rb"
-    - "spec/models/video_spec.rb"
-
-# Offense count: 34
-# Cop supports --auto-correct.
-# Configuration parameters: CustomTransform, IgnoredWords.
-RSpec/ExampleWording:
-  Exclude:
-    - "spec/features/dashboard/dashboard_spec.rb"
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlist_videos_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-    - "spec/features/dashboard/videos_spec.rb"
-    - "spec/features/topics/topics_page_spec.rb"
-    - "spec/helpers/application_helper_spec.rb"
-    - "spec/helpers/videos_helper_spec.rb"
-    - "spec/models/topic_spec.rb"
-    - "spec/models/video_spec.rb"
-
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: method_call, block
-RSpec/ExpectChange:
-  Exclude:
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-    - "spec/features/dashboard/videos_spec.rb"
-
-# Offense count: 1
-RSpec/ExpectInHook:
-  Exclude:
-    - "spec/features/topics/topic_page_spec.rb"
-
-# Offense count: 11
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: implicit, each, example
-RSpec/HookArgument:
-  Exclude:
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/playlist_videos_spec.rb"
-    - "spec/features/dashboard/playlists_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-    - "spec/features/dashboard/videos_spec.rb"
-    - "spec/features/topics/topics_page_spec.rb"
-    - "spec/features/videos/videos_search_spec.rb"
-    - "spec/helpers/dashboard/videos_helper_spec.rb"
-    - "spec/models/video_spec.rb"
-
 # Offense count: 207
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:
@@ -353,16 +242,6 @@ RSpec/InstanceVariable:
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:
   Max: 7
-
-# Offense count: 2
-RSpec/RepeatedDescription:
-  Exclude:
-    - "spec/features/dashboard/playlist_videos_spec.rb"
-
-# Offense count: 2
-RSpec/ScatteredSetup:
-  Exclude:
-    - "spec/features/dashboard/playlist_videos_spec.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.

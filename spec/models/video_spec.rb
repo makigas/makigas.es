@@ -1,24 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-  context 'is valid when instanciated via' do
-    it ':video factory' do
-      video = FactoryBot.build(:video)
-      expect(video).to be_valid
+  describe 'factories' do
+    context 'when using :video' do
+      it 'is valid' do
+        video = FactoryBot.build(:video)
+        expect(video).to be_valid
+      end
     end
 
-    it ':yesterday_video factory' do
-      video = FactoryBot.build(:yesterday_video)
-      expect(video).to be_valid
+    context 'when using :yesterday_video' do
+      it 'is valid' do
+        video = FactoryBot.build(:yesterday_video)
+        expect(video).to be_valid
+      end
     end
 
-    it ':tomorrow_video factory' do
-      video = FactoryBot.build(:tomorrow_video)
-      expect(video).to be_valid
+    context 'when using :tomorrow_video' do
+      it 'is valid' do
+        video = FactoryBot.build(:tomorrow_video)
+        expect(video).to be_valid
+      end
     end
   end
 
-  context 'validation' do
+  describe 'validation' do
     it 'is not valid without title' do
       video = FactoryBot.build(:video, title: nil)
       expect(video).not_to be_valid
@@ -73,12 +79,9 @@ RSpec.describe Video, type: :model do
       video = FactoryBot.build(:video, published_at: nil)
       expect(video).not_to be_valid
     end
-
-    # Note: I don't have to test whether videos are valid without position or
-    # when positions are negative since apparently acts_as_list checks this.
   end
 
-  context 'slug' do
+  describe '#slug' do
     it 'generates slug' do
       video = FactoryBot.create(:video, title: 'Sample')
       expect(video.slug).to eq 'sample'
@@ -99,34 +102,22 @@ RSpec.describe Video, type: :model do
     end
   end
 
-  context 'natural duration' do
-    it 'should convert from duration to natural duration' do
-      expect(FactoryBot.build(:video, duration: 12).natural_duration).
-        to eq '00:00:12'
-      expect(FactoryBot.build(:video, duration: 61).natural_duration).
-        to eq '00:01:01'
-      expect(FactoryBot.build(:video, duration: 102).natural_duration).
-        to eq '00:01:42'
-      expect(FactoryBot.build(:video, duration: 3600).natural_duration).
-        to eq '01:00:00'
+  describe '#natural_duration' do
+    it 'converts from duration to natural duration' do
+      expect(FactoryBot.build(:video, duration: 12).natural_duration).to eq '00:00:12'
+      expect(FactoryBot.build(:video, duration: 61).natural_duration).to eq '00:01:01'
+      expect(FactoryBot.build(:video, duration: 102).natural_duration).to eq '00:01:42'
+      expect(FactoryBot.build(:video, duration: 3600).natural_duration).to eq '01:00:00'
     end
 
-    it 'should convert from natural duration to duration' do
-      video = FactoryBot.build(:video)
-      video.natural_duration = '0:12'
-      expect(video.duration).to eq 12
-      video.natural_duration = '1:01'
-      expect(video.duration).to eq 61
-      video.natural_duration = '1:42'
-      expect(video.duration).to eq 102
-      video.natural_duration = '59:59'
-      expect(video.duration).to eq 3599
-      video.natural_duration = '1:00:00'
-      expect(video.duration).to eq 3600
-      video.natural_duration = '9:59:59'
-      expect(video.duration).to eq 35999
-      video.natural_duration = '10:00:00'
-      expect(video.duration).to eq 36000
+    it 'converts from natural duration to duration' do
+      expect(FactoryBot.build(:video, natural_duration: '0:12').duration).to eq 12
+      expect(FactoryBot.build(:video, natural_duration: '1:01').duration).to eq 61
+      expect(FactoryBot.build(:video, natural_duration: '1:42').duration).to eq 102
+      expect(FactoryBot.build(:video, natural_duration: '59:59').duration).to eq 3599
+      expect(FactoryBot.build(:video, natural_duration: '1:00:00').duration).to eq 3600
+      expect(FactoryBot.build(:video, natural_duration: '9:59:59').duration).to eq 35999
+      expect(FactoryBot.build(:video, natural_duration: '10:00:00').duration).to eq 36000
     end
   end
 
@@ -136,11 +127,13 @@ RSpec.describe Video, type: :model do
 
     context 'when publishing date has been reached' do
       subject { published.visible? }
+
       it { is_expected.to eq true }
     end
 
     context 'when publishing date has not been reached' do
       subject { scheduled.visible? }
+
       it { is_expected.to eq false }
     end
   end
@@ -151,28 +144,30 @@ RSpec.describe Video, type: :model do
 
     context 'when publishing date has been reached' do
       subject { published.scheduled? }
+
       it { is_expected.to eq false }
     end
 
     context 'when publishing date has not been reached' do
       subject { scheduled.scheduled? }
+
       it { is_expected.to eq true }
     end
   end
 
   describe '.visible' do
-    before(:each) do
+    before do
       @published = FactoryBot.create(:video, youtube_id: 'ASDF', published_at: 2.days.ago)
       @scheduled = FactoryBot.create(:video, youtube_id: 'ASDQ', published_at: 2.days.from_now)
     end
 
-    it 'should contain a video published yesterday' do
-      videos = Video.visible.collect
+    it 'contains a video published yesterday' do
+      videos = described_class.visible.collect
       expect(videos).to include @published
     end
 
-    it 'should not contain a video published tomorrow' do
-      videos = Video.visible.collect
+    it 'does not contain a video published tomorrow' do
+      videos = described_class.visible.collect
       expect(videos).not_to include @scheduled
     end
   end

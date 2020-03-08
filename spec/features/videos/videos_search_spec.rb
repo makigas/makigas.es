@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature "Videos search", type: :feature do
-  context "searching by length" do
-    before(:each) do
+  describe "searching by length" do
+    before do
       @short = FactoryBot.create(:video, duration: 200, title: 'Short', youtube_id: '1')
       @medium = FactoryBot.create(:video, duration: 600, title: 'Medium', youtube_id: '2')
       @long = FactoryBot.create(:video, duration: 1200, title: 'Long', youtube_id: '3')
@@ -36,8 +36,8 @@ RSpec.feature "Videos search", type: :feature do
     end
   end
 
-  context "searching by topic" do
-    before(:each) do
+  describe "searching by topic" do
+    before do
       @topic1 = FactoryBot.create(:topic, title: 'First Topic')
       @topic2 = FactoryBot.create(:topic, title: 'Second Topic')
       @playlist1 = FactoryBot.create(:playlist, topic: @topic1)

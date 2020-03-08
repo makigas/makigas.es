@@ -7,7 +7,7 @@ RSpec.describe Topic, type: :model do
     expect(topic).to be_valid
   end
 
-  context 'model' do
+  describe 'model' do
     it 'is not valid without a title' do
       topic = FactoryBot.build(:topic, title: nil)
       expect(topic).not_to be_valid
@@ -39,21 +39,21 @@ RSpec.describe Topic, type: :model do
     end
   end
 
-  context 'slug' do
+  describe 'slug' do
     it 'generates a slug' do
       topic = FactoryBot.create(:topic, title: 'My topic')
       expect(topic.slug).to eq 'my-topic'
     end
   end
 
-  context 'playlists association' do
-    it 'should have playlists' do
+  describe 'playlists association' do
+    it 'has playlists' do
       topic = FactoryBot.create(:topic)
       playlist = FactoryBot.create(:playlist, topic: topic)
       expect(topic).to respond_to(:playlists)
     end
 
-    it 'should nullify its playlists when removed' do
+    it 'nullifies its playlists when removed' do
       topic = FactoryBot.create(:topic)
       playlist = FactoryBot.create(:playlist, topic: topic)
       topic.destroy

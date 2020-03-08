@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.feature "Dashboard opinions", type: :feature do
   before { Capybara.default_host = "http://dashboard.example.com" }
+
   after { Capybara.default_host = "http://www.example.com" }
 
   context "when not logged in" do
-    it "should not be success" do
+    it "is not success" do
       visit dashboard_opinions_path
       expect(page).to have_no_current_path dashboard_topics_path
     end
   end
 
   context "when logged in" do
-    before(:each) {
+    before {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
@@ -33,7 +34,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
         fill_in "URL", with: "https://www.example.com"
         attach_file "Imagen", Rails.root.join('spec/fixtures/opinion.png')
         click_button "Crear Opinión"
-      }.to change { Opinion.count }.by 1
+      }.to change(Opinion, :count).by 1
 
       expect(page).to have_text "Opinión creada correctamente"
     end
@@ -61,7 +62,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do
           click_button "Destruir"
         end
-      }.to change { Opinion.count }.by -1
+      }.to change(Opinion, :count).by -1
 
       expect(page).to have_text "Opinión destruida correctamente"
     end
@@ -74,7 +75,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
         fill_in "URL", with: "https://www.example.com"
         attach_file "Imagen", Rails.root.join('spec/fixtures/opinion.png')
         click_button "Crear Opinión"
-      }.not_to change { Topic.count }
+      }.not_to change(Topic, :count)
 
       expect(page).not_to have_text "Opinión creada correctamente"
     end

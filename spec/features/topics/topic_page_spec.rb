@@ -20,7 +20,7 @@ RSpec.feature "Topic page", type: :feature do
     expect(page).to have_css "a[href*='#{playlist_path(@playlist)}']"
   end
 
-  context 'on empty playlists' do
+  context 'when the playlist is empty' do
     before do
       @playlist = FactoryBot.create(:playlist, topic: @topic)
     end
@@ -31,19 +31,19 @@ RSpec.feature "Topic page", type: :feature do
     end
   end
 
-  context 'on playlists with a single video' do
+  context 'when the playlist has a video' do
     before do
       @playlist = FactoryBot.create(:playlist, topic: @topic)
       FactoryBot.create(:video, playlist: @playlist)
+    end
 
-      scenario 'shows the playlist length' do
-        visit topic_path(@topic)
-        expect(page).to have_text '1 episodio'
-      end
+    it 'shows the playlist length' do
+      visit topic_path(@topic)
+      expect(page).to have_text '1 episodio'
     end
   end
 
-  context 'on playlists with many videos' do
+  context 'when the playlist has multiple videos' do
     before do
       @playlist = FactoryBot.create(:playlist, topic: @topic)
       FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')
@@ -56,7 +56,7 @@ RSpec.feature "Topic page", type: :feature do
     end
   end
 
-  context 'on playlists with scheduled videos' do
+  context 'when the playlist has scheduled videos' do
     before do
       @playlist = FactoryBot.create(:playlist, topic: @topic)
       FactoryBot.create(:video, playlist: @playlist, youtube_id: '1234')

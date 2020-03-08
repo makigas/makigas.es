@@ -12,14 +12,14 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
   end
 
   context "when not logged in" do
-    it "should not be success" do
+    it "is not success" do
       visit dashboard_videos_path
       expect(page).to have_no_current_path dashboard_playlists_path
     end
   end
 
   context "when logged in" do
-    before(:each) {
+    before {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
@@ -43,7 +43,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         fill_in 'duration_seconds', with: '32'
         select @playlist.title, from: 'Lista de reproducción'
         click_button 'Crear Vídeo'
-      }.to change { Video.count }.by 1
+      }.to change(Video, :count).by 1
 
       expect(page).to have_text 'Vídeo creado correctamente'
       expect(@playlist.videos.count).to eq 1
@@ -81,7 +81,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         select @playlist.title, from: 'Lista de reproducción'
         check 'video_unfeatured'
         click_button 'Crear Vídeo'
-      }.to change { Video.count }.by 1
+      }.to change(Video, :count).by 1
 
       # Test the video does not appear
       Capybara.app_host = "http://www.lvh.me:9080"
@@ -100,7 +100,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
         select @playlist.title, from: 'Lista de reproducción'
         click_button 'Crear Vídeo'
-      }.not_to change { Video.count }
+      }.not_to change(Video, :count)
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
@@ -114,7 +114,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         fill_in 'duration_minutes', with: '3'
         fill_in 'duration_seconds', with: '32'
         click_button 'Crear Vídeo'
-      }.not_to change { Video.count }
+      }.not_to change(Video, :count)
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
@@ -139,7 +139,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         within(:xpath, "//tr[.//a[text() = '#{@video.title}']]") do
           click_button 'Destruir'
         end
-      }.to change { Video.count }.by -1
+      }.to change(Video, :count).by -1
 
       expect(page).to have_text 'Vídeo destruido correctamente'
       expect(page).not_to have_link 'My cool video'

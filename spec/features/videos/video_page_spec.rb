@@ -29,7 +29,7 @@ RSpec.feature "Video page", type: :feature do
     end
   end
 
-  context 'a topic has been assigned' do
+  context 'when a topic is assigned' do
     before do
       @topic = FactoryBot.create(:topic)
       @video.playlist.update(topic: @topic)
@@ -45,7 +45,7 @@ RSpec.feature "Video page", type: :feature do
     end
   end
 
-  context 'video is scheduled but not private' do
+  context 'when the video is scheduled but not private' do
     before { @video.update(published_at: 2.days.from_now) }
 
     scenario 'there is information about the video' do
@@ -79,7 +79,7 @@ RSpec.feature "Video page", type: :feature do
       end
     end
 
-    context 'a topic has been assigned' do
+    context 'when a topic is assigned' do
       before do
         @topic = FactoryBot.create(:topic)
         @video.playlist.update(topic: @topic)
@@ -96,7 +96,7 @@ RSpec.feature "Video page", type: :feature do
     end
   end
 
-  context 'video is scheduled and private' do
+  context 'when the video is scheduled and private' do
     before { @video.update(published_at: 2.days.from_now, private: true) }
 
     scenario 'the page requires authorization' do
@@ -104,7 +104,7 @@ RSpec.feature "Video page", type: :feature do
       expect(page).to have_no_current_path playlist_video_path(@video, playlist_id: @video.playlist)
     end
 
-    context 'user is logged in' do
+    context 'when the user is logged in' do
       before do
         @user = FactoryBot.create(:user)
         login_as @user, scope: :user

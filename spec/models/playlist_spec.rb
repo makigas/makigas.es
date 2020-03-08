@@ -7,7 +7,7 @@ RSpec.describe Playlist, type: :model do
     expect(playlist).to be_valid
   end
 
-  context 'validation' do
+  describe 'validation' do
     it 'is not valid without title' do
       playlist = FactoryBot.build(:playlist, title: nil)
       expect(playlist).not_to be_valid
@@ -54,7 +54,7 @@ RSpec.describe Playlist, type: :model do
     end
   end
 
-  context 'videos association' do
+  describe 'videos association' do
     it 'reports total length' do
       playlist = FactoryBot.build(:playlist)
       video1 = FactoryBot.create(:video, youtube_id: '12345', duration: 60, playlist: playlist)
@@ -68,14 +68,14 @@ RSpec.describe Playlist, type: :model do
     end
   end
 
-  context 'slug' do
+  describe 'slug' do
     it 'generates a valid slug' do
       playlist = FactoryBot.create(:playlist, title: 'Sample')
       expect(playlist.slug).to eq 'sample'
     end
   end
 
-  context 'topic association' do
+  describe 'topic association' do
     it 'may belong to a topic' do
       playlist = FactoryBot.create(:playlist)
       expect(playlist).to respond_to(:topic)

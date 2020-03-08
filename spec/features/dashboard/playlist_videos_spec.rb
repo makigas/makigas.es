@@ -1,26 +1,27 @@
 require 'rails_helper'
 
 RSpec.feature "Dashboard playlist videos", type: :feature do
-  before { Capybara.default_host = "http://dashboard.example.com" }
-  after { Capybara.default_host = "http://www.example.com" }
+  before do
+    Capybara.default_host = "http://dashboard.example.com"
 
-  before(:each) {
     @playlist = FactoryBot.create(:playlist)
     @videos = [
       FactoryBot.create(:video, playlist: @playlist, title: 'Primero', position: 1, youtube_id: '1'),
       FactoryBot.create(:video, playlist: @playlist, title: 'Segundo', position: 2, youtube_id: '2')
     ]
-  }
+  end
+
+  after { Capybara.default_host = "http://www.example.com" }
 
   context "when not logged in" do
-    it "should not be success" do
+    it "is not success" do
       visit videos_dashboard_playlist_path(@playlist)
       expect(page).to have_no_current_path videos_dashboard_playlist_path(@playlist)
     end
   end
 
   context "when logged in" do
-    before(:each) {
+    before {
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
     }
@@ -61,7 +62,7 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
       end
     end
 
-    scenario "user can move a video down" do
+    scenario "user can move a video up" do
       visit videos_dashboard_playlist_path(@playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{@videos[1].title}']]") do
         click_button "Subir"

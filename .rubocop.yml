@@ -7,4 +7,13 @@ AllCops:
   Exclude:
     - 'node_modules/**/*'
 
+# Allow scenario to describe Capybara E2E tests.
+Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*.rb'
+
+# I see nothing wrong with this.
+RSpec/ExampleLength:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml

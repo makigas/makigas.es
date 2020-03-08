@@ -7,7 +7,7 @@ RSpec.describe Opinion, type: :model do
     expect(opinion).to be_valid
   end
 
-  context 'validation' do
+  describe 'validation' do
     it 'is not valid without a name from' do
       opinion = FactoryBot.build(:opinion, from: nil)
       expect(opinion).not_to be_valid
