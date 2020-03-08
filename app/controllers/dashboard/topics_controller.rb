@@ -1,10 +1,11 @@
 class Dashboard::TopicsController < Dashboard::DashboardController
-
   before_action :topic_set, only: [:show, :edit, :update, :destroy]
 
   def index
     @topics = Topic.order(updated_at: :desc).page(params[:page])
   end
+
+  def show; end
 
   def new
     @topic = Topic.new
@@ -19,8 +20,10 @@ class Dashboard::TopicsController < Dashboard::DashboardController
     end
   end
 
+  def edit; end
+
   def update
-    if @topic.update_attributes(topic_params)
+    if @topic.update(topic_params)
       redirect_to [:dashboard, @topic], notice: t('.updated')
     else
       render :edit
@@ -41,5 +44,4 @@ class Dashboard::TopicsController < Dashboard::DashboardController
   def topic_set
     @topic = Topic.friendly.find(params[:id])
   end
-
 end

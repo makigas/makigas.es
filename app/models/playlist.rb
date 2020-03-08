@@ -24,8 +24,8 @@ class Playlist < ApplicationRecord
   validates_attachment :thumbnail, content_type: { content_type: /\Aimage\/.*\z/ }
   validates_attachment :card, content_type: { content_type: /\Aimage\/.*\z/ }
 
-  has_many :videos, -> { order(position: :asc) }
-  belongs_to :topic, required: false
+  has_many :videos, -> { order(position: :asc) }, inverse_of: :playlist
+  belongs_to :topic, optional: true
   
   def total_length
     videos.map { |v| v.duration }.reduce(0, :+)

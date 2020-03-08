@@ -1,10 +1,11 @@
 class Dashboard::OpinionsController < Dashboard::DashboardController
-
   before_action :opinion_set, only: [:show, :edit, :update, :destroy]
 
   def index
     @opinions = Opinion.order(updated_at: :desc).page(params[:page])
   end
+
+  def show; end
 
   def new
     @opinion = Opinion.new
@@ -19,8 +20,10 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
     end
   end
 
+  def edit; end
+
   def update
-    if @opinion.update_attributes(opinion_params)
+    if @opinion.update(opinion_params)
       redirect_to [:dashboard, :opinions], notice: t('.updated')
     else
       render :edit
@@ -41,5 +44,4 @@ class Dashboard::OpinionsController < Dashboard::DashboardController
   def opinion_set
     @opinion = Opinion.find(params[:id])
   end
-
 end

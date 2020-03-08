@@ -5,7 +5,7 @@ class AddPublishedAtToVideos < ActiveRecord::Migration[5.0]
 
     # Fill the value for every video.
     Video.find_each do |video|
-      video.update_columns(published_at: video.created_at)
+      video.update(published_at: video.created_at)
     end
 
     # Make the column not nullable then.
