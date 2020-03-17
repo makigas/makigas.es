@@ -11,9 +11,9 @@ module ApplicationHelper
 
   def running_time sec, options = {}
     if sec >= 3600 || (!options[:full].nil? && options[:full] == true)
-      '%d:%02d:%02d' % [ sec / 3600, (sec % 3600) / 60, sec % 60]
+      '%d:%02d:%02d' % [sec / 3600, (sec % 3600) / 60, sec % 60]
     else
-      '%d:%02d' % [ sec / 60, sec % 60]
+      '%d:%02d' % [sec / 60, sec % 60]
     end
   end
 
