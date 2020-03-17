@@ -6,26 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 14
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingEmptyLines:
-  Exclude:
-    - "app/models/application_record.rb"
-    - "config/initializers/session_store.rb"
-    - "config/schedule.rb"
-    - "lib/makigas/data_migrator.rb"
-    - "lib/makigas/topic_import.rb"
-    - "lib/makigas/video_import.rb"
-    - "lib/tasks/data_migrate.rake"
-    - "lib/tasks/export_topics.rake"
-    - "lib/tasks/export_videos.rake"
-    - "lib/tasks/import_topics.rake"
-    - "lib/tasks/import_videos.rake"
-    - "spec/features/dashboard/dashboard_spec.rb"
-    - "spec/features/videos/video_page_spec.rb"
-
 # Offense count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.

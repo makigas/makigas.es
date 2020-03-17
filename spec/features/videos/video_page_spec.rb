@@ -123,4 +123,3 @@ private
 def visit_video(video)
   visit playlist_video_path(video, playlist_id: video.playlist)
 end
-
