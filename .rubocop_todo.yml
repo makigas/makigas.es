@@ -8,14 +8,6 @@
 
 # Offense count: 4
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: leading, trailing
-Layout/DotPosition:
-  Exclude:
-    - "spec/models/video_spec.rb"
-
-# Offense count: 4
-# Cop supports --auto-correct.
 Layout/EmptyLineAfterGuardClause:
   Exclude:
     - "lib/makigas/data_migrator.rb"
