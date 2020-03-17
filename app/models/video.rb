@@ -47,5 +47,4 @@ class Video < ApplicationRecord
     title
   end
 
-
 end

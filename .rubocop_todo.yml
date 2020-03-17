@@ -6,14 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Layout/EmptyLines:
-  Exclude:
-    - "app/models/video.rb"
-    - "bin/setup"
-    - "db/migrate/20160625180750_devise_create_users.rb"
-
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
