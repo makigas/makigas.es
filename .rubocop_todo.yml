@@ -6,15 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 4
-# Cop supports --auto-correct.
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - "lib/makigas/data_migrator.rb"
-    - "lib/tasks/data_migrate.rake"
-    - "lib/tasks/import_topics.rake"
-    - "lib/tasks/import_videos.rake"
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLines:
