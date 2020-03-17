@@ -8,13 +8,6 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - "spec/features/front/front_videos_spec.rb"
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle.
 Layout/LeadingCommentSpace:
   Exclude:
