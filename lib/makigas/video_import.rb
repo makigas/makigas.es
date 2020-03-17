@@ -1,7 +1,6 @@
 import 'yaml'
 
 class Makigas::VideoImport
-
   def initialize schema
     @schema = YAML.load(File.read(schema))
     @schema.map do |playlist|
@@ -17,5 +16,4 @@ class Makigas::VideoImport
       end
     end
   end
-
 end

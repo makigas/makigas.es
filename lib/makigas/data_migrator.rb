@@ -26,7 +26,6 @@ require 'json'
 # The migrator will paste the first video photo as the photo for the playlist.
 # The migrator will paste the first playlist photo as the photo for the topic.
 class Makigas::DataMigrator
-
   def initialize schema, thumbnails
     raise 'Not a thumbnails folder' unless File::directory?(thumbnails)
 

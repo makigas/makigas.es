@@ -6,26 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 22
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
-Layout/EmptyLinesAroundClassBody:
-  Exclude:
-    - "app/controllers/dashboard/dashboard_controller.rb"
-    - "app/controllers/dashboard/opinions_controller.rb"
-    - "app/controllers/dashboard/playlists_controller.rb"
-    - "app/controllers/dashboard/topics_controller.rb"
-    - "app/controllers/dashboard/users_controller.rb"
-    - "app/controllers/dashboard/videos_controller.rb"
-    - "app/controllers/playlists_controller.rb"
-    - "app/controllers/topics_controller.rb"
-    - "app/controllers/videos_controller.rb"
-    - "app/models/video.rb"
-    - "lib/makigas/data_migrator.rb"
-    - "lib/makigas/topic_import.rb"
-    - "lib/makigas/video_import.rb"
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
