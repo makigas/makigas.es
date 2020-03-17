@@ -6,16 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
-    - "app/models/playlist.rb"
-    - "app/models/user.rb"
-    - "db/migrate/20170106104354_add_thumbnail_to_playlist.rb"
-    - "db/migrate/20170106110213_add_thumbnail_to_topic.rb"
-
 # Offense count: 4
 Lint/AmbiguousBlockAssociation:
   Exclude:
