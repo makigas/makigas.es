@@ -4,10 +4,10 @@ RSpec.feature "Videos listed in front page", type: :feature do
   let!(:video) { FactoryBot.create(:video) }
 
   scenario 'displays thumbnail' do
-      visit root_path
-      within '.recent-videos' do
-        expect(page).to have_css "img[src='https://i1.ytimg.com/vi/#{video.youtube_id}/mqdefault.jpg']"
-      end
+    visit root_path
+    within '.recent-videos' do
+      expect(page).to have_css "img[src='https://i1.ytimg.com/vi/#{video.youtube_id}/mqdefault.jpg']"
+    end
   end
 
   scenario "links to the video" do

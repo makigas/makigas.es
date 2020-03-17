@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Opinion, type: :model do
-
   it 'has a valid factory' do
     opinion = FactoryBot.build(:opinion)
     expect(opinion).to be_valid
@@ -28,5 +27,4 @@ RSpec.describe Opinion, type: :model do
       expect(opinion).not_to be_valid
     end
   end
-
 end

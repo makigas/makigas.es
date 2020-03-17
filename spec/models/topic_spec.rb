@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
-
   it 'has a valid factory' do
     topic = FactoryBot.build(:topic)
     expect(topic).to be_valid

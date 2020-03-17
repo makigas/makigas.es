@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Playlist, type: :model do
-
   it 'has a valid factory' do
     playlist = FactoryBot.build(:playlist)
     expect(playlist).to be_valid

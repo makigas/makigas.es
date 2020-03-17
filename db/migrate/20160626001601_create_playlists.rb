@@ -1,7 +1,6 @@
 class CreatePlaylists < ActiveRecord::Migration[4.2]
   def change
     create_table :playlists do |t|
-
       # This is the title of the playlist.
       t.string :title, null: false, length: 100
 
