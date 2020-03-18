@@ -7,13 +7,6 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 4
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - "spec/features/dashboard/opinions_spec.rb"
-    - "spec/features/dashboard/topics_spec.rb"
-    - "spec/features/dashboard/videos_spec.rb"
-
-# Offense count: 4
 Lint/AmbiguousOperator:
   Exclude:
     - "spec/features/dashboard/opinions_spec.rb"
