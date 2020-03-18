@@ -21,7 +21,7 @@ jobs:
       - name: Set up ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6.x'
+          ruby-version: '2.7.x'
       - name: Set up node
         uses: actions/setup-node@v1
         with:
