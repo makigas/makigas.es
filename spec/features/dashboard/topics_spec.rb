@@ -68,7 +68,7 @@ RSpec.feature "Dashboard topics", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do
           click_button "Destruir"
         end
-      }.to change(Topic, :count).by -1
+      }.to change(Topic, :count).by(-1)
 
       expect(page).to have_text "Tema eliminado correctamente"
     end
