@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170417204245) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,5 +92,4 @@ ActiveRecord::Schema.define(version: 20170417204245) do
     t.index ["slug"], name: "index_videos_on_slug"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end
-
 end

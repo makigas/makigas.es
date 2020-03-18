@@ -1,5 +1,4 @@
 class Dashboard::PlaylistsController < Dashboard::DashboardController
-
   before_action :playlist_set, only: [:show, :edit, :update, :destroy, :videos]
 
   def index
@@ -49,5 +48,4 @@ class Dashboard::PlaylistsController < Dashboard::DashboardController
   def playlist_set
     @playlist = Playlist.friendly.find(params[:id])
   end
-
 end

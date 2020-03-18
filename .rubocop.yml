@@ -5,6 +5,7 @@ require:
 AllCops:
   TargetRubyVersion: 2.6
   Exclude:
+    - 'bin/*'
     - 'node_modules/**/*'
 
 # Allow scenario to describe Capybara E2E tests.

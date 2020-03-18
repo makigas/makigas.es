@@ -9,7 +9,7 @@ class Playlist < ApplicationRecord
     default: "360x360>",
     hidef: "720x720>"
   }, default_url: "/makigas.png"
-  
+
   has_attached_file :card, styles: {
     thumbnail: "320x180>",
     small: "640x360>",
@@ -26,7 +26,7 @@ class Playlist < ApplicationRecord
 
   has_many :videos, -> { order(position: :asc) }, inverse_of: :playlist
   belongs_to :topic, optional: true
-  
+
   def total_length
     videos.map { |v| v.duration }.reduce(0, :+)
   end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Playlist, type: :model do
-
   it 'has a valid factory' do
     playlist = FactoryBot.build(:playlist)
     expect(playlist).to be_valid
@@ -57,8 +56,8 @@ RSpec.describe Playlist, type: :model do
   describe 'videos association' do
     it 'reports total length' do
       playlist = FactoryBot.build(:playlist)
-      video1 = FactoryBot.create(:video, youtube_id: '12345', duration: 60, playlist: playlist)
-      video2 = FactoryBot.create(:video, youtube_id: '12346', duration: 90, playlist: playlist)
+      FactoryBot.create(:video, youtube_id: '12345', duration: 60, playlist: playlist)
+      FactoryBot.create(:video, youtube_id: '12346', duration: 90, playlist: playlist)
       expect(playlist.total_length).to eq 150
     end
 

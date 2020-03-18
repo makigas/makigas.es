@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   it 'has a valid factory' do
     user = FactoryBot.build(:user)
     expect(user).to be_valid
@@ -19,7 +18,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid if the e-mail is already present' do
-      user1 = FactoryBot.create(:user, email: 'email1@example.com')
+      FactoryBot.create(:user, email: 'email1@example.com')
       user2 = FactoryBot.build(:user, email: 'email1@example.com')
       expect(user2).not_to be_valid
     end

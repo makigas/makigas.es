@@ -1,5 +1,4 @@
 class Dashboard::DashboardController < ApplicationController
-
   before_action :authenticate_user!
 
   def index
@@ -9,5 +8,4 @@ class Dashboard::DashboardController < ApplicationController
     @users = User.count
     @opinions = Opinion.count
   end
-
 end

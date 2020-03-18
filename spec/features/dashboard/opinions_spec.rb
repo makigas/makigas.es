@@ -62,7 +62,7 @@ RSpec.feature "Dashboard opinions", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do
           click_button "Destruir"
         end
-      }.to change(Opinion, :count).by -1
+      }.to change(Opinion, :count).by(-1)
 
       expect(page).to have_text "Opinión destruida correctamente"
     end

@@ -139,7 +139,7 @@ RSpec.feature "Dashboard videos", type: :feature, js: true do
         within(:xpath, "//tr[.//a[text() = '#{@video.title}']]") do
           click_button 'Destruir'
         end
-      }.to change(Video, :count).by -1
+      }.to change(Video, :count).by(-1)
 
       expect(page).to have_text 'Vídeo destruido correctamente'
       expect(page).not_to have_link 'My cool video'

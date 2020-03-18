@@ -1,5 +1,4 @@
 class VideosController < ApplicationController
-
   def index
     @videos = Video.visible.joins(:playlist).all
     if params[:length]
