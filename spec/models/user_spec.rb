@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid if the e-mail is already present' do
-      user1 = FactoryBot.create(:user, email: 'email1@example.com')
+      FactoryBot.create(:user, email: 'email1@example.com')
       user2 = FactoryBot.build(:user, email: 'email1@example.com')
       expect(user2).not_to be_valid
     end
