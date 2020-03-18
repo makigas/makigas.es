@@ -48,7 +48,7 @@ RSpec.describe Topic, type: :model do
   describe 'playlists association' do
     it 'has playlists' do
       topic = FactoryBot.create(:topic)
-      playlist = FactoryBot.create(:playlist, topic: topic)
+      FactoryBot.create(:playlist, topic: topic)
       expect(topic).to respond_to(:playlists)
     end
 

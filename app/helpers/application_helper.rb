@@ -18,13 +18,13 @@ module ApplicationHelper
   end
 
   def extract_time sec
-    if match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/)
+    if (match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/))
       hours, minutes, seconds = match.captures
       hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
-    elsif match = sec.match(/^([0-5]?[0-9]):([0-5][0-9])$/)
+    elsif (match = sec.match(/^([0-5]?[0-9]):([0-5][0-9])$/))
       minutes, seconds = match.captures
       minutes.to_i * 60 + seconds.to_i
-    elsif match = sec.match(/^([0-5]?[0-9])$/)
+    elsif (match = sec.match(/^([0-5]?[0-9])$/))
       seconds = match.captures[0]
       seconds.to_i
     else

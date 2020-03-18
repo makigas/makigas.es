@@ -84,7 +84,7 @@ RSpec.feature "Dashboard playlists", type: :feature do
         within(:xpath, "//tr[.//td//a[text() = '#{@playlist.title}']]") do
           click_button "Destruir"
         end
-      }.to change(Playlist, :count).by -1
+      }.to change(Playlist, :count).by(-1)
 
       expect(page).to have_text "Lista eliminada correctamente"
     end

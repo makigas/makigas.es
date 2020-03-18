@@ -19,7 +19,7 @@ RSpec.feature "Topics page", type: :feature do
   scenario "displays topic if the playlist has one" do
     topic = FactoryBot.create(:topic)
     playlist = FactoryBot.create(:playlist, topic: topic)
-    video = FactoryBot.create(:video, playlist: playlist)
+    FactoryBot.create(:video, playlist: playlist)
 
     visit videos_path
     expect(page).to have_link topic.title, href: topic_path(topic)
