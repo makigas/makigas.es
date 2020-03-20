@@ -58,17 +58,6 @@ Security/YAMLLoad:
     - "lib/makigas/topic_import.rb"
     - "lib/makigas/video_import.rb"
 
-# Offense count: 6
-# Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - "Rakefile"
-    - "bin/bundle"
-    - "bin/rubocop"
-    - "bin/setup"
-    - "bin/update"
-    - "spec/rails_helper.rb"
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
