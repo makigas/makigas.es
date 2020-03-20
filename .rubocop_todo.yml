@@ -58,15 +58,6 @@ Security/YAMLLoad:
     - "lib/makigas/topic_import.rb"
     - "lib/makigas/video_import.rb"
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: format, sprintf, percent
-Style/FormatString:
-  Exclude:
-    - "app/helpers/application_helper.rb"
-    - "app/models/video.rb"
-
 # Offense count: 12
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: annotated, template, unannotated
