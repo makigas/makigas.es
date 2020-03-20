@@ -58,27 +58,6 @@ Security/YAMLLoad:
     - "lib/makigas/topic_import.rb"
     - "lib/makigas/video_import.rb"
 
-# Offense count: 14
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - "app/controllers/dashboard/dashboard_controller.rb"
-    - "app/controllers/dashboard/opinions_controller.rb"
-    - "app/controllers/dashboard/playlists_controller.rb"
-    - "app/controllers/dashboard/topics_controller.rb"
-    - "app/controllers/dashboard/users_controller.rb"
-    - "app/controllers/dashboard/videos_controller.rb"
-    - "app/controllers/users/passwords_controller.rb"
-    - "app/controllers/users/sessions_controller.rb"
-    - "app/controllers/users/unlocks_controller.rb"
-    - "app/helpers/dashboard/opinions_helper.rb"
-    - "app/helpers/dashboard/videos_helper.rb"
-    - "lib/makigas/data_migrator.rb"
-    - "lib/makigas/topic_import.rb"
-    - "lib/makigas/video_import.rb"
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/ColonMethodCall:
