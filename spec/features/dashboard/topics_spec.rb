@@ -13,10 +13,10 @@ RSpec.feature "Dashboard topics", type: :feature do
   end
 
   context "when logged in" do
-    before {
+    before do
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
-    }
+    end
 
     scenario "user can list the topics" do
       @topic = FactoryBot.create(:topic)
@@ -33,13 +33,13 @@ RSpec.feature "Dashboard topics", type: :feature do
       visit dashboard_topics_path
       click_link "Nuevo Tema"
 
-      expect {
+      expect do
         fill_in "Título", with: "My Topic"
         fill_in "Descripción", with: "This is a featured topic for the website"
         fill_in "Color", with: "#ff0000"
         attach_file "Miniatura", Rails.root.join('spec/fixtures/topic.png')
         click_button "Crear Tema"
-      }.to change(Topic, :count).by 1
+      end.to change(Topic, :count).by 1
 
       expect(page).to have_text "Tema creado correctamente"
     end
@@ -64,11 +64,11 @@ RSpec.feature "Dashboard topics", type: :feature do
       @playlist = FactoryBot.create(:playlist, topic: @topic)
 
       visit dashboard_topics_path
-      expect {
+      expect do
         within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do
           click_button "Destruir"
         end
-      }.to change(Topic, :count).by(-1)
+      end.to change(Topic, :count).by(-1)
 
       expect(page).to have_text "Tema eliminado correctamente"
     end
@@ -76,12 +76,12 @@ RSpec.feature "Dashboard topics", type: :feature do
     scenario "user cannot create invalid topics" do
       visit dashboard_topics_path
       click_link "Nuevo Tema"
-      expect {
+      expect do
         fill_in "Descripción", with: "This is a featured topic for the website"
         fill_in "Color", with: "#ff0000"
         attach_file "Miniatura", Rails.root.join('spec/fixtures/topic.png')
         click_button "Crear Tema"
-      }.not_to change(Topic, :count)
+      end.not_to change(Topic, :count)
 
       expect(page).not_to have_text "Tema creado correctamente"
     end
