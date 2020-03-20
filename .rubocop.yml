@@ -17,4 +17,8 @@ Capybara/FeatureMethods:
 RSpec/ExampleLength:
   Enabled: false
 
+# Documentation in a Rails app? No thanks.
+Style/Documentation:
+  Enabled: false
+
 inherit_from: .rubocop_todo.yml

@@ -58,10 +58,6 @@ Security/YAMLLoad:
     - "lib/makigas/topic_import.rb"
     - "lib/makigas/video_import.rb"
 
-# Offense count: 42
-Style/Documentation:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
