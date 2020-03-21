@@ -65,16 +65,6 @@ Security/YAMLLoad:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, AllowInnerSlashes.
-# SupportedStyles: slashes, percent_r, mixed
-Style/RegexpLiteral:
-  Exclude:
-    - "app/models/opinion.rb"
-    - "app/models/playlist.rb"
-    - "app/models/topic.rb"
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/StderrPuts:
