@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.makigas.es"
+SitemapGenerator::Sitemap.default_host = 'https://www.makigas.es'
 SitemapGenerator::Sitemap.create do
   add root_path, priority: 0.9, changefreq: 'daily'
 

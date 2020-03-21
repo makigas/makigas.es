@@ -5,9 +5,9 @@ namespace :makigas do
       @topics = Topic.all
       @documents = @topics.map do |topic|
         {
-          "title" => topic.title,
-          "description" => topic.description,
-          "color" => topic.color
+          'title' => topic.title,
+          'description' => topic.description,
+          'color' => topic.color
         }
       end
       puts @documents.to_yaml

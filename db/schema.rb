@@ -12,84 +12,84 @@
 
 ActiveRecord::Schema.define(version: 20_170_417_204_245) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "opinions", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "from", null: false
-    t.string "message", null: false
-    t.string "url"
-    t.string "photo_file_name", null: false
-    t.string "photo_content_type", null: false
-    t.integer "photo_file_size", null: false
-    t.datetime "photo_updated_at", null: false
+  create_table 'opinions', id: :serial, force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'from', null: false
+    t.string 'message', null: false
+    t.string 'url'
+    t.string 'photo_file_name', null: false
+    t.string 'photo_content_type', null: false
+    t.integer 'photo_file_size', null: false
+    t.datetime 'photo_updated_at', null: false
   end
 
-  create_table "playlists", id: :serial, force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description", null: false
-    t.string "youtube_id", null: false
-    t.string "slug", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "topic_id"
-    t.string "thumbnail_file_name"
-    t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.string "card_file_name"
-    t.string "card_content_type"
-    t.integer "card_file_size"
-    t.datetime "card_updated_at"
-    t.index ["slug"], name: "index_playlists_on_slug", unique: true
+  create_table 'playlists', id: :serial, force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'description', null: false
+    t.string 'youtube_id', null: false
+    t.string 'slug', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'topic_id'
+    t.string 'thumbnail_file_name'
+    t.string 'thumbnail_content_type'
+    t.integer 'thumbnail_file_size'
+    t.datetime 'thumbnail_updated_at'
+    t.string 'card_file_name'
+    t.string 'card_content_type'
+    t.integer 'card_file_size'
+    t.datetime 'card_updated_at'
+    t.index ['slug'], name: 'index_playlists_on_slug', unique: true
   end
 
-  create_table "topics", id: :serial, force: :cascade do |t|
-    t.string "title", null: false
-    t.string "description", null: false
-    t.string "slug", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "thumbnail_file_name"
-    t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.string "color"
-    t.index ["slug"], name: "index_topics_on_slug", unique: true
+  create_table 'topics', id: :serial, force: :cascade do |t|
+    t.string 'title', null: false
+    t.string 'description', null: false
+    t.string 'slug', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'thumbnail_file_name'
+    t.string 'thumbnail_content_type'
+    t.integer 'thumbnail_file_size'
+    t.datetime 'thumbnail_updated_at'
+    t.string 'color'
+    t.index ['slug'], name: 'index_topics_on_slug', unique: true
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'users', id: :serial, force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer 'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.inet 'current_sign_in_ip'
+    t.inet 'last_sign_in_ip'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  create_table "videos", id: :serial, force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description", null: false
-    t.string "youtube_id", null: false
-    t.integer "duration", null: false
-    t.string "slug", null: false
-    t.integer "playlist_id", null: false
-    t.integer "position", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "unfeatured", default: false, null: false
-    t.datetime "published_at", null: false
-    t.boolean "private", default: false, null: false
-    t.index ["slug"], name: "index_videos_on_slug"
-    t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
+  create_table 'videos', id: :serial, force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'description', null: false
+    t.string 'youtube_id', null: false
+    t.integer 'duration', null: false
+    t.string 'slug', null: false
+    t.integer 'playlist_id', null: false
+    t.integer 'position', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'unfeatured', default: false, null: false
+    t.datetime 'published_at', null: false
+    t.boolean 'private', default: false, null: false
+    t.index ['slug'], name: 'index_videos_on_slug'
+    t.index ['youtube_id'], name: 'index_videos_on_youtube_id', unique: true
   end
 end

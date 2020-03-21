@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Topic page", type: :feature do
+RSpec.feature 'Topic page', type: :feature do
   before { @topic = FactoryBot.create(:topic) }
 
   scenario 'shows information about a topic' do
