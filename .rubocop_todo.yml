@@ -65,15 +65,6 @@ Security/YAMLLoad:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 28
-# Cop supports --auto-correct.
-# Configuration parameters: Whitelist.
-# Whitelist: be, be_a, be_an, be_between, be_falsey, be_kind_of, be_instance_of, be_truthy, be_within, eq, eql, end_with, include, match, raise_error, respond_to, start_with
-Style/NestedParenthesizedCalls:
-  Exclude:
-    - "spec/helpers/application_helper_spec.rb"
-    - "spec/helpers/dashboard/videos_helper_spec.rb"
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: Strict.
