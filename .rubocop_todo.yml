@@ -66,12 +66,6 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 # Offense count: 1
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - "app/models/video.rb"
-
-# Offense count: 1
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
   Exclude:
