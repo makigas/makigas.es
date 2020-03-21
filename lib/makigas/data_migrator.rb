@@ -27,7 +27,7 @@ require 'json'
 # The migrator will paste the first playlist photo as the photo for the topic.
 module Makigas
   class DataMigrator
-    def initialize schema, thumbnails
+    def initialize(schema, thumbnails)
       raise 'Not a thumbnails folder' unless File.directory?(thumbnails)
 
       @schema = JSON.parse!(File.read(schema))
@@ -45,7 +45,7 @@ module Makigas
     # This method will load into the database the contents for a topic,
     # including playlists associated with that topic, including videos
     # associated with that playlist.
-    def load_topic! t
+    def load_topic!(t)
       # Thumbnail is taken from the first episode of the first playlist.
       thumbnail = t["playlists"][0]["videos"][0]["youtube_id"]
 
@@ -65,7 +65,7 @@ module Makigas
 
     # This method will load into the database the contents for a playlist
     # +p+ and associate it as a playlist part of the Topic object +topic+.
-    def load_playlist! p, topic
+    def load_playlist!(p, topic)
       # Thumbnail is taken from the first episode of the playlist
       thumbnail = p["videos"][0]["youtube_id"]
 
@@ -87,7 +87,7 @@ module Makigas
 
     # This method will load into the database the contents for a video +v+
     # and associate it as a video part of the Playlist object +playlist+.
-    def load_video! v, playlist
+    def load_video!(v, playlist)
       video = Video.new
       video.title = v["title"]
       video.description = v["description"].split('\n')[0]

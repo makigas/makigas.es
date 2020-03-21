@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def paginate objects, options = {}
+  def paginate(objects, options = {})
     options.reverse_merge!(theme: 'twitter-bootstrap-3')
     super(objects, options)
   end
@@ -9,7 +9,7 @@ module ApplicationHelper
     url_for only_path: false, params: parameters
   end
 
-  def running_time sec, options = {}
+  def running_time(sec, options = {})
     times = if sec >= 3600 || (!options[:full].nil? && options[:full] == true)
               [sec / 3600, (sec % 3600) / 60, sec % 60]
             else
@@ -18,7 +18,7 @@ module ApplicationHelper
     format_as_timestamp(times)
   end
 
-  def extract_time sec
+  def extract_time(sec)
     if (match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/))
       hours, minutes, seconds = match.captures
       hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i

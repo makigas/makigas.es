@@ -20,7 +20,7 @@ class Video < ApplicationRecord
   validates :published_at, presence: true
 
   # Natural duration
-  def natural_duration= dur
+  def natural_duration=(dur)
     self.duration = ApplicationController.helpers.extract_time dur
   end
 
