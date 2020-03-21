@@ -116,8 +116,8 @@ RSpec.describe Video, type: :model do
       expect(FactoryBot.build(:video, natural_duration: '1:42').duration).to eq 102
       expect(FactoryBot.build(:video, natural_duration: '59:59').duration).to eq 3599
       expect(FactoryBot.build(:video, natural_duration: '1:00:00').duration).to eq 3600
-      expect(FactoryBot.build(:video, natural_duration: '9:59:59').duration).to eq 35999
-      expect(FactoryBot.build(:video, natural_duration: '10:00:00').duration).to eq 36000
+      expect(FactoryBot.build(:video, natural_duration: '9:59:59').duration).to eq 35_999
+      expect(FactoryBot.build(:video, natural_duration: '10:00:00').duration).to eq 36_000
     end
   end
 
