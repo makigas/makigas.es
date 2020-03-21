@@ -67,12 +67,6 @@ Style/FrozenStringLiteralComment:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - "app/models/video.rb"
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: IgnoredMethods.
 Style/MethodCallWithoutArgsParentheses:
   Exclude:
