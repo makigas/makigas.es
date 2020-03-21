@@ -1,7 +1,7 @@
 class Opinion < ApplicationRecord
   has_attached_file :photo, styles: {
-    default: "320x320>",
-    small: "160x160>"
+    default: '320x320>',
+    small: '160x160>'
   }
 
   validates :from, presence: true, length: { maximum: 50 }
