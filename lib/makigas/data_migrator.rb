@@ -25,79 +25,81 @@ require 'json'
 # The migrator will paste the thumbnail file as the photo for the video.
 # The migrator will paste the first video photo as the photo for the playlist.
 # The migrator will paste the first playlist photo as the photo for the topic.
-class Makigas::DataMigrator
-  def initialize schema, thumbnails
-    raise 'Not a thumbnails folder' unless File::directory?(thumbnails)
+module Makigas
+  class DataMigrator
+    def initialize(schema, thumbnails)
+      raise 'Not a thumbnails folder' unless File.directory?(thumbnails)
 
-    @schema = JSON.parse!(File.read(schema))
-    @thumbnails = thumbnails
-  end
-
-  def load!
-    @schema.each do |topic|
-      load_topic!(topic)
+      @schema = JSON.parse!(File.read(schema))
+      @thumbnails = thumbnails
     end
-  end
 
-  private
-
-  # This method will load into the database the contents for a topic,
-  # including playlists associated with that topic, including videos
-  # associated with that playlist.
-  def load_topic! t
-    # Thumbnail is taken from the first episode of the first playlist.
-    thumbnail = t["playlists"][0]["videos"][0]["youtube_id"]
-
-    # Create the topic.
-    topic = Topic.new
-    topic.title = t["title"]
-    topic.description = t["description"]
-    topic.created_at = t["created_at"]
-    File.open(File.join(@thumbnails, "#{thumbnail}.jpg")) do |f|
-      topic.photo = f
+    def load!
+      @schema.each do |topic|
+        load_topic!(topic)
+      end
     end
-    topic.save
 
-    # Add the playlists for this topic.
-    t["playlists"].each { |p| load_playlist! p, topic }
-  end
+    private
 
-  # This method will load into the database the contents for a playlist
-  # +p+ and associate it as a playlist part of the Topic object +topic+.
-  def load_playlist! p, topic
-    # Thumbnail is taken from the first episode of the playlist
-    thumbnail = p["videos"][0]["youtube_id"]
+    # This method will load into the database the contents for a topic,
+    # including playlists associated with that topic, including videos
+    # associated with that playlist.
+    def load_topic!(t)
+      # Thumbnail is taken from the first episode of the first playlist.
+      thumbnail = t["playlists"][0]["videos"][0]["youtube_id"]
 
-    # Create the playlist
-    playlist = Playlist.new
-    playlist.title = p["title"]
-    playlist.description = p["description"]
-    playlist.created_at = p["created_at"]
-    playlist.youtube_id = p["youtube_id"]
-    playlist.topic = topic
-    File.open(File.join(@thumbnails, "#{thumbnail}.jpg")) do |f|
-      playlist.photo = f
+      # Create the topic.
+      topic = Topic.new
+      topic.title = t["title"]
+      topic.description = t["description"]
+      topic.created_at = t["created_at"]
+      File.open(File.join(@thumbnails, "#{thumbnail}.jpg")) do |f|
+        topic.photo = f
+      end
+      topic.save
+
+      # Add the playlists for this topic.
+      t["playlists"].each { |p| load_playlist! p, topic }
     end
-    playlist.save
 
-    # Add the videos for this playlist
-    p["videos"].each { |v| load_video! v, playlist }
-  end
+    # This method will load into the database the contents for a playlist
+    # +p+ and associate it as a playlist part of the Topic object +topic+.
+    def load_playlist!(p, topic)
+      # Thumbnail is taken from the first episode of the playlist
+      thumbnail = p["videos"][0]["youtube_id"]
 
-  # This method will load into the database the contents for a video +v+
-  # and associate it as a video part of the Playlist object +playlist+.
-  def load_video! v, playlist
-    video = Video.new
-    video.title = v["title"]
-    video.description = v["description"].split('\n')[0]
-    video.youtube_id = v["youtube_id"]
-    video.natural_duration = v["natural_duration"]
-    video.position = v["position"]
-    video.created_at = v["created_at"]
-    video.playlist = playlist
-    File.open(File.join(@thumbnails, "#{v["youtube_id"]}.jpg")) do |f|
-      video.thumbnail = f
+      # Create the playlist
+      playlist = Playlist.new
+      playlist.title = p["title"]
+      playlist.description = p["description"]
+      playlist.created_at = p["created_at"]
+      playlist.youtube_id = p["youtube_id"]
+      playlist.topic = topic
+      File.open(File.join(@thumbnails, "#{thumbnail}.jpg")) do |f|
+        playlist.photo = f
+      end
+      playlist.save
+
+      # Add the videos for this playlist
+      p["videos"].each { |v| load_video! v, playlist }
     end
-    video.save
+
+    # This method will load into the database the contents for a video +v+
+    # and associate it as a video part of the Playlist object +playlist+.
+    def load_video!(v, playlist)
+      video = Video.new
+      video.title = v["title"]
+      video.description = v["description"].split('\n')[0]
+      video.youtube_id = v["youtube_id"]
+      video.natural_duration = v["natural_duration"]
+      video.position = v["position"]
+      video.created_at = v["created_at"]
+      video.playlist = playlist
+      File.open(File.join(@thumbnails, "#{v['youtube_id']}.jpg")) do |f|
+        video.thumbnail = f
+      end
+      video.save
+    end
   end
 end

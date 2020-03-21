@@ -13,10 +13,10 @@ RSpec.feature "Dashboard opinions", type: :feature do
   end
 
   context "when logged in" do
-    before {
+    before do
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
-    }
+    end
 
     scenario "user can list the opinions" do
       @opinion = FactoryBot.create(:opinion)
@@ -28,13 +28,13 @@ RSpec.feature "Dashboard opinions", type: :feature do
       visit dashboard_opinions_path
       click_link "Nueva Opinión"
 
-      expect {
+      expect do
         fill_in "De", with: "Programming and Co"
         fill_in "Mensaje", with: "Este es el texto de la opinión"
         fill_in "URL", with: "https://www.example.com"
         attach_file "Imagen", Rails.root.join('spec/fixtures/opinion.png')
         click_button "Crear Opinión"
-      }.to change(Opinion, :count).by 1
+      end.to change(Opinion, :count).by 1
 
       expect(page).to have_text "Opinión creada correctamente"
     end
@@ -58,11 +58,11 @@ RSpec.feature "Dashboard opinions", type: :feature do
       @opinion = FactoryBot.create(:opinion)
 
       visit dashboard_opinions_path
-      expect {
+      expect do
         within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do
           click_button "Destruir"
         end
-      }.to change(Opinion, :count).by(-1)
+      end.to change(Opinion, :count).by(-1)
 
       expect(page).to have_text "Opinión destruida correctamente"
     end
@@ -70,12 +70,12 @@ RSpec.feature "Dashboard opinions", type: :feature do
     scenario "user cannot create invalid opinion" do
       visit dashboard_opinions_path
       click_link "Nueva Opinión"
-      expect {
+      expect do
         fill_in "De", with: "Programming and Co"
         fill_in "URL", with: "https://www.example.com"
         attach_file "Imagen", Rails.root.join('spec/fixtures/opinion.png')
         click_button "Crear Opinión"
-      }.not_to change(Topic, :count)
+      end.not_to change(Topic, :count)
 
       expect(page).not_to have_text "Opinión creada correctamente"
     end

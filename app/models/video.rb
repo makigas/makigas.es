@@ -6,7 +6,7 @@ class Video < ApplicationRecord
   acts_as_list scope: :playlist
 
   # Slug. Can be repeated as long as it's on different playlists.
-  friendly_id :title, use: [:slugged, :scoped], scope: :playlist
+  friendly_id :title, use: %i[slugged scoped], scope: :playlist
 
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
@@ -20,27 +20,30 @@ class Video < ApplicationRecord
   validates :published_at, presence: true
 
   # Natural duration
-  def natural_duration= dur
+  def natural_duration=(dur)
     self.duration = ApplicationController.helpers.extract_time dur
   end
 
   def natural_duration
-    if duration
-      "%02d:%02d:%02d" % [duration / 3600, (duration % 3600) / 60, duration % 60]
-    end
+    return nil if duration.blank?
+
+    hours = duration / 3600
+    minutes = (duration % 3600) / 60
+    seconds = duration % 60
+    [hours.to_s.rjust(2, '0'), minutes.to_s.rjust(2, '0'), seconds.to_s.rjust(2, '0')].join(':')
   end
 
   # Visible videos are those whose publication date has been already reached.
   # Therefore this videos are visible on lists, playlists, searches...
   def visible?
-    self.published_at <= DateTime.now
+    published_at <= DateTime.now
   end
 
   # Scheduled videos are those whose publication date has not been reached yet.
   # Showing content for this video would spoil the experience and therefore
   # they should be excluded from searches, lists, playlists...
   def scheduled?
-    self.published_at > DateTime.now
+    published_at > DateTime.now
   end
 
   def to_s

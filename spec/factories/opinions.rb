@@ -3,6 +3,6 @@ FactoryBot.define do
     from { 'Programación & Co.' }
     message { 'Estamos encantados con el trabajo que hace este chico.' }
     url { 'https://www.example.com' }
-    photo { fixture_file_upload(Rails.root.join('spec/fixtures/opinion.png'), 'image/png') }
+    photo { Rack::Test::UploadedFile.new('spec/fixtures/opinion.png', 'image/png') }
   end
 end

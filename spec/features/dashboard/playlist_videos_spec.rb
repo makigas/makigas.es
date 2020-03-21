@@ -21,10 +21,10 @@ RSpec.feature "Dashboard playlist videos", type: :feature do
   end
 
   context "when logged in" do
-    before {
+    before do
       @user = FactoryBot.create(:user)
       login_as @user, scope: :user
-    }
+    end
 
     scenario "user can access this page via dashboard video page" do
       visit dashboard_playlists_path
