@@ -28,7 +28,7 @@ class Video < ApplicationRecord
     return nil if duration.blank?
 
     hours = duration / 3600
-    minutes = duration % 3600
+    minutes = (duration % 3600) / 60
     seconds = duration % 60
     [hours.to_s.rjust(2, '0'), minutes.to_s.rjust(2, '0'), seconds.to_s.rjust(2, '0')].join(':')
   end
