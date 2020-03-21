@@ -96,7 +96,7 @@ module Makigas
       video.position = v["position"]
       video.created_at = v["created_at"]
       video.playlist = playlist
-      File.open(File.join(@thumbnails, "#{v["youtube_id"]}.jpg")) do |f|
+      File.open(File.join(@thumbnails, "#{v['youtube_id']}.jpg")) do |f|
         video.thumbnail = f
       end
       video.save
