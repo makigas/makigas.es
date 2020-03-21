@@ -65,19 +65,6 @@ Security/YAMLLoad:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantBegin:
-  Exclude:
-    - "bin/yarn"
-
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - "app/models/video.rb"
-    - "config/environments/production.rb"
-
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, AllowInnerSlashes.

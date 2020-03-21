@@ -36,14 +36,14 @@ class Video < ApplicationRecord
   # Visible videos are those whose publication date has been already reached.
   # Therefore this videos are visible on lists, playlists, searches...
   def visible?
-    self.published_at <= DateTime.now
+    published_at <= DateTime.now
   end
 
   # Scheduled videos are those whose publication date has not been reached yet.
   # Showing content for this video would spoil the experience and therefore
   # they should be excluded from searches, lists, playlists...
   def scheduled?
-    self.published_at > DateTime.now
+    published_at > DateTime.now
   end
 
   def to_s
