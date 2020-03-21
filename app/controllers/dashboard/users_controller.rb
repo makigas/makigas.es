@@ -1,6 +1,6 @@
 module Dashboard
   class UsersController < Dashboard::DashboardController
-    before_action :user_set, only: [:show, :edit, :update, :destroy]
+    before_action :user_set, only: %i[show edit update destroy]
 
     def index
       @users = User.all.page(params[:page])
@@ -34,9 +34,9 @@ module Dashboard
     def destroy
       if @user != current_user
         @user.destroy!
-        redirect_to [:dashboard, :users], notice: t('.destroyed')
+        redirect_to %i[dashboard users], notice: t('.destroyed')
       else
-        redirect_to [:dashboard, :users], error: t('.current_user')
+        redirect_to %i[dashboard users], error: t('.current_user')
       end
     end
 

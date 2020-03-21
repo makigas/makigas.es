@@ -1,6 +1,6 @@
 module Dashboard
   class OpinionsController < Dashboard::DashboardController
-    before_action :opinion_set, only: [:show, :edit, :update, :destroy]
+    before_action :opinion_set, only: %i[show edit update destroy]
 
     def index
       @opinions = Opinion.order(updated_at: :desc).page(params[:page])
@@ -15,7 +15,7 @@ module Dashboard
     def create
       @opinion = Opinion.new(opinion_params)
       if @opinion.save
-        redirect_to [:dashboard, :opinions], notice: t('.created')
+        redirect_to %i[dashboard opinions], notice: t('.created')
       else
         render :new
       end
@@ -25,7 +25,7 @@ module Dashboard
 
     def update
       if @opinion.update(opinion_params)
-        redirect_to [:dashboard, :opinions], notice: t('.updated')
+        redirect_to %i[dashboard opinions], notice: t('.updated')
       else
         render :edit
       end
@@ -33,7 +33,7 @@ module Dashboard
 
     def destroy
       @opinion.destroy!
-      redirect_to [:dashboard, :opinions], notice: t('.destroyed')
+      redirect_to %i[dashboard opinions], notice: t('.destroyed')
     end
 
     private

@@ -6,7 +6,7 @@ class Video < ApplicationRecord
   acts_as_list scope: :playlist
 
   # Slug. Can be repeated as long as it's on different playlists.
-  friendly_id :title, use: [:slugged, :scoped], scope: :playlist
+  friendly_id :title, use: %i[slugged scoped], scope: :playlist
 
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
