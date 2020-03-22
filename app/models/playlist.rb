@@ -4,16 +4,16 @@ class Playlist < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_attached_file :thumbnail, styles: {
-    thumbnail: "100x100>",
-    small: "180x180>",
-    default: "360x360>",
-    hidef: "720x720>"
-  }, default_url: "/makigas.png"
+    thumbnail: '100x100>',
+    small: '180x180>',
+    default: '360x360>',
+    hidef: '720x720>'
+  }, default_url: '/makigas.png'
 
   has_attached_file :card, styles: {
-    thumbnail: "320x180>",
-    small: "640x360>",
-    default: "1280x720>"
+    thumbnail: '320x180>',
+    small: '640x360>',
+    default: '1280x720>'
   }
 
   validates :title, presence: true, length: { maximum: 100 }

@@ -3,7 +3,7 @@ namespace :makigas do
     desc 'Sets the Minio bucket policy.'
     task init_bucket: :environment do
       # This task should only be used if you're using Minio for storage (as I am)
-      raise "S3_BUCKET_NAME env var not set." if ENV['S3_BUCKET_NAME'].blank?
+      raise 'S3_BUCKET_NAME env var not set.' if ENV['S3_BUCKET_NAME'].blank?
 
       # Connection settings.
       conn_settings = {
@@ -16,16 +16,16 @@ namespace :makigas do
 
       # Bucket policy.
       bucket_policy = {
-        "Version": "2012-10-17",
+        "Version": '2012-10-17',
         "Statement": [
           {
-            "Action": ["s3:GetObject"],
-            "Effect": "Allow",
+            "Action": ['s3:GetObject'],
+            "Effect": 'Allow',
             "Principal": {
-              "AWS": ["*"]
+              "AWS": ['*']
             },
             "Resource": ["arn:aws:s3:::#{ENV['S3_BUCKET_NAME']}/**"],
-            "Sid": ""
+            "Sid": ''
           }
         ]
       }.to_json

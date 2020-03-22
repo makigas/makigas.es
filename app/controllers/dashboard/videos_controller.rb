@@ -38,13 +38,13 @@ module Dashboard
 
     def move
       respond_to do |format|
-        if params[:direction] == "up"
+        if params[:direction] == 'up'
           @video.move_higher
-          format.json { render json: { position: @video.position, direction: "up" } }
+          format.json { render json: { position: @video.position, direction: 'up' } }
           format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
-        elsif params[:direction] == "down"
+        elsif params[:direction] == 'down'
           @video.move_lower
-          format.json { render json: { position: @video.position, direction: "down" } }
+          format.json { render json: { position: @video.position, direction: 'down' } }
           format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
         end
       end
