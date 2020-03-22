@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :makigas do
   namespace :import do
     desc 'Imports topics as a YAML document.'

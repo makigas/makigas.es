@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :makigas do
   namespace :export do
     desc 'Exports topics as a YAML document.'

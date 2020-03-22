@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Opinion < ApplicationRecord
   has_attached_file :photo, styles: {
     default: '320x320>',

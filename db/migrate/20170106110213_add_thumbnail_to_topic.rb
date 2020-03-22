@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddThumbnailToTopic < ActiveRecord::Migration[5.0]
   def up
     add_attachment :topics, :thumbnail

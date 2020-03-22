@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddPhotoToPlaylist < ActiveRecord::Migration[4.2]
   def up
     # This is the thumbnail that is displayed in the playlists page.

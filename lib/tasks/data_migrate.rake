@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :makigas do
   desc 'Feeds data coming from a legacy schema into the system'
 

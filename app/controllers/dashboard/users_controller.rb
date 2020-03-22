@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   class UsersController < Dashboard::DashboardController
     before_action :user_set, only: %i[show edit update destroy]

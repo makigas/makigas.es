@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   class PlaylistsController < Dashboard::DashboardController
     before_action :playlist_set, only: %i[show edit update destroy videos]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Application error routes
   get '/404', to: 'error#not_found', via: :all
