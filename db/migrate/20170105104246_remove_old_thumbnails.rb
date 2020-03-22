@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveOldThumbnails < ActiveRecord::Migration[5.0]
   def change
     remove_column :playlists, :photo_file_name, :string

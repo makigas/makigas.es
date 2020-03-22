@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   class OpinionsController < Dashboard::DashboardController
     before_action :opinion_set, only: %i[show edit update destroy]

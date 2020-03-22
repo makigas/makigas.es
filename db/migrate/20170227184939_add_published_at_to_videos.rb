@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddPublishedAtToVideos < ActiveRecord::Migration[5.0]
   def self.up
     # First, add this column as nullable.

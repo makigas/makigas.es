@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   module VideosHelper
     def dashboard_video_path(video, options = {})

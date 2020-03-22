@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :makigas do
   namespace :minio do
     desc 'Sets the Minio bucket policy.'

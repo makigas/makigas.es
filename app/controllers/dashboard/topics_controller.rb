@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   class TopicsController < Dashboard::DashboardController
     before_action :topic_set, only: %i[show edit update destroy]

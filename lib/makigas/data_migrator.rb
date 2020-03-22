@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # This class is used to import bulk videos and playlists into the system.

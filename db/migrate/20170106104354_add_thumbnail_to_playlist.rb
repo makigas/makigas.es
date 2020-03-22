@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddThumbnailToPlaylist < ActiveRecord::Migration[5.0]
   def up
     add_attachment :playlists, :thumbnail

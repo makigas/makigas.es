@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Dashboard
   class VideosController < Dashboard::DashboardController
     before_action :video_set, only: %i[show edit update destroy move]

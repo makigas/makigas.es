@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['RAILS_USE_S3'].present?
   # Base settings, they work on all cases.
   Paperclip::Attachment.default_options.update(
