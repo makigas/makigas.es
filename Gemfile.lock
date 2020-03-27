@@ -172,7 +172,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     parallel (1.19.1)
-    parser (2.7.0.3)
+    parser (2.7.0.5)
       ast (~> 2.4.0)
     pg (1.2.3)
     public_suffix (4.0.3)
@@ -251,7 +251,8 @@ GEM
       rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-rails (2.4.2)
+    rubocop-rails (2.5.0)
+      activesupport
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     rubocop-rspec (1.38.1)
@@ -352,7 +353,7 @@ DEPENDENCIES
   rspec (~> 3.9)
   rspec-rails (~> 3.9)
   rubocop (~> 0.80)
-  rubocop-rails (~> 2.4.2)
+  rubocop-rails (~> 2.5.0)
   rubocop-rspec (~> 1.38)
   sass-rails (~> 6.0)
   sdoc (~> 1.1.0)
