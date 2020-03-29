@@ -2,7 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Dashboard topics', type: :feature do
+RSpec.describe 'Dashboard topics', type: :feature do
+  let!(:topic) { FactoryBot.create(:topic, title: 'Programación en directo') }
+  let!(:playlist) { FactoryBot.create(:playlist, title: 'Rectball', topic: topic) }
+
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
   after { Capybara.default_host = 'http://www.example.com' }
@@ -15,23 +18,21 @@ RSpec.feature 'Dashboard topics', type: :feature do
   end
 
   context 'when logged in' do
+    let(:user) { FactoryBot.create(:user) }
+
     before do
-      @user = FactoryBot.create(:user)
-      login_as @user, scope: :user
+      login_as user, scope: :user
     end
 
-    scenario 'user can list the topics' do
-      @topic = FactoryBot.create(:topic)
-      @playlist = FactoryBot.create(:playlist, topic: @topic)
-
+    it 'user can list the topics' do
       visit dashboard_topics_path
-      expect(page).to have_link @topic.title, href: dashboard_topic_path(@topic)
-      within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do
-        expect(page).to have_xpath '//td', text: @topic.playlists.count
+      expect(page).to have_link topic.title, href: dashboard_topic_path(topic)
+      within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
+        expect(page).to have_xpath '//td', text: topic.playlists.count
       end
     end
 
-    scenario 'user can create topics' do
+    it 'user can create topics' do
       visit dashboard_topics_path
       click_link 'Nuevo Tema'
 
@@ -46,8 +47,8 @@ RSpec.feature 'Dashboard topics', type: :feature do
       expect(page).to have_text 'Tema creado correctamente'
     end
 
-    scenario 'user can edit topics' do
-      @topic = FactoryBot.create(:topic, title: 'My old title')
+    it 'user can edit topics' do
+      topic = FactoryBot.create(:topic, title: 'My old title')
 
       visit dashboard_topics_path
       within(:xpath, "//tr[.//td//a[text() = 'My old title']]") do
@@ -57,17 +58,17 @@ RSpec.feature 'Dashboard topics', type: :feature do
       click_button 'Actualizar Tema'
 
       expect(page).to have_text 'Tema actualizado correctamente'
-      @topic.reload
-      expect(@topic.title).to eq 'My new title'
+      topic.reload
+      expect(topic.title).to eq 'My new title'
     end
 
-    scenario 'user can destroy topics' do
-      @topic = FactoryBot.create(:topic)
-      @playlist = FactoryBot.create(:playlist, topic: @topic)
+    it 'user can destroy topics' do
+      topic = FactoryBot.create(:topic)
+      playlist = FactoryBot.create(:playlist, topic: topic)
 
       visit dashboard_topics_path
       expect do
-        within(:xpath, "//tr[.//td//a[text() = '#{@topic.title}']]") do
+        within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
           click_button 'Destruir'
         end
       end.to change(Topic, :count).by(-1)
@@ -75,7 +76,7 @@ RSpec.feature 'Dashboard topics', type: :feature do
       expect(page).to have_text 'Tema eliminado correctamente'
     end
 
-    scenario 'user cannot create invalid topics' do
+    it 'user cannot create invalid topics' do
       visit dashboard_topics_path
       click_link 'Nuevo Tema'
       expect do
