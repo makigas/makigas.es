@@ -17,9 +17,11 @@ WORKDIR /makigas
 # Install Ruby dependencies
 ADD Gemfile Gemfile.lock /
 RUN apk add --update --no-cache build-base && \
-    bundle install -j 4 --no-cache --without development test && \
-    rm -rf /vendor/bundle/cache/*.gem && \
-    find /vendor/bundle/gems/ -name "*.[co]" -delete && \
+    bundle config set no-cache 'true' && \
+    bundle config set without 'development test' && \
+    bundle install -j 4 && \
+    rm -rf /vendor/bundle/ruby/2.7.0/cache/*.gem && \
+    find /vendor/bundle/ruby/2.7.0/gems/ -name "*.[co]" -delete && \
     apk del build-base
 
 ADD . .

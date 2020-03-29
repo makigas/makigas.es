@@ -39,7 +39,7 @@ group :development do
 
   # Lint tools
   gem 'rubocop', '~> 0.80', require: false
-  gem 'rubocop-rails', '~> 2.4.2', require: false
+  gem 'rubocop-rails', '~> 2.5.0', require: false
   gem 'rubocop-rspec', '~> 1.38', require: false
 end
 
@@ -48,7 +48,7 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.9'
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.2'
 end
