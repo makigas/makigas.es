@@ -28,12 +28,6 @@ Naming/MethodParameterName:
   Exclude:
     - "lib/makigas/data_migrator.rb"
 
-# Offense count: 207
-# Configuration parameters: AssignmentOnly.
-RSpec/InstanceVariable:
-  Exclude:
-    - "spec/models/video_spec.rb"
-
 # Offense count: 52
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:

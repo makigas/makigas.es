@@ -158,19 +158,16 @@ RSpec.describe Video, type: :model do
   end
 
   describe '.visible' do
-    before do
-      @published = FactoryBot.create(:video, youtube_id: 'ASDF', published_at: 2.days.ago)
-      @scheduled = FactoryBot.create(:video, youtube_id: 'ASDQ', published_at: 2.days.from_now)
-    end
-
     it 'contains a video published yesterday' do
+      published = FactoryBot.create(:video, youtube_id: 'ASDF', published_at: 2.days.ago)
       videos = described_class.visible.collect
-      expect(videos).to include @published
+      expect(videos).to include published
     end
 
     it 'does not contain a video published tomorrow' do
+      scheduled = FactoryBot.create(:video, youtube_id: 'ASDQ', published_at: 2.days.from_now)
       videos = described_class.visible.collect
-      expect(videos).not_to include @scheduled
+      expect(videos).not_to include scheduled
     end
   end
 end
