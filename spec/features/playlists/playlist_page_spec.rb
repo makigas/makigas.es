@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Playlist page', type: :feature do
+RSpec.describe 'Playlist page', type: :feature do
   let(:video) { FactoryBot.create(:video, duration: 133) }
   let(:published) { FactoryBot.create(:yesterday_video, title: 'Yesterday', youtube_id: 'YESTERDAY') }
   let(:scheduled) { FactoryBot.create(:tomorrow_video, title: 'Tomorrow', youtube_id: 'TOMORROW') }
   let(:playlist) { FactoryBot.create(:playlist, videos: [video, published, scheduled]) }
 
-  scenario 'displays playlist information' do
+  it 'displays playlist information' do
     visit playlist_path(playlist)
 
     expect(page).to have_text playlist.title
@@ -16,7 +16,7 @@ RSpec.feature 'Playlist page', type: :feature do
     expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:small)}']"
   end
 
-  scenario 'displays information about videos in this playlist' do
+  it 'displays information about videos in this playlist' do
     visit playlist_path(playlist)
 
     expect(page).to have_text video_title(video)
@@ -25,7 +25,7 @@ RSpec.feature 'Playlist page', type: :feature do
     expect(page).to have_css "a[href*='#{video_path(video)}']"
   end
 
-  scenario 'scheduled videos are not displayed' do
+  it 'scheduled videos are not displayed' do
     visit playlist_path(playlist)
 
     expect(page).to have_text video_title(published)
