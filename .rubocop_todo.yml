@@ -32,7 +32,6 @@ Naming/MethodParameterName:
 # Configuration parameters: AssignmentOnly.
 RSpec/InstanceVariable:
   Exclude:
-    - "spec/features/dashboard/opinions_spec.rb"
     - "spec/features/dashboard/playlist_videos_spec.rb"
     - "spec/features/dashboard/playlists_spec.rb"
     - "spec/features/dashboard/topics_spec.rb"
