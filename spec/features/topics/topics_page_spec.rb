@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Topics page', type: :feature do
+RSpec.describe 'Topics page', type: :feature do
   context 'when there are no topics' do
     it 'is success' do
       visit topics_path
@@ -11,9 +11,7 @@ RSpec.feature 'Topics page', type: :feature do
   end
 
   context 'when there are topics' do
-    before do
-      @topic = FactoryBot.create(:topic)
-    end
+    let!(:topic) { FactoryBot.create(:topic) }
 
     it 'is success' do
       visit topics_path
@@ -22,22 +20,22 @@ RSpec.feature 'Topics page', type: :feature do
 
     it 'shows the topics' do
       visit topics_path
-      expect(page).to have_text @topic.title
+      expect(page).to have_text topic.title
     end
 
     it 'describes the topics' do
       visit topics_path
-      expect(page).to have_text @topic.description
+      expect(page).to have_text topic.description
     end
 
     it 'shows the topic photo' do
       visit topics_path
-      expect(page).to have_css "img[src*='#{@topic.thumbnail.url(:small)}']"
+      expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
     end
 
     it 'links to a topic' do
       visit topics_path
-      expect(page).to have_link @topic.title, href: topic_path(@topic)
+      expect(page).to have_link topic.title, href: topic_path(topic)
     end
   end
 end
