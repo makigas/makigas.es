@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Dashboard topics', type: :feature do
-  let!(:topic) { FactoryBot.create(:topic, title: 'Programación en directo') }
-  let!(:playlist) { FactoryBot.create(:playlist, title: 'Rectball', topic: topic) }
+  let(:playlist) { FactoryBot.create(:playlist) }
+  let!(:topic) { FactoryBot.create(:topic, playlists: [playlist]) }
 
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
@@ -48,10 +48,8 @@ RSpec.describe 'Dashboard topics', type: :feature do
     end
 
     it 'user can edit topics' do
-      topic = FactoryBot.create(:topic, title: 'My old title')
-
       visit dashboard_topics_path
-      within(:xpath, "//tr[.//td//a[text() = 'My old title']]") do
+      within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
         click_link 'Editar'
       end
       fill_in 'Título', with: 'My new title'
@@ -63,9 +61,6 @@ RSpec.describe 'Dashboard topics', type: :feature do
     end
 
     it 'user can destroy topics' do
-      topic = FactoryBot.create(:topic)
-      playlist = FactoryBot.create(:playlist, topic: topic)
-
       visit dashboard_topics_path
       expect do
         within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do

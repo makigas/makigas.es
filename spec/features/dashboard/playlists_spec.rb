@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'Dashboard playlists', type: :feature do
   let(:video) { FactoryBot.create(:video) }
-  let!(:playlist) { FactoryBot.create(:playlist, title: 'Estructuras de datos', videos: [video]) }
-  let!(:topic) { FactoryBot.create(:topic, title: 'Desarrollo de juegos') }
+  let!(:playlist) { FactoryBot.create(:playlist, videos: [video]) }
+  let!(:topic) { FactoryBot.create(:topic) }
 
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
