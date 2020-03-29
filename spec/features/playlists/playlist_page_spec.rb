@@ -2,38 +2,36 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Playlist page', type: :feature do
-  before { @playlist = FactoryBot.create(:playlist) }
+RSpec.describe 'Playlist page', type: :feature do
+  let(:video) { FactoryBot.create(:video, duration: 133) }
+  let(:published) { FactoryBot.create(:yesterday_video, title: 'Yesterday', youtube_id: 'YESTERDAY') }
+  let(:scheduled) { FactoryBot.create(:tomorrow_video, title: 'Tomorrow', youtube_id: 'TOMORROW') }
+  let(:playlist) { FactoryBot.create(:playlist, videos: [video, published, scheduled]) }
 
-  scenario 'displays playlist information' do
-    visit playlist_path(@playlist)
+  it 'displays playlist information' do
+    visit playlist_path(playlist)
 
-    expect(page).to have_text @playlist.title
-    expect(page).to have_text @playlist.description
-    expect(page).to have_css "img[src*='#{@playlist.thumbnail.url(:small)}']"
+    expect(page).to have_text playlist.title
+    expect(page).to have_text playlist.description
+    expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:small)}']"
   end
 
-  scenario 'displays information about videos in this playlist' do
-    @video = FactoryBot.create(:video, playlist: @playlist, duration: 133)
+  it 'displays information about videos in this playlist' do
+    visit playlist_path(playlist)
 
-    visit playlist_path(@playlist)
-
-    expect(page).to have_text video_title(@video)
-    expect(page).to have_text @video.description
+    expect(page).to have_text video_title(video)
+    expect(page).to have_text video.description
     expect(page).to have_text '2:13'
-    expect(page).to have_css "a[href*='#{video_path(@video)}']"
+    expect(page).to have_css "a[href*='#{video_path(video)}']"
   end
 
-  scenario 'scheduled videos are not displayed' do
-    @published = FactoryBot.create(:yesterday_video, playlist: @playlist, title: 'Yesterday', youtube_id: 'YESTERDAY')
-    @scheduled = FactoryBot.create(:tomorrow_video, playlist: @playlist, title: 'Tomorrow', youtube_id: 'TOMORROW')
+  it 'scheduled videos are not displayed' do
+    visit playlist_path(playlist)
 
-    visit playlist_path(@playlist)
-
-    expect(page).to have_text video_title(@published)
-    expect(page).to have_css "a[href*='#{video_path(@published)}']"
-    expect(page).not_to have_text video_title(@scheduled)
-    expect(page).not_to have_css "a[href*='#{video_path(@scheduled)}']"
+    expect(page).to have_text video_title(published)
+    expect(page).to have_css "a[href*='#{video_path(published)}']"
+    expect(page).not_to have_text video_title(scheduled)
+    expect(page).not_to have_css "a[href*='#{video_path(scheduled)}']"
   end
 
   private

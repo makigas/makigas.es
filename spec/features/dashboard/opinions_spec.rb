@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Dashboard opinions', type: :feature do
+RSpec.describe 'Dashboard opinions', type: :feature do
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
   after { Capybara.default_host = 'http://www.example.com' }
@@ -15,18 +15,19 @@ RSpec.feature 'Dashboard opinions', type: :feature do
   end
 
   context 'when logged in' do
+    let(:user) { FactoryBot.create(:user) }
+    let!(:opinion) { FactoryBot.create(:opinion, from: 'Programming n Co') }
+
     before do
-      @user = FactoryBot.create(:user)
-      login_as @user, scope: :user
+      login_as user, scope: :user
     end
 
-    scenario 'user can list the opinions' do
-      @opinion = FactoryBot.create(:opinion)
+    it 'user can list the opinions' do
       visit dashboard_opinions_path
-      expect(page).to have_link @opinion.from, href: dashboard_opinion_path(@opinion)
+      expect(page).to have_link opinion.from, href: dashboard_opinion_path(opinion)
     end
 
-    scenario 'user can create opinions' do
+    it 'user can create opinions' do
       visit dashboard_opinions_path
       click_link 'Nueva Opinión'
 
@@ -41,9 +42,7 @@ RSpec.feature 'Dashboard opinions', type: :feature do
       expect(page).to have_text 'Opinión creada correctamente'
     end
 
-    scenario 'user can edit opinions' do
-      @opinion = FactoryBot.create(:opinion, from: 'Programming n Co')
-
+    it 'user can edit opinions' do
       visit dashboard_opinions_path
       within(:xpath, "//tr[.//td//a[text() = 'Programming n Co']]") do
         click_link 'Editar'
@@ -52,16 +51,16 @@ RSpec.feature 'Dashboard opinions', type: :feature do
       click_button 'Actualizar Opinión'
 
       expect(page).to have_text 'Opinión actualizada correctamente'
-      @opinion.reload
-      expect(@opinion.from).to eq 'Programming and Co.'
+      opinion.reload
+      expect(opinion.from).to eq 'Programming and Co.'
     end
 
-    scenario 'user can destroy opinions' do
+    it 'user can destroy opinions' do
       @opinion = FactoryBot.create(:opinion)
 
       visit dashboard_opinions_path
       expect do
-        within(:xpath, "//tr[.//td//a[text() = '#{@opinion.from}']]") do
+        within(:xpath, "//tr[.//td//a[text() = '#{opinion.from}']]") do
           click_button 'Destruir'
         end
       end.to change(Opinion, :count).by(-1)
@@ -69,7 +68,7 @@ RSpec.feature 'Dashboard opinions', type: :feature do
       expect(page).to have_text 'Opinión destruida correctamente'
     end
 
-    scenario 'user cannot create invalid opinion' do
+    it 'user cannot create invalid opinion' do
       visit dashboard_opinions_path
       click_link 'Nueva Opinión'
       expect do
