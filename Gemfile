@@ -39,7 +39,7 @@ group :development do
 
   # Lint tools
   gem 'rubocop', '~> 0.81', require: false
-  gem 'rubocop-rails', '~> 2.5.1', require: false
+  gem 'rubocop-rails', '~> 2.5.2', require: false
   gem 'rubocop-rspec', '~> 1.38', require: false
 end
 
