@@ -26,6 +26,13 @@ RSpec.describe Video, type: :model do
     end
   end
 
+  describe 'relationships' do
+    it 'has links' do
+      video = FactoryBot.build(:video)
+      expect(video).to respond_to(:links)
+    end
+  end
+
   describe 'validation' do
     it 'is not valid without title' do
       video = FactoryBot.build(:video, title: nil)

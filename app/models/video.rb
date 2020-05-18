@@ -5,6 +5,7 @@ class Video < ApplicationRecord
 
   # Videos are sorted in a playlist.
   belongs_to :playlist
+  has_many :links, dependent: :destroy
   acts_as_list scope: :playlist
 
   # Slug. Can be repeated as long as it's on different playlists.
