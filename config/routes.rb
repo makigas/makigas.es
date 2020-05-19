@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :playlists do
         get :videos, on: :member
         resources :videos, except: %i[index new create] do
+          resources :links
           put :move, on: :member
         end
       end

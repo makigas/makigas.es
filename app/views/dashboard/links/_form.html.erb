@@ -1,0 +1,6 @@
+<%= simple_form_for [:dashboard, @playlist, @video, @link] do |form| %>
+  <%= form.input :name%>
+  <%= form.input :description, as: :text %>
+  <%= form.input :url, as: :url %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>
