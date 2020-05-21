@@ -159,6 +159,7 @@ es:
         other: Una lista de reproducción de %{count} episodios.
       this_playlist: Lista de reproducción
       this_topic: Este tema
+      links: Enlaces relacionados
       meta:
         playlist_feed: "Lista: %{playlist} (ATOM)"
         topic_feed: "Tema: %{topic} (ATOM)"
