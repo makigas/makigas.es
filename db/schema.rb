@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -35,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_194042) do
     t.string "url"
     t.string "photo_file_name", null: false
     t.string "photo_content_type", null: false
-    t.integer "photo_file_size", null: false
+    t.bigint "photo_file_size", null: false
     t.datetime "photo_updated_at", null: false
   end
 
@@ -49,11 +47,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_194042) do
     t.integer "topic_id"
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
+    t.bigint "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.string "card_file_name"
     t.string "card_content_type"
-    t.integer "card_file_size"
+    t.bigint "card_file_size"
     t.datetime "card_updated_at"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
   end
@@ -66,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_194042) do
     t.datetime "updated_at", null: false
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
+    t.bigint "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.string "color"
     t.index ["slug"], name: "index_topics_on_slug", unique: true

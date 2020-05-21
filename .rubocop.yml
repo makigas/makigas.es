@@ -7,6 +7,7 @@ AllCops:
   Exclude:
     - 'bin/*'
     - 'node_modules/**/*'
+    - 'db/schema.rb'
 
 # Allow scenario to describe Capybara E2E tests.
 Capybara/FeatureMethods:

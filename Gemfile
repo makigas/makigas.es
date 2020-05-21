@@ -19,7 +19,7 @@ gem 'webpacker', '~> 5.0'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.61.1'
+gem 'aws-sdk-s3', '~> 1.61.2'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'friendly_id'
@@ -38,8 +38,8 @@ group :development do
   gem 'web-console'
 
   # Lint tools
-  gem 'rubocop', '~> 0.80', require: false
-  gem 'rubocop-rails', '~> 2.5.0', require: false
+  gem 'rubocop', '~> 0.82', require: false
+  gem 'rubocop-rails', '~> 2.5.2', require: false
   gem 'rubocop-rspec', '~> 1.38', require: false
 end
 
@@ -50,5 +50,5 @@ group :test do
   gem 'rspec', '~> 3.9'
   gem 'rspec-rails', '~> 4.0'
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.2'
+  gem 'webdrivers', '~> 4.3'
 end
