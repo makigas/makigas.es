@@ -1,0 +1,16 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to @playlist.title, [:dashboard, @playlist] %></li>
+    <li><%= link_to @video.title, [:dashboard, @playlist, @video] %></li>
+    <li><%= link_to t('.links'), [:dashboard, @playlist, @video, :links] %></li>
+    <li class="current"><%= t('.edit') %></li>
+  </ol>
+  <h1><%= @link.name %></h1>
+<% end %>
+
+<% content_for :toolbar do %>
+  <%= link_to t('.cancel'), [:dashboard, @playlist, @video, :links], class: 'btn btn-default' %>
+<% end %>
+
+<%= render 'form' %>

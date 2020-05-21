@@ -24,6 +24,34 @@ es:
         users:
           one: usuario
           other: usuarios
+    links:
+      create:
+        created: Enlace creado correctamente.
+      destroy:
+        destroyed: Enlace destruido correctamente.
+        error: El enlace no se ha podido eliminar.
+      edit:
+        dashboard: Panel de control
+        links: Enlaces
+        cancel: Cancelar
+        edit: Editar
+      index:
+        dashboard: Panel de control
+        destroy: Destruir
+        edit: Editar
+        new_link: Nuevo Enlace
+        operations: Operaciones
+        really_destroy: Eliminar un enlace no tiene vuelta atrás. ¿De verdad que quieres hacer esto?
+        name: Nombre
+        links: Enlaces
+        url: URL
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_link: Nuevo Enlace
+        links: Enlaces
+      update:
+        updated: Enlace actualizado correctamente.
     opinions:
       create:
         created: Opinión creada correctamente.
