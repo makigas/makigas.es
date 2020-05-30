@@ -15,7 +15,7 @@ gem 'rails-i18n', '~> 5.1.3'
 gem 'sass-rails', '~> 6.0'
 gem 'sdoc', '~> 1.1.0', group: :doc
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.1'
 
 # Application extras
 gem 'acts_as_list'
