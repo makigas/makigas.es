@@ -50,5 +50,5 @@ group :test do
   gem 'rspec', '~> 3.9'
   gem 'rspec-rails', '~> 4.0'
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.3'
+  gem 'webdrivers', '~> 4.4'
 end
