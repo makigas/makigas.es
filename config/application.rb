@@ -21,5 +21,8 @@ module Makigas
     # Configure internationalization. What if one day I translate my channel?
     config.i18n.default_locale = :es
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml')]
+
+    # Configure exceptions to show our custom /404 and /500 pages.
+    config.exceptions_app = self.routes
   end
 end
