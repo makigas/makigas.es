@@ -24,4 +24,9 @@ class VideosController < ApplicationController
     @updated_at = Video.order(updated_at: :desc).limit(1).pluck(:updated_at).first
     render format: :xml, template: 'videos/feed.xml.erb', layout: false
   end
+
+  def find_by_id
+    @video = Video.find_by!(youtube_id: params[:id])
+    redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
+  end
 end
