@@ -23,6 +23,6 @@ module Makigas
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml')]
 
     # Configure exceptions to show our custom /404 and /500 pages.
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
   end
 end
