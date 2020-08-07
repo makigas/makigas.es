@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rake', '~> 13.0.1'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.4.6'
+gem 'bootsnap', '~> 1.4.7'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.10'
 gem 'pg', '~> 1.2'
@@ -19,7 +19,7 @@ gem 'webpacker', '~> 5.1'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.67.1'
+gem 'aws-sdk-s3', '~> 1.75.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'friendly_id'
@@ -39,7 +39,7 @@ group :development do
 
   # Lint tools
   gem 'rubocop', '~> 0.85', require: false
-  gem 'rubocop-rails', '~> 2.5.2', require: false
+  gem 'rubocop-rails', '~> 2.6.0', require: false
   gem 'rubocop-rspec', '~> 1.39', require: false
 end
 
