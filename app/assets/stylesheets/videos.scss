@@ -32,6 +32,29 @@
   }
 }
 
+.discord-cta {
+  background-color: #36393f;
+  color: white;
+  margin-bottom: 1rem;
+
+  a {
+    color: inherit;
+    display: block;
+    padding: 1em;
+  }
+
+  p {
+    font-family: Montserrat;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  p.lead {
+    font-weight: bold;
+  }
+}
+
 .alert {
   margin-top: 15px;
 }
