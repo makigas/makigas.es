@@ -4,6 +4,7 @@ if ENV['RAILS_USE_S3'].present?
   # Base settings, they work on all cases.
   Paperclip::Attachment.default_options.update(
     storage: :s3,
+    s3_protocol: ENV.fetch('S3_HOST_PROTO') { '' },
     s3_credentials: {
       bucket: ENV['S3_BUCKET_NAME'],
       region: ENV.fetch('AWS_REGION') { 'us-east-1' },
