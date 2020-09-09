@@ -10,7 +10,7 @@ gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.10'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
-gem 'rails', '5.2.4.3'
+gem 'rails', '5.2.4.4'
 gem 'rails-i18n', '~> 5.1.3'
 gem 'sass-rails', '~> 6.0'
 gem 'sdoc', '~> 1.1.0', group: :doc
