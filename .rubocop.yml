@@ -6,6 +6,7 @@ AllCops:
   TargetRubyVersion: 2.6
   Exclude:
     - 'bin/*'
+    - 'config.ru'
     - 'node_modules/**/*'
     - 'db/schema.rb'
 
