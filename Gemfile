@@ -19,7 +19,7 @@ gem 'webpacker', '~> 5.2'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.81.0'
+gem 'aws-sdk-s3', '~> 1.81.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'friendly_id'
