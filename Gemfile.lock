@@ -273,7 +273,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.0.0)
+    sdoc (2.0.1)
+      rack
       rdoc (>= 5.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -358,7 +359,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.8.1)
   rubocop-rspec (~> 1.39)
   sass-rails (~> 6.0)
-  sdoc (~> 2.0.0)
+  sdoc (~> 2.0.1)
   selenium-webdriver
   simple_form
   sitemap_generator
