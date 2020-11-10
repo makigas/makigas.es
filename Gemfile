@@ -34,7 +34,7 @@ gem 'whenever'
 group :development do
   # Development tools
   gem 'byebug'
-  gem 'listen', '~> 3.2'
+  gem 'listen', '~> 3.3'
   gem 'web-console'
 
   # Lint tools
