@@ -13,7 +13,7 @@ gem 'puma', '~> 5.0'
 gem 'rails', '5.2.4.4'
 gem 'rails-i18n', '~> 5.1.3'
 gem 'sass-rails', '~> 6.0'
-gem 'sdoc', '~> 2.0.0', group: :doc
+gem 'sdoc', '~> 2.0.2', group: :doc
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 5.2'
 
