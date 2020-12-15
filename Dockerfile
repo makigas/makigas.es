@@ -17,6 +17,7 @@ WORKDIR /makigas
 # Install Ruby dependencies
 ADD Gemfile Gemfile.lock /
 RUN apk add --update --no-cache build-base && \
+    gem install bundler:2.1.4 && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install -j 4 && \

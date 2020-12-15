@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev
-          gem install bundler:1.17.2
+          gem install bundler:2.1.4
           npm install -g yarn
           bundle install --jobs 4 --retry 3
       - name: Setup application
@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get -yqq install libpq-dev
-          gem install bundler:1.17.2
+          gem install bundler:2.1.4
           bundle install --jobs 4 --retry 3 --with ci
       - name: Run Rubocop
         run: bundle exec rubocop
