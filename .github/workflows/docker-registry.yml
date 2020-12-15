@@ -1,8 +1,8 @@
-name: Push current master branch to the Docker registry
+name: Push current trunk branch to the Docker registry
 on:
   push:
     branches:
-      - master
+      - trunk
 jobs:
   docker_registry:
     name: Push the website image to the registry
