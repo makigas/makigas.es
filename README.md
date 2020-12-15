@@ -169,6 +169,6 @@ PGP key is on my personal website][3].
   just want an app that works and that allows me to manage my videos and keep
   my information up to date.
 
-[1]: https://github.com/makigas/makigas/blob/master/CONTRIBUTING.md
-[2]: https://github.com/makigas/makigas/blob/master/CODE_OF_CONDUCT.md
+[1]: https://github.com/makigas/makigas/blob/trunk/CONTRIBUTING.md
+[2]: https://github.com/makigas/makigas/blob/trunk/CODE_OF_CONDUCT.md
 [3]: https://www.danirod.es/contact/
