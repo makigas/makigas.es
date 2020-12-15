@@ -94,29 +94,29 @@ communicate that beforehand also. For instance, send a comment to the issue
 telling you want to help on that or you want to do that if it's not assigned.
 Again, it's all about avoiding surprises.
 
-### 2.3 Never work on master branch
+### 2.3 Never work on trunk branch
 
-This repository protects `master` branch. Even owners cannot push directly
-into `master`, a pull request is always required. The reason is that code
-merged into `master` is automatically deployed to the servers, so we want to
-make sure that the code that enters `master` is a complete feature, not just a
+This repository protects `trunk` branch. Even owners cannot push directly
+into `trunk`, a pull request is always required. The reason is that code
+merged into `trunk` is automatically deployed to the servers, so we want to
+make sure that the code that enters `trunk` is a complete feature, not just a
 work in progress, as that may have unexpected consequences to visitors browsing
 the site.
 
 **Always fork the project and start a feature branch**. Never commit directly
-on `master` even in your own forks, because if I update my master branch, you
+on `trunk` even in your own forks, because if I update my trunk branch, you
 need to be able to pull my newest commits into your own fork. Stale code that
 is not up to date with upstream cannot be safely merged.
 
 It doesn't matter how many commits you do. It doesn't matter how many
-_merge master into my-branch_ commits you do. Pull requests are always merged
+_merge trunk into my-branch_ commits you do. Pull requests are always merged
 using a squash, so even a PR with 100 commits will be merged as a single
 commit. So don't be afraid to work as atomically as possible on your feature.
 It won't cause clutter once merged.
 
 ### 2.4 Always provide tests
 
-Because code merged into `master` is automatically deployed to the servers,
+Because code merged into `trunk` is automatically deployed to the servers,
 it is required to know beforehand whether the new code is safe to run in the
 servers or whether it will cause regressions or bugs that may harm the visitor
 experience.
