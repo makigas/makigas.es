@@ -35,4 +35,8 @@ Metrics/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+
 inherit_from: .rubocop_todo.yml

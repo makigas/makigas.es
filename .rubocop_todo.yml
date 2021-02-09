@@ -11,8 +11,3 @@
 # ExcludedMethods: refine
 Metrics/BlockLength:
   Max: 145
-
-# Offense count: 8
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 15

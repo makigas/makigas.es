@@ -21,10 +21,10 @@ module ApplicationHelper
   end
 
   def extract_time(sec)
-    hours, minutes, seconds = time_components(sec)
+    return nil unless (time = time_components(sec))
+
+    hours, minutes, seconds = time
     hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
-  rescue StandardError
-    nil
   end
 
   def to_markdown(text)
@@ -48,13 +48,9 @@ module ApplicationHelper
     if (match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/))
       match.captures
     elsif (match = sec.match(/^([0-5]?[0-9]):([0-5][0-9])$/))
-      minutes, seconds = match.captures
-      [0, minutes, seconds]
+      [0] + match.captures
     elsif (match = sec.match(/^([0-5]?[0-9])$/))
-      seconds = match.captures[0]
-      [0, 0, seconds]
-    else
-      raise 'Unsupported duration'
+      [0, 0] + match.captures
     end
   end
 end
