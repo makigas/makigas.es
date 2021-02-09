@@ -30,4 +30,9 @@ Style/FormatStringToken:
   Exclude:
     - config/routes.rb
 
+# There are some boilerplate secret keys in the devise.rb file that I'd rather not touch.
+Metrics/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+
 inherit_from: .rubocop_todo.yml
