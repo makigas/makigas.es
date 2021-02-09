@@ -157,13 +157,6 @@ PGP key is on my personal website][3].
 
 # Frequently Asked Questions
 
-* **Why did you rewrite makigas.es again?**
-  Previous versions of makigas.es used a blogging engine such as WordPress with
-  a lot of plugins and hacks in order to work as general purpose CMS systems.
-  This version was crafted specifically for the data structures required for
-  the web site and therefore it is more concise, flexible and easy to develop
-  and maintain.
-
 * **What is the point on sharing the source code?**
   I don't have any particular interest in this source code at this moment. I
   just want an app that works and that allows me to manage my videos and keep

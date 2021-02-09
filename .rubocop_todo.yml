@@ -21,13 +21,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 15
 
-# Offense count: 3
-# Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
-# AllowedNames: io, id, to, by, on, in, at, ip, db, os
-Naming/MethodParameterName:
-  Exclude:
-    - "lib/makigas/data_migrator.rb"
-
 # Offense count: 52
 # Configuration parameters: AggregateFailuresByDefault.
 RSpec/MultipleExpectations:
