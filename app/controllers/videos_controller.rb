@@ -3,8 +3,8 @@
 class VideosController < ApplicationController
   def index
     @videos = Video.visible.joins(:playlist)
-    @videos = search_by_length if params[:length]
-    @videos = search_by_topic if params[:topic]
+    @videos = @videos.where(length_query) if params[:length]
+    @videos = @videos.where(playlists: { topic_id: topic_ids }) if params[:topic]
     @videos = @videos.order(created_at: :desc).page(params[:page]).per 10
   end
 
@@ -28,18 +28,18 @@ class VideosController < ApplicationController
 
   private
 
-  def search_by_length
+  def length_query
     case params[:length]
     when 'short'
-      @videos.where('duration <= 300')
+      'duration <= 300'
     when 'medium'
-      @videos.where('duration > 300 and duration <= 900')
+      'duration > 300 and duration <= 900'
     when 'long'
-      @videos.where('duration > 900')
+      'duration > 900'
     end
   end
 
-  def search_by_topic
-    @videos.where(playlists: { topic_id: Topic.where(slug: params[:topic]).pluck(:id) })
+  def topic_ids
+    Topic.where(slug: params[:topic]).pluck(:id)
   end
 end
