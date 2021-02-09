@@ -7,9 +7,12 @@ RSpec.describe 'Video page', type: :feature do
 
   it 'there is information about the video' do
     visit_video video
-    expect(page).to have_text video.title
-    expect(page).to have_content video.description
-    expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
+
+    aggregate_failures do
+      expect(page).to have_text video.title
+      expect(page).to have_content video.description
+      expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
+    end
   end
 
   it 'the page is indexable' do
@@ -25,9 +28,12 @@ RSpec.describe 'Video page', type: :feature do
 
   it 'there is a playlist card' do
     visit_video video
-    within("//div[@class='video-information']") do
-      expect(page).to have_content video.playlist.title
-      expect(page).to have_css "img[src*='#{video.playlist.thumbnail.url(:small)}']"
+
+    aggregate_failures do
+      within("//div[@class='video-information']") do
+        expect(page).to have_content video.playlist.title
+        expect(page).to have_css "img[src*='#{video.playlist.thumbnail.url(:small)}']"
+      end
     end
   end
 
@@ -38,10 +44,13 @@ RSpec.describe 'Video page', type: :feature do
 
     it 'there is a topic card' do
       visit_video video
-      within("//div[@class='video-information']") do
-        expect(page).to have_content topic.title
-        expect(page).to have_content topic.description
-        expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+
+      aggregate_failures do
+        within("//div[@class='video-information']") do
+          expect(page).to have_content topic.title
+          expect(page).to have_content topic.description
+          expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+        end
       end
     end
   end
@@ -51,9 +60,12 @@ RSpec.describe 'Video page', type: :feature do
 
     it 'there is information about the video' do
       visit_video video
-      expect(page).to have_text video.title
-      expect(page).to have_content video.description
-      expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
+
+      aggregate_failures do
+        expect(page).to have_text video.title
+        expect(page).to have_content video.description
+        expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
+      end
     end
 
     it 'the page is marked as scheduled' do
@@ -74,9 +86,12 @@ RSpec.describe 'Video page', type: :feature do
 
     it 'there is a playlist card' do
       visit_video video
-      within("//div[@class='video-information']") do
-        expect(page).to have_content video.playlist.title
-        expect(page).to have_css "img[src*='#{video.playlist.thumbnail.url(:small)}']"
+
+      aggregate_failures do
+        within("//div[@class='video-information']") do
+          expect(page).to have_content video.playlist.title
+          expect(page).to have_css "img[src*='#{video.playlist.thumbnail.url(:small)}']"
+        end
       end
     end
 
@@ -87,10 +102,13 @@ RSpec.describe 'Video page', type: :feature do
 
       it 'there is a topic card' do
         visit_video video
-        within("//div[@class='video-information']") do
-          expect(page).to have_content topic.title
-          expect(page).to have_content topic.description
-          expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+
+        aggregate_failures do
+          within("//div[@class='video-information']") do
+            expect(page).to have_content topic.title
+            expect(page).to have_content topic.description
+            expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+          end
         end
       end
     end

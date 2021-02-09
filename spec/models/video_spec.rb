@@ -112,21 +112,21 @@ RSpec.describe Video, type: :model do
   end
 
   describe '#natural_duration' do
-    it 'converts from duration to natural duration' do
-      expect(FactoryBot.build(:video, duration: 12).natural_duration).to eq '00:00:12'
-      expect(FactoryBot.build(:video, duration: 61).natural_duration).to eq '00:01:01'
-      expect(FactoryBot.build(:video, duration: 102).natural_duration).to eq '00:01:42'
-      expect(FactoryBot.build(:video, duration: 3600).natural_duration).to eq '01:00:00'
+    describe 'converts from duration to natural duration' do
+      it { expect(FactoryBot.build(:video, duration: 12).natural_duration).to eq '00:00:12' }
+      it { expect(FactoryBot.build(:video, duration: 61).natural_duration).to eq '00:01:01' }
+      it { expect(FactoryBot.build(:video, duration: 102).natural_duration).to eq '00:01:42' }
+      it { expect(FactoryBot.build(:video, duration: 3600).natural_duration).to eq '01:00:00' }
     end
 
-    it 'converts from natural duration to duration' do
-      expect(FactoryBot.build(:video, natural_duration: '0:12').duration).to eq 12
-      expect(FactoryBot.build(:video, natural_duration: '1:01').duration).to eq 61
-      expect(FactoryBot.build(:video, natural_duration: '1:42').duration).to eq 102
-      expect(FactoryBot.build(:video, natural_duration: '59:59').duration).to eq 3599
-      expect(FactoryBot.build(:video, natural_duration: '1:00:00').duration).to eq 3600
-      expect(FactoryBot.build(:video, natural_duration: '9:59:59').duration).to eq 35_999
-      expect(FactoryBot.build(:video, natural_duration: '10:00:00').duration).to eq 36_000
+    describe 'converts from natural duration to duration' do
+      it { expect(FactoryBot.build(:video, natural_duration: '0:12').duration).to eq 12 }
+      it { expect(FactoryBot.build(:video, natural_duration: '1:01').duration).to eq 61 }
+      it { expect(FactoryBot.build(:video, natural_duration: '1:42').duration).to eq 102 }
+      it { expect(FactoryBot.build(:video, natural_duration: '59:59').duration).to eq 3599 }
+      it { expect(FactoryBot.build(:video, natural_duration: '1:00:00').duration).to eq 3600 }
+      it { expect(FactoryBot.build(:video, natural_duration: '9:59:59').duration).to eq 35_999 }
+      it { expect(FactoryBot.build(:video, natural_duration: '10:00:00').duration).to eq 36_000 }
     end
   end
 

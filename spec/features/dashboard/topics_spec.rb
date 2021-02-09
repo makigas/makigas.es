@@ -26,25 +26,28 @@ RSpec.describe 'Dashboard topics', type: :feature do
 
     it 'user can list the topics' do
       visit dashboard_topics_path
-      expect(page).to have_link topic.title, href: dashboard_topic_path(topic)
-      within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
-        expect(page).to have_xpath '//td', text: topic.playlists.count
+
+      aggregate_failures do
+        expect(page).to have_link topic.title, href: dashboard_topic_path(topic)
+        within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
+          expect(page).to have_xpath '//td', text: topic.playlists.count
+        end
       end
     end
 
     it 'user can create topics' do
       visit dashboard_topics_path
       click_link 'Nuevo Tema'
+      fill_in 'Título', with: 'My Topic'
+      fill_in 'Descripción', with: 'This is a featured topic for the website'
+      fill_in 'Color', with: '#ff0000'
+      attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
+      click_button 'Crear Tema'
 
-      expect do
-        fill_in 'Título', with: 'My Topic'
-        fill_in 'Descripción', with: 'This is a featured topic for the website'
-        fill_in 'Color', with: '#ff0000'
-        attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
-        click_button 'Crear Tema'
-      end.to change(Topic, :count).by 1
-
-      expect(page).to have_text 'Tema creado correctamente'
+      aggregate_failures do
+        expect(page).to have_text 'Tema creado correctamente'
+        expect(page).to have_text 'My Topic'
+      end
     end
 
     it 'user can edit topics' do
@@ -55,33 +58,37 @@ RSpec.describe 'Dashboard topics', type: :feature do
       fill_in 'Título', with: 'My new title'
       click_button 'Actualizar Tema'
 
-      expect(page).to have_text 'Tema actualizado correctamente'
-      topic.reload
-      expect(topic.title).to eq 'My new title'
+      aggregate_failures do
+        expect(page).to have_text 'Tema actualizado correctamente'
+        expect(page).not_to have_text topic.title
+        expect(page).to have_text 'My new title'
+      end
     end
 
     it 'user can destroy topics' do
       visit dashboard_topics_path
-      expect do
-        within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
-          click_button 'Destruir'
-        end
-      end.to change(Topic, :count).by(-1)
+      within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
+        click_button 'Destruir'
+      end
 
-      expect(page).to have_text 'Tema eliminado correctamente'
+      aggregate_failures do
+        expect(page).to have_text 'Tema eliminado correctamente'
+        expect(page).not_to have_text topic.title
+      end
     end
 
     it 'user cannot create invalid topics' do
       visit dashboard_topics_path
       click_link 'Nuevo Tema'
-      expect do
-        fill_in 'Descripción', with: 'This is a featured topic for the website'
-        fill_in 'Color', with: '#ff0000'
-        attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
-        click_button 'Crear Tema'
-      end.not_to change(Topic, :count)
+      fill_in 'Descripción', with: 'This is a featured topic for the website'
+      fill_in 'Color', with: '#ff0000'
+      attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
+      click_button 'Crear Tema'
 
-      expect(page).not_to have_text 'Tema creado correctamente'
+      aggregate_failures do
+        expect(page).not_to have_text 'Tema creado correctamente'
+        expect(page).not_to have_link 'Nuevo Tema'
+      end
     end
   end
 end

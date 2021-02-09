@@ -31,15 +31,16 @@ RSpec.describe 'Dashboard opinions', type: :feature do
       visit dashboard_opinions_path
       click_link 'Nueva Opinión'
 
-      expect do
-        fill_in 'De', with: 'Programming and Co'
-        fill_in 'Mensaje', with: 'Este es el texto de la opinión'
-        fill_in 'URL', with: 'https://www.example.com'
-        attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
-        click_button 'Crear Opinión'
-      end.to change(Opinion, :count).by 1
+      fill_in 'De', with: 'Programming and Co'
+      fill_in 'Mensaje', with: 'Este es el texto de la opinión'
+      fill_in 'URL', with: 'https://www.example.com'
+      attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
+      click_button 'Crear Opinión'
 
-      expect(page).to have_text 'Opinión creada correctamente'
+      aggregate_failures do
+        expect(page).to have_text 'Opinión creada correctamente'
+        expect(page).to have_text 'Programming and Co'
+      end
     end
 
     it 'user can edit opinions' do
@@ -50,33 +51,33 @@ RSpec.describe 'Dashboard opinions', type: :feature do
       fill_in 'De', with: 'Programming and Co.'
       click_button 'Actualizar Opinión'
 
-      expect(page).to have_text 'Opinión actualizada correctamente'
-      opinion.reload
-      expect(opinion.from).to eq 'Programming and Co.'
+      aggregate_failures do
+        expect(page).to have_text 'Opinión actualizada correctamente'
+        expect(page).to have_text 'Programming and Co.'
+      end
     end
 
     it 'user can destroy opinions' do
       @opinion = FactoryBot.create(:opinion)
 
       visit dashboard_opinions_path
-      expect do
-        within(:xpath, "//tr[.//td//a[text() = '#{opinion.from}']]") do
-          click_button 'Destruir'
-        end
-      end.to change(Opinion, :count).by(-1)
+      within(:xpath, "//tr[.//td//a[text() = '#{opinion.from}']]") do
+        click_button 'Destruir'
+      end
 
-      expect(page).to have_text 'Opinión destruida correctamente'
+      aggregate_failures do
+        expect(page).to have_text 'Opinión destruida correctamente'
+        expect(page).not_to have_link opinion.from
+      end
     end
 
     it 'user cannot create invalid opinion' do
       visit dashboard_opinions_path
       click_link 'Nueva Opinión'
-      expect do
-        fill_in 'De', with: 'Programming and Co'
-        fill_in 'URL', with: 'https://www.example.com'
-        attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
-        click_button 'Crear Opinión'
-      end.not_to change(Topic, :count)
+      fill_in 'De', with: 'Programming and Co'
+      fill_in 'URL', with: 'https://www.example.com'
+      attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
+      click_button 'Crear Opinión'
 
       expect(page).not_to have_text 'Opinión creada correctamente'
     end

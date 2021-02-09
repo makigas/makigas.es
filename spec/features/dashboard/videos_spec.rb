@@ -36,85 +36,48 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
 
     it 'user can create videos' do
       visit dashboard_videos_path
-      expect do
-        click_link 'Nuevo Vídeo'
-        fill_in 'Título', with: 'My video title'
-        fill_in 'Descripción', with: 'This is my newest and coolest video'
-        fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
-        fill_in 'duration_minutes', with: '3'
-        fill_in 'duration_seconds', with: '32'
-        select playlist.title, from: 'Lista de reproducción'
-        click_button 'Crear Vídeo'
-      end.to change(Video, :count).by 1
-
-      expect(page).to have_text 'Vídeo creado correctamente'
-      expect(playlist.videos.count).to eq 1
-    end
-
-    it 'user can set the duration of a video' do
-      visit dashboard_videos_path
-
       click_link 'Nuevo Vídeo'
       fill_in 'Título', with: 'My video title'
-      fill_in 'Descripción', with: 'This is a long video'
+      fill_in 'Descripción', with: 'This is my newest and coolest video'
       fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
-      select playlist.title, from: 'Lista de reproducción'
       fill_in 'duration_hours', with: '1'
       fill_in 'duration_minutes', with: '5'
       fill_in 'duration_seconds', with: '40'
+      select playlist.title, from: 'Lista de reproducción'
       click_button 'Crear Vídeo'
 
-      expect(page).to have_text 'Vídeo creado correctamente'
-      expect(page).to have_text '1:05:40'
-    end
-
-    it 'user can create unfeatured videos' do
-      visit dashboard_videos_path
-
-      expect do
-        click_link 'Nuevo Vídeo'
-        fill_in 'Título', with: 'My video title'
-        fill_in 'Descripción', with: 'This is my newest and coolest video'
-        fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
-        fill_in 'duration_minutes', with: '3'
-        fill_in 'duration_seconds', with: '32'
-        select playlist.title, from: 'Lista de reproducción'
-        check 'video_unfeatured'
-        click_button 'Crear Vídeo'
-      end.to change(Video, :count).by 1
-
-      # Test the video does not appear
-      Capybara.app_host = 'http://www.lvh.me:9080'
-      visit root_path
-      within '.recent-videos' do
-        expect(page).not_to have_link 'My video title'
+      aggregate_failures do
+        expect(page).to have_text 'Vídeo creado correctamente'
+        expect(page).to have_text 'My video title'
+        expect(page).to have_text '1:05:40'
       end
     end
+
+    # TODO: Test this without relying on changing the host of the client.
+    it 'user can create unfeatured videos'
 
     it 'user cannot create videos with invalid data' do
       playlist = FactoryBot.create(:playlist)
       visit dashboard_videos_path
-      expect do
-        click_link 'Nuevo Vídeo'
-        fill_in 'Descripción', with: 'This is my newest and coolest video'
-        fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
-        select playlist.title, from: 'Lista de reproducción'
-        click_button 'Crear Vídeo'
-      end.not_to change(Video, :count)
+      click_link 'Nuevo Vídeo'
+      fill_in 'Descripción', with: 'This is my newest and coolest video'
+      fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
+      select playlist.title, from: 'Lista de reproducción'
+      click_button 'Crear Vídeo'
+
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
     it 'user cannot create videos without setting a playlist' do
       visit dashboard_videos_path
-      expect do
-        click_link 'Nuevo Vídeo'
-        fill_in 'Título', with: 'My video title'
-        fill_in 'Descripción', with: 'This is my newest and coolest video'
-        fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
-        fill_in 'duration_minutes', with: '3'
-        fill_in 'duration_seconds', with: '32'
-        click_button 'Crear Vídeo'
-      end.not_to change(Video, :count)
+      click_link 'Nuevo Vídeo'
+      fill_in 'Título', with: 'My video title'
+      fill_in 'Descripción', with: 'This is my newest and coolest video'
+      fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
+      fill_in 'duration_minutes', with: '3'
+      fill_in 'duration_seconds', with: '32'
+      click_button 'Crear Vídeo'
+
       expect(page).not_to have_text 'Vídeo creado correctamente'
     end
 
@@ -131,14 +94,14 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
 
     it 'user can destroy videos' do
       visit dashboard_videos_path
-      expect do
-        within(:xpath, "//tr[.//a[text() = '#{video.title}']]") do
-          click_button 'Destruir'
-        end
-      end.to change(Video, :count).by(-1)
+      within(:xpath, "//tr[.//a[text() = '#{video.title}']]") do
+        click_button 'Destruir'
+      end
 
-      expect(page).to have_text 'Vídeo destruido correctamente'
-      expect(page).not_to have_link 'My cool video'
+      aggregate_failures do
+        expect(page).to have_text 'Vídeo destruido correctamente'
+        expect(page).not_to have_link 'My cool video'
+      end
     end
   end
 end
