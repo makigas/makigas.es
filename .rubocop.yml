@@ -30,6 +30,15 @@ Style/FormatStringToken:
   Exclude:
     - config/routes.rb
 
+Metrics/BlockLength:
+  ExcludedMethods:
+    - context
+    - describe
+    - namespace
+  Exclude:
+    - config/initializers/simple_form_bootstrap.rb
+    - config/routes.rb
+
 # There are some boilerplate secret keys in the devise.rb file that I'd rather not touch.
 Metrics/LineLength:
   Exclude:
@@ -38,5 +47,3 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'
-
-inherit_from: .rubocop_todo.yml
