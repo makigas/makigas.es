@@ -43,7 +43,7 @@ class ResetMinioPolicy
       "Statement": [{ "Action": ['s3:GetObject'],
                       "Effect": 'Allow',
                       "Principal": { "AWS": ['*'] },
-                      "Resource": ["arn:aws:s3:::#{bucket_name}/**"],
+                      "Resource": ["arn:aws:s3:::#{bucket_name}/*"],
                       "Sid": '' }] }.to_json
   end
 end
