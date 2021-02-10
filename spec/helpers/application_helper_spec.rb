@@ -21,7 +21,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it 'renders an hour' do
-      expect(running_time(3600)). to eq '1:00:00'
+      expect(running_time(3600)).to eq '1:00:00'
     end
 
     it 'renders hours' do

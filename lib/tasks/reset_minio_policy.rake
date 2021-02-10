@@ -24,7 +24,7 @@ class ResetMinioPolicy
   end
 
   def connection_settings
-    { region: ENV.fetch('AWS_REGION') { 'us-east-1' },
+    { region: ENV.fetch('AWS_REGION', 'us-east-1'),
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       force_path_style: true }.tap do |settings|

@@ -28,15 +28,14 @@ class VideosController < ApplicationController
 
   private
 
+  LENGTH_QUERIES = {
+    'short' => 'duration <= 300',
+    'medium' => 'duration > 300 and duration <= 900',
+    'long' => 'duration > 900'
+  }.freeze
+
   def length_query
-    case params[:length]
-    when 'short'
-      'duration <= 300'
-    when 'medium'
-      'duration > 300 and duration <= 900'
-    when 'long'
-      'duration > 900'
-    end
+    LENGTH_QUERIES[params[:length]]
   end
 
   def topic_ids

@@ -41,7 +41,8 @@ module ApplicationHelper
 
   def format_as_timestamp(value_list)
     first, *remain = value_list
-    first.to_s + ':' + remain.map { |val| val.to_s.rjust(2, '0') }.join(':')
+    timestamps = remain.map { |val| val.to_s.rjust(2, '0') }.join(':')
+    "#{first}:#{timestamps}"
   end
 
   def time_components(sec)

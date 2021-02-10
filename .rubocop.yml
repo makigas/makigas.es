@@ -4,6 +4,7 @@ require:
 
 AllCops:
   TargetRubyVersion: 2.6
+  NewCops: enable
   Exclude:
     - 'bin/*'
     - 'config.ru'
@@ -40,7 +41,7 @@ Metrics/BlockLength:
     - config/routes.rb
 
 # There are some boilerplate secret keys in the devise.rb file that I'd rather not touch.
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
