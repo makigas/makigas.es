@@ -34,11 +34,11 @@ module Dashboard
     end
 
     def destroy
-      if @user != current_user
+      if @user == current_user
+        redirect_to %i[dashboard users], error: t('.current_user')
+      else
         @user.destroy!
         redirect_to %i[dashboard users], notice: t('.destroyed')
-      else
-        redirect_to %i[dashboard users], error: t('.current_user')
       end
     end
 
