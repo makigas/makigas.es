@@ -39,20 +39,25 @@ module Dashboard
     end
 
     def move
+      move!(@video, params[:direction])
       respond_to do |format|
-        if params[:direction] == 'up'
-          @video.move_higher
-          format.json { render json: { position: @video.position, direction: 'up' } }
-          format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
-        elsif params[:direction] == 'down'
-          @video.move_lower
-          format.json { render json: { position: @video.position, direction: 'down' } }
-          format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
-        end
+        format.json { render json: { position: @video.position, direction: params[:direction] } }
+        format.html { redirect_to [:videos, :dashboard, @video.playlist], notice: t('.moved') }
       end
     end
 
     private
+
+    def move!(video, direction)
+      case direction
+      when 'up'
+        video.move_higher
+      when 'down'
+        video.move_lower
+      else
+        raise 'Unsupported direction'
+      end
+    end
 
     def video_set
       @playlist = Playlist.friendly.find(params[:playlist_id])
@@ -60,7 +65,8 @@ module Dashboard
     end
 
     def video_params
-      params.require(:video).permit(:title, :description, :youtube_id, :duration, :playlist_id, :unfeatured, :published_at)
+      params.require(:video).permit(:title, :description, :youtube_id, :duration,
+                                    :playlist_id, :unfeatured, :published_at)
     end
   end
 end

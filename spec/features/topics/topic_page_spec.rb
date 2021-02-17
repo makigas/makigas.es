@@ -7,9 +7,12 @@ RSpec.describe 'Topic page', type: :feature do
 
   it 'shows information about a topic' do
     visit topic_path(topic)
-    expect(page).to have_text topic.title
-    expect(page).to have_text topic.description
-    expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+
+    aggregate_failures do
+      expect(page).to have_text topic.title
+      expect(page).to have_text topic.description
+      expect(page).to have_css "img[src*='#{topic.thumbnail.url(:small)}']"
+    end
   end
 
   it 'shows playlists in a topic' do
@@ -17,9 +20,11 @@ RSpec.describe 'Topic page', type: :feature do
 
     visit topic_path(topic)
 
-    expect(page).to have_text playlist.title
-    expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:default)}']"
-    expect(page).to have_css "a[href*='#{playlist_path(playlist)}']"
+    aggregate_failures do
+      expect(page).to have_text playlist.title
+      expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:default)}']"
+      expect(page).to have_css "a[href*='#{playlist_path(playlist)}']"
+    end
   end
 
   context 'when the playlist is empty' do

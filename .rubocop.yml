@@ -4,6 +4,7 @@ require:
 
 AllCops:
   TargetRubyVersion: 2.6
+  NewCops: enable
   Exclude:
     - 'bin/*'
     - 'config.ru'
@@ -30,4 +31,20 @@ Style/FormatStringToken:
   Exclude:
     - config/routes.rb
 
-inherit_from: .rubocop_todo.yml
+Metrics/BlockLength:
+  ExcludedMethods:
+    - context
+    - describe
+    - namespace
+  Exclude:
+    - config/initializers/simple_form_bootstrap.rb
+    - config/routes.rb
+
+# There are some boilerplate secret keys in the devise.rb file that I'd rather not touch.
+Layout/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'

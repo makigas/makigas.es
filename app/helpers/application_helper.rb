@@ -21,16 +21,10 @@ module ApplicationHelper
   end
 
   def extract_time(sec)
-    if (match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/))
-      hours, minutes, seconds = match.captures
-      hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
-    elsif (match = sec.match(/^([0-5]?[0-9]):([0-5][0-9])$/))
-      minutes, seconds = match.captures
-      minutes.to_i * 60 + seconds.to_i
-    elsif (match = sec.match(/^([0-5]?[0-9])$/))
-      seconds = match.captures[0]
-      seconds.to_i
-    end
+    return nil unless (time = time_components(sec))
+
+    hours, minutes, seconds = time
+    hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
   end
 
   def to_markdown(text)
@@ -47,6 +41,17 @@ module ApplicationHelper
 
   def format_as_timestamp(value_list)
     first, *remain = value_list
-    first.to_s + ':' + remain.map { |val| val.to_s.rjust(2, '0') }.join(':')
+    timestamps = remain.map { |val| val.to_s.rjust(2, '0') }.join(':')
+    "#{first}:#{timestamps}"
+  end
+
+  def time_components(sec)
+    if (match = sec.match(/^([0-9]+):([0-5][0-9]):([0-5][0-9])$/))
+      match.captures
+    elsif (match = sec.match(/^([0-5]?[0-9]):([0-5][0-9])$/))
+      [0] + match.captures
+    elsif (match = sec.match(/^([0-5]?[0-9])$/))
+      [0, 0] + match.captures
+    end
   end
 end

@@ -48,9 +48,12 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
 
     it 'this page lists videos in the right order' do
       visit videos_dashboard_playlist_path(playlist)
-      within('.dashboard-page tbody') do
-        expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
-        expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+
+      aggregate_failures do
+        within('.dashboard-page tbody') do
+          expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
+          expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+        end
       end
     end
 
@@ -59,9 +62,12 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
       within(:xpath, "//tr[.//td//a[text() = '#{videos[0].title}']]") do
         click_button 'Bajar'
       end
-      within('.dashboard-page tbody') do
-        expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[1].title)
-        expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[0].title)
+
+      aggregate_failures do
+        within('.dashboard-page tbody') do
+          expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[1].title)
+          expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[0].title)
+        end
       end
     end
 
@@ -70,9 +76,12 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
       within(:xpath, "//tr[.//td//a[text() = '#{videos[1].title}']]") do
         click_button 'Subir'
       end
-      within('.dashboard-page tbody') do
-        expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[1].title)
-        expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[0].title)
+
+      aggregate_failures do
+        within('.dashboard-page tbody') do
+          expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[1].title)
+          expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[0].title)
+        end
       end
     end
 
@@ -81,9 +90,12 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
       within(:xpath, "//tr[.//td//a[text() = '#{videos[0].title}']]") do
         click_button 'Subir'
       end
-      within('.dashboard-page tbody') do
-        expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
-        expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+
+      aggregate_failures do
+        within('.dashboard-page tbody') do
+          expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
+          expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+        end
       end
     end
 
@@ -92,9 +104,12 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
       within(:xpath, "//tr[.//td//a[text() = '#{videos[1].title}']]") do
         click_button 'Bajar'
       end
-      within('.dashboard-page tbody') do
-        expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
-        expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+
+      aggregate_failures do
+        within('.dashboard-page tbody') do
+          expect(page).to have_xpath('//tr[1]/td[2]/a', text: videos[0].title)
+          expect(page).to have_xpath('//tr[2]/td[2]/a', text: videos[1].title)
+        end
       end
     end
   end

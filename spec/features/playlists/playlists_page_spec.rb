@@ -8,8 +8,10 @@ RSpec.describe 'Playlists page', type: :feature do
   it 'displays information about playlists' do
     visit playlists_path
 
-    expect(page).to have_link playlist.title, href: playlist_path(playlist)
-    expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:default)}']"
+    aggregate_failures do
+      expect(page).to have_link playlist.title, href: playlist_path(playlist)
+      expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:default)}']"
+    end
   end
 
   describe 'number of videos' do

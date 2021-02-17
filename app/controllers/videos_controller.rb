@@ -2,13 +2,9 @@
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.visible.joins(:playlist).all
-    if params[:length]
-      @videos = @videos.where('duration <= 300') if params[:length] == 'short'
-      @videos = @videos.where('duration > 300 and duration <= 900') if params[:length] == 'medium'
-      @videos = @videos.where('duration > 900') if params[:length] == 'long'
-    end
-    @videos = @videos.where(playlists: { topic_id: Topic.where(slug: params[:topic]).pluck(:id) }) if params[:topic]
+    @videos = Video.visible.joins(:playlist)
+    @videos = @videos.where(length_query) if params[:length]
+    @videos = @videos.where(playlists: { topic_id: topic_ids }) if params[:topic]
     @videos = @videos.order(created_at: :desc).page(params[:page]).per 10
   end
 
@@ -28,5 +24,21 @@ class VideosController < ApplicationController
   def find_by_id
     @video = Video.find_by!(youtube_id: params[:id])
     redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
+  end
+
+  private
+
+  LENGTH_QUERIES = {
+    'short' => 'duration <= 300',
+    'medium' => 'duration > 300 and duration <= 900',
+    'long' => 'duration > 900'
+  }.freeze
+
+  def length_query
+    LENGTH_QUERIES[params[:length]]
+  end
+
+  def topic_ids
+    Topic.where(slug: params[:topic]).pluck(:id)
   end
 end
