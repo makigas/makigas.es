@@ -19,6 +19,6 @@ class PlaylistsController < ApplicationController
 
   def playlist_set
     @playlist = Playlist.friendly.find(params[:id])
-    redirect_to @playlist, status: 301 if params[:id] != @playlist.slug
+    redirect_to @playlist, status: :moved_permanently if params[:id] != @playlist.slug
   end
 end

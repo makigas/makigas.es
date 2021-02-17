@@ -39,12 +39,12 @@ class ResetMinioPolicy
   end
 
   def bucket_policy
-    { "Version": '2012-10-17',
-      "Statement": [{ "Action": ['s3:GetObject'],
-                      "Effect": 'Allow',
-                      "Principal": { "AWS": ['*'] },
-                      "Resource": ["arn:aws:s3:::#{bucket_name}/*"],
-                      "Sid": '' }] }.to_json
+    { Version: '2012-10-17',
+      Statement: [{ Action: ['s3:GetObject'],
+                    Effect: 'Allow',
+                    Principal: { AWS: ['*'] },
+                    Resource: ["arn:aws:s3:::#{bucket_name}/*"],
+                    Sid: '' }] }.to_json
   end
 end
 
