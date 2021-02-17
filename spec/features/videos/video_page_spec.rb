@@ -17,7 +17,7 @@ RSpec.describe 'Video page', type: :feature do
 
   it 'the page is indexable' do
     visit_video video
-    expect(page).not_to have_css 'meta[name="robots"][content="noindex"]', visible: false
+    expect(page).not_to have_css 'meta[name="robots"][content="noindex"]', :hidden
   end
 
   it 'there is a player embedded in' do
@@ -75,7 +75,7 @@ RSpec.describe 'Video page', type: :feature do
 
     it 'the page is NOT indexable' do
       visit_video video
-      expect(page).to have_css 'meta[name="robots"][content="noindex"]', visible: false
+      expect(page).to have_css 'meta[name="robots"][content="noindex"]', :hidden
     end
 
     it 'there is a player embedded in' do
@@ -131,7 +131,7 @@ RSpec.describe 'Video page', type: :feature do
 
       it 'the page is not indexable' do
         visit_video video
-        expect(page).to have_css 'meta[name="robots"][content="noindex"]', visible: false
+        expect(page).to have_css 'meta[name="robots"][content="noindex"]', :hidden
       end
     end
   end

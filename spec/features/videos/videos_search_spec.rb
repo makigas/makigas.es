@@ -46,12 +46,17 @@ RSpec.describe 'Videos search', type: :feature do
   end
 
   describe 'searching by topic' do
-    let(:topic1) { FactoryBot.create(:topic, title: 'First Topic') }
-    let(:topic2) { FactoryBot.create(:topic, title: 'Second Topic') }
-    let(:playlist1) { FactoryBot.create(:playlist, topic: topic1) }
-    let(:playlist2) { FactoryBot.create(:playlist, topic: topic2) }
-    let!(:video1) { FactoryBot.create(:video, title: 'First', youtube_id: 'A', playlist: playlist1) }
-    let!(:video2) { FactoryBot.create(:video, title: 'Second', youtube_id: 'B', playlist: playlist2) }
+    let!(:video1) do
+      FactoryBot.create(:video, title: 'First', youtube_id: 'A', playlist: playlist1).tap do |video|
+        video.playlist.topic.update(title: 'First Topic')
+      end
+    end
+
+    let!(:video2) do
+      FactoryBot.create(:video, title: 'Second', youtube_id: 'B', playlist: playlist2).tap do |video|
+        video.playlist.topic.update(title: 'Second Topic')
+      end
+    end
 
     it 'can search for videos in a topic' do
       visit videos_path
