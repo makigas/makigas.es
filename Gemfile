@@ -38,9 +38,9 @@ group :development do
   gem 'web-console'
 
   # Lint tools
-  gem 'rubocop', '~> 0.93', require: false
+  gem 'rubocop', '~> 1.10', require: false
   gem 'rubocop-rails', '~> 2.9.1', require: false
-  gem 'rubocop-rspec', '~> 1.44', require: false
+  gem 'rubocop-rspec', '~> 2.2', require: false
 end
 
 # Test tools
