@@ -12,7 +12,7 @@ AllCops:
     - 'db/schema.rb'
 
 # Allow scenario to describe Capybara E2E tests.
-Capybara/FeatureMethods:
+RSpec/Capybara/FeatureMethods:
   Exclude:
     - 'spec/features/**/*.rb'
 
@@ -32,7 +32,7 @@ Style/FormatStringToken:
     - config/routes.rb
 
 Metrics/BlockLength:
-  ExcludedMethods:
+  IgnoredMethods:
     - context
     - describe
     - namespace

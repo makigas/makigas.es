@@ -47,13 +47,13 @@ RSpec.describe 'Videos search', type: :feature do
 
   describe 'searching by topic' do
     let!(:video1) do
-      FactoryBot.create(:video, title: 'First', youtube_id: 'A', playlist: playlist1).tap do |video|
+      FactoryBot.create(:video, title: 'First', youtube_id: 'A').tap do |video|
         video.playlist.topic.update(title: 'First Topic')
       end
     end
 
     let!(:video2) do
-      FactoryBot.create(:video, title: 'Second', youtube_id: 'B', playlist: playlist2).tap do |video|
+      FactoryBot.create(:video, title: 'Second', youtube_id: 'B').tap do |video|
         video.playlist.topic.update(title: 'Second Topic')
       end
     end
