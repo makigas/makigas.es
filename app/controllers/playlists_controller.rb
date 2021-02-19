@@ -4,7 +4,7 @@ class PlaylistsController < ApplicationController
   before_action :playlist_set, only: %i[show feed]
 
   def index
-    @playlists = Playlist.all.order(created_at: :desc)
+    @playlists = Playlist.all.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show; end
