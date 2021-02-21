@@ -28,17 +28,17 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
-  resources :topics, only: %i[index show], constraints: { format: :html } do
-    get :feed, on: :member
+  resources :topics, only: %i[index show] do
+    get :feed, on: :member, format: :xml
   end
 
-  resources :videos, only: :index, constraints: { format: :html } do
-    get :feed, on: :collection
+  resources :videos, only: :index do
+    get :feed, on: :collection, format: :xml
   end
 
-  resources :playlists, path: 'series', only: %i[index show], constraints: { format: :html } do
+  resources :playlists, path: 'series', only: %i[index show] do
     get :feed, on: :member
-    resources :videos, path: '/', only: [:show], constraints: { format: :html }
+    resources :videos, path: '/', only: :show
   end
   get :terms, to: 'pages#terms'
   get :privacy, to: 'pages#privacy'
