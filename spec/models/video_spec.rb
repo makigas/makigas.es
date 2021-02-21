@@ -113,6 +113,7 @@ RSpec.describe Video, type: :model do
 
   describe '#natural_duration' do
     let(:playlist) { FactoryBot.create(:playlist) }
+
     describe 'converts from duration to natural duration' do
       it { expect(FactoryBot.build(:video, playlist: playlist, duration: 12).natural_duration).to eq '00:00:12' }
       it { expect(FactoryBot.build(:video, playlist: playlist, duration: 61).natural_duration).to eq '00:01:01' }
