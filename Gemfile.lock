@@ -216,7 +216,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rdoc (6.2.1)
+    rdoc (6.3.0)
     redcarpet (3.5.1)
     regexp_parser (2.0.3)
     responders (3.0.1)
@@ -278,7 +278,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.0.3)
+    sdoc (2.0.4)
       rdoc (>= 5.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -364,7 +364,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.5.1)
   rubocop-rspec (~> 2.2)
   sass-rails (~> 6.0)
-  sdoc (~> 2.0.3)
+  sdoc (~> 2.0.4)
   selenium-webdriver
   simple_form
   sitemap_generator
