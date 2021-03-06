@@ -49,7 +49,7 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-rails', '~> 4.1'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.6'
 end
