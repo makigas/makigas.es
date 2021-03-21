@@ -65,6 +65,8 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
       select playlist.title, from: 'Lista de reproducción'
       click_button 'Guardar y crear otro'
 
+      expect(Video.last.title).to eq 'My video title'
+
       aggregate_failures do
         expect(page).to have_text 'Vídeo creado correctamente'
         expect(page).to have_text 'Nuevo vídeo'
