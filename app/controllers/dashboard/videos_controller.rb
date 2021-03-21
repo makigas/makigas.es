@@ -11,7 +11,9 @@ module Dashboard
     def show; end
 
     def new
-      @video = Video.new
+      @video = Video.new.tap do |video|
+        video.playlist_id = params[:playlist_id] if params[:playlist_id].present?
+      end
     end
 
     def create

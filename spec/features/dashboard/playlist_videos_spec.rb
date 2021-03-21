@@ -57,6 +57,16 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
       end
     end
 
+    it 'can create videos for this playlist' do
+      visit videos_dashboard_playlist_path(playlist)
+      click_link 'Nuevo vídeo'
+
+      aggregate_failures do
+        expect(page).to have_text 'Nuevo vídeo'
+        expect(page).to have_select 'Lista de reproducción', selected: playlist.title
+      end
+    end
+
     it 'user can move a video down' do
       visit videos_dashboard_playlist_path(playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{videos[0].title}']]") do

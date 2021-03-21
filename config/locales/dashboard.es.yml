@@ -146,6 +146,7 @@ es:
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
         title: Título
         move: Mover
+        new_video: Nuevo vídeo
         operations: Operaciones
         up: Subir
         down: Bajar
