@@ -41,7 +41,7 @@ group :development do
   gem 'rubocop', '~> 1.13', require: false
   gem 'rubocop-rails', '~> 2.9.1', require: false
   gem 'rubocop-rake', '~> 0.5.1', require: false
-  gem 'rubocop-rspec', '~> 2.2', require: false
+  gem 'rubocop-rspec', '~> 2.3', require: false
 end
 
 # Test tools
