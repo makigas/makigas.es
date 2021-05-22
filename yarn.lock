@@ -4588,9 +4588,9 @@ querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
-rails-ujs@^5.2.5:
-  version "5.2.5"
-  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.5.tgz#63908dbd31356d0c13fefc3b0d64f82cdd85488f"
+rails-ujs@^5.2.6:
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.6.tgz#4193242a108d0cd9ed3595695644755c0bd329eb"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
