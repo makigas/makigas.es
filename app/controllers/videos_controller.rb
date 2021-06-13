@@ -2,10 +2,10 @@
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.visible.joins(:playlist)
+    @videos = Video.includes(:playlist, playlist: :topic).visible.joins(:playlist)
     @videos = @videos.where(length_query) if params[:length]
     @videos = @videos.where(playlists: { topic_id: topic_ids }) if params[:topic]
-    @videos = @videos.order(created_at: :desc).page(params[:page]).per 10
+    @videos = @videos.order(published_at: :desc).page(params[:page]).per 10
   end
 
   def show
