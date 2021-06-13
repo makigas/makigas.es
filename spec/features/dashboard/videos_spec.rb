@@ -53,6 +53,24 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
       end
     end
 
+    it 'user can create multiple videos in a row', js: true do
+      visit dashboard_videos_path
+      click_link 'Nuevo Vídeo'
+      fill_in 'Título', with: 'My video title'
+      fill_in 'Descripción', with: 'This is my newest and coolest video'
+      fill_in 'ID de YouTube', with: 'dQw4w9WgXcQ'
+      fill_in 'duration_hours', with: '1'
+      fill_in 'duration_minutes', with: '5'
+      fill_in 'duration_seconds', with: '40'
+      select playlist.title, from: 'Lista de reproducción'
+      click_button 'Guardar y crear otro'
+
+      aggregate_failures do
+        expect(page).to have_text 'Vídeo creado correctamente'
+        expect(page).to have_text 'Nuevo vídeo'
+      end
+    end
+
     # TODO: Test this without relying on changing the host of the client.
     it 'user can create unfeatured videos'
 
