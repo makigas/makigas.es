@@ -4,8 +4,7 @@ class PlaylistsController < ApplicationController
   before_action :playlist_set, only: %i[show feed]
 
   def index
-    @playlists = Playlist.joins(:videos).group('playlists.id').order('max(videos.published_at) desc')
-                         .page(params[:page]).per(12)
+    @playlists = Playlist.sort_by_latest_video.page(params[:page]).per(12)
   end
 
   def show; end
