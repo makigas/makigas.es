@@ -41,6 +41,6 @@ returns.forEach(function (button) {
     hiddenTag.value = button.getAttribute('data-submit-and-return-to');
     form.appendChild(hiddenTag);
 
-    form.dispatchEvent(new Event('submit'));
+    form.querySelector('[type=submit]').click();
   });
 });
