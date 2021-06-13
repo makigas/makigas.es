@@ -39,10 +39,19 @@ class Playlist < ApplicationRecord
 
   # Returns a HATEOAS-friendly representation of the thumbnails.
   def icons
-    %i[default thumbnail].map do |style|
+    %i[hidef default thumbnail].map do |style|
       { href: thumbnail.url(style),
         type: thumbnail.content_type,
         sizes: thumbnail.styles[style].geometry.gsub('>', '') }
+    end
+  end
+
+  # Returns a HATEOAS-friendly representation of the cards
+  def cards
+    %i[default small thumbnail].map do |style|
+      { href: card.url(style),
+        type: card.content_type,
+        sizes: card.styles[style].geometry.gsub('>', '') }
     end
   end
 end
