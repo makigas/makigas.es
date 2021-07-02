@@ -105,7 +105,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.4.2)
+    faraday (1.4.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -360,7 +360,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot_rails
-  faraday (~> 1.4.2)
+  faraday (~> 1.4.3)
   faraday_middleware (~> 1.0.0)
   friendly_id
   haml-rails (~> 2.0)
