@@ -33,6 +33,7 @@ AllCops:
     - 'db/migrate/20210826193920_add_foreign_key_constraint_to_active_storage_attachments_for_blob_id.active_storage.rb'
     - 'db/migrate/20210826194328_add_service_name_to_active_storage_blobs.active_storage.rb'
     - 'db/migrate/20210826194329_create_active_storage_variant_records.active_storage.rb'
+    - 'vendor/bundle/**/*'
 
 # Allow scenario to describe Capybara E2E tests.
 RSpec/Capybara/FeatureMethods:
