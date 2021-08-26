@@ -17,7 +17,7 @@ class VideosController < ApplicationController
 
   def feed
     @videos = Video.visible.includes(:playlist, playlist: [:topic]).order(published_at: :desc).limit(15)
-    @updated_at = Video.order(updated_at: :desc).limit(1).pluck(:updated_at).first
+    @updated_at = Video.order(updated_at: :desc).limit(1).pick(:updated_at)
     render format: :xml, template: 'videos/feed.xml.erb', layout: false
   end
 
