@@ -9,7 +9,8 @@ class CreateTopics < ActiveRecord::Migration[5.0]
       t.string :slug, null: false
       t.timestamps
     end
-    add_column :playlists, :topic_id, :integer, index: true
+    add_column :playlists, :topic_id, :integer
+    add_index :playlists, :topic_id
     add_index :topics, :slug, unique: true
   end
 end
