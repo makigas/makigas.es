@@ -21,6 +21,7 @@ json._links do
   json.self { json.href playlist_path(playlist) }
   json.collection { json.href playlists_path }
   json.icon playlist.icons
+  json.set! 'makigas:card', playlist.cards
   json.set! 'makigas:youtube' do
     json.href "https://youtube.com/playlist?list=#{playlist.youtube_id}"
   end

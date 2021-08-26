@@ -18,6 +18,10 @@ class Playlist < ApplicationRecord
     default: '1280x720>'
   }
 
+  scope :sort_by_latest_video, lambda {
+    joins(:videos).group('playlists.id').order(Arel.sql('max(videos.published_at) desc'))
+  }
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
@@ -39,10 +43,19 @@ class Playlist < ApplicationRecord
 
   # Returns a HATEOAS-friendly representation of the thumbnails.
   def icons
-    %i[default thumbnail].map do |style|
+    %i[hidef default thumbnail].map do |style|
       { href: thumbnail.url(style),
         type: thumbnail.content_type,
         sizes: thumbnail.styles[style].geometry.gsub('>', '') }
+    end
+  end
+
+  # Returns a HATEOAS-friendly representation of the cards
+  def cards
+    %i[default small thumbnail].map do |style|
+      { href: card.url(style),
+        type: card.content_type,
+        sizes: card.styles[style].geometry.gsub('>', '') }
     end
   end
 end

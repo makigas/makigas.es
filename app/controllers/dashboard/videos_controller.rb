@@ -19,7 +19,7 @@ module Dashboard
     def create
       @video = Video.new(video_params)
       if @video.save
-        redirect_to [:dashboard, @video.playlist, @video], notice: t('.created')
+        redirect_to (params[:return_to] || [:dashboard, @video.playlist, @video]), notice: t('.created')
       else
         render :new
       end

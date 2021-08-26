@@ -2,10 +2,10 @@
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.visible.joins(:playlist)
+    @videos = Video.includes(:playlist, playlist: :topic).visible.joins(:playlist)
     @videos = @videos.where(length_query) if params[:length]
     @videos = @videos.where(playlists: { topic_id: topic_ids }) if params[:topic]
-    @videos = @videos.order(created_at: :desc).page(params[:page]).per 10
+    @videos = @videos.order(published_at: :desc).page(params[:page]).per 10
   end
 
   def show
@@ -17,7 +17,7 @@ class VideosController < ApplicationController
 
   def feed
     @videos = Video.visible.includes(:playlist, playlist: [:topic]).order(published_at: :desc).limit(15)
-    @updated_at = Video.order(updated_at: :desc).limit(1).pluck(:updated_at).first
+    @updated_at = Video.order(updated_at: :desc).limit(1).pick(:updated_at)
     render format: :xml, template: 'videos/feed.xml.erb', layout: false
   end
 
