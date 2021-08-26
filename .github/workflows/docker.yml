@@ -8,7 +8,7 @@ on:
 
 jobs:
   docker:
-    name: Docker
+    name: Release Docker images
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
