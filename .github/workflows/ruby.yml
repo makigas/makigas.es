@@ -1,9 +1,14 @@
 name: Ruby
 
-on: [push]
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
 
 jobs:
-  RSpec:
+  rspec:
+    name: Run rspec
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -16,22 +21,19 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
       - name: Set up ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.x'
+          ruby-version: '2.7.4'
+          bundler-cache: true
       - name: Set up node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: '10.x'
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler:2.1.4
-          npm install -g yarn
-          bundle install --jobs 4 --retry 3
+          node-version: '14'
+          cache: 'yarn'
       - name: Setup application
         run: bundle exec rake db:create db:schema:load yarn:install
         env:
@@ -46,19 +48,17 @@ jobs:
           DB_NAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
-  Rubocop:
+  rubocop:
+    name: Run rubocop
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
       - name: Set up ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.5.x'
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler:2.1.4
-          bundle install --jobs 4 --retry 3 --with ci
+          ruby-version: '2.7.4'
+          bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop
