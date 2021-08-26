@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby '2.7.4'
+
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
