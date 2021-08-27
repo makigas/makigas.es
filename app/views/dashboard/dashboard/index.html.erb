@@ -6,34 +6,44 @@
   <h1><%= t('.dashboard') %></h1>
 <% end %>
 
-<div class="row data-dashboard">
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @videos %></h1>
-    <p class="lead"><%= t('.videos', count: @videos) %></p>
-    <p><%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-outline-secondary btn-block' %></p>
-  </div>
+  <div class="row text-center">
+    <div class="col">
+      <h1><span class="bi bi-play-btn-fill"></span> <%= @videos %></h1>
+      <p class="lead"><%= t('.videos', count: @videos) %></p>
+      <div class="d-grid gap-2">
+        <%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
 
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-list"></span> <%= @playlists %></h1>
-    <p class="lead"><%= t('.playlists', count: @playlists) %></p>
-    <p><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-outline-secondary btn-block' %></p>
-  </div>
+    <div class="col">
+      <h1><span class="bi bi-list-ul"></span> <%= @playlists %></h1>
+      <p class="lead"><%= t('.playlists', count: @playlists) %></p>
+      <div class="d-grid gap-2">
+        <%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
 
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-book"></span> <%= @topics %></h1>
-    <p class="lead"><%= t('.topics', count: @topics) %></p>
-    <p><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-outline-secondary btn-block' %></p>
-  </div>
+    <div class="col">
+      <h1><span class="bi bi-journals"></span> <%= @topics %></h1>
+      <p class="lead"><%= t('.topics', count: @topics) %></p>
+      <div class="d-grid gap-2">
+        <%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
 
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-user"></span> <%= @users %></h1>
-    <p class="lead"><%= t('.users', count: @users) %></p>
-    <p><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary btn-block' %></p>
-  </div>
+    <div class="col">
+      <h1><span class="bi bi-person-fill"></span> <%= @users %></h1>
+      <p class="lead"><%= t('.users', count: @users) %></p>
+      <div class="d-grid gap-2">
+        <%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
 
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-user"></span> <%= @opinions %></h1>
-    <p class="lead"><%= t('.opinions', count: @opinions) %></p>
-    <p><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-outline-secondary btn-block' %></p>
+    <div class="col">
+      <h1><span class="bi bi-chat-fill"></span> <%= @opinions %></h1>
+      <p class="lead"><%= t('.opinions', count: @opinions) %></p>
+      <div class="d-grid gap-2">
+        <%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
   </div>
-</div>
