@@ -1,4 +1,5 @@
 import 'jquery/src/jquery';
+import '@popperjs/core';
 import 'bootstrap';
 import 'cookieconsent';
 import 'rails-ujs';

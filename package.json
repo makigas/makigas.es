@@ -7,6 +7,7 @@
   "license": "GPLv3",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.9.3",
     "@rails/webpacker": "5.4.2",
     "bootstrap": "5.1.0",
     "bootstrap-icons": "^1.5.0",
