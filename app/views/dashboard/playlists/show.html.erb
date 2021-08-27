@@ -8,8 +8,8 @@
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= link_to t('.videos'), [:videos, :dashboard, @playlist], class: 'btn btn-default' %>
-  <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-default' %>
+  <%= link_to t('.videos'), [:videos, :dashboard, @playlist], class: 'btn btn-outline-secondary' %>
+  <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-outline-secondary' %>
   <%= button_to t('.destroy'), [:dashboard, @playlist], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
 <% end %>
 

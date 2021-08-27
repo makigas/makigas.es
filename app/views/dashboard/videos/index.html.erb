@@ -28,7 +28,7 @@
       <td><%= l video.published_at, format: :long %></td>
       <td><%= distance_of_time_in_words video.updated_at, DateTime.now %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-outline-secondary' %>
         <%= button_to t('.destroy'), [:dashboard, video], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
       </td>
     </tr>

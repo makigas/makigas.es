@@ -28,6 +28,6 @@
   <%= form.submit class: 'btn btn-success' %>
 
   <% unless @video.persisted? %>
-    <%= button_tag t('.save_and_new'), type: :button, class: 'btn btn-default hidden', data: { submit_and_return_to: new_dashboard_video_path(playlist_id: @video.playlist_id)}, hidden: :hidden %>
+    <%= button_tag t('.save_and_new'), type: :button, class: 'btn btn-outline-secondary hidden', data: { submit_and_return_to: new_dashboard_video_path(playlist_id: @video.playlist_id)}, hidden: :hidden %>
   <% end %>
 <% end %>

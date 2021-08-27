@@ -24,7 +24,7 @@
       <td><%= link_to topic.title, [:dashboard, topic] %></td>
       <td><%= topic.playlists.count %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, topic], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, topic], class: 'btn btn-xs btn-outline-secondary' %>
         <%= button_to t('.destroy'), [:dashboard, topic], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
       </td>
     </tr>
