@@ -1,10 +1,10 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to @playlist.title, [:dashboard, @playlist] %></li>
-    <li><%= link_to @video.title, [:dashboard, @playlist, @video] %></li>
-    <li><%= link_to t('.links'), [:dashboard, @playlist, @video, :links] %></li>
-    <li class="current"><%= t('.edit') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= link_to @playlist.title, [:dashboard, @playlist] %></li>
+    <li class="breadcrumb-item"><%= link_to @video.title, [:dashboard, @playlist, @video] %></li>
+    <li class="breadcrumb-item"><%= link_to t('.links'), [:dashboard, @playlist, @video, :links] %></li>
+    <li class="breadcrumb-item current"><%= t('.edit') %></li>
   </ol>
   <h1><%= @link.name %></h1>
 <% end %>

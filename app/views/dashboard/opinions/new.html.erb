@@ -1,8 +1,8 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to t('.opinions'), [:dashboard, :opinions] %></li>
-    <li class="current"><%= t('.new_opinion') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= link_to t('.opinions'), [:dashboard, :opinions] %></li>
+    <li class="breadcrumb-item current"><%= t('.new_opinion') %></li>
   </ol>
   <h1><%= t('.new_opinion') %></h1>
 <% end %>

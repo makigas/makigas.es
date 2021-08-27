@@ -219,12 +219,12 @@ es:
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
-        e-mail: E-mail
+        email: E-mail
         sign_in_count: Número de veces iniciada sesión
         current_sign_in_at: Hora de inicio de sesión actual
         last_sign_in_at: Hora del último inicio de sesión
         current_sign_in_ip: IP del inicio de sesión actual
-        last_sign_in_at: IP del último inicio de sesión
+        last_sign_in_ip: IP del último inicio de sesión
         really_destroy: Eliminar un usuario no tiene vuelta atrás. Una vez eliminado, no podrá iniciar sesión en el sistema.
         users: Usuarios
       update:
