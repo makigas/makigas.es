@@ -1,31 +1,22 @@
 <header role="banner" class="main-header">
-  <nav class="navbar navbar-inverse navbar-static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#makigas-navbar" aria-expanded="false">
-              <span class="sr-only"><%= t('.navigation') %></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <%= link_to 'makigas', :dashboard, class: 'navbar-brand'%>
-          </div>
-      <div class="collapse navbar-collapse" id="makigas-navbar">
-        <ul class="nav navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand">makigas</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><%= link_to t('.videos'), [:dashboard, :videos], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.playlists'), [:dashboard, :playlists], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.topics'), [:dashboard, :topics], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.opinions'), [:dashboard, :opinions], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.users'), [:dashboard, :users], class: 'nav-link' %></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-text hidden-sm hidden-xs"><%= current_user.email %></li>
-          <li><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank %></li>
-          <li><%= link_to t('.log_out'), destroy_user_session_path %></li>
-        </ul>
+        <ul class="navbar-nav d-flex">
+            <li class="navbar-text hidden-sm hidden-xs"><%= current_user.email %></li>
+            <li><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank, class: 'nav-link' %></li>
+            <li><%= link_to t('.log_out'), destroy_user_session_path, class: 'nav-link' %></li>
+          </ul>
       </div>
     </div>
   </nav>
-  
 </header>
 
