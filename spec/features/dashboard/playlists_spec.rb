@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Dashboard playlists', type: :feature do
-  let(:video) { FactoryBot.create(:video) }
-  let!(:playlist) { FactoryBot.create(:playlist, videos: [video]) }
-  let!(:topic) { FactoryBot.create(:topic) }
+  let(:video) { create(:video) }
+  let!(:playlist) { create(:playlist, videos: [video]) }
+  let!(:topic) { create(:topic) }
 
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
@@ -19,7 +19,7 @@ RSpec.describe 'Dashboard playlists', type: :feature do
   end
 
   context 'when logged in' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
 
     before do
       login_as user, scope: :user

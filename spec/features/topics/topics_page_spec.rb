@@ -11,7 +11,7 @@ RSpec.describe 'Topics page', type: :feature do
   end
 
   context 'when there are topics' do
-    let!(:topic) { FactoryBot.create(:topic) }
+    let!(:topic) { create(:topic) }
 
     it 'is success' do
       visit topics_path
