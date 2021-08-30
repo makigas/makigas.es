@@ -61,6 +61,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include Capybara::DSL
+  config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers
 
   Capybara.javascript_driver = :selenium_chrome_headless

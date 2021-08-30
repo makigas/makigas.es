@@ -15,8 +15,8 @@ RSpec.describe 'Dashboard opinions', type: :feature do
   end
 
   context 'when logged in' do
-    let(:user) { FactoryBot.create(:user) }
-    let!(:opinion) { FactoryBot.create(:opinion, from: 'Programming n Co') }
+    let(:user) { create(:user) }
+    let!(:opinion) { create(:opinion, from: 'Programming n Co') }
 
     before do
       login_as user, scope: :user
@@ -58,7 +58,7 @@ RSpec.describe 'Dashboard opinions', type: :feature do
     end
 
     it 'user can destroy opinions' do
-      @opinion = FactoryBot.create(:opinion)
+      @opinion = create(:opinion)
 
       visit dashboard_opinions_path
       within(:xpath, "//tr[.//td//a[text() = '#{opinion.from}']]") do

@@ -9,7 +9,7 @@ RSpec.describe 'Topics page', type: :feature do
   end
 
   it 'displays information about videos' do
-    video = FactoryBot.create(:video, duration: 133)
+    video = create(:video, duration: 133)
 
     visit videos_path
     aggregate_failures do
@@ -21,17 +21,17 @@ RSpec.describe 'Topics page', type: :feature do
   end
 
   it 'displays topic if the playlist has one' do
-    topic = FactoryBot.create(:topic)
-    playlist = FactoryBot.create(:playlist, topic: topic)
-    FactoryBot.create(:video, playlist: playlist)
+    topic = create(:topic)
+    playlist = create(:playlist, topic: topic)
+    create(:video, playlist: playlist)
 
     visit videos_path
     expect(page).to have_link topic.title, href: topic_path(topic)
   end
 
   it 'scheduled videos are not displayed' do
-    published = FactoryBot.create(:yesterday_video, youtube_id: 'PUBLISHED', title: 'Published')
-    scheduled = FactoryBot.create(:tomorrow_video, youtube_id: 'TOMORROW', title: 'Scheduled')
+    published = create(:yesterday_video, youtube_id: 'PUBLISHED', title: 'Published')
+    scheduled = create(:tomorrow_video, youtube_id: 'TOMORROW', title: 'Scheduled')
 
     visit videos_path
     aggregate_failures do

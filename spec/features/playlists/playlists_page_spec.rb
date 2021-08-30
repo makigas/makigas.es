@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Playlists page', type: :feature do
-  let(:playlist) { FactoryBot.create(:playlist) }
+  let(:playlist) { create(:playlist) }
 
   it 'displays information about playlists' do
-    FactoryBot.create(:video, playlist: playlist)
+    create(:video, playlist: playlist)
 
     visit playlists_path
 
@@ -24,7 +24,7 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'single video' do
-      FactoryBot.create(:video, playlist: playlist)
+      create(:video, playlist: playlist)
 
       visit playlists_path
 
@@ -35,8 +35,8 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'many videos' do
-      FactoryBot.create(:video, playlist: playlist, youtube_id: '1234')
-      FactoryBot.create(:video, playlist: playlist, youtube_id: '1238')
+      create(:video, playlist: playlist, youtube_id: '1234')
+      create(:video, playlist: playlist, youtube_id: '1238')
 
       visit playlists_path
 
@@ -47,8 +47,8 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'scheduled videos are not counted' do
-      FactoryBot.create(:video, playlist: playlist, youtube_id: '1234')
-      FactoryBot.create(:tomorrow_video, playlist: playlist, youtube_id: '1238')
+      create(:video, playlist: playlist, youtube_id: '1234')
+      create(:tomorrow_video, playlist: playlist, youtube_id: '1238')
 
       visit playlists_path
 

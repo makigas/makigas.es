@@ -21,9 +21,9 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
   end
 
   context 'when logged in' do
-    let(:user) { FactoryBot.create(:user) }
-    let!(:video) { FactoryBot.create(:video) }
-    let!(:playlist) { FactoryBot.create(:playlist) }
+    let(:user) { create(:user) }
+    let!(:video) { create(:video) }
+    let!(:playlist) { create(:playlist) }
 
     before do
       login_as user, scope: :user
@@ -75,7 +75,7 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
     it 'user can create unfeatured videos'
 
     it 'user cannot create videos with invalid data' do
-      playlist = FactoryBot.create(:playlist)
+      playlist = create(:playlist)
       visit dashboard_videos_path
       click_link 'Nuevo Vídeo'
       fill_in 'Descripción', with: 'This is my newest and coolest video'
