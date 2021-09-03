@@ -3,6 +3,21 @@
 class Video < ApplicationRecord
   extend FriendlyId
 
+  include MeiliSearch
+  meilisearch do
+    attribute :title, :description, :slug, :duration
+
+    attribute(:playlist_title) { playlist.title }
+    attribute(:playlist_description) { playlist.description }
+    attribute(:playlist_slug) { playlist.slug }
+
+    attribute(:topic_title) { playlist.topic&.title }
+    attribute(:topic_description) { playlist.topic&.description }
+    attribute(:topic_slug) { playlist.topic&.slug }
+
+    filterable_attributes %i[topic_slug duration]
+  end
+
   # Videos are sorted in a playlist.
   belongs_to :playlist
   has_many :links, dependent: :destroy

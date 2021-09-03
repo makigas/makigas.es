@@ -30,6 +30,8 @@
 
   <div class="col-md-4">
     <%= form_tag :videos, method: :GET, id: 'videos_filter' do %>
+      <%= hidden_field_tag('q', params[:q]) if params[:q].present? %>
+
       <fieldset data-autosearch>
         <legend><%= t('.filter.by_length') %></legend>
         <ul>
