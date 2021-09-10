@@ -37,4 +37,18 @@
     <td><%= t('.published_at') %></td>
     <td><%= l @video.published_at %></td>
   </tr>
+  <tr>
+    <td>
+      <%= t('.transcription') %>
+      <br>
+      <%= link_to 'Editar', dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
+      <br>
+      <% if @video.transcription.present? %>
+      <%= button_to 'Eliminar', [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
+      <% end %>
+    </td>
+    <td>
+      <%= @video.transcription.present? ? to_markdown(@video.transcription.content).html_safe : 'No tiene' %>
+    </td>
+  </tr>
 </table>

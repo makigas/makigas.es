@@ -1,0 +1,19 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li><%= link_to t('.dashboard'), :dashboard %></li>
+    <li><%= link_to @playlist.title, [:dashboard, @playlist] %></li>
+    <li><%= link_to @video.title, [:dashboard, @playlist, @video] %></li>
+    <li class="current"><%= t('.transcription') %></li>
+  </ol>
+  <h1><%= @video.title %></h1>
+<% end %>
+
+<% content_for :toolbar do %>
+  <%= link_to t('.cancel'), [:dashboard, @playlist, @video], class: 'btn btn-default' %>
+<% end %>
+
+<%= simple_form_for @transcription, url: dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @playlist.slug) do |f| %>
+  <%= f.input :language, collection: [['es', 'es']], include_blank: false %>
+  <%= f.input :content, input_html: { rows: 10 } %>
+  <%= f.submit %>
+<% end %>

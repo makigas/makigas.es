@@ -145,7 +145,14 @@ es:
         long_videos: Largos (>15 min)
         by_topic: Por tema
         apply_filters: Aplicar filtros
+    cards:
+      this_playlist: Lista de reproducción
+      this_topic: Este tema
+      explore_other_videos:
+        one: Explora el resto de vídeos de esta lista de reproducción.
+        other: Una lista de reproducción de %{count} episodios.
     show:
+      transcription: Transcripción
       next: Siguiente
       part_of_series_html: "Un episodio de %{playlist}"
       previous: Anterior
@@ -154,11 +161,6 @@ es:
       duration: "Duración: %{duration}"
       preview: Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).
       unlisted: Este vídeo en este momento está sin listar. Si navegas por los vídeos recientes del canal de YouTube o de la web no lo verás. Considera este enlace como un adelanto que podría sufrir modificaciones o ser eliminado si se encuentran errores y conserva el link si quieres volver a verlo antes de que se publique.
-      explore_other_videos:
-        one: Explora el resto de vídeos de esta lista de reproducción.
-        other: Una lista de reproducción de %{count} episodios.
-      this_playlist: Lista de reproducción
-      this_topic: Este tema
       links: Enlaces relacionados
       meta:
         playlist_feed: "Lista: %{playlist} (ATOM)"
