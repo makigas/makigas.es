@@ -25,6 +25,8 @@ AllCops:
     - 'config/initializers/inflections.rb'
     - 'config/initializers/mime_types.rb'
     - 'config/initializers/permissions_policy.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
     - 'config/initializers/wrap_parameters.rb'
     - 'config/puma.rb'
     - 'node_modules/**/*'

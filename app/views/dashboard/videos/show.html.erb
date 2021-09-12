@@ -40,15 +40,20 @@
   <tr>
     <td>
       <%= t('.transcription') %>
-      <br>
-      <%= link_to t('.edit'), dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
-      <br>
-      <% if @video.transcription.present? %>
-      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
-      <% end %>
     </td>
     <td>
-      <%= @video.transcription.present? ? to_markdown(@video.transcription.content).html_safe : t('.no_transcription') %>
+      <% if @video.transcription.present? %>
+        <%= to_markdown(@video.transcription.content).html_safe %>
+      <% else %>
+        <p><%= t('.no_transcription') %></p>
+      <% end %>
+      
+      <div class="actions">
+        <%= link_to t('.edit'), dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-sm btn-outline-secondary' %>
+        <% if @video.transcription.present? %>
+          <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: '¿De verdad?' } %>
+        <% end %>
+      </div>
     </td>
   </tr>
 </table>

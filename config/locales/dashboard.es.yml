@@ -284,6 +284,7 @@ es:
       show:
         dashboard: Panel de control
         transcription: Transcripción
+        videos: Vídeos
         cancel: Cancelar
   layouts:
     dashboard:
