@@ -4,8 +4,14 @@ class Video < ApplicationRecord
   extend FriendlyId
 
   include MeiliSearch
-  meilisearch do
-    attribute :title, :description, :slug, :duration
+  meilisearch per_environment: true, raise_on_failure: Rails.env.development? do
+    attribute :title, :description
+
+    attribute(:transcription) do
+      transcription&.content
+    end
+
+    attribute :slug
 
     attribute(:playlist_title) { playlist.title }
     attribute(:playlist_description) { playlist.description }
@@ -15,6 +21,7 @@ class Video < ApplicationRecord
     attribute(:topic_description) { playlist.topic&.description }
     attribute(:topic_slug) { playlist.topic&.slug }
 
+    attribute :duration
     filterable_attributes %i[topic_slug duration]
   end
 

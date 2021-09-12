@@ -10,6 +10,12 @@ services:
     environment:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
+  search:
+    image: getmeili/meilisearch
+    volumes:
+    - './docker_data/meili:/data.ms'
+    environment:
+      MEILI_MASTER_KEY: 'meilikey'
   storage:
     image: minio/minio
     volumes:
@@ -50,3 +56,5 @@ services:
       AWS_ACCESS_KEY_ID: 4j7anyzy
       AWS_SECRET_ACCESS_KEY: NM8R5pozNkfHUgFNRx2Zxuxv
       MINIO_INIT_BUCKET: 'true'
+      MEILISEARCH_HOST: 'http://search:7700'
+      MEILISEARCH_API_KEY: 'meilikey'
