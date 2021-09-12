@@ -21,7 +21,7 @@ RSpec.describe 'Dashboard transcriptions', type: :feature, js: true do
 
   describe 'for anonymous sessions' do
     let(:path) { dashboard_playlist_video_transcription_path(video, playlist_id: playlist.slug) }
-    
+
     it 'is not possible to visit the transcription editor' do
       visit path
       expect(page).to have_no_current_path path
@@ -60,9 +60,9 @@ RSpec.describe 'Dashboard transcriptions', type: :feature, js: true do
     end
 
     describe 'when there is a transcription present for a video' do
-      before(:each) do
+      before do
         create(:transcription, documentable: video,
-                              content: 'Este es mi nuevo vídeo')
+                               content: 'Este es mi nuevo vídeo')
       end
 
       it 'presents the transcription in the video page' do
