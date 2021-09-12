@@ -269,6 +269,8 @@ es:
         published_at: Fecha de publicación
         playlist: Lista
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
+        transcription: Transcripción
+        no_transcription: (Transcripción no existente)
         seconds:
           one: "%{count} segundo"
           other: "%{count} segundos"
@@ -278,6 +280,11 @@ es:
         youtube_id: ID de YouTube
       update:
         updated: Vídeo actualizado correctamente.
+    transcriptions:
+      show:
+        dashboard: Panel de control
+        transcription: Transcripción
+        cancel: Cancelar
   layouts:
     dashboard:
       header:

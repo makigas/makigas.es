@@ -55,6 +55,21 @@ RSpec.describe 'Video page', type: :feature do
     end
   end
 
+  describe 'when the video has a transcription' do
+    let(:topic) { create(:topic) }
+    let(:playlist) { create(:playlist, topic: topic) }
+    let(:transcription) { build(:transcription, documentable: nil) }
+    let(:video) { create(:video, playlist: playlist, transcription: transcription) }
+
+    it 'presents the transcription' do
+      visit_video video
+
+      within("//div[@class='video-information']") do
+        expect(page).to have_content transcription.content
+      end
+    end
+  end
+
   context 'when the video is scheduled but not private' do
     let(:video) { create(:video, published_at: 2.days.from_now) }
 
