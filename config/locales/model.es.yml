@@ -6,6 +6,9 @@ es:
         one: Lista de reproducción
         other: Listas de reproducción
       topic: Tema
+      transcription:
+        one: Transcripción
+        other: Transcripciones
       opinion:
         one: Opinión
         other: Opiniones
@@ -31,6 +34,9 @@ es:
         thumbnail: Miniatura
         slug: URL
         title: Título
+      transcription:
+        language: Idioma
+        content: Contenido
       user:
         email: E-mail
         password: Contraseña

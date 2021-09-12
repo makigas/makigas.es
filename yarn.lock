@@ -1074,6 +1074,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
   integrity sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==
 
+"@rails/ujs@^6.1.4-1":
+  version "6.1.4-1"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.4-1.tgz#37507fe288a1c7c3a593602aa4dea42e5cb5797f"
+  integrity sha512-Fewm2wHk1n6Kf4E86dzzHDJOFg4EWcSHH3FsMEGs59bTdmf7099mjkOssOQtBqju4R39iaAOQNui7r8P+Q5Dgg==
+
 "@rails/webpacker@5.4.2":
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-5.4.2.tgz#efc94f7ff396529411bb02a9da964e269ff2edb0"
@@ -1137,6 +1142,11 @@
 "@types/q@^1.5.1":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
+
+"@types/rails__ujs@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@types/rails__ujs/-/rails__ujs-6.0.1.tgz#83c5aa1dad88ca869de05a9523eff58041ab307a"
+  integrity sha512-CVwNOdzTQ9qn6X6HPwx6ikH1T9ueJTdfjwFlXFhGvzXsQuESUksibfSosgxs1D/Q1kVEpjxeXD2RzqJv0Ma5Gw==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -4695,10 +4705,6 @@ querystring-es3@^0.2.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-
-rails-ujs@^5.2.6:
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.6.tgz#4193242a108d0cd9ed3595695644755c0bd329eb"
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"

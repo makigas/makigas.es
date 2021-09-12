@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Dashboard::VideosHelper, type: :helper do
-  let(:video) { FactoryBot.create(:video) }
+  let(:video) { create(:video) }
 
   describe 'dashboard_video' do
     it 'works for path' do

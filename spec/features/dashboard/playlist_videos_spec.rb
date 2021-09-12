@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Dashboard playlist videos', type: :feature do
-  let!(:playlist) { FactoryBot.create(:playlist) }
+  let!(:playlist) { create(:playlist) }
   let!(:videos) do
     [
-      FactoryBot.create(:video, playlist: playlist, title: 'Primero', position: 1, youtube_id: '1'),
-      FactoryBot.create(:video, playlist: playlist, title: 'Segundo', position: 2, youtube_id: '2')
+      create(:video, playlist: playlist, title: 'Primero', position: 1, youtube_id: '1'),
+      create(:video, playlist: playlist, title: 'Segundo', position: 2, youtube_id: '2')
     ]
   end
 
@@ -23,7 +23,7 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
   end
 
   context 'when logged in' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
 
     before do
       login_as user, scope: :user

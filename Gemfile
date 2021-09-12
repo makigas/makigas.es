@@ -48,12 +48,17 @@ group :development do
   gem 'rubocop-rspec', '~> 2.4', require: false
 end
 
-# Test tools
-group :test do
-  gem 'capybara'
+# Test tools that must be available in development mode
+group :development, :test do
+  gem 'factory_bot', '~> 6.2.0'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0.2'
+end
+
+# Test tools
+group :test do
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.6.1'
 end

@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Playlist page', type: :feature do
-  let(:video) { FactoryBot.create(:video, duration: 133) }
-  let(:published) { FactoryBot.create(:yesterday_video, title: 'Yesterday', youtube_id: 'YESTERDAY') }
-  let(:scheduled) { FactoryBot.create(:tomorrow_video, title: 'Tomorrow', youtube_id: 'TOMORROW') }
-  let(:playlist) { FactoryBot.create(:playlist, videos: [video, published, scheduled]) }
+  let(:video) { create(:video, duration: 133) }
+  let(:published) { create(:yesterday_video, title: 'Yesterday', youtube_id: 'YESTERDAY') }
+  let(:scheduled) { create(:tomorrow_video, title: 'Tomorrow', youtube_id: 'TOMORROW') }
+  let(:playlist) { create(:playlist, videos: [video, published, scheduled]) }
 
   it 'displays playlist information' do
     visit playlist_path(playlist)

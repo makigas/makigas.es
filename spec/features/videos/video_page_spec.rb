@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Video page', type: :feature do
-  let(:video) { FactoryBot.create(:video, duration: 133) }
+  let(:video) { create(:video, duration: 133) }
 
   it 'there is information about the video' do
     visit_video video
@@ -38,9 +38,9 @@ RSpec.describe 'Video page', type: :feature do
   end
 
   context 'when a topic is assigned' do
-    let(:topic) { FactoryBot.create(:topic) }
-    let(:playlist) { FactoryBot.create(:playlist, topic: topic) }
-    let(:video) { FactoryBot.create(:video, playlist: playlist) }
+    let(:topic) { create(:topic) }
+    let(:playlist) { create(:playlist, topic: topic) }
+    let(:video) { create(:video, playlist: playlist) }
 
     it 'there is a topic card' do
       visit_video video
@@ -55,8 +55,23 @@ RSpec.describe 'Video page', type: :feature do
     end
   end
 
+  describe 'when the video has a transcription' do
+    let(:topic) { create(:topic) }
+    let(:playlist) { create(:playlist, topic: topic) }
+    let(:transcription) { build(:transcription, documentable: nil) }
+    let(:video) { create(:video, playlist: playlist, transcription: transcription) }
+
+    it 'presents the transcription' do
+      visit_video video
+
+      within("//div[@class='video-information']") do
+        expect(page).to have_content transcription.content
+      end
+    end
+  end
+
   context 'when the video is scheduled but not private' do
-    let(:video) { FactoryBot.create(:video, published_at: 2.days.from_now) }
+    let(:video) { create(:video, published_at: 2.days.from_now) }
 
     it 'there is information about the video' do
       visit_video video
@@ -96,9 +111,9 @@ RSpec.describe 'Video page', type: :feature do
     end
 
     context 'when a topic is assigned' do
-      let(:topic) { FactoryBot.create(:topic) }
-      let(:playlist) { FactoryBot.create(:playlist, topic: topic) }
-      let(:video) { FactoryBot.create(:video, playlist: playlist) }
+      let(:topic) { create(:topic) }
+      let(:playlist) { create(:playlist, topic: topic) }
+      let(:video) { create(:video, playlist: playlist) }
 
       it 'there is a topic card' do
         visit_video video
@@ -115,7 +130,7 @@ RSpec.describe 'Video page', type: :feature do
   end
 
   context 'when the video is scheduled and private' do
-    let(:video) { FactoryBot.create(:video, published_at: 2.days.from_now, private: true) }
+    let(:video) { create(:video, published_at: 2.days.from_now, private: true) }
 
     it 'the page requires authorization' do
       visit_video video
@@ -123,7 +138,7 @@ RSpec.describe 'Video page', type: :feature do
     end
 
     context 'when the user is logged in' do
-      let(:user) { FactoryBot.create(:user) }
+      let(:user) { create(:user) }
 
       before do
         login_as user, scope: :user

@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe 'Videos search', type: :feature do
   describe 'searching by length' do
-    let!(:short) { FactoryBot.create(:video, duration: 200, title: 'Short', youtube_id: '1') }
-    let!(:medium) { FactoryBot.create(:video, duration: 600, title: 'Medium', youtube_id: '2') }
-    let!(:long) { FactoryBot.create(:video, duration: 1200, title: 'Long', youtube_id: '3') }
+    let!(:short) { create(:video, duration: 200, title: 'Short', youtube_id: '1') }
+    let!(:medium) { create(:video, duration: 600, title: 'Medium', youtube_id: '2') }
+    let!(:long) { create(:video, duration: 1200, title: 'Long', youtube_id: '3') }
 
     it 'can search for short length videos' do
       visit videos_path
@@ -47,13 +47,13 @@ RSpec.describe 'Videos search', type: :feature do
 
   describe 'searching by topic' do
     let!(:video1) do
-      FactoryBot.create(:video, title: 'First', youtube_id: 'A').tap do |video|
+      create(:video, title: 'First', youtube_id: 'A').tap do |video|
         video.playlist.topic.update(title: 'First Topic')
       end
     end
 
     let!(:video2) do
-      FactoryBot.create(:video, title: 'Second', youtube_id: 'B').tap do |video|
+      create(:video, title: 'Second', youtube_id: 'B').tap do |video|
         video.playlist.topic.update(title: 'Second Topic')
       end
     end
