@@ -41,14 +41,14 @@
     <td>
       <%= t('.transcription') %>
       <br>
-      <%= link_to 'Editar', dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
+      <%= link_to t('.edit'), dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
       <br>
       <% if @video.transcription.present? %>
-      <%= button_to 'Eliminar', [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
+      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
       <% end %>
     </td>
     <td>
-      <%= @video.transcription.present? ? to_markdown(@video.transcription.content).html_safe : 'No tiene' %>
+      <%= @video.transcription.present? ? to_markdown(@video.transcription.content).html_safe : t('.no_transcription') %>
     </td>
   </tr>
 </table>

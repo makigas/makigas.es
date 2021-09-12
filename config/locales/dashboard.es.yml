@@ -270,7 +270,7 @@ es:
         playlist: Lista
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
         transcription: Transcripción
-        no_transcription: No hay transcripción
+        no_transcription: (Transcripción no existente)
         seconds:
           one: "%{count} segundo"
           other: "%{count} segundos"
