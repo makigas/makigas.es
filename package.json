@@ -7,10 +7,13 @@
   "license": "GPLv3",
   "private": true,
   "dependencies": {
+    "@rails/ujs": "^6.1.4-1",
     "@rails/webpacker": "5.4.2",
     "bootstrap": "^3.4.0",
     "cookieconsent": "^3.1.0",
-    "jquery": "^3.6.0",
-    "rails-ujs": "^5.2.6"
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/rails__ujs": "^6.0.1"
   }
 }

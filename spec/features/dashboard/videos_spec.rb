@@ -113,7 +113,9 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
     it 'user can destroy videos' do
       visit dashboard_videos_path
       within(:xpath, "//tr[.//a[text() = '#{video.title}']]") do
-        click_button 'Destruir'
+        page.accept_confirm do
+          click_button 'Destruir'
+        end
       end
 
       aggregate_failures do
