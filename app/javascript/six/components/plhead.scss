@@ -1,0 +1,59 @@
+$plhead-text-size: 1.15rem;
+
+.plhead {
+  background: var(--playlist-color);
+  color: var(--playlist-header-foreground);
+  font-size: $plhead-text-size;
+
+  &__wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 40px 80px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+  }
+
+  &__data {
+    max-width: 72ch;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__thumbnail {
+    margin: 0;
+    display: none;
+    @media screen and (min-width: 767px) {
+      display: block;
+    }
+  }
+
+  &__img {
+    border-radius: 100%;
+  }
+
+  &__meta {
+    display: block;
+    & + & {
+      margin-top: 0.5rem;
+    }
+
+    @media screen and (min-width: 767px) {
+      display: inline;
+      & + & {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__icon {
+    height: $plhead-text-size;
+    width: $plhead-text-size;
+    margin-right: 0.25rem;
+    vertical-align: bottom;
+  }
+}

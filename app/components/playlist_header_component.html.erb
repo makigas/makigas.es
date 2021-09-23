@@ -1,0 +1,25 @@
+<header class="plhead">
+    <div class="plhead__wrap">
+        <section class="plhead__data">
+        <h1 class="plhead__title"><%= @playlist.title %></h1>
+        <p class="plhead__lead"><%= @playlist.description %></p>
+        <p class="plhead__metas">
+            <span class="plhead__meta">
+                <%= feather_icon 'list', class: 'plhead__icon' %>
+                <%= @playlist.videos.count %> episodios
+            </span>
+            <span class="plhead__meta">
+                <%= feather_icon 'clock', class: 'plhead__icon'  %>
+                <%= duration %> horas
+            </span>
+            <span class="plhead__meta">
+                <%= feather_icon 'dollar-sign', class: 'plhead__icon'  %>
+                Gratis
+            </span>
+        </p>
+        </section>
+        <figure class="plhead__thumbnail">
+            <%= image_tag @playlist.thumbnail.url(:small), class: 'plhead__img' %>
+        </figure>
+    </div>
+</header>

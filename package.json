@@ -14,6 +14,7 @@
     "jquery": "^3.6.0"
   },
   "devDependencies": {
-    "@types/rails__ujs": "^6.0.1"
+    "@types/rails__ujs": "^6.0.1",
+    "normalize.css": "^8.0.1"
   }
 }

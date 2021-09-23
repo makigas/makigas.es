@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
+  namespace :six do
+    resources :playlists, path: 'series', only: %i[index show]
+  end
+
   resources :topics, only: %i[index show] do
     get :feed, on: :member, format: :xml
   end
