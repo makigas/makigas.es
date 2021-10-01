@@ -45,7 +45,7 @@ group :development do
   gem 'rubocop', '~> 1.20.0', require: false
   gem 'rubocop-rails', '~> 2.11.3', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.4', require: false
+  gem 'rubocop-rspec', '~> 2.5', require: false
 end
 
 # Test tools that must be available in development mode
