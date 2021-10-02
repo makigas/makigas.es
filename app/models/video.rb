@@ -22,6 +22,8 @@ class Video < ApplicationRecord
   validates :playlist, presence: true
   validates :published_at, presence: true
 
+  has_one :transcription, dependent: :destroy, as: :documentable
+
   # Natural duration
   def natural_duration=(dur)
     self.duration = ApplicationController.helpers.extract_time dur

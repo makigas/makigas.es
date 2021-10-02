@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_194329) do
+ActiveRecord::Schema.define(version: 2021_09_10_191215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 2021_08_26_194329) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "documentable_type"
+    t.bigint "documentable_id"
+    t.string "type", null: false
+    t.string "language", null: false
+    t.text "content", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable"
+    t.index ["type"], name: "index_documents_on_type"
   end
 
   create_table "links", force: :cascade do |t|
@@ -82,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_194329) do
     t.bigint "card_file_size"
     t.datetime "card_updated_at"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
+    t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|
