@@ -182,17 +182,17 @@ RSpec.describe Video, type: :model do
 
   describe '.tagged_as' do
     it 'filters by tag' do
-      v1 = create(:video, youtube_id: '11223344', tags: [])
+      create(:video, youtube_id: '11223344', tags: [])
       v2 = create(:video, youtube_id: '11223355', tags: ['python'])
-      expect(Video.tagged_as('python')).to match [v2]
+      expect(described_class.tagged_as('python')).to match [v2]
     end
   end
 
   describe '.tags' do
     it 'returns all the available tags' do
-      v1 = create(:video, youtube_id: '11223344', tags: %w[python ruby])
-      v2 = create(:video, youtube_id: '11223355', tags: %w[ruby git])
-      expect(Video.tags).to match_array %w[python git ruby]
+      create(:video, youtube_id: '11223344', tags: %w[python ruby])
+      create(:video, youtube_id: '11223355', tags: %w[ruby git])
+      expect(described_class.tags).to match_array %w[python git ruby]
     end
   end
 end
