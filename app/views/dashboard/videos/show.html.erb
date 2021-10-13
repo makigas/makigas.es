@@ -34,6 +34,10 @@
     <td><%= link_to @video.playlist.title, [:dashboard, @video.playlist] %></td>
   </tr>
   <tr>
+    <td><%= t('.tags') %></td>
+    <td><%= @video.tags.sort.join(' ') %></td>
+  </tr>
+  <tr>
     <td><%= t('.published_at') %></td>
     <td><%= l @video.published_at %></td>
   </tr>

@@ -18,6 +18,12 @@
             <% if v.playlist.topic %>
               &bull; <%= t('.topic_html', topic: link_to(v.playlist.topic.title, v.playlist.topic)) %>
             <% end %>
+	    <% if v.tags.present? %>
+	    &bull; <%= t('.tags') %>:
+	    <% v.tags.each do |tag| %>
+	      <%= link_to tag, videos_path(tag: tag) %>
+	    <% end %>
+	    <% end %>
           </p>
         </div>
       <% end %>

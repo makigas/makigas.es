@@ -68,7 +68,9 @@ module Dashboard
 
     def video_params
       params.require(:video).permit(:title, :description, :youtube_id, :duration,
-                                    :playlist_id, :unfeatured, :published_at)
+                                    :tags, :playlist_id, :unfeatured, :published_at).tap do |video_params|
+        video_params[:tags] = video_params[:tags].split if video_params[:tags].present?
+      end
     end
   end
 end
