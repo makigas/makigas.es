@@ -48,6 +48,7 @@ es:
         position: Posición
         natural_duration: Duración
         slug: URL
+        tags: Etiquetas
         thumbnail: Miniatura
         playlist: Lista de reproducción
         published_at: Fecha de publicación

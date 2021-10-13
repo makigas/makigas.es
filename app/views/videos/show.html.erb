@@ -1,5 +1,6 @@
 <% content_for :title, "#{@video.position}. #{@video.title} – #{@video.playlist.title} – makigas" %>
 <% content_for :description, @video.description %>
+<% content_for(:tags, @video.tags.sort.join(' ')) if @video.tags.present? %>
 <% content_for :twitter do %>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@makigas">

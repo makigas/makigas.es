@@ -137,6 +137,7 @@ es:
       duration: "Duración: %{duration}"
       topic_html: "Tema: %{topic}"
       playlist_html: "Serie: %{playlist}"
+      tags: Etiquetas
       filter:
         by_length: Por duración
         any_length: Cualquier duración

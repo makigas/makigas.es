@@ -179,4 +179,26 @@ RSpec.describe Video, type: :model do
       expect(videos).not_to include scheduled
     end
   end
+
+  describe '.filter_by_tag' do
+    it 'filters by tag' do
+      create(:video, youtube_id: '11223344', tags: [])
+      v2 = create(:video, youtube_id: '11223355', tags: ['python'])
+      expect(described_class.filter_by_tag('python')).to match [v2]
+    end
+
+    it 'filters by multiple tags' do
+      create(:video, youtube_id: '11223344', tags: ['python'])
+      v2 = create(:video, youtube_id: '11223355', tags: %w[python django])
+      expect(described_class.filter_by_tag(%w[python django])).to match [v2]
+    end
+  end
+
+  describe '.tags' do
+    it 'returns all the available tags' do
+      create(:video, youtube_id: '11223344', tags: %w[python ruby])
+      create(:video, youtube_id: '11223355', tags: %w[ruby git])
+      expect(described_class.tags).to match_array %w[python git ruby]
+    end
+  end
 end
