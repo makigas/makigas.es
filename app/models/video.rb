@@ -14,6 +14,10 @@ class Video < ApplicationRecord
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
 
+  # Filterable scopes
+  scope :filter_by_length, ->(duration) { where(LENGTH_QUERIES[duration]) }
+  scope :filter_by_topic, ->(slug) { includes(playlist: :topic).where('topic.slug' => slug) }
+
   # Validations.
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
@@ -23,6 +27,15 @@ class Video < ApplicationRecord
   validates :published_at, presence: true
 
   has_one :transcription, dependent: :destroy, as: :documentable
+
+  def self.free_filter(filter_params)
+    filter_params.to_h.reduce(Video.visible) do |videos, (key, value)|
+      scope = "filter_by_#{key}"
+      return videos unless videos.respond_to?(scope)
+
+      videos.send(scope, value)
+    end
+  end
 
   # Natural duration
   def natural_duration=(dur)
@@ -54,4 +67,10 @@ class Video < ApplicationRecord
   def to_s
     title
   end
+
+  LENGTH_QUERIES = {
+    'short' => 'duration <= 300',
+    'medium' => 'duration > 300 and duration <= 900',
+    'long' => 'duration > 900'
+  }.freeze
 end
