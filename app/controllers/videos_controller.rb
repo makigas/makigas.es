@@ -3,7 +3,7 @@
 class VideosController < ApplicationController
   def index
     @videos = if searches?
-                Video.search(params[:q], filter: search_filters, hitsPerPage: 10, page: params[:page] || 1)
+                Video.search(params[:q], { filter: search_filters, hitsPerPage: 10, page: params[:page] || 1 })
               else
                 Video.includes(:playlist, playlist: :topic).visible.joins(:playlist)
                      .order(published_at: :desc).page(params[:page]).per(10)
@@ -35,10 +35,12 @@ class VideosController < ApplicationController
   end
 
   def search_filters
-    [search_lengths, search_topics].compact
+    (search_lengths + [search_topics])
   end
 
   def search_lengths
+    return [] if params[:length].blank?
+
     LENGTH_QUERIES[params[:length]]
   end
 
@@ -55,6 +57,7 @@ class VideosController < ApplicationController
   LENGTH_QUERIES = {
     'short' => ['duration <= 300'],
     'medium' => ['duration > 300', 'duration <= 900'],
-    'long' => ['duration > 900']
+    'long' => ['duration > 900'],
+    'all' => []
   }.freeze
 end
