@@ -27,6 +27,6 @@ class VideosController < ApplicationController
   private
 
   def filter_params
-    params.permit(:length, topic: [])
+    params.permit(:length, tag: [], topic: [])
   end
 end

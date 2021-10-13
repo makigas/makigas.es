@@ -17,6 +17,7 @@ class Video < ApplicationRecord
   # Filterable scopes
   scope :filter_by_length, ->(duration) { where(LENGTH_QUERIES[duration]) }
   scope :filter_by_topic, ->(slug) { includes(playlist: :topic).where('topic.slug' => slug) }
+  scope :filter_by_tag, ->(tag) { where('tags @> ARRAY[?]::varchar[]', tag) }
 
   # Validations.
   validates :title, presence: true, length: { maximum: 100 }
@@ -35,6 +36,10 @@ class Video < ApplicationRecord
 
       videos.send(scope, value)
     end
+  end
+
+  def self.tags
+    pluck(Arel.sql('DISTINCT unnest(tags)'))
   end
 
   # Natural duration
