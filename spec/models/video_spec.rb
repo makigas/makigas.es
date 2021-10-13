@@ -180,11 +180,17 @@ RSpec.describe Video, type: :model do
     end
   end
 
-  describe '.tagged_as' do
+  describe '.filter_by_tag' do
     it 'filters by tag' do
       create(:video, youtube_id: '11223344', tags: [])
       v2 = create(:video, youtube_id: '11223355', tags: ['python'])
-      expect(described_class.tagged_as('python')).to match [v2]
+      expect(described_class.filter_by_tag('python')).to match [v2]
+    end
+
+    it 'filters by multiple tags' do
+      create(:video, youtube_id: '11223344', tags: ['python'])
+      v2 = create(:video, youtube_id: '11223355', tags: %w[python django])
+      expect(described_class.filter_by_tag(%w[python django])).to match [v2]
     end
   end
 
