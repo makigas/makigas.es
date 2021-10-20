@@ -36,6 +36,10 @@ gem 'simple_form'
 gem 'sitemap_generator'
 gem 'whenever'
 
+# Ops
+gem 'sentry-rails'
+gem 'sentry-ruby'
+
 group :development do
   # Development tools
   gem 'byebug'
