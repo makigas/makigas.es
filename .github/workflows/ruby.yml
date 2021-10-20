@@ -20,6 +20,12 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      meilisearch:
+        image: getmeili/meilisearch
+        env:
+          MEILI_MASTER_KEY: meilikey
+        ports:
+          - 7700:7700
     steps:
       - uses: actions/checkout@v2
       - name: Install libpq-dev
@@ -48,6 +54,8 @@ jobs:
           DB_NAME: postgres
           DB_USERNAME: postgres
           DB_PASSWORD: postgres
+          MEILISEARCH_HOST: http://localhost:7700
+          MEILISEARCH_API_KEY: meilikey
   rubocop:
     name: Run rubocop
     runs-on: ubuntu-latest
