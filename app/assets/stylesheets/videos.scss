@@ -2,6 +2,18 @@
   margin-bottom: 1rem;
 }
 
+.deprecation-warning {
+  margin-top: 0 !important;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1em;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+
+  p { flex: 1; }
+}
+
 .video-list-group {
   .list-group-item {
     border-left: none;
