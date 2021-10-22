@@ -2,10 +2,10 @@
 <style>
 :root {
     --playlist-color: <%= @playlist.topic.color %>;
-    <%= [10, 20, 30, 40, 50].each do |i| %>
+    <%- [10, 20, 30, 40, 50].each do |i| %>
     --playlist-lighten-<%= i %>: <%= @playlist.topic.color.paint.lighten(i) %>;
     <% end %>
-    <%= [10, 20, 30, 40, 50].each do |i| %>
+    <%- [10, 20, 30, 40, 50].each do |i| %>
     --playlist-darken-<%= i %>: <%= @playlist.topic.color.paint.darken(i) %>;
     <% end %>
 }
