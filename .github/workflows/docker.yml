@@ -1,10 +1,6 @@
-name: Docker
+name: Build and Deploy Docker image
 
-on:
-  push:
-    branches:
-      - trunk
-  pull_request:
+on: [push]
 
 jobs:
   docker:
@@ -19,3 +15,18 @@ jobs:
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username danirod --password-stdin
           docker push docker.pkg.github.com/${{ github.repository }}/makigas:latest
+  deploy:
+    name: Deploy into my server
+    runs-on: ubuntu-latest
+    environment: public
+    steps:
+    - name: Execute a remote command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          docker-compose --project-directory docker/makigas pull
+          docker-compose --project-directory docker/makigas up -d
