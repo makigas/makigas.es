@@ -1,6 +1,9 @@
 name: Build and Deploy Docker image
 
-on: [push]
+on:
+  push:
+    branches:
+      - trunk
 
 jobs:
   docker:
@@ -11,7 +14,6 @@ jobs:
       - name: Build Docker image
         run: docker build -t docker.pkg.github.com/${{ github.repository }}/makigas:latest .
       - name: Upload Docker image to GitHub
-        if: ${{ github.event_name == 'push' }}
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com --username danirod --password-stdin
           docker push docker.pkg.github.com/${{ github.repository }}/makigas:latest
