@@ -1,5 +1,6 @@
 <% content_for :title, "#{@video.position}. #{@video.title} – #{@video.playlist.title} – makigas" %>
 <% content_for :description, @video.description %>
+<% content_for(:tags, @video.tags.sort.join(' ')) if @video.tags.present? %>
 <% content_for :twitter do %>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@makigas">
@@ -38,6 +39,12 @@
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
 
+<% if @video.published_at < 4.years.ago %>
+  <div class="row deprecation-warning alert alert-warning">
+    <p>Han pasado más de 4 años desde que se publicó este vídeo. Puede que todo
+      siga igual, o puede que este vídeo haya quedado algo obsoleto. ¡Precaución!</p>
+  </div>
+<% end %>
 <div class="row video-player">
   <div class="video-player-column">
     <div class="embed-responsive embed-responsive-16by9">

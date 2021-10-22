@@ -275,6 +275,7 @@ es:
           one: "%{count} segundo"
           other: "%{count} segundos"
         title: Título
+        tags: Etiquetas
         thumbnail: Miniatura
         videos: Vídeos
         youtube_id: ID de YouTube

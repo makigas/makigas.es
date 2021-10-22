@@ -3,6 +3,28 @@
 class Video < ApplicationRecord
   extend FriendlyId
 
+  include MeiliSearch
+  meilisearch per_environment: true, raise_on_failure: Rails.env.development? do
+    attribute :title, :description
+
+    attribute(:transcription) do
+      transcription&.content
+    end
+
+    attribute :slug
+
+    attribute(:playlist_title) { playlist.title }
+    attribute(:playlist_description) { playlist.description }
+    attribute(:playlist_slug) { playlist.slug }
+
+    attribute(:topic_title) { playlist.topic&.title }
+    attribute(:topic_description) { playlist.topic&.description }
+    attribute(:topic_slug) { playlist.topic&.slug }
+
+    attribute :duration
+    filterable_attributes %i[topic_slug duration]
+  end
+
   # Videos are sorted in a playlist.
   belongs_to :playlist
   has_many :links, dependent: :destroy
@@ -14,6 +36,11 @@ class Video < ApplicationRecord
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
 
+  # Filterable scopes
+  scope :filter_by_length, ->(duration) { where(LENGTH_QUERIES[duration]) }
+  scope :filter_by_topic, ->(slug) { includes(playlist: :topic).where('topic.slug' => slug) }
+  scope :filter_by_tag, ->(tag) { where('tags @> ARRAY[?]::varchar[]', tag) }
+
   # Validations.
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
@@ -23,6 +50,19 @@ class Video < ApplicationRecord
   validates :published_at, presence: true
 
   has_one :transcription, dependent: :destroy, as: :documentable
+
+  def self.free_filter(filter_params)
+    filter_params.to_h.reduce(Video.visible) do |videos, (key, value)|
+      scope = "filter_by_#{key}"
+      return videos unless videos.respond_to?(scope)
+
+      videos.send(scope, value)
+    end
+  end
+
+  def self.tags
+    pluck(Arel.sql('DISTINCT unnest(tags)'))
+  end
 
   # Natural duration
   def natural_duration=(dur)
@@ -54,4 +94,10 @@ class Video < ApplicationRecord
   def to_s
     title
   end
+
+  LENGTH_QUERIES = {
+    'short' => 'duration <= 300',
+    'medium' => 'duration > 300 and duration <= 900',
+    'long' => 'duration > 900'
+  }.freeze
 end

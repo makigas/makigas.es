@@ -8,6 +8,8 @@ RSpec.describe 'Videos search', type: :feature do
     let!(:medium) { create(:video, duration: 600, title: 'Medium', youtube_id: '2') }
     let!(:long) { create(:video, duration: 1200, title: 'Long', youtube_id: '3') }
 
+    after { Video.clear_index! }
+
     it 'can search for short length videos' do
       visit videos_path
       choose 'Cortos'

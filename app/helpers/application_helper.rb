@@ -19,7 +19,7 @@ module ApplicationHelper
     return nil unless (time = time_components(sec))
 
     hours, minutes, seconds = time
-    hours.to_i * 3600 + minutes.to_i * 60 + seconds.to_i
+    (hours.to_i * 3600) + (minutes.to_i * 60) + seconds.to_i
   end
 
   def to_markdown(text)
