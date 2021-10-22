@@ -19,6 +19,7 @@ jobs:
           docker push docker.pkg.github.com/${{ github.repository }}/makigas:latest
   deploy:
     name: Deploy into my server
+    needs: [docker]
     runs-on: ubuntu-latest
     environment: public
     steps:
