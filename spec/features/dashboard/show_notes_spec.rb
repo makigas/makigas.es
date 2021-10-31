@@ -45,7 +45,7 @@ RSpec.describe 'Dashboard show notes', type: :feature, js: true do
           click_link 'Editar'
         end
         fill_in 'Contenido', with: 'Estas son mis notas de episodio'
-        click_button 'Crear Notas de episodio'
+        click_button 'Crear Notas del episodio'
         within(:xpath, row) do
           expect(page).to have_text 'Estas son mis notas de episodio'
         end
@@ -78,9 +78,9 @@ RSpec.describe 'Dashboard show notes', type: :feature, js: true do
           click_link 'Editar'
         end
         fill_in 'Contenido', with: 'Estas son las nuevas notas de episodio'
-        click_button 'Actualizar Transcripción'
+        click_button 'Actualizar Notas del episodio'
         within(:xpath, row) do
-          expect(page).to have_text 'Estas son mis notas de episodio'
+          expect(page).to have_text 'Estas son las nuevas notas de episodio'
         end
       end
 

@@ -48,7 +48,7 @@
       <%= link_to t('.edit'), dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
       <br>
       <% if @video.show_note.present? %>
-      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
+      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :show_note], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
       <% end %>
     </td>
     <td>
