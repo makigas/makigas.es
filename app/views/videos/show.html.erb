@@ -89,9 +89,9 @@
           </ul>
         <% end %>
 
-        <% if @video.transcription.present? %>
-          <h3><%= t('.transcription') %></h3>
-          <%= to_markdown(@video.transcription.content).html_safe %>
+        <% if @video.show_note.present? %>
+          <h3><%= t('.show_notes') %></h3>
+          <%= to_markdown(@video.show_note.content).html_safe %>
         <% end %>
 
         <p>
@@ -99,11 +99,11 @@
           <%= t('.duration', duration: running_time(@video.duration)) %>
         </p>
 
-        <%= render(partial: 'cards') unless @video.transcription.present? %>
+        <%= render(partial: 'cards') unless @video.show_note.present? %>
       </div>
 
       <div class="col-md-5">
-        <%= render(partial: 'cards') if @video.transcription.present? %>
+        <%= render(partial: 'cards') if @video.show_note.present? %>
         <div class="discord-cta">
           <%= link_to '/discord' do %>
             <p class="lead">👉 ¿Algo no quedó claro?</p>
