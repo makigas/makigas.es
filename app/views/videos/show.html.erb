@@ -89,37 +89,25 @@
           </ul>
         <% end %>
 
-        <% if @video.show_note.present? %>
-          <h3><%= t('.show_notes') %></h3>
-          <%= to_markdown(@video.show_note.content).html_safe %>
-        <% end %>
-
         <p>
           <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
           <%= t('.duration', duration: running_time(@video.duration)) %>
         </p>
 
-        <%= render(partial: 'cards') unless @video.show_note.present? %>
+        <% if @video.show_note.present? %>
+          <h3><%= t('.show_notes') %></h3>
+          <%= to_markdown(@video.show_note.content).html_safe %>
+        <% end %>
       </div>
 
       <div class="col-md-5">
-        <%= render(partial: 'cards') if @video.show_note.present? %>
+        <%= render(partial: 'cards') %>
         <div class="discord-cta">
           <%= link_to '/discord' do %>
             <p class="lead">👉 ¿Algo no quedó claro?</p>
             <p>Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.</p>
           <% end %>
         </div>
-        <div id="disqus_thread"></div>
-        <script>
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//makigas.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
     </div>
 </div>
