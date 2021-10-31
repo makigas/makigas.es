@@ -154,6 +154,7 @@ es:
         other: Una lista de reproducción de %{count} episodios.
     show:
       transcription: Transcripción
+      show_notes: Notas del episodio
       next: Siguiente
       part_of_series_html: "Un episodio de %{playlist}"
       previous: Anterior

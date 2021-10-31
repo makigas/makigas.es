@@ -30,4 +30,10 @@ RSpec.describe Document, type: :model do
       expect(build(:transcription).type).to eq('Transcription')
     end
   end
+
+  describe 'show note' do
+    it 'is a type of document' do
+      expect(build(:show_note).type).to eq('ShowNote')
+    end
+  end
 end

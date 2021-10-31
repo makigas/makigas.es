@@ -55,17 +55,17 @@ RSpec.describe 'Video page', type: :feature do
     end
   end
 
-  describe 'when the video has a transcription' do
+  describe 'when the video has show notes' do
     let(:topic) { create(:topic) }
     let(:playlist) { create(:playlist, topic: topic) }
-    let(:transcription) { build(:transcription, documentable: nil) }
-    let(:video) { create(:video, playlist: playlist, transcription: transcription) }
+    let(:show_note) { build(:show_note, documentable: nil) }
+    let(:video) { create(:video, playlist: playlist, show_note: show_note) }
 
-    it 'presents the transcription' do
+    it 'presents the show notes' do
       visit_video video
 
       within("//div[@class='video-information']") do
-        expect(page).to have_content transcription.content
+        expect(page).to have_content show_note.content
       end
     end
   end

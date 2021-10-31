@@ -9,6 +9,7 @@ es:
       transcription:
         one: Transcripción
         other: Transcripciones
+      show_note: Notas del episodio
       opinion:
         one: Opinión
         other: Opiniones
@@ -35,6 +36,9 @@ es:
         slug: URL
         title: Título
       transcription:
+        language: Idioma
+        content: Contenido
+      show_note:
         language: Idioma
         content: Contenido
       user:

@@ -7,9 +7,8 @@ class Video < ApplicationRecord
   meilisearch per_environment: true, raise_on_failure: Rails.env.development? do
     attribute :title, :description
 
-    attribute(:transcription) do
-      transcription&.content
-    end
+    attribute(:transcription) { transcription&.content }
+    attribute(:show_note) { show_note&.content }
 
     attribute :slug
 
@@ -49,6 +48,7 @@ class Video < ApplicationRecord
   validates :playlist, presence: true
   validates :published_at, presence: true
 
+  has_one :show_note, dependent: :destroy, as: :documentable
   has_one :transcription, dependent: :destroy, as: :documentable
 
   def self.free_filter(filter_params)
