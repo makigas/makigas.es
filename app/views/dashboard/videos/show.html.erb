@@ -35,7 +35,7 @@
   </tr>
   <tr>
     <td><%= t('.tags') %></td>
-    <td><%= @video.tags.sort.join(' ') %></td>
+    <td><%= @video.tags.sort.join(' ') if @video.tags.present? %></td>
   </tr>
   <tr>
     <td><%= t('.published_at') %></td>
