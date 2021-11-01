@@ -183,7 +183,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (7.0.0)
+    kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -197,7 +197,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     meilisearch (0.16.0)
       httparty (>= 0.17.1, < 0.19.0)
     meilisearch-rails (0.2.3)
@@ -206,7 +206,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0225)
+    mime-types-data (3.2021.0901)
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
@@ -389,7 +389,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
@@ -411,7 +411,7 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   jbuilder (~> 2.11)
   kaminari
-  kt-paperclip (~> 7.0.0)
+  kt-paperclip (~> 7.0.1)
   listen (~> 3.5)
   meilisearch-rails
   pg (~> 1.2)
