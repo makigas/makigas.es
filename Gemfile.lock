@@ -66,17 +66,17 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.510.0)
-    aws-sdk-core (3.121.1)
+    aws-partitions (1.522.0)
+    aws-sdk-core (3.121.5)
       aws-eventstream (~> 1, >= 1.0.2)
-      aws-partitions (~> 1, >= 1.239.0)
+      aws-partitions (~> 1, >= 1.520.1)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.48.0)
-      aws-sdk-core (~> 3, >= 3.120.0)
+    aws-sdk-kms (1.50.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.103.0)
-      aws-sdk-core (~> 3, >= 3.120.0)
+    aws-sdk-s3 (1.104.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.4.0)
@@ -90,15 +90,16 @@ GEM
       rails (>= 3.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.35.3)
+    capybara (3.36.0)
       addressable
+      matrix
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
+    childprocess (4.1.0)
     chronic (0.10.2)
     climate_control (0.2.0)
     concurrent-ruby (1.1.9)
@@ -141,7 +142,7 @@ GEM
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    faraday_middleware (1.1.0)
+    faraday_middleware (1.2.0)
       faraday (~> 1.0)
     ffi (1.15.4)
     friendly_id (5.4.2)
@@ -183,7 +184,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    kt-paperclip (7.0.0)
+    kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -197,7 +198,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
+    matrix (0.4.2)
     meilisearch (0.16.0)
       httparty (>= 0.17.1, < 0.19.0)
     meilisearch-rails (0.2.3)
@@ -206,8 +208,8 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0225)
-    mini_mime (1.1.1)
+    mime-types-data (3.2021.0901)
+    mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
@@ -223,9 +225,9 @@ GEM
       ast (~> 2.4.1)
     pg (1.2.3)
     public_suffix (4.0.6)
-    puma (5.5.1)
+    puma (5.5.2)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-proxy (0.7.0)
       rack
@@ -293,7 +295,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.22.0)
+    rubocop (1.22.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -304,7 +306,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.12.0)
       parser (>= 3.0.1.1)
-    rubocop-rails (2.12.2)
+    rubocop-rails (2.12.4)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -329,8 +331,9 @@ GEM
       tilt
     sdoc (2.2.0)
       rdoc (>= 5.0)
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
+    selenium-webdriver (4.0.3)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sentry-rails (4.7.3)
@@ -373,10 +376,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webdrivers (4.6.1)
+    webdrivers (5.0.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
-      selenium-webdriver (>= 3.0, < 4.0)
+      selenium-webdriver (~> 4.0)
     webpacker (5.4.3)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -389,53 +392,53 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts_as_list
-  aws-sdk-s3 (~> 1.103.0)
+  aws-sdk-s3 (~> 1.104.0)
   bootsnap (~> 1.9.1)
   bootstrap-kaminari-views (~> 0.0.5)
   byebug
-  capybara
+  capybara (~> 3.36.0)
   devise
   dotenv-rails
   factory_bot (~> 6.2.0)
   factory_bot_rails
   faraday (~> 1.8.0)
-  faraday_middleware (~> 1.1.0)
+  faraday_middleware (~> 1.2.0)
   friendly_id
   haml-rails (~> 2.0)
   jbuilder (~> 2.11)
   kaminari
-  kt-paperclip (~> 7.0.0)
+  kt-paperclip (~> 7.0.1)
   listen (~> 3.5)
   meilisearch-rails
   pg (~> 1.2)
-  puma (~> 5.5.1)
+  puma (~> 5.5.2)
   rails (= 6.1.4.1)
   rails-i18n (~> 6.0.0)
   rake (~> 13.0.3)
   redcarpet
   rspec (~> 3.10)
   rspec-rails (~> 5.0.2)
-  rubocop (~> 1.22.0)
-  rubocop-rails (~> 2.12.2)
+  rubocop (~> 1.22.3)
+  rubocop-rails (~> 2.12.4)
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.5.0)
   sass-rails (~> 6.0)
   sdoc (~> 2.2.0)
-  selenium-webdriver
+  selenium-webdriver (~> 4.0.3)
   sentry-rails
   sentry-ruby
   simple_form
   sitemap_generator
   uglifier (>= 1.3.0)
   web-console (~> 4.1.0)
-  webdrivers (~> 4.6.1)
+  webdrivers (~> 5.0.0)
   webpacker (~> 5.4.3)
   whenever
 
@@ -443,4 +446,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.26
+   2.2.30

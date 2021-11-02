@@ -12,7 +12,7 @@ gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.11'
 gem 'meilisearch-rails'
 gem 'pg', '~> 1.2'
-gem 'puma', '~> 5.5.1'
+gem 'puma', '~> 5.5.2'
 gem 'rails', '6.1.4.1'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
@@ -22,15 +22,15 @@ gem 'webpacker', '~> 5.4.3'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.103.0'
+gem 'aws-sdk-s3', '~> 1.104.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'faraday', '~> 1.8.0'
-gem 'faraday_middleware', '~> 1.1.0'
+gem 'faraday_middleware', '~> 1.2.0'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
-gem 'kt-paperclip', '~> 7.0.0'
+gem 'kt-paperclip', '~> 7.0.1'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator'
@@ -47,8 +47,8 @@ group :development do
   gem 'web-console', '~> 4.1.0'
 
   # Lint tools
-  gem 'rubocop', '~> 1.22.0', require: false
-  gem 'rubocop-rails', '~> 2.12.2', require: false
+  gem 'rubocop', '~> 1.22.3', require: false
+  gem 'rubocop-rails', '~> 2.12.4', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.5.0', require: false
 end
@@ -63,7 +63,7 @@ end
 
 # Test tools
 group :test do
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 4.6.1'
+  gem 'capybara', '~> 3.36.0'
+  gem 'selenium-webdriver', '~> 4.0.3'
+  gem 'webdrivers', '~> 5.0.0'
 end
