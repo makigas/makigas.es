@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.11'
 gem 'meilisearch-rails'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 5.5.2'
+gem 'rack-cors'
 gem 'rails', '6.1.4.1'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
@@ -34,6 +35,7 @@ gem 'kt-paperclip', '~> 7.0.1'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator'
+gem 'view_component', require: 'view_component/engine'
 gem 'whenever'
 
 # Ops
@@ -59,6 +61,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0.2'
+
+  # Install ViewComponent and Storybook
+  gem 'view_component_storybook', require: 'view_component/storybook/engine'
 end
 
 # Test tools
