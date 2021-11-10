@@ -1,0 +1,13 @@
+<article class="videocard">
+  <%= link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'videocard__link' do %>
+    <h2 class="videocard__title">
+      <span class="videocard__vnum"><%= @video.position %></span>
+      <%= @video.title %>
+    </h2>
+    <p class="videocard__desc"><%= @video.description %></p>
+    <p class="videocard__meta">
+      <time datetime="<%= @video.published_at %>"><%= published_at %></time> - 
+      Duración: <%= duration %>
+    </p>
+  <% end %>
+</article> 

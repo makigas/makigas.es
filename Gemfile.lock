@@ -258,6 +258,8 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
+    rails_feather (0.1.0)
+      rails
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
       activesupport (= 6.1.4.1)
@@ -429,6 +431,7 @@ DEPENDENCIES
   rack-cors
   rails (= 6.1.4.1)
   rails-i18n (~> 6.0.0)
+  rails_feather
   rake (~> 13.0.3)
   redcarpet
   rspec (~> 3.10)

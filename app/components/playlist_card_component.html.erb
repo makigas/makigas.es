@@ -1,0 +1,21 @@
+<article class="plcard">
+  <%= link_to playlist_path(@playlist), class: 'plcard__link' do %>
+    <figure class="plcard__thumb">
+        <%= image_tag @playlist.thumbnail.url(:small), class: 'plcard__img' %>
+    </figure>
+    <section class="plcard__body">
+        <h2 class="plcard__title"><%= @playlist.title %></h2>
+        <p><%= @playlist.description %></p>
+        <p class="plcard__metas">
+            <span class="plcard__meta">
+                <%= feather_icon 'list', class: 'plcard__icon' %>
+                <%= @playlist.videos.count %> episodios
+            </span>
+            <span class="plcard__meta">
+                <%= feather_icon 'clock', class: 'plcard__icon'  %>
+                <%= duration %> horas
+            </span>
+        </p>
+    </section>
+    <% end %>
+</article>
