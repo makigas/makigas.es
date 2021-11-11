@@ -246,6 +246,10 @@ es:
         destroy: Destruir
         edit: Editar
         last_update: Última modificación
+        aspect: Aspecto
+        with_transcription: Con transcripción
+        with_show_notes: Con notas de versión
+        with_tags: Con etiquetas
         new_video: Nuevo Vídeo
         operations: Operaciones
         playlist: Lista
