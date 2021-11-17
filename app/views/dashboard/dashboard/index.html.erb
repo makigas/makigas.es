@@ -2,38 +2,51 @@
   <ol class="breadcrumb">
     <li class="current"><%= t('.dashboard') %></li>
   </ol>
-
   <h1><%= t('.dashboard') %></h1>
 <% end %>
-
-<div class="row data-dashboard">
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @videos %></h1>
-    <p class="lead"><%= t('.videos', count: @videos) %></p>
-    <p><%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-default btn-block' %></p>
+<div class="row">
+  <div class="col-lg-2 col-md-3 col-sm-3 data-dashboard">
+    <div class="row">
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="glyphicon glyphicon-facetime-video"></span> <%= @videos %></h1>
+        <p class="lead"><%= t('.videos', count: @videos) %></p>
+        <p><%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-default btn-block' %></p>
+      </div>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="glyphicon glyphicon-list"></span> <%= @playlists %></h1>
+        <p class="lead"><%= t('.playlists', count: @playlists) %></p>
+        <p><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-default btn-block' %></p>
+      </div>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="glyphicon glyphicon-book"></span> <%= @topics %></h1>
+        <p class="lead"><%= t('.topics', count: @topics) %></p>
+        <p><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-default btn-block' %></p>
+      </div>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="glyphicon glyphicon-user"></span> <%= @users %></h1>
+        <p class="lead"><%= t('.users', count: @users) %></p>
+        <p><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-default btn-block' %></p>
+      </div>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="glyphicon glyphicon-user"></span> <%= @opinions %></h1>
+        <p class="lead"><%= t('.opinions', count: @opinions) %></p>
+        <p><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-default btn-block' %></p>
+      </div>
+    </div>
   </div>
-
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-list"></span> <%= @playlists %></h1>
-    <p class="lead"><%= t('.playlists', count: @playlists) %></p>
-    <p><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-default btn-block' %></p>
-  </div>
-
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-book"></span> <%= @topics %></h1>
-    <p class="lead"><%= t('.topics', count: @topics) %></p>
-    <p><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-default btn-block' %></p>
-  </div>
-
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-user"></span> <%= @users %></h1>
-    <p class="lead"><%= t('.users', count: @users) %></p>
-    <p><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-default btn-block' %></p>
-  </div>
-
-  <div class="col-xs-6 col-sm-3">
-    <h1><span class="glyphicon glyphicon-user"></span> <%= @opinions %></h1>
-    <p class="lead"><%= t('.opinions', count: @opinions) %></p>
-    <p><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-default btn-block' %></p>
+  <div class="col-sm-9 col-md-9 col-lg-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Acciones rápidas</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li> <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path %></li>
+          <% Video.last.playlist.tap do |playlist| %>
+            <li> <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id) %> </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
