@@ -5,4 +5,5 @@ import "./storybook.scss";
 import "../six/components/discordcta";
 import "../six/components/plhead";
 import "../six/components/plcard";
+import "../six/components/search";
 import "../six/components/videocard";

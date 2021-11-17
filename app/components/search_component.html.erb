@@ -1,0 +1,6 @@
+<%= form_with url: videos_path, method: :get, class: "searchbar #{search_class}" do |form| %>
+  <%= text_field_tag :q, @query, placeholder: '¿Qué quieres aprender hoy?', class: 'searchbar__search' %>
+  <%= button_tag name: nil, type: :submit, class: 'searchbar__submit', aria: { label: 'Buscar' } do %>
+    <%= feather_icon :search, class: 'searchbar__icon' %>
+  <% end %>
+<% end %>
