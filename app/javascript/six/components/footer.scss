@@ -1,13 +1,8 @@
 @import "../layout/responsive.scss";
 
-// TODO: Do I have these colors repeated?
-$footer-background-color: #3e3e3e;
-$footer-link-color: #a4d7fc;
-$footer-foreground-color: #ffffff;
-
 .footer {
-    background-color: $footer-background-color;
-    color: $footer-foreground-color;
+    background-color: var(--footer-background-color);
+    color: var(--footer-foreground-color);
     line-height: 1.5;
     padding: 10px 30px;
     text-align: center;
@@ -21,7 +16,7 @@ $footer-foreground-color: #ffffff;
     }
 
     a {
-        color: $footer-link-color;
+        color: var(--footer-link-color);
     }
 
     &__colophon {
