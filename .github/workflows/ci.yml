@@ -1,4 +1,4 @@
-name: Ruby
+name: CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   rspec:
-    name: Run rspec
+    name: RSpec
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -57,7 +57,7 @@ jobs:
           MEILISEARCH_HOST: http://localhost:7700
           MEILISEARCH_API_KEY: meilikey
   rubocop:
-    name: Run rubocop
+    name: Rubocop
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -70,3 +70,17 @@ jobs:
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop
+  assets:
+    name: Asset precompile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
+      - name: Set up ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'
+          bundler-cache: true
+      - name: Build assets
+        run: bundle exec rails assets:precompile
