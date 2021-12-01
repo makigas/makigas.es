@@ -19,7 +19,7 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-controls": "^6.3.12",
+    "@storybook/addon-controls": "^6.4.3",
     "@storybook/server": "^6.3.12",
     "@types/rails__ujs": "^6.0.1"
   }
