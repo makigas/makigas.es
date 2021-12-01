@@ -47,7 +47,7 @@ group :development do
   # Development tools
   gem 'byebug'
   gem 'listen', '~> 3.5'
-  gem 'web-console', '~> 4.1.0'
+  gem 'web-console', '~> 4.2.0'
 
   # Lint tools
   gem 'rubocop', '~> 1.22.3', require: false
