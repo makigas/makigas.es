@@ -335,7 +335,7 @@ GEM
       tilt
     sdoc (2.2.0)
       rdoc (>= 5.0)
-    selenium-webdriver (4.0.3)
+    selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
@@ -442,7 +442,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.5.0)
   sass-rails (~> 6.0)
   sdoc (~> 2.2.0)
-  selenium-webdriver (~> 4.0.3)
+  selenium-webdriver (~> 4.1.0)
   sentry-rails
   sentry-ruby
   simple_form
