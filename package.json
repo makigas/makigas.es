@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@storybook/addon-controls": "^6.3.12",
-    "@storybook/server": "^6.3.12",
+    "@storybook/server": "^6.4.9",
     "@types/rails__ujs": "^6.0.1"
   }
 }
