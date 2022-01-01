@@ -23,7 +23,7 @@ gem 'webpacker', '~> 5.4.3'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.104.0'
+gem 'aws-sdk-s3', '~> 1.110.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'faraday', '~> 1.8.0'
