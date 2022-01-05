@@ -45,7 +45,6 @@ class Video < ApplicationRecord
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 15 }
   validates :duration, presence: true, numericality: { greater_than: 0 }
-  validates :playlist, presence: true
   validates :published_at, presence: true
 
   has_one :show_note, dependent: :destroy, as: :documentable
