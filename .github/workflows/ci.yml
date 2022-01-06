@@ -21,7 +21,7 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       meilisearch:
-        image: getmeili/meilisearch:v0.23.1
+        image: getmeili/meilisearch:v0.24.0
         env:
           MEILI_MASTER_KEY: meilikey
         ports:
