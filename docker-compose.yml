@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
   search:
-    image: getmeili/meilisearch:v0.24.0
+    image: getmeili/meilisearch:v0.25.0
     volumes:
     - './docker_data/meili:/data.ms'
     environment:
