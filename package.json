@@ -6,10 +6,6 @@
   "author": "Dani Rodríguez",
   "license": "GPLv3",
   "private": true,
-  "scripts": {
-    "storybook": "start-storybook -s ./public -p 6006",
-    "storybook:viewcomponent": "rake view_component_storybook:write_stories_json && yarn storybook"
-  },
   "dependencies": {
     "@rails/ujs": "^6.1.4-1",
     "@rails/webpacker": "5.4.3",
@@ -22,8 +18,6 @@
     "trim": "^1.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-controls": "^6.4.13",
-    "@storybook/server": "^6.4.13",
     "@types/rails__ujs": "^6.0.1",
     "postcss": "^8.4.5"
   }

@@ -61,9 +61,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0.2'
-
-  # Install ViewComponent and Storybook
-  gem 'view_component_storybook', require: 'view_component/storybook/engine'
 end
 
 # Test tools
