@@ -83,7 +83,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.10.1)
+    bootsnap (1.10.3)
       msgpack (~> 1.2)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
@@ -217,7 +217,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
-    msgpack (1.4.2)
+    msgpack (1.4.4)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.8)
@@ -378,8 +378,6 @@ GEM
     view_component (2.48.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
-    view_component_storybook (0.10.1)
-      view_component (>= 2.36)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -411,7 +409,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   aws-sdk-s3 (~> 1.111.1)
-  bootsnap (~> 1.10.1)
+  bootsnap (~> 1.10.3)
   bootstrap-kaminari-views (~> 0.0.5)
   byebug
   capybara (~> 3.36.0)
@@ -450,7 +448,6 @@ DEPENDENCIES
   sitemap_generator (~> 6.2.1)
   uglifier (>= 1.3.0)
   view_component (~> 2.48.0)
-  view_component_storybook
   web-console (~> 4.2.0)
   webdrivers (~> 5.0.0)
   webpacker (~> 5.4.3)

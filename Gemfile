@@ -7,7 +7,7 @@ ruby '~> 3.0.0'
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.10.1'
+gem 'bootsnap', '~> 1.10.3'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.11'
 gem 'meilisearch-rails'
@@ -61,9 +61,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0.2'
-
-  # Install ViewComponent and Storybook
-  gem 'view_component_storybook', require: 'view_component/storybook/engine'
 end
 
 # Test tools
