@@ -22,7 +22,7 @@ gem 'webpacker', '~> 5.4.3'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.111.1'
+gem 'aws-sdk-s3', '~> 1.112.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'faraday', '< 2.0.0'
@@ -61,9 +61,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0.2'
-
-  # Install ViewComponent and Storybook
-  gem 'view_component_storybook', require: 'view_component/storybook/engine'
 end
 
 # Test tools
