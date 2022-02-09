@@ -12,7 +12,7 @@ gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.11'
 gem 'meilisearch-rails'
 gem 'pg', '~> 1.2'
-gem 'puma', '~> 5.5.2'
+gem 'puma', '~> 5.6.1'
 gem 'rack-cors'
 gem 'rails', '6.1.4.4'
 gem 'rails-i18n', '~> 6.0.0'
@@ -22,7 +22,7 @@ gem 'webpacker', '~> 5.4.3'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.111.1'
+gem 'aws-sdk-s3', '~> 1.112.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'faraday', '< 2.0.0'
@@ -30,7 +30,7 @@ gem 'faraday_middleware', '~> 1.2.0'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
-gem 'kt-paperclip', '~> 7.0.1'
+gem 'kt-paperclip', '~> 7.1.1'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
@@ -39,8 +39,8 @@ gem 'view_component', '~> 2.48.0', require: 'view_component/engine'
 gem 'whenever'
 
 # Ops
-gem 'sentry-rails', '~> 4.9.2'
-gem 'sentry-ruby', '~> 4.9.2'
+gem 'sentry-rails', '~> 5.0.2'
+gem 'sentry-ruby', '~> 5.0.2'
 
 group :development do
   # Development tools
@@ -52,7 +52,7 @@ group :development do
   gem 'rubocop', '~> 1.25.0', require: false
   gem 'rubocop-rails', '~> 2.13.2', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.7.0', require: false
+  gem 'rubocop-rspec', '~> 2.8.0', require: false
 end
 
 # Test tools that must be available in development mode
@@ -60,7 +60,7 @@ group :development, :test do
   gem 'factory_bot', '~> 6.2.0'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 5.0.2'
+  gem 'rspec-rails', '~> 5.1.0'
 end
 
 # Test tools
