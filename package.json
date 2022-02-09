@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "@types/rails__ujs": "^6.0.1",
-    "postcss": "^8.4.5"
+    "postcss": "^8.4.6"
   }
 }
