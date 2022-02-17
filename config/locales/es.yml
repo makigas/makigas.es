@@ -6,6 +6,10 @@ es:
         explore_other_videos:
           one: Explora el resto de vídeos de esta lista de reproducción.
           other: Una lista de reproducción de %{count} episodios.
+    player:
+      discord_cta_component:
+        title: 👉 ¿Algo no quedó claro?
+        description: Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.
   front:
     opinions:
       title: No lo digo yo, ellos también lo dicen

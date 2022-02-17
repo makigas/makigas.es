@@ -77,7 +77,7 @@
 <div class="video-information">
 <div class="row">
 
-      <div class="col-md-7">
+      <div class="col-md-6">
         <p><strong><%= to_markdown(@video.description).html_safe %></strong></p>
 
         <% unless @video.links.empty? %>
@@ -100,7 +100,9 @@
         <% end %>
       </div>
 
-      <div class="col-md-5">
+      <div class="col-md-6">
+        <%= render Five::Player::DiscordCtaComponent.new %>
+
         <h4 class="card-header"><%= t('.this_playlist') %></h4>
         <%= render Five::Catalog::PlaylistMediaCardComponent.new(playlist: @video.playlist) %>
 
@@ -108,13 +110,6 @@
         <h4 class="card-header"><%= t('.this_topic') %></h4>
         <%= render Five::Catalog::TopicMediaCardComponent.new(topic: @video.playlist.topic) %>
         <% end %>
-
-        <div class="discord-cta">
-          <%= link_to '/discord' do %>
-            <p class="lead">👉 ¿Algo no quedó claro?</p>
-            <p>Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.</p>
-          <% end %>
-        </div>
       </div>
     </div>
 </div>
