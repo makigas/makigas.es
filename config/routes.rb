@@ -56,4 +56,6 @@ Rails.application.routes.draw do
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
   get '/videos/:topic/:playlist' => redirect('/series/%{playlist}')
   get '/videos/:playlist' => redirect('/series/%{playlist}')
+
+  mount Lookbook::Engine, at: '/lookbook'
 end

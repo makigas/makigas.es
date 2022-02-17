@@ -1,0 +1,13 @@
+<%= stylesheet_pack_tag 'vendor' %>
+<%= stylesheet_link_tag 'application', media: 'all' %>
+
+<div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>">
+      <% if params[:lookbook][:display][:wrapper] == true %>
+        <div class="wrapper"><%= yield %></div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+    </div>
+
+<%= javascript_pack_tag 'vendor' %>
+<%= javascript_pack_tag 'app' %>

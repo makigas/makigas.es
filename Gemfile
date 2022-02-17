@@ -31,11 +31,12 @@ gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.0.1'
+gem 'lookbook'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.48.0', require: 'view_component/engine'
+gem 'view_component', '~> 2.48.0'
 gem 'whenever'
 
 # Ops
