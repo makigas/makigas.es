@@ -1,5 +1,11 @@
 # This translation file is reserved for public strings.
 es:
+  five:
+    catalog:
+      playlist_media_card_component:
+        explore_other_videos:
+          one: Explora el resto de vídeos de esta lista de reproducción.
+          other: Una lista de reproducción de %{count} episodios.
   front:
     opinions:
       title: No lo digo yo, ellos también lo dicen
@@ -147,13 +153,9 @@ es:
         long_videos: Largos (>15 min)
         by_topic: Por tema
         apply_filters: Aplicar filtros
-    cards:
+    show:
       this_playlist: Lista de reproducción
       this_topic: Este tema
-      explore_other_videos:
-        one: Explora el resto de vídeos de esta lista de reproducción.
-        other: Una lista de reproducción de %{count} episodios.
-    show:
       transcription: Transcripción
       show_notes: Notas del episodio
       next: Siguiente

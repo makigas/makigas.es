@@ -101,7 +101,14 @@
       </div>
 
       <div class="col-md-5">
-        <%= render(partial: 'cards') %>
+        <h4 class="card-header"><%= t('.this_playlist') %></h4>
+        <%= render Five::Catalog::PlaylistMediaCardComponent.new(playlist: @video.playlist) %>
+
+        <% if @video.playlist.topic %>
+        <h4 class="card-header"><%= t('.this_topic') %></h4>
+        <%= render Five::Catalog::TopicMediaCardComponent.new(topic: @video.playlist.topic) %>
+        <% end %>
+
         <div class="discord-cta">
           <%= link_to '/discord' do %>
             <p class="lead">👉 ¿Algo no quedó claro?</p>
