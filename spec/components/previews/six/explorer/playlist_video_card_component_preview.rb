@@ -4,11 +4,16 @@ module Six
   module Explorer
     # @label Playlist video card
     class PlaylistVideoCardComponentPreview < ViewComponent::Preview
+      layout 'component_preview_six'
+
       # Renders a playlist
       #
       # @display padding 10px
       def default
-        render Six::Explorer::PlaylistVideoCardComponent.new(video: Video.first)
+        component = Six::Explorer::PlaylistVideoCardComponent.new(video: Video.first)
+        render ViewComponentContrib::WrapperComponent.new(component) do |wrapper|
+          "<div style='--playlist-lighten-30: #e1f5fe;'>#{wrapper.component}</div>".html_safe
+        end
       end
     end
   end

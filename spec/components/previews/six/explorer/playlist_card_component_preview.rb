@@ -4,6 +4,8 @@ module Six
   module Explorer
     # @label Playlist card
     class PlaylistCardComponentPreview < ViewComponent::Preview
+      layout 'component_preview_six'
+
       # Renders a playlist
       #
       # @display padding 10px

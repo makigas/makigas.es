@@ -4,6 +4,8 @@ module Six
   module Layout
     # @label Search bar
     class SearchComponentPreview < ViewComponent::Preview
+      layout 'component_preview_six'
+
       # Renders the search
       #
       # @param query text

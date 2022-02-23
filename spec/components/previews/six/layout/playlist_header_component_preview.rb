@@ -4,6 +4,8 @@ module Six
   module Layout
     # @label Playlist header
     class PlaylistHeaderComponentPreview < ViewComponent::Preview
+      layout 'component_preview_six'
+
       # Renders a playlist
       #
       # @display bgcolor '#2196f3'
