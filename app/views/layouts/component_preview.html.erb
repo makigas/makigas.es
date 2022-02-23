@@ -1,7 +1,8 @@
 <%= stylesheet_pack_tag 'vendor' %>
+<%= stylesheet_pack_tag 'six' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 
-<div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>">
+<div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>; padding: <%= params[:lookbook][:display][:padding] || '0' %>; background-color: <%= params[:lookbook][:display][:bgcolor] || 'transparent' %>">
       <% if params[:lookbook][:display][:wrapper] == true %>
         <div class="wrapper"><%= yield %></div>
       <% else %>
@@ -11,3 +12,4 @@
 
 <%= javascript_pack_tag 'vendor' %>
 <%= javascript_pack_tag 'app' %>
+<%= javascript_pack_tag 'six' %>
