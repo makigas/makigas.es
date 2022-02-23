@@ -58,4 +58,6 @@ Rails.application.routes.draw do
   get '/videos/:playlist' => redirect('/series/%{playlist}')
 
   mount Lookbook::Engine, at: '/lookbook'
+
+  match '/delayed_job' => DelayedJobWeb, :anchor => false, :via => %i[get post]
 end

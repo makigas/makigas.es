@@ -25,5 +25,8 @@ module Makigas
 
     # Configure exceptions to show our custom /404 and /500 pages.
     config.exceptions_app = routes
+
+    # Configure Delayed Job
+    config.active_job.queue_adapter = :delayed_job
   end
 end
