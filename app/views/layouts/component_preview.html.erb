@@ -1,6 +1,6 @@
 <%= stylesheet_pack_tag 'vendor' %>
-<%= stylesheet_pack_tag 'six' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
+<%= stylesheet_pack_tag 'six' %>
 
 <div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>; padding: <%= params[:lookbook][:display][:padding] || '0' %>; background-color: <%= params[:lookbook][:display][:bgcolor] || 'transparent' %>">
       <% if params[:lookbook][:display][:wrapper] == true %>

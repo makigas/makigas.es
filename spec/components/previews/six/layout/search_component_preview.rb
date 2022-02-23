@@ -2,7 +2,7 @@
 
 module Six
   module Layout
-    # @label Media card
+    # @label Search bar
     class SearchComponentPreview < ViewComponent::Preview
       # Renders the search
       #
