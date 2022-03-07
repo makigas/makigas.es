@@ -6,5 +6,5 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
   },
-  extends: ["eslint:recommended", "prettier"],
+  extends: ["eslint:recommended", "plugin:prettier/recommended"],
 };
