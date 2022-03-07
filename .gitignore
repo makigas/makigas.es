@@ -27,3 +27,6 @@ node_modules/
 /public/packs-test/
 yarn-debug.log*
 .yarn-integrity
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

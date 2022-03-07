@@ -1,4 +1,4 @@
-<%= stylesheet_pack_tag 'six', media: :all %>
+<%= stylesheet_link_tag 'six', media: :all %>
 
 <div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>; padding: <%= params[:lookbook][:display][:padding] || '0' %>; background-color: <%= params[:lookbook][:display][:bgcolor] || 'transparent' %>">
       <% if params[:lookbook][:display][:wrapper] == true %>
@@ -8,4 +8,4 @@
       <% end %>
     </div>
 
-<%= javascript_pack_tag 'six' %>
+<%= javascript_include_tag 'six' %>
