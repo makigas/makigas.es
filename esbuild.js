@@ -11,6 +11,8 @@ require('esbuild').build({
     watch: process.argv.indexOf('--watch') > -1 || process.argv.indexOf('-w') > -1,
     logLevel: 'info',
     outdir: "app/assets/builds",
+    target: ['firefox57'],
+    platform: 'browser',
     loader: {
       '.png': 'file',
       '.svg': 'file',

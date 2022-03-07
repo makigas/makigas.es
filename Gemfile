@@ -19,7 +19,6 @@ gem 'rails', '6.1.4.4'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'webpacker', '~> 5.4.3'
 
 # Application extras
 gem 'acts_as_list'
