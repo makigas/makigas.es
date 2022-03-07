@@ -10,7 +10,9 @@
     display: block;
     padding: 1rem;
 
-    &:hover { text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__title {

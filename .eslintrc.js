@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
   },
   parserOptions: {
-    sourceType: 'module',
+    sourceType: "module",
   },
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "prettier"],
 };
