@@ -50,6 +50,12 @@ group :development do
   gem 'listen', '~> 3.7.1'
   gem 'web-console', '~> 4.2.0'
 
+  # Guard
+  gem 'guard', '~> 2.18.0'
+  gem 'guard-rails', '~> 0.8.1'
+  gem 'guard-rspec', '~> 4.7.3'
+  gem 'guard-rubocop', '~> 1.5.0'
+
   # Lint tools
   gem 'rubocop', '~> 1.25.0', require: false
   gem 'rubocop-rails', '~> 2.13.2', require: false
