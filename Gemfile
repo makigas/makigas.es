@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.111.1'
+gem 'aws-sdk-s3', '~> 1.113.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'devise'
 gem 'faraday', '< 2.0.0'
