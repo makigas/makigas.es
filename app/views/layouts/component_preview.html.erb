@@ -1,4 +1,4 @@
-<%= stylesheet_pack_tag 'vendor' %>
+<%= stylesheet_link_tag 'vendor' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 
 <div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>; padding: <%= params[:lookbook][:display][:padding] || '0' %>; background-color: <%= params[:lookbook][:display][:bgcolor] || 'transparent' %>">
@@ -9,5 +9,5 @@
       <% end %>
     </div>
 
-<%= javascript_pack_tag 'vendor' %>
-<%= javascript_pack_tag 'app' %>
+<%= javascript_include_tag 'vendor' %>
+<%= javascript_include_tag 'app' %>

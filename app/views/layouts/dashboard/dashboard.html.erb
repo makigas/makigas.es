@@ -5,13 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>makigas</title>
-  <%= stylesheet_pack_tag 'vendor' %>
+  <%= stylesheet_link_tag 'vendor' %>
   <%= stylesheet_link_tag 'dashboard/dashboard', media: 'all' %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
 <body class="no-js <%= "page-#{controller.controller_name}" %>">
-  
+
   <%= render 'layouts/dashboard/header' %>
 
   <div class="dashboard-page">
@@ -29,8 +29,8 @@
       <%= yield %>
     </main>
   </div>
-   
-  <%= javascript_pack_tag 'vendor' %>
+
+  <%= javascript_include_tag 'vendor' %>
   <%= javascript_include_tag 'dashboard/dashboard' %>
 
 </body>

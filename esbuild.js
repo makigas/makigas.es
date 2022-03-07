@@ -8,6 +8,8 @@ require('esbuild').build({
     ],
     bundle: true,
     sourcemap: true,
+    watch: process.argv.indexOf('--watch') > -1 || process.argv.indexOf('-w') > -1,
+    logLevel: 'info',
     outdir: "app/assets/builds",
     loader: {
       '.png': 'file',
