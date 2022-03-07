@@ -1,19 +1,19 @@
 .discordcta {
-    background-color: var(--discord-background);
-    color: var(--discord-foreground);
-    max-width: 640px;
-    font-size: 1.1rem;
+  background-color: var(--discord-background);
+  color: var(--discord-foreground);
+  max-width: 640px;
+  font-size: 1.1rem;
 
-    &__link {
-        color: inherit;
-        text-decoration: none;
-        display: block;
-        padding: 1rem;
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
 
-        &:hover { text-decoration: underline; }
-    }
+    &:hover { text-decoration: underline; }
+  }
 
-    &__title {
-        font-family: Montserrat;
-    }
+  &__title {
+    font-family: var(--font-title);
+  }
 }

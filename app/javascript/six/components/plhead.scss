@@ -26,6 +26,7 @@ $plhead-text-size: 1.15rem;
   &__thumbnail {
     margin: 0;
     display: none;
+
     @media screen and (min-width: 767px) {
       display: block;
     }

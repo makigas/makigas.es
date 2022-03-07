@@ -1,77 +1,77 @@
-@import "../layout/responsive.scss";
+@import "../layout/responsive";
 
 .footer {
-    background-color: var(--footer-background-color);
-    color: var(--footer-foreground-color);
-    line-height: 1.5;
-    padding: 10px 30px;
-    text-align: center;
+  background-color: var(--footer-background-color);
+  color: var(--footer-foreground-color);
+  line-height: 1.5;
+  padding: 10px 30px;
+  text-align: center;
+
+  @include desktop-layout {
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 140px 140px;
+    grid-gap: 0 20px;
+    grid-template-rows: repeat(2, auto);
+  }
+
+  a {
+    color: var(--footer-link-color);
+  }
+
+  &__colophon {
+    grid-column: span 1;
+  }
+
+  &__links {
+    grid-column: span 2;
+    display: flex;
+    line-height: 2;
+    max-width: 400px;
+    margin: 0 auto;
 
     @include desktop-layout {
-        text-align: left;
-        display: grid;
-        grid-template-columns: auto 140px 140px;
-        grid-gap: 0px 20px;
-        grid-template-rows: repeat(2, auto);
+      max-width: unset;
+      margin: unset;
+    }
+  }
+
+  &__link {
+    flex: 1;
+    list-style: none;
+    padding-left: 0;
+    align-self: center;
+
+    @include desktop-layout {
+      align-self: start;
     }
 
-    a {
-        color: var(--footer-link-color);
+    &:first-child {
+      text-align: left;
     }
 
-    &__colophon {
-        grid-column: span 1;
+    &:last-child {
+      text-align: right;
     }
+  }
 
-    &__links {
-        grid-column: span 2;
-        display: flex;
-        line-height: 2;
-        max-width: 400px;
-        margin: 0 auto;
+  &__copyright {
+    justify-self: start;
+    grid-column: span 2;
+  }
 
-        @include desktop-layout {
-            max-width: unset;
-            margin: unset;
-        }
-    }
+  &__madein {
+    justify-self: end;
+    align-self: end;
+    grid-column: span 1;
+  }
 
-    &__link {
-        flex: 1;
-        list-style: none;
-        padding-left: 0;
-        align-self: center;
-
-        @include desktop-layout {
-            align-self: start;
-        }
-
-        &:first-child {
-            text-align: left;
-        }
-        
-        &:last-child {
-            text-align: right;
-        }
-    }
-
-    &__copyright {
-        justify-self: start;
-        grid-column: span 2;
-    }
-
-    &__madein {
-        justify-self: end;
-        align-self: end;
-        grid-column: span 1;
-    }
-
-    &__spain {
-        display: inline-block;
-        background: url('../assets/spain.png');
-        background-size: 20px;
-        background-position: right;
-        background-repeat: no-repeat;
-        padding-right: 25px;
-    }
+  &__spain {
+    display: inline-block;
+    background: url("../assets/spain.png");
+    background-size: 20px;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+  }
 }

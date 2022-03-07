@@ -1,24 +1,24 @@
 .meta {
-    /* For mobile, items are one on top of the other. */
-    display: block;
+  /* For mobile, items are one on top of the other. */
+  display: block;
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+
+  @media screen and (min-width: 767px) {
+    /* Then for desktop, they are one next to the other. */
+    display: inline;
 
     & + & {
-        margin-top: 0.5rem;
+      margin-top: 0;
+      margin-left: 1rem;
     }
+  }
 
-    @media screen and (min-width: 767px) {
-        /* Then for desktop, they are one next to the other. */
-        display: inline;
-
-        & + & {
-            margin-top: 0;
-            margin-left: 1rem;
-        }
-    }
-
-    &__icon {
-        width: 1.15rem;
-        height: 1.15rem;
-        vertical-align: text-bottom;
-    }
+  &__icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    vertical-align: text-bottom;
+  }
 }

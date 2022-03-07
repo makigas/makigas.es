@@ -25,7 +25,8 @@ $video-vnum-width: 1.25rem;
     margin: 0;
   }
 
-  &__desc, &__metas {
+  &__desc,
+  &__metas {
     margin: 0;
     margin-top: 0.75rem;
     margin-left: $video-vnum-width;

@@ -1,50 +1,49 @@
 .topcard {
+  &__link {
+    /* Flex */
+    display: flex;
+    justify-content: space-between;
 
-    &__link {
-        /* Flex */
-        display: flex;
-        justify-content: space-between;
+    /* Dimensions. */
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 12px;
 
-        /* Dimensions. */
-        margin-bottom: 2rem;
-        padding: 2rem;
-        border-radius: 12px;
+    /* Making it look less like a link. */
+    color: inherit;
+    text-decoration: inherit;
 
-        /* Making it look less like a link. */
-        color: inherit;
-        text-decoration: inherit;
-
-        &:hover {
-            background-color: var(--makigas-brand-washed-out);
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        }
+    &:hover {
+      background-color: var(--makigas-brand-washed-out);
+      box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     }
+  }
 
-    &__thumb {
-        display: none;
-        flex: 0;
-        margin: 0;
-        margin-right: 2rem;
+  &__thumb {
+    display: none;
+    flex: 0;
+    margin: 0;
+    margin-right: 2rem;
 
-        @media screen and (min-width: 767px) {
-            display: block;
-            width: 128px;
-            height: 128px;
-        }
+    @media screen and (min-width: 767px) {
+      display: block;
+      width: 128px;
+      height: 128px;
     }
+  }
 
-    &__icon {
-        height: 100%;
-        border-radius: 15px;
-    }
+  &__icon {
+    height: 100%;
+    border-radius: 15px;
+  }
 
-    &__body {
-        flex: 1;
-        align-self: center;
-    }
+  &__body {
+    flex: 1;
+    align-self: center;
+  }
 
-    &__title {
-        margin-top: 0;
-        font-size: 1.2rem;
-    }
+  &__title {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
 }

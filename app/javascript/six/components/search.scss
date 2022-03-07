@@ -2,60 +2,58 @@ $medium-icon-size: 20px;
 $large-icon-size: 30px;
 
 .searchbar {
-    &--normal {
-        --searchbar-icon-size: 20px;
-        --searchbar-text-size: 1rem;
-        --searchbar-box-shadow: 2px;
-        --searchbar-box-radius: 4px;
-        --searchbar-box-background: #fff;
-        --searchbar-box-outline: 1px;
-        --searchbar-text-padding: 10px;
+  &--normal {
+    --searchbar-icon-size: 20px;
+    --searchbar-text-size: 1rem;
+    --searchbar-box-shadow: 2px;
+    --searchbar-box-radius: 4px;
+    --searchbar-box-background: #fff;
+    --searchbar-box-outline: 1px;
+    --searchbar-text-padding: 10px;
+  }
+
+  &--large {
+    --searchbar-icon-size: 25px;
+    --searchbar-text-size: 1.25rem;
+    --searchbar-box-shadow: 4px;
+    --searchbar-box-radius: 8px;
+    --searchbar-box-outline: 2px;
+    --searchbar-text-padding: 25px;
+    --searchbar-box-background: #fff;
+  }
+
+  display: inline-flex;
+  width: 100%;
+  background: var(--searchbar-box-background);
+  border-radius: var(--searchbar-box-radius);
+  box-shadow: 0 var(--searchbar-box-shadow) var(--searchbar-box-shadow) rgb(0 0 0 / 25%);
+
+  &:focus-within {
+    outline: var(--searchbar-box-outline) solid var(--makigas-brand);
+  }
+
+  &__search {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: var(--searchbar-text-padding);
+    font-size: var(--searchbar-text-size);
+    outline: none;
+  }
+
+  &__submit {
+    width: calc(var(--searchbar-icon-size) * 3);
+    border: none;
+    background: none;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--makigas-brand);
     }
+  }
 
-    &--large {
-        --searchbar-icon-size: 25px;
-        --searchbar-text-size: 1.25rem;
-        --searchbar-box-shadow: 4px;
-        --searchbar-box-radius: 8px;
-        --searchbar-box-outline: 2px;
-        --searchbar-text-padding: 25px;
-        --searchbar-box-background: #fff;
-    }
-
-    display: inline-flex;
-    width: 100%;
-    background: var(--searchbar-box-background);
-    border-radius: var(--searchbar-box-radius);
-    box-shadow: 0px var(--searchbar-box-shadow) var(--searchbar-box-shadow) rgba(0, 0, 0, 0.25);
-
-    &:focus-within {
-        outline: var(--searchbar-box-outline) solid var(--makigas-brand);
-    }
-
-    &__search {
-        flex: 1;
-        background: none;
-        border: none;
-        padding: var(--searchbar-text-padding);
-        font-size: var(--searchbar-text-size);
-        outline: none;
-    }
-
-    &__submit {
-        width: calc(var(--searchbar-icon-size) * 3);
-        border: none;
-        background: none;
-
-        &:hover {
-            cursor: pointer;
-            color: var(--makigas-brand);
-        }
-    }
-
-    &__icon {
-        width: var(--searchbar-icon-size);
-        height: var(--searchbar-icon-size);
-    }
+  &__icon {
+    width: var(--searchbar-icon-size);
+    height: var(--searchbar-icon-size);
+  }
 }
-
-
