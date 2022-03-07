@@ -19,6 +19,11 @@
   },
   "devDependencies": {
     "@types/rails__ujs": "^6.0.1",
+    "esbuild": "^0.13.15",
+    "esbuild-sass-plugin": "^2.2.4",
     "postcss": "^8.4.5"
+  },
+  "scripts": {
+    "build": "node esbuild.js"
   }
 }
