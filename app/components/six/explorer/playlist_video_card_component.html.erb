@@ -5,9 +5,9 @@
       <%= @video.title %>
     </h2>
     <p class="videocard__desc"><%= @video.description %></p>
-    <p class="videocard__meta">
-      <time datetime="<%= @video.published_at %>"><%= published_at %></time> - 
-      Duración: <%= duration %>
-    </p>
+    <%= render Six::Utils::MetaGroupComponent.new(classes: 'videocard__metas') do |group| %>
+      <%= group.meta(icon: 'calendar') { tag.time(published_at, datetime: @video.published_at) } %>
+      <%= group.meta(icon: 'clock') { "Duración: #{duration}" } %>
+    <% end %>
   <% end %>
-</article> 
+</article>

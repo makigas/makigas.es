@@ -6,16 +6,10 @@
     <section class="plcard__body">
         <h2 class="plcard__title"><%= @playlist.title %></h2>
         <p><%= @playlist.description %></p>
-        <p class="plcard__metas">
-            <span class="plcard__meta">
-                <%= feather_icon 'list', class: 'plcard__icon' %>
-                <%= @playlist.videos.count %> episodios
-            </span>
-            <span class="plcard__meta">
-                <%= feather_icon 'clock', class: 'plcard__icon'  %>
-                <%= duration %> horas
-            </span>
-        </p>
+        <%= render Six::Utils::MetaGroupComponent.new(classes: 'plcard__metas') do |g| %>
+          <%= g.meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
+          <%= g.meta(icon: 'clock') { "#{duration} horas" } %>
+        <% end %>
     </section>
     <% end %>
 </article>

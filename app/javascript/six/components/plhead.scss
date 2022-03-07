@@ -34,26 +34,4 @@ $plhead-text-size: 1.15rem;
   &__img {
     border-radius: 100%;
   }
-
-  &__meta {
-    display: block;
-    & + & {
-      margin-top: 0.5rem;
-    }
-
-    @media screen and (min-width: 767px) {
-      display: inline;
-      & + & {
-        margin-top: 0;
-        margin-left: 1rem;
-      }
-    }
-  }
-
-  &__icon {
-    height: $plhead-text-size;
-    width: $plhead-text-size;
-    margin-right: 0.25rem;
-    vertical-align: sub;
-  }
 }
