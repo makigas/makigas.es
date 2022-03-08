@@ -1,31 +1,40 @@
 <header role="banner" class="main-header">
-  <nav class="navbar navbar-inverse navbar-static-top">
+  <nav class="navbar navbar-fixed-top navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#makigas-navbar" aria-expanded="false">
-              <span class="sr-only"><%= t('.navigation') %></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <%= link_to 'makigas', :dashboard, class: 'navbar-brand'%>
-          </div>
-      <div class="collapse navbar-collapse" id="makigas-navbar">
-        <ul class="nav navbar-nav">
+      <%= link_to dashboard_path, class: 'navbar-brand' do %>
+        <svg class="makigas-logo" aria-role="img" aria-hidden="true" width="141" height="21" viewBox="0 0 47 7" version="1.1">
+          <path d="m 0,6 0,-5 2,0 0,1 2,0 0,-1 2,0 0,1 1,0 0,4 -2,0 0,-2 L 4,4 4,5 3,5 3,4 2,4 2,6 0,6 Z"></path>
+          <path d="m 9,6 0,-1 -1,0 0,-1 1,0 0,-1 L 12,3 12,2 9,2 l 0,-1 L 13,1 l 0,1 1,0 0,4 -5,0 z m 1,-1 L 12,5 12,4 10,4 l 0,1 z"></path>
+          <path d="m 15,6 0,-6 2,0 0,3 1,0 0,-1 2,0 0,1 -1,0 0,1 1,0 0,1 1,0 0,1 -2,0 0,-1 -1,0 0,-1 -1,0 0,2 -2,0 z"></path>
+          <path d="m 22,6 0,-1 1,0 0,-2 -1,0 0,-1 3,0 0,3 1,0 0,1 -4,0 z m 1,-5 0,-1 2,0 0,1 -2,0 z"></path>
+          <path d="m 27,7 0,-1 4,0 0,-1 -3,0 0,-1 -1,0 0,-2 1,0 0,-1 5,0 0,5 -1,0 0,1 -5,0 z m 2,-3 2,0 0,-2 -2,0 0,2 z"></path>
+          <path d="m 35,6 0,-1 -1,0 0,-1 1,0 0,-1 3,0 0,-1 -3,0 0,-1 4,0 0,1 1,0 0,4 -5,0 z m 1,-1 2,0 0,-1 -2,0 0,1 z"></path>
+          <path d="m 47,1 0,1 L 43,2 l 0,1 3,0 0,1 1,0 0,1 -1,0 0,1 L 41,6 l 0,-1 4,0 0,-1 L 42,4 l 0,-1 -1,0 0,-1 1,0 0,-1 5,0 z"></path>
+        </svg>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-main">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
           <li class="nav-item"><%= link_to t('.videos'), [:dashboard, :videos], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.playlists'), [:dashboard, :playlists], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.topics'), [:dashboard, :topics], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.opinions'), [:dashboard, :opinions], class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to t('.users'), [:dashboard, :users], class: 'nav-link' %></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="navbar-text hidden-sm hidden-xs"><%= current_user.email %></li>
-          <li><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank %></li>
-          <li><%= link_to t('.log_out'), destroy_user_session_path %></li>
+        <ul class="d-flex navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="user-menu-nav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.email %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="user-menu-nav">
+              <li class="dropdown-item"><%= link_to t('.view_site'), root_url(subdomain: nil), target: :blank, class: 'dropdown-item' %></li>
+              <li class="dropdown-item"><%= link_to t('.log_out'), destroy_user_session_path, class: 'dropdown-item' %></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  
 </header>
-

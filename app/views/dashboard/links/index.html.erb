@@ -1,7 +1,7 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li class="current"><%= t('.links') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.links') %></li>
   </ol>
   <h1><%= t('.links') %></h1>
 <% end %>
@@ -24,7 +24,7 @@
       <td><%= link.name %></td>
       <td><%= link.url %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, @playlist, @video, link], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, @playlist, @video, link], class: 'btn btn-xs btn-outline-secondary' %>
         <%= button_to t('.destroy'), [:dashboard, @playlist, @video, link], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
       </td>
     </tr>

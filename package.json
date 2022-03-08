@@ -7,7 +7,10 @@
   "license": "GPLv3",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.11.2",
     "@rails/ujs": "^6.1.4-1",
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1",
     "cookieconsent": "^3.1.0",
     "esbuild": "^0.13.15",
     "esbuild-sass-plugin": "^2.2.4",

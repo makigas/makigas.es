@@ -1,7 +1,7 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li class="current"><%= t('.users') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.users') %></li>
   </ol>
   <h1><%= t('.users') %></h1>
 <% end %>
@@ -24,7 +24,7 @@
       <td><%= link_to user.email, [:dashboard, user] %></td>
       <td><%= user.last_sign_in_at %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, user], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, user], class: 'btn btn-xs btn-outline-secondary' %>
         <%= button_to t('.destroy'), [:dashboard, user], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == user %>
       </td>
     </tr>

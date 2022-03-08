@@ -4,11 +4,23 @@
   <%= form.input :youtube_id %>
   <%= form.input :duration, as: :numeric do %>
     <%= form.hidden_field :duration %>
-    <p class="form-inline">
-    <%= number_field_tag nil, ((@video.duration / 3600) rescue "0"), id: 'duration_hours', class: 'form-control', min: 0, max: 9 %> :
-    <%= number_field_tag nil, (((@video.duration % 3600) / 60) rescue 0), id: 'duration_minutes', class: 'form-control', min: 0, max: 59 %> :
-    <%= number_field_tag nil, ((@video.duration % 60) rescue 0), id: 'duration_seconds', class: 'form-control', min: 0, max: 59 %>
-    </p>
+    <div class="row">
+      <div class="col-auto">
+        <%= number_field_tag nil, ((@video.duration / 3600) rescue "0"), id: 'duration_hours', class: 'form-control', min: 0, max: 9 %>
+      </div>
+      <div class="col-auto">
+        :
+      </div>
+      <div class="col-auto">
+        <%= number_field_tag nil, (((@video.duration % 3600) / 60) rescue 0), id: 'duration_minutes', class: 'form-control', min: 0, max: 59 %>
+      </div>
+      <div class="col-auto">
+        :
+      </div>
+      <div class="col-auto">
+        <%= number_field_tag nil, ((@video.duration % 60) rescue 0), id: 'duration_seconds', class: 'form-control', min: 0, max: 59 %>
+      </div>
+    </div>
   <% end %>
   <%= form.input :tags %>
   <%= form.association :playlist, include_blank: :translate %>
@@ -17,6 +29,6 @@
   <%= form.submit class: 'btn btn-success' %>
 
   <% unless @video.persisted? %>
-    <%= button_tag t('.save_and_new'), type: :button, class: 'btn btn-default hidden', data: { submit_and_return_to: new_dashboard_video_path(playlist_id: @video.playlist_id)}, hidden: :hidden %>
+    <%= button_tag t('.save_and_new'), type: :button, class: 'btn btn-outline-secondary hidden', data: { submit_and_return_to: new_dashboard_video_path(playlist_id: @video.playlist_id)}, hidden: :hidden %>
   <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li class="current"><%= t('.playlists') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.playlists') %></li>
   </ol>
   <h1><%= t('.playlists') %></h1>
 <% end %>
@@ -26,7 +26,7 @@
       <td><%= link_to playlist.topic.title, [:dashboard, playlist.topic] rescue t('.no_topic') %></td>
       <td><%= link_to playlist.videos.length, [:videos, :dashboard, playlist] %></td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, playlist], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, playlist], class: 'btn btn-xs btn-outline-secondary' %>
         <%= button_to t('.destroy'), [:dashboard, playlist], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
       </td>
     </tr>

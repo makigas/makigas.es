@@ -24,6 +24,7 @@ if (form) {
 var returns = [...document.querySelectorAll('button[data-submit-and-return-to], input[type=button][data-submit-and-return-to]')];
 returns.forEach(function (button) {
   button.classList.remove('hidden');
+  button.removeAttribute('hidden');
 
   button.addEventListener('click', function (e) {
     var form = e.target.parentNode;

@@ -1,7 +1,7 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li class="current"><%= t('.videos') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.videos') %></li>
   </ol>
   <h1><%= t('.videos') %></h1>
 <% end %>
@@ -21,37 +21,38 @@
   </thead>
   <tbody>
     <% @videos.each do |video| %>
-      <tr>
-        <td><%= link_to video.title, [:dashboard, video] %></td>
-        <td><%= link_to video.playlist.title, [:dashboard, video.playlist] %></td>
-        <td><%= l video.published_at, format: :long %></td>
-        <td><%= distance_of_time_in_words video.updated_at, DateTime.now %></td>
-        <td>
-          <% if video.transcription.present? %>
-            <span class="glyphicon glyphicon-subtitles" aria-hidden="true"></span>
-            <span class="sr-only"><%= t('.with_transcription') %>
-            <% end %>
-          </td>
-          <td>
-            <% if video.show_note.present? %>
-              <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-              <span class="sr-only"><%= t('.with_show_notes') %>
-              <% end %>
-            </td>
-            <td>
-              <% if video.tags.present? %>
-                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-                <span class="sr-only"><%= t('.with_tags') %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-default' %>
-                <%= button_to t('.destroy'), [:dashboard, video], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <div class="paginator">
-        <%= paginate @videos, theme: 'twitter-bootstrap-3' %>
-      </div>
+    <tr>
+      <td><%= link_to video.title, [:dashboard, video] %></td>
+      <td><%= link_to video.playlist.title, [:dashboard, video.playlist] %></td>
+      <td><%= l video.published_at, format: :long %></td>
+      <td><%= distance_of_time_in_words video.updated_at, DateTime.now %></td>
+      <td>
+        <% if video.transcription.present? %>
+          <span class="bi bi-badge-cc" aria-hidden="true"></span>
+          <span class="sr-only"><%= t('.with_transcription') %>
+        <% end %>
+      </td>
+      <td>
+        <% if video.show_note.present? %>
+          <span class="bi bi-book" aria-hidden="true"></span>
+          <span class="sr-only"><%= t('.with_show_notes') %>
+        <% end %>
+      </td>
+      <td>
+        <% if video.tags.present? %>
+          <span class="bi bi-tag" aria-hidden="true"></span>
+          <span class="sr-only"><%= t('.with_tags') %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-outline-secondary' %>
+        <%= button_to t('.destroy'), [:dashboard, video], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="paginator">
+  <%= paginate @videos, theme: 'twitter-bootstrap-3' %>
+</div>

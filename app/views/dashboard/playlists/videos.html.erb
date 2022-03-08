@@ -1,17 +1,17 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li><%= link_to t('.dashboard'), :dashboard %></li>
-    <li><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
-    <li><%= link_to @playlist, [:dashboard, @playlist] %></li>
-    <li class="current"><%= t('.videos') %></li>
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
+    <li class="breadcrumb-item"><%= link_to @playlist, [:dashboard, @playlist] %></li>
+    <li class="breadcrumb-item current"><%= t('.videos') %></li>
   </ol>
   <h1><%= @playlist %></h1>
 <% end %>
 
 <% content_for :toolbar do %>
   <%= link_to t('.new_video'), new_dashboard_video_path(playlist_id: @playlist.id), class: 'btn btn-success' %>
-  <%= link_to t('.back'), [:dashboard, @playlist], class: 'btn btn-default' %>
-  <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-default' %>
+  <%= link_to t('.back'), [:dashboard, @playlist], class: 'btn btn-outline-secondary' %>
+  <%= link_to t('.edit'), [:edit, :dashboard, @playlist], class: 'btn btn-outline-secondary' %>
   <%= button_to t('.destroy'), [:dashboard, @playlist], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') } %>
 <% end %>
 
@@ -34,7 +34,7 @@
         <%= button_to t('.down'), move_dashboard_video_path(video), params: { direction: 'down' }, remote: true, method: :put, class: 'video-move-down btn btn-xs btn-info' %>
       </td>
       <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-default' %>
+        <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-xs btn-outline-secondary' %>
       </td>
     </tr>
     <% end %>
