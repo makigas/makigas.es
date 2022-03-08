@@ -5,8 +5,18 @@
   margin-right: 15px;
 
   @include desktop-layout {
-    max-width: 720px;
+    max-width: 992px;
     margin: 0 auto;
+  }
+}
+
+.wrapped-fluid {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  @include desktop-layout {
+    margin-left: 60px;
+    margin-right: 60px;
   }
 }
 
@@ -16,13 +26,16 @@ main.wrapped {
 }
 
 .topicslist {
-  max-width: 720px;
-  margin: 15px auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 
   @include desktop-layout {
-    max-width: 100%;
-    margin: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.playlistslist {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
