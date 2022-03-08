@@ -31,12 +31,32 @@ To install the web application:
     $ cd makigas
     $ bundle install
 
+## Running the application
+
+Standard `rails server`, like any other Rails application out there.  Because
+we are using jsbundling-rails, you are expected to be compiling the packs on
+your own. You can do this running `yarn build` to build via esbuild once, or
+`yarn build:watch` in a separate terminal, to keep doing this in the background
+and update the packs everytime you save a JS or CSS file.
+
+You can also run `bin/guard` to start the application via Guard, which will use
+some guard plugins to keep the application running and up to date, and will
+recompile the assets every time you change them. Additionally, it will run
+the test suite and linters whenever you update these files.
+
 ## Database
 
 Upstream database is PostgreSQL and that is the officially supported one. Said
 that, this web application may work on MySQL and sqlite3 as well, although I
 haven't tested this, and it's not officially supported. If you experience bugs
 by using MySQL, they cannot be fix.
+
+## MeiliSearch
+
+We are using MeiliSearch for the full text search index, which can be used to
+lookup for video content using text that appears in the title, description,
+transcription and text notes of the episode, with the hope of making it easier
+to discover and consume.
 
 ## Secrets
 

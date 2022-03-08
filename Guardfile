@@ -44,3 +44,7 @@ guard 'rubocop', all_on_start: false do
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
   watch(%r{(?:.+/)?\.rubocop_todo\.yml$}) { |m| File.dirname(m[0]) }
 end
+
+guard 'shell', all_on_start: true do
+  watch(%r{^app/javascript/}) { `yarn build` }
+end

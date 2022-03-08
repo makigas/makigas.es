@@ -55,6 +55,7 @@ group :development do
   gem 'guard-rails', '~> 0.8.1'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.5.0'
+  gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
   gem 'rubocop', '~> 1.25.0', require: false
