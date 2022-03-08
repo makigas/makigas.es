@@ -139,13 +139,13 @@ RSpec.describe Video, type: :model do
     context 'when publishing date has been reached' do
       subject { published.visible? }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when publishing date has not been reached' do
       subject { scheduled.visible? }
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
   end
 
@@ -156,13 +156,13 @@ RSpec.describe Video, type: :model do
     context 'when publishing date has been reached' do
       subject { published.scheduled? }
 
-      it { is_expected.to eq false }
+      it { is_expected.to be false }
     end
 
     context 'when publishing date has not been reached' do
       subject { scheduled.scheduled? }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
   end
 

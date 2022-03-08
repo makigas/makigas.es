@@ -64,19 +64,19 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     describe 'does not allow non start by zero inside' do
-      it { expect(extract_time('1:2:01')).to eq nil }
-      it { expect(extract_time('1:02:1')).to eq nil }
-      it { expect(extract_time('1:2')).to eq nil }
+      it { expect(extract_time('1:2:01')).to be_nil }
+      it { expect(extract_time('1:02:1')).to be_nil }
+      it { expect(extract_time('1:2')).to be_nil }
     end
 
     describe 'does not allow invalid minutes' do
-      it { expect(extract_time('78:59')).to eq nil }
-      it { expect(extract_time('2:78:59')).to eq nil }
+      it { expect(extract_time('78:59')).to be_nil }
+      it { expect(extract_time('2:78:59')).to be_nil }
     end
 
     describe 'does not allow invalid seconds' do
-      it { expect(extract_time('1:81')).to eq nil }
-      it { expect(extract_time('2:01:81')).to eq nil }
+      it { expect(extract_time('1:81')).to be_nil }
+      it { expect(extract_time('2:01:81')).to be_nil }
     end
   end
 end

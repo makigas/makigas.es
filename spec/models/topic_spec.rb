@@ -59,7 +59,7 @@ RSpec.describe Topic, type: :model do
       playlist = create(:playlist, topic: topic)
       topic.destroy
       playlist.reload
-      expect(playlist.topic).to eq nil
+      expect(playlist.topic).to be_nil
     end
   end
 end
