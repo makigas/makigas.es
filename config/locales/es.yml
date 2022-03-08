@@ -75,6 +75,9 @@ es:
       message: "Me obligan a informarte que este sitio usa cookies."
       dismiss: "Me entero"
       learn_more: "Lee más sobre las cookies"
+    six:
+      six:
+        videos_feed: Vídeos recientes (ATOM)
     head:
       videos_feed: Vídeos recientes (ATOM)
     header:
