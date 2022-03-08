@@ -1,7 +1,6 @@
+// Vendor dependencies
 import "bootstrap";
 import "bootstrap/scss/bootstrap.scss";
-import "cookieconsent";
-import "cookieconsent/build/cookieconsent.min.css";
-
+import "bootstrap-icons/font/bootstrap-icons.scss";
 import Rails from "@rails/ujs";
 Rails.start();

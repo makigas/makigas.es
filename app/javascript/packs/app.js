@@ -1,3 +1,7 @@
+// Vendor dependencies.
+import "cookieconsent";
+import "cookieconsent/build/cookieconsent.min.css";
+
 // Set the class name to js for custom CSS code that depends on the JS status.
 window.addEventListener("load", () => {
   document.body.classList.remove("no-js");

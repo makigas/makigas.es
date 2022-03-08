@@ -44,14 +44,14 @@
   <tr>
     <td>
       <%= t('.show_notes') %>
-      <br>
-      <%= link_to t('.edit'), dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
-      <br>
-      <% if @video.show_note.present? %>
-      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :show_note], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
-      <% end %>
     </td>
     <td>
+      <div class="actions">
+      <%= link_to t('.edit'), dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-sm btn-outline-secondary' %>
+      <% if @video.show_note.present? %>
+        <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :show_note], method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: '¿De verdad?' } %>
+      <% end %>
+      </div>
       <%= @video.show_note.present? ? to_markdown(@video.show_note.content).html_safe : t('.no_show_notes') %>
     </td>
   </tr>
@@ -60,18 +60,18 @@
       <%= t('.transcription') %>
     </td>
     <td>
-      <% if @video.transcription.present? %>
-        <%= to_markdown(@video.transcription.content).html_safe %>
-      <% else %>
-        <p><%= t('.no_transcription') %></p>
-      <% end %>
-      
       <div class="actions">
         <%= link_to t('.edit'), dashboard_playlist_video_transcription_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-sm btn-outline-secondary' %>
         <% if @video.transcription.present? %>
           <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :transcription], method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: '¿De verdad?' } %>
         <% end %>
       </div>
+
+      <% if @video.transcription.present? %>
+        <%= to_markdown(@video.transcription.content).html_safe %>
+      <% else %>
+        <p><%= t('.no_transcription') %></p>
+      <% end %>
     </td>
   </tr>
 </table>
