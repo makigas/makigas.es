@@ -1,0 +1,30 @@
+:root {
+  --button-background: white;
+  --button-active-background: #0000001a;
+  --button-foreground: black;
+  --button-border-color: #0003;
+  --button-focus-border-color: #00000080;
+}
+
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  background: var(--button-background);
+  border: 1px solid var(--button-border-color);
+  box-shadow: 0 1px 1px #00000040;
+  border-radius: 5px;
+  margin: 0;
+  padding: 8px 16px;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--button-focus-border-color);
+  }
+
+  &:active {
+    background: var(--button-active-background);
+  }
+}

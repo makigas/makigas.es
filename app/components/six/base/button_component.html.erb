@@ -1,0 +1,9 @@
+<% if href.present? %>
+  <%= link_to href, class: class_list, id: id do %>
+    <%= inner_content %>
+  <% end %>
+<% else %>
+  <%= content_tag(:button, type: :button, class: class_list, id: id) do %>
+    <%= inner_content %>
+  <% end %>
+<% end %>
