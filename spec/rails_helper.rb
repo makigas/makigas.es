@@ -9,6 +9,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'selenium/webdriver'
+require 'view_component/test_helpers'
 require 'webdrivers/chromedriver'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,8 +62,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers, type: :component
   config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers
+  config.include ViewComponent::TestHelpers, type: :component
 
-  Capybara.javascript_driver = :selenium_chrome_headless
+  Capybara.javascript_driver = :selenium_headless
 end

@@ -1,0 +1,16 @@
+<header class="plhead">
+    <div class="plhead__wrap">
+        <section class="plhead__data">
+        <h1 class="plhead__title"><%= @playlist.title %></h1>
+        <p class="plhead__lead"><%= @playlist.description %></p>
+        <%= render Six::Utils::MetaGroupComponent.new(classes: 'plhead__metas') do |g| %>
+            <%= g.meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
+            <%= g.meta(icon: 'clock') { "#{duration} horas" } %>
+            <%= g.meta(icon: 'dollar-sign') { 'Gratis' } %>
+        <% end %>
+        </section>
+        <figure class="plhead__thumbnail">
+            <%= image_tag @playlist.thumbnail.url(:small), class: 'plhead__img' %>
+        </figure>
+    </div>
+</header>

@@ -1,5 +1,6 @@
 <% content_for :title, "#{@video.position}. #{@video.title} – #{@video.playlist.title} – makigas" %>
 <% content_for :description, @video.description %>
+<% content_for(:tags, @video.tags.sort.join(' ')) if @video.tags.present? %>
 <% content_for :twitter do %>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@makigas">
@@ -38,6 +39,12 @@
   <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
 
+<% if @video.published_at < 4.years.ago %>
+  <div class="row deprecation-warning alert alert-warning">
+    <p>Han pasado más de 4 años desde que se publicó este vídeo. Puede que todo
+      siga igual, o puede que este vídeo haya quedado algo obsoleto. ¡Precaución!</p>
+  </div>
+<% end %>
 <div class="row video-player">
   <div class="video-player-column">
     <div class="embed-responsive embed-responsive-16by9">
@@ -70,8 +77,8 @@
 <div class="video-information">
 <div class="row">
 
-      <div class="col-md-7">
-        <p><%= to_markdown(@video.description).html_safe %></p>
+      <div class="col-md-6">
+        <p><strong><%= to_markdown(@video.description).html_safe %></strong></p>
 
         <% unless @video.links.empty? %>
           <p><%= t('.links') %>:</p>
@@ -82,37 +89,27 @@
           </ul>
         <% end %>
 
-        <% if @video.transcription.present? %>
-          <h3><%= t('.transcription') %></h3>
-          <%= to_markdown(@video.transcription.content).html_safe %>
-        <% end %>
-
         <p>
           <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
           <%= t('.duration', duration: running_time(@video.duration)) %>
         </p>
 
-        <%= render(partial: 'cards') unless @video.transcription.present? %>
+        <% if @video.show_note.present? %>
+          <h3><%= t('.show_notes') %></h3>
+          <%= to_markdown(@video.show_note.content).html_safe %>
+        <% end %>
       </div>
 
-      <div class="col-md-5">
-        <%= render(partial: 'cards') if @video.transcription.present? %>
-        <div class="discord-cta">
-          <%= link_to '/discord' do %>
-            <p class="lead">👉 ¿Algo no quedó claro?</p>
-            <p>Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.</p>
-          <% end %>
-        </div>
-        <div id="disqus_thread"></div>
-        <script>
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//makigas.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <div class="col-md-6">
+        <%= render Five::Player::DiscordCtaComponent.new %>
+
+        <h4 class="card-header"><%= t('.this_playlist') %></h4>
+        <%= render Five::Catalog::PlaylistMediaCardComponent.new(playlist: @video.playlist) %>
+
+        <% if @video.playlist.topic %>
+        <h4 class="card-header"><%= t('.this_topic') %></h4>
+        <%= render Five::Catalog::TopicMediaCardComponent.new(topic: @video.playlist.topic) %>
+        <% end %>
       </div>
     </div>
 </div>

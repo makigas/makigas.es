@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         resources :videos, except: %i[index new create] do
           resources :links
           resource :transcription, only: %i[show create update destroy]
+          resource :show_note, only: %i[show create update destroy]
           put :move, on: :member
         end
       end
@@ -55,4 +56,6 @@ Rails.application.routes.draw do
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
   get '/videos/:topic/:playlist' => redirect('/series/%{playlist}')
   get '/videos/:playlist' => redirect('/series/%{playlist}')
+
+  mount Lookbook::Engine, at: '/lookbook'
 end

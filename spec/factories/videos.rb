@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :video do
     title { 'Chandelier' }
     description { 'Music video for Chandelier' }
-    youtube_id { '2vjPBrBU-TM' }
+    youtube_id { |i| OpenSSL::Digest.hexdigest('SHA1', i.to_s)[0..10] }
     duration { 232 }
     association :playlist, factory: :playlist
     published_at { DateTime.now }

@@ -1,0 +1,15 @@
+<article class="plcard">
+  <%= link_to playlist_path(@playlist), class: 'plcard__link' do %>
+    <figure class="plcard__thumb">
+        <%= image_tag @playlist.thumbnail.url(:small), class: 'plcard__img' %>
+    </figure>
+    <section class="plcard__body">
+        <h2 class="plcard__title"><%= @playlist.title %></h2>
+        <p><%= @playlist.description %></p>
+        <%= render Six::Utils::MetaGroupComponent.new(classes: 'plcard__metas') do |g| %>
+          <%= g.meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
+          <%= g.meta(icon: 'clock') { "#{duration} horas" } %>
+        <% end %>
+    </section>
+    <% end %>
+</article>

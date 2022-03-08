@@ -9,6 +9,7 @@ es:
       transcription:
         one: Transcripción
         other: Transcripciones
+      show_note: Notas del episodio
       opinion:
         one: Opinión
         other: Opiniones
@@ -37,6 +38,9 @@ es:
       transcription:
         language: Idioma
         content: Contenido
+      show_note:
+        language: Idioma
+        content: Contenido
       user:
         email: E-mail
         password: Contraseña
@@ -48,6 +52,7 @@ es:
         position: Posición
         natural_duration: Duración
         slug: URL
+        tags: Etiquetas
         thumbnail: Miniatura
         playlist: Lista de reproducción
         published_at: Fecha de publicación

@@ -12,4 +12,10 @@ FactoryBot.define do
     language { 'es' }
     content { 'This is the transcription of a video' }
   end
+
+  factory :show_note do
+    documentable { build(:video) }
+    language { 'es' }
+    content { 'These are the shownotes of a video' }
+  end
 end

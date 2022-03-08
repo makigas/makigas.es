@@ -1,0 +1,11 @@
+<%= stylesheet_link_tag 'six', media: :all %>
+
+<div style="max-width: <%= params[:lookbook][:display][:max_width] || '100%' %>; padding: <%= params[:lookbook][:display][:padding] || '0' %>; background-color: <%= params[:lookbook][:display][:bgcolor] || 'transparent' %>">
+      <% if params[:lookbook][:display][:wrapper] == true %>
+        <div class="wrapper"><%= yield %></div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+    </div>
+
+<%= javascript_include_tag 'six' %>

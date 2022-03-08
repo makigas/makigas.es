@@ -1,5 +1,15 @@
 # This translation file is reserved for public strings.
 es:
+  five:
+    catalog:
+      playlist_media_card_component:
+        explore_other_videos:
+          one: Explora el resto de vídeos de esta lista de reproducción.
+          other: Una lista de reproducción de %{count} episodios.
+    player:
+      discord_cta_component:
+        title: 👉 ¿Algo no quedó claro?
+        description: Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.
   front:
     opinions:
       title: No lo digo yo, ellos también lo dicen
@@ -73,6 +83,7 @@ es:
       topics: Temas
       videos: Vídeos
       discord: Discord
+      forum: Foro
       new: Nuevo
     footer:
       copyright:
@@ -137,6 +148,7 @@ es:
       duration: "Duración: %{duration}"
       topic_html: "Tema: %{topic}"
       playlist_html: "Serie: %{playlist}"
+      tags: Etiquetas
       filter:
         by_length: Por duración
         any_length: Cualquier duración
@@ -145,14 +157,11 @@ es:
         long_videos: Largos (>15 min)
         by_topic: Por tema
         apply_filters: Aplicar filtros
-    cards:
+    show:
       this_playlist: Lista de reproducción
       this_topic: Este tema
-      explore_other_videos:
-        one: Explora el resto de vídeos de esta lista de reproducción.
-        other: Una lista de reproducción de %{count} episodios.
-    show:
       transcription: Transcripción
+      show_notes: Notas del episodio
       next: Siguiente
       part_of_series_html: "Un episodio de %{playlist}"
       previous: Anterior

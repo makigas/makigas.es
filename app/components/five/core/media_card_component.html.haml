@@ -1,0 +1,7 @@
+%div.media.media-summary-card.media-summary-card-with-hover
+  = link_to @href do
+    %div.media-left
+      = image_tag thumbnail, srcset: srcset, alt: title
+    %div.media-body.media-middle
+      %h4.media-heading= title
+      %p= text

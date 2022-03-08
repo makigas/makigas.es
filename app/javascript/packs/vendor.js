@@ -1,11 +1,7 @@
-import 'jquery/src/jquery';
-import '@popperjs/core';
-import 'bootstrap';
-import 'cookieconsent';
-import Rails from '@rails/ujs';
+import "bootstrap";
+import "bootstrap/scss/bootstrap.scss";
+import "cookieconsent";
+import "cookieconsent/build/cookieconsent.min.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'cookieconsent/build/cookieconsent.min.css';
-
-Rails.start()
+import Rails from "@rails/ujs";
+Rails.start();

@@ -1,0 +1,13 @@
+<article class="videocard">
+  <%= link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'videocard__link' do %>
+    <h2 class="videocard__title">
+      <span class="videocard__vnum"><%= @video.position %></span>
+      <%= @video.title %>
+    </h2>
+    <p class="videocard__desc"><%= @video.description %></p>
+    <%= render Six::Utils::MetaGroupComponent.new(classes: 'videocard__metas') do |group| %>
+      <%= group.meta(icon: 'calendar') { tag.time(published_at, datetime: @video.published_at) } %>
+      <%= group.meta(icon: 'clock') { "Duración: #{duration}" } %>
+    <% end %>
+  <% end %>
+</article>

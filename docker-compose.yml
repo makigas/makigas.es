@@ -2,19 +2,31 @@
 
 version: '3'
 
+volumes:
+  assets:
+  minioconf:
+  meili:
+  db:
+
 services:
   database:
-    image: postgres:9.4-alpine
+    image: postgres:13-alpine
     volumes:
-    - './docker_data/postgres:/var/lib/postgresql/data'
+    - 'db:/var/lib/postgresql/data'
     environment:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
+  search:
+    image: getmeili/meilisearch:v0.25.0
+    volumes:
+    - 'meili:/data.ms'
+    environment:
+      MEILI_MASTER_KEY: 'meilikey'
   storage:
     image: minio/minio
     volumes:
-    - './docker_data/minio/data:/data'
-    - './docker_data/minio/config:/root/.minio'
+    - 'assets:/data'
+    - 'minioconf:/root/.minio'
     ports:
       - 9000:9000
     environment:
@@ -30,14 +42,10 @@ services:
     depends_on:
       - database
       - storage
-    volumes:
-    - '.:/makigas'
-    - '/makigas/node_modules/'
-    - '/makigas/tmp/'
     ports:
       - '3000:3000'
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
       RAILS_USE_S3: 'true'
       RAILS_LOG_TO_STDOUT: 'true'
       DB_HOST: database
@@ -50,3 +58,5 @@ services:
       AWS_ACCESS_KEY_ID: 4j7anyzy
       AWS_SECRET_ACCESS_KEY: NM8R5pozNkfHUgFNRx2Zxuxv
       MINIO_INIT_BUCKET: 'true'
+      MEILISEARCH_HOST: 'http://search:7700'
+      MEILISEARCH_API_KEY: 'meilikey'

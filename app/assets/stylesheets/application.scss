@@ -5,9 +5,14 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:300,400,400i,700,700i');
 
-body {
+html {
   font-family: 'Open Sans';
   font-size: 14px;
+}
+
+body {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .main-header {

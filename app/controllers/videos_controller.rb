@@ -2,10 +2,12 @@
 
 class VideosController < ApplicationController
   def index
-    @videos = Video.includes(:playlist, playlist: :topic).visible.joins(:playlist)
-    @videos = @videos.where(length_query) if params[:length]
-    @videos = @videos.where(playlists: { topic_id: topic_ids }) if params[:topic]
-    @videos = @videos.order(published_at: :desc).page(params[:page]).per 10
+    @videos = if searches?
+                Video.search(params[:q], { filter: search_filters, hitsPerPage: 10, page: params[:page] || 1 })
+              else
+                Video.includes(:playlist, playlist: :topic).visible.joins(:playlist)
+                     .order(published_at: :desc).page(params[:page]).per(10)
+              end
   end
 
   def show
@@ -28,17 +30,34 @@ class VideosController < ApplicationController
 
   private
 
-  LENGTH_QUERIES = {
-    'short' => 'duration <= 300',
-    'medium' => 'duration > 300 and duration <= 900',
-    'long' => 'duration > 900'
-  }.freeze
+  def searches?
+    %i[q topic length].any? { |p| params[p].present? }
+  end
 
-  def length_query
+  def search_filters
+    (search_lengths + [search_topics])
+  end
+
+  def search_lengths
+    return [] if params[:length].blank?
+
     LENGTH_QUERIES[params[:length]]
   end
 
-  def topic_ids
-    Topic.where(slug: params[:topic]).pluck(:id)
+  def search_topics
+    return [] if params[:topic].blank?
+
+    # I don't know yet if Meilisearch will prevent me from dangerous strings
+    # but sure I know ActiveRecord will, so let's filter the topics first.
+    # Update: maybe they don't: https://github.com/meilisearch/MeiliSearch/issues/1409
+    topics = Topic.where(slug: params[:topic]).pluck(:slug)
+    topics.map { |t| "topic_slug = #{t}" }
   end
+
+  LENGTH_QUERIES = {
+    'short' => ['duration <= 300'],
+    'medium' => ['duration > 300', 'duration <= 900'],
+    'long' => ['duration > 900'],
+    'all' => []
+  }.freeze
 end

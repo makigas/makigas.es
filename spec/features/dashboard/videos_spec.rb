@@ -43,12 +43,14 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
       fill_in 'duration_hours', with: '1'
       fill_in 'duration_minutes', with: '5'
       fill_in 'duration_seconds', with: '40'
+      fill_in 'Etiquetas', with: 'javascript ruby go'
       select playlist.title, from: 'Lista de reproducción'
       click_button 'Crear Vídeo'
 
       aggregate_failures do
         expect(page).to have_text 'Vídeo creado correctamente'
         expect(page).to have_text 'My video title'
+        expect(page).to have_text 'go javascript ruby'
         expect(page).to have_text '1:05:40'
       end
     end

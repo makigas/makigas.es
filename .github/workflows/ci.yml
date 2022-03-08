@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+
+jobs:
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      meilisearch:
+        image: getmeili/meilisearch:v0.25.0
+        env:
+          MEILI_MASTER_KEY: meilikey
+        ports:
+          - 7700:7700
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
+      - name: Set up ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'
+          bundler-cache: true
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Setup application
+        run: bundle exec rake db:create db:schema:load yarn:install
+        env:
+          RAILS_ENV: test
+          DB_NAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+      - name: Compile assets
+        run: yarn build
+        env:
+          RAILS_ENV: test
+          NODE_ENV: test
+      - name: Run tests
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
+          DB_NAME: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+          MEILISEARCH_HOST: http://localhost:7700
+          MEILISEARCH_API_KEY: meilikey
+  rubocop:
+    name: Rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
+      - name: Set up ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'
+          bundler-cache: true
+      - name: Run Rubocop
+        run: bundle exec rubocop
+  javascript:
+    name: JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - run: yarn install
+      - run: yarn lint && yarn fmt:check
+  assets:
+    name: Asset precompile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libpq-dev
+        run: sudo apt-get -yqq install libpq-dev
+      - name: Set up ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.2'
+          bundler-cache: true
+      - name: Build assets
+        run: bundle exec rails assets:precompile

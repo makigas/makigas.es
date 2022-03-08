@@ -1,62 +1,35 @@
-<p align="center">
-  <a href="https://github.com/makigas/makigas/releases"><img src="https://img.shields.io/github/tag/makigas/makigas.svg" alt="Latest release"></a>
-</p>
+[![CI](https://github.com/makigas/makigas.es/actions/workflows/ci.yml/badge.svg)](https://github.com/makigas/makigas.es/actions/workflows/ci.yml)
+[![CD](https://github.com/makigas/makigas.es/actions/workflows/cd.yml/badge.svg)](https://github.com/makigas/makigas.es/actions/workflows/cd.yml)
 
-<p align="center">
-<img src="http://i.imgur.com/GPJvkq1.png" alt="makigas">
-</p>
+<img src="https://i.imgur.com/GPJvkq1.png" alt="makigas">
 
 # About
 
-This is the public source code for makigas.es. The whole application was
-recently redesigned from scratch using the Ruby on Rails framework. This web
-site, just like previous iterations, still displays information about videos
-and playlists in the system.
+This is the public source code for makigas.es. The whole application is built
+as a Ruby on Rails monolithic application which allows to browse and watch the
+videos.
 
 # Setting up
 
-**To use the experimental Docker images, see below.**
-
 ## Requirements
-
-Supported operating systems:
-
-* Production environments: GNU/Linux.
-* Development environments: GNU/Linux, MacOS X.
 
 Requirements:
 
-* Ruby 2.4+ and Bundler. Older Ruby versions are not supported.
-* PostgreSQL 9.1+. Other SQL engines such as MySQL or sqlite3 are not supported.
-* Node.js + Yarn, for the front-end dependencies.
+* Ruby 3.0 and Bundler. Older Ruby version are not supported.
+* An up to date PostgreSQL database. Other SQL engines are not supported.
+* [MeiliSearch](https://www.meilisearch.com/), to build the search engine.
+* Node.js + Yarn, for the front-end assets.
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
 * `imagemagick`. Required for image manipulation on thumbnails and such.
-
-Additional testing dependencies:
-
-* ChromeDriver. It's required to run the system tests. It's not in the Gemfile,
-  so you'll have to manually get it either from your package manager if present
-  or by downloading it for your operating system (Windows, Linux, macOS) at
-  http://chromedriver.chromium.org/.
+* A web browser with Selenium support, for running E2E tests.
 
 ## Getting the code
 
 To install the web application:
 
-    $ git clone https://github.com/makigas/makigas
+    $ git clone https://github.com/makigas/makigas.es
     $ cd makigas
     $ bundle install
-
-## Yarn dependencies
-
-Rails 5.1 has adopted JavaScript and now it has first class support for Yarn,
-Webpack and other JavaScript related tools. At the moment Yarn is used for
-fetching front-end dependencies (Bootstrap, jQuery...), but I expect to use it
-more and more in the future.
-
-Make sure Node.js is installed on your system. LTS versions are recommended
-for production servers. Make sure that Yarn is installed. Install front-end
-dependencies using `bundle exec rake yarn:install` or simply `yarn`.
 
 ## Database
 
@@ -65,58 +38,28 @@ that, this web application may work on MySQL and sqlite3 as well, although I
 haven't tested this, and it's not officially supported. If you experience bugs
 by using MySQL, they cannot be fix.
 
-**Note that no database.yml has been committed.** Copy the example file
-`config/database.yml.example` and modify it to suit your needs. **It is
-important not to commit sensitive information such as passwords to the
-repository**.
+## Secrets
 
-    $ cp config/database.yml.example config/database.yml
-    $ vim config/database.yml
-    $ rake db:setup
+makigas.es is using secrets, and it will do until secrets are not supported
+anymore (let's hope this never happens). While there are newer secret storage
+systems in Ruby on Rails nowadays, for an open source application I don't
+understand how that does work, and most big Rails open source projects I've
+looked for inspiration don't do either.
 
-## secrets.yml
+Production secrets are provided using environment variables, following the
+Twelve Factor guidelines. In the future I hope to use a different system or
+to abandon altogether secrets.yml to make this more clear.
 
-There is no secrets.yml file committed to the project because it is dangerous
-to track secret keys in public open source projects. Copy the example file
-`config/secrets.yml.example` and fill the commented keys with the secret keys
-that you want to use.
+## Seeds
 
-    $ cp config/secrets.yml.example config/secrets.yml
-    $ vim config/secrets.yml
+You can use `rails db:seeds` to initially seed some test data, such as a
+dashboard user. If you do so, you will be able to log in to the dashboard
+using `root@makigas.es` as username and `password` as password.
 
-You can generate new secret keys using `rake secret` command.
-
-## Creating administration users
-
-Because the dashboard is a private system, it is not possible for you to
-register as a new user using a web interface. Only an existing user can create
-new users using the dashboard. Therefore, in order to set up the first user,
-you will have to use the Rails console to seed the first user, like so:
-
-    $ rails console
-    ...
-    > User.create(email: 'foo@example.com', password: '123456')
-
-# Docker support
-
-This repository has support for Docker. At the moment Docker helps during
-development and testing of the web application because external dependencies
-such as PostgreSQL or Minio can be set up without user intervention.
-
-Later on I want to add production support for my Dockerfile so that I can run
-the web application inside a Docker container in my server. This is still not
-finished so running the Docker image in production is not recommended at the
-moment.
-
-## How to develop using Docker
-
-* Start a development session: `docker-compose up`. This will also start
-  PostgreSQL and Minio. The web application will be available as usual at
-  `http://localhost:3000` once the Docker image is built and up.
-
-* Run migrations: `docker-compose exec web rake db:schema:load`. The web
-  application will refuse to work until the schema is loaded into the database.
-  Run this one-off command in a second terminal.
+You can fetch live data from makigas.es using the JSON views deployed live,
+by using `makigas:download_production`. It may take some time to do so.
+Not every data structure is downloaded at the moment. Some things might not
+be included.
 
 # Contributing
 
@@ -139,7 +82,7 @@ PGP key is on my personal website][3].
 # License
 
     makigas v5 - source code for the makigas.es application
-    Copyright (C) 2016-2017 Dani Rodríguez
+    Copyright (C) 2016-2021 Dani Rodríguez
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -162,6 +105,6 @@ PGP key is on my personal website][3].
   just want an app that works and that allows me to manage my videos and keep
   my information up to date.
 
-[1]: https://github.com/makigas/makigas/blob/trunk/CONTRIBUTING.md
-[2]: https://github.com/makigas/makigas/blob/trunk/CODE_OF_CONDUCT.md
+[1]: https://github.com/makigas/makigas.es/blob/trunk/CONTRIBUTING.md
+[2]: https://github.com/makigas/makigas.es/blob/trunk/CODE_OF_CONDUCT.md
 [3]: https://www.danirod.es/contact/

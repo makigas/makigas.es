@@ -34,8 +34,26 @@
     <td><%= link_to @video.playlist.title, [:dashboard, @video.playlist] %></td>
   </tr>
   <tr>
+    <td><%= t('.tags') %></td>
+    <td><%= @video.tags.sort.join(' ') if @video.tags.present? %></td>
+  </tr>
+  <tr>
     <td><%= t('.published_at') %></td>
     <td><%= l @video.published_at %></td>
+  </tr>
+  <tr>
+    <td>
+      <%= t('.show_notes') %>
+      <br>
+      <%= link_to t('.edit'), dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @video.playlist.slug), class: 'btn btn-default' %>
+      <br>
+      <% if @video.show_note.present? %>
+      <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :show_note], method: :delete, class: 'btn btn-danger', data: { confirm: '¿De verdad?' } %>
+      <% end %>
+    </td>
+    <td>
+      <%= @video.show_note.present? ? to_markdown(@video.show_note.content).html_safe : t('.no_show_notes') %>
+    </td>
   </tr>
   <tr>
     <td>

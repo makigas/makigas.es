@@ -1,9 +1,31 @@
+.text-input-search {
+  margin-bottom: 1rem;
+}
+
+.deprecation-warning {
+  margin-top: 0 !important;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 1em;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+
+  p { flex: 1; }
+}
+
 .video-list-group {
   .list-group-item {
     border-left: none;
     border-right: none;
     padding-left: 0;
     padding-right: 0;
+  }
+  .list-group-item:first-child {
+    border-top: none;
+  }
+  .list-group-item:last-child {
+    border-bottom: none;
   }
   h4 {
     line-height: 1.5;

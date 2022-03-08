@@ -246,6 +246,10 @@ es:
         destroy: Destruir
         edit: Editar
         last_update: Última modificación
+        aspect: Aspecto
+        with_transcription: Con transcripción
+        with_show_notes: Con notas de versión
+        with_tags: Con etiquetas
         new_video: Nuevo Vídeo
         operations: Operaciones
         playlist: Lista
@@ -269,12 +273,15 @@ es:
         published_at: Fecha de publicación
         playlist: Lista
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
+        show_notes: Notas del episodio
+        no_show_notes: (No existen notas del episodio)
         transcription: Transcripción
         no_transcription: (Transcripción no existente)
         seconds:
           one: "%{count} segundo"
           other: "%{count} segundos"
         title: Título
+        tags: Etiquetas
         thumbnail: Miniatura
         videos: Vídeos
         youtube_id: ID de YouTube
@@ -285,6 +292,11 @@ es:
         dashboard: Panel de control
         transcription: Transcripción
         videos: Vídeos
+        cancel: Cancelar
+    show_notes:
+      show:
+        dashboard: Panel de control
+        show_notes: Notas de episodio
         cancel: Cancelar
   layouts:
     dashboard:

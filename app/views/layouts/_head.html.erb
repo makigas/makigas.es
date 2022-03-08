@@ -4,14 +4,13 @@
 
 <link rel="dns-prefetch" href="//cdn.makigas.es">
 <link rel="dns-prefetch" href="//static.makigas.es">
-<link rel="dns-prefetch" href="//disqus.com">
 <link rel="dns-prefetch" href="//i1.ytimg.com">
 <link rel="dns-prefetch" href="//www.google-analytics.com">
 <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
-<link rel="dns-prefetch" href="//makigas.disqus.com">
 
 <title><%= content_for?(:title) ? content_for(:title) : "makigas" %></title>
 <%= tag(:meta, name: 'description', content: content_for(:description)) if content_for?(:description) %>
+<%= tag(:meta, name: 'tags', content: content_for(:tags)) if content_for?(:tags) %>
 <%= tag(:link, rel: 'canonical', href: canonical_url) %>
 <%= tag(:link, rel: 'alternate', href: feed_videos_url, title: t('.videos_feed'), type: 'application/atom+xml') %>
 
@@ -19,7 +18,8 @@
 <%= content_for(:twitter) -%>
 <%= content_for(:facebook) -%>
 
-<%= stylesheet_pack_tag 'vendor' %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<%= stylesheet_link_tag 'vendor' %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
