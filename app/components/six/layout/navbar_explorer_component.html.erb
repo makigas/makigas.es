@@ -1,0 +1,23 @@
+<nav class="explorer">
+  <section class="explorer__col">
+    <p class="explorer__area">
+      ¿Qué buscas aprender?
+    </p>
+    <ul class="explorer__topics">
+      <% topics.each do |topic| %>
+      <li class="explorer__topic"><%= link_to topic.title, topic %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="explorer__col">
+    <p class="explorer__area">
+      <%= link_to 'Ver todas las listas →', playlists_path %>
+    </p>
+    <p class="explorer__area">
+      <%= link_to 'Explorar todas las temáticas →', topics_path %>
+    </p>
+    <p class="explorer__area">
+      <%= link_to 'Ver todos los vídeos →', videos_path %>
+    </p>
+  </section>
+</nav>

@@ -1,0 +1,34 @@
+<div class="navbar">
+  <div class="navbar__mtoggle">
+    <button class="navbar__button" type="button" id="sToggleMenu">
+      <%= feather_icon 'menu' %>
+    </button>
+  </div>
+  <div class="navbar__logo">
+    <%= render Six::Utils::MakigasComponent.new %>
+  </div>
+  <div class="navbar__explore">
+    <button class="navbar__explorecta" id="sExploreMenu">
+      Explora contenido
+      <%= feather_icon 'chevron-down', class: 'navbar__caret' %>
+    </button>
+    <div class="navbar__explorer">
+      <%= render Six::Layout::NavbarExplorerComponent.new %>
+    </div>
+  </div>
+  <% if show_search %>
+  <div class="navbar__search">
+    <button class="navbar__search__hide navbar__button" type="button" id="sHideSearch">
+      <%= feather_icon 'chevron-left' %>
+    </button>
+    <div class="navbar__search__area">
+      <%= render Six::Layout::SearchComponent.new(query: search_for) %>
+    </div>
+  </div>
+  <div class="navbar__stoggle">
+    <button class="navbar__button" type="button" id="sToggleSearch">
+      <%= feather_icon 'search' %>
+    </button>
+  </div>
+  <% end %>
+</div>

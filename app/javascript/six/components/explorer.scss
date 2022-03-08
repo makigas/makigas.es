@@ -1,0 +1,36 @@
+@import "../layout/responsive";
+
+.explorer {
+  padding: 15px;
+
+  @include desktop-layout {
+    display: grid;
+    grid-template-columns: 2fr auto;
+    grid-gap: 30px;
+  }
+
+  &__area {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &__topics {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &__topic {
+    line-height: 2;
+  }
+
+  a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--link-color);
+      text-decoration: underline;
+    }
+  }
+}

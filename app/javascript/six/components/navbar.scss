@@ -1,0 +1,188 @@
+@import "../layout/responsive";
+
+$navbar-size: 40px;
+
+:root {
+  --navbar-background: var(--makigas-brand-darker);
+  --navbar-foreground: white;
+  --navbar-menu-background: #e3e6ec;
+  --navbar-menu-foreground: black;
+}
+
+.navbar {
+  background: var(--navbar-background);
+  color: var(--navbar-foreground);
+  height: $navbar-size;
+  padding: calc($navbar-size / 4) calc($navbar-size / 2);
+  display: grid;
+  gap: 30px;
+  position: relative;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "mtoggle logo explore stoggle";
+
+  &__mtoggle {
+    grid-area: mtoggle;
+  }
+
+  &__logo {
+    grid-area: logo;
+    align-self: center;
+    justify-self: center;
+
+    > svg {
+      height: 21px;
+    }
+  }
+
+  &__explore {
+    grid-area: explore;
+    display: none;
+  }
+
+  &__search {
+    grid-area: search;
+    display: none;
+
+    &__area {
+      flex: 1;
+    }
+  }
+
+  &__stoggle {
+    grid-area: stoggle;
+    justify-self: end;
+  }
+
+  &__explorer {
+    display: none;
+    position: absolute;
+    top: calc($navbar-size * 1.5);
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #0003;
+    background: var(--navbar-menu-background);
+    color: var(--navbar-menu-foreground);
+  }
+
+  &__button {
+    background: transparent;
+    border: none;
+    color: var(--navbar-foreground);
+    width: $navbar-size * 1.5;
+    height: $navbar-size;
+  }
+
+  &__explorecta {
+    display: none;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__caret {
+    vertical-align: middle;
+  }
+
+  .searchbar {
+    --searchbar-box-background: #ffffff80;
+
+    margin-bottom: 0;
+
+    &:focus-within {
+      --searchbar-box-background: #fff;
+    }
+  }
+
+  /* When the navbar is in search mode. */
+  &--menu {
+    .navbar__explore,
+    .navbar__explorer {
+      display: block;
+    }
+  }
+
+  /* When the searching class is added, mobile focuses on search. */
+  &--searching {
+    grid-template-columns: 1fr;
+    grid-template-areas: "search";
+
+    .navbar__stoggle,
+    .navbar__mtoggle,
+    .navbar__explore,
+    .navbar__logo {
+      display: none;
+    }
+
+    .navbar__search {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  @include desktop-layout {
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas: "logo explore search";
+
+    &__mtoggle {
+      display: none;
+    }
+
+    &__stoggle {
+      display: none;
+    }
+
+    &__search {
+      display: flex;
+      width: 500px;
+      justify-self: end;
+
+      &__hide {
+        display: none;
+      }
+
+      &__area {
+        width: 100%;
+      }
+    }
+
+    &__explore {
+      display: block;
+      position: relative;
+      padding-top: calc($navbar-size / 4);
+      padding-bottom: calc($navbar-size / 4);
+    }
+
+    &__explorecta {
+      display: block;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    &__explorer {
+      position: absolute;
+      top: 45px;
+      border-radius: 0 15px 15px;
+      left: 0;
+      width: 600px;
+      box-shadow: 0 4px 4px #fff3;
+    }
+
+    &--menu {
+      .navbar__explore {
+        background: var(--navbar-menu-background);
+        color: var(--navbar-menu-foreground);
+        border-radius: 15px 15px 0 0;
+      }
+
+      .navbar__explorer {
+        display: block;
+      }
+    }
+  }
+}
