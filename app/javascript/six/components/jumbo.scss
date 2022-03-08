@@ -1,0 +1,20 @@
+@import "../layout/responsive";
+
+.jumbo {
+  background: var(--makigas-brand-darker);
+  color: white;
+  font-family: var(--font-title);
+  padding: 12px 24px;
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  @include desktop-layout {
+    padding: 20px 40px;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
