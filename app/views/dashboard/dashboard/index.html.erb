@@ -1,49 +1,51 @@
 <% content_for :header do %>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item current"><%= t('.dashboard') %></li>
+    <li class="current"><%= t('.dashboard') %></li>
   </ol>
-
   <h1><%= t('.dashboard') %></h1>
 <% end %>
-
-  <div class="row text-center">
-    <div class="col">
-      <h1><span class="bi bi-play-btn-fill"></span> <%= @videos %></h1>
-      <p class="lead"><%= t('.videos', count: @videos) %></p>
-      <div class="d-grid gap-2">
-        <%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-outline-secondary' %>
+<div class="row">
+  <div class="col-lg-2 col-md-3 col-sm-3 data-dashboard">
+    <div class="row">
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="bi bi-play-btn-fill"></span> <%= @videos %></h1>
+        <p class="lead"><%= t('.videos', count: @videos) %></p>
+        <p class="d-grid"><%= link_to t('.manage_videos'), [:dashboard, :videos], class: 'btn btn-outline-secondary' %></p>
       </div>
-    </div>
-
-    <div class="col">
-      <h1><span class="bi bi-list-ul"></span> <%= @playlists %></h1>
-      <p class="lead"><%= t('.playlists', count: @playlists) %></p>
-      <div class="d-grid gap-2">
-        <%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-outline-secondary' %>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="bi bi-list-ul"></span> <%= @playlists %></h1>
+        <p class="lead"><%= t('.playlists', count: @playlists) %></p>
+        <p class="d-grid"><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-outline-secondary' %></p>
       </div>
-    </div>
-
-    <div class="col">
-      <h1><span class="bi bi-journals"></span> <%= @topics %></h1>
-      <p class="lead"><%= t('.topics', count: @topics) %></p>
-      <div class="d-grid gap-2">
-        <%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-outline-secondary' %>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="bi bi-journals"></span> <%= @topics %></h1>
+        <p class="lead"><%= t('.topics', count: @topics) %></p>
+        <p class="d-grid"><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-outline-secondary' %></p>
       </div>
-    </div>
-
-    <div class="col">
-      <h1><span class="bi bi-person-fill"></span> <%= @users %></h1>
-      <p class="lead"><%= t('.users', count: @users) %></p>
-      <div class="d-grid gap-2">
-        <%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary' %>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="bi bi-person-fill"></span> <%= @users %></h1>
+        <p class="lead"><%= t('.users', count: @users) %></p>
+        <p class="d-grid"><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary' %></p>
       </div>
-    </div>
-
-    <div class="col">
-      <h1><span class="bi bi-chat-fill"></span> <%= @opinions %></h1>
-      <p class="lead"><%= t('.opinions', count: @opinions) %></p>
-      <div class="d-grid gap-2">
-        <%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-outline-secondary' %>
+      <div class="col-sm-12 col-xs-6">
+        <h1><span class="bi bi-chat-fill"></span> <%= @opinions %></h1>
+        <p class="lead"><%= t('.opinions', count: @opinions) %></p>
+        <p class="d-grid"><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-outline-secondary' %></p>
       </div>
     </div>
   </div>
+  <div class="col-sm-9 col-md-9 col-lg-10">
+    <div class="card">
+      <div class="card-header">
+        Acciones rápidas
+      </div>
+        <div class="list-group list-group-flush">
+          <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path, class: 'list-group-item list-group-item-action' %>
+          <% Video.last.playlist.tap do |playlist| %>
+              <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
