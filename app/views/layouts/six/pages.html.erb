@@ -6,13 +6,11 @@
   <body>
     <%= render Six::Layout::NavbarComponent.new %>
 
-    <% if content_for?(:hero) %>
-      <%= render Six::Base::JumboComponent.new do %>
-        <%= content_for(:hero) %>
-      <% end %>
+    <%= render Six::Base::JumboComponent.new do %>
+      <%= content_for(:hero) %>
     <% end %>
 
-    <main>
+    <main class="wrapped">
     <%= yield %>
     </main>
 

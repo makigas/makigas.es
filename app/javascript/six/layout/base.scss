@@ -14,3 +14,15 @@ main.wrapped {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.topicslist {
+  max-width: 720px;
+  margin: 15px auto;
+
+  @include desktop-layout {
+    max-width: 100%;
+    margin: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -76,7 +76,7 @@ es:
       dismiss: "Me entero"
       learn_more: "Lee más sobre las cookies"
     six:
-      six:
+      head:
         videos_feed: Vídeos recientes (ATOM)
     head:
       videos_feed: Vídeos recientes (ATOM)
