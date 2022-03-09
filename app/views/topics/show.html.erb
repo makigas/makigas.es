@@ -22,6 +22,12 @@
 
 <% content_for :header do %>
 <style>
+:root {
+  --navbar-background: <%= @topic.color.paint.darken(10) %>;
+  --jumbo-background: <%= @topic.color.paint.darken(10) %>;
+  --playlist-card-hover-background: <%= @topic.color.paint.desaturate(35).lighten(35) %>;
+}
+
 .main-header, .hero-tron { background: <%= @topic.color %>; }
 .main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
 </style>

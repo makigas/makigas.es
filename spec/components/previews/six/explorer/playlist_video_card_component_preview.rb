@@ -12,7 +12,7 @@ module Six
       def default
         component = Six::Explorer::PlaylistVideoCardComponent.new(video: Video.first)
         render ViewComponentContrib::WrapperComponent.new(component) do |wrapper|
-          wrapper.content_tag(:div, style: '--playlist-lighten-30: #e1f5fe;') do
+          wrapper.content_tag(:div, style: '--video-card-hover-background: #e1f5fe;') do
             wrapper.component
           end
         end

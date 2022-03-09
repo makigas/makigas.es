@@ -1,15 +1,17 @@
 $plhead-text-size: 1.15rem;
 
+:root {
+  --playlist-header-background: var(--playlist-background);
+}
+
 .plhead {
-  background: var(--playlist-darken-10);
+  background: var(--playlist-header-background);
   color: var(--playlist-header-foreground);
   font-size: $plhead-text-size;
 
   &__wrap {
-    max-width: 1000px;
-    margin: 0 auto;
     display: flex;
-    padding: 40px 80px;
+    padding-bottom: 40px;
     justify-content: space-between;
     align-items: center;
     gap: 80px;

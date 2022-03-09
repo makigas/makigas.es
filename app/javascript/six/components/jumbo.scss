@@ -1,7 +1,11 @@
 @import "../layout/responsive";
 
+:root {
+  --jumbo-background: var(--makigas-brand-darker);
+}
+
 .jumbo {
-  background: var(--makigas-brand-darker);
+  background: var(--jumbo-background);
   color: white;
   font-family: var(--font-title);
   padding: 12px 24px;

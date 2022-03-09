@@ -1,5 +1,5 @@
 <header class="plhead">
-    <div class="plhead__wrap">
+    <%= render Six::Base::WrapperComponent.new(classes: 'plhead__wrap') do %>
         <section class="plhead__data">
         <h1 class="plhead__title"><%= @playlist.title %></h1>
         <p class="plhead__lead"><%= @playlist.description %></p>
@@ -12,5 +12,5 @@
         <figure class="plhead__thumbnail">
             <%= image_tag @playlist.thumbnail.url(:small), class: 'plhead__img' %>
         </figure>
-    </div>
+    <% end %>
 </header>

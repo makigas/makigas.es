@@ -1,5 +1,9 @@
 $video-vnum-width: 1.25rem;
 
+:root {
+  --video-card-hover-background: var(--playlist-lighten-30);
+}
+
 .videocard {
   &__link {
     display: block;
@@ -11,7 +15,7 @@ $video-vnum-width: 1.25rem;
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--playlist-lighten-30);
+      background-color: var(--video-card-hover-background);
     }
   }
 

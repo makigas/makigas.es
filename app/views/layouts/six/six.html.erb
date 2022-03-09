@@ -6,7 +6,9 @@
   <body>
     <%= render Six::Layout::NavbarComponent.new %>
 
-    <% if content_for?(:hero) %>
+    <% if content_for?(:jumbo) %>
+      <%= content_for(:jumbo) %>
+    <% elsif content_for?(:hero) %>
       <%= render Six::Base::JumboComponent.new do %>
         <%= content_for(:hero) %>
       <% end %>
