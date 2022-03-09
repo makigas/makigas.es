@@ -18,3 +18,5 @@ import "../six/components/plcard.scss";
 import "../six/components/videocard.scss";
 import "../six/components/search.scss";
 import "../six/components/topcard.scss";
+import "../six/components/videoinfo.scss";
+import "../six/components/ytiframe.scss";
