@@ -10,9 +10,9 @@
       <%= content_for(:hero) %>
     <% end %>
 
-    <main class="wrapped">
-    <%= yield %>
-    </main>
+    <%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
+      <%= yield %>
+    <% end %>
 
     <%= render Six::Layout::FooterComponent.new %>
   </body>

@@ -1,41 +1,30 @@
 @import "./responsive";
 
-.wrapped {
+.wrapper {
   margin-left: 15px;
   margin-right: 15px;
+
+  &--breath {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 
   @include desktop-layout {
     max-width: 992px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    &--fluid {
+      max-width: initial;
+      margin-left: 60px;
+      margin-right: 60px;
+    }
   }
-}
-
-.wrapped-fluid {
-  margin-left: 15px;
-  margin-right: 15px;
-
-  @include desktop-layout {
-    margin-left: 60px;
-    margin-right: 60px;
-  }
-}
-
-main.wrapped {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .topicslist {
-  margin-top: 15px;
-  margin-bottom: 15px;
-
   @include desktop-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-}
-
-.playlistslist {
-  margin-top: 15px;
-  margin-bottom: 15px;
 }

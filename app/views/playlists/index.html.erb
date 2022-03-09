@@ -6,11 +6,7 @@
 <% end %>
 
 <% if ENV['USE_SIX'].present? %>
-  <div class="playlistslist wrapped">
-  <% @playlists.each do |pl| %>
-    <%= render Six::Explorer::PlaylistCardComponent.new(playlist: pl) %>
-  <% end %>
-  </div>
+  <%= render Six::Explorer::PlaylistListComponent.new(playlists: @playlists) %>
 <% else %>
 <div class="grid-table row">
 <% @playlists.each do |pl| %>

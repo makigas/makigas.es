@@ -1,7 +1,9 @@
 <header class="jumbo">
-  <% if text.present? %>
-  <h1><%= text %></h1>
-  <% else %>
-  <%= content %>
+  <%= render Six::Base::WrapperComponent.new do %>
+    <% if text.present? %>
+      <h1><%= text %></h1>
+    <% else %>
+      <%= content %>
+    <% end %>
   <% end %>
 </header>

@@ -6,11 +6,11 @@
 <% end %>
 
 <% if ENV['USE_SIX'].present? %>
-  <div class="topicslist wrapped">
+  <%= render Six::Base::WrapperComponent.new(classes: 'topicslist', breath: true) do %>
     <% @topics.each do |tp| %>
       <%= render Six::Explorer::TopicCardComponent.new(topic: tp) %>
     <% end %>
-  </div>
+  <% end %>
 <% else %>
 <div class="grid-table topic-list row">
   <% @topics.each do |tp| %>

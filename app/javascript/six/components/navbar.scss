@@ -12,13 +12,17 @@ $navbar-size: 40px;
 .navbar {
   background: var(--navbar-background);
   color: var(--navbar-foreground);
+  padding-top: calc($navbar-size / 4);
+  padding-bottom: calc($navbar-size / 4);
   height: $navbar-size;
-  padding: calc($navbar-size / 4) calc($navbar-size / 2);
-  display: grid;
-  gap: 30px;
   position: relative;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: "mtoggle logo explore stoggle";
+
+  &__grid {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "mtoggle logo explore stoggle";
+    display: grid;
+    gap: 30px;
+  }
 
   &__mtoggle {
     grid-area: mtoggle;
@@ -126,8 +130,10 @@ $navbar-size: 40px;
   }
 
   @include desktop-layout {
-    grid-template-columns: auto auto 1fr;
-    grid-template-areas: "logo explore search";
+    &__grid {
+      grid-template-columns: auto auto 1fr;
+      grid-template-areas: "logo explore search";
+    }
 
     &__mtoggle {
       display: none;

@@ -2,6 +2,7 @@
   &__link {
     /* Flex */
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
 
     /* Dimensions. */
@@ -23,12 +24,11 @@
     display: none;
     flex: 0;
     margin: 0;
-    margin-right: 2rem;
 
     @media screen and (min-width: 767px) {
       display: block;
-      width: 128px;
-      height: 128px;
+      width: 96px;
+      height: 96px;
     }
   }
 

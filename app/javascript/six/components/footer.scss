@@ -3,16 +3,21 @@
 .footer {
   background-color: var(--footer-background-color);
   color: var(--footer-foreground-color);
-  line-height: 1.5;
-  padding: 10px 30px;
   text-align: center;
 
   @include desktop-layout {
     text-align: left;
-    display: grid;
-    grid-template-columns: auto 140px 140px;
-    grid-gap: 0 20px;
-    grid-template-rows: repeat(2, auto);
+  }
+
+  &__grid {
+    padding: 10px 30px;
+
+    @include desktop-layout {
+      display: grid;
+      grid-template-columns: auto 140px 140px;
+      grid-gap: 0 20px;
+      grid-template-rows: repeat(2, auto);
+    }
   }
 
   a {
