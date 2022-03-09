@@ -27,6 +27,12 @@
 </style>
 <% end %>
 
+<% if ENV['USE_SIX'].present? %>
+  <% content_for(:hero) do %>
+    <h1><%= @topic.title %></h1>
+  <% end %>
+  <%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists) %>
+<% else %>
 <% content_for :hero do %>
   <div class="media playlist-data">
     <div class="media-body media-middle">
@@ -54,3 +60,4 @@
 </div>
 <% end %>
 </div>
+<% end %>
