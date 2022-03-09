@@ -20,6 +20,14 @@
       margin-right: 60px;
     }
   }
+
+  @include wide-layout {
+    max-width: 1280px;
+
+    &--fluid {
+      max-width: initial;
+    }
+  }
 }
 
 .topicslist {

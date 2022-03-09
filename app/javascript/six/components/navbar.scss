@@ -113,8 +113,10 @@ $navbar-size: 40px;
 
   /* When the searching class is added, mobile focuses on search. */
   &--searching {
-    grid-template-columns: 1fr;
-    grid-template-areas: "search";
+    .navbar__grid {
+      grid-template-columns: 1fr;
+      grid-template-areas: "search";
+    }
 
     .navbar__stoggle,
     .navbar__mtoggle,
