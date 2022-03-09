@@ -6,7 +6,9 @@
       </button>
     </div>
     <div class="navbar__logo">
-      <%= render Six::Utils::MakigasComponent.new %>
+      <%= link_to root_path do %>
+        <%= render Six::Utils::MakigasComponent.new %>
+      <% end %>
     </div>
     <div class="navbar__explore">
       <button class="navbar__explorecta" id="sExploreMenu">
