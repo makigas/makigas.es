@@ -26,10 +26,28 @@
 <style>
 .main-header, .hero-tron { background: <%= @playlist.topic.color %>; }
 .main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
+:root {
+  --playlist-background: <%= @playlist.topic.color %>;
+  <% [10, 20, 30, 40, 50].each do |level| %>
+  --playlist-lighten-<%= level %>: <%= @playlist.topic.color.paint.lighten(level) %>;
+  --playlist-darken-<%= level %>: <%= @playlist.topic.color.paint.darken(level) %>;
+  <% end %>
+}
 </style>
 <% end %>
 <% end %>
 
+
+<% if ENV['USE_SIX'].present? %>
+  <% content_for :hero do %>
+    <h1><%= @playlist.title %></h1>
+  <% end %>
+  <%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata') do %>
+    <% @playlist.videos.visible.each do |v| %>
+      <%= render Six::Explorer::PlaylistVideoCardComponent.new(video: v) %>
+    <% end %>
+  <% end %>
+<% else %>
 <% content_for :hero do %>
   <div class="media playlist-data">
     <div class="media-body media-middle">
@@ -55,3 +73,4 @@
   </div>
 </div>
 </div>
+<% end %>
