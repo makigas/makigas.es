@@ -36,3 +36,47 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.discord {
+  background-color: #2a2a2a;
+  color: white;
+
+  &__grid {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+
+    @include desktop-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__widget {
+    width: 100%;
+    height: 600px;
+
+    @include desktop-layout {
+      width: 420px;
+    }
+  }
+
+  &__cta {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @include desktop-layout {
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+  }
+
+  &__btn {
+    padding: 12px 36px;
+  }
+}

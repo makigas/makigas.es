@@ -1,76 +1,120 @@
 <% content_for :title, 'Comunidad de Discord para profesionales y estudiantes de la programación – makigas' %>
 <% content_for :twitter do %>
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@makigas">
-<meta name="twitter:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
-<meta name="twitter:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
-<meta name="twitter:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@makigas">
+  <meta name="twitter:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
+  <meta name="twitter:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
+  <meta name="twitter:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
-<meta property="og:url" content="<%= canonical_url %>">
-<meta property="og:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
-<meta property="og:type" content="website">
-<meta property="og:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
-<meta property="og:site_name" content="makigas">
-<meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
+  <meta property="og:site_name" content="makigas">
+  <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
-
 <% content_for :body_classes, 'discord-page' %>
-<% content_for :hero do %>
-    <div class="conversation">
-          <img src="/favicon-64x64.png" alt="" class="avatar">
-          <div class="content">
-            <p>
-              <span class="name">makigas</span>
-              <time class="time">hoy a las 12:44</time>
-            </p>
-            <p>¿Sabías que estamos en Discord?</p>
-            <p>¿Por qué no te pasas tú también?</p>
-            <p>👉 <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'link' %></p>
-          </div>
-    </div>
+<% if ENV['USE_SIX'].present? %>
+  <% content_for :header do %>
+    <style>
+      :root {
+        --jumbo-background: #2a2a2a;
+        --button-background: #424242;
+        --button-active-background: #4848481a;
+        --button-border-color: #ffffffab;
+        --button-focus-border-color: #dddcdc80;
+      }
+    </style>
 <% end %>
-
-<article class="col-md-7">
-
-<header class="join-cta">
-
-<h1>¡Pásate por el Discord oficial de makigas!</h1>
-<h2>
-  Habla con otras personas, comparte ideas, enseña el proyecto
-  en el que estés trabajando, o plantea preguntas.
-</h2>
-
-<%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'btn btn-default btn-lg' %><br>
-        <small>(¡es gratuito y funciona muy bien!)</small>
-
-</header>
-
-<p>
-  <strong>La Comunidad de Makigas</strong> es un servidor creativo y acogedor de Discord en el que podrás hablar y chatear con
-  más desarrolladores, diseñadores, ingenieros y estudiantes de programación para discutir sobre temas de desarrollo, preguntar
-  y responder dudas que puedan surgir, o simplemente distraerse hablando de cualquier tema en los canales de off-topic mientras
-  deberías estar estudiando o trabajando.
-</p>
-
-<p>
-  Es una gran alternativa para hacer conexiones con otros desarrolladores y personas que tengan gustos parecidos, y también es
-  un buen lugar para preguntarle a la comunidad cosas que en los comentarios del canal de YouTube o de la página web pasarían
-  ignoradas.
-</p>
-
-<p>
-  Nuestro servidor está organizado en distintos canales para los distintos temas on-topic, como #programación, #webdev o #linux.
-  También hay canales específicos para lenguajes de programación, como #javascript, #python o #go.
-</p>
-
-<p>
-  <strong>Para unirte</strong>, tienes que tener una cuenta de Discord con tu e-mail verificado.
-  Lee las instrucciones en los canales de bienvenida para verificar tu cuenta y pode ver el resto de canales del servidor.
-</p>
-</article>
-
-<div class="col-md-5">
-  <iframe src="https://discordapp.com/widget?id=<%= Rails.application.secrets.discord_server_id %>"
+  <% content_for :hero do %>
+    <h1>El Discord oficial de makigas</h1>
+  <% end %>
+  <div class="discord">
+    <%= render Six::Base::WrapperComponent.new(classes: 'discord__grid') do %>
+      <div>
+        <h1>¡Pásate por el Discord oficial de makigas!</h1>
+        <h2>
+          Habla con otras personas, comparte ideas, enseña el proyecto
+          en el que estés trabajando, o plantea preguntas.
+        </h2>
+        <div class="discord__cta">
+          <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
+         <small>(¡es gratuito y funciona muy bien!)</small>
+        </div>
+        <p>
+          <strong>La Comunidad de Makigas</strong> es un servidor creativo y acogedor de Discord en el que podrás hablar y chatear con
+          más desarrolladores, diseñadores, ingenieros y estudiantes de programación para discutir sobre temas de desarrollo, preguntar
+          y responder dudas que puedan surgir, o simplemente distraerse hablando de cualquier tema en los canales de off-topic mientras
+          deberías estar estudiando o trabajando.
+        </p>
+        <p>
+          Es una gran alternativa para hacer conexiones con otros desarrolladores y personas que tengan gustos parecidos, y también es
+          un buen lugar para preguntarle a la comunidad cosas que en los comentarios del canal de YouTube o de la página web pasarían
+          ignoradas.
+        </p>
+        <p>
+          Nuestro servidor está organizado en distintos canales para los distintos temas on-topic, como #programación, #webdev o #linux.
+          También hay canales específicos para lenguajes de programación, como #javascript, #python o #go.
+        </p>
+        <p>
+          <strong>Para unirte</strong>, tienes que tener una cuenta de Discord con tu e-mail verificado.
+          Lee las instrucciones en los canales de bienvenida para verificar tu cuenta y pode ver el resto de canales del servidor.
+        </p>
+      </div>
+      <div>
+        <iframe src="https://discordapp.com/widget?id=<%= Rails.application.secrets.discord_server_id %>"
+    id="discord_widget" class="discord__widget" allowtransparency="true" frameborder="0"></iframe>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <% content_for :hero do %>
+    <div class="conversation">
+      <img src="/favicon-64x64.png" alt="" class="avatar">
+      <div class="content">
+        <p>
+          <span class="name">makigas</span>
+          <time class="time">hoy a las 12:44</time>
+        </p>
+        <p>¿Sabías que estamos en Discord?</p>
+        <p>¿Por qué no te pasas tú también?</p>
+        <p>👉 <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'link' %></p>
+      </div>
+    </div>
+  <% end %>
+  <article class="col-md-7">
+    <header class="join-cta">
+      <h1>¡Pásate por el Discord oficial de makigas!</h1>
+      <h2>
+        Habla con otras personas, comparte ideas, enseña el proyecto
+        en el que estés trabajando, o plantea preguntas.
+      </h2>
+      <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'btn btn-default btn-lg' %><br>
+      <small>(¡es gratuito y funciona muy bien!)</small>
+    </header>
+    <p>
+      <strong>La Comunidad de Makigas</strong> es un servidor creativo y acogedor de Discord en el que podrás hablar y chatear con
+      más desarrolladores, diseñadores, ingenieros y estudiantes de programación para discutir sobre temas de desarrollo, preguntar
+      y responder dudas que puedan surgir, o simplemente distraerse hablando de cualquier tema en los canales de off-topic mientras
+      deberías estar estudiando o trabajando.
+    </p>
+    <p>
+      Es una gran alternativa para hacer conexiones con otros desarrolladores y personas que tengan gustos parecidos, y también es
+      un buen lugar para preguntarle a la comunidad cosas que en los comentarios del canal de YouTube o de la página web pasarían
+      ignoradas.
+    </p>
+    <p>
+      Nuestro servidor está organizado en distintos canales para los distintos temas on-topic, como #programación, #webdev o #linux.
+      También hay canales específicos para lenguajes de programación, como #javascript, #python o #go.
+    </p>
+    <p>
+      <strong>Para unirte</strong>, tienes que tener una cuenta de Discord con tu e-mail verificado.
+      Lee las instrucciones en los canales de bienvenida para verificar tu cuenta y pode ver el resto de canales del servidor.
+    </p>
+  </article>
+  <div class="col-md-5">
+    <iframe src="https://discordapp.com/widget?id=<%= Rails.application.secrets.discord_server_id %>"
     id="discord_widget" allowtransparency="true" frameborder="0"></iframe>
-</div>
+  </div>
+<% end %>
