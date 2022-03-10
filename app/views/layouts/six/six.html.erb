@@ -4,7 +4,11 @@
     <%= render 'layouts/six/head' %>
   </head>
   <body>
-    <%= render Six::Layout::NavbarComponent.new %>
+    <% if content_for?(:navbar) %>
+      <%= content_for(:navbar) %>
+    <% else %>
+      <%= render Six::Layout::NavbarComponent.new %>
+    <% end %>
 
     <% if content_for?(:jumbo) %>
       <%= content_for(:jumbo) %>

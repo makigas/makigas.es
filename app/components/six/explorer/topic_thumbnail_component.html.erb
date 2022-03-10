@@ -1,0 +1,24 @@
+<div class="topicthumb" style="
+  --topic-color: <%= @topic.color.paint %>;
+  --topic-color-washed-out: <%= @topic.color.paint.opacity(0.1) %>;
+  --topic-color-washed-out-active: <%= @topic.color.paint.opacity(0.2) %>;
+">
+  <%= link_to topic_path(@topic), class: 'topicthumb__link' do %>
+    <figure class="topicthumb__fig">
+      <%= image_tag standard_icon, srcset: "#{standard_icon}, #{hidef_icon} 2x", class: 'topicthumb__icon' %>
+      <figcaption class="topicthumb__text">
+        <p class="topicthumb__name"><%= name %></p>
+          <%= render Six::Utils::MetaGroupComponent.new(classes: 'topicthumb__data') do |g| %>
+            <%= g.meta(icon: 'list') do %>
+              <span class="topicthumb__counter"><%= playlists %></span>
+              listas
+            <% end %>
+            <%= g.meta(icon: 'video') do %>
+              <span class="topicthumb__counter"><%= videos %></span>
+              vídeos
+            <% end %>
+          <% end %>
+      </figcaption>
+    </figure>
+  <% end %>
+</div>

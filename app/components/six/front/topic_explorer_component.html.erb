@@ -1,0 +1,12 @@
+<div class="topicexplorer">
+  <%= render Six::Base::WrapperComponent.new(classes: 'topicexplorer__wrap') do %>
+    <h2 class="topicexplorer__title">O bien, explora una categoría</h2>
+    <div class="topicexplorer__topics">
+      <% each_topic do |topic, name| %>
+        <div class="topicexplorer__topic">
+        <%= render Six::Explorer::TopicThumbnailComponent.new(topic: topic, name: name) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

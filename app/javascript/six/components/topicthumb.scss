@@ -1,0 +1,80 @@
+@import "../layout/responsive";
+
+.topicthumb {
+  background: var(--topic-color-washed-out);
+  border: 2px solid var(--topic-explorer-background);
+  border-radius: 5px;
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--topic-color);
+    background-color: var(--topic-color-washed-out-active);
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  &__fig {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    @include desktop-layout {
+      display: block;
+    }
+  }
+
+  &__icon {
+    max-width: 96px;
+
+    @include desktop-layout {
+      max-width: 100%;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex: 1;
+    align-self: center;
+  }
+
+  svg {
+    display: none;
+  }
+
+  &__name {
+    margin: 5px;
+  }
+
+  &__data {
+    font-size: 0.8rem;
+  }
+
+  &__counter {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .metas {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 5px;
+  }
+
+  .meta {
+    flex: 1;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  .meta + .meta {
+    border-left: 1px solid #0003;
+  }
+}

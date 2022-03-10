@@ -1,0 +1,65 @@
+.frontblock {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  background: var(--front-block-background);
+  color: var(--front-block-foreground);
+
+  &--reverse {
+    --front-block-background: var(--makigas-brand);
+    --front-block-foreground: white;
+  }
+
+  header {
+    margin: 0 auto;
+    text-align: left;
+    display: inline-block;
+  }
+
+  small {
+    background: var(--front-block-foreground);
+    color: var(--front-block-background);
+    padding: 4px 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-title);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+
+    @include desktop-layout {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-weight: 400;
+    margin-top: 0;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+
+    & + & {
+      margin-top: 0.6rem;
+    }
+
+    @include desktop-layout {
+      font-size: 1.1rem;
+    }
+  }
+
+  & + hr {
+    opacity: 0.1;
+    margin: 0;
+    padding: 0;
+  }
+
+  svg {
+    height: 1.5rem;
+    vertical-align: bottom;
+  }
+}

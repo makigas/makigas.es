@@ -1,0 +1,46 @@
+.topicexplorer {
+  background: var(--topic-explorer-background);
+
+  &__wrap {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  &__title {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    margin-top: 0;
+
+    @include desktop-layout {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+  }
+
+  @include desktop-layout {
+    &__title {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    &__topics {
+      display: flex;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    &__topic {
+      flex: 1;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  @include wide-layout {
+    &__topics {
+      width: 1100px;
+      margin: 0 auto;
+    }
+  }
+}

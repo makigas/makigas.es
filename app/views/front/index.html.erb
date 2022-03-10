@@ -16,6 +16,9 @@
 <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
 
+<% if ENV['USE_SIX'].present? %>
+<%= render 'six' %>
+<% else %>
 <%= render 'jumbotron' %>
 
 <%= render 'about' %>
@@ -25,3 +28,4 @@
 <%= render 'videos' %>
 <%= render 'behind' %>
 <%= render 'disclaimer' unless @opinions.empty? %>
+<% end %>

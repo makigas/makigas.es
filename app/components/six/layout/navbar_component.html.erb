@@ -1,4 +1,4 @@
-<div class="navbar">
+<%= content_tag(:div, class: class_list) do %>
   <%= render Six::Base::WrapperComponent.new(classes: 'navbar__grid') do %>
     <div class="navbar__mtoggle">
       <button class="navbar__button" type="button" id="sToggleMenu">
@@ -35,4 +35,4 @@
     </div>
     <% end %>
   <% end %>
-</div>
+<% end %>

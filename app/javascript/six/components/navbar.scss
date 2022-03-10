@@ -17,6 +17,13 @@ $navbar-size: 40px;
   height: $navbar-size;
   position: relative;
 
+  &--front {
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    margin-bottom: $navbar-size;
+  }
+
   &__grid {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "mtoggle logo explore stoggle";
