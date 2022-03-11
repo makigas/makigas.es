@@ -15,7 +15,7 @@ gem 'meilisearch-rails'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 5.6.2'
 gem 'rack-cors'
-gem 'rails', '6.1.4.6'
+gem 'rails', '6.1.4.7'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
@@ -37,7 +37,7 @@ gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.49.1'
+gem 'view_component', '~> 2.50.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
@@ -59,7 +59,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'rubocop', '~> 1.25.0', require: false
+  gem 'rubocop', '~> 1.26.0', require: false
   gem 'rubocop-rails', '~> 2.13.2', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.9.0', require: false
