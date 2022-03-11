@@ -5,6 +5,45 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
+<% if ENV['USE_SIX'].present? %>
+  <div class="videoexplorer">
+    <%= render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do %>
+      <%= render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...') %>
+      <div class="videoexplorer__sidebar">
+        <section class="videoexplorer__search__block">
+          <header class="videoexplorer__search__title">
+            Filtrar por duración
+          </header>
+          <%= render(Six::Explorer::SearchPillComponent.new(url: videos_path(params.permit(:topic, :tags))).with_content('Todos')) if params[:length].present? %>
+          <%= render Six::Explorer::SearchPillComponent.new(active: params[:length] == 'short', url: videos_path(params.permit(:topic, :tags).merge(length: :short))).with_content('Cortos (<5 min)') %>
+          <%= render Six::Explorer::SearchPillComponent.new(active: params[:length] == 'medium', url: videos_path(params.permit(:topic, :tags).merge(length: :medium))).with_content('Medios (5 a 15 min)') %>
+          <%= render Six::Explorer::SearchPillComponent.new(active: params[:length] == 'long', url: videos_path(params.permit(:topic, :tags).merge(length: :long))).with_content('Largos (>15 min)') %>
+         </section>
+
+        <section class="videoexplorer__search__block">
+          <header class="videoexplorer__search__title">
+            Filtrar por categoría
+          </header>
+          <%= render(Six::Explorer::SearchPillComponent.new(url: videos_path(params.permit(:length, :tags))).with_content('Todos')) if params[:topic].present? %>
+          <% Topic.all.each do |topic| %>
+            <%= render(Six::Explorer::SearchPillComponent.new(active: params[:topic].present? && params[:topic].include?(topic.slug), url: videos_path(params.permit(:length, :tags).merge(topic: [topic.slug]))).with_content(topic.title)) %>
+          <% end %>
+        </section>
+        </div>
+        <div class="videoexplorer__list">
+        <% if params[:q].present? %>
+        <h3>Resultados de búsqueda para: <%= params[:q] %></h3>
+        <% end %>
+        <% @videos.each do |video| %>
+          <%= render Six::Explorer::VideoListItemComponent.new(video: video) %>
+        <% end %>
+        <div class="paginator">
+        <%= paginate @videos %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
 <%= form_tag :videos, method: :GET, id: 'videos_filter' do %>
 <div class="row">
   <div class="col-md-8">
@@ -56,7 +95,7 @@
         <legend><%= t('.filter.by_topic') %></legend>
         <ul>
         <% Topic.all.each do |topic| %>
-        <li><%= check_box_tag 'topic[]', topic.slug, (params[:topic].include?(topic.slug) rescue false), id: "topic_#{topic.slug}" %> <%= label_tag "topic_#{topic.slug}", topic.title %></li>
+        <li><%= check_box_tag 'topic[]', topic.slug, (params['topic[]'].include?(topic.slug) rescue false), id: "topic_#{topic.slug}" %> <%= label_tag "topic_#{topic.slug}", topic.title %></li>
         <% end %>
         </ul>
       </fieldset>
@@ -64,4 +103,5 @@
       <%= button_tag t('.filter.apply_filters'), type: :submit, name: nil, class: 'btn btn-default' %>
   </div>
 </div>
+<% end %>
 <% end %>

@@ -177,3 +177,12 @@ es:
       meta:
         playlist_feed: "Lista: %{playlist} (ATOM)"
         topic_feed: "Tema: %{topic} (ATOM)"
+  six:
+    explorer:
+      playlist_card_component:
+        hours:
+          one: "%{count} hora"
+          other: "%{count} horas"
+        minutes:
+          one: "%{count} minuto"
+          other: "%{count} minutos"

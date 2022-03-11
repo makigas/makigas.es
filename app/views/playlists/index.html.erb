@@ -7,6 +7,9 @@
 
 <% if ENV['USE_SIX'].present? %>
   <%= render Six::Explorer::PlaylistListComponent.new(playlists: @playlists) %>
+  <div class="paginator">
+    <%= paginate @playlists %>
+    </div>
 <% else %>
 <div class="grid-table row">
 <% @playlists.each do |pl| %>

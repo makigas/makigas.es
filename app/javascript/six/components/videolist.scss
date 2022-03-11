@@ -1,0 +1,23 @@
+.videolist {
+  margin-bottom: 0;
+  padding: 15px;
+
+  & + & {
+    border-top: 1px solid #0003;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0;
+  }
+
+  .metas {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+
+  .meta {
+    display: inline;
+  }
+}

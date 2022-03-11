@@ -13,8 +13,12 @@ module Six
       end
 
       def duration
-        duration = helpers.running_time total_seconds, long: true
-        duration.split(':').take(2).join(':')
+        parts = ActiveSupport::Duration.build(total_seconds).parts
+        minutes = t('.minutes', count: parts[:minutes])
+        return minutes if parts[:hours].blank?
+
+        hours = t('.hours', count: parts[:hours])
+        [hours, minutes].join(', ')
       end
 
       private

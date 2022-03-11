@@ -1,0 +1,77 @@
+@import "../layout/responsive";
+
+.videoexplorer {
+  &__list {
+    margin: 20px 0;
+  }
+
+  &__toggle {
+    margin-top: 1rem;
+    width: 100%;
+
+    @include desktop-layout {
+      display: none;
+    }
+  }
+
+  &__wrap {
+    @include desktop-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 30px;
+    }
+  }
+
+  &__sidebar {
+    border-bottom: 1px solid #0003;
+    max-height: 0;
+    transition: max-height 0.25s linear;
+    overflow: hidden;
+    visibility: hidden;
+
+    &--toggle {
+      max-height: 100vh;
+      visibility: visible;
+    }
+
+    @include desktop-layout {
+      border-bottom: none;
+      max-height: 100vh;
+      visibility: visible;
+    }
+  }
+
+  &__search {
+    &__block {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__title {
+      padding-left: 12px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    &__pill {
+      display: block;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      border-radius: 4px;
+      padding: 6px 12px;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--link-color);
+        text-decoration: underline;
+      }
+
+      &--active {
+        background: #e7e7e7;
+      }
+    }
+  }
+}
