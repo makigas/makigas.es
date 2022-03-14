@@ -4,6 +4,7 @@
     <%= render 'layouts/six/head' %>
   </head>
   <body>
+    <%= render Six::Layout::SupportUkraineComponent.new if ENV['USE_SUPPORT_UA'].present? %>
     <% if content_for?(:navbar) %>
       <%= content_for(:navbar) %>
     <% else %>

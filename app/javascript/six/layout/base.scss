@@ -37,6 +37,27 @@
   }
 }
 
+.supportua {
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: black;
+  color: white;
+
+  strong {
+    color: #389bff;
+  }
+
+  p {
+    margin: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  a {
+    color: #fff78b;
+  }
+}
+
 .paginator {
   margin-top: 1rem;
   margin-bottom: 1rem;
