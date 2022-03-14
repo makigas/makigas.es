@@ -101,8 +101,6 @@ class DownloadProduction
   def client
     @client ||= Faraday.new(url: ROOT_URL, headers: CLIENT_HEADERS) do |f|
       f.request :json
-      f.request :retry
-      f.response :follow_redirects
       f.response :json
     end
   end
