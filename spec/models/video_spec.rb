@@ -201,4 +201,19 @@ RSpec.describe Video, type: :model do
       expect(described_class.tags).to match_array %w[python git ruby]
     end
   end
+
+  describe 'indexing' do
+    it 'happens after saving' do
+      video = build(:video)
+      expect { video.save }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+    end
+
+    it 'happens after deletion' do
+      video = create(:video)
+      gid_descriptor = { '_aj_globalid' => video.to_gid.to_s }
+      expect do
+        video.destroy
+      end.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(gid_descriptor, 'ms_remove_from_index!')
+    end
+  end
 end

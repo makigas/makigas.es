@@ -5,6 +5,6 @@ class ShowNote < Document
   after_save :index_documentable
 
   def index_documentable
-    documentable.index! if documentable.respond_to?(:index)
+    documentable.save
   end
 end
