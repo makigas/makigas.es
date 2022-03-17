@@ -74,6 +74,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   if ENV["AUTHORIZED_HOSTS"].present?
-    ENV["AUTHORIZED_HOSTS"].split(",").each { |host| config.hosts << host }
+    ENV["AUTHORIZED_HOSTS"].split(",").each { |h| config.hosts << h }
   end
 end

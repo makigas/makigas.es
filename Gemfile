@@ -64,7 +64,7 @@ group :development do
 
   # Lint tools
   gem 'rubocop', '~> 1.26.0', require: false
-  gem 'rubocop-rails', '~> 2.13.2', require: false
+  gem 'rubocop-rails', '~> 2.14.1', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.9.0', require: false
 end
