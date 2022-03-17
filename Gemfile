@@ -20,6 +20,11 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 
+# Job processing
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
 # Application extras
 gem 'acts_as_list'
 gem 'aws-sdk-s3', '~> 1.113.0'

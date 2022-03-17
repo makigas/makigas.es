@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Transcription < Document
-  after_destroy :index_documentable
-  after_save :index_documentable
+  after_destroy :touch_documentable
+  after_save :touch_documentable
 
-  def index_documentable
-    documentable.index! if documentable.respond_to?(:index!)
+  def touch_documentable
+    documentable.save
   end
 end
