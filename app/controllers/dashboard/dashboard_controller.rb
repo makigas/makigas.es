@@ -4,6 +4,8 @@ module Dashboard
   class DashboardController < ApplicationController
     before_action :authenticate_user!
 
+    layout('dashboard/dashboard')
+
     def index
       @videos = Video.count
       @playlists = Playlist.count
