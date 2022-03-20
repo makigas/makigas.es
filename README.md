@@ -72,7 +72,7 @@ to abandon altogether secrets.yml to make this more clear.
 
 ## Seeds
 
-You can use `rails db:seeds` to initially seed some test data, such as a
+You can use `rails db:seed` to initially seed some test data, such as a
 dashboard user. If you do so, you will be able to log in to the dashboard
 using `root@makigas.es` as username and `password` as password.
 
