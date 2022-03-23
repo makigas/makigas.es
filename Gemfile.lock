@@ -485,7 +485,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_job_web
   devise
-  dotenv-rails
+  dotenv-rails (~> 2.7.6)
   factory_bot (~> 6.2.0)
   factory_bot_rails
   faraday (~> 2.2.0)

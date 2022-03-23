@@ -31,6 +31,18 @@ To install the web application:
     $ cd makigas
     $ bundle install
 
+## Environment variables
+
+Copy the .env.example file to .env.
+
+Tweak the file as you need.  For instance, you might need to modify the
+credentials to access the database if you are in GNU/Linux, because
+probably your PostgreSQL won't allow unauthenticated connections.
+
+**Keep the USE_SIX environment variable**. I think it is going to take
+some time to cleanup the code so that I can remove that environment
+variable anyway...
+
 ## Running the application
 
 Standard `rails server`, like any other Rails application out there.  Because
@@ -51,12 +63,25 @@ that, this web application may work on MySQL and sqlite3 as well, although I
 haven't tested this, and it's not officially supported. If you experience bugs
 by using MySQL, they cannot be fix.
 
+Remember to set the credentials in your .env file if needed for development.
+
 ## MeiliSearch
 
-We are using MeiliSearch for the full text search index, which can be used to
-lookup for video content using text that appears in the title, description,
-transcription and text notes of the episode, with the hope of making it easier
-to discover and consume.
+We are using MeiliSearch for the full text search index, which can be
+used to lookup for video content using text that appears in the title,
+description, transcription and text notes of the episode, with the hope
+of making it easier to discover and consume.
+
+You will need to [have MeiliSearch in your development environment
+installed](https://docs.meilisearch.com/) if you plan to work in the
+search system. It is not necessary anymore to keep MeiliSearch always
+open because indexing has been refered to jobs.
+
+## DelayedJob
+
+MeiliSearch indexing has been defered to jobs.  If you want to run the
+jobs, use `rake jobs` to spawn a DelayedJob server, or use `rake
+jobs:work` to run the pending commands as a one-off.
 
 ## Secrets
 
@@ -101,8 +126,8 @@ PGP key is on my personal website][3].
 
 # License
 
-    makigas v5 - source code for the makigas.es application
-    Copyright (C) 2016-2021 Dani Rodríguez
+    makigas v6 - source code for the makigas.es application
+    Copyright (C) 2016-2022 Dani Rodríguez
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -4,11 +4,11 @@ source 'https://rubygems.org'
 
 ruby '~> 3.0.0'
 
+gem 'dotenv-rails', '~> 2.7.6'
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
 gem 'bootsnap', '~> 1.11.1'
-gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'meilisearch-rails'

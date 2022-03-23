@@ -8,17 +8,17 @@ default: &default
 development:
   <<: *default
   database: <%= ENV['DB_NAME'] || 'makigas_development' %>
-  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  username: <%= ENV['DB_USERNAME'] || '' %>
   password: <%= ENV['DB_PASSWORD'] || '' %>
 
 test:
   <<: *default
   database: <%= ENV['DB_NAME'] || 'makigas_test' %>
-  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  username: <%= ENV['DB_USERNAME'] || '' %>
   password: <%= ENV['DB_PASSWORD'] || '' %>
 
 production:
   <<: *default
   database: <%= ENV['DB_NAME'] || 'makigas_production' %>
-  username: <%= ENV['DB_USERNAME'] || 'makigas' %>
+  username: <%= ENV['DB_USERNAME'] || '' %>
   password: <%= ENV['DB_PASSWORD'] %>
