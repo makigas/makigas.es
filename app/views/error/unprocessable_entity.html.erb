@@ -1,3 +1,4 @@
+<%= render Six::Base::WrapperComponent.new(classes: 'errorpage') do %>
 <header>
   <h1>HTTP 422</h1>
   <h2>😑 No vuelvas a hacer eso</h2>
@@ -9,4 +10,5 @@
   bien por qué.
 </p>
 
-<p>El ID de esta request fue: <%= request.uuid %></p>
+<p>El ID de esta request fue: <code><%= request.uuid %></code></p>
+<% end %>

@@ -149,3 +149,50 @@
     padding: 12px 36px;
   }
 }
+
+.errorpage {
+  font-size: 14pt;
+
+  p,
+  li {
+    font-size: 1.2rem;
+
+    @include desktop-layout {
+      font-size: 1.4rem;
+    }
+  }
+
+  code {
+    border: 1px solid #eea700;
+    padding: 2px 6px;
+    background: #ee00000f;
+    border-radius: 5px;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    font-weight: 900;
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--makigas-brand-darker);
+    color: white;
+    font-size: 2rem;
+
+    @include desktop-layout {
+      font-size: 3rem;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+
+    @include desktop-layout {
+      font-size: 2.2rem;
+    }
+  }
+}

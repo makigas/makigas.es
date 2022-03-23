@@ -1,3 +1,4 @@
+<%= render Six::Base::WrapperComponent.new(classes: 'errorpage') do %>
 <header>
   <h1>HTTP 500</h1>
   <h2>😨 ¡Algo va mal!</h2>
@@ -15,3 +16,4 @@
   Si quieres reportar este error por e-mail o Twitter, recuerda indicar
   que ID de este mensaje de error ha sido: <code><%= request.uuid %></code>
 </p>
+<% end %>
