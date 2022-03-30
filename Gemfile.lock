@@ -289,7 +289,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -504,7 +504,7 @@ DEPENDENCIES
   lookbook
   meilisearch-rails
   pg (~> 1.2)
-  puma (~> 5.6.2)
+  puma (~> 5.6.4)
   rack-cors
   rails (~> 7.0.0)
   rails-i18n (~> 7.0.0)
