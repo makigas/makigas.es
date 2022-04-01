@@ -71,7 +71,7 @@ end
 
 # Test tools that must be available in development mode
 group :development, :test do
-  gem 'factory_bot', '~> 6.2.0'
+  gem 'factory_bot', '~> 6.2.1'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.1.1'
