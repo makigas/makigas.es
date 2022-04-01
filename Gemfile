@@ -41,7 +41,7 @@ gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.50.0'
+gem 'view_component', '~> 2.52.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
