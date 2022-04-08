@@ -41,7 +41,7 @@ gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.50.0'
+gem 'view_component', '~> 2.52.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
@@ -55,6 +55,10 @@ group :development do
   gem 'listen', '~> 3.7.1'
   gem 'web-console', '~> 4.2.0'
 
+  # LSP
+  gem 'solargraph', '~> 0.44.3'
+  gem 'solargraph-rails', '~> 0.3.1'
+
   # Guard
   gem 'guard', '~> 2.18.0'
   gem 'guard-rails', '~> 0.8.1'
@@ -63,7 +67,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'rubocop', '~> 1.26.0', require: false
+  gem 'rubocop', '~> 1.27.0', require: false
   gem 'rubocop-rails', '~> 2.14.1', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.9.0', require: false
