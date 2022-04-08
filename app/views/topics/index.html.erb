@@ -5,18 +5,8 @@
   <h1><%= t('.title') %></h1>
 <% end %>
 
-<% if ENV['USE_SIX'].present? %>
-  <%= render Six::Base::WrapperComponent.new(classes: 'topicslist', breath: true) do %>
-    <% @topics.each do |tp| %>
-      <%= render Six::Explorer::TopicCardComponent.new(topic: tp) %>
-    <% end %>
-  <% end %>
-<% else %>
-<div class="grid-table topic-list row">
+<%= render Six::Base::WrapperComponent.new(classes: 'topicslist', breath: true) do %>
   <% @topics.each do |tp| %>
-    <div class="topic col-md-6">
-      <%= render Five::Catalog::TopicMediaCardComponent.new(topic: tp) %>
-    </div>
+    <%= render Six::Explorer::TopicCardComponent.new(topic: tp) %>
   <% end %>
-</div>
 <% end %>

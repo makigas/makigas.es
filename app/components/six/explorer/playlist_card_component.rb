@@ -24,7 +24,7 @@ module Six
       private
 
       def total_seconds
-        @playlist.videos.map(&:duration).sum
+        @playlist.videos.visible.map(&:duration).sum
       end
     end
   end

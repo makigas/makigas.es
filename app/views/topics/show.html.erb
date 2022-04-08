@@ -27,43 +27,10 @@
   --jumbo-background: <%= @topic.color.paint.darken(10) %>;
   --playlist-card-hover-background: <%= @topic.color.paint.desaturate(35).lighten(35) %>;
 }
-
-.main-header, .hero-tron { background: <%= @topic.color %>; }
-.main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
 </style>
 <% end %>
 
-<% if ENV['USE_SIX'].present? %>
   <% content_for(:hero) do %>
     <h1><%= @topic.title %></h1>
   <% end %>
   <%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists) %>
-<% else %>
-<% content_for :hero do %>
-  <div class="media playlist-data">
-    <div class="media-body media-middle">
-      <h1 class="playlist-title"><%= @topic.title %></h1>
-      <p class="playlist-description"><%= @topic.description %></p>
-    </div>
-    <div class="media-right media-middle hidden-xs">
-      <%= image_tag @topic.thumbnail.url(:small), srcset: "#{@topic.thumbnail.url(:default)} 2x" %>
-    </div>
-  </div>
-<% end %>
-
-<div class="grid-table row">
-<% @topic.playlists.each do |pl| %>
-<div class="col-xs-6 col-sm-4 col-lg-3">
-<%= link_to pl do %>
-<div class="playlist panel panel-default">
-  <span class="badge"><%= t('.episode', count: pl.videos.visible.count) %></span>
-  <%= image_tag pl.thumbnail.url(:default), srcset: "#{pl.thumbnail.url(:hidef)} 2x" %>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= pl.title %></h3>
-  </div>
-</div>
-<% end %>
-</div>
-<% end %>
-</div>
-<% end %>
