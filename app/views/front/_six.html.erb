@@ -3,7 +3,7 @@
 <% end %>
 
 <%= render Six::Front::HeroComponent.new %>
-<%= render Six::Front::TopicExplorerComponent.new %>
+<%= render Six::Front::TopicExplorerComponent.new if Topic.count.positive? %>
 <div class="frontblock">
   <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
     <header>

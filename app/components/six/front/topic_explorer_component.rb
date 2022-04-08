@@ -18,7 +18,7 @@ module Six
       end
 
       def each_topic(&block)
-        CUSTOM_NAMES.map { |slug, name| [topics[slug], name] }.each(&block)
+        CUSTOM_NAMES.map { |slug, name| [topics[slug], name] }.reject { |k, _| k.nil? }.each(&block)
       end
     end
   end
