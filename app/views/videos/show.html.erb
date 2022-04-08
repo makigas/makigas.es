@@ -2,151 +2,69 @@
 <% content_for :description, @video.description %>
 <% content_for(:tags, @video.tags.sort.join(' ')) if @video.tags.present? %>
 <% content_for :twitter do %>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@makigas">
-<meta name="twitter:title" content="<%= @video.position %>. <%= @video.title %>">
-<meta name="twitter:description" content="<%= @video.description %>">
-<meta name="twitter:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@makigas">
+  <meta name="twitter:title" content="<%= @video.position %>. <%= @video.title %>">
+  <meta name="twitter:description" content="<%= @video.description %>">
+  <meta name="twitter:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
-<meta property="og:url" content="<%= canonical_url %>">
-<meta property="og:title" content="<%= @video.position %>. <%= @video.title %>">
-<meta property="og:type" content="website">
-<meta property="og:description" content="<%= @video.description %>">
-<meta property="og:site_name" content="makigas">
-<meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:title" content="<%= @video.position %>. <%= @video.title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="<%= @video.description %>">
+  <meta property="og:site_name" content="makigas">
+  <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
 <% content_for :meta do %>
   <%= tag(:link, rel: :alternate, href: feed_playlist_url(@playlist), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
   <%= tag(:link, rel: :alternate, href: feed_topic_url(@playlist.topic), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
   <% if @video.scheduled? %>
-  <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex">
   <% end %>
 <% end %>
 <% content_for :body_classes, 'video-player-page' %>
 
 <% if @video.playlist.topic %>
-<% content_for :header do %>
-<style>
-.main-header, .hero-tron { background: <%= @video.playlist.topic.color %>; }
-.main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
-</style>
-<% end %>
-<% end %>
-
-<% if ENV['USE_SIX'].present? %>
-  <%= render Six::Base::WrapperComponent.new(tag: :article, classes: 'videoinfo', breath: true) do %>
-    <aside class="videoinfo__player">
-      <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
-    </aside>
-
-    <section class="videoinfo__text">
-      <header>
-        <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
-          <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist)) { 'Vídeo anterior' } %>
-          <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist)) { 'Vídeo siguiente' } %>
-          <% end %>
-        <p class="videoinfo__pldata">
-          <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>
-        </p>
-        <h1 class="videoinfo__title"><%= @video.title %></h1>
-        <p class="videoinfo__description">
-          <%= @video.description %>
-        </p>
-        <p class="videoinfo__meta"><%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %></p>
-        <p class="videoinfo__meta"><%= t('.duration', duration: running_time(@video.duration)) %></p>
-        <p class="videoinfo__meta"><%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}" %></p>
-        </header>
-        <% if @video.show_note.present? %>
-          <div class="videoinfo__shownotes">
-            <h3><%= t('.show_notes') %></h3>
-            <%= to_markdown(@video.show_note.content).html_safe %>
-          </div>
-        <% end %>
-    </section>
-
-    <aside class="videoinfo__links">
-      <%= render Six::Utils::DiscordCallToActionComponent.new %>
-    </aside>
+  <% content_for :header do %>
+    <style>
+      .main-header, .hero-tron { background: <%= @video.playlist.topic.color %>; }
+      .main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
+    </style>
   <% end %>
-<% else %>
-<%= content_for :hero do %>
-  <h1><%= @video.position %>. <%= @video.title %></h1>
-  <p><%= t('.part_of_series_html', playlist: link_to(@video.playlist.title, playlist_path(@video.playlist))) %></p>
 <% end %>
 
-<% if @video.published_at < 4.years.ago %>
-  <div class="row deprecation-warning alert alert-warning">
-    <p>Han pasado más de 4 años desde que se publicó este vídeo. Puede que todo
-      siga igual, o puede que este vídeo haya quedado algo obsoleto. ¡Precaución!</p>
-  </div>
-<% end %>
-<div class="row video-player">
-  <div class="video-player-column">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/<%= @video.youtube_id %>?showinfo=0" allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</div>
+<%= render Six::Base::WrapperComponent.new(tag: :article, classes: 'videoinfo', breath: true) do %>
+  <aside class="videoinfo__player">
+    <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
+  </aside>
 
-<% unless @video.scheduled? %>
-<div class="video-toolbar">
-  <% unless @video == @playlist.videos.visible.first %>
-  <%= link_to t('.previous'), playlist_video_path(@video.higher_item, playlist_id: @playlist), class: 'pull-left btn btn-default' %>
-  <% else %>
-  <%= link_to t('.previous'), '#', disabled: true, class: 'disabled pull-left btn btn-default' %>
-  <% end %>
-
-  <% unless @video == @playlist.videos.visible.last %>
-  <%= link_to t('.next'), playlist_video_path(@video.lower_item, playlist_id: @playlist), class: 'pull-right btn btn-default' %>
-  <% else %>
-  <%= link_to t('.next'), '#', disabled: true, class: 'disabled pull-right btn btn-default' %>
-  <% end %>
-
-  <%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}", class: 'btn btn-default' %>
-</div>
-<% else %>
-  <p class="alert alert-warning"><strong><%= t('.preview') %></strong> <%= t('.unlisted') %></p>
-<% end %>
-
-<div class="video-information">
-<div class="row">
-
-      <div class="col-md-6">
-        <p><strong><%= to_markdown(@video.description).html_safe %></strong></p>
-
-        <% unless @video.links.empty? %>
-          <p><%= t('.links') %>:</p>
-          <ul>
-            <% @video.links.each do |link| %>
-              <li><%= link_to link.name, link.url %>: <%= link.description %></li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <p>
-          <%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %> &bull;
-          <%= t('.duration', duration: running_time(@video.duration)) %>
-        </p>
-
-        <% if @video.show_note.present? %>
-          <h3><%= t('.show_notes') %></h3>
-          <%= to_markdown(@video.show_note.content).html_safe %>
-        <% end %>
+  <section class="videoinfo__text">
+    <header>
+      <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
+        <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist)) { 'Vídeo anterior' } %>
+        <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist)) { 'Vídeo siguiente' } %>
+      <% end %>
+      <p class="videoinfo__pldata">
+        <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>
+      </p>
+      <h1 class="videoinfo__title"><%= @video.title %></h1>
+      <p class="videoinfo__description">
+        <%= @video.description %>
+      </p>
+      <p class="videoinfo__meta"><%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %></p>
+      <p class="videoinfo__meta"><%= t('.duration', duration: running_time(@video.duration)) %></p>
+      <p class="videoinfo__meta"><%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}" %></p>
+    </header>
+    <% if @video.show_note.present? %>
+      <div class="videoinfo__shownotes">
+        <h3><%= t('.show_notes') %></h3>
+        <%= to_markdown(@video.show_note.content).html_safe %>
       </div>
+    <% end %>
+  </section>
 
-      <div class="col-md-6">
-        <%= render Five::Player::DiscordCtaComponent.new %>
-
-        <h4 class="card-header"><%= t('.this_playlist') %></h4>
-        <%= render Five::Catalog::PlaylistMediaCardComponent.new(playlist: @video.playlist) %>
-
-        <% if @video.playlist.topic %>
-        <h4 class="card-header"><%= t('.this_topic') %></h4>
-        <%= render Five::Catalog::TopicMediaCardComponent.new(topic: @video.playlist.topic) %>
-        <% end %>
-      </div>
-    </div>
-</div>
+  <aside class="videoinfo__links">
+    <%= render Six::Utils::DiscordCallToActionComponent.new %>
+  </aside>
 <% end %>
