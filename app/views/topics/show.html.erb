@@ -1,36 +1,36 @@
 <% content_for :title, "#{@topic.title} – makigas" %>
 <% content_for :description, "#{@topic.description} #{t('.meta.description')}" %>
 <% content_for :twitter do %>
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@makigas">
-<meta name="twitter:title" content="<%= @topic.title %>">
-<meta name="twitter:description" content="<%= @topic.description %>">
-<meta name="twitter:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@makigas">
+  <meta name="twitter:title" content="<%= @topic.title %>">
+  <meta name="twitter:description" content="<%= @topic.description %>">
+  <meta name="twitter:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
-<meta property="og:url" content="<%= canonical_url %>">
-<meta property="og:title" content="<%= @topic.title %>">
-<meta property="og:type" content="website">
-<meta property="og:description" content="<%= @topic.description %>">
-<meta property="og:site_name" content="makigas">
-<meta property="og:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:title" content="<%= @topic.title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="<%= @topic.description %>">
+  <meta property="og:site_name" content="makigas">
+  <meta property="og:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
 <% end %>
 
 <% content_for :meta do %>
-<%= tag(:link, rel: :alternate, href: feed_topic_url(@topic), title: t('.meta.topic_feed', topic: @topic.title), type: 'application/atom+xml') %>
+  <%= tag(:link, rel: :alternate, href: feed_topic_url(@topic), title: t('.meta.topic_feed', topic: @topic.title), type: 'application/atom+xml') %>
 <% end %>
 
 <% content_for :header do %>
-<style>
-:root {
-  --navbar-background: <%= @topic.color.paint.darken(10) %>;
-  --jumbo-background: <%= @topic.color.paint.darken(10) %>;
-  --playlist-card-hover-background: <%= @topic.color.paint.desaturate(35).lighten(35) %>;
-}
-</style>
+  <style>
+    :root {
+      --navbar-background: <%= @topic.color.paint.darken(10) %>;
+      --jumbo-background: <%= @topic.color.paint.darken(10) %>;
+      --playlist-card-hover-background: <%= @topic.color.paint.desaturate(35).lighten(35) %>;
+    }
+  </style>
 <% end %>
 
-  <% content_for(:hero) do %>
-    <h1><%= @topic.title %></h1>
-  <% end %>
-  <%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists) %>
+<% content_for(:hero) do %>
+  <h1><%= @topic.title %></h1>
+<% end %>
+<%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists) %>

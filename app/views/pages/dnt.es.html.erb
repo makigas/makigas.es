@@ -4,109 +4,111 @@
   <h1>Do Not Track</h1>
 <% end %>
 
-<p>
-<strong>Do Not Track</strong> es una tecnología estandar incorporada en la
-mayoría de navegadores web recientes que permite a un navegador web señalizar a
-las páginas web la voluntad del usuario que utiliza ese navegador web para no
-ser rastreado durante su sesión de navegación.
-</p>
+<%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
+  <p>
+    <strong>Do Not Track</strong> es una tecnología estandar incorporada en la
+    mayoría de navegadores web recientes que permite a un navegador web señalizar a
+    las páginas web la voluntad del usuario que utiliza ese navegador web para no
+    ser rastreado durante su sesión de navegación.
+  </p>
 
-<p>
-Cuando activas la señal Do Not Track en las opciones de tu navegador, cada
-petición que hagas a un sitio web en una sesión de navegación incluirá esa
-preferencia. Es decisión de cada sitio web respetar tu decisión o no.
-<strong>Es importante tener en cuenta que no todos los sitios web soportan
-Do Not Track</strong>. Consulta la política de privacidad de cada sitio para
-conocer tus opciones.
-</p>
+  <p>
+    Cuando activas la señal Do Not Track en las opciones de tu navegador, cada
+    petición que hagas a un sitio web en una sesión de navegación incluirá esa
+    preferencia. Es decisión de cada sitio web respetar tu decisión o no.
+    <strong>Es importante tener en cuenta que no todos los sitios web soportan
+      Do Not Track</strong>. Consulta la política de privacidad de cada sitio para
+    conocer tus opciones.
+  </p>
 
-<p>
-En cuanto a <strong>makigas.es</strong>, si tu navegador envía la cabecera
-Do Not Track, respetaremos tu decisión haciendo una serie de cambios a la forma
-en la que se trata tu petición para proteger tu privacidad.
-</p>
+  <p>
+    En cuanto a <strong>makigas.es</strong>, si tu navegador envía la cabecera
+    Do Not Track, respetaremos tu decisión haciendo una serie de cambios a la forma
+    en la que se trata tu petición para proteger tu privacidad.
+  </p>
 
-<h3>¿Hay algún elemento que pueda rastrearme en makigas.es?</h3>
+  <h3>¿Hay algún elemento que pueda rastrearme en makigas.es?</h3>
 
-<p>
-Antes que nada, es importante advertir que el sitio web de makigas.es no muestra
-anuncios en el código HTML que se descarga cuando haces una petición. Eso
-significa que no hay anuncios tal cual en la página. Los reproductores de vídeo
-integrados sí que muestran anuncios cuando se inicia la reproducción, pero esos
-anuncios son cargados por el reproductor de YouTube, no por makigas.es.
-</p>
+  <p>
+    Antes que nada, es importante advertir que el sitio web de makigas.es no muestra
+    anuncios en el código HTML que se descarga cuando haces una petición. Eso
+    significa que no hay anuncios tal cual en la página. Los reproductores de vídeo
+    integrados sí que muestran anuncios cuando se inicia la reproducción, pero esos
+    anuncios son cargados por el reproductor de YouTube, no por makigas.es.
+  </p>
 
-<p>
-makigas.es tampoco utiliza ninguna tecnología de seguimiento ni está afiliado
-a ninguna plataforma de márketing o remárketing. La única tecnología analítica
-que se utiliza es <strong>Google Analytics</strong>, para conocer mejor el uso
-que los usuarios hacen del sitio web de makigas.es con el fin de mejorarlo
-(por ejemplo, identificar qué vídeos son los más vistos o qué listas de
-reproducción son las más reproducidas). Esta información te la describimos en
-detalle en nuestra <a href="/privacy">política de privacidad</a>.
-</p>
+  <p>
+    makigas.es tampoco utiliza ninguna tecnología de seguimiento ni está afiliado
+    a ninguna plataforma de márketing o remárketing. La única tecnología analítica
+    que se utiliza es <strong>Google Analytics</strong>, para conocer mejor el uso
+    que los usuarios hacen del sitio web de makigas.es con el fin de mejorarlo
+    (por ejemplo, identificar qué vídeos son los más vistos o qué listas de
+    reproducción son las más reproducidas). Esta información te la describimos en
+    detalle en nuestra <a href="/privacy">política de privacidad</a>.
+  </p>
 
-<p>
-Sin embargo, makigas.es sí utiliza algunos plugins de terceros para hacer más
-rica tu experiencia en el sitio web. Cuando visitas makigas.es, es posible que
-cargues uno o más de estos plugins de terceros:
-</p>
+  <p>
+    Sin embargo, makigas.es sí utiliza algunos plugins de terceros para hacer más
+    rica tu experiencia en el sitio web. Cuando visitas makigas.es, es posible que
+    cargues uno o más de estos plugins de terceros:
+  </p>
 
-<ul>
-<li>Google Analytics, que como hemos dicho, sirve para obtener información
-analítica sobre la forma en la que los usuarios visitan makigas.es.</li>
-<li>El reproductor de YouTube, que sirve para que puedas visualizar los vídeos
-desde esta página web en vez de tener que navegar a nuestro canal de YouTube
-si así lo prefieres.</li>
-</ul>
+  <ul>
+    <li>Google Analytics, que como hemos dicho, sirve para obtener información
+      analítica sobre la forma en la que los usuarios visitan makigas.es.</li>
+    <li>El reproductor de YouTube, que sirve para que puedas visualizar los vídeos
+      desde esta página web en vez de tener que navegar a nuestro canal de YouTube
+      si así lo prefieres.</li>
+  </ul>
 
-<h3>¿Cómo se altera mi sesión de navegación cuando activo DNT?</h3>
+  <h3>¿Cómo se altera mi sesión de navegación cuando activo DNT?</h3>
 
-<p>
-Cuando visitas makigas.es con la cabecera DNT activa, dado que Google Analytics
-no tiene una forma clara de respetar la señal
-DNT, desactivamos la inclusión de ese plugin. Eso significa que ya no se
-incluirá en el agregado estadístico información sobre los vídeos que ves en
-esta página web. (Agradeceríamos que nos des tu opinión sobre los vídeos que
-ves para saber cuáles son los más útiles o no, ya que sin el plugin analítico
-no lo podemos determinar automáticamente.)
+  <p>
+    Cuando visitas makigas.es con la cabecera DNT activa, dado que Google Analytics
+    no tiene una forma clara de respetar la señal
+    DNT, desactivamos la inclusión de ese plugin. Eso significa que ya no se
+    incluirá en el agregado estadístico información sobre los vídeos que ves en
+    esta página web. (Agradeceríamos que nos des tu opinión sobre los vídeos que
+    ves para saber cuáles son los más útiles o no, ya que sin el plugin analítico
+    no lo podemos determinar automáticamente.)
 
-<h3>¿Qué cosas no cambian cuando se visita makigas.es con DNT activo?</h3>
+    <h3>¿Qué cosas no cambian cuando se visita makigas.es con DNT activo?</h3>
 
-<p>
-Los reproductores de YouTube siempre se sirven desde el dominio youtube-nocookie.com,
-una variante del YouTube normal proporcionada por Google donde no se almacenan cookies
-en el navegador si el usuario no interactúa con el vídeo embebido (por ejemplo,
-pulsando el botón Play).
-</p>
+    <p>
+      Los reproductores de YouTube siempre se sirven desde el dominio youtube-nocookie.com,
+      una variante del YouTube normal proporcionada por Google donde no se almacenan cookies
+      en el navegador si el usuario no interactúa con el vídeo embebido (por ejemplo,
+      pulsando el botón Play).
+    </p>
 
-<p>
-Aun siendo cargado desde youtube-nocookie.com, el reproductor puede generar
-cookies cuando se pulsa el botón Play. No se han tomado acciones a este respecto
-ya que el principal activo de makigas.es y la razón por la que los usuarios
-visitan este sitio web es por los vídeos. Si bloqueásemos la carga de recursos
-desde youtube-nocookie.com o desde youtube.com, no podrías visualizar el
-contenido del vídeo en primer lugar.
-</p>
+    <p>
+      Aun siendo cargado desde youtube-nocookie.com, el reproductor puede generar
+      cookies cuando se pulsa el botón Play. No se han tomado acciones a este respecto
+      ya que el principal activo de makigas.es y la razón por la que los usuarios
+      visitan este sitio web es por los vídeos. Si bloqueásemos la carga de recursos
+      desde youtube-nocookie.com o desde youtube.com, no podrías visualizar el
+      contenido del vídeo en primer lugar.
+    </p>
 
-<p>
-Del mismo modo, tener activo el modo DNT en tu navegador no impide que el
-servidor web que escucha peticiones en makigas.es continúe registrando en un
-archivo de log en el servidor información sobre la petición recibida. Esta
-petición queda registrada por <strong>razones estrictas de seguridad</strong>,
-según lo estipulado en la Cláusula 49 del
-<a href="https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32016R0679&from=ES" target="_blank">Reglamento General de Protección de Datos europeo</a>,
-con el fin de hacer funcionar la instalación de fail2ban que hay en el servidor.
-El servidor tiene configurado logrotate para descartar la información tras
-cuatro semanas, y los logs son rotados a diario, cifrando los viejos logs
-mediante criptografía PGP para evitar un acceso indebido en el caso de producirse
-una brecha en el servidor. Estos logs no son empleados con fines analíticos
-debido a la cantidad de ruido que se registra en ellos y a la poca fiabilidad
-que ofrecen para distinguir usuarios reales de visitas automatizadas.
-</p>
+    <p>
+      Del mismo modo, tener activo el modo DNT en tu navegador no impide que el
+      servidor web que escucha peticiones en makigas.es continúe registrando en un
+      archivo de log en el servidor información sobre la petición recibida. Esta
+      petición queda registrada por <strong>razones estrictas de seguridad</strong>,
+      según lo estipulado en la Cláusula 49 del
+      <a href="https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32016R0679&from=ES" target="_blank">Reglamento General de Protección de Datos europeo</a>,
+      con el fin de hacer funcionar la instalación de fail2ban que hay en el servidor.
+      El servidor tiene configurado logrotate para descartar la información tras
+      cuatro semanas, y los logs son rotados a diario, cifrando los viejos logs
+      mediante criptografía PGP para evitar un acceso indebido en el caso de producirse
+      una brecha en el servidor. Estos logs no son empleados con fines analíticos
+      debido a la cantidad de ruido que se registra en ellos y a la poca fiabilidad
+      que ofrecen para distinguir usuarios reales de visitas automatizadas.
+    </p>
 
-<h3>¿Cómo puedo activar DNT en mi navegador web?</h3>
+    <h3>¿Cómo puedo activar DNT en mi navegador web?</h3>
 
-<p>Consulta las instrucciones de la ayuda de tu navegador web para obtener
-información actualizada sobre cómo activar la función No Realizar Seguimiento
-en tu navegador web.</p>
+    <p>Consulta las instrucciones de la ayuda de tu navegador web para obtener
+      información actualizada sobre cómo activar la función No Realizar Seguimiento
+      en tu navegador web.</p>
+<% end %>

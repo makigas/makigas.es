@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= render 'layouts/head' %>
-</head>
-<body class="no-js <%= "page-#{controller.controller_name}" %> <%= content_for(:body_classes) %>">
-
-  <%= render 'layouts/header' %>
-
-  <div class="main-page <%= 'with-hero' if content_for?(:hero) %>">
-
-    <% if content_for?(:hero) %>
-    <div class="jumbotron hero-tron">
-      <div class="container">
-        <%= yield :hero %>
-      </div>
-    </div>
+  <head>
+    <%= render 'layouts/head' %>
+  </head>
+  <body>
+    <%= render Six::Layout::SupportUkraineComponent.new if ENV['USE_SUPPORT_UA'].present? %>
+    <% if content_for?(:navbar) %>
+      <%= content_for(:navbar) %>
+    <% else %>
+      <%= render Six::Layout::NavbarComponent.new %>
     <% end %>
 
-    <div class="main-page-inner container">
+    <% if content_for?(:jumbo) %>
+      <%= content_for(:jumbo) %>
+    <% elsif content_for?(:hero) %>
+      <%= render Six::Base::JumboComponent.new do %>
+        <%= content_for(:hero) %>
+      <% end %>
+    <% end %>
 
-    <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
+    <main>
+      <%= yield %>
+    </main>
 
-    <%= yield %>
-    </div>
-  </div>
-
-  <%= render 'layouts/footer' %>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  <%= javascript_include_tag 'app' %>
-  <%= render 'layouts/analytics' %>
-  <%= render 'layouts/cookies' %>
-
-</body>
+    <%= render Six::Layout::FooterComponent.new %>
+    <%= render 'layouts/analytics' %>
+    <%= render 'layouts/cookies' %>
+  </body>
 </html>
