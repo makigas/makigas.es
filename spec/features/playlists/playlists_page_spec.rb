@@ -12,7 +12,7 @@ RSpec.describe 'Playlists page', type: :feature do
 
     aggregate_failures do
       expect(page).to have_link playlist.title, href: playlist_path(playlist)
-      expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:default)}']"
+      expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:small)}']"
     end
   end
 

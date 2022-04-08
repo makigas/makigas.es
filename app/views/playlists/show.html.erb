@@ -1,74 +1,44 @@
 <% content_for :title, "#{@playlist.title} – makigas" %>
 <% content_for :description, @playlist.description %>
 <% content_for :twitter do %>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@makigas">
-<meta name="twitter:title" content="<%= @playlist.title %>">
-<meta name="twitter:description" content="<%= @playlist.description %>">
-<meta name="twitter:image" content="<%= image_url(@playlist.card.url, only_path: false) %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@makigas">
+  <meta name="twitter:title" content="<%= @playlist.title %>">
+  <meta name="twitter:description" content="<%= @playlist.description %>">
+  <meta name="twitter:image" content="<%= image_url(@playlist.card.url, only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
-<meta property="og:url" content="<%= canonical_url %>">
-<meta property="og:title" content="<%= @playlist.title %>">
-<meta property="og:type" content="website">
-<meta property="og:description" content="<%= @playlist.description %>">
-<meta property="og:site_name" content="makigas">
-<meta property="og:image" content="<%= image_url(@playlist.card.url, only_path: false) %>">
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:title" content="<%= @playlist.title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="<%= @playlist.description %>">
+  <meta property="og:site_name" content="makigas">
+  <meta property="og:image" content="<%= image_url(@playlist.card.url, only_path: false) %>">
 <% end %>
 
 <% content_for :meta do %>
-<%= tag(:link, rel: :alternate, href: feed_playlist_url(@playlist), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
-<%= tag(:link, rel: :alternate, href: feed_topic_url(@playlist.topic), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
+  <%= tag(:link, rel: :alternate, href: feed_playlist_url(@playlist), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
+  <%= tag(:link, rel: :alternate, href: feed_topic_url(@playlist.topic), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
 <% end %>
 
 <% if @playlist.topic %>
-<% content_for :header do %>
-<style>
-.main-header, .hero-tron { background: <%= @playlist.topic.color %>; }
-.main-header .navbar-makigas { background: rgba(0, 0, 0, 0.25); }
-:root {
-  --navbar-background: <%= @playlist.topic.color.paint.darken(10) %>;
-  --playlist-background: <%= @playlist.topic.color.paint.darken(10) %>;
-  --video-card-hover-background: <%= @playlist.topic.color.paint.desaturate(35).lighten(35) %>;
-}
-</style>
-<% end %>
-<% end %>
-
-
-<% if ENV['USE_SIX'].present? %>
-  <% content_for :jumbo do %>
-    <%= render Six::Layout::PlaylistHeaderComponent.new(playlist: @playlist) %>
+  <% content_for :header do %>
+    <style>
+      :root {
+        --navbar-background: <%= @playlist.topic.color.paint.darken(10) %>;
+        --playlist-background: <%= @playlist.topic.color.paint.darken(10) %>;
+        --video-card-hover-background: <%= @playlist.topic.color.paint.desaturate(35).lighten(35) %>;
+      }
+    </style>
   <% end %>
-  <%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata') do %>
-    <% @playlist.videos.visible.each do |v| %>
-      <%= render Six::Explorer::PlaylistVideoCardComponent.new(video: v) %>
-    <% end %>
-  <% end %>
-<% else %>
-<% content_for :hero do %>
-  <div class="media playlist-data">
-    <div class="media-body media-middle">
-      <h1 class="playlist-title"><%= @playlist.title %></h1>
-      <p class="playlist-description"><%= @playlist.description %></p>
-    </div>
-    <div class="media-right media-middle hidden-xs">
-      <%= image_tag @playlist.thumbnail.url(:small), srcset: "#{@playlist.thumbnail.url(:default)} 2x" %>
-    </div>
-  </div>
 <% end %>
 
-<div class="row">
-<div class="col-md-8 col-md-offset-2">
-  <div class="episodes-table list-group">
+
+<% content_for :jumbo do %>
+  <%= render Six::Layout::PlaylistHeaderComponent.new(playlist: @playlist) %>
+<% end %>
+<%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata') do %>
   <% @playlist.videos.visible.each do |v| %>
-    <%= link_to playlist_video_path(v, playlist_id: @playlist), class: 'list-group-item' do %>
-      <div class="badge video-duration"><%= running_time(v.duration) %></div>
-      <h4 class="list-group-item-heading"><%= v.position %>. <%= v.title %></h4>
-      <p><%= v.description %></p>
-    <% end %>
+    <%= render Six::Explorer::PlaylistVideoCardComponent.new(video: v) %>
   <% end %>
-  </div>
-</div>
-</div>
 <% end %>
