@@ -2,6 +2,40 @@ import "normalize.css";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 
+import * as klaro from "klaro";
+const config = {
+  lang: "es",
+  translations: {
+    en: {
+      googleAnalytics: {
+        title: "Google Anayltics",
+        description: "To understand which pages are most visited by the users",
+      },
+      purposes: {
+        analytics: "Analytics",
+      },
+    },
+    es: {
+      googleAnalytics: {
+        title: "Google Analytics",
+        description: "Para comprender las páginas que más visitáis",
+      },
+      purposes: {
+        analytics: "Analítica",
+      },
+    },
+  },
+  services: [
+    {
+      name: "googleAnalytics",
+      purposes: ["analytics"],
+    },
+  ],
+};
+window.klaro = klaro;
+window.klaroConfig = config;
+klaro.setup(config);
+
 import "../six/components/navbar";
 import "../six/components/videoexplorer";
 

@@ -45,9 +45,12 @@ configureClickListener(document.getElementById("sHideSearch"), ({ navbar }) => {
   navbar.classList.remove("navbar--searching");
 });
 
-document.querySelector(".navbar .searchbar__search").addEventListener("keyup", (e) => {
-  // If you press ESC, you stop searching automatically.
-  if (e.keyCode === 27) {
-    document.querySelector(".navbar").classList.remove("navbar--searching");
-  }
-});
+const search = document.querySelector(".navbar .searchbar__search");
+if (search) {
+  search.addEventListener("keyup", (e) => {
+    // If you press ESC, you stop searching automatically.
+    if (e.keyCode === 27) {
+      document.querySelector(".navbar").classList.remove("navbar--searching");
+    }
+  });
+}

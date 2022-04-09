@@ -1,7 +1,7 @@
 const { sassPlugin } = require("esbuild-sass-plugin");
 
 require("esbuild").build({
-  entryPoints: ["app/javascript/packs/app.js", "app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
+  entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
   bundle: true,
   sourcemap: true,
   watch: process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1,

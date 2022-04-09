@@ -12,9 +12,9 @@
     "@rails/ujs": "^6.1.5",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.1",
-    "cookieconsent": "^3.1.0",
     "esbuild": "^0.14.34",
     "esbuild-sass-plugin": "^2.2.6",
+    "klaro": "^0.7.18",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {

@@ -1,14 +1,12 @@
-<% if !dnt_requested &&  Rails.application.secrets.analytics_key %>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', '<%= Rails.application.secrets.analytics_key %>', 'auto');
-    ga('send', 'pageview');
-
+<% if Rails.application.secrets.ga4_key %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script type="text/plain" data-type="text/javascript" data-name="googleAnalytics" data-src="https://www.googletagmanager.com/gtag/js?id=<%= Rails.application.secrets.ga4_key %>"></script>
+  <script type="text/plain" data-type="text/javascript" data-name="googleAnalytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<%= Rails.application.secrets.ga4_key %>');
   </script>
 <% else %>
-  <!-- Aquí iría el código analítico de Google Analytics, pero tu navegador está pidiendo no ser rastreado. -->
+  <!-- Aquí iría el código analítico de Google Analytics -->
 <% end %>
