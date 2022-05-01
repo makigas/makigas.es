@@ -25,17 +25,17 @@ class ResetMinioPolicy
 
   def connection_settings
     { region: ENV.fetch('AWS_REGION', 'us-east-1'),
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
       force_path_style: true }.tap do |settings|
-        settings[:endpoint] = ENV['S3_ENDPOINT'] if ENV['S3_ENDPOINT'].present?
+        settings[:endpoint] = ENV.fetch('S3_ENDPOINT', nil) if ENV['S3_ENDPOINT'].present?
       end
   end
 
   def bucket_name
     raise 'S3_BUCKET_NAME env var not set.' if ENV['S3_BUCKET_NAME'].blank?
 
-    ENV['S3_BUCKET_NAME']
+    ENV.fetch('S3_BUCKET_NAME', nil)
   end
 
   def bucket_policy

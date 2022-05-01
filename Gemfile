@@ -15,7 +15,7 @@ gem 'meilisearch-rails'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 5.6.2'
 gem 'rack-cors'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.0.2.4'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
@@ -27,7 +27,7 @@ gem 'delayed_job_web'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.113.0'
+gem 'aws-sdk-s3', '~> 1.113.2'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
@@ -36,18 +36,18 @@ gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.1.1'
-gem 'lookbook'
+gem 'lookbook', '~> 0.8.1'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.52.0'
+gem 'view_component', '~> 2.53.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
 # Ops
-gem 'sentry-rails', '~> 5.2.0'
-gem 'sentry-ruby', '~> 5.2.0'
+gem 'sentry-rails', '~> 5.3.0'
+gem 'sentry-ruby', '~> 5.3.0'
 
 group :development do
   # Development tools
@@ -67,10 +67,10 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'rubocop', '~> 1.27.0', require: false
+  gem 'rubocop', '~> 1.28.2', require: false
   gem 'rubocop-rails', '~> 2.14.1', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.9.0', require: false
+  gem 'rubocop-rspec', '~> 2.10.0', require: false
 end
 
 # Test tools that must be available in development mode
@@ -78,7 +78,7 @@ group :development, :test do
   gem 'factory_bot', '~> 6.2.0'
   gem 'factory_bot_rails'
   gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 5.1.1'
+  gem 'rspec-rails', '~> 5.1.2'
 end
 
 # Test tools

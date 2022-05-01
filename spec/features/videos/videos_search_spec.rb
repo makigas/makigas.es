@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Videos search', type: :feature do
-  let(:service) { class_double('VideoSearch').as_stubbed_const }
+  let(:service) { class_double(VideoSearch).as_stubbed_const }
 
   describe 'searching by length' do
     let!(:short) { create(:video, duration: 200, title: 'Short', youtube_id: '1') }
@@ -12,7 +12,7 @@ RSpec.describe 'Videos search', type: :feature do
 
     it 'can search for short length videos' do
       # Tune the search service mock for this purpose.
-      inst = instance_double('VideoSearch', videos: Video.where('duration < 300').page(1).per(10))
+      inst = instance_double(VideoSearch, videos: Video.where('duration < 300').page(1).per(10))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -31,7 +31,7 @@ RSpec.describe 'Videos search', type: :feature do
     it 'can search for medium length videos' do
       # Tune the search service mock for this purpose.
       videos = Video.where('duration > 300').where('duration <= 900').page(1).per(10)
-      inst = instance_double('VideoSearch', videos: videos)
+      inst = instance_double(VideoSearch, videos: videos)
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -49,7 +49,7 @@ RSpec.describe 'Videos search', type: :feature do
 
     it 'can search for long length videos' do
       # Tune the search service mock for this purpose.
-      inst = instance_double('VideoSearch', videos: Video.where('duration > 900').page(1).per(10))
+      inst = instance_double(VideoSearch, videos: Video.where('duration > 900').page(1).per(10))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -82,7 +82,7 @@ RSpec.describe 'Videos search', type: :feature do
     it 'can search for videos in a topic' do
       # Tune the search service mock for this purpose.
       videos = Video.includes(playlist: :topic).where(topics: { title: 'First Topic' }).page(1).per(10)
-      inst = instance_double('VideoSearch', videos: videos)
+      inst = instance_double(VideoSearch, videos: videos)
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
