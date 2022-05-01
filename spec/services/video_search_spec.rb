@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe VideoSearch, type: :class do
   describe '#videos' do
-    let(:videos) { class_double('Video').as_stubbed_const }
+    let(:videos) { class_double(Video).as_stubbed_const }
 
     before { allow(videos).to receive(:search).and_return([:outcome]) }
 

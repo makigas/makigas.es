@@ -6,17 +6,17 @@ if ENV['RAILS_USE_S3'].present?
     storage: :s3,
     s3_protocol: ENV.fetch('S3_HOST_PROTO', ''),
     s3_credentials: {
-      bucket: ENV['S3_BUCKET_NAME'],
+      bucket: ENV.fetch('S3_BUCKET_NAME', nil),
       region: ENV.fetch('AWS_REGION', 'us-east-1'),
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_key_id: ENV['AWS_SECRET_ACCESS_KEY']
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+      secret_key_id: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
     }
   )
 
   # Use custom host as primary (s3-us-west-2 instead of s3, for instance).
   # URL before:            s3.amazonaws.com/cdn.makigas.es/hi.css
   # URL after:   s3-us-west-2.amazonaws.com/cdn.makigas.es/hi.css
-  Paperclip::Attachment.default_options[:s3_host_name] = ENV['S3_HOST_NAME'] if ENV['S3_HOST_NAME'].present?
+  Paperclip::Attachment.default_options[:s3_host_name] = ENV.fetch('S3_HOST_NAME', nil) if ENV['S3_HOST_NAME'].present?
 
   # Put the bucket in the domain if this env is set to any value.
   # URLs will be like cdn.makigas.es.s3.amazonaws.com/hi.css
@@ -36,7 +36,7 @@ if ENV['RAILS_USE_S3'].present?
   if ENV['S3_BUCKET_DOMAIN'].present? || ENV['S3_HOST_ALIAS'].present?
     Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
     if ENV['S3_HOST_ALIAS'].present?
-      Paperclip::Attachment.default_options[:s3_host_alias] = ENV['S3_HOST_ALIAS']
+      Paperclip::Attachment.default_options[:s3_host_alias] = ENV.fetch('S3_HOST_ALIAS', nil)
       Paperclip::Attachment.default_options[:url] = ':s3_alias_url'
     else
       Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
@@ -48,7 +48,7 @@ if ENV['RAILS_USE_S3'].present?
     Paperclip::Attachment.default_options[:s3_region] = ENV.fetch('AWS_REGION', 'us-east-1')
     Paperclip::Attachment.default_options[:s3_options] = {
       force_path_style: true,
-      endpoint: ENV['S3_ENDPOINT']
+      endpoint: ENV.fetch('S3_ENDPOINT', nil)
     }
   end
 end
