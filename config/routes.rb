@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
-  resources :topics, only: %i[index show] do
+  resources :topics, path: 'temas', only: %i[index show] do
     get :feed, on: :member, format: :xml
   end
 
@@ -56,6 +56,11 @@ Rails.application.routes.draw do
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
   get '/videos/:topic/:playlist' => redirect('/series/%{playlist}')
   get '/videos/:playlist' => redirect('/series/%{playlist}')
+
+  # Legacy routes for the old topic explorer
+  get '/topics/:topic' => redirect('/temas/%{topic}')
+  get '/topics/:topic/feed' => redirect('/temas/%{topic}/feed')
+  get '/topics' => redirect('/temas')
 
   mount Lookbook::Engine, at: '/lookbook'
 
