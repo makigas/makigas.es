@@ -58,8 +58,8 @@ RSpec.describe Playlist, type: :model do
   describe 'videos association' do
     it 'reports total length' do
       playlist = build(:playlist)
-      create(:video, youtube_id: '12345', duration: 60, playlist: playlist)
-      create(:video, youtube_id: '12346', duration: 90, playlist: playlist)
+      create(:video, youtube_id: '12345', duration: 60, playlist:)
+      create(:video, youtube_id: '12346', duration: 90, playlist:)
       expect(playlist.total_length).to eq 150
     end
 

@@ -13,7 +13,7 @@ module Six
       # @display bgcolor '#222'
       # @display padding 50px
       def default(query: '', size: :normal)
-        render Six::Layout::SearchComponent.new(query: query.presence, size: size)
+        render Six::Layout::SearchComponent.new(query: query.presence, size:)
       end
     end
   end

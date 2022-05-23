@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Five::Catalog::TopicMediaCardComponent, type: :component do
   describe 'default rendering' do
-    subject { render_inline(described_class.new(topic: topic)) }
+    subject { render_inline(described_class.new(topic:)) }
 
     let(:topic) { create(:topic) }
     let(:selector_thumb) { "img[src='#{topic.thumbnail.url(:small)}'][srcset~='#{topic.thumbnail.url(:default)} 2x']" }

@@ -11,7 +11,7 @@ RSpec.describe 'Topic page', type: :feature do
   end
 
   it 'shows playlists in a topic' do
-    playlist = create(:playlist, topic: topic)
+    playlist = create(:playlist, topic:)
 
     visit topic_path(topic)
 

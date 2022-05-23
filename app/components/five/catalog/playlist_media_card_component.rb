@@ -12,9 +12,9 @@ module Five
 
       def call
         render Five::Core::MediaCardComponent.new(
-          href: href,
-          thumbnail: thumbnail,
-          hidef_thumbnail: hidef_thumbnail
+          href:,
+          thumbnail:,
+          hidef_thumbnail:
         ) do |c|
           c.title { title }
           c.text { description }

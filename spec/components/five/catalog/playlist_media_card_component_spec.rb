@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Five::Catalog::PlaylistMediaCardComponent, type: :component do
   describe 'default rendering' do
-    subject { render_inline(described_class.new(playlist: playlist)) }
+    subject { render_inline(described_class.new(playlist:)) }
 
     let(:playlist) { create(:playlist) }
     let(:selector_thumb) do
@@ -17,13 +17,13 @@ RSpec.describe Five::Catalog::PlaylistMediaCardComponent, type: :component do
     it { is_expected.to have_selector selector_thumb }
 
     describe 'when the playlist has a video' do
-      before { create(:video, playlist: playlist) }
+      before { create(:video, playlist:) }
 
       it { is_expected.not_to have_selector 'p', text: /1 episodio/ }
     end
 
     describe 'when the playlist have multiple videos' do
-      before { create_list(:video, 2, playlist: playlist) }
+      before { create_list(:video, 2, playlist:) }
 
       it { is_expected.to have_selector 'p', text: /2 episodios/ }
     end

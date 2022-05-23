@@ -23,9 +23,9 @@ RSpec.describe 'Video page', type: :feature do
 
   describe 'when the video has show notes' do
     let(:topic) { create(:topic) }
-    let(:playlist) { create(:playlist, topic: topic) }
+    let(:playlist) { create(:playlist, topic:) }
     let(:show_note) { build(:show_note, documentable: nil) }
-    let(:video) { create(:video, playlist: playlist, show_note: show_note) }
+    let(:video) { create(:video, playlist:, show_note:) }
 
     it 'presents the show notes' do
       visit_video video

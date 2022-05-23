@@ -26,7 +26,7 @@ module Six
       end
 
       def videos
-        Video.joins(playlist: :topic).where(playlists: { topic: topic }).count
+        Video.joins(playlist: :topic).where(playlists: { topic: }).count
       end
 
       def playlists

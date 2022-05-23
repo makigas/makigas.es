@@ -79,16 +79,16 @@ class DownloadProduction
     icons.find { |icon| icon['sizes'].include?(size) }['href'].split('?')[0]
   end
 
-  def recursive_fetch(url, target, &block)
+  def recursive_fetch(url, target, &)
     print '.'
     $stdout.flush
 
     resp = fetch(url)
     raise Net::HTTPError, 'Invalid response lacks videos[] key' if resp.body[target].blank?
 
-    resp.body[target].each(&block)
+    resp.body[target].each(&)
     next_video = resp.body.dig('_links', 'next', 'href')
-    recursive_fetch(next_video, target, &block) if next_video.present?
+    recursive_fetch(next_video, target, &) if next_video.present?
   end
 
   def fetch(url)

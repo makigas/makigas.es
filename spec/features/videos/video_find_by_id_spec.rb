@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Video find by ID', type: :feature do
   let(:playlist) { create(:playlist, title: 'Videos musicales') }
-  let(:video) { create(:video, title: 'Open Door', playlist: playlist, youtube_id: '6VBwEeUkFrQ') }
+  let(:video) { create(:video, title: 'Open Door', playlist:, youtube_id: '6VBwEeUkFrQ') }
 
   describe 'when the correct video is found' do
     it 'redirects to the correct video page' do

@@ -22,8 +22,8 @@ RSpec.describe 'Topics page', type: :feature do
 
   it 'displays topic if the playlist has one' do
     topic = create(:topic)
-    playlist = create(:playlist, topic: topic)
-    create(:video, playlist: playlist)
+    playlist = create(:playlist, topic:)
+    create(:video, playlist:)
 
     visit videos_path
     expect(page).to have_link topic.title, href: topic_path(topic)
