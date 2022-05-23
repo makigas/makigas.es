@@ -153,6 +153,9 @@ GEM
     formatador (1.1.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
+    fuubar (2.5.1)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
     guard (2.18.0)
@@ -516,6 +519,7 @@ DEPENDENCIES
   factory_bot_rails
   faraday (~> 2.2.0)
   friendly_id
+  fuubar
   guard (~> 2.18.0)
   guard-rails (~> 0.8.1)
   guard-rspec (~> 4.7.3)
@@ -559,7 +563,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.2.30
+   2.3.14
