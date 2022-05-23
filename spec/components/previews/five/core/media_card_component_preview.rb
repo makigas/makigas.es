@@ -11,7 +11,7 @@ module Five
       # @param title text
       # @param text textarea
       def default(href: '#', thumb: '/android-chrome-192x192.png', title: 'A sample card', text: 'Lorem Ipsum')
-        render Five::Core::MediaCardComponent.new(href: href,
+        render Five::Core::MediaCardComponent.new(href:,
                                                   thumbnail: thumb,
                                                   hidef_thumbnail: thumb) do |c|
           c.title { title }

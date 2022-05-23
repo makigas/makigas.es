@@ -17,8 +17,8 @@ module Six
         Topic.all.index_by(&:slug)
       end
 
-      def each_topic(&block)
-        CUSTOM_NAMES.map { |slug, name| [topics[slug], name] }.reject { |k, _| k.nil? }.each(&block)
+      def each_topic(&)
+        CUSTOM_NAMES.map { |slug, name| [topics[slug], name] }.reject { |k, _| k.nil? }.each(&)
       end
     end
   end

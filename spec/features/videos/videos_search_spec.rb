@@ -31,7 +31,7 @@ RSpec.describe 'Videos search', type: :feature do
     it 'can search for medium length videos' do
       # Tune the search service mock for this purpose.
       videos = Video.where('duration > 300').where('duration <= 900').page(1).per(10)
-      inst = instance_double(VideoSearch, videos: videos)
+      inst = instance_double(VideoSearch, videos:)
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -82,7 +82,7 @@ RSpec.describe 'Videos search', type: :feature do
     it 'can search for videos in a topic' do
       # Tune the search service mock for this purpose.
       videos = Video.includes(playlist: :topic).where(topics: { title: 'First Topic' }).page(1).per(10)
-      inst = instance_double(VideoSearch, videos: videos)
+      inst = instance_double(VideoSearch, videos:)
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path

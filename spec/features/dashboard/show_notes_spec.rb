@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Dashboard show notes', type: :feature, js: true do
   let(:user) { create(:user) }
   let(:playlist) { create(:playlist) }
-  let(:video) { create(:video, playlist: playlist) }
+  let(:video) { create(:video, playlist:) }
 
   let(:row) { "//tr[./td//text()[contains(., 'Notas del episodio')]]" }
 

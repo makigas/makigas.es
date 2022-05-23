@@ -50,13 +50,13 @@ RSpec.describe Topic, type: :model do
   describe 'playlists association' do
     it 'has playlists' do
       topic = create(:topic)
-      create(:playlist, topic: topic)
+      create(:playlist, topic:)
       expect(topic).to respond_to(:playlists)
     end
 
     it 'nullifies its playlists when removed' do
       topic = create(:topic)
-      playlist = create(:playlist, topic: topic)
+      playlist = create(:playlist, topic:)
       topic.destroy
       playlist.reload
       expect(playlist.topic).to be_nil

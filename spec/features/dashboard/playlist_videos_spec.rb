@@ -6,8 +6,8 @@ RSpec.describe 'Dashboard playlist videos', type: :feature do
   let!(:playlist) { create(:playlist) }
   let!(:videos) do
     [
-      create(:video, playlist: playlist, title: 'Primero', position: 1, youtube_id: '1'),
-      create(:video, playlist: playlist, title: 'Segundo', position: 2, youtube_id: '2')
+      create(:video, playlist:, title: 'Primero', position: 1, youtube_id: '1'),
+      create(:video, playlist:, title: 'Segundo', position: 2, youtube_id: '2')
     ]
   end
 

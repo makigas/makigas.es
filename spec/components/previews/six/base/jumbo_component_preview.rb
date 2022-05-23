@@ -7,7 +7,7 @@ module Six
 
       # @param text text the text to place
       def default(text: 'Política de privacidad')
-        render(Six::Base::JumboComponent.new(text: text))
+        render(Six::Base::JumboComponent.new(text:))
       end
     end
   end

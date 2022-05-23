@@ -6,7 +6,7 @@ RSpec.describe 'Playlists page', type: :feature do
   let(:playlist) { create(:playlist) }
 
   it 'displays information about playlists' do
-    create(:video, playlist: playlist)
+    create(:video, playlist:)
 
     visit playlists_path
 
@@ -24,7 +24,7 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'single video' do
-      create(:video, playlist: playlist)
+      create(:video, playlist:)
 
       visit playlists_path
 
@@ -35,8 +35,8 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'many videos' do
-      create(:video, playlist: playlist, youtube_id: '1234')
-      create(:video, playlist: playlist, youtube_id: '1238')
+      create(:video, playlist:, youtube_id: '1234')
+      create(:video, playlist:, youtube_id: '1238')
 
       visit playlists_path
 
@@ -47,8 +47,8 @@ RSpec.describe 'Playlists page', type: :feature do
     end
 
     it 'scheduled videos are not counted' do
-      create(:video, playlist: playlist, youtube_id: '1234')
-      create(:tomorrow_video, playlist: playlist, youtube_id: '1238')
+      create(:video, playlist:, youtube_id: '1234')
+      create(:tomorrow_video, playlist:, youtube_id: '1238')
 
       visit playlists_path
 

@@ -15,7 +15,7 @@ module Six
       # @display max_width 400px
       # @display padding 30px
       def default(icon: 'list', text: '5 episodios')
-        render Six::Utils::MetaComponent.new(icon: icon, text: text)
+        render Six::Utils::MetaComponent.new(icon:, text:)
       end
 
       # For more complex meta blocks, it is also possible to use a block.
