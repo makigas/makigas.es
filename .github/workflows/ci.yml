@@ -33,7 +33,7 @@ jobs:
       - name: Set up ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
+          ruby-version: '3.1.2'
           bundler-cache: true
       - name: Set up node
         uses: actions/setup-node@v2
@@ -71,7 +71,7 @@ jobs:
       - name: Set up ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
+          ruby-version: '3.1.2'
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop
@@ -95,7 +95,7 @@ jobs:
       - name: Set up ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
+          ruby-version: '3.1.2'
           bundler-cache: true
       - name: Build assets
         run: bundle exec rails assets:precompile

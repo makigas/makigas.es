@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.0.0'
+ruby '~> 3.1.0'
 
 gem 'dotenv-rails', '~> 2.7.6'
 gem 'rake', '~> 13.0.3'
@@ -77,6 +77,7 @@ end
 group :development, :test do
   gem 'factory_bot', '~> 6.2.0'
   gem 'factory_bot_rails'
+  gem 'fuubar'
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.1.2'
 end
