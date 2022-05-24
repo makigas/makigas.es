@@ -6,12 +6,10 @@
   </ol>
   <h1><%= @user %></h1>
 <% end %>
-
 <% content_for :toolbar do %>
   <%= link_to t('.edit'), [:edit, :dashboard, @user], class: 'btn btn-success' %>
   <%= button_to t('.destroy'), [:dashboard, @user], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == @user %>
 <% end %>
-
 <table class="table table-default">
   <tr>
     <td><%= t('.email') %></td>

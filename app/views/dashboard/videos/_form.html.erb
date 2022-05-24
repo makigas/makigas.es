@@ -6,19 +6,19 @@
     <%= form.hidden_field :duration %>
     <div class="row">
       <div class="col-auto">
-        <%= number_field_tag nil, ((@video.duration / 3600) rescue "0"), id: 'duration_hours', class: 'form-control', min: 0, max: 9 %>
+        <%= number_field_tag nil, ((@video.duration / 3600) rescue "0"), id: 'duration-hours', class: 'form-control', min: 0, max: 9 %>
       </div>
       <div class="col-auto">
         :
       </div>
       <div class="col-auto">
-        <%= number_field_tag nil, (((@video.duration % 3600) / 60) rescue 0), id: 'duration_minutes', class: 'form-control', min: 0, max: 59 %>
+        <%= number_field_tag nil, (((@video.duration % 3600) / 60) rescue 0), id: 'duration-minutes', class: 'form-control', min: 0, max: 59 %>
       </div>
       <div class="col-auto">
         :
       </div>
       <div class="col-auto">
-        <%= number_field_tag nil, ((@video.duration % 60) rescue 0), id: 'duration_seconds', class: 'form-control', min: 0, max: 59 %>
+        <%= number_field_tag nil, ((@video.duration % 60) rescue 0), id: 'duration-seconds', class: 'form-control', min: 0, max: 59 %>
       </div>
     </div>
   <% end %>
@@ -27,7 +27,6 @@
   <%= form.input :published_at %>
   <%= form.input :unfeatured %>
   <%= form.submit class: 'btn btn-success' %>
-
   <% unless @video.persisted? %>
     <%= button_tag t('.save_and_new'), type: :button, class: 'btn btn-outline-secondary hidden', data: { submit_and_return_to: new_dashboard_video_path(playlist_id: @video.playlist_id)}, hidden: :hidden %>
   <% end %>

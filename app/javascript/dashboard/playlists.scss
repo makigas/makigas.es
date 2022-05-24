@@ -1,11 +1,21 @@
 @keyframes move-row-up {
-  from { transform: translate(0); }
-  to { transform: translateY(-100%); }
-};
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
 
 @keyframes move-row-down {
-  from { transform: translate(0); }
-  to { transform: translateY(100%); }
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
 }
 
 body.page-playlists {
@@ -17,6 +27,7 @@ body.page-playlists {
     pointer-events: none;
     touch-action: none;
   }
+
   tr.moving-down {
     animation-name: move-row-down;
     animation-duration: 0.25s;

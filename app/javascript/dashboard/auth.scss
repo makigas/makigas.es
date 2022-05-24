@@ -1,0 +1,41 @@
+@use "sass:color";
+
+body.auth {
+  background: color.adjust(#039, $saturation: -25%);
+
+  svg {
+    fill: white;
+  }
+
+  .auth-header {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .card-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .card {
+    box-shadow: 0 0 4px #303030;
+    margin: 0 auto;
+
+    .card-header {
+      font-size: 1.5em;
+      text-align: center;
+    }
+  }
+
+  .form-main {
+    margin-bottom: 1rem;
+  }
+
+  .internal {
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+}

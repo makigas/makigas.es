@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <!--                 _    _
                     | |  (_)
     _ __ ___   __ _| | ___  __ _  __ _ ___
@@ -10,40 +9,32 @@
                             |___/
 
     Interested in checking out the internals of this web page?
-    The source code is actually open source. Get the code and
-    report bugs at https://github.com/makigas/makigas. Thanks.
+    The source code is actually open source. Visit
+    https://github.com/makigas/makigas.es for more information.
 -->
-
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>makigas</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  <%= stylesheet_link_tag 'dashboard' %>
-  <%= stylesheet_link_tag 'devise/devise', media: 'all' %>
-  <%= favicon_link_tag '/favicon.ico' %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="no-js auth <%= "page-#{controller.controller_name}" %>">
-
-  <header class="auth-header">
-    <svg class="makigas-logo" aria-role="img" aria-hidden="true" width="235" height="35" viewBox="0 0 47 7" version="1.1">
-      <path d="m 0,6 0,-5 2,0 0,1 2,0 0,-1 2,0 0,1 1,0 0,4 -2,0 0,-2 L 4,4 4,5 3,5 3,4 2,4 2,6 0,6 Z" />
-      <path d="m 9,6 0,-1 -1,0 0,-1 1,0 0,-1 L 12,3 12,2 9,2 l 0,-1 L 13,1 l 0,1 1,0 0,4 -5,0 z m 1,-1 L 12,5 12,4 10,4 l 0,1 z" />
-      <path d="m 15,6 0,-6 2,0 0,3 1,0 0,-1 2,0 0,1 -1,0 0,1 1,0 0,1 1,0 0,1 -2,0 0,-1 -1,0 0,-1 -1,0 0,2 -2,0 z" />
-      <path d="m 22,6 0,-1 1,0 0,-2 -1,0 0,-1 3,0 0,3 1,0 0,1 -4,0 z m 1,-5 0,-1 2,0 0,1 -2,0 z" />
-      <path d="m 27,7 0,-1 4,0 0,-1 -3,0 0,-1 -1,0 0,-2 1,0 0,-1 5,0 0,5 -1,0 0,1 -5,0 z m 2,-3 2,0 0,-2 -2,0 0,2 z" />
-      <path d="m 35,6 0,-1 -1,0 0,-1 1,0 0,-1 3,0 0,-1 -3,0 0,-1 4,0 0,1 1,0 0,4 -5,0 z m 1,-1 2,0 0,-1 -2,0 0,1 z" />
-      <path d="m 47,1 0,1 L 43,2 l 0,1 3,0 0,1 1,0 0,1 -1,0 0,1 L 41,6 l 0,-1 4,0 0,-1 L 42,4 l 0,-1 -1,0 0,-1 1,0 0,-1 5,0 z" />
-    </svg>
-  </header>
-
-  <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
-    <div class="panel panel-default">
-      <%= yield %>
-    </div>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>makigas</title>
+    <%= stylesheet_link_tag 'dashboard', media: 'all' %>
+    <%= javascript_include_tag 'dashboard', defer: true %>
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="auth">
+    <header class="auth-header">
+      <svg class="makigas-logo" aria-role="img" aria-hidden="true" width="235" height="35" viewBox="0 0 47 7" version="1.1">
+        <path d="m 0,6 0,-5 2,0 0,1 2,0 0,-1 2,0 0,1 1,0 0,4 -2,0 0,-2 L 4,4 4,5 3,5 3,4 2,4 2,6 0,6 Z" />
+        <path d="m 9,6 0,-1 -1,0 0,-1 1,0 0,-1 L 12,3 12,2 9,2 l 0,-1 L 13,1 l 0,1 1,0 0,4 -5,0 z m 1,-1 L 12,5 12,4 10,4 l 0,1 z" />
+        <path d="m 15,6 0,-6 2,0 0,3 1,0 0,-1 2,0 0,1 -1,0 0,1 1,0 0,1 1,0 0,1 -2,0 0,-1 -1,0 0,-1 -1,0 0,2 -2,0 z" />
+        <path d="m 22,6 0,-1 1,0 0,-2 -1,0 0,-1 3,0 0,3 1,0 0,1 -4,0 z m 1,-5 0,-1 2,0 0,1 -2,0 z" />
+        <path d="m 27,7 0,-1 4,0 0,-1 -3,0 0,-1 -1,0 0,-2 1,0 0,-1 5,0 0,5 -1,0 0,1 -5,0 z m 2,-3 2,0 0,-2 -2,0 0,2 z" />
+        <path d="m 35,6 0,-1 -1,0 0,-1 1,0 0,-1 3,0 0,-1 -3,0 0,-1 4,0 0,1 1,0 0,4 -5,0 z m 1,-1 2,0 0,-1 -2,0 0,1 z" />
+        <path d="m 47,1 0,1 L 43,2 l 0,1 3,0 0,1 1,0 0,1 -1,0 0,1 L 41,6 l 0,-1 4,0 0,-1 L 42,4 l 0,-1 -1,0 0,-1 1,0 0,-1 5,0 z" />
+      </svg>
+    </header>
+    <%= yield %>
+  </body>
 </html>

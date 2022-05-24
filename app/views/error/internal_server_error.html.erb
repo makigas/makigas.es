@@ -1,19 +1,17 @@
 <%= render Six::Base::WrapperComponent.new(classes: 'errorpage') do %>
-<header>
-  <h1>HTTP 500</h1>
-  <h2>😨 ¡Algo va mal!</h2>
-</header>
-
-<p>
-  El servidor web no ha podido completar correctamente la petición que ha
-  enviado tu navegador. Prueba a recargar la página transcurridos unos
-  momentos. Si continúas viendo este mensaje de error, puede deberse a un
-  problema interno con la configuración de la página web o del servidor que
-  deba ser revisado por un administrador del sistema.
-</p>
-
-<p>
-  Si quieres reportar este error por e-mail o Twitter, recuerda indicar
-  que ID de este mensaje de error ha sido: <code><%= request.uuid %></code>
-</p>
+  <header>
+    <h1>HTTP 500</h1>
+    <h2>😨 ¡Algo va mal!</h2>
+  </header>
+  <p>
+    El servidor web no ha podido completar correctamente la petición que ha
+    enviado tu navegador. Prueba a recargar la página transcurridos unos
+    momentos. Si continúas viendo este mensaje de error, puede deberse a un
+    problema interno con la configuración de la página web o del servidor que
+    deba ser revisado por un administrador del sistema.
+  </p>
+  <p>
+    Si quieres reportar este error por e-mail o Twitter, recuerda indicar
+    que ID de este mensaje de error ha sido: <code><%= request.uuid %></code>
+  </p>
 <% end %>

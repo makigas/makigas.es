@@ -5,11 +5,9 @@
   </ol>
   <h1><%= t('.users') %></h1>
 <% end %>
-
 <% content_for :toolbar do %>
   <%= link_to t('.new_user'), [:new, :dashboard, :user], class: 'btn btn-success' %>
 <% end %>
-
 <table class="table table-default">
   <thead>
     <tr>
@@ -20,18 +18,17 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to user.email, [:dashboard, user] %></td>
-      <td><%= user.last_sign_in_at %></td>
-      <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, user], class: 'btn btn-xs btn-outline-secondary' %>
-        <%= button_to t('.destroy'), [:dashboard, user], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == user %>
-      </td>
-    </tr>
+      <tr>
+        <td><%= link_to user.email, [:dashboard, user] %></td>
+        <td><%= user.last_sign_in_at %></td>
+        <td>
+          <%= link_to t('.edit'), [:edit, :dashboard, user], class: 'btn btn-xs btn-outline-secondary' %>
+          <%= button_to t('.destroy'), [:dashboard, user], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == user %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-
 <div class="paginator">
   <%= paginate @users, theme: 'twitter-bootstrap-3' %>
 </div>

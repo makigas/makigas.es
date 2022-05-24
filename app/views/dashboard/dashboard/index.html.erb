@@ -39,12 +39,11 @@
       <div class="card-header">
         Acciones rápidas
       </div>
-        <div class="list-group list-group-flush">
-          <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path, class: 'list-group-item list-group-item-action' %>
-          <% Video.last.playlist.tap do |playlist| %>
-              <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
-          <% end %>
-        </ul>
+      <div class="list-group list-group-flush">
+        <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path, class: 'list-group-item list-group-item-action' %>
+        <% Video.last.playlist.tap do |playlist| %>
+          <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
+        <% end %>
       </div>
     </div>
   </div>

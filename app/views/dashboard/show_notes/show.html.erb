@@ -7,11 +7,9 @@
   </ol>
   <h1><%= @video.title %></h1>
 <% end %>
-
 <% content_for :toolbar do %>
   <%= link_to t('.cancel'), [:dashboard, @playlist, @video], class: 'btn btn-outline-secondary' %>
 <% end %>
-
 <%= simple_form_for @show_note, url: dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @playlist.slug) do |f| %>
   <%= f.input :language, collection: [['es', 'es']], include_blank: false %>
   <%= f.input :content, input_html: { rows: 10 } %>

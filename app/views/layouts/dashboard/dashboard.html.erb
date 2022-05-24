@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>makigas</title>
-  <%= stylesheet_link_tag 'dashboard' %>
-  <%= stylesheet_link_tag 'dashboard/dashboard', media: 'all' %>
-  <%= favicon_link_tag '/favicon.ico' %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="no-js <%= "page-#{controller.controller_name}" %>">
-
-  <%= render 'layouts/dashboard/header' %>
-
-  <div class="dashboard-page">
-    <header class="dashboard-header">
-      <div class="container">
-        <div class="dashboard-toolbar float-end">
-          <%= content_for :toolbar %>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>makigas</title>
+    <%= stylesheet_link_tag 'dashboard' %>
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="no-js <%= "page-#{controller.controller_name}" %>">
+    <%= render 'layouts/dashboard/header' %>
+    <div class="dashboard-page">
+      <header class="dashboard-header">
+        <div class="container">
+          <div class="dashboard-toolbar float-end">
+            <%= content_for :toolbar %>
+          </div>
+          <%= content_for :header %>
         </div>
-        <%= content_for :header %>
-      </div>
-    </header>
-
-    <main class="container">
-      <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
-      <%= yield %>
-    </main>
-  </div>
-
-  <%= javascript_include_tag 'dashboard' %>
-  <%= javascript_include_tag 'dashboard/dashboard' %>
-
-</body>
+      </header>
+      <main class="container">
+        <%= content_tag(:div, flash[:notice], class: 'alert alert-info') if flash[:notice] %>
+        <%= yield %>
+      </main>
+    </div>
+    <%= javascript_include_tag 'dashboard' %>
+  </body>
 </html>

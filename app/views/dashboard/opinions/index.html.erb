@@ -5,11 +5,9 @@
   </ol>
   <h1><%= t('.opinions') %></h1>
 <% end %>
-
 <% content_for :toolbar do %>
   <%= link_to t('.new_opinion'), [:new, :dashboard, :opinion], class: 'btn btn-success' %>
 <% end %>
-
 <table class="table table-default">
   <thead>
     <tr>
@@ -19,17 +17,16 @@
   </thead>
   <tbody>
     <% @opinions.each do |opinion| %>
-    <tr>
-      <td><%= link_to opinion.from, [:dashboard, opinion] %></td>
-      <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, opinion], class: 'btn btn-xs btn-outline-secondary' %>
-        <%= button_to t('.destroy'), [:dashboard, opinion], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
-      </td>
-    </tr>
+      <tr>
+        <td><%= link_to opinion.from, [:dashboard, opinion] %></td>
+        <td>
+          <%= link_to t('.edit'), [:edit, :dashboard, opinion], class: 'btn btn-xs btn-outline-secondary' %>
+          <%= button_to t('.destroy'), [:dashboard, opinion], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-
 <div class="paginator">
   <%= paginate @opinions, theme: 'twitter-bootstrap-3' %>
 </div>

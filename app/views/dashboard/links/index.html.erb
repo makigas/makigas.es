@@ -5,11 +5,9 @@
   </ol>
   <h1><%= t('.links') %></h1>
 <% end %>
-
 <% content_for :toolbar do %>
   <%= link_to t('.new_link'), [:new, :dashboard, @playlist, @video, :link], class: 'btn btn-success' %>
 <% end %>
-
 <table class="table table-default">
   <thead>
     <tr>
@@ -20,18 +18,17 @@
   </thead>
   <tbody>
     <% @links.each do |link| %>
-    <tr>
-      <td><%= link.name %></td>
-      <td><%= link.url %></td>
-      <td>
-        <%= link_to t('.edit'), [:edit, :dashboard, @playlist, @video, link], class: 'btn btn-xs btn-outline-secondary' %>
-        <%= button_to t('.destroy'), [:dashboard, @playlist, @video, link], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
-      </td>
-    </tr>
+      <tr>
+        <td><%= link.name %></td>
+        <td><%= link.url %></td>
+        <td>
+          <%= link_to t('.edit'), [:edit, :dashboard, @playlist, @video, link], class: 'btn btn-xs btn-outline-secondary' %>
+          <%= button_to t('.destroy'), [:dashboard, @playlist, @video, link], method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: t('.really_destroy') } %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-
 <div class="paginator">
   <%= paginate @links, theme: 'twitter-bootstrap-3' %>
 </div>
