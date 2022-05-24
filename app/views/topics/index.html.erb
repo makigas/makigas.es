@@ -1,10 +1,8 @@
 <% content_for :title, "#{t('.meta.title')} – makigas" %>
 <% content_for :description, t('.meta.description') %>
-
 <% content_for :hero do %>
   <h1><%= t('.title') %></h1>
 <% end %>
-
 <%= render Six::Base::WrapperComponent.new(classes: 'topicslist', breath: true) do %>
   <% @topics.each do |tp| %>
     <%= render Six::Explorer::TopicCardComponent.new(topic: tp) %>

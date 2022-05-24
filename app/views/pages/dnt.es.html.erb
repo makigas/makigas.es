@@ -1,9 +1,7 @@
 <% content_for :title, 'Do Not Track – makigas' %>
-
 <% content_for :hero do %>
   <h1>Do Not Track</h1>
 <% end %>
-
 <%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
   <p>
     <strong>Do Not Track</strong> es una tecnología estandar incorporada en la
@@ -11,7 +9,6 @@
     las páginas web la voluntad del usuario que utiliza ese navegador web para no
     ser rastreado durante su sesión de navegación.
   </p>
-
   <p>
     Cuando activas la señal Do Not Track en las opciones de tu navegador, cada
     petición que hagas a un sitio web en una sesión de navegación incluirá esa
@@ -20,15 +17,12 @@
       Do Not Track</strong>. Consulta la política de privacidad de cada sitio para
     conocer tus opciones.
   </p>
-
   <p>
     En cuanto a <strong>makigas.es</strong>, si tu navegador envía la cabecera
     Do Not Track, respetaremos tu decisión haciendo una serie de cambios a la forma
     en la que se trata tu petición para proteger tu privacidad.
   </p>
-
   <h3>¿Hay algún elemento que pueda rastrearme en makigas.es?</h3>
-
   <p>
     Antes que nada, es importante advertir que el sitio web de makigas.es no muestra
     anuncios en el código HTML que se descarga cuando haces una petición. Eso
@@ -36,7 +30,6 @@
     integrados sí que muestran anuncios cuando se inicia la reproducción, pero esos
     anuncios son cargados por el reproductor de YouTube, no por makigas.es.
   </p>
-
   <p>
     makigas.es tampoco utiliza ninguna tecnología de seguimiento ni está afiliado
     a ninguna plataforma de márketing o remárketing. La única tecnología analítica
@@ -46,13 +39,11 @@
     reproducción son las más reproducidas). Esta información te la describimos en
     detalle en nuestra <a href="/privacidad">política de privacidad</a>.
   </p>
-
   <p>
     Sin embargo, makigas.es sí utiliza algunos plugins de terceros para hacer más
     rica tu experiencia en el sitio web. Cuando visitas makigas.es, es posible que
     cargues uno o más de estos plugins de terceros:
   </p>
-
   <ul>
     <li>Google Analytics, que como hemos dicho, sirve para obtener información
       analítica sobre la forma en la que los usuarios visitan makigas.es.</li>
@@ -60,9 +51,7 @@
       desde esta página web en vez de tener que navegar a nuestro canal de YouTube
       si así lo prefieres.</li>
   </ul>
-
   <h3>¿Cómo se altera mi sesión de navegación cuando activo DNT?</h3>
-
   <p>
     Cuando visitas makigas.es con la cabecera DNT activa, dado que Google Analytics
     no tiene una forma clara de respetar la señal
@@ -71,16 +60,13 @@
     esta página web. (Agradeceríamos que nos des tu opinión sobre los vídeos que
     ves para saber cuáles son los más útiles o no, ya que sin el plugin analítico
     no lo podemos determinar automáticamente.)
-
     <h3>¿Qué cosas no cambian cuando se visita makigas.es con DNT activo?</h3>
-
     <p>
       Los reproductores de YouTube siempre se sirven desde el dominio youtube-nocookie.com,
       una variante del YouTube normal proporcionada por Google donde no se almacenan cookies
       en el navegador si el usuario no interactúa con el vídeo embebido (por ejemplo,
       pulsando el botón Play).
     </p>
-
     <p>
       Aun siendo cargado desde youtube-nocookie.com, el reproductor puede generar
       cookies cuando se pulsa el botón Play. No se han tomado acciones a este respecto
@@ -89,7 +75,6 @@
       desde youtube-nocookie.com o desde youtube.com, no podrías visualizar el
       contenido del vídeo en primer lugar.
     </p>
-
     <p>
       Del mismo modo, tener activo el modo DNT en tu navegador no impide que el
       servidor web que escucha peticiones en makigas.es continúe registrando en un
@@ -105,10 +90,8 @@
       debido a la cantidad de ruido que se registra en ellos y a la poca fiabilidad
       que ofrecen para distinguir usuarios reales de visitas automatizadas.
     </p>
-
     <h3>¿Cómo puedo activar DNT en mi navegador web?</h3>
-
     <p>Consulta las instrucciones de la ayuda de tu navegador web para obtener
       información actualizada sobre cómo activar la función No Realizar Seguimiento
       en tu navegador web.</p>
-<% end %>
+  <% end %>

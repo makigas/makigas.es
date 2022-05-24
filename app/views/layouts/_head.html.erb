@@ -1,32 +1,26 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="dns-prefetch" href="//cdn.makigas.es">
 <link rel="dns-prefetch" href="//static.makigas.es">
 <link rel="dns-prefetch" href="//i1.ytimg.com">
 <link rel="dns-prefetch" href="//www.google-analytics.com">
 <link rel="dns-prefetch" href="//www.youtube-nocookie.com">
-
 <title><%= content_for?(:title) ? content_for(:title) : "makigas" %></title>
 <%= tag(:meta, name: 'description', content: content_for(:description)) if content_for?(:description) %>
 <%= tag(:meta, name: 'tags', content: content_for(:tags)) if content_for?(:tags) %>
 <%= tag(:link, rel: 'canonical', href: canonical_url) %>
 <%= tag(:link, rel: 'alternate', href: feed_videos_url, title: t('.videos_feed'), type: 'application/atom+xml') %>
-
 <%= content_for(:meta) if content_for?(:meta) -%>
 <%= content_for(:twitter) -%>
 <%= content_for(:facebook) -%>
-
 <%= stylesheet_link_tag 'six', media: 'all' %>
 <%= javascript_include_tag 'six', defer: true %>
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4d6699">
 <meta name="theme-color" content="#4d6699">
-
 <%= csrf_meta_tags %>
 <%= content_for(:header) if content_for?(:header) %>

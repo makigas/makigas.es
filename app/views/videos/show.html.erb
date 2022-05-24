@@ -24,7 +24,6 @@
   <% end %>
 <% end %>
 <% content_for :body_classes, 'video-player-page' %>
-
 <% if @video.playlist.topic %>
   <% content_for :header do %>
     <style>
@@ -33,12 +32,10 @@
     </style>
   <% end %>
 <% end %>
-
 <%= render Six::Base::WrapperComponent.new(tag: :article, classes: 'videoinfo', breath: true) do %>
   <aside class="videoinfo__player">
     <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
   </aside>
-
   <section class="videoinfo__text">
     <header>
       <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
@@ -63,7 +60,6 @@
       </div>
     <% end %>
   </section>
-
   <aside class="videoinfo__links">
     <%= render Six::Utils::DiscordCallToActionComponent.new %>
   </aside>

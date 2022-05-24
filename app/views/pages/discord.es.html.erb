@@ -14,7 +14,6 @@
   <meta property="og:site_name" content="makigas">
   <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
-
 <% content_for :header do %>
   <style>
     :root {
@@ -65,5 +64,5 @@
       <iframe src="https://discordapp.com/widget?id=<%= Rails.application.secrets.discord_server_id %>"
         id="discord_widget" class="discord__widget" allowtransparency="true" frameborder="0"></iframe>
     </div>
-</div>
-  <% end %>
+  </div>
+<% end %>

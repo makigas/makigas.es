@@ -1,10 +1,8 @@
 <% content_for :title, "#{t('.meta.title')} – makigas" %>
 <% content_for :description, t('.meta.description') %>
-
 <% content_for :hero do %>
   <h1><%= t('.title') %></h1>
 <% end %>
-
 <div class="videoexplorer">
   <%= render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do %>
     <%= render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...') %>
@@ -18,7 +16,6 @@
         <%= render Six::Explorer::SearchPillComponent.new(active: params[:length] == 'medium', url: videos_path(params.permit(:topic, :tags).merge(length: :medium))).with_content('Medios (5 a 15 min)') %>
         <%= render Six::Explorer::SearchPillComponent.new(active: params[:length] == 'long', url: videos_path(params.permit(:topic, :tags).merge(length: :long))).with_content('Largos (>15 min)') %>
       </section>
-
       <section class="videoexplorer__search__block">
         <header class="videoexplorer__search__title">
           Filtrar por categoría

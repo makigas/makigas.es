@@ -15,5 +15,75 @@
   <meta property="og:site_name" content="makigas">
   <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
-
-<%= render 'six' %>
+<% content_for(:navbar) do %>
+  <%= render Six::Layout::NavbarComponent.new(show_search: false, classes: 'navbar--front') %>
+<% end %>
+<%= render Six::Front::HeroComponent.new %>
+<%= render Six::Front::TopicExplorerComponent.new if Topic.count.positive? %>
+<div class="frontblock">
+  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+    <header>
+      <small>Brevemente</small>
+      <h2>¿Qué es makigas?</h2>
+    </header>
+    <p>
+      makigas es un canal de YouTube y una página web con tutoriales sobre
+      distintos temas relacionados con la programación y el desarrollo de
+      software.
+    </p>
+    <p>
+      En el canal de YouTube y en este sitio web encontrarás material para
+      aprender distintas tecnologías o lenguajes de programación a través de
+      vídeos accesibles gratis y en castellano.
+    </p>
+  <% end %>
+</div>
+<hr>
+<div class="frontblock">
+  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+    <header>
+      <small>¿Esto de qué va?</small>
+      <h2>Mejora programando, pero a tu ritmo</h2>
+    </header>
+    <p>
+      Buscamos crear una plataforma de cursos que haga la programación más
+      accesible y que te enseñe a trabajar con la tecnología en términos muy
+      simples:
+    </p>
+    <p>
+      <%= feather_icon 'dollar-sign' %> ofreciendo contenido
+      <strong>gratuito</strong> accesible para todas y todos
+    </p>
+    <p>
+      <%= feather_icon 'message-circle' %> <strong> en español</strong>, sin
+      tener que perderse en manuales en otro idioma
+    </p>
+    <p>
+      <%= feather_icon 'smile' %> con educación pero <strong>informal</strong>,
+      como parece que a la gente le gusta
+    </p>
+  <% end %>
+</div>
+<hr>
+<div class="frontblock frontblock--reverse">
+  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+    <header>
+      <small>Conoce más</small>
+      <h2>Deja que te hable de este proyecto</h2>
+    </header>
+    <p>
+      Hola, soy Dani. Estoy detrás de makigas.es y del canal de YouTube.
+    </p>
+    <p>
+      Monté mi primer vídeo hace 10 años en una mañana, frustrado por haber
+      perdido demasiado tiempo leyendo páginas en otro idioma e hilos de foros
+      mientras aprendía a programar.
+    </p>
+    <p>
+      Quizá este no sea el canal de YouTube con más tutoriales de programación,
+      pero por lo menos el poco trabajo que hay busca ser sencillo, honesto y
+      entretenido. Cientos de comentarios positivos agradeciendo cada lección
+      parece que validan este proyecto.
+    </p>
+  <% end %>
+</div>

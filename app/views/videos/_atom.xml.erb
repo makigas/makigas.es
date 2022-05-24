@@ -1,12 +1,11 @@
 <entry>
-    <id><%= video_url(video) %></id>
-    <updated><%= video.published_at.iso8601 %></updated>
-    <link rel="alternate" href="<%= video_url(video) %>" type="text/html" />
-
-    <title type="html"><![CDATA[<%= video.title %>]]></title>
-    <summary type="html"><![CDATA[<%= video.description %>]]></summary>
-    <category term="<%= video.playlist.title %>" />
-    <%- if video.playlist.topic.present? -%>
-    <category term="<%= video.playlist.topic.title %>" />
-    <%- end -%>
+  <id><%= video_url(video) %></id>
+  <updated><%= video.published_at.iso8601 %></updated>
+  <link rel="alternate" href="<%= video_url(video) %>" type="text/html" />
+  <title type="html"><![CDATA[<%= video.title %>]]></title>
+  <summary type="html"><![CDATA[<%= video.description %>]]></summary>
+  <category term="<%= video.playlist.title %>" />
+  <%- if video.playlist.topic.present? -%>
+  <category term="<%= video.playlist.topic.title %>" />
+  <%- end -%>
 </entry>
