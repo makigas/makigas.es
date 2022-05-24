@@ -39,10 +39,6 @@ Tweak the file as you need.  For instance, you might need to modify the
 credentials to access the database if you are in GNU/Linux, because
 probably your PostgreSQL won't allow unauthenticated connections.
 
-**Keep the USE_SIX environment variable**. I think it is going to take
-some time to cleanup the code so that I can remove that environment
-variable anyway...
-
 ## Running the application
 
 Standard `rails server`, like any other Rails application out there.  Because
