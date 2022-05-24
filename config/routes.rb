@@ -42,13 +42,13 @@ Rails.application.routes.draw do
     get :feed, on: :member
     resources :videos, path: '/', only: :show
   end
-  get :terms, to: 'pages#terms'
-  get :privacy, to: 'pages#privacy'
-  get :disclaimer, to: 'pages#disclaimer'
+  get :terms, path: 'terminos', to: 'pages#terms'
+  get :privacy, path: 'privacidad', to: 'pages#privacy'
+  get :disclaimer, path: 'responsabilidades', to: 'pages#disclaimer'
   get :cookies, to: 'pages#cookies'
   get :discord, to: 'pages#discord'
 
-  get :dnt, path: 'about/dnt', to: 'pages#dnt'
+  get :dnt, to: 'pages#dnt'
 
   get '/v/:id', to: 'videos#find_by_id'
 
@@ -61,6 +61,12 @@ Rails.application.routes.draw do
   get '/topics/:topic' => redirect('/temas/%{topic}')
   get '/topics/:topic/feed' => redirect('/temas/%{topic}/feed')
   get '/topics' => redirect('/temas')
+
+  # Legacy routes for the text pages.
+  get '/terms' => redirect('/terminos')
+  get '/privacy' => redirect('/privacidad')
+  get '/disclaimer' => redirect('/responsabilidades')
+  get '/about/dnt' => redirect('/dnt')
 
   mount Lookbook::Engine, at: '/lookbook'
 
