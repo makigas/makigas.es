@@ -2,6 +2,16 @@
 
 $navbar-size: 40px;
 
+@keyframes scale-up {
+  from {
+    max-height: 0;
+  }
+
+  to {
+    max-height: 100vh;
+  }
+}
+
 :root {
   --navbar-background: var(--makigas-brand-darker);
   --navbar-foreground: white;
@@ -19,9 +29,11 @@ $navbar-size: 40px;
 
   &--front {
     background: transparent;
-    position: absolute;
     width: 100%;
-    margin-bottom: $navbar-size;
+  }
+
+  &--front + main {
+    margin-top: calc($navbar-size * -1.5);
   }
 
   &__grid {
@@ -117,9 +129,15 @@ $navbar-size: 40px;
 
   /* When the navbar is in search mode. */
   &--menu {
+    --navbar-foreground: black;
+
+    background: var(--navbar-menu-background);
+
     .navbar__explore,
     .navbar__explorer {
       display: block;
+      animation: scale-up 0.5s ease-out;
+      overflow: hidden;
     }
   }
 
@@ -194,10 +212,24 @@ $navbar-size: 40px;
     }
 
     &--menu {
+      --navbar-foreground: white;
+
+      background: var(--navbar-background);
+
+      &.navbar--front {
+        background: transparent;
+      }
+
       .navbar__explore {
         background: var(--navbar-menu-background);
         color: var(--navbar-menu-foreground);
         border-radius: 15px 15px 0 0;
+      }
+
+      .navbar__explore,
+      .navbar__explorer {
+        animation: none;
+        overflow: visible;
       }
 
       .navbar__explorer {
