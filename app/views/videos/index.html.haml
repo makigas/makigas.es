@@ -19,5 +19,8 @@
     .videoexplorer__list
       - if params[:q].present?
         %h3 Resultados de búsqueda para: #{params[:q]}
-      = render Six::Search::ResultComponent.with_collection(@videos)
-      .paginator= paginate @videos
+      - if @videos.present?
+        = render Six::Search::ResultComponent.with_collection(@videos)
+        .paginator= paginate @videos
+      - else
+        = render Six::Search::EmptyComponent.new

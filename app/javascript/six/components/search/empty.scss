@@ -1,0 +1,22 @@
+.searchempty {
+  text-align: center;
+
+  @include wide-layout {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__emoji {
+    font-size: 10rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__title h1 {
+    font-weight: 400;
+  }
+
+  &__lead {
+    font-size: 1.4rem;
+  }
+}
