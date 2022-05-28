@@ -1,0 +1,11 @@
+.searchresult
+  %p.searchresult__title= link_to video.title, playlist_video_path(video, playlist_id: playlist)
+  %p.searchresult__description= video.description
+  - if playlist.present? || topic.present?
+    = render Six::Utils::MetaGroupComponent.new do |group|
+      = render Six::Search::ResultDurationComponent.new(seconds: video.duration)
+      = render Six::Search::ResultPlaylistComponent.new(playlist: playlist)
+      = render Six::Search::ResultTopicComponent.new(topic: topic)
+  - if video.tags.present?
+    = render Six::Utils::MetaGroupComponent.new do |group|
+      = render Six::Search::ResultTagsComponent.new(tags: video.tags)

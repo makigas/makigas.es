@@ -1,0 +1,23 @@
+- content_for :title, "#{t('.meta.title')} - makigas"
+- content_for :description, t('.meta.description')
+- content_for :hero, capture { content_tag(:h1) { t('.title') } }
+
+.videoexplorer
+  = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do
+    = render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...')
+    .videoexplorer__sidebar
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por duración' }
+        - box.with_pill(url: derive_search_url(length: nil), icon_right: params[:length] && 'x') { 'Cualquier duración' }
+        - video_search_duration_filters.each do |label, filter|
+          - box.with_pill(url: derive_search_url(length: filter), active: params[:length] == filter).with_content(label)
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por categoría' }
+        - box.with_pill(url: derive_search_url(topic: nil), icon_right: params[:topic] && 'x') { 'Cualquier tema' }
+        - Topic.all.find_each do |topic|
+          - box.with_pill(url: derive_search_url(topic: [topic.slug]), active: params[:topic].present? && params[:topic].include?(topic.slug)).with_content(topic.title)
+    .videoexplorer__list
+      - if params[:q].present?
+        %h3 Resultados de búsqueda para: #{params[:q]}
+      = render Six::Search::ResultComponent.with_collection(@videos)
+      .paginator= paginate @videos

@@ -11,12 +11,16 @@ module Six
     # of the meta. Other parameters should be given as parameters when
     # the component is created.
     class MetaComponent < ViewComponent::Base
+      attr_reader :preffix
+
       # @param icon [String] the icon to present in the component.
       # @param text [String] the text to provide to the component.
-      def initialize(icon:, text: nil)
+      # @param preffix [String] if given, a text to put before the text
+      def initialize(icon:, text: nil, preffix: nil)
         super
         @icon = icon
         @text = text
+        @preffix = preffix
       end
 
       def inner_content

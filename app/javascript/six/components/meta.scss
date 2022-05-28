@@ -1,3 +1,9 @@
+.metas {
+  & + & {
+    margin-top: 0.5rem;
+  }
+}
+
 .meta {
   /* For mobile, items are one on top of the other. */
   display: block;

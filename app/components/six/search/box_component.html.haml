@@ -1,0 +1,9 @@
+%section.searchbox
+  - if title?
+    %header.searchbox__title
+      = title
+  - if pills?
+    - pills.each do |pill|
+      = pill
+  - else
+    = content

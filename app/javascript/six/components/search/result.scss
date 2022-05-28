@@ -1,9 +1,9 @@
-.videolist {
+.searchresult {
   margin-bottom: 0;
   padding: 15px;
 
   & + & {
-    border-top: 1px solid #0003;
+    border-top: 1px solid #0002;
   }
 
   &__title {
@@ -15,9 +15,5 @@
   .metas {
     font-size: 0.9rem;
     line-height: 1.6rem;
-  }
-
-  .meta {
-    display: inline;
   }
 }

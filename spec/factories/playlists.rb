@@ -7,6 +7,7 @@ FactoryBot.define do
     youtube_id { 'PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI' }
     thumbnail { Rack::Test::UploadedFile.new('spec/fixtures/playlist.png', 'image/png') }
     card { Rack::Test::UploadedFile.new('spec/fixtures/card.jpg', 'image/jpeg') }
+    slug { title&.parameterize }
     association :topic, factory: :topic
   end
 end

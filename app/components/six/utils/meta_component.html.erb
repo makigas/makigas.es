@@ -1,4 +1,4 @@
 <span class="meta">
   <%= feather_icon @icon, class: 'meta__icon' %>
-  <span class="meta__text"><%= inner_content %></span>
+  <span class="meta__text"><%= preffix ? "#{preffix} " : "" %><%= inner_content %></span>
 </span>

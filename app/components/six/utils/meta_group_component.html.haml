@@ -1,0 +1,6 @@
+= content_tag(tag, class: class_list) do
+  - if metas?
+    - metas.each do |meta|
+      = meta
+  - else
+    = content

@@ -1,0 +1,12 @@
+.searchbox {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  &__title {
+    padding-left: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+}
