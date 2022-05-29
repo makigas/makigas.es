@@ -73,7 +73,8 @@ Rails.application.routes.draw do
   get '/disclaimer' => redirect('/responsabilidades')
   get '/about/dnt' => redirect('/dnt')
 
-  mount Lookbook::Engine, at: '/lookbook'
-
-  match '/delayed_job' => DelayedJobWeb, :anchor => false, :via => %i[get post]
+  if Rails.env.development?
+    mount Lookbook::Engine, at: '/lookbook'
+    match('/delayed_job' => DelayedJobWeb, :anchor => false, :via => %i[get post])
+  end
 end
