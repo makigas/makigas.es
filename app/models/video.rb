@@ -11,6 +11,7 @@ class Video < ApplicationRecord
     attribute(:show_note) { show_note&.content }
 
     attribute :slug
+    attribute :tags
 
     attribute(:playlist_title) { playlist.title }
     attribute(:playlist_description) { playlist.description }
@@ -21,7 +22,7 @@ class Video < ApplicationRecord
     attribute(:topic_slug) { playlist.topic&.slug }
 
     attribute :duration
-    filterable_attributes %i[topic_slug duration]
+    filterable_attributes %i[topic_slug duration tags]
   end
 
   # Videos are sorted in a playlist.
@@ -38,7 +39,10 @@ class Video < ApplicationRecord
   # Filterable scopes
   scope :filter_by_length, ->(duration) { where(LENGTH_QUERIES[duration]) }
   scope :filter_by_topic, ->(slug) { includes(playlist: :topic).where('topic.slug' => slug) }
-  scope :filter_by_tag, ->(tag) { where('tags @> ARRAY[?]::varchar[]', tag) }
+  scope :filter_by_tag, ->(tag) { tag ? where('tags @> ARRAY[?]::varchar[]', tag) : self }
+
+  # Tags
+  scope :untagged, -> { where("tags = '{}'") }
 
   # Validations.
   validates :title, presence: true, length: { maximum: 100 }

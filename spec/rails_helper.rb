@@ -68,4 +68,5 @@ RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
 
   Capybara.javascript_driver = :selenium_headless
+  Capybara.enable_aria_label = true
 end

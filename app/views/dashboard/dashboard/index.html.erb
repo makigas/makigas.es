@@ -35,7 +35,7 @@
     </div>
   </div>
   <div class="col-sm-9 col-md-9 col-lg-10">
-    <div class="card">
+    <div class="card mb-5">
       <div class="card-header">
         Acciones rápidas
       </div>
@@ -43,6 +43,19 @@
         <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path, class: 'list-group-item list-group-item-action' %>
         <% Video.last.playlist.tap do |playlist| %>
           <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        Acciones que requieren atención
+      </div>
+      <div class="list-group list-group-flush">
+        <% Video.untagged.count.tap do |untagged_videos| %>
+          <% if untagged_videos > 0 %>
+            <%= link_to "#{untagged_videos} vídeos pendientes de etiquetar", dashboard_pending_tags_path, class: 'list-group-item list-group-item-action' %>
+          <% end %>
         <% end %>
       </div>
     </div>

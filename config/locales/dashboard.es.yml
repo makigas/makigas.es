@@ -91,6 +91,16 @@ es:
         view_opinion: Ver Opinión
       update:
         updated: Opinión actualizada correctamente.
+    pending:
+      tags:
+        show:
+          dashboard: Panel de control
+          pending: Acciones pendientes
+          untagged: Vídeos sin etiquetar
+          title: Título
+          tags: Etiquetas
+          apply: Aplicar
+          tags_for: Etiquetas para %{video}
     playlists:
       create:
         created: Lista creada correctamente.

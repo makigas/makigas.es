@@ -23,11 +23,19 @@ class VideoSearch
   }.freeze
 
   def search_filters
-    length_filters + topic_filters
+    length_filters + topic_filters + tag_filter
   end
 
   def length_filters
     LENGTH_QUERIES[filters[:length].to_s] || []
+  end
+
+  def tag_filter
+    if filters[:tag].present?
+      ["tags = #{filters[:tag]}"]
+    else
+      []
+    end
   end
 
   def topic_filters

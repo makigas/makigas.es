@@ -16,6 +16,11 @@
         - box.with_pill(url: derive_search_url(topic: nil), icon_right: params[:topic] && 'x') { 'Cualquier tema' }
         - Topic.all.find_each do |topic|
           - box.with_pill(url: derive_search_url(topic: [topic.slug]), active: params[:topic].present? && params[:topic].include?(topic.slug)).with_content(topic.title)
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por etiqueta (BETA)' }
+        - box.with_pill(url: derive_search_url(tag: nil), icon_right: params[:tag] && 'x') { 'Cualquier vídeo' }
+        - Video.tags.each do |tag|
+          - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
     .videoexplorer__list
       - if params[:q].present?
         %h3 Resultados de búsqueda para: #{params[:q]}

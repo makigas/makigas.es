@@ -1,0 +1,39 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= t('.pending') %>
+    <li class="breadcrumb-item current"><%= t('.untagged') %></li>
+  </ol>
+  <h1><%= t('.untagged') %></h1>
+<% end %>
+
+<%= form_with scope: :batch, url: dashboard_pending_tags_path, method: :put, id: 'pending_tags' do |form| %>
+
+<div class="actions sticky-toolbar">
+  <p>
+    <%= form.submit t('.apply'), class: 'btn btn-primary' %>
+  </p>
+</div>
+
+<% @playlists.each do |playlist| %>
+  <h3><%= playlist.title %></h3>
+  <table class="table">
+  <thead>
+  <tr>
+  <th scope="col"><%= t('.title') %></th>
+  <th scope="col"><%= t('.tags') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Video.untagged.where(playlist_id: playlist.id).select(:id, :title, :tags).find_each do |video| %>
+    <%= form.fields_for "video[]", video do |video_fields| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><%= video_fields.text_field :tags, class: 'form-control', aria: { label: t(".tags_for", video: video.title)} %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+  </table>
+<% end %>
+<% end %>

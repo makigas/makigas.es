@@ -6,6 +6,7 @@ import Rails from "@rails/ujs";
 Rails.start();
 
 import "../dashboard/dashboard.scss";
+import "../dashboard/utils.scss";
 import "../dashboard/playlists.scss";
 import "../dashboard/videos.scss";
 import "../dashboard/auth.scss";

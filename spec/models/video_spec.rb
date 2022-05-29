@@ -181,6 +181,12 @@ RSpec.describe Video, type: :model do
   end
 
   describe '.filter_by_tag' do
+    it 'filters by nothing' do
+      v1 = create(:video, youtube_id: '11223344', tags: [])
+      v2 = create(:video, youtube_id: '11223355', tags: ['python'])
+      expect(described_class.filter_by_tag(nil)).to match [v1, v2]
+    end
+
     it 'filters by tag' do
       create(:video, youtube_id: '11223344', tags: [])
       v2 = create(:video, youtube_id: '11223355', tags: ['python'])

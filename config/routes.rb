@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       end
       resources :users
       resources :opinions
+
+      # Pending actions
+      namespace :pending do
+        resource :tags, only: %w[show update]
+      end
     end
   end
 
