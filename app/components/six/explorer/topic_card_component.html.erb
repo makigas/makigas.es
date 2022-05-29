@@ -1,7 +1,7 @@
 <article class="topcard">
   <%= link_to topic_path(@topic), class: 'topcard__link' do %>
-    <figure class="topcard__thumb">
-      <%= image_tag @topic.thumbnail.url(:small), class: 'topcard__icon' %>
+    <figure class="topcard__thumb" aria-hidden="true">
+      <%= image_tag @topic.thumbnail.url(:small), class: 'topcard__icon', alt: '' %>
     </figure>
     <div class="topcard__body">
       <h2 class="topcard__title"><%= @topic.title %></h2>

@@ -8,7 +8,8 @@ $large-icon-size: 30px;
     --searchbar-box-shadow: 2px;
     --searchbar-box-radius: 4px;
     --searchbar-box-background: #fff;
-    --searchbar-box-outline: 1px;
+    --searchbar-box-outline-color: #c0c0c0;
+    --searchbar-box-outline: 4px;
     --searchbar-text-padding: 10px;
   }
 
@@ -20,6 +21,7 @@ $large-icon-size: 30px;
     --searchbar-box-outline: 2px;
     --searchbar-text-padding: 25px;
     --searchbar-box-background: #fff;
+    --searchbar-box-outline-color: #c0c0c0;
   }
 
   display: inline-flex;
@@ -28,17 +30,38 @@ $large-icon-size: 30px;
   border-radius: var(--searchbar-box-radius);
   box-shadow: 0 var(--searchbar-box-shadow) var(--searchbar-box-shadow) rgb(0 0 0 / 25%);
 
-  &:focus-within {
-    outline: var(--searchbar-box-outline) solid var(--makigas-brand);
+  &__label {
+    /* Taken from https://www.w3.org/WAI/tutorials/forms/labels/. Note that this
+     * is mostly a workaround for Firefox accessibility test, given that the
+     * input already has an aria-label, but Firefox will not pick it. */
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    /* Firefox will complain about colors for offscreen items unless colors are explicitly set. */
+    color: white;
+    background: black;
   }
 
   &__search {
     flex: 1;
     background: none;
     border: none;
+    border-top-left-radius: var(--searchbar-box-radius);
+    border-bottom-left-radius: var(--searchbar-box-radius);
     padding: var(--searchbar-text-padding);
     font-size: var(--searchbar-text-size);
-    outline: none;
+    outline: 0;
+
+    &:focus {
+      transition: box-shadow 0.15s ease-out;
+      box-shadow: 0 0 0 0.25rem var(--searchbar-box-outline-color);
+    }
   }
 
   &__submit {

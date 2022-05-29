@@ -9,8 +9,8 @@
             <%= g.meta(icon: 'dollar-sign') { 'Gratis' } %>
         <% end %>
         </section>
-        <figure class="plhead__thumbnail">
-            <%= image_tag @playlist.thumbnail.url(:small), class: 'plhead__img' %>
+        <figure class="plhead__thumbnail" aria-hidden="true">
+            <%= image_tag @playlist.thumbnail.url(:small), class: 'plhead__img', alt: '' %>
         </figure>
     <% end %>
 </header>

@@ -3,9 +3,9 @@
   --topic-color-washed-out: <%= @topic.color.paint.opacity(0.1) %>;
   --topic-color-washed-out-active: <%= @topic.color.paint.opacity(0.2) %>;
 ">
-  <%= link_to topic_path(@topic), class: 'topicthumb__link' do %>
+  <%= link_to topic_path(@topic), class: 'topicthumb__link', title: topic.title do %>
     <figure class="topicthumb__fig">
-      <%= image_tag standard_icon, srcset: "#{standard_icon}, #{hidef_icon} 2x", class: 'topicthumb__icon' %>
+      <%= image_tag standard_icon, srcset: "#{standard_icon}, #{hidef_icon} 2x", class: 'topicthumb__icon', alt: '' %>
       <figcaption class="topicthumb__text">
         <p class="topicthumb__name"><%= name %></p>
           <%= render Six::Utils::MetaGroupComponent.new(classes: 'topicthumb__data') do |g| %>

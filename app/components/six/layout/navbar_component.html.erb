@@ -1,12 +1,12 @@
 <%= content_tag(:div, class: class_list) do %>
   <%= render Six::Base::WrapperComponent.new(classes: 'navbar__grid') do %>
     <div class="navbar__mtoggle">
-      <button class="navbar__button" type="button" id="sToggleMenu">
+      <button class="navbar__button" type="button" id="sToggleMenu" aria-label="Desplegar menú">
         <%= feather_icon 'menu' %>
       </button>
     </div>
     <div class="navbar__logo">
-      <%= link_to root_path do %>
+      <%= link_to root_path, aria: { label: 'makigas' }, title: 'Página de inicio' do %>
         <%= render Six::Utils::MakigasComponent.new %>
       <% end %>
     </div>
@@ -21,7 +21,7 @@
     </div>
     <% if show_search %>
     <div class="navbar__search">
-      <button class="navbar__search__hide navbar__button" type="button" id="sHideSearch">
+      <button class="navbar__search__hide navbar__button" type="button" id="sHideSearch" aria-label="Ocultar búsqueda">
         <%= feather_icon 'chevron-left' %>
       </button>
       <div class="navbar__search__area">
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="navbar__stoggle">
-      <button class="navbar__button" type="button" id="sToggleSearch">
+      <button class="navbar__button" type="button" id="sToggleSearch" aria-label="Buscar">
         <%= feather_icon 'search' %>
       </button>
     </div>
