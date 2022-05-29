@@ -6,7 +6,10 @@ RSpec.describe VideoSearch, type: :class do
   describe '#videos' do
     let(:videos) { class_double(Video).as_stubbed_const }
 
-    before { allow(videos).to receive(:search).and_return([:outcome]) }
+    before do
+      allow(videos).to receive(:includes).and_return(videos)
+      allow(videos).to receive(:search).and_return([:outcome])
+    end
 
     it 'returns the outcome of the search' do
       service = described_class.new('java search')

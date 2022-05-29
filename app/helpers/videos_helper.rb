@@ -10,7 +10,7 @@ module VideosHelper
   end
 
   def derive_search_url(filters = {})
-    valid_filters = filters.slice(:tag, :topic, :length)
+    valid_filters = filters.slice(:tag, :topic, :length, :q)
     url_for(request.query_parameters.merge(valid_filters))
   end
 

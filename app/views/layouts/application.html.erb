@@ -8,7 +8,7 @@
     <% if content_for?(:navbar) %>
       <%= content_for(:navbar) %>
     <% else %>
-      <%= render Six::Layout::NavbarComponent.new %>
+      <%= render Six::Layout::NavbarComponent.new(search_for: params[:q]) %>
     <% end %>
     <% if content_for?(:jumbo) %>
       <%= content_for(:jumbo) %>

@@ -23,7 +23,9 @@
           - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
     .videoexplorer__list
       - if params[:q].present?
-        %h3 Resultados de búsqueda para: #{params[:q]}
+        %h3
+          Mostrando resultados que cuadren con: #{params[:q]}
+          = link_to '(quitar texto de búsqueda)', derive_search_url(q: nil), class: 'videoexplorer__removetext'
       - if @videos.present?
         = render Six::Search::ResultComponent.with_collection(@videos)
         .paginator= paginate @videos
