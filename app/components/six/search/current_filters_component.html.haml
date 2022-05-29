@@ -1,0 +1,6 @@
+.searchfilters
+  Filtros actuales —
+  - active_filters.each do |filter|
+    %span.searchfilters__filter
+      %span.searchfilters__label #{MESSAGES[filter]}: #{send("filter_#{filter}".to_sym)}
+      = link_to feather_icon('x', class: 'searchfilters__icon'), helpers.derive_search_url(filter => nil), clasS: 'searchfilters__link'
