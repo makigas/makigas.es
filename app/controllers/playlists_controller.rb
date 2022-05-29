@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 class PlaylistsController < ApplicationController
-  before_action :playlist_set, only: %i[show feed]
+  before_action :playlist_set, only: %i[show]
 
   def index
     @playlists = Playlist.sort_by_latest_video.page(params[:page]).per(12)
   end
 
-  def show; end
-
-  def feed
-    @videos = @playlist.videos.includes(:playlist, playlist: [:topic]).visible.reverse
-    @updated_at = Video.order(updated_at: :desc).limit(1).pick(:updated_at)
-    render format: :xml, template: 'playlists/feed.xml.erb', layout: false
+  def show
+    respond_to do |format|
+      format.any(:html, :json)
+      format.atom do
+        @videos = Video.visible.where(playlist_id: @playlist.id).order(published_at: :desc)
+      end
+    end
   end
 
   private

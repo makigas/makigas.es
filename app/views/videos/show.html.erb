@@ -17,8 +17,8 @@
   <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
 <% content_for :meta do %>
-  <%= tag(:link, rel: :alternate, href: feed_playlist_url(@playlist), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
-  <%= tag(:link, rel: :alternate, href: feed_topic_url(@playlist.topic), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
+  <%= tag(:link, rel: :alternate, href: playlist_url(@playlist, format: :atom), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
+  <%= tag(:link, rel: :alternate, href: topic_url(@playlist.topic, format: :atom), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
   <% if @video.scheduled? %>
     <meta name="robots" content="noindex">
   <% end %>

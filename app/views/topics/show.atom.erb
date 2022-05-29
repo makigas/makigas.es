@@ -2,15 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es-ES">
   <title type="text">makigas (<%= @topic.title %>)</title>
   <subtitle type="text">Vídeos recientes publicados en el tema <%= @topic.title %></subtitle>
-  <updated><%= @updated_at.iso8601 %></updated>
-  <id><%= feed_topic_url(@topic) %></id>
+  <updated><%= @videos.pluck(:updated_at).max.iso8601 %></updated>
+  <id><%= topic_url(@topic, format: :atom) %></id>
   <icon><%= @topic.thumbnail.url %></icon>
   <logo><%= @topic.thumbnail.url %></logo>
-  <link rel="self" href="<%= feed_topic_url(@topic) %>" type="application/atom+xml" />
+  <link rel="self" href="<%= topic_url(@topic, format: :atom) %>" type="application/atom+xml" />
   <link rel="alternate" href="<%= topic_url(@topic) %>" type="text/html" />
   <author><name>makigas.es</name></author>
   <generator uri="https://github.com/makigas/makigas">makigas.es</generator>
-  <%- @videos.each do |video| -%>
-    <%= render 'videos/atom', video: video %>
-  <%- end -%>
+  <%= render partial: 'videos/video', collection: @videos %>
 </feed>

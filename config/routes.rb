@@ -35,16 +35,18 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
+  # Legacy RSS feeds, must come first or there will be conflicts.
+  get '/videos/feed' => redirect('/videos.atom')
+  get '/temas/:topic/feed' => redirect('/temas/%{topic}.atom')
+  get '/series/:playlist/feed' => redirect('/series/%{playlist}.atom')
+
   resources :topics, path: 'temas', only: %i[index show] do
     get :feed, on: :member, format: :xml
   end
 
-  resources :videos, only: :index do
-    get :feed, on: :collection, format: :xml
-  end
+  resources :videos, only: :index
 
   resources :playlists, path: 'series', only: %i[index show] do
-    get :feed, on: :member
     resources :videos, path: '/', only: :show
   end
   get :terms, path: 'terminos', to: 'pages#terms'
@@ -64,7 +66,7 @@ Rails.application.routes.draw do
 
   # Legacy routes for the old topic explorer
   get '/topics/:topic' => redirect('/temas/%{topic}')
-  get '/topics/:topic/feed' => redirect('/temas/%{topic}/feed')
+  get '/topics/:topic/feed' => redirect('/temas/%{topic}.atom')
   get '/topics' => redirect('/temas')
 
   # Legacy routes for the text pages.

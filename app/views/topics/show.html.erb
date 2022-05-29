@@ -16,7 +16,7 @@
   <meta property="og:image" content="<%= image_url(@topic.thumbnail.url, only_path: false) %>">
 <% end %>
 <% content_for :meta do %>
-  <%= tag(:link, rel: :alternate, href: feed_topic_url(@topic), title: t('.meta.topic_feed', topic: @topic.title), type: 'application/atom+xml') %>
+  <%= tag(:link, rel: :alternate, href: topic_url(@topic, format: :atom), title: t('.meta.topic_feed', topic: @topic.title), type: 'application/atom+xml') %>
 <% end %>
 <% content_for :header do %>
   <style>

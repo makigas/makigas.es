@@ -10,7 +10,7 @@
 <%= tag(:meta, name: 'description', content: content_for(:description)) if content_for?(:description) %>
 <%= tag(:meta, name: 'tags', content: content_for(:tags)) if content_for?(:tags) %>
 <%= tag(:link, rel: 'canonical', href: canonical_url) %>
-<%= tag(:link, rel: 'alternate', href: feed_videos_url, title: t('.videos_feed'), type: 'application/atom+xml') %>
+<%= tag(:link, rel: 'alternate', href: videos_url(format: :atom), title: t('.videos_feed'), type: 'application/atom+xml') %>
 <%= content_for(:meta) if content_for?(:meta) -%>
 <%= content_for(:twitter) -%>
 <%= content_for(:facebook) -%>

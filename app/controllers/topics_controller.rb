@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
-  before_action :topic_set, only: %i[show feed]
+  before_action :topic_set, only: %i[show]
 
   def index
     @topics = Topic.all
   end
 
-  def show; end
-
-  def feed
-    @videos = Video.visible.joins(:playlist)
-                   .includes(:playlist, playlist: [:topic])
-                   .where(playlists: { topic: @topic })
-                   .order(published_at: :desc)
-                   .limit(15)
-    @updated_at = Video.order(updated_at: :desc).limit(1).pick(:updated_at)
-    render format: :xml, template: 'topics/feed.xml.erb', layout: false
+  def show
+    respond_to do |format|
+      format.any(:html, :json)
+      format.atom do
+        @videos = Video.visible.includes(playlist: :topic)
+                       .where(playlists: { topic_id: @topic.id }).order(published_at: :desc).limit(15)
+      end
+    end
   end
 
   private

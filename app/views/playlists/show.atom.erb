@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es-ES">
+  <title type="text"><%= @playlist.title %></title>
+  <subtitle type="text">Una lista de reproducción de makigas</subtitle>
+  <updated><%= @videos.pluck(:updated_at).max.iso8601 %></updated>
+  <id><%= playlist_url(@playlist, format: :atom) %></id>
+  <icon><%= @playlist.thumbnail.url %></icon>
+  <logo><%= @playlist.thumbnail.url %></logo>
+  <link rel="self" href="<%= playlist_url(@playlist, format: :atom) %>" type="application/atom+xml" />
+  <link rel="alternate" href="<%= playlist_url(@playlist) %>" type="text/html" />
+  <author><name>makigas.es</name></author>
+  <generator uri="https://github.com/makigas/makigas">makigas.es</generator>
+  <%= render partial: 'videos/video', collection: @videos %>
+</feed>

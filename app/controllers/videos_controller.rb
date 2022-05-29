@@ -16,12 +16,6 @@ class VideosController < ApplicationController
     @in_playlist = @video.higher_items(5) + [@video] + @video.lower_items(5)
   end
 
-  def feed
-    @videos = Video.visible.includes(:playlist, playlist: [:topic]).order(published_at: :desc).limit(15)
-    @updated_at = Video.order(updated_at: :desc).limit(1).pick(:updated_at)
-    render format: :xml, template: 'videos/feed.xml.erb', layout: false
-  end
-
   def find_by_id
     @video = Video.find_by!(youtube_id: params[:id])
     redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
