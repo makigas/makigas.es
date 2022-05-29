@@ -19,7 +19,7 @@
       = render Six::Search::BoxComponent.new do |box|
         - box.with_title { 'Filtrar por etiqueta (BETA)' }
         - box.with_pill(url: derive_search_url(tag: nil), icon_right: params[:tag] && 'x') { 'Cualquier vídeo' }
-        - Video.tags.each do |tag|
+        - Video.tags.sort.each do |tag|
           - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
     .videoexplorer__list
       - if params[:q].present?

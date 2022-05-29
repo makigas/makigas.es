@@ -2,6 +2,7 @@
 
 json.title video.title
 json.description video.description
+json.tags video.tags
 json.slug video.slug
 json.published_at video.published_at
 

@@ -35,13 +35,13 @@
     visibility: hidden;
 
     &--toggle {
-      max-height: 100vh;
+      max-height: 1000vh;
       visibility: visible;
     }
 
     @include desktop-layout {
       border-bottom: none;
-      max-height: 100vh;
+      max-height: 1000vh;
       visibility: visible;
     }
   }

@@ -43,6 +43,7 @@ class DownloadProduction
       youtube_id: video['_links']['makigas:youtube']['href'].gsub('https://youtube.com/watch?v=', ''),
       duration: video['seconds'],
       position: video['position'],
+      tags: video['tags'],
       published_at: video['published_at'] }
   end
 
