@@ -51,6 +51,16 @@
       font-family: var(--font-title);
       margin-bottom: 0;
     }
+
+    h4 {
+      font-size: 1.2rem;
+      font-family: var(--font-title);
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
   }
 
   &__text {
