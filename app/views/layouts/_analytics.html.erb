@@ -1,5 +1,5 @@
-<% if Rails.application.secrets.plausible_analytics %>
- <script defer data-domain="<%= Rails.application.secrets.plausible_analytics %>"
+<% if Rails.application.secrets.plausible_domain %>
+ <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>"
  src="https://plausible.io/js/plausible.js"></script>
 <% else %>
   <!-- Plausible is not loaded -->
