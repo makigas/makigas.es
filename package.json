@@ -14,7 +14,6 @@
     "bootstrap-icons": "^1.8.3",
     "esbuild": "^0.14.42",
     "esbuild-sass-plugin": "^2.2.6",
-    "klaro": "^0.7.18",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {

@@ -1,12 +1,6 @@
-<% if Rails.application.secrets.ga4_key %>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script type="text/plain" data-type="text/javascript" data-name="googleAnalytics" data-src="https://www.googletagmanager.com/gtag/js?id=<%= Rails.application.secrets.ga4_key %>"></script>
-  <script type="text/plain" data-type="text/javascript" data-name="googleAnalytics">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '<%= Rails.application.secrets.ga4_key %>');
-  </script>
+<% if Rails.application.secrets.plausible_analytics %>
+ <script defer data-domain="<%= Rails.application.secrets.plausible_analytics %>"
+ src="https://plausible.io/js/plausible.js"></script>
 <% else %>
-  <!-- Aquí iría el código analítico de Google Analytics -->
+  <!-- Plausible is not loaded -->
 <% end %>

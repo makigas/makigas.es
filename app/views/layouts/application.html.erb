@@ -2,6 +2,7 @@
 <html>
   <head>
     <%= render 'layouts/head' %>
+    <%= render 'layouts/analytics' %>
   </head>
   <body>
     <%= render Six::Layout::SupportUkraineComponent.new if ENV['USE_SUPPORT_UA'].present? %>
@@ -21,6 +22,5 @@
       <%= yield %>
     </main>
     <%= render Six::Layout::FooterComponent.new %>
-    <%= render 'layouts/analytics' %>
   </body>
 </html>

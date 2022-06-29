@@ -1150,11 +1150,6 @@ kind-of@^6.0.2, kind-of@^6.0.3:
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-klaro@^0.7.18:
-  version "0.7.18"
-  resolved "https://registry.yarnpkg.com/klaro/-/klaro-0.7.18.tgz#fef3a05fcd656451b941e11459f37d6c336e84c0"
-  integrity sha512-Q5nehkGeZuFerisW4oeeB1ax6dHDszWckR70EcxKvhFiJQ61CM0WBSo20yLbdvz8N9MFsOFu4RNCO9JsbkCxgQ==
-
 known-css-properties@^0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.25.0.tgz#6ebc4d4b412f602e5cfbeb4086bd544e34c0a776"
