@@ -21,6 +21,13 @@ class VideosController < ApplicationController
     redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
   end
 
+  def early
+    @videos = Video.early_access
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
 
   def filter_params

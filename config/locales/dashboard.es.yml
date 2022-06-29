@@ -142,6 +142,7 @@ es:
         title: Título
         topic: Tema
         videos: Vídeos
+        twitch_id: ID de Twitch
         youtube_id: ID de YouTube
       update:
         updated: Lista actualizada correctamente.
@@ -294,6 +295,7 @@ es:
         tags: Etiquetas
         thumbnail: Miniatura
         videos: Vídeos
+        twitch_id: ID de Twitch
         youtube_id: ID de YouTube
       update:
         updated: Vídeo actualizado correctamente.

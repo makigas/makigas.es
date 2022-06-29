@@ -222,4 +222,27 @@ RSpec.describe Video, type: :model do
       end.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(gid_descriptor, 'ms_remove_from_index!')
     end
   end
+
+  describe '.early_access' do
+    let(:playlist) { create(:playlist) }
+    let!(:free) { create(:video, playlist:, published_at: 2.hours.ago) }
+    let!(:early) do
+      create(:video, playlist:, published_at: 5.hours.after, early_access: true, twitch_id: '1234')
+    end
+    let!(:old_early) do
+      create(:video, playlist:, published_at: 5.hours.ago, early_access: true, twitch_id: '1234')
+    end
+
+    it 'does not include free videos' do
+      expect(described_class.early_access).not_to include free
+    end
+
+    it 'includes videos in early access' do
+      expect(described_class.early_access).to match_array [early]
+    end
+
+    it 'excludes videos that are already published' do
+      expect(described_class.early_access).not_to include(old_early)
+    end
+  end
 end

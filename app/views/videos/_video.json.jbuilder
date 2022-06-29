@@ -16,6 +16,8 @@ json.seconds video.duration
 json.duration video.natural_duration
 json.position video.position
 
+json.twitch_id(video.twitch_id) if video.twitch_id.present?
+
 json._links do
   json.self { json.href video_path(video) }
   json.shortlink { json.href "/v/#{video.youtube_id}" }
@@ -26,6 +28,11 @@ json._links do
   end
   json.set! 'makigas:youtube' do
     json.href "https://youtube.com/watch?v=#{video.youtube_id}"
+  end
+  if video.twitch_id.present?
+    json.set! 'makigas:twitch' do
+      json.href "https://twitch.tv/videos/#{video.twitch_id}"
+    end
   end
   if embeds.include?(:playlist)
     json.set! 'makigas:playlist' do

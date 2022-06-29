@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_23_221207) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_29_182726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -156,6 +156,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_221207) do
     t.datetime "published_at", precision: nil, null: false
     t.boolean "private", default: false, null: false
     t.string "tags", default: [], array: true
+    t.string "twitch_id"
+    t.boolean "early_access", default: false, null: false
+    t.index ["early_access"], name: "index_videos_on_early_access"
     t.index ["slug"], name: "index_videos_on_slug"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end

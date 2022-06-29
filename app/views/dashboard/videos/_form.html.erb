@@ -2,6 +2,8 @@
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
   <%= form.input :youtube_id %>
+  <%= form.input :twitch_id %>
+  <%= form.input :early_access %>
   <%= form.input :duration, as: :numeric do %>
     <%= form.hidden_field :duration %>
     <div class="row">

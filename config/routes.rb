@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   # Main application routes
   root to: 'front#index'
 
+  # Early access.
+  get '/early' => redirect('http://early.makigas.es', status: 302)
+  get '/early/videos', to: 'videos#early', format: :json
+
   # Legacy RSS feeds, must come first or there will be conflicts.
   get '/videos/feed' => redirect('/videos.atom')
   get '/temas/:topic/feed' => redirect('/temas/%{topic}.atom')

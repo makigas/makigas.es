@@ -24,6 +24,10 @@
     <td><%= link_to @video.youtube_id, "https://www.youtube.com/watch?v=#{@video.youtube_id}" %></td>
   </tr>
   <tr>
+    <td><%= t('.twitch_id') %></td>
+    <td><%= link_to(@video.twitch_id, "https://twitch.tv/videos/#{@video.twitch_id}") if @video.twitch_id.present? %></td>
+  </tr>
+  <tr>
     <td><%= t('.duration') %></td>
     <td><%= running_time @video.duration %> (<%= t('.seconds', count: @video.duration) %>)</td>
   </tr>

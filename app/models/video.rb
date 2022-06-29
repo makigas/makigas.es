@@ -36,6 +36,11 @@ class Video < ApplicationRecord
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
 
+  # Scope for getting videos that are available for early access.
+  scope :early_access, lambda {
+    where(early_access: true).where('published_at > ?', DateTime.now).where.not(twitch_id: nil)
+  }
+
   # Filterable scopes
   scope :filter_by_length, ->(duration) { where(LENGTH_QUERIES[duration]) }
   scope :filter_by_topic, ->(slug) { includes(playlist: :topic).where('topic.slug' => slug) }
