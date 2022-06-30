@@ -13,24 +13,30 @@ if (youtubePlayer) {
 /* For debug purpose, let's expose it in the global variable. */
 window.__player = player || "Unloaded";
 
-if (window.plausible) {
-  /* Event: submit the form is a custom event. */
-  const frontform = document.querySelector("form.searchbar");
-  if (frontform) {
-    frontform.addEventListener("submit", () => {
+/* Event: submit the form is a custom event. */
+const frontform = document.querySelector("form.searchbar");
+if (frontform) {
+  frontform.addEventListener("submit", () => {
+    if (window.plausible) {
       window.plausible("Search");
-    });
-  }
+    } else {
+      console.log("Search");
+    }
+  });
+}
 
-  /* Goal: play the video. */
-  if (player != null) {
-    let alreadySent = false;
-    player.on("stateChange", (e) => {
-      if (!alreadySent && e.data === 1) {
+/* Goal: play the video. */
+if (player != null) {
+  let alreadySent = false;
+  player.on("stateChange", (e) => {
+    if (!alreadySent && e.data === 1) {
+      if (window.plausible) {
         window.plausible("Play");
-        alreadySent = true;
-        player.off("stateChange");
+      } else {
+        console.log("Play");
       }
-    });
-  }
+      alreadySent = true;
+      player.off("stateChange");
+    }
+  });
 }
