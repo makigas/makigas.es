@@ -1,6 +1,9 @@
 <% if Rails.application.secrets.plausible_domain %>
- <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>"
- src="https://plausible.io/js/plausible.js"></script>
+  <% if ENV["PLAUSIBLE_PROXY"].present? %>
+    <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="/js/plausible.js"></script>
+  <% else %>
+    <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="https://plausible.io/js/plausible.js"></script>
+  <% end %>
 <% else %>
   <!-- Plausible is not loaded -->
 <% end %>

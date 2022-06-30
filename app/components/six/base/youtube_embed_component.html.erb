@@ -1,4 +1,8 @@
 <div class="ytiframe">
-  <iframe class="ytiframe__iframe" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
-  </iframe>
+  <div id="ytplayer" data-id="<%= youtube_id %>" class="ytiframe__iframe"></div>
+
+  <noscript>
+    <iframe class="ytiframe__iframe" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
+    </iframe>
+  </noscript>
 </div>

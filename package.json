@@ -14,7 +14,8 @@
     "bootstrap-icons": "^1.8.3",
     "esbuild": "^0.14.42",
     "esbuild-sass-plugin": "^2.2.6",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "youtube-player": "^5.5.2"
   },
   "devDependencies": {
     "@types/rails__ujs": "^6.0.1",

@@ -4,6 +4,7 @@ import "@fontsource/montserrat/700.css";
 
 import "../six/components/navbar";
 import "../six/components/videoexplorer";
+import "../six/events";
 
 import "../six/layout/colors.scss";
 import "../six/layout/responsive.scss";
