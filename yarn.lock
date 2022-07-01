@@ -38,10 +38,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/montserrat@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.npmjs.org/@fontsource/montserrat/-/montserrat-4.5.10.tgz"
-  integrity sha512-JXe9wURwLFtPfrD3yYnfvue/Uv2L1iSEor4w6M5CcGO4iWSoaFgk7BPLUwksGD7ChKpGKpaNNLUt67VlCu2A1g==
+"@fontsource/montserrat@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.11.tgz#9dff8e7bdcd0680789353e2632683e8ae82bd002"
+  integrity sha512-XAYZmprnZDVSLIeEiB3evVG2JD+yoR9aT+I6LCOcwZFQ6ro9UPpopDncqoqwv+j5M0/UjyAP6ov70+L/fmP8Gg==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
