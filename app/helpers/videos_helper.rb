@@ -1,6 +1,33 @@
 # frozen_string_literal: true
 
 module VideosHelper
+  # rubocop:disable Metrics/MethodLength
+  def video_episode_jsonld(video)
+    video.to_episode_schema.merge(partOfSeries: playlist_jsonld(video.playlist)).deep_merge(
+      '@context': 'https://schema.org/',
+      '@type': 'Episode',
+      publisher: {
+        '@type': 'Organization',
+        name: 'makigas',
+        url: 'https://www.makigas.es'
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Dani Rodríguez'
+      }
+    )
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  def video_object_jsonld(video)
+    video.to_video_schema.merge(encodesCreativeWork: video_episode_jsonld(video)).deep_merge(
+      '@context': 'https://schema.org/',
+      '@type': 'VideoObject',
+      sameAs: "https://www.youtube.com/watch?v=#{video.youtube_id}",
+      url: playlist_video_path(video, playlist_id: video.playlist_id)
+    )
+  end
+
   def video_path(video, options = {})
     playlist_video_path(video, options.merge(playlist_id: video.playlist))
   end

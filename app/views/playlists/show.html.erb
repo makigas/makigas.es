@@ -19,6 +19,7 @@
   <%= tag(:link, rel: :alternate, href: playlist_url(@playlist, format: :atom), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
   <%= tag(:link, rel: :alternate, href: topic_url(@playlist.topic, format: :atom), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
 <% end %>
+<% content_for :jsonld, JSON.pretty_generate(playlist_jsonld(@playlist)).html_safe %>
 <% if @playlist.topic %>
   <% content_for :header do %>
     <style>

@@ -23,6 +23,7 @@
     <meta name="robots" content="noindex">
   <% end %>
 <% end %>
+<% content_for :jsonld, JSON.pretty_generate(video_object_jsonld(@video)).html_safe %>
 <% content_for :body_classes, 'video-player-page' %>
 <% if @video.playlist.topic %>
   <% content_for :header do %>

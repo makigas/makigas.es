@@ -3,6 +3,11 @@
   <head>
     <%= render 'layouts/head' %>
     <%= render 'layouts/analytics' %>
+    <% if content_for?(:jsonld) %>
+      <script type="application/ld+json">
+        <%= content_for(:jsonld) %>
+      </script>
+    <% end %>
   </head>
   <body>
     <%= render Six::Layout::SupportUkraineComponent.new if ENV['USE_SUPPORT_UA'].present? %>

@@ -135,4 +135,33 @@ class Video < ApplicationRecord
     'medium' => 'duration > 300 and duration <= 900',
     'long' => 'duration > 900'
   }.freeze
+
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def to_episode_schema
+    { name: title,
+      description:,
+      keywords: tags,
+      dateCreated: created_at.iso8601,
+      dateModified: updated_at.iso8601,
+      datePublished: published_at&.iso8601,
+      timeRequired: schema_duration,
+      duration: schema_duration,
+      image: playlist.card.url(:default),
+      thumbnailUrl: playlist.thumbnail.url(:thumb),
+      episodeNumber: position }
+  end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+
+  def to_video_schema
+    { name: title,
+      description:,
+      thumbnailUrl: "https://i1.ytimg.com/vi/#{youtube_id}/mqdefault.jpg",
+      uploadDate: published_at ? published_at&.iso8601 : created_at.iso8601,
+      duration: schema_duration,
+      embedUrl: "https://www.youtube.com/embed/#{youtube_id}" }
+  end
+
+  def schema_duration
+    ActiveSupport::Duration.build(duration).iso8601
+  end
 end

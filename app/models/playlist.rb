@@ -84,4 +84,19 @@ class Playlist < ApplicationRecord
         sizes: card.styles[style].geometry.gsub('>', '') }
     end
   end
+
+  # Generate the CreativeWorkSeries schema for this Thing.
+  # rubocop:disable Metrics/AbcSize
+  def creative_work_series
+    { name: title,
+      description:,
+      abstract: description,
+      dateCreated: created_at.iso8601,
+      dateModified: updated_at.iso8601,
+      datePublished: videos.first&.published_at&.iso8601,
+      keywords: videos.pluck(:tags).flatten.uniq,
+      thumbnailUrl: thumbnail.url(:thumb),
+      image: card.url(:default) }
+  end
+  # rubocop:enable Metrics/AbcSize
 end
