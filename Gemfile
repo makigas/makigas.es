@@ -51,6 +51,7 @@ gem 'sentry-ruby', '~> 5.3.0'
 
 group :development do
   # Development tools
+  gem 'annotate', '~> 3.2.0'
   gem 'byebug'
   gem 'listen', '~> 3.7.1'
   gem 'web-console', '~> 4.2.0'

@@ -1,5 +1,25 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: topics
+#
+#  id                     :integer          not null, primary key
+#  color                  :string
+#  description            :string           not null
+#  slug                   :string           not null
+#  thumbnail_content_type :string
+#  thumbnail_file_name    :string
+#  thumbnail_file_size    :bigint
+#  thumbnail_updated_at   :datetime
+#  title                  :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_topics_on_slug  (slug) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do

@@ -1,5 +1,32 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: videos
+#
+#  id           :integer          not null, primary key
+#  description  :text             not null
+#  duration     :integer          not null
+#  early_access :boolean          default(FALSE), not null
+#  position     :integer          not null
+#  private      :boolean          default(FALSE), not null
+#  published_at :datetime         not null
+#  slug         :string           not null
+#  tags         :string           default([]), is an Array
+#  title        :string           not null
+#  unfeatured   :boolean          default(FALSE), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  playlist_id  :integer          not null
+#  twitch_id    :string
+#  youtube_id   :string           not null
+#
+# Indexes
+#
+#  index_videos_on_early_access  (early_access)
+#  index_videos_on_slug          (slug)
+#  index_videos_on_youtube_id    (youtube_id) UNIQUE
+#
 class Video < ApplicationRecord
   extend FriendlyId
 

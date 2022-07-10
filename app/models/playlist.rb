@@ -1,5 +1,31 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: playlists
+#
+#  id                     :integer          not null, primary key
+#  card_content_type      :string
+#  card_file_name         :string
+#  card_file_size         :bigint
+#  card_updated_at        :datetime
+#  description            :text             not null
+#  slug                   :string           not null
+#  thumbnail_content_type :string
+#  thumbnail_file_name    :string
+#  thumbnail_file_size    :bigint
+#  thumbnail_updated_at   :datetime
+#  title                  :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  topic_id               :integer
+#  youtube_id             :string           not null
+#
+# Indexes
+#
+#  index_playlists_on_slug      (slug) UNIQUE
+#  index_playlists_on_topic_id  (topic_id)
+#
 class Playlist < ApplicationRecord
   extend FriendlyId
 
