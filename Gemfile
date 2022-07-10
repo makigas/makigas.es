@@ -8,7 +8,7 @@ gem 'dotenv-rails', '~> 2.7.6'
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.11.1'
+gem 'bootsnap', '~> 1.12.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'meilisearch-rails'
