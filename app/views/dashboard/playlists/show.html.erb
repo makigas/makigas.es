@@ -36,4 +36,14 @@
     <td><%= t('.thumbnail') %></td>
     <td><%= image_tag @playlist.thumbnail.url(:thumbnail) %></td>
   </tr>
+  <tr>
+    <td><%= t('.trends') %>
+    <td>
+      <details>
+        <summary><%= t('.csv_string_for_youtube_analytics') %></summary>
+        <p><%= t('.paste_this_into_the_group_settings') %>:<br>
+        <code><%= @playlist.videos.order(position: :asc).pluck(:youtube_id).join(', ') %></code>
+      </details>
+    </td>
+  </tr>
 </table>

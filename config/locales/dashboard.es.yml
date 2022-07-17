@@ -137,6 +137,9 @@ es:
         edit: Editar
         no_topic: "(sin tema)"
         playlists: Listas
+        trends: Tendencias
+        csv_string_for_youtube_analytics: Cadena de CSV para los grupos de YouTube Analytics
+        paste_this_into_the_group_settings: Pega este string en la configuración del grupo de YouTube Analytics para actualizar todos los vídeos que forman parte del mismo
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         thumbnail: Miniatura
         title: Título
