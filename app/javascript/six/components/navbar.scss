@@ -118,15 +118,16 @@ $navbar-size: 40px;
   }
 
   .searchbar {
-    --searchbar-box-background: #ffffffcc;
+    --searchbar-box-background: #fffc;
 
     margin-bottom: 0;
 
     &:focus-within {
       --searchbar-box-background: #fff;
     }
-    &__search::placeholder  {
-      color: rgba(70, 70, 70, 0.9)
+
+    &__search::placeholder {
+      color: rgb(70 70 70 / 90%);
     }
   }
 
