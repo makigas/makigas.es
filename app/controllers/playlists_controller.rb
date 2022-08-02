@@ -4,7 +4,7 @@ class PlaylistsController < ApplicationController
   before_action :playlist_set, only: %i[show]
 
   def index
-    @playlists = Playlist.sort_by_latest_video.page(params[:page]).per(12)
+    @playlists = Playlist.with_public_videos.sort_by_latest_video.page(params[:page]).per(12)
   end
 
   def show

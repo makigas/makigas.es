@@ -108,4 +108,31 @@ RSpec.describe Playlist, type: :model do
       expect(playlist).to respond_to(:topic)
     end
   end
+
+  describe '#with_public_videos' do
+    describe 'when the playlist has public videos' do
+      it 'gets included' do
+        playlist = create(:playlist)
+        create(:video, playlist:, published_at: 2.days.ago)
+        expect(described_class.with_public_videos).to include(playlist)
+      end
+    end
+
+    describe 'when the playlist has no public videos' do
+      it 'will not be included' do
+        playlist = create(:playlist)
+        create(:video, playlist:, published_at: 2.days.after)
+        expect(described_class.with_public_videos).not_to include(playlist)
+      end
+    end
+
+    describe 'when the playlist has public and not public videos' do
+      it 'gets included what can be included' do
+        playlist = create(:playlist)
+        create(:video, playlist:, published_at: 2.days.after)
+        create(:video, playlist:, published_at: 2.days.ago)
+        expect(described_class.with_public_videos).to include(playlist)
+      end
+    end
+  end
 end

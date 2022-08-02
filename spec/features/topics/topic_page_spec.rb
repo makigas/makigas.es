@@ -12,6 +12,7 @@ RSpec.describe 'Topic page', type: :feature do
 
   it 'shows playlists in a topic' do
     playlist = create(:playlist, topic:)
+    create(:video, playlist:)
 
     visit topic_path(topic)
 
@@ -26,9 +27,9 @@ RSpec.describe 'Topic page', type: :feature do
     let(:playlist) { create(:playlist, videos: []) }
     let(:topic) { create(:topic, playlists: [playlist]) }
 
-    it 'shows the playlist length' do
+    it 'does not include an empty playlist' do
       visit topic_path(topic)
-      expect(page).to have_text '0 episodios'
+      expect(page).not_to have_text playlist.title
     end
   end
 
@@ -39,7 +40,21 @@ RSpec.describe 'Topic page', type: :feature do
 
     it 'shows the playlist length' do
       visit topic_path(topic)
-      expect(page).to have_text '1 episodio'
+      aggregate_failures do
+        expect(page).to have_text playlist.title
+        expect(page).to have_text '1 episodio'
+      end
+    end
+  end
+
+  describe 'for a playlist without public videos' do
+    let(:video) { create(:video, published_at: 2.days.after) }
+    let(:playlist) { create(:playlist, videos: [video]) }
+    let(:topic) { create(:topic, playlists: [playlist]) }
+
+    it 'hides the card' do
+      visit topic_path(topic)
+      expect(page).not_to have_text playlist.title
     end
   end
 

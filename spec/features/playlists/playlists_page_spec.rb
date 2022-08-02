@@ -16,6 +16,15 @@ RSpec.describe 'Playlists page', type: :feature do
     end
   end
 
+  describe 'for a playlist without public videos' do
+    it 'hides the card' do
+      create(:video, playlist:, published_at: 2.days.after)
+
+      visit playlists_path
+      expect(page).not_to have_text playlist.title
+    end
+  end
+
   describe 'number of videos' do
     it 'empty playlist is not presented' do
       visit playlists_path

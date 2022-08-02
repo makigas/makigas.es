@@ -48,6 +48,12 @@ class Playlist < ApplicationRecord
     joins(:videos).group('playlists.id').order(Arel.sql('max(videos.published_at) desc'))
   }
 
+  # At least a video must have been published already.
+  scope :with_public_videos, lambda {
+    with_public_videos = joins(:videos).where('videos.published_at <= ?', DateTime.current)
+    Playlist.where(id: with_public_videos.pluck(:id))
+  }
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
