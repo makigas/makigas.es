@@ -4,11 +4,11 @@ source 'https://rubygems.org'
 
 ruby '~> 3.1.0'
 
-gem 'dotenv-rails', '~> 2.7.6'
+gem 'dotenv-rails', '~> 2.8.1'
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.11.1'
+gem 'bootsnap', '~> 1.13.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'meilisearch-rails'
@@ -31,23 +31,23 @@ gem 'aws-sdk-s3', '~> 1.114.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
-gem 'faraday', '~> 2.3.0'
+gem 'faraday', '~> 2.4.0'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.1.1'
-gem 'lookbook', '~> 0.8.1'
+gem 'lookbook', '~> 0.9.3'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.55.0'
+gem 'view_component', '~> 2.63.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
 # Ops
-gem 'sentry-rails', '~> 5.3.0'
-gem 'sentry-ruby', '~> 5.3.0'
+gem 'sentry-rails', '~> 5.4.1'
+gem 'sentry-ruby', '~> 5.4.1'
 
 group :development do
   # Development tools
@@ -69,10 +69,10 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.59.1', require: false
-  gem 'rubocop', '~> 1.30.0', require: false
-  gem 'rubocop-rails', '~> 2.14.1', require: false
+  gem 'rubocop', '~> 1.32.0', require: false
+  gem 'rubocop-rails', '~> 2.15.2', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.11.1', require: false
+  gem 'rubocop-rspec', '~> 2.12.1', require: false
 end
 
 # Test tools that must be available in development mode
@@ -87,6 +87,6 @@ end
 # Test tools
 group :test do
   gem 'capybara', '~> 3.37.1'
-  gem 'selenium-webdriver', '~> 4.2.0'
+  gem 'selenium-webdriver', '~> 4.3.0'
   gem 'webdrivers', '~> 5.0.0'
 end

@@ -15,7 +15,7 @@ RSpec.describe Five::Core::MediaCardComponent, type: :component do
 
     it { is_expected.to have_selector 'h4', text: 'Example' }
     it { is_expected.to have_selector 'p', text: 'This is the content' }
-    it { is_expected.to have_selector 'a[href="/cards/example-card"]' }
+    it { is_expected.to have_link href: '/cards/example-card' }
     it { is_expected.to have_selector 'img[src="/images/foobar.jpg"][srcset~="/images/foobar@2x.jpg 2x"]' }
   end
 end
