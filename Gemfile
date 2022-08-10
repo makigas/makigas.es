@@ -12,7 +12,7 @@ gem 'bootsnap', '~> 1.13.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'meilisearch-rails'
-gem 'pg', '~> 1.2'
+gem 'pg', '~> 1.4.3'
 gem 'puma', '~> 5.6.2'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
@@ -31,7 +31,7 @@ gem 'aws-sdk-s3', '~> 1.114.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
-gem 'faraday', '~> 2.4.0'
+gem 'faraday', '~> 2.5.1'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
@@ -40,8 +40,8 @@ gem 'lookbook', '~> 0.9.3'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'sitemap_generator', '~> 6.2.1'
-gem 'view_component', '~> 2.63.0'
+gem 'sitemap_generator', '~> 6.3.0'
+gem 'view_component', '~> 2.66.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
@@ -69,7 +69,7 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.59.1', require: false
-  gem 'rubocop', '~> 1.32.0', require: false
+  gem 'rubocop', '~> 1.34.1', require: false
   gem 'rubocop-rails', '~> 2.15.2', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.12.1', require: false
@@ -87,6 +87,6 @@ end
 # Test tools
 group :test do
   gem 'capybara', '~> 3.37.1'
-  gem 'selenium-webdriver', '~> 4.3.0'
+  gem 'selenium-webdriver', '~> 4.4.0'
   gem 'webdrivers', '~> 5.0.0'
 end
