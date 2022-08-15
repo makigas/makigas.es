@@ -35,6 +35,21 @@ RSpec.describe 'Video page', type: :feature do
       end
     end
   end
+
+  describe 'when the video is not published' do
+    before do
+      video.update(published_at: 2.days.from_now)
+    end
+
+    it 'is not visible' do
+      visit_video video
+
+      aggregate_failures do
+        expect(page).to have_http_status :not_found
+        expect(page).not_to have_text video.title
+      end
+    end
+  end
 end
 
 private
