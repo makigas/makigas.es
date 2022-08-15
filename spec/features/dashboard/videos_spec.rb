@@ -73,9 +73,6 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
       end
     end
 
-    # TODO: Test this without relying on changing the host of the client.
-    it 'user can create unfeatured videos'
-
     it 'user cannot create videos with invalid data' do
       playlist = create(:playlist)
       visit dashboard_videos_path

@@ -9,12 +9,10 @@
 #  duration     :integer          not null
 #  early_access :boolean          default(FALSE), not null
 #  position     :integer          not null
-#  private      :boolean          default(FALSE), not null
 #  published_at :datetime         not null
 #  slug         :string           not null
 #  tags         :string           default([]), is an Array
 #  title        :string           not null
-#  unfeatured   :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  playlist_id  :integer          not null

@@ -57,11 +57,7 @@ es:
         playlist: Lista de reproducción
         published_at: Fecha de publicación
         youtube_id: ID de YouTube
-        unfeatured: No destacar
   simple_form:
     include_blanks:
       playlist:
         topic: (Sin tema concreto)
-    labels:
-      video:
-        unfeatured: No destacar este vídeo en la página principal.
