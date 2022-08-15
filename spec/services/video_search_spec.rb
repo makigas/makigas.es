@@ -7,6 +7,7 @@ RSpec.describe VideoSearch, type: :class do
     let(:videos) { class_double(Video).as_stubbed_const }
 
     before do
+      allow(videos).to receive(:visible).and_return(videos)
       allow(videos).to receive(:includes).and_return(videos)
       allow(videos).to receive(:search).and_return([:outcome])
     end
@@ -17,6 +18,11 @@ RSpec.describe VideoSearch, type: :class do
     end
 
     describe 'the query parameter' do
+      it 'only gets visible videos' do
+        described_class.new('java videos').videos
+        expect(videos).to have_received(:visible)
+      end
+
       it 'is forwarded to the search service' do
         described_class.new('java videos').videos
         expect(videos).to have_received(:search).with('java videos', any_args)

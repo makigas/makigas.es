@@ -8,7 +8,7 @@ class VideoSearch
   end
 
   def videos
-    Video.includes(playlist: :topic).search(@query, { filter: search_filters, hitsPerPage: 10, page: @page })
+    Video.visible.includes(playlist: :topic).search(@query, { filter: search_filters, hitsPerPage: 10, page: @page })
   end
 
   private

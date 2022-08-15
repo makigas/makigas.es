@@ -15,7 +15,8 @@ RSpec.describe 'Video find by ID', type: :feature do
 
   describe 'when an incorrect video is found' do
     it 'does not redirect to anywhere' do
-      expect { visit '/v/123456' }.to raise_error(ActiveRecord::RecordNotFound)
+      visit '/v/123456'
+      expect(page).to have_http_status :not_found
     end
   end
 end
