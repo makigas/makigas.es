@@ -1,2 +1,4 @@
 User-Agent: *
+Disallow: /videos?*
+
 Sitemap: https://www.makigas.es/sitemap.xml.gz

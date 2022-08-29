@@ -1,6 +1,7 @@
 - content_for :title, "#{t('.meta.title')} - makigas"
 - content_for :description, t('.meta.description')
 - content_for :hero, capture { content_tag(:h1) { t('.title') } }
+- content_for :canonical, videos_url
 
 .videoexplorer
   = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do
