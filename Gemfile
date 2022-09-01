@@ -57,7 +57,7 @@ group :development do
   gem 'web-console', '~> 4.2.0'
 
   # LSP
-  gem 'solargraph', '~> 0.45.0'
+  gem 'solargraph', '~> 0.46.0'
   gem 'solargraph-rails', '~> 0.3.1'
 
   # Guard
