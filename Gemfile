@@ -47,7 +47,7 @@ gem 'whenever'
 
 # Ops
 gem 'sentry-rails', '~> 5.4.1'
-gem 'sentry-ruby', '~> 5.4.1'
+gem 'sentry-ruby', '~> 5.4.2'
 
 group :development do
   # Development tools

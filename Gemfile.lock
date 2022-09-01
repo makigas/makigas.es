@@ -425,7 +425,7 @@ GEM
     sentry-rails (5.4.1)
       railties (>= 5.0)
       sentry-ruby (~> 5.4.1)
-    sentry-ruby (5.4.1)
+    sentry-ruby (5.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sexp_processor (4.16.1)
     shellany (0.0.1)
@@ -560,7 +560,7 @@ DEPENDENCIES
   sass-rails (~> 6.0)
   selenium-webdriver (~> 4.4.0)
   sentry-rails (~> 5.4.1)
-  sentry-ruby (~> 5.4.1)
+  sentry-ruby (~> 5.4.2)
   simple_form
   sitemap_generator (~> 6.3.0)
   solargraph (~> 0.45.0)
