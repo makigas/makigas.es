@@ -36,12 +36,12 @@ gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.1.1'
-gem 'lookbook', '~> 0.9.3'
+gem 'lookbook', '~> 1.0.4'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.3.0'
-gem 'view_component', '~> 2.66.0'
+gem 'view_component', '~> 2.71.0'
 gem 'view_component-contrib'
 gem 'whenever'
 
@@ -57,7 +57,7 @@ group :development do
   gem 'web-console', '~> 4.2.0'
 
   # LSP
-  gem 'solargraph', '~> 0.45.0'
+  gem 'solargraph', '~> 0.46.0'
   gem 'solargraph-rails', '~> 0.3.1'
 
   # Guard
@@ -69,8 +69,8 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.59.1', require: false
-  gem 'rubocop', '~> 1.34.1', require: false
-  gem 'rubocop-rails', '~> 2.15.2', require: false
+  gem 'rubocop', '~> 1.36.0', require: false
+  gem 'rubocop-rails', '~> 2.16.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.12.1', require: false
 end
