@@ -62,6 +62,11 @@
     <% end %>
   </section>
   <aside class="videoinfo__links">
+    <% if @video.playlist.forum_url.present? %>
+    <%= render Six::Utils::ForumCallToActionComponent.new(url: @video.playlist.forum_url) %>
+    <%= render Six::Utils::DiscordSecondaryCallToActionComponent.new %>
+    <% else %>
     <%= render Six::Utils::DiscordCallToActionComponent.new %>
+    <% end %>
   </aside>
 <% end %>

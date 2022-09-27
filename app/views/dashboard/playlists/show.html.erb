@@ -25,6 +25,14 @@
     <td><%= link_to @playlist.youtube_id, "https://www.youtube.com/playlist?list=#{@playlist.youtube_id}" %></td>
   </tr>
   <tr>
+    <td><%= t('.forum_url') %></td>
+    <td><% if @playlist.forum_url.present? %>
+      <%= link_to @playlist.forum_url, target: :blank %>
+    <% else %>
+      <%= t('.no_forum') %>
+    <% end %></td>
+  </tr>
+  <tr>
     <td><%= t('.topic') %></td>
     <td><%= link_to @playlist.topic.title, [:dashboard, @playlist.topic] rescue t('.no_topic') %></td>
   </tr>

@@ -2,6 +2,7 @@
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
   <%= form.input :youtube_id %>
+  <%= form.input :forum_url %>
   <%= form.association :topic, include_blank: :translate %>
   <%= form.input :thumbnail, as: :file %>
   <%= form.input :card, as: :file %>

@@ -15,6 +15,7 @@ import "../six/components/button.scss";
 import "../six/components/discordcta.scss";
 import "../six/components/explorer.scss";
 import "../six/components/footer.scss";
+import "../six/components/forumcta.scss";
 import "../six/components/jumbo.scss";
 import "../six/components/meta.scss";
 import "../six/components/navbar.scss";

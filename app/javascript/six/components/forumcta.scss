@@ -1,6 +1,6 @@
-.discordcta {
-  background-color: var(--discord-background);
-  color: var(--discord-foreground);
+.forumcta {
+  background-color: var(--forumcta-background);
+  color: var(--forumcta-foreground);
   max-width: 640px;
   font-size: 1.1rem;
 
@@ -17,9 +17,5 @@
 
   &__title {
     font-family: var(--font-title);
-  }
-
-  &--secondary {
-    margin-top: 1rem;
   }
 }

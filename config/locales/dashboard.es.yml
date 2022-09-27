@@ -135,6 +135,8 @@ es:
         description: Descripción
         destroy: Destruir
         edit: Editar
+        forum_url: URL de foro
+        no_forum: "(sin foro)"
         no_topic: "(sin tema)"
         playlists: Listas
         trends: Tendencias

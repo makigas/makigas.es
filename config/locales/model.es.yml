@@ -24,6 +24,7 @@ es:
         title: Título
         youtube_id: ID de YouTube
         topic: Tema
+        forum_url: URL del foro
       opinion:
         from: De
         message: Mensaje

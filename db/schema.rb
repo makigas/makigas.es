@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_150253) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,13 +102,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_150253) do
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
     t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at", precision: nil
+    t.datetime "thumbnail_updated_at"
     t.string "card_file_name"
     t.string "card_content_type"
     t.bigint "card_file_size"
-    t.datetime "card_updated_at", precision: nil
+    t.datetime "card_updated_at"
+    t.string "forum_url"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|
@@ -120,7 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_150253) do
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
     t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at", precision: nil
+    t.datetime "thumbnail_updated_at"
     t.string "color"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
