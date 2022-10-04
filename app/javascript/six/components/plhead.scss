@@ -5,8 +5,8 @@ $plhead-text-size: 1.15rem;
 }
 
 .plhead {
-  background: var(--playlist-header-background);
-  color: var(--playlist-header-foreground);
+  background: background: var(--playlist-header-background, var(--makigas-brand));
+  color: var(--playlist-header-foreground, #ffffff);
   font-size: $plhead-text-size;
 
   &__wrap {
