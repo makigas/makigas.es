@@ -15,7 +15,7 @@ $video-vnum-width: 1.25rem;
     &:hover,
     &:focus,
     &:active {
-      background-color: var(--video-card-hover-background);
+      background-color: var(--video-card-hover-background, var(--makigas-search-filter-background));
     }
   }
 
