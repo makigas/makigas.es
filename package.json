@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/rails__ujs": "^6.0.1",
-    "eslint": "^8.23.0",
+    "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
