@@ -12,7 +12,7 @@
     "@rails/ujs": "^7.0.4",
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
-    "esbuild": "^0.15.7",
+    "esbuild": "^0.15.16",
     "esbuild-sass-plugin": "^2.3.2",
     "normalize.css": "^8.0.1",
     "youtube-player": "^5.5.2"
