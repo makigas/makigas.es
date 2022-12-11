@@ -101,6 +101,17 @@ es:
           tags: Etiquetas
           apply: Aplicar
           tags_for: Etiquetas para %{video}
+      show_notes:
+        show:
+          dashboard: Panel de control
+          pending: Acciones pendientes
+          untranscribed: Vídeos sin notas de capítulo
+          video: Vídeo
+          playlist: Lista de reproducción
+          duration: Duración
+          actions: Acciones
+          published_at: Fecha de publicación
+          annotate: Anotar
       transcriptions:
         show:
           dashboard: Panel de control

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       namespace :pending do
         resource :tags, only: %w[show update]
         resource :transcriptions, only: :show
+        resource :show_notes, only: :show
       end
     end
   end
