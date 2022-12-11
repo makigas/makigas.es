@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe VideosHelper, type: :helper do
+RSpec.describe VideosHelper do
   it 'gets video path' do
     video = create(:video)
     expect(video_path(video)).to eq playlist_video_path(video, playlist_id: video.playlist)

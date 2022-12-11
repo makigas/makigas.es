@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard transcriptions', type: :feature, js: true do
+RSpec.describe 'Dashboard transcriptions', js: true do
   let(:user) { create(:user) }
   let(:playlist) { create(:playlist) }
   let(:video) { create(:video, playlist:) }
@@ -24,7 +24,7 @@ RSpec.describe 'Dashboard transcriptions', type: :feature, js: true do
 
     it 'is not possible to visit the transcription editor' do
       visit path
-      expect(page).to have_no_current_path path
+      expect(page).not_to have_current_path path
     end
   end
 

@@ -59,7 +59,7 @@ Style/FormatStringToken:
     - config/routes.rb
 
 Metrics/BlockLength:
-  IgnoredMethods:
+  AllowedMethods:
     - context
     - describe
     - namespace

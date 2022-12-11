@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Front page', type: :feature do
+RSpec.feature 'Front page' do
   scenario 'loads successfully' do
     visit root_path
     expect(page.status_code).to be 200

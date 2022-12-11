@@ -17,7 +17,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Opinion, type: :model do
+RSpec.describe Opinion do
   it 'has a valid factory' do
     opinion = build(:opinion)
     expect(opinion).to be_valid

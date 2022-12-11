@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Pending tags', type: :feature do
+RSpec.describe 'Pending tags' do
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
   after { Capybara.default_host = 'http://www.example.com' }

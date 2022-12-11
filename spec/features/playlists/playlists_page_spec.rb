@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Playlists page', type: :feature do
+RSpec.describe 'Playlists page' do
   let(:playlist) { create(:playlist) }
 
   it 'displays information about playlists' do

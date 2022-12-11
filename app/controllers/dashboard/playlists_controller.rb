@@ -14,6 +14,8 @@ module Dashboard
       @playlist = Playlist.new
     end
 
+    def edit; end
+
     def create
       @playlist = Playlist.new(playlist_params)
       if @playlist.save
@@ -22,8 +24,6 @@ module Dashboard
         render :new
       end
     end
-
-    def edit; end
 
     def update
       if @playlist.update(playlist_params)

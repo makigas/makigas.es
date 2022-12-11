@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard videos', type: :feature, js: true do
+RSpec.describe 'Dashboard videos', js: true do
   before do
     Capybara.app_host = 'http://dashboard.lvh.me:9080'
     Capybara.server_port = 9080
@@ -16,7 +16,7 @@ RSpec.describe 'Dashboard videos', type: :feature, js: true do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_videos_path
-      expect(page).to have_no_current_path dashboard_playlists_path
+      expect(page).not_to have_current_path dashboard_playlists_path
     end
   end
 

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard opinions', type: :feature do
+RSpec.describe 'Dashboard opinions' do
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
   after { Capybara.default_host = 'http://www.example.com' }
@@ -10,7 +10,7 @@ RSpec.describe 'Dashboard opinions', type: :feature do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_opinions_path
-      expect(page).to have_no_current_path dashboard_topics_path
+      expect(page).not_to have_current_path dashboard_topics_path
     end
   end
 

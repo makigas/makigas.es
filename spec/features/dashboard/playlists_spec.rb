@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard playlists', type: :feature do
+RSpec.describe 'Dashboard playlists' do
   let(:video) { create(:video) }
   let!(:playlist) { create(:playlist, videos: [video]) }
   let!(:topic) { create(:topic) }
@@ -14,7 +14,7 @@ RSpec.describe 'Dashboard playlists', type: :feature do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_playlists_path
-      expect(page).to have_no_current_path dashboard_playlists_path
+      expect(page).not_to have_current_path dashboard_playlists_path
     end
   end
 

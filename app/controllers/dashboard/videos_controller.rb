@@ -16,6 +16,8 @@ module Dashboard
       end
     end
 
+    def edit; end
+
     def create
       @video = Video.new(video_params)
       if @video.save
@@ -24,8 +26,6 @@ module Dashboard
         render :new
       end
     end
-
-    def edit; end
 
     def update
       if @video.update(video_params)

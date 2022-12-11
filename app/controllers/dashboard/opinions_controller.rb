@@ -14,6 +14,8 @@ module Dashboard
       @opinion = Opinion.new
     end
 
+    def edit; end
+
     def create
       @opinion = Opinion.new(opinion_params)
       if @opinion.save
@@ -22,8 +24,6 @@ module Dashboard
         render :new
       end
     end
-
-    def edit; end
 
     def update
       if @opinion.update(opinion_params)

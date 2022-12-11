@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Video find by ID', type: :feature do
+RSpec.describe 'Video find by ID' do
   let(:playlist) { create(:playlist, title: 'Videos musicales') }
   let(:video) { create(:video, title: 'Open Door', playlist:, youtube_id: '6VBwEeUkFrQ') }
 

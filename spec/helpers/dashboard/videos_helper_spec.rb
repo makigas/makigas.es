@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Dashboard::VideosHelper, type: :helper do
+RSpec.describe Dashboard::VideosHelper do
   let(:video) { create(:video) }
 
   describe 'dashboard_video' do

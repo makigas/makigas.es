@@ -20,7 +20,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Document, type: :model do
+RSpec.describe Document do
   describe 'factory' do
     it 'is valid' do
       expect(build(:document)).to be_valid

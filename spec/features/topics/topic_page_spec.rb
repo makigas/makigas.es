@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Topic page', type: :feature do
+RSpec.describe 'Topic page' do
   let(:topic) { create(:topic) }
 
   it 'shows information about a topic' do

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, type: :helper do
+RSpec.describe ApplicationHelper do
   describe '#running_time' do
     it 'renders seconds' do
       expect(running_time(45)).to eq '0:45'

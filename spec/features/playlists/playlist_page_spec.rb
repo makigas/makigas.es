@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Playlist page', type: :feature do
+RSpec.describe 'Playlist page' do
   let(:video) { create(:video, duration: 133) }
   let(:published) { create(:yesterday_video, title: 'Yesterday', youtube_id: 'YESTERDAY') }
   let(:scheduled) { create(:tomorrow_video, title: 'Tomorrow', youtube_id: 'TOMORROW') }

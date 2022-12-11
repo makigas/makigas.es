@@ -27,7 +27,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Video, type: :model do
+RSpec.describe Video do
   describe 'factories' do
     context 'when using :video' do
       it 'is valid' do

@@ -18,7 +18,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Link, type: :model do
+RSpec.describe Link do
   describe 'factory' do
     it 'is valid' do
       link = build(:link)

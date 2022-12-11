@@ -14,6 +14,8 @@ module Dashboard
       @topic = Topic.new
     end
 
+    def edit; end
+
     def create
       @topic = Topic.new(topic_params)
       if @topic.save
@@ -22,8 +24,6 @@ module Dashboard
         render :new
       end
     end
-
-    def edit; end
 
     def update
       if @topic.update(topic_params)

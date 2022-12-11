@@ -28,7 +28,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Playlist, type: :model do
+RSpec.describe Playlist do
   it 'has a valid factory' do
     playlist = build(:playlist)
     expect(playlist).to be_valid

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Topics page', type: :feature do
+RSpec.describe 'Topics page' do
   context 'when there are no topics' do
     it 'is success' do
       visit topics_path

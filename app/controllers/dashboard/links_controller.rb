@@ -12,6 +12,10 @@ module Dashboard
       @link = @video.links.build
     end
 
+    def edit
+      @link = @video.links.find(params[:id])
+    end
+
     def create
       @link = @video.links.build(link_params)
       if @link.save
@@ -19,10 +23,6 @@ module Dashboard
       else
         render :new
       end
-    end
-
-    def edit
-      @link = @video.links.find(params[:id])
     end
 
     def update

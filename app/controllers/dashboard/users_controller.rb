@@ -14,6 +14,8 @@ module Dashboard
       @user = User.new
     end
 
+    def edit; end
+
     def create
       @user = User.new(user_params)
       if @user.save
@@ -22,8 +24,6 @@ module Dashboard
         render :new
       end
     end
-
-    def edit; end
 
     def update
       if @user.update(user_params)

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Topics page', type: :feature do
+RSpec.describe 'Topics page' do
   it 'still loads without videos' do
     visit videos_path
     expect(page.status_code).to be 200

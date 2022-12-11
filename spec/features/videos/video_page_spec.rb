@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Video page', type: :feature do
+RSpec.describe 'Video page' do
   let(:video) { create(:video, duration: 133) }
 
   it 'there is information about the video' do

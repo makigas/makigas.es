@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Redirections', type: :request do
+RSpec.describe 'Redirections' do
   it 'redirects the XML feed for videos' do
     get '/videos/feed'
     expect(response).to redirect_to '/videos.atom'

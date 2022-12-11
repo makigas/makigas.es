@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Videos search', type: :feature do
+RSpec.describe 'Videos search' do
   let(:service) { class_double(VideoSearch).as_stubbed_const }
 
   describe 'searching by length' do
