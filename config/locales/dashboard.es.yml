@@ -101,6 +101,18 @@ es:
           tags: Etiquetas
           apply: Aplicar
           tags_for: Etiquetas para %{video}
+      transcriptions:
+        show:
+          dashboard: Panel de control
+          pending: Acciones pendientes
+          untranscribed: Vídeos sin transcribir
+          video: Vídeo
+          playlist: Lista de reproducción
+          duration: Duración
+          actions: Acciones
+          published_at: Fecha de publicación
+          associate: Asociar
+          studio: Ver en YouTube Studio
     playlists:
       create:
         created: Lista creada correctamente.

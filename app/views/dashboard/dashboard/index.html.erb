@@ -57,6 +57,11 @@
             <%= link_to "#{untagged_videos} vídeos pendientes de etiquetar", dashboard_pending_tags_path, class: 'list-group-item list-group-item-action' %>
           <% end %>
         <% end %>
+        <% Video.untranscribed.count.tap do |untranscribed_videos| %>
+          <% if untranscribed_videos > 0 %>
+            <%= link_to "#{untranscribed_videos} vídeos pendientes de transcribir", dashboard_pending_transcriptions_path, class: "list-group-item list-group-item-action" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

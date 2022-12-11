@@ -1,0 +1,6 @@
+= link_to label, url_for(sort: "#{opposite_param}#{key}")
+- if sorting?
+  - if opposite_order == :asc
+    %span.bi.bi-sort-down
+  - else
+    %span.bi.bi-sort-up

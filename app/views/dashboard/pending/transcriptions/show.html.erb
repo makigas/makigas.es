@@ -1,0 +1,36 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= t('.pending') %>
+    <li class="breadcrumb-item current"><%= t('.untranscribed') %></li>
+  </ol>
+  <h1><%= t('.untranscribed') %></h1>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('.video') %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :playlist, label: t('.playlist'), params:) %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :duration, label: t('.duration'), params:) %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :publication_date, label: t('.published_at'), params:) %></th>
+      <th><%= t('.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+    <tr>
+      <td><%= video.title %></td>
+      <td><%= video.playlist.title %></td>
+      <td><%= running_time video.duration %></td>
+      <td><%= distance_of_time_in_words_to_now video.published_at %></td>
+      <td>
+        <%= link_to t('.associate'), dashboard_playlist_video_transcription_path(video_id: video.slug, playlist_id: video.playlist.slug), class: 'btn btn-sm btn-outline-primary' %>
+        <%= link_to t('.studio'), "https://studio.youtube.com/video/#{video.youtube_id}/translations", target: :blank, class: 'btn btn-sm btn-outline-secondary' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @videos %>

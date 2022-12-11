@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       # Pending actions
       namespace :pending do
         resource :tags, only: %w[show update]
+        resource :transcriptions, only: :show
       end
     end
   end

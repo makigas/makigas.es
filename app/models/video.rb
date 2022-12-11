@@ -73,6 +73,7 @@ class Video < ApplicationRecord
 
   # Tags
   scope :untagged, -> { where("tags = '{}'") }
+  scope :untranscribed, -> { where.missing(:transcription).distinct }
 
   # Validations.
   validates :title, presence: true, length: { maximum: 100 }
