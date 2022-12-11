@@ -43,3 +43,8 @@ updates:
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
     labels:
       - dependencies
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: monthly
