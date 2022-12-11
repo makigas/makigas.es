@@ -3,9 +3,9 @@
 class VideosController < ApplicationController
   def index
     @videos = if filter_params.present?
-                VideoSearch.new(params[:q], filters: filter_params, page: params[:page]).videos
+                VideoSearch.new(params[:q], filters: filter_params, page:).videos
               else
-                Video.visible.includes(playlist: :topic).order(published_at: :desc).page(params[:page]).per(10)
+                Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
               end
   end
 
@@ -28,6 +28,10 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def page
+    params.fetch(:page, 1)
+  end
 
   def filter_params
     params.permit(:q, :length, :tag, topic: [])
