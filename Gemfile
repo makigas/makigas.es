@@ -69,7 +69,7 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.59.1', require: false
-  gem 'rubocop', '~> 1.40.0', require: false
+  gem 'rubocop', '~> 1.42.0', require: false
   gem 'rubocop-rails', '~> 2.17.3', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.15.0', require: false
