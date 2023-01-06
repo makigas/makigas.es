@@ -15,7 +15,7 @@ videos.
 
 Requirements:
 
-* Ruby 3.1 and Bundler. Older Ruby version are not supported.
+* Ruby 3.2 and Bundler. Older Ruby version are not supported.
 * An up to date PostgreSQL database. Other SQL engines are not supported.
 * [MeiliSearch](https://www.meilisearch.com/), to build the search engine.
 * Node.js + Yarn, for the front-end assets.

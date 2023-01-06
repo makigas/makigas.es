@@ -1,4 +1,4 @@
-FROM ruby:3.1.3-alpine
+FROM ruby:3.2.0-alpine
 LABEL maintainer="dani@danirod.es"
 
 # Build variables
@@ -21,8 +21,8 @@ RUN apk add --update --no-cache build-base && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install -j 4 && \
-    rm -rf /vendor/bundle/ruby/3.1.0/cache/*.gem && \
-    find /vendor/bundle/ruby/3.1.0/gems/ -name "*.[co]" -delete && \
+    rm -rf /vendor/bundle/ruby/3.2.0/cache/*.gem && \
+    find /vendor/bundle/ruby/3.2.0/gems/ -name "*.[co]" -delete && \
     apk del build-base
 
 ADD . .
