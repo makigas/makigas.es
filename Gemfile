@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.1.3'
+ruby '~> 3.2.0'
 
 gem 'dotenv-rails', '~> 2.8.1'
 gem 'rake', '~> 13.0.3'
@@ -11,6 +11,7 @@ gem 'rake', '~> 13.0.3'
 gem 'bootsnap', '~> 1.15.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
+gem 'nokogiri', '~> 1.14.0.rc1'
 gem 'pg', '~> 1.4.3'
 gem 'puma', '~> 6.0.2'
 gem 'rack-cors'
