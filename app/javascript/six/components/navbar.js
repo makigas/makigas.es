@@ -41,6 +41,10 @@ configureClickListener(document.getElementById("sToggleSearch"), ({ navbar }) =>
   navbar.querySelector("#q").focus();
 });
 
+configureClickListener(document.getElementById("sCurtain"), ({ navbar }) => {
+  navbar.classList.remove("navbar--menu");
+});
+
 configureClickListener(document.getElementById("sHideSearch"), ({ navbar }) => {
   navbar.classList.remove("navbar--searching");
 });
