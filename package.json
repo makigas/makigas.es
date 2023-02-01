@@ -7,7 +7,7 @@
   "license": "GPLv3",
   "private": true,
   "dependencies": {
-    "@fontsource/montserrat": "^4.5.13",
+    "@fontsource/montserrat": "^4.5.14",
     "@popperjs/core": "^2.11.6",
     "@rails/ujs": "^7.0.4",
     "bootstrap": "^5.2.3",
