@@ -70,10 +70,10 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.59.1', require: false
-  gem 'rubocop', '~> 1.42.0', require: false
+  gem 'rubocop', '~> 1.45.1', require: false
   gem 'rubocop-rails', '~> 2.17.4', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.16.0', require: false
+  gem 'rubocop-rspec', '~> 2.18.1', require: false
 end
 
 # Test tools that must be available in development mode
