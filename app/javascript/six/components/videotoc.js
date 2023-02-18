@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Compute the Y position of the current row against the first row.
     // This will provide the Y value of the current row, but relative
     // to the beginning of the list.
-    const firstRowY = firstRow.offsetTop;
-    const currentRowY = current.offsetTop;
-    const currentRowOffset = currentRowY - firstRowY;
-    list.scrollTop = currentRowOffset - list.clientHeight / 2;
+    const currentRowOffset = current.offsetTop - firstRow.offsetTop;
+    list.scrollTop = currentRowOffset - list.clientHeight / 2 + current.clientHeight / 2;
   });
 });

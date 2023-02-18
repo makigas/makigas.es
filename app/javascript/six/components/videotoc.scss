@@ -32,7 +32,7 @@
 
   &--compact &__list {
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__entry--current {
@@ -58,5 +58,9 @@
     align-self: center;
     font-weight: bold;
     font-size: 0.9rem;
+  }
+
+  &__data {
+    flex: 1;
   }
 }

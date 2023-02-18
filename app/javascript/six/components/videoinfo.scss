@@ -43,7 +43,8 @@
   }
 
   &__shownotes,
-  &__text {
+  &__text,
+  &__links {
     max-width: 70ch;
 
     h3 {
@@ -63,7 +64,9 @@
     }
   }
 
-  &__text {
+  &__text,
+  &__links {
+    margin-top: 1rem;
     margin-left: auto;
     margin-right: auto;
 
