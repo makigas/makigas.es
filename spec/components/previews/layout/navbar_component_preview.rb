@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Layout
-  # @layout Navbar
   class NavbarComponentPreview < ViewComponent::Preview
     # Renders a navbar
     def default
