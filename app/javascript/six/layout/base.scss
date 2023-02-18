@@ -55,12 +55,8 @@ body {
 .supportua {
   font-size: 0.9rem;
   text-align: center;
-  background-color: black;
-  color: white;
-
-  strong {
-    color: #389bff;
-  }
+  background-color: #fed501;
+  color: black;
 
   p {
     margin: 0;
@@ -68,8 +64,9 @@ body {
     padding-bottom: 0.3rem;
   }
 
-  a {
-    color: #fff78b;
+  a,
+  strong {
+    color: #005bba;
   }
 }
 
