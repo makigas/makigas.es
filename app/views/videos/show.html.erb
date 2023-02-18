@@ -40,8 +40,8 @@
   <section class="videoinfo__text">
     <header>
       <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
-        <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist)) { 'Vídeo anterior' } %>
-        <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist)) { 'Vídeo siguiente' } %>
+        <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist), rel: :prev) { 'Vídeo anterior' } %>
+        <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist), rel: :next) { 'Vídeo siguiente' } %>
       <% end %>
       <p class="videoinfo__pldata">
         <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>

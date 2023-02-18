@@ -1,5 +1,5 @@
 <% if href.present? %>
-  <%= link_to href, class: class_list, id: id do %>
+  <%= link_to href, class: class_list, id: id, rel: rel do %>
     <%= inner_content %>
   <% end %>
 <% else %>
