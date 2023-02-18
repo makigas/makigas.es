@@ -8,12 +8,12 @@ gem 'dotenv-rails', '~> 2.8.1'
 gem 'rake', '~> 13.0.3'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.15.0'
+gem 'bootsnap', '~> 1.16.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'nokogiri', '~> 1.14.0.rc1'
 gem 'pg', '~> 1.4.3'
-gem 'puma', '~> 6.0.2'
+gem 'puma', '~> 6.1.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
 gem 'rails-i18n', '~> 7.0.0'
@@ -27,7 +27,7 @@ gem 'delayed_job_web'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.117.2'
+gem 'aws-sdk-s3', '~> 1.119.1'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
@@ -47,14 +47,14 @@ gem 'view_component-contrib'
 gem 'whenever'
 
 # Ops
-gem 'sentry-rails', '~> 5.7.0'
-gem 'sentry-ruby', '~> 5.7.0'
+gem 'sentry-rails', '~> 5.8.0'
+gem 'sentry-ruby', '~> 5.8.0'
 
 group :development do
   # Development tools
   gem 'annotate', '~> 3.2.0'
   gem 'byebug'
-  gem 'listen', '~> 3.7.1'
+  gem 'listen', '~> 3.8.0'
   gem 'web-console', '~> 4.2.0'
 
   # LSP
@@ -69,7 +69,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.59.1', require: false
+  gem 'overcommit', '~> 0.60.0', require: false
   gem 'rubocop', '~> 1.45.1', require: false
   gem 'rubocop-rails', '~> 2.17.4', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
@@ -88,6 +88,6 @@ end
 # Test tools
 group :test do
   gem 'capybara', '~> 3.38.0'
-  gem 'selenium-webdriver', '~> 4.7.0'
+  gem 'selenium-webdriver', '~> 4.8.1'
   gem 'webdrivers', '~> 5.2.0'
 end
