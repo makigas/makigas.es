@@ -1,0 +1,62 @@
+.videotoc {
+  margin-bottom: 1rem;
+
+  &__header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    background: var(--makigas-brand-darker);
+  }
+
+  &__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    padding-left: 10px;
+    line-height: 2.5;
+    font-size: 1rem;
+    letter-spacing: 1.2;
+    white-space: nowrap;
+  }
+
+  &__list {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-top: none;
+    margin: 0;
+    padding-left: 0;
+
+    // Don't actually put a list, since we trust position more
+    list-style: none;
+  }
+
+  &--compact &__list {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  &__entry--current {
+    font-weight: bold;
+    background: var(--makigas-brand-washed-out);
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    padding: 5px;
+
+    &:hover {
+      background: var(--makigas-brand-washed-out);
+    }
+  }
+
+  &__counter {
+    width: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-self: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}

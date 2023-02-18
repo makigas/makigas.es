@@ -1,0 +1,12 @@
+%section.videotoc
+  %header.videotoc__header
+    %small.videotoc__title Lista de reproducción
+  %ol.videotoc__list
+    - other_videos.each do |related_video|
+      %li{class: ['videotoc__entry', related_video == video && 'videotoc__entry--current']}
+        = link_to playlist_video_path(related_video, playlist_id: playlist), class: 'videotoc__link' do
+          %div.videotoc__counter= related_video.position
+          %div.videotoc__data
+            = related_video.title
+            %br
+            %small= related_video.natural_duration

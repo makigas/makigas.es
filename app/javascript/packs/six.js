@@ -4,6 +4,7 @@ import "@fontsource/montserrat/700.css";
 
 import "../six/components/navbar";
 import "../six/components/videoexplorer";
+import "../six/components/videotoc";
 import "../six/events";
 
 import "../six/layout/colors.scss";
@@ -27,4 +28,5 @@ import "../six/components/topcard.scss";
 import "../six/components/topicthumb.scss";
 import "../six/components/videoinfo.scss";
 import "../six/components/videoexplorer.scss";
+import "../six/components/videotoc.scss";
 import "../six/components/ytiframe.scss";
