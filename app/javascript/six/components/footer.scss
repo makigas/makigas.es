@@ -4,20 +4,24 @@
   background-color: var(--footer-background-color);
   color: var(--footer-foreground-color);
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
 
   @include desktop-layout {
     text-align: left;
   }
 
   &__grid {
-    padding: 10px 30px;
+    padding: 20px 0;
 
     @include desktop-layout {
       display: grid;
       grid-template-columns: auto 140px 140px;
-      grid-gap: 0 20px;
+      grid-gap: 0 60px;
       grid-template-rows: repeat(2, auto);
+    }
+
+    @include wide-layout {
+      grid-gap: 0 120px;
     }
   }
 
@@ -27,6 +31,14 @@
 
   &__colophon {
     grid-column: span 1;
+  }
+
+  &__logo {
+    margin-top: 1rem;
+
+    svg {
+      height: 21px;
+    }
   }
 
   &__links {
@@ -52,6 +64,12 @@
       align-self: start;
     }
 
+    a {
+      display: inline-block;
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+    }
+
     &:first-child {
       text-align: left;
     }
@@ -61,15 +79,25 @@
     }
   }
 
-  &__copyright {
-    justify-self: start;
-    grid-column: span 2;
+  &__legal {
+    line-height: 2;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+
+    a {
+      white-space: nowrap;
+    }
   }
 
-  &__madein {
-    justify-self: end;
-    align-self: end;
-    grid-column: span 1;
+  &__copyright {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+
+    @include desktop-layout {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__spain {

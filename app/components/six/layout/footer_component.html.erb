@@ -1,40 +1,47 @@
 <footer class="footer">
-  <%= render Six::Base::WrapperComponent.new(classes: 'footer__grid') do %>
-    <div class="footer__colophon">
-      <p>
-        Esto es makigas: un sitio web y un canal de YouTube con tutoriales de
-        programación en castellano sobre distintos temas relacionados con la
-        programación, el desarrollo web y el desarrollo de software.
-      </p>
+  <%= render Six::Base::WrapperComponent.new do %>
+    <div class="footer__about footer__grid">
+      <div class="footer__colophon">
+        <div class="footer__logo">
+          <%= render Six::Utils::MakigasComponent.new %>
+        </div>
+        <p>
+          <strong>Aprende conceptos nuevos de programación o descubre una tecnología nueva</strong>.
+          En esto consiste makigas: un sitio web y un canal de YouTube con tutoriales de programación
+          y consejos para desarrolladores, en fcastellano y hablando en un lenguaje simple y humilde.
+          Encuentra contenido sobre programación, desarrollo web y desarrollo de software.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <ul class="footer__link">
+          <li><a href="/">Todos los cursos</a></li>
+          <li><a href="/videos">Vídeos más recientes</a></li>
+          <li><a href="/temas">Explorar temas</a></li>
+          <li><a href="https://bbs.makigas.es" target="_blank">Foro</a></li>
+        </ul>
+        <ul class="footer__link">
+          <li><a href="https://youtube.com/makigas" target="_blank">YouTube</a></li>
+          <li><a href="https://github.com/makigas" target="_blank">GitHub</a></li>
+          <li><a href="https://t.me/makigas" target="_blank">Telegram</a></li>
+          <li><a href="https://discord.com/invite/Mq7TBAB" target="_blank">Discord</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="footer__links">
-      <ul class="footer__link">
-        <li><a href="/">Todos los cursos</a></li>
-        <li><a href="/videos">Vídeos más recientes</a></li>
-        <li><a href="/temas">Explorar temas</a></li>
-        <li><a href="https://bbs.makigas.es" target="_blank">Foro</a></li>
-      </ul>
-      <ul class="footer__link">
-        <li><a href="https://youtube.com/makigas" target="_blank">YouTube</a></li>
-        <li><a href="https://github.com/makigas" target="_blank">GitHub</a></li>
-        <li><a href="https://t.me/makigas" target="_blank">Telegram</a></li>
-        <li><a href="https://discord.com/invite/Mq7TBAB" target="_blank">Discord</a></li>
-      </ul>
-    </div>
-
-    <div class="footer__copyright">
-      <p>
-        <strong>Copyright &copy; 2012 - <%= DateTime.now.year %> makigas </strong><br>
+    <p class="footer__legal">
         <a href="/terminos">Términos de uso</a> &bull;
         <a href="/privacidad">Política de privacidad</a> &bull;
         <a href="/responsabilidades">Limitación de responsabilidad</a> &bull;
         <a href="/cookies">Uso de cookies (EU)</a> &bull;
         <a href="/dnt">Política de no rastreo</a>
-      </p>
-    </div>
+    </p>
 
-    <div class="footer__madein">
+    <div class="footer__copyright">
+      <p>
+        <strong>Copyright &copy; 2012 - <%= DateTime.now.year %> makigas</strong><br>
+      </p>
+
       <p class="footer__spain">Made in Spain</p>
     </div>
   <% end %>
