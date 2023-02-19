@@ -10,6 +10,7 @@ import "../dashboard/utils.scss";
 import "../dashboard/playlists.scss";
 import "../dashboard/videos.scss";
 import "../dashboard/auth.scss";
+import "../dashboard/highlight.scss";
 
 import "../dashboard/playlists";
 import "../dashboard/videos";

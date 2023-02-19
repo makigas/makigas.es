@@ -8,6 +8,7 @@ import "../six/components/videotoc";
 import "../six/events";
 
 import "../six/layout/colors.scss";
+import "../six/layout/highlight.scss";
 import "../six/layout/responsive.scss";
 import "../six/layout/typography.scss";
 import "../six/layout/base.scss";

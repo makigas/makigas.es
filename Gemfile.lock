@@ -549,6 +549,7 @@ DEPENDENCIES
   rails_feather
   rake (~> 13.0.3)
   redcarpet
+  rouge
   rspec (~> 3.10)
   rspec-rails (~> 6.0.1)
   rubocop (~> 1.45.1)

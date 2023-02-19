@@ -56,7 +56,7 @@
     </header>
     <% if @video.show_note.present? %>
       <div class="videoinfo__shownotes">
-        <h3><%= t('.show_notes') %></h3>
+        <h2><%= t('.show_notes') %></h2>
         <%= to_markdown(@video.show_note.content).html_safe %>
       </div>
     <% end %>

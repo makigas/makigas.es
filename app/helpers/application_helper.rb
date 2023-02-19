@@ -23,8 +23,10 @@ module ApplicationHelper
   end
 
   def to_markdown(text)
-    render = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(render)
+    render = MarkdownRenderer.new
+    markdown = Redcarpet::Markdown.new(render, fenced_code_blocks: true,
+                                               tables: true, quote: true,
+                                               prettify: true)
     markdown.render(text)
   end
 
