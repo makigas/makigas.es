@@ -10,13 +10,21 @@ module Six
 
       def duration
         duration = helpers.running_time total_seconds, long: true
-        duration.split(':').take(2).join(':')
+        counter = duration.split(':').take(2).join(':')
+        word = if total_seconds >= 3600
+                 "horas"
+               elsif total_seconds >= 60
+                 "minutos"
+               else
+                 "segundos"
+               end
+        "#{counter} #{word}"
       end
 
       private
 
       def total_seconds
-        @playlist.videos.map(&:duration).sum
+        @playlist.videos.visible.map(&:duration).sum
       end
     end
   end
