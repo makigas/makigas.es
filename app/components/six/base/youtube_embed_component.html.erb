@@ -1,8 +1,9 @@
 <div class="ytiframe">
-  <div id="ytplayer" data-id="<%= youtube_id %>" class="ytiframe__iframe"></div>
-
-  <noscript>
-    <iframe class="ytiframe__iframe" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
-    </iframe>
-  </noscript>
+  <figure class="ytiframe__iframe">
+    <div id="ytplayer" data-id="<%= youtube_id %>"></div>
+    <noscript>
+      <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
+      </iframe>
+    </noscript>
+  </figure>
 </div>

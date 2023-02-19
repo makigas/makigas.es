@@ -33,41 +33,52 @@
     </style>
   <% end %>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(tag: :article, classes: 'videoinfo', breath: true) do %>
-  <aside class="videoinfo__player">
-    <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
-  </aside>
-  <section class="videoinfo__text">
-    <header>
-      <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
-        <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist), rel: :prev) { 'Vídeo anterior' } %>
-        <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist), rel: :next) { 'Vídeo siguiente' } %>
-      <% end %>
-      <p class="videoinfo__pldata">
-        <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>
-      </p>
-      <h1 class="videoinfo__title"><%= @video.title %></h1>
-      <p class="videoinfo__description">
-        <%= @video.description %>
-      </p>
-      <p class="videoinfo__meta"><%= t('.release_date_html', date: content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601)) %></p>
-      <p class="videoinfo__meta"><%= t('.duration', duration: running_time(@video.duration)) %></p>
-      <p class="videoinfo__meta"><%= link_to t('.watch_on_youtube'), "https://www.youtube.com/watch?v=#{@video.youtube_id}&list=#{@video.playlist.youtube_id}&index=#{@video.position}" %></p>
-    </header>
-    <% if @video.show_note.present? %>
-      <div class="videoinfo__shownotes">
-        <h2><%= t('.show_notes') %></h2>
-        <%= to_markdown(@video.show_note.content).html_safe %>
-      </div>
-    <% end %>
+<article class="videoinfo">
+  <section class="videoinfo__head">
+    <div class="videoinfo__player">
+      <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
+    </div>
   </section>
-  <aside class="videoinfo__links">
-    <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
-    <% if @video.playlist.forum_url.present? %>
-    <%= render Six::Utils::ForumCallToActionComponent.new(url: @video.playlist.forum_url) %>
-    <%= render Six::Utils::DiscordSecondaryCallToActionComponent.new %>
-    <% else %>
-    <%= render Six::Utils::DiscordCallToActionComponent.new %>
-    <% end %>
-  </aside>
-<% end %>
+
+  <%= render Six::Base::WrapperComponent.new(tag: :section, classes: 'videoinfo__body', breath: true) do %>
+    <div class="videoinfo__text">
+      <header>
+        <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
+          <%= g.button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist), rel: :prev) { 'Vídeo anterior' } %>
+          <%= g.button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist), rel: :next) { 'Vídeo siguiente' } %>
+        <% end %>
+        <p class="videoinfo__pldata">
+          <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>
+        </p>
+        <h1 class="videoinfo__title"><%= @video.title %></h1>
+        <p class="videoinfo__meta">
+          <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601) %> &bull;
+          <%= t('.duration', duration: running_time(@video.duration)) %>
+          <% if @video.tags.present? %>
+            &bull;
+            <% @video.tags.each do |tag| %>
+              <%= link_to "##{tag}", videos_path(tag:), class: 'videoinfo__tag' %>
+            <% end %>
+          <% end %>
+        </p>
+        <p class="videoinfo__description">
+          <%= @video.description %>
+        </p>
+      </header>
+      <% if @video.show_note.present? %>
+        <div class="videoinfo__shownotes">
+          <%= to_markdown(@video.show_note.content).html_safe %>
+        </div>
+      <% end %>
+    </div>
+    <aside class="videoinfo__links">
+      <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
+      <% if @video.playlist.forum_url.present? %>
+        <%= render Six::Utils::ForumCallToActionComponent.new(url: @video.playlist.forum_url) %>
+        <%= render Six::Utils::DiscordSecondaryCallToActionComponent.new %>
+      <% else %>
+        <%= render Six::Utils::DiscordCallToActionComponent.new %>
+      <% end %>
+    </aside>
+  <% end %>
+</article>
