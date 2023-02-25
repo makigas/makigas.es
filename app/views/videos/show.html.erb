@@ -69,6 +69,24 @@
         <div class="videoinfo__shownotes">
           <%= to_markdown(@video.show_note.content).html_safe %>
         </div>
+      <% else %>
+        <p class="videoinfo__nonotes">
+          <strong>Este vídeo lamentablemente todavía no tiene notas de episodio.</strong>
+          Todavía quedan algunos vídeos en este sitio web que no tienen artículos
+          de texto por si te gusta más leer que ver vídeos, y parece que esta
+          página es una de ellas.
+
+          <% if @video.transcription.present? %>
+          Hay una transcripción del audio disponible
+          para ayudarte a llegar a este vídeo que puede que te ayude.
+          <% end %>
+        </p>
+      <% end %>
+      <% if @video.transcription.present? %>
+        <details class="videoinfo__transcription">
+          <summary>Desplegar transcripción del episodio</summary>
+          <%= to_markdown(@video.transcription.content).html_safe %>
+        </details>
       <% end %>
     </div>
     <aside class="videoinfo__links">

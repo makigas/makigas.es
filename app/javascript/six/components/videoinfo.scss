@@ -90,6 +90,30 @@
     }
   }
 
+  &__nonotes {
+    background: #d9e2f5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  &__transcription {
+    font-size: 0.95rem;
+
+    summary {
+      cursor: default;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      margin-left: 18px;
+      margin-bottom: 1rem;
+    }
+  }
+
   &__tag {
     background: var(--tag-background);
     color: var(--tag-foreground);
