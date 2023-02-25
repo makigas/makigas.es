@@ -70,7 +70,8 @@
           <%= to_markdown(@video.show_note.content).html_safe %>
         </div>
       <% else %>
-        <p class="videoinfo__nonotes">
+        <div class="videoinfo__nonotes">
+          <p>
           <strong>Este vídeo lamentablemente todavía no tiene notas de episodio.</strong>
           Todavía quedan algunos vídeos en este sitio web que no tienen artículos
           de texto por si te gusta más leer que ver vídeos, y parece que esta
@@ -80,7 +81,14 @@
           Hay una transcripción del audio disponible
           para ayudarte a llegar a este vídeo que puede que te ayude.
           <% end %>
-        </p>
+          </p>
+          <p class="videoinfo__nonotes__question">
+          <strong>¡Ayúdame a saber qué es prioritario y qué no!</strong>
+          ¿Te hubiese ayudado encontrar un artículo de texto en esta página junto al vídeo?
+          <button class="btn videoinfo__nonotes__btn" id="notes-survey-yes">Sí</button>
+          <button class="btn videoinfo__nonotes__btn" id="notes-survey-no">No</button>
+          </p>
+        </div>
       <% end %>
       <% if @video.transcription.present? %>
         <details class="videoinfo__transcription">

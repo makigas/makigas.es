@@ -96,6 +96,12 @@
     border-radius: 8px;
     font-size: 0.95rem;
     line-height: 1.5;
+    margin-bottom: 1rem;
+
+    &__btn {
+      font-size: 0.9em;
+      padding: 0.2rem 1rem;
+    }
   }
 
   &__transcription {

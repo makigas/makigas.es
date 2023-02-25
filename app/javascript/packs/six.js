@@ -6,6 +6,7 @@ import "../six/components/navbar";
 import "../six/components/videoexplorer";
 import "../six/components/videotoc";
 import "../six/events";
+import "../six/notespoll";
 
 import "../six/layout/colors.scss";
 import "../six/layout/highlight.scss";
