@@ -75,7 +75,7 @@ GEM
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.714.0)
+    aws-partitions (1.715.0)
     aws-sdk-core (3.170.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -539,7 +539,7 @@ DEPENDENCIES
   listen (~> 3.8.0)
   lookbook (~> 1.5.3)
   meilisearch-rails (~> 0.8.0)
-  nokogiri (~> 1.14.0.rc1)
+  nokogiri (~> 1.14.2)
   overcommit (~> 0.60.0)
   pg (~> 1.4.3)
   puma (~> 6.1.0)
@@ -575,4 +575,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.3
+   2.4.7
