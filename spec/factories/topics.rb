@@ -10,7 +10,7 @@
 #  slug                   :string           not null
 #  thumbnail_content_type :string
 #  thumbnail_file_name    :string
-#  thumbnail_file_size    :bigint
+#  thumbnail_file_size    :integer
 #  thumbnail_updated_at   :datetime
 #  title                  :string           not null
 #  created_at             :datetime         not null

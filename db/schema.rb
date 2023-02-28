@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
     t.string "url"
     t.string "photo_file_name", null: false
     t.string "photo_content_type", null: false
-    t.bigint "photo_file_size", null: false
+    t.integer "photo_file_size", null: false
     t.datetime "photo_updated_at", precision: nil, null: false
   end
 
@@ -101,20 +101,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
     t.integer "topic_id"
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at", precision: nil
     t.string "card_file_name"
     t.string "card_content_type"
-    t.bigint "card_file_size"
-    t.datetime "card_updated_at"
+    t.integer "card_file_size"
+    t.datetime "card_updated_at", precision: nil
     t.string "forum_url"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
-    t.index ["topic_id"], name: "index_playlists_on_topic_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|
@@ -125,8 +119,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
+    t.integer "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at", precision: nil
     t.string "color"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
