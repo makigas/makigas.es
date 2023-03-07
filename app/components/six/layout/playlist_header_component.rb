@@ -12,11 +12,11 @@ module Six
         duration = helpers.running_time total_seconds, long: true
         counter = duration.split(':').take(2).join(':')
         word = if total_seconds >= 3600
-                 "horas"
+                 'horas'
                elsif total_seconds >= 60
-                 "minutos"
+                 'minutos'
                else
-                 "segundos"
+                 'segundos'
                end
         "#{counter} #{word}"
       end
