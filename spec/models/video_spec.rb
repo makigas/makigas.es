@@ -263,7 +263,7 @@ RSpec.describe Video do
     end
 
     it 'includes videos in early access' do
-      expect(described_class.early_access).to match_array [early]
+      expect(described_class.early_access).to contain_exactly(early)
     end
 
     it 'excludes videos that are already published' do

@@ -12,8 +12,8 @@ gem 'bootsnap', '~> 1.16.0'
 gem 'jbuilder', '~> 2.11'
 gem 'jsbundling-rails'
 gem 'nokogiri', '~> 1.14.2'
-gem 'pg', '~> 1.4.3'
-gem 'puma', '~> 6.1.0'
+gem 'pg', '~> 1.4.6'
+gem 'puma', '~> 6.1.1'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.3'
 gem 'rails-i18n', '~> 7.0.0'
@@ -71,10 +71,10 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.60.0', require: false
-  gem 'rubocop', '~> 1.45.1', require: false
-  gem 'rubocop-rails', '~> 2.17.4', require: false
+  gem 'rubocop', '~> 1.48.0', require: false
+  gem 'rubocop-rails', '~> 2.18.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.18.1', require: false
+  gem 'rubocop-rspec', '~> 2.19.0', require: false
 end
 
 # Test tools that must be available in development mode
