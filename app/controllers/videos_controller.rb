@@ -13,6 +13,8 @@ class VideosController < ApplicationController
     @playlist = Playlist.friendly.find(params[:playlist_id])
     @video = @playlist.videos.friendly.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @video.visible?
+
+    redirect_to playlist_video_path(@video, playlist_id: @video.playlist) unless canonical_params?
   end
 
   def find_by_id
@@ -35,5 +37,9 @@ class VideosController < ApplicationController
 
   def filter_params
     params.permit(:q, :length, :tag, topic: [])
+  end
+
+  def canonical_params?
+    params[:playlist_id] == @playlist.slug && params[:id] == @video.slug
   end
 end
