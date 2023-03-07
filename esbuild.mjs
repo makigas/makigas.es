@@ -1,10 +1,10 @@
-const { sassPlugin } = require("esbuild-sass-plugin");
+import * as esbuild from "esbuild";
+import { sassPlugin } from "esbuild-sass-plugin";
 
-require("esbuild").build({
+const options = {
   entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
   bundle: true,
   sourcemap: true,
-  watch: process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1,
   logLevel: "info",
   outdir: "app/assets/builds",
   target: ["firefox57"],
@@ -18,4 +18,11 @@ require("esbuild").build({
     ".ttf": "file",
   },
   plugins: [sassPlugin()],
-});
+};
+
+if (process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1) {
+  const ctx = await esbuild.context(options);
+  await ctx.watch();
+} else {
+  await esbuild.build(options);
+}
