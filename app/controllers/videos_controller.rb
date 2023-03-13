@@ -14,7 +14,7 @@ class VideosController < ApplicationController
     @video = @playlist.videos.friendly.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @video.visible?
 
-    redirect_to playlist_video_path(@video, playlist_id: @video.playlist) unless canonical_params?
+    redirect_to [@video.playlist, @video], status: :moved_permanently unless canonical_params?
   end
 
   def find_by_id

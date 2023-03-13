@@ -18,12 +18,14 @@ RSpec.describe 'Videos' do
     describe 'when the internal ID is used for the video access' do
       before { get "/series/#{video.playlist.slug}/#{video.id}" }
 
+      it { is_expected.to have_http_status(301) }
       it { is_expected.to redirect_to(canonical) }
     end
 
     describe 'when the internal ID is used for the playlist access' do
       before { get "/series/#{video.playlist.id}/#{video.slug}" }
 
+      it { is_expected.to have_http_status(301) }
       it { is_expected.to redirect_to(canonical) }
     end
   end
