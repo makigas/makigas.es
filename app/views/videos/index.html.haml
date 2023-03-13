@@ -2,6 +2,8 @@
 - content_for :description, t('.meta.description')
 - content_for :hero, capture { content_tag(:h1) { t('.title') } }
 - content_for :canonical, videos_url
+- content_for :header do
+  %meta{name: :robots, content: :noindex}
 
 .videoexplorer
   = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do
