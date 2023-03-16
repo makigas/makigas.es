@@ -18,7 +18,7 @@ RSpec.describe 'Playlists' do
     describe 'when the playlist is accessed by the internal ID' do
       before { get "/series/#{playlist.id}" }
 
-      it { is_expected.to have_http_status(301) }
+      it { is_expected.to have_http_status(:moved_permanently) }
       it { is_expected.to redirect_to(canonical) }
     end
   end
