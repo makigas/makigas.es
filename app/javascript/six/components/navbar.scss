@@ -75,6 +75,39 @@ $navbar-size: 40px;
     }
   }
 
+  &__socials {
+    text-align: right;
+    grid-area: socials;
+    padding-top: 5px;
+    position: relative;
+    display: none;
+
+    a {
+      display: inline-block;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border-radius: 100%;
+      width: 2.1rem;
+      height: 2.1rem;
+    }
+
+    a.telegram:hover { background-color: #0088cc; }
+    a.youtube:hover { background-color: #e93223; }
+    a.discord:hover { background-color: #5865F2; }
+    a.twitch:hover { background-color: #9146FF; }
+
+    svg {
+      width: 1.5rem;
+      padding: 0.3rem;
+      height: 1.5rem;
+    }
+
+    svg path {
+      fill: currentColor;
+    }
+  }
+
   &__stoggle {
     grid-area: stoggle;
     justify-self: end;
@@ -184,7 +217,7 @@ $navbar-size: 40px;
   @include desktop-layout {
     &__grid {
       grid-template-columns: auto auto 1fr;
-      grid-template-areas: "logo explore search";
+      grid-template-areas: "logo explore search socials";
     }
 
     &__mtoggle {
@@ -193,6 +226,11 @@ $navbar-size: 40px;
 
     &__stoggle {
       display: none;
+    }
+
+    &__socials {
+      display: flex;
+      gap: 10px;
     }
 
     &__search {
