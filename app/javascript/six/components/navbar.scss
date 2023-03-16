@@ -92,10 +92,18 @@ $navbar-size: 40px;
       height: 2.1rem;
     }
 
-    a.telegram:hover { background-color: #0088cc; }
-    a.youtube:hover { background-color: #e93223; }
-    a.discord:hover { background-color: #5865F2; }
-    a.twitch:hover { background-color: #9146FF; }
+    a.telegram:hover {
+      background-color: #0088cc;
+    }
+    a.youtube:hover {
+      background-color: #e93223;
+    }
+    a.discord:hover {
+      background-color: #5865f2;
+    }
+    a.twitch:hover {
+      background-color: #9146ff;
+    }
 
     svg {
       width: 1.5rem;
