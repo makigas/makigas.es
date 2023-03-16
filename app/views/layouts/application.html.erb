@@ -10,6 +10,7 @@
     <% end %>
   </head>
   <body>
+    <%= render Six::Utils::UserbarComponent.new(warden:) if warden.user.present? %>
     <%= render Six::Layout::SupportUkraineComponent.new if ENV['USE_SUPPORT_UA'].present? %>
     <% if content_for?(:navbar) %>
       <%= content_for(:navbar) %>

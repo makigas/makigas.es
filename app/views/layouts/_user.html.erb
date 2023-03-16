@@ -1,0 +1,5 @@
+<div class="userbar">
+  <%= render Six::Base::WrapperComponent.new do %>
+    <p class="userbar__content"><%= warden.user %></p>
+  <% end %>
+</div>

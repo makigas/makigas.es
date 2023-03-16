@@ -1,0 +1,11 @@
+<div class="userbar">
+  <%= render Six::Base::WrapperComponent.new do %>
+    <%= content_tag(:p, class: 'userbar__route', title: request.params.to_s) do %>
+      Route: <%= params[:controller] %>#<%= params[:action] %>
+    <% end %>
+    <p>
+      <strong><%= user.email %></strong> &bull;
+      <%= link_to 'Panel de control', root_url(subdomain: :dashboard) %>
+    </p>
+  <% end %>
+</div>

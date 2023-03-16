@@ -1,9 +1,9 @@
-<% if Rails.application.secrets.plausible_domain %>
-  <% if ENV["PLAUSIBLE_PROXY"].present? %>
-    <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="/js/plausible.js"></script>
-  <% else %>
-    <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="https://plausible.io/js/plausible.js"></script>
-  <% end %>
+<% if warden.user.present? %>
+  <!-- Plausible not loaded: session -->
+<% elsif Rails.application.secrets.plausible_domain.blank? %>
+  <!-- Plausible not loaded: missing domain -->
+<% elsif ENV["PLAUSIBLE_PROXY"].present? %>
+  <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="/js/plausible.js"></script>
 <% else %>
-  <!-- Plausible is not loaded -->
+  <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="https://plausible.io/js/plausible.js"></script>
 <% end %>
