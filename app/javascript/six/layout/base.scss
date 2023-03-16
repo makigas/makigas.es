@@ -208,3 +208,32 @@ body {
     }
   }
 }
+
+.userbar {
+  font-size: 0.9rem;
+  text-align: right;
+  background-color: black;
+  color: white;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  p {
+    margin: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  &__route {
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+
+  a,
+  strong {
+    color: white;
+  }
+}
