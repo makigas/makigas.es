@@ -15,7 +15,7 @@ gem 'nokogiri', '~> 1.14.2'
 gem 'pg', '~> 1.4.6'
 gem 'puma', '~> 6.1.1'
 gem 'rack-cors'
-gem 'rails', '~> 7.0.3'
+gem 'rails', '~> 7.0.4.2'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
@@ -71,7 +71,7 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.60.0', require: false
-  gem 'rubocop', '~> 1.48.0', require: false
+  gem 'rubocop', '~> 1.48.1', require: false
   gem 'rubocop-rails', '~> 2.18.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.19.0', require: false
