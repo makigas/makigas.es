@@ -4,26 +4,28 @@
 #
 # Table name: videos
 #
-#  id           :integer          not null, primary key
-#  description  :text             not null
-#  duration     :integer          not null
-#  early_access :boolean          default(FALSE), not null
-#  position     :integer          not null
-#  published_at :datetime         not null
-#  slug         :string           not null
-#  tags         :string           default([]), is an Array
-#  title        :string           not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  playlist_id  :integer          not null
-#  twitch_id    :string
-#  youtube_id   :string           not null
+#  id               :integer          not null, primary key
+#  description      :text             not null
+#  duration         :integer          not null
+#  early_access     :boolean          default(FALSE), not null
+#  old_playlist_ids :integer          default([]), not null, is an Array
+#  position         :integer          not null
+#  published_at     :datetime         not null
+#  slug             :string           not null
+#  tags             :string           default([]), is an Array
+#  title            :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  playlist_id      :integer          not null
+#  twitch_id        :string
+#  youtube_id       :string           not null
 #
 # Indexes
 #
-#  index_videos_on_early_access  (early_access)
-#  index_videos_on_slug          (slug)
-#  index_videos_on_youtube_id    (youtube_id) UNIQUE
+#  index_videos_on_early_access      (early_access)
+#  index_videos_on_old_playlist_ids  (old_playlist_ids)
+#  index_videos_on_slug              (slug)
+#  index_videos_on_youtube_id        (youtube_id) UNIQUE
 #
 class Video < ApplicationRecord
   extend FriendlyId
@@ -56,7 +58,11 @@ class Video < ApplicationRecord
   acts_as_list scope: :playlist
 
   # Slug. Can be repeated as long as it's on different playlists.
-  friendly_id :title, use: %i[slugged scoped], scope: :playlist
+  friendly_id :title, use: %i[slugged scoped history], scope: :playlist
+
+  # Old playlist ID
+  before_update :track_old_playlist_id, if: :will_save_change_to_playlist_id?
+  scope :filter_by_old_playlist_id, ->(id) { id ? where('old_playlist_ids @> ARRAY[?]::integer[]', id) : self }
 
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where('published_at <= ?', DateTime.now) }
@@ -126,9 +132,11 @@ class Video < ApplicationRecord
     published_at > DateTime.now
   end
 
-  def to_s
-    title
+  def track_old_playlist_id
+    old_playlist_ids << playlist_id_was
   end
+
+  delegate :to_s, to: :title
 
   LENGTH_QUERIES = {
     'short' => 'duration <= 300',

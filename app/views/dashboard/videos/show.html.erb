@@ -20,6 +20,10 @@
     <td><%= @video.description %></td>
   </tr>
   <tr>
+    <td><%= t('.permalink') %></td>
+    <td><%= playlist_video_url(@video, playlist_id: @playlist, subdomain: 'www').then { |url| link_to(url, url, target: :blank) } %></td>
+  </tr>
+  <tr>
     <td><%= t('.youtube_id') %></td>
     <td><%= link_to @video.youtube_id, "https://www.youtube.com/watch?v=#{@video.youtube_id}" %></td>
   </tr>

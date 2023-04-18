@@ -311,6 +311,7 @@ es:
         edit: Editar
         published_at: Fecha de publicación
         playlist: Lista
+        permalink: Enlace permanente
         really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
         show_notes: Notas del episodio
         no_show_notes: (No existen notas del episodio)

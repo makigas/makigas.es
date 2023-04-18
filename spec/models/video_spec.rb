@@ -4,26 +4,28 @@
 #
 # Table name: videos
 #
-#  id           :integer          not null, primary key
-#  description  :text             not null
-#  duration     :integer          not null
-#  early_access :boolean          default(FALSE), not null
-#  position     :integer          not null
-#  published_at :datetime         not null
-#  slug         :string           not null
-#  tags         :string           default([]), is an Array
-#  title        :string           not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  playlist_id  :integer          not null
-#  twitch_id    :string
-#  youtube_id   :string           not null
+#  id               :integer          not null, primary key
+#  description      :text             not null
+#  duration         :integer          not null
+#  early_access     :boolean          default(FALSE), not null
+#  old_playlist_ids :integer          default([]), not null, is an Array
+#  position         :integer          not null
+#  published_at     :datetime         not null
+#  slug             :string           not null
+#  tags             :string           default([]), is an Array
+#  title            :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  playlist_id      :integer          not null
+#  twitch_id        :string
+#  youtube_id       :string           not null
 #
 # Indexes
 #
-#  index_videos_on_early_access  (early_access)
-#  index_videos_on_slug          (slug)
-#  index_videos_on_youtube_id    (youtube_id) UNIQUE
+#  index_videos_on_early_access      (early_access)
+#  index_videos_on_old_playlist_ids  (old_playlist_ids)
+#  index_videos_on_slug              (slug)
+#  index_videos_on_youtube_id        (youtube_id) UNIQUE
 #
 require 'rails_helper'
 
@@ -133,6 +135,50 @@ RSpec.describe Video do
       playlist2 = create(:playlist, title: 'Hello')
       video2 = create(:video, title: 'Sample', playlist: playlist2)
       expect(video1.slug).to eq video2.slug
+    end
+
+    it 'does not change the slug when the title changes' do
+      video = create(:video, title: 'Hello world', youtube_id: '1234', slug: 'hello-world')
+      video.update(title: 'Another title')
+      video.reload
+      expect(video.slug).to eq 'hello-world'
+    end
+
+    it 'allows to change the slug, however' do
+      video = create(:video, title: 'Hello world', youtube_id: '1234', slug: 'hello-world')
+      video.update(title: 'Another title', slug: nil)
+      video.reload
+      expect(video.slug).to eq 'another-title'
+    end
+  end
+
+  describe '#old_playlist_ids' do
+    let(:one_playlist) { create(:playlist) }
+    let(:another_playlist) { create(:playlist) }
+    let(:video) { create(:video, playlist: one_playlist) }
+
+    it 'does not change when the video is created' do
+      expect(video).to have_attributes(old_playlist_ids: [], playlist_id: one_playlist.id)
+    end
+
+    it 'does not change when attributes change' do
+      video.update(title: 'Another title', duration: 150)
+      video.reload
+      expect(video).to have_attributes(old_playlist_ids: [], playlist_id: one_playlist.id)
+    end
+
+    it 'changes when the playlist changes' do
+      video.update(playlist: another_playlist)
+      video.reload
+      expect(video).to have_attributes(old_playlist_ids: [one_playlist.id],
+                                       playlist_id: another_playlist.id)
+    end
+
+    it 'changes when the attributes and playlist change' do
+      video.update(title: 'Another title', duration: 150, playlist: another_playlist)
+      video.reload
+      expect(video).to have_attributes(old_playlist_ids: [one_playlist.id],
+                                       playlist_id: another_playlist.id)
     end
   end
 
@@ -268,6 +314,22 @@ RSpec.describe Video do
 
     it 'excludes videos that are already published' do
       expect(described_class.early_access).not_to include(old_early)
+    end
+  end
+
+  describe 'finder' do
+    it 'allows to search for a video by slug' do
+      video = create(:video, title: 'Hello world')
+      expect(video).to eq described_class.friendly.find('hello-world')
+    end
+
+    it 'allows to search for a video by older slug' do
+      video = create(:video, title: 'Hello world')
+      video.update(title: 'Another title', slug: nil)
+      aggregate_failures do
+        expect(video).to eq described_class.friendly.find('another-title')
+        expect(video).to eq described_class.friendly.find('hello-world')
+      end
     end
   end
 end

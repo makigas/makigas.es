@@ -10,9 +10,8 @@ class VideosController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.friendly.find(params[:playlist_id])
-    @video = @playlist.videos.friendly.find(params[:id])
-    raise ActiveRecord::RecordNotFound unless @video.visible?
+    find_video
+    raise ActiveRecord::RecordNotFound unless @video.present? && @video.visible?
 
     redirect_to [@video.playlist, @video], status: :moved_permanently unless canonical_params?
   end
@@ -30,6 +29,21 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def find_video
+    @playlist = Playlist.friendly.find(params[:playlist_id])
+    @video = @playlist.videos.friendly.find(params[:id], allow_nil: true)
+    find_video_in_old_playlist if @video.blank?
+  end
+
+  # Second chance: the video was not found in this playlist, let's see if the URL points
+  # an old permalink by checking videos that *used* to be in this playlist and test if
+  # any of these videos has or used to have the video slug provided in the permalink.
+  def find_video_in_old_playlist
+    old_videos = Video.filter_by_old_playlist_id(@playlist.id)
+    @video = old_videos.friendly.find(params[:id], allow_nil: true)
+    @playlist = @video.playlist if @video.present?
+  end
 
   def page
     params.fetch(:page, 1)

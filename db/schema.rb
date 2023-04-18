@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_18_101448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
     t.datetime "updated_at", null: false
     t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable"
     t.index ["type"], name: "index_documents_on_type"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -156,7 +167,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_27_221425) do
     t.string "tags", default: [], array: true
     t.string "twitch_id"
     t.boolean "early_access", default: false, null: false
+    t.integer "old_playlist_ids", default: [], null: false, array: true
     t.index ["early_access"], name: "index_videos_on_early_access"
+    t.index ["old_playlist_ids"], name: "index_videos_on_old_playlist_ids"
     t.index ["slug"], name: "index_videos_on_slug"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end
