@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   right: 10px;
-  background: #9146FF;
+  background: #9146ff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
@@ -24,23 +24,22 @@
     color: black;
   }
 
-.live__prompt {
-  margin: 5px;
-  text-align: center;
-  padding: 0;
-  line-height: 1.5;
-  color: white;
-}
+  .live__prompt {
+    margin: 5px;
+    text-align: center;
+    padding: 0;
+    line-height: 1.5;
+    color: white;
+  }
 
-.live__thumbnail {
-  width: 320px;
-  margin: 0;
-  line-height: 1;
-  padding: 0;
-}
+  .live__thumbnail {
+    width: 320px;
+    margin: 0;
+    line-height: 1;
+    padding: 0;
+  }
 
-.btngroup {
-  padding: 10px;
-}
-
+  .btngroup {
+    padding: 10px;
+  }
 }
