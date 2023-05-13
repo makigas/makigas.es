@@ -12,13 +12,13 @@ module Twitch
     end
 
     def stream_title
-      return nil unless stream_information.present?
+      return nil if stream_information.blank?
 
       stream_information['title']
     end
 
     def stream_thumbnail
-      return nil unless stream_information.present?
+      return nil if stream_information.blank?
 
       stream_information['thumbnail_url'].gsub('{width}', '640').gsub('{height}', '360')
     end
@@ -27,7 +27,7 @@ module Twitch
 
     def stream_information
       Rails.cache.fetch('twitch:stream_information', expires_in: 10.minutes) do
-        puts('Fetching stream information!')
+        Rails.logger.debug('Fetching stream information!')
         return [] if channel_name.blank?
 
         client = Twitch::Client.new(Rails.application.secrets.twitch_client_id,
