@@ -1,0 +1,10 @@
+<div class="live">
+  <button class="live__close" title="Hoy no" id="live-not-today">X</button>
+  <h3 class="live__prompt">¡Estoy en directo!</h3>
+  <a href="https://twitch.tv/danirod_" target="_blank">
+    <%= image_tag thumbnail, class: "live__thumbnail" %>
+  </a>
+  <%= render Six::Base::ButtonGroupComponent.new(style: :flex) do |g| %>
+    <%= g.button(href: 'https://twitch.tv/danirod_') { 'Ven a verme' } %>
+  <% end %>
+</div>

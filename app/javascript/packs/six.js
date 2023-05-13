@@ -5,6 +5,7 @@ import "@fontsource/montserrat/700.css";
 import "../six/components/navbar";
 import "../six/components/videoexplorer";
 import "../six/components/videotoc";
+import "../six/components/live";
 import "../six/events";
 import "../six/notespoll";
 
@@ -20,6 +21,7 @@ import "../six/components/explorer.scss";
 import "../six/components/footer.scss";
 import "../six/components/forumcta.scss";
 import "../six/components/jumbo.scss";
+import "../six/components/live.scss";
 import "../six/components/meta.scss";
 import "../six/components/navbar.scss";
 import "../six/components/plhead.scss";
