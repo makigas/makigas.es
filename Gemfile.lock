@@ -417,7 +417,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.1)
+    selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -557,7 +557,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.6.0)
   rubocop-rspec (~> 2.19.0)
   sass-rails (~> 6.0)
-  selenium-webdriver (~> 4.8.1)
+  selenium-webdriver (~> 4.9.1)
   sentry-rails (~> 5.8.0)
   sentry-ruby (~> 5.8.0)
   simple_form
