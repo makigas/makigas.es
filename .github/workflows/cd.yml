@@ -42,5 +42,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          docker-compose --project-directory docker/makigas/makigas pull
-          docker-compose --project-directory docker/makigas/makigas up -d
+          docker compose --project-directory docker/makigas/makigas pull
+          docker compose --project-directory docker/makigas/makigas up -d
