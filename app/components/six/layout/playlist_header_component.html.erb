@@ -4,9 +4,9 @@
         <h1 class="plhead__title"><%= @playlist.title %></h1>
         <p class="plhead__lead"><%= @playlist.description %></p>
         <%= render Six::Utils::MetaGroupComponent.new(classes: 'plhead__metas') do |g| %>
-            <%= g.meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
-            <%= g.meta(icon: 'clock') { duration } %>
-            <%= g.meta(icon: 'dollar-sign') { 'Gratis' } %>
+            <%= g.with_meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
+            <%= g.with_meta(icon: 'clock') { duration } %>
+            <%= g.with_meta(icon: 'dollar-sign') { 'Gratis' } %>
         <% end %>
         </section>
         <figure class="plhead__thumbnail" aria-hidden="true">

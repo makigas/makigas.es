@@ -8,8 +8,8 @@ RSpec.describe Five::Core::MediaCardComponent, type: :component do
       render_inline(described_class.new(href: '/cards/example-card',
                                         thumbnail: '/images/foobar.jpg',
                                         hidef_thumbnail: '/images/foobar@2x.jpg')) do |c|
-        c.title { 'Example' }
-        c.text { 'This is the content' }
+        c.with_title { 'Example' }
+        c.with_text { 'This is the content' }
       end
     end
 

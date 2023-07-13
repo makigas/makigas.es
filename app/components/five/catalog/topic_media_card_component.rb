@@ -16,8 +16,8 @@ module Five
           thumbnail:,
           hidef_thumbnail:
         ) do |c|
-          c.title { title }
-          c.text { description }
+          c.with_title { title }
+          c.with_text { description }
         end
       end
 

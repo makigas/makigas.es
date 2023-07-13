@@ -33,9 +33,9 @@ module Utils
     # @display padding 30px
     def list_of_metas
       render Six::Utils::MetaGroupComponent.new do |group|
-        group.meta(icon: 'list') { '5 vídeos' }
-        group.meta(icon: 'play-circle') { '10 horas' }
-        group.meta(icon: 'dollar-sign') { 'Gratis' }
+        group.with_meta(icon: 'list') { '5 vídeos' }
+        group.with_meta(icon: 'play-circle') { '10 horas' }
+        group.with_meta(icon: 'dollar-sign') { 'Gratis' }
       end
     end
 

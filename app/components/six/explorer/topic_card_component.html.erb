@@ -7,7 +7,7 @@
       <h2 class="topcard__title"><%= @topic.title %></h2>
       <p><%= @topic.description %></p>
       <%= render Six::Utils::MetaGroupComponent.new(classes: 'topcard__metas') do |g| %>
-        <%= g.meta(icon: 'list') { "Un total de #{@topic.playlists.count} listas" } %>
+        <%= g.with_meta(icon: 'list') { "Un total de #{@topic.playlists.count} listas" } %>
       <% end %>
     </div>
   <% end %>

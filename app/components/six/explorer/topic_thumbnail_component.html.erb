@@ -9,11 +9,11 @@
       <figcaption class="topicthumb__text">
         <p class="topicthumb__name"><%= name %></p>
           <%= render Six::Utils::MetaGroupComponent.new(classes: 'topicthumb__data') do |g| %>
-            <%= g.meta(icon: 'list') do %>
+            <%= g.with_meta(icon: 'list') do %>
               <span class="topicthumb__counter"><%= playlists %></span>
               listas
             <% end %>
-            <%= g.meta(icon: 'video') do %>
+            <%= g.with_meta(icon: 'video') do %>
               <span class="topicthumb__counter"><%= videos %></span>
               vídeos
             <% end %>
