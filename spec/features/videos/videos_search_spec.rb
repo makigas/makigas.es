@@ -67,13 +67,13 @@ RSpec.describe 'Videos search' do
   end
 
   describe 'searching by topic' do
-    let!(:video1) do
+    let!(:first_video) do
       create(:video, title: 'First', youtube_id: 'A').tap do |video|
         video.playlist.topic.update(title: 'First Topic', slug: 'first')
       end
     end
 
-    let!(:video2) do
+    let!(:second_video) do
       create(:video, title: 'Second', youtube_id: 'B').tap do |video|
         video.playlist.topic.update(title: 'Second Topic', slug: 'second')
       end
@@ -92,8 +92,8 @@ RSpec.describe 'Videos search' do
 
       aggregate_failures do
         expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(topic: ['first'])))
-        expect(page).to have_link video1.title, href: video_path(video1)
-        expect(page).not_to have_link video2.title, href: video_path(video2)
+        expect(page).to have_link first_video.title, href: video_path(first_video)
+        expect(page).not_to have_link second_video.title, href: video_path(second_video)
       end
     end
   end

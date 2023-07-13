@@ -34,6 +34,6 @@ FactoryBot.define do
     thumbnail { Rack::Test::UploadedFile.new('spec/fixtures/playlist.png', 'image/png') }
     card { Rack::Test::UploadedFile.new('spec/fixtures/card.jpg', 'image/jpeg') }
     slug { title&.parameterize }
-    association :topic, factory: :topic
+    topic factory: %i[topic]
   end
 end

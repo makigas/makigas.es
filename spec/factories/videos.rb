@@ -34,7 +34,7 @@ FactoryBot.define do
     tags { %w[music video] }
     youtube_id { |i| OpenSSL::Digest.hexdigest('SHA1', i.to_s)[0..10] }
     duration { 232 }
-    association :playlist, factory: :playlist
+    playlist factory: %i[playlist]
     published_at { DateTime.now }
     slug { title&.parameterize }
 
