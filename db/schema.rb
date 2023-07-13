@@ -98,7 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_101448) do
     t.string "url"
     t.string "photo_file_name", null: false
     t.string "photo_content_type", null: false
-    t.integer "photo_file_size", null: false
+    t.bigint "photo_file_size", null: false
     t.datetime "photo_updated_at", precision: nil, null: false
   end
 
@@ -112,14 +112,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_101448) do
     t.integer "topic_id"
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at", precision: nil
+    t.bigint "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.string "card_file_name"
     t.string "card_content_type"
-    t.integer "card_file_size"
-    t.datetime "card_updated_at", precision: nil
+    t.bigint "card_file_size"
+    t.datetime "card_updated_at"
     t.string "forum_url"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
+    t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|
@@ -130,8 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_101448) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "thumbnail_file_name"
     t.string "thumbnail_content_type"
-    t.integer "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at", precision: nil
+    t.bigint "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.string "color"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
@@ -163,7 +164,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_101448) do
     t.integer "position", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.datetime "published_at", precision: nil, null: false
+    t.datetime "published_at", null: false
     t.string "tags", default: [], array: true
     t.string "twitch_id"
     t.boolean "early_access", default: false, null: false

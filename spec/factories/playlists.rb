@@ -7,14 +7,14 @@
 #  id                     :integer          not null, primary key
 #  card_content_type      :string
 #  card_file_name         :string
-#  card_file_size         :integer
+#  card_file_size         :bigint
 #  card_updated_at        :datetime
 #  description            :text             not null
 #  forum_url              :string
 #  slug                   :string           not null
 #  thumbnail_content_type :string
 #  thumbnail_file_name    :string
-#  thumbnail_file_size    :integer
+#  thumbnail_file_size    :bigint
 #  thumbnail_updated_at   :datetime
 #  title                  :string           not null
 #  created_at             :datetime         not null
@@ -24,7 +24,8 @@
 #
 # Indexes
 #
-#  index_playlists_on_slug  (slug) UNIQUE
+#  index_playlists_on_slug      (slug) UNIQUE
+#  index_playlists_on_topic_id  (topic_id)
 #
 FactoryBot.define do
   factory :playlist do
