@@ -5,6 +5,6 @@
     <%= image_tag thumbnail, class: "live__thumbnail" %>
   </a>
   <%= render Six::Base::ButtonGroupComponent.new(style: :flex) do |g| %>
-    <%= g.button(href: 'https://twitch.tv/danirod_') { 'Ven a verme' } %>
+    <%= g.with_button(href: 'https://twitch.tv/danirod_') { 'Ven a verme' } %>
   <% end %>
 </div>
