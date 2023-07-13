@@ -75,16 +75,16 @@ jobs:
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop
-# javascript:
-#   name: JavaScript
-#   runs-on: ubuntu-latest
-#   steps:
-#     - uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node-version: "18"
-#     - run: yarn install
-#     - run: yarn lint && yarn fmt:check
+  javascript:
+    name: JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: yarn install
+      - run: yarn lint && yarn fmt:check
   assets:
     name: Asset precompile
     runs-on: ubuntu-latest
