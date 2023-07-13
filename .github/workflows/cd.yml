@@ -1,4 +1,4 @@
-name: CD
+n7ame: CD
 on:
   workflow_run:
     workflows:
@@ -42,5 +42,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          docker-compose --project-directory docker/makigas pull
-          docker-compose --project-directory docker/makigas up -d
+          docker-compose --project-directory docker/makigas/makigas pull
+          docker-compose --project-directory docker/makigas/makigas up -d
