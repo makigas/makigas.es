@@ -10,14 +10,14 @@ volumes:
 
 services:
   database:
-    image: postgres:13-alpine
+    image: postgres:15-alpine
     volumes:
     - 'db:/var/lib/postgresql/data'
     environment:
       POSTGRES_USER: 'makigas'
       POSTGRES_PASSWORD: 'makigas'
   search:
-    image: getmeili/meilisearch:v1.0.1
+    image: getmeili/meilisearch:v1.1.0
     volumes:
     - 'meili:/data.ms'
     environment:
