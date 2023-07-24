@@ -4,7 +4,7 @@ module Six
   module Layout
     class NavbarExplorerComponent < ViewComponent::Base
       def topics
-        Topic.all
+        Topic.where(parent_topic_id: nil)
       end
     end
   end
