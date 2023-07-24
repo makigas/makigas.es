@@ -119,4 +119,31 @@ RSpec.describe Topic do
       end
     end
   end
+
+  describe '#content_updated_at' do
+    let(:topic) { create(:topic) }
+    let(:playlist) { create(:playlist, topic:) }
+
+    describe 'when the topic is more recent than the playlist' do
+      before do
+        topic.update(updated_at: 2.days.ago)
+        playlist.update(updated_at: 3.days.ago)
+      end
+
+      it 'matches the topic updated at' do
+        expect(topic.content_updated_at).to eq(topic.updated_at)
+      end
+    end
+
+    describe 'when the playlist is more recent than the topic' do
+      before do
+        topic.update(updated_at: 3.days.ago)
+        playlist.update(updated_at: 2.days.ago)
+      end
+
+      it 'matches the playlist updated at' do
+        expect(topic.content_updated_at).to eq(playlist.updated_at)
+      end
+    end
+  end
 end

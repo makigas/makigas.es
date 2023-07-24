@@ -9,18 +9,18 @@ SitemapGenerator::Sitemap.create do
   add videos_path, priority: 0.9, changefreq: 'daily'
 
   # Playlists
-  add playlists_path, priority: 0.9, changefreq: 'daily'
+  add playlists_path, priority: 0.9, changefreq: 'weekly'
   Playlist.find_each do |playlist|
-    add playlist_path(playlist), priority: 0.8, changefreq: 'weekly'
+    add playlist_path(playlist), priority: 0.8, changefreq: 'weekly', lastmod: playlist.content_updated_at
     playlist.videos.visible.find_each do |video|
-      add playlist_video_path(video, playlist_id: playlist), priority: 0.8
+      add playlist_video_path(video, playlist_id: playlist), priority: 0.8, lastmod: video.updated_at
     end
   end
 
   # Topics
-  add topics_path, priority: 0.8, changefreq: 'daily'
+  add topics_path, priority: 0.8, changefreq: 'weekly'
   Topic.find_each do |topic|
-    add topic_path(topic), priority: 0.7, changefreq: 'weekly'
+    add topic_path(topic), priority: 0.7, changefreq: 'weekly', lastmod: topic.content_updated_at
   end
 
   add terms_path, priority: 0.5

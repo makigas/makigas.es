@@ -54,6 +54,10 @@ class Topic < ApplicationRecord
     my_playlists.or(child_playlists)
   end
 
+  def content_updated_at
+    [updated_at, playlists.pluck(:updated_at).max].compact.flatten.max
+  end
+
   def to_s
     title
   end

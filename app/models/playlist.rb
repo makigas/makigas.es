@@ -74,6 +74,10 @@ class Playlist < ApplicationRecord
     title
   end
 
+  def content_updated_at
+    [updated_at, videos.pluck(:updated_at).max].compact.flatten.max
+  end
+
   # Returns a HATEOAS-friendly representation of the thumbnails.
   def icons
     %i[hidef default thumbnail].map do |style|
@@ -99,7 +103,7 @@ class Playlist < ApplicationRecord
       description:,
       abstract: description,
       dateCreated: created_at.iso8601,
-      dateModified: updated_at.iso8601,
+      dateModified: content_updated_at.iso8601,
       datePublished: videos.first&.published_at&.iso8601,
       keywords: videos.pluck(:tags).flatten.uniq,
       thumbnailUrl: thumbnail.url(:thumb),

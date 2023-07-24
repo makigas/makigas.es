@@ -136,4 +136,31 @@ RSpec.describe Playlist do
       end
     end
   end
+
+  describe '#content_updated_at' do
+    let(:playlist) { create(:playlist) }
+    let(:video) { create(:video, playlist:) }
+
+    describe 'when the playlist is more recent than the content' do
+      before do
+        playlist.update(updated_at: 2.days.ago)
+        video.update(updated_at: 3.days.ago)
+      end
+
+      it 'matches the playlist updated at' do
+        expect(playlist.content_updated_at).to eq(playlist.updated_at)
+      end
+    end
+
+    describe 'when the content is more recent than the playlist' do
+      before do
+        playlist.update(updated_at: 3.days.ago)
+        video.update(updated_at: 2.days.ago)
+      end
+
+      it 'matches the content updated at' do
+        expect(playlist.content_updated_at).to eq(video.updated_at)
+      end
+    end
+  end
 end
