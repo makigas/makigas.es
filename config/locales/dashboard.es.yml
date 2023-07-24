@@ -226,6 +226,8 @@ es:
         topics: Temas
         thumbnail: Miniatura
         view_topic: Ver Tema
+        parent_topic: Tema superior
+        none: (Ninguno)
       update:
         updated: Tema actualizado correctamente.
     users:

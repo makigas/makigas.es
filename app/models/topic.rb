@@ -15,15 +15,21 @@
 #  title                  :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  parent_topic_id        :bigint
 #
 # Indexes
 #
-#  index_topics_on_slug  (slug) UNIQUE
+#  index_topics_on_parent_topic_id  (parent_topic_id)
+#  index_topics_on_slug             (slug) UNIQUE
 #
 class Topic < ApplicationRecord
   extend FriendlyId
 
   friendly_id :title, use: :slugged
+
+  belongs_to :parent_topic, class_name: 'Topic', optional: true
+  has_many :child_topics, class_name: 'Topic', inverse_of: :parent_topic, foreign_key: :parent_topic_id,
+                          dependent: :nullify
 
   has_attached_file :thumbnail, styles: {
     thumbnail: '100x100>',
@@ -40,6 +46,13 @@ class Topic < ApplicationRecord
 
   # Playlists can survive without a topic, so on delete set the topic to null.
   has_many :playlists, dependent: :nullify
+
+  def playlists_with_children
+    my_playlists = Playlist.where(topic_id: id)
+    child_topics = Topic.where(parent_topic_id: id)
+    child_playlists = Playlist.where(topic_id: child_topics)
+    my_playlists.or(child_playlists)
+  end
 
   def to_s
     title

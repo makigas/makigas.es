@@ -24,6 +24,10 @@
     <td><%= image_tag @topic.thumbnail.url(:small) %></td>
   </tr>
   <tr>
+    <td><%= t('.parent_topic') %></td>
+    <td><%= @topic.parent_topic.try(:title) || t('.none') %></td>
+  </tr>
+  <tr>
     <td><%= t('.color') %></td>
     <td><%= content_tag(:span, @topic.color, class: 'label', style: "background-color: #{@topic.color}") %></td>
   </tr>

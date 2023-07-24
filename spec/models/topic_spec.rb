@@ -15,10 +15,12 @@
 #  title                  :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  parent_topic_id        :bigint
 #
 # Indexes
 #
-#  index_topics_on_slug  (slug) UNIQUE
+#  index_topics_on_parent_topic_id  (parent_topic_id)
+#  index_topics_on_slug             (slug) UNIQUE
 #
 require 'rails_helper'
 
@@ -67,6 +69,19 @@ RSpec.describe Topic do
     end
   end
 
+  describe 'parent topic' do
+    let(:parent) { create(:topic, title: 'Parent topic') }
+
+    it 'may belong to another topic' do
+      topic = create(:topic, title: 'Child topic', parent_topic: parent)
+      aggregate_failures do
+        expect(topic.persisted?).to be true
+        expect(topic.parent_topic).to eq parent
+        expect(parent.child_topics).to contain_exactly(topic)
+      end
+    end
+  end
+
   describe 'playlists association' do
     it 'has playlists' do
       topic = create(:topic)
@@ -80,6 +95,28 @@ RSpec.describe Topic do
       topic.destroy
       playlist.reload
       expect(playlist.topic).to be_nil
+    end
+  end
+
+  describe 'playlists_with_children association' do
+    describe 'when there are no child playlists' do
+      let(:playlist) { create(:playlist) }
+      let(:topic) { create(:topic, playlists: [playlist]) }
+
+      it 'returns the playlists in this topic' do
+        expect(topic.playlists_with_children).to contain_exactly(playlist)
+      end
+    end
+
+    describe 'when there are child playlists' do
+      let(:child_playlist) { create(:playlist) }
+      let(:child_topic) { create(:topic, playlists: [child_playlist]) }
+      let(:playlist) { create(:playlist) }
+      let(:topic) { create(:topic, playlists: [playlist], child_topics: [child_topic]) }
+
+      it 'includes the children playlist too' do
+        expect(topic.playlists_with_children).to contain_exactly(playlist, child_playlist)
+      end
     end
   end
 end

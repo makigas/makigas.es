@@ -15,10 +15,12 @@
 #  title                  :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  parent_topic_id        :bigint
 #
 # Indexes
 #
-#  index_topics_on_slug  (slug) UNIQUE
+#  index_topics_on_parent_topic_id  (parent_topic_id)
+#  index_topics_on_slug             (slug) UNIQUE
 #
 FactoryBot.define do
   factory :topic do
