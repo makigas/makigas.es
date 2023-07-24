@@ -6,6 +6,7 @@
       <%= form.color_field :color %>
     </p>
   <% end %>
+  <%= form.association :parent_topic, include_blank: :translate %>
   <%= form.input :thumbnail, as: :file %>
   <%= form.submit class: 'btn btn-success' %>
 <% end %>

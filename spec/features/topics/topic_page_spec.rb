@@ -23,6 +23,29 @@ RSpec.describe 'Topic page' do
     end
   end
 
+  context 'when the topic has child topics' do
+    let(:child_playlist) { create(:playlist).tap { |p| create(:video, playlist: p) } }
+    let(:child_topic) { create(:topic, playlists: [child_playlist]) }
+    let(:parent_playlist) { create(:playlist).tap { |p| create(:video, playlist: p) } }
+    let(:parent_topic) { create(:topic, playlists: [parent_playlist], child_topics: [child_topic]) }
+
+    it 'includes the child playlists in the parent page' do
+      visit topic_path(parent_topic)
+      aggregate_failures do
+        expect(page).to have_text parent_playlist.title
+        expect(page).to have_text child_playlist.title
+      end
+    end
+
+    it 'does not not include the parent playlists in the child page' do
+      visit topic_path(child_topic)
+      aggregate_failures do
+        expect(page).not_to have_text parent_playlist.title
+        expect(page).to have_text child_playlist.title
+      end
+    end
+  end
+
   context 'when the playlist is empty' do
     let(:playlist) { create(:playlist, videos: []) }
     let(:topic) { create(:topic, playlists: [playlist]) }

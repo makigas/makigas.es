@@ -30,4 +30,4 @@
 <% content_for(:hero) do %>
   <h1><%= @topic.title %></h1>
 <% end %>
-<%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists.with_public_videos) %>
+<%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists_with_children.with_public_videos) %>

@@ -36,6 +36,7 @@ es:
         thumbnail: Miniatura
         slug: URL
         title: Título
+        parent_topic: Tema superior
       transcription:
         language: Idioma
         content: Contenido
@@ -62,3 +63,5 @@ es:
     include_blanks:
       playlist:
         topic: (Sin tema concreto)
+      topic:
+        parent_topic: (Sin tema superior)
