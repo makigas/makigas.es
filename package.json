@@ -27,7 +27,7 @@
     "rimraf": "^5.0.1",
     "sass": "^1.63.3",
     "string-width-cjs": "^5.1.1",
-    "stylelint": "^15.10.1",
+    "stylelint": "^15.10.2",
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-prettier": "^4.0.0",
     "stylelint-scss": "^5.0.1"
