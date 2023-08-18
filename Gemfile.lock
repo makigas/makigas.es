@@ -305,7 +305,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.3)
-    puma (6.3.0)
+    puma (6.3.1)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
@@ -558,7 +558,7 @@ DEPENDENCIES
   nokogiri (~> 1.15.3)
   overcommit (~> 0.60.0)
   pg (~> 1.5.3)
-  puma (~> 6.3.0)
+  puma (~> 6.3.1)
   rack-cors
   rails (~> 7.0.6)
   rails-i18n (~> 7.0.7)
