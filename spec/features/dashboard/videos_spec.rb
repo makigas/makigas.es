@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard videos', js: true do
+RSpec.describe 'Dashboard videos', :js do
   before do
     Capybara.app_host = 'http://dashboard.lvh.me:9080'
     Capybara.server_port = 9080
@@ -55,7 +55,7 @@ RSpec.describe 'Dashboard videos', js: true do
       end
     end
 
-    it 'user can create multiple videos in a row', js: true do
+    it 'user can create multiple videos in a row', :js do
       visit dashboard_videos_path
       click_link 'Nuevo Vídeo'
       fill_in 'Título', with: 'My video title'

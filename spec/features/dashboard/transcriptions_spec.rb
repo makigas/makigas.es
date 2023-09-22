@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Dashboard transcriptions', js: true do
+RSpec.describe 'Dashboard transcriptions', :js do
   let(:user) { create(:user) }
   let(:playlist) { create(:playlist) }
   let(:video) { create(:video, playlist:) }

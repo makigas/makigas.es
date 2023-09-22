@@ -9,8 +9,8 @@ RSpec.describe Five::Catalog::TopicMediaCardComponent, type: :component do
     let(:topic) { create(:topic) }
     let(:selector_thumb) { "img[src='#{topic.thumbnail.url(:small)}'][srcset~='#{topic.thumbnail.url(:default)} 2x']" }
 
-    it { is_expected.to have_selector 'h4', text: topic.title }
-    it { is_expected.to have_selector 'p', text: topic.description }
+    it { is_expected.to have_css 'h4', text: topic.title }
+    it { is_expected.to have_css 'p', text: topic.description }
     it { is_expected.to have_selector "a[href*='#{topic.slug}']" }
     it { is_expected.to have_selector selector_thumb }
   end

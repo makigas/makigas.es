@@ -7,9 +7,7 @@ RSpec.describe VideoSearch, type: :class do
     let(:videos) { class_double(Video).as_stubbed_const }
 
     before do
-      allow(videos).to receive(:visible).and_return(videos)
-      allow(videos).to receive(:includes).and_return(videos)
-      allow(videos).to receive(:search).and_return([:outcome])
+      allow(videos).to receive_messages(visible: videos, includes: videos, search: [:outcome])
     end
 
     it 'returns the outcome of the search' do
