@@ -45,7 +45,6 @@ gem 'simple_form'
 gem 'sitemap_generator', '~> 6.3.0'
 gem 'view_component', '~> 3.6.0'
 gem 'view_component-contrib'
-gem 'whenever'
 
 # Ops
 gem 'sentry-rails', '~> 5.11.0'
