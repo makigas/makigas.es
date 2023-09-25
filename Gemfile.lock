@@ -154,7 +154,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    ffi (1.15.5)
+    ffi (1.16.1)
     formatador (1.1.0)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
@@ -240,7 +240,7 @@ GEM
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lookbook (2.0.5)
+    lookbook (2.1.1)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -409,7 +409,7 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.24.0)
+    rubocop-rspec (2.24.1)
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
@@ -553,7 +553,7 @@ DEPENDENCIES
   kaminari
   kt-paperclip (~> 7.2.0)
   listen (~> 3.8.0)
-  lookbook (~> 2.0.5)
+  lookbook (~> 2.1.1)
   meilisearch-rails (~> 0.10.1)
   nokogiri (~> 1.15.3)
   overcommit (~> 0.60.0)
