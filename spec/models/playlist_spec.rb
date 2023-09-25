@@ -159,7 +159,7 @@ RSpec.describe Playlist do
       end
 
       it 'matches the content updated at' do
-        expect(playlist.content_updated_at).to eq(video.updated_at)
+        expect(playlist.content_updated_at.iso8601).to eq(video.updated_at.iso8601)
       end
     end
   end

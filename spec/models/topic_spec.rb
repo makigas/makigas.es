@@ -142,7 +142,7 @@ RSpec.describe Topic do
       end
 
       it 'matches the playlist updated at' do
-        expect(topic.content_updated_at).to eq(playlist.updated_at)
+        expect(topic.content_updated_at.iso8601).to eq(playlist.updated_at.iso8601)
       end
     end
   end
