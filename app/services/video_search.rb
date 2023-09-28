@@ -8,7 +8,9 @@ class VideoSearch
   end
 
   def videos
-    Video.visible.includes(playlist: :topic).search(@query, { filter: search_filters, hitsPerPage: 10, page: @page })
+    Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do
+      search_request.save
+    end
   rescue MeiliSearch::CommunicationError => e
     search_request.update(error: e.message)
     raise Makigas::SearchError, e.message
@@ -18,6 +20,10 @@ class VideoSearch
 
   attr_reader :filters
 
+  def meilisearch_filters
+    { filter: search_filters, hitsPerPage: 10, page: @page }
+  end
+
   LENGTH_QUERIES = {
     'short' => ['duration <= 300'],
     'medium' => ['duration > 300', 'duration <= 900'],
@@ -26,7 +32,7 @@ class VideoSearch
   }.freeze
 
   def search_request
-    @search_request ||= SearchRequest.create(query: @query, page: @page, filters: @filters)
+    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters)
   end
 
   def search_filters
