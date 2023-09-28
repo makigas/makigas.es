@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_160243) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_082907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_160243) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -121,6 +121,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_160243) do
     t.string "forum_url"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"
+  end
+
+  create_table "search_requests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "query"
+    t.integer "page", default: 1
+    t.jsonb "filters", default: "{}", null: false
+    t.string "error"
+    t.index ["filters"], name: "index_search_requests_on_filters", using: :gin
+    t.index ["query"], name: "index_search_requests_on_query"
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|

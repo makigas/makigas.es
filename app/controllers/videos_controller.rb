@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class VideosController < ApplicationController
+  rescue_from Makigas::SearchError, with: :search_error
+
+  def search_error
+    render :search_error, status: :service_unavailable
+  end
+
   def index
     @videos = if filter_params.present?
                 VideoSearch.new(params[:q], filters: filter_params, page:).videos

@@ -159,6 +159,11 @@ es:
         long_videos: Largos (>15 min)
         by_topic: Por tema
         apply_filters: Aplicar filtros
+    search_error:
+      meta:
+        title: Buscar vídeos
+        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
+      title: Buscar vídeos
     show:
       this_playlist: Lista de reproducción
       this_topic: Este tema

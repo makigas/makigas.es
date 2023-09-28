@@ -1,0 +1,29 @@
+- content_for :title, "#{t('.meta.title')} - makigas"
+- content_for :description, t('.meta.description')
+- content_for :hero, capture { content_tag(:h1) { t('.title') } }
+- content_for :canonical, videos_url
+- content_for :header do
+  %meta{name: :robots, content: :noindex}
+
+.videoexplorer
+  = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do
+    = render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...')
+    .videoexplorer__sidebar
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por duración' }
+        - box.with_pill(url: derive_search_url(length: nil), icon_right: params[:length] && 'x') { 'Cualquier duración' }
+        - video_search_duration_filters.each do |label, filter|
+          - box.with_pill(url: derive_search_url(length: filter), active: params[:length] == filter).with_content(label)
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por categoría' }
+        - box.with_pill(url: derive_search_url(topic: nil), icon_right: params[:topic] && 'x') { 'Cualquier tema' }
+        - Topic.all.find_each do |topic|
+          - box.with_pill(url: derive_search_url(topic: [topic.slug]), active: params[:topic].present? && params[:topic].include?(topic.slug)).with_content(topic.title)
+      = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Filtrar por etiqueta (BETA)' }
+        - box.with_pill(url: derive_search_url(tag: nil), icon_right: params[:tag] && 'x') { 'Cualquier vídeo' }
+        - Video.tags.sort.each do |tag|
+          - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
+    .videoexplorer__list
+      = render Six::Search::CurrentFiltersComponent.new(filters: params)
+      = render Six::Search::SearchErrorComponent.new(filters: params)
