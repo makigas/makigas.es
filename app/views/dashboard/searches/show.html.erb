@@ -11,7 +11,7 @@
     <tr>
       <th>Búsqueda</th>
       <th>Filtros</th>
-      <th>Error</th>
+      <th colspan="2">Error</th>
       <th>Fecha</th>
     </tr>
   </thead>
@@ -26,6 +26,14 @@
                     data: { 'bs-toggle': 'tooltip' },
             class: 'bi bi-exclamation-diamond-fill',
             title: search.error) %>
+          <% end %>
+        </td>
+        <td>
+          <% if search.empty_page? %>
+            <%= tag(:i,
+                    data: { 'bs-toggle': 'tooltip' },
+            class: 'bi bi-database-x',
+            title: t('.no_results')) %>
           <% end %>
         </td>
         <td><%= search.created_at %></td>

@@ -5,6 +5,7 @@
 # Table name: search_requests
 #
 #  id         :bigint           not null, primary key
+#  count      :integer          default(0), not null
 #  error      :string
 #  filters    :jsonb            not null
 #  page       :integer          default(1)
@@ -20,5 +21,9 @@
 class SearchRequest < ApplicationRecord
   def full_criteria
     filters.merge(page:)
+  end
+
+  def empty_page?
+    count.zero?
   end
 end

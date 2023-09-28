@@ -95,6 +95,7 @@ es:
       show:
         searches: Búsquedas
         dashboard: Panel de control
+        no_results: No proporcionó resultados
     pending:
       tags:
         show:

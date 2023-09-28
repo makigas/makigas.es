@@ -8,8 +8,8 @@ class VideoSearch
   end
 
   def videos
-    Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do
-      search_request.save
+    Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do |v|
+      search_request.tap { |s| s.count = v.length }.save
     end
   rescue MeiliSearch::CommunicationError => e
     search_request.update(error: e.message)

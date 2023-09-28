@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_082907) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_104909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -130,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_082907) do
     t.integer "page", default: 1
     t.jsonb "filters", default: "{}", null: false
     t.string "error"
+    t.integer "count", default: 0, null: false
     t.index ["filters"], name: "index_search_requests_on_filters", using: :gin
     t.index ["query"], name: "index_search_requests_on_query"
   end
