@@ -16,4 +16,7 @@
 #  index_search_requests_on_query    (query)
 #
 class SearchRequest < ApplicationRecord
+  def full_criteria
+    filters.merge(page:)
+  end
 end

@@ -91,6 +91,10 @@ es:
         view_opinion: Ver Opinión
       update:
         updated: Opinión actualizada correctamente.
+    searches:
+      show:
+        searches: Búsquedas
+        dashboard: Panel de control
     pending:
       tags:
         show:

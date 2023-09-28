@@ -1,0 +1,38 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.searches') %></li>
+  </ol>
+  <h1><%= t('.searches') %></h1>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Búsqueda</th>
+      <th>Filtros</th>
+      <th>Error</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list.each do |search| %>
+      <tr>
+        <td><%= search.query %></td>
+        <td><%= search.full_criteria.to_json %></td>
+        <td>
+          <% if search.error.present? %>
+            <%= tag(:i,
+                    data: { 'bs-toggle': 'tooltip' },
+            class: 'bi bi-exclamation-diamond-fill',
+            title: search.error) %>
+          <% end %>
+        </td>
+        <td><%= search.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="paginator">
+  <%= paginate @list, theme: 'twitter-bootstrap-3' %>
+</div>
