@@ -2,7 +2,7 @@
 <% content_for :hero do %>
   <h1>Do Not Track</h1>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
+<%= render Six::Base::WrapperComponent.new(tag: 'main', classes: 'colophon') do %>
   <p>
     <strong>Do Not Track</strong> es una tecnología estandar incorporada en la
     mayoría de navegadores web recientes que permite a un navegador web señalizar a

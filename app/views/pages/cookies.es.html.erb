@@ -2,20 +2,90 @@
 <% content_for :hero do %>
   <h1>Uso de cookies</h1>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
-  <p>En cumplimiento con la normativa europea de privacidad electrónica (<a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:337:0011:0036:en:PDF" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:337:0011:0036:en:PDF', '2009/136/EC');">2009/136/EC</a>) y con la legislación española sobre Servicios de la Sociedad de la Información (<a href="http://www.boe.es/boe/dias/2012/03/31/pdfs/BOE-A-2012-4442.pdf" onclick="__gaTracker('send', 'event', 'download', 'http://www.boe.es/boe/dias/2012/03/31/pdfs/BOE-A-2012-4442.pdf');">RD 13/2012</a>), el objetivo de esta página web es presentar información sobre las cookies utilizadas en el sitio web de www.makigas.es.</p>
-  <p>El objetivo de la conocida como ley de cookies es ofrecer a los usuarios de los sitios web el derecho a no permitir el uso de cookies por parte de determinados sitios web si los usuarios consideran que estos ponen en peligro su privacidad en línea. Puedes creer que una ley que regule este tipo de cosas es un sinsentido, pero no debes ser un malpensado. Al fin y al cabo, nuestros políticos saben muy bien lo que hacen, ¿no?</p>
-  <h3 id="qu-es-una-cookie">¿Qué es una cookie?</h3>
-  <p>Una cookie es un archivo almacenado de forma local en el disco duro de un ordenador a petición de un sitio web. Las páginas web utilizan cookies para poder recordar ciertas cosas cada vez que cambia de página. Por ejemplo, que un usuario ha iniciado sesión con su cuenta de usuario.</p>
-  <p>El problema es que las cookies también pueden ser usadas para actividades poco simpáticas. Algunas empresas de publicidad introducen códigos en los anuncios que ves en las páginas web que generan cookies. Cuando ese anuncio es mostrado en distintos servidores web, los anunciantes pueden usar el identificador de esa cookie para asociar la lista de páginas visualizadas a una persona concreta y de este modo segmentar su publicidad.</p>
-  <h3 id="qu-cookies-se-usan-en-el-sitio-web-de-makigas">¿Qué cookies se usan en el sitio web de makigas?</h3>
-  <p>Existen dos tipos de cookies.</p>
-  <p>Las cookies de primera persona son las cookies que genera el propio sitio web que estás visitando, como por ejemplo, las que usa el sistema de inicio de sesión para que el sitio web sepa que tienes la sesión iniciada.</p>
-  <p>Las cookies de tercera persona en cambio son generadas por otros sitios web cuando sus códigos son introducidos en los de otra página web. No podemos controlar las cookies establecidas por terceras personas, pero dado que se exponen a través de este sitio web, tenemos que informar.</p>
-  <p>En makigas.es se usan cookies de primera persona en el botón de consentimiento de cookies. La primera vez que un usuario accede al sitio web recibe un mensaje informando de que el sitio web hace uso de cookies. Si el usuario pulsa el botón para aceptar su uso, se genera una cookie en el navegador de modo que el sitio recuerde que el usuario ya ha aceptado para no volver a mostrar el mensaje más (recordar datos sobre la sesión, ¿recordáis lo que os dije al principio?).</p>
-  <p>makigas.es muestra de forma embebida contenidos de terceras fuentes que contienen cookies.</p>
-  <p>makigas.es contiene fragmentos de vídeo embebido alojados en el servidor de YouTube (youtube.com). Con el objetivo de mejorar tu privacidad, makigas.es sirve los vídeos usando el modo de privacidad mejorada. Sin embargo, si haces clic en el botón Play y reproduces un vídeo a través del sitio web makigas.es, debes tener en cuenta que el servidor de youtube.com generará cookies que se almacenarán en tu ordenador, del mismo modo que si vieses el vídeo directamente a través de youtube.com. Las cookies que youtube.com sirve son las siguientes: <code>SID, LOGIN_INFO, use_hotbox, PREF, SSID, HSID, watched_video_id_list, __utma, __utmz, demographics, VISITOR_INFO1_LIVE</code>. Consulta la <a href="http://www.google.com/privacypolicy.html" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://www.google.com/privacypolicy.html', 'política de privacidad de Google');">política de privacidad de Google</a> para obtener más información.</p>
-  <h3 id="cmo-puedo-modificar-mis-preferencias-sobre-cookies">¿Cómo puedo modificar mis preferencias sobre cookies?</h3>
-  <p>Cada navegador web implementa el procedimiento para limitar o desactivar el uso de cookies de una manera distinta. Te recomendamos que consultes la documentación de tu navegador web para obtener información sobre cómo puedes limitar el uso de cookies en tu navegador. Incluso, puedes configurar tu navegador para que muestre un mensaje de confirmación antes de que cualquier cookie sea almacenada en el disco duro.</p>
-  <p>Fecha de la última actualización: 3 de septiembre de 2015.</p>
+<%= render Six::Base::WrapperComponent.new(tag: 'main', classes: 'colophon') do %>
+  <h2>¿Qué son las cookies?</h2>
+  <p>
+  Las cookies son datos temporales que un sitio web puede guardar en tu navegador web con el objetivo de recordar una cierta información entre página y página.
+
+  <p>
+  El ejemplo más claro de qué propósito cumple una cookie es un sitio web que permita cambiar el aspecto de su
+  portada (por ejemplo, un sitio de noticias permitiendo elegir qué sección mostrar en la parte superior). La cookie se puede usar para que al
+  visitar al día siguiente el mismo sitio web, recuerde las preferencias y vuelva a configurar la portada a gusto del usuario.
+
+  <h2>¿Qué problema hay con las cookies?</h2>
+
+  <p>
+  Hemos llegado a este punto porque las cookies también pueden ser usadas por parte de empresas de marketing para hacer un seguimiento de usuarios.
+  Por ejemplo, una cookie que asigne un número único a cada navegador web puede perseguir a un usuario entre sitio web y sitio web para poder hacer
+  un seguimiento del usuario a medida que va navegando por internet. En publicidad, esto se está utilizando para conocer los gustos de una persona
+  y ofrecer anuncios más relevantes; por ejemplo, si una persona suele visitar a menudo sitios web sobre historia, mostrarle anuncios de libros
+  sobre historia.
+
+  <h2>¿Todas las cookies son iguales?</h2>
+
+  <p>
+  Hay que diferenciar dos tipos de cookies: las <strong>cookies propias</strong> son las que el software que hace funcionar un sitio web establece para
+  recordar información en el navegador del usuario. Son el ejemplo del sitio de noticias que hay descrito más arriba. Son establecidas por el propio
+  sitio web. <strong>Una cookie propia no puede escapar de su sitio web</strong>. O sea, la cookie que establece un sitio de noticias no puede perseguirte
+  cuando abres tu correo electrónico.
+
+  <p>El otro tipo de cookies son las <strong>cookies de terceros</strong>, que son las que se pueden instalar debido al uso de componentes ajenos
+  al sitio web. Por ejemplo, cuando se coloca un reproductor de YouTube en una página web, ese reproductor puede cargar nuevas cookies establecidas por
+  YouTube y no por el sitio web. Cuando se configura un sistema para mostrar anuncios, el anunciante podría cargar nuevas cookies establecidas por
+  la red publicitaria para hacer uno de esos seguimientos.
+
+  <p>Como estas cookies se cargan en componentes que se incrustan en una web (por ejemplo, un reproductor web o un widget para mostrar un post en una red
+  social), estas cookies son independientes al sitio web, y por lo tanto sí pueden perseguir al usuario de una web a otra siempre que la otra web también
+  esté incrustando widgets propiedad del mismo tercero. (Por ejemplo, dos webs que carguen el mismo widget para mostrar un post de Instagram sí pueden
+  provocar que Instagram deduzca que el mismo navegador web ha visitado dos sitios web diferentes.)
+
+  <p>Algunas cookies tienen <strong>fecha de caducidad</strong>, para borrarlas del sitio automáticamente. Por ejemplo, un banco por seguridad podría
+  borrar la cookie que recuerda que se ha iniciado sesión en el perfil cuando se cierre el navegador de forma automática, o borrarla al cabo de 30 minutos,
+  12 horas o un mes. Otras cookies pueden tener una fecha de caducidad de un año o más, para conservarla durante mucho tiempo.
+
+  <p>En los detalles de las políticas de cookies, además normalmente se diferencia una cookie por el tipo. Las <strong>cookies técnicas</strong> existen
+  para cumplir con el funcionamiento normal de la página (por ejemplo, recordar que se ha iniciado sesión). Las <strong>cookies analíticas</strong>, para
+  fabricar estadísticas de uso del sitio web. Las <strong>cookies de marketing</strong> están relacionadas con las redes de anuncios.
+
+  <h2>¿Qué tipo de cookies deja makigas.es en mi navegador durante una visita?</h2>
+
+  <h3>Cookies propias</h3>
+
+  <ul>
+    <li><strong>nolive</strong> (cookie de tipo técnica): esta cookie se guarda cuando haces clic en el botón "X" del popup de directo que aparece de vez en cuando en la parte
+    inferior derecha de la página, para recordar que no quieres ver el popup durante tu sesión de navegación en el sitio web y no volver a molestarte.
+    <strong>Duración de esta cookie: 12 horas</strong> (así puedo volver a avisarte de ello la próxima vez que haya un directo).
+  </ul>
+
+  <h3>Cookies de terceros</h3>
+
+  <p>
+  makigas.es contiene fragmentos de vídeo embebido alojados en el servidor de YouTube (youtube.com). Cuando haces clic en el botón Play y reproduces un
+  vídeo a través del sitio web makigas.es, deberás tener en cuenta que el servidor de YouTube generará cookies nuevas (suponiendo que no las tengas ya
+  debido a haber visitado otros sitios web que también tenían vídeos de YouTube embebidos en el pasado), que se almacenarán igualmente en tu navegador
+  web, que son responsabilidad de YouTube. Estas cookies se usan, por ejemplo, para que si tienes la función del historial de YouTube activo, se incluya
+  el vídeo que has visto en tu historial para poder volver a verlo luego en tu portada o recomendarte vídeos como ése.
+  Tras auditar el reproductor, las cookies que se han encontrado incluyen la VISITOR_INFO1_LIVE, la PREF, la CONSENT y la
+  YSC. Para conocer la política de cookies de los reproductores embebidos de YouTube consulta
+  <a href="https://policies.google.com/technologies/cookies/embedded?hl=es-ES" target="_blank">este artículo de ayuda</a>
+
+  <h2>Cómo puedo ver las cookies</h2>
+
+  <p>
+  Puedes hacerlo usando el Inspector web de tu navegador web o las Herramientas de desarrollo. A menudo estas herramientas se abren pulsando la tecla
+  F12 en tu navegador web, o si estás en macOS, la combinación de teclas <kbd>Cmd + Option + I</kbd>. Normalmente la tabla con las cookies se encuentra
+  en la sección <strong>Almacenamiento</strong> o <strong>Cookies</strong>, pero debes consultar el manual de instrucciones de tu navegador web para
+  encontrar instrucciones adaptadas a tu caso.
+
+  <h2>Cómo puedo gestionar el almacenamiento de cookies en el navegador web</h2>
+
+  <p>
+  En cada navegador se hace de forma diferente. Normalmente encontrarás esta opción en las Preferencias del navegador web. En caso de necesitar ayuda para
+  ubicar este ajuste, deberías consultar el manual de instrucciones o la ayuda para encontrar una forma de bloquear cookies automáticamente.
+  También te recomendamos consultar las opciones de privacidad (por ejemplo, revisar los ajustes de la protección anti-rastreo) si está disponible en
+  tu navegador web.
+
+  <hr>
+
+  <p><small>Fecha de la última actualización: 28 de septiembre de 2023.</small></p>
 <% end %>

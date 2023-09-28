@@ -2,12 +2,13 @@
 <% content_for :hero do %>
   <h1>Términos de uso</h1>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
+<%= render Six::Base::WrapperComponent.new(tag: 'main', classes: 'colophon') do %>
   <p>El uso de este sitio web y de los contenidos presentados en los vídeos que a través de este sitio web se ofrecen confirman que has leído y que estás de acuerdo con los siguientes términos.</p>
   <ol>
     <li>El sitio web lo utilizas bajo tu responsabilidad. Los administradores de makigas.es exponen a través de este sitio web contenidos con la intención de presentar material educativo útil de forma gratuita, pero no somos responsables de lo que ocurra por su mal uso.</li>
-    <li>Si bien va en contra de los términos de YouTube, no tenemos nada en contra de que optes por descargar los vídeos con el propósito de consumirlos cuando no tengas conexión a Internet. Estamos trabajando en un centro de descargas para hacer más fácil descargar los vídeos. No obstante, si descargas un vídeo de YouTube usando alguna herramienta de terceros confirmas que lo haces únicamente para uso privado y que no lo distribuirás ni lo resubirás sin permiso.</li>
+    <li>Aunque va en contra de los términos de uso de YouTube, y por lo tanto, te puede poner en un problema con ellos; por mi parte no tengo nada en contra del uso de plugins de descarga de vídeo si lo haces para consumirlo cuando no tengas conexión a internet. Te pido que lo hagas para consumo propio y que no lo distribuyas ni vuelvas a publicar en internet.</li>
     <li>Aceptas que estos términos de uso podrían ser modificados en cualquier momento y sin previo aviso según cómo se presenten las circunstancias.</li>
   </ol>
-  <p>Fecha de la última actualización: 3 de septiembre de 2015.</p>
+  <hr>
+  <p><small>Fecha de la última actualización: 28 de septiembre de 2023.</small></p>
 <% end %>

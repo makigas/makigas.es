@@ -2,14 +2,28 @@
 <% content_for :hero do %>
   <h1>Política de privacidad</h1>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(tag: 'main') do %>
-  <p>El objetivo de este sitio web es informarte sobre los datos de usuario que pueden ser recopilados durante la navegación en este sitio web y la forma en la que dichos datos son utilizados.</p>
+<%= render Six::Base::WrapperComponent.new(tag: 'main', classes: 'colophon') do %>
+  <p>El objetivo de este documento web es informarte sobre los datos de usuario que pueden ser recopilados durante la navegación en este sitio web y la forma en la que dichos datos son utilizados.</p>
+
+  <h2>Datos que se recopilan</h2>
+
+  <p>
+  Cuando haces uso del buscador que hay en el sitio web, los criterios de búsqueda que se hayan establecido (incluyendo texto de búsqueda, filtro por hashtag y filtro por tiempo) son guardados en un registro para fabricar estadísticas a fin de identificar potenciales temas nuevos que puedan ser de interés del público. No se guarda información personal identificable. Si has introducido por accidente algún dato personalmente identificable (como un nombre o una dirección de e-mail), por favor, contacta con el administrador del sitio para poder retirarlo de la estadística.
+
+  <h2>Uso de la tecnología analítica de Plausible</h2>
+
   <p>makigas.es utiliza la tecnología web de Plausible para obtener información analítica sobre los usuarios y sobre el uso que se hace del sitio web. Los usos que se hacen de la información recopilada son los siguientes:</p>
   <ul>
     <li>Determinar qué contenidos son los más relevantes para los usuarios con el fin de priorizar su mejora frente a otros con menos relevancia.</li>
     <li>Conocer demográficamente el país y la ciudad de procedencia de los usuarios con el fin de determinar qué partes del mundo son las más interesadas en los contenidos.</li>
     <li>Obtener información sobre las tecnologías empleadas por los usuarios del sitio web, como el nombre del sistema operativo y navegador web que utilizan, a fin de determinar qué tecnologías son las que más pueden interesar a los usuarios para futuras actualizaciones del sitio web.</li>
   </ul>
-  <p>Además, este sitio web incluye códigos que presentan vídeos procedentes de YouTube.com en este sitio web. Cuando un usuario reproduce un vídeo a través de este sitio web, YouTube almacena cierta información analítica que luego es presentada a los operadores del canal a través del panel de control del canal. La información que YouTube puede recopilar incluye: país de procedencia, porcentaje de vídeo reproducido, sistema operativo y navegador utilizado, entre otros. Recomendamos consultar la política de privacidad de YouTube para más información.</p>
-  <p>Fecha de la última actualización: 29 de junio de 2022.</p>
+
+  <h2>Uso del iframe de YouTube</h2>
+
+  <p>Este sitio web incluye códigos que presentan vídeos procedentes de YouTube.com en este sitio web. Cuando un usuario reproduce un vídeo a través de este sitio web, YouTube almacena cierta información analítica que luego es presentada a los operadores del canal a través del panel de control del canal. La información que YouTube puede recopilar incluye: país de procedencia, porcentaje de vídeo reproducido, sistema operativo y navegador utilizado, entre otros. Recomendamos consultar la política de privacidad de YouTube para más información.</p>
+
+  <hr>
+
+  <p><small>Fecha de la última actualización: 28 de septiembre de 2023.</small></p>
 <% end %>

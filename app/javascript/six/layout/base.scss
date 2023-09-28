@@ -237,3 +237,25 @@ body {
     color: white;
   }
 }
+
+.colophon {
+
+  p, li, h1, h2, h3, h4, h5, h6 {
+    line-height: 1.8;
+    max-width: 72ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1, h2, h3 {
+    &:before {
+      content: '❖';
+      color: inherit;
+      margin-right: 1ch;
+    }
+  }
+
+  li + li {
+    margin-top: 1.3em;
+  }
+}
