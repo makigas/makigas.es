@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSearchRequests < ActiveRecord::Migration[7.0]
   def change
     create_table :search_requests do |t|
