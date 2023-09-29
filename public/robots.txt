@@ -1,11 +1,36 @@
+# =========================
+# www.makigas.es/robots.txt
+# =========================
+
+# Please seriously why do search bots insist on scrapping search
+# results pages? Why would anyone use a search engine to visit
+# another search engine. GoogleBot, I am looking at you.
 User-Agent: *
 Disallow: /videos?*
 
+# AI crawlers. These companies grab the content, they profit from it,
+# and then they build products to gatekeep knowledge so that no one has
+# the need to come to the websites that provided the scrapped content.
+User-Agent: CCBot
+Disallow: /
+User-Agent: Google-Extended
+Disallow: /
 User-Agent: GPTBot
 Disallow: /
 
+# Plagiarism detectors. People should not copy verbatim quotes into their
+# homework, but that's orthogonal to companies using my content to sell
+# their services and make profit.
+User-Agent: Blackboard
+Disallow: /
+User-Agent: Blackboard Safeassign
+Disallow: /
+User-Agent: Turnitin
+Disallow: /
 User-Agent: TurnitinBot
 Disallow: /
 
+# Here is my sitemap. It will be faster. The site uses Schema.org formats
+# so if you are looking into a public API, this is what you should want.
 Sitemap: https://www.makigas.es/sitemap.xml.gz
 
