@@ -4,5 +4,8 @@ Disallow: /videos?*
 User-Agent: GPTBot
 Disallow: /
 
+User-Agent: TurnitinBot
+Disallow: /
+
 Sitemap: https://www.makigas.es/sitemap.xml.gz
 
