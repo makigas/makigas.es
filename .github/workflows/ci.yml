@@ -27,7 +27,7 @@ jobs:
         ports:
           - 7700:7700
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install libpq-dev
         run: sudo apt-get -yqq install libpq-dev
       - name: Set up ruby
@@ -65,7 +65,7 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install libpq-dev
         run: sudo apt-get -yqq install libpq-dev
       - name: Set up ruby
@@ -79,7 +79,7 @@ jobs:
     name: JavaScript
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
@@ -89,7 +89,7 @@ jobs:
     name: Asset precompile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install libpq-dev
         run: sudo apt-get -yqq install libpq-dev
       - name: Set up ruby
