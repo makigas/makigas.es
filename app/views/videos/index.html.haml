@@ -30,4 +30,4 @@
         = render Six::Search::ResultComponent.with_collection(@videos)
         .paginator= paginate @videos
       - else
-        = render Six::Search::EmptyComponent.new
+        = render Six::Search::EmptyComponent.new(filters: params)

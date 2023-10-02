@@ -1,7 +1,11 @@
 .searchempty
-  %p.searchempty__emoji{"aria-hidden" => true}= %w[😠 😣 😭 😓 🤯].sample
+  %p.searchempty__emoji{"aria-hidden" => true}= emojis.sample
   %header.searchempty__title
     %h1 No se han encontrado resultados
   %p.searchempty__lead
     Prueba a ampliar los filtros de búsqueda.
-    Si no encuentras resultados, también puede ser que (desafortunadamente) no exista ese contenido.
+    Si no encuentras resultados, también puede ser que lamentablemente todavía no haya contenido sobre ese tema.
+  %p.searchempty__lead
+    Puedo ofrecerte
+    %strong= link_to 'repetir esta búsqueda en mi canal de YouTube', search_url, target: '_blank'
+    para que al menos no te vayas con las manos vacías.
