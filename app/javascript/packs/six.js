@@ -8,6 +8,7 @@ import "../six/components/videotoc";
 import "../six/components/live";
 import "../six/events";
 import "../six/notespoll";
+import "../six/cookies";
 
 import "../six/layout/colors.scss";
 import "../six/layout/highlight.scss";
