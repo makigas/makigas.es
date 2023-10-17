@@ -27,4 +27,5 @@ SitemapGenerator::Sitemap.create do
   add privacy_path, priority: 0.5
   add cookies_path, priority: 0.5
   add disclaimer_path, priority: 0.5
+  add discord_path, priority: 0.5
 end
