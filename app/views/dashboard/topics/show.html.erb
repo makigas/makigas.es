@@ -28,6 +28,14 @@
     <td><%= @topic.parent_topic.try(:title) || t('.none') %></td>
   </tr>
   <tr>
+    <td><%= t('.forum_url') %></td>
+    <td><% if @topic.forum_url.present? %>
+      <%= link_to @topic.forum_url, target: :blank %>
+    <% else %>
+      <%= t('.no_forum') %>
+    <% end %></td>
+  </tr>
+  <tr>
     <td><%= t('.color') %></td>
     <td><%= content_tag(:span, @topic.color, class: 'label', style: "background-color: #{@topic.color}") %></td>
   </tr>

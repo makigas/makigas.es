@@ -7,6 +7,7 @@
 #  id                     :integer          not null, primary key
 #  color                  :string
 #  description            :string           not null
+#  forum_url              :string
 #  slug                   :string           not null
 #  thumbnail_content_type :string
 #  thumbnail_file_name    :string

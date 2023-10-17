@@ -41,7 +41,7 @@ module Dashboard
     private
 
     def topic_params
-      params.require(:topic).permit(:title, :description, :color, :thumbnail, :parent_topic_id)
+      params.require(:topic).permit(:title, :description, :color, :thumbnail, :forum_url, :parent_topic_id)
     end
 
     def topic_set

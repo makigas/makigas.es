@@ -163,4 +163,79 @@ RSpec.describe Playlist do
       end
     end
   end
+
+  describe '#display_forum_url' do
+    describe 'when the playlist has an URL' do
+      let(:playlist) { create(:playlist, forum_url: '/playlist') }
+
+      it 'matches the URL of the playlist' do
+        expect(playlist.display_forum_url).to eq '/playlist'
+      end
+    end
+
+    describe 'when the playlist does not have an URL' do
+      let(:playlist) { create(:playlist) }
+
+      it 'is null' do
+        expect(playlist.display_forum_url).to be_nil
+      end
+    end
+
+    describe 'when the playlist has a topic with URL and the playlist has no URL' do
+      let(:topic) { create(:topic, forum_url: '/topic') }
+      let(:playlist) { create(:playlist, topic:) }
+
+      it 'uses the URL from the topic' do
+        expect(playlist.display_forum_url).to eq '/topic'
+      end
+    end
+
+    describe 'when both playlist and topic have URLs' do
+      let(:topic) { create(:topic, forum_url: '/topic') }
+      let(:playlist) { create(:playlist, forum_url: '/playlist', topic:) }
+
+      it 'uses the URL from the playlist instead' do
+        expect(playlist.display_forum_url).to eq '/playlist'
+      end
+    end
+
+    describe 'when no one has a URL' do
+      let(:topic) { create(:topic) }
+      let(:playlist) { create(:playlist, topic:) }
+
+      it 'returns null' do
+        expect(playlist.display_forum_url).to be_nil
+      end
+    end
+
+    describe 'when the playlist and topic have no URL but the parent topic has' do
+      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
+      let(:topic) { create(:topic, parent_topic:) }
+      let(:playlist) { create(:playlist, topic:) }
+
+      it 'inherits the forum URL from the parent topic' do
+        expect(playlist.display_forum_url).to eq '/parent_topic'
+      end
+    end
+
+    describe 'when the topic hierarchy has multiple forum URLs' do
+      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
+      let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
+      let(:playlist) { create(:playlist, topic:) }
+
+      it 'will win the closest topic to the playlist' do
+        expect(playlist.display_forum_url).to eq '/child_topic'
+      end
+    end
+
+    describe 'when every item has a forum URL' do
+      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
+      let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
+      let(:playlist) { create(:playlist, forum_url: '/playlist', topic:) }
+
+      it 'will win the playlist' do
+        expect(playlist.display_forum_url).to eq '/playlist'
+      end
+    end
+  end
 end

@@ -37,6 +37,7 @@ es:
         slug: URL
         title: Título
         parent_topic: Tema superior
+        forum_url: URL del foro
       transcription:
         language: Idioma
         content: Contenido

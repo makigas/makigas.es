@@ -225,6 +225,8 @@ es:
         description: Descripción
         destroy: Destruir
         edit: Editar
+        forum_url: URL del foro
+        no_forum: (no hay)
         playlists: Listas
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
         title: Título

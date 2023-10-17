@@ -7,6 +7,7 @@
 #  id                     :integer          not null, primary key
 #  color                  :string
 #  description            :string           not null
+#  forum_url              :string
 #  slug                   :string           not null
 #  thumbnail_content_type :string
 #  thumbnail_file_name    :string
@@ -56,6 +57,12 @@ class Topic < ApplicationRecord
 
   def content_updated_at
     [updated_at, playlists.pluck(:updated_at).max].compact.flatten.max
+  end
+
+  def ancestors
+    return [] if parent_topic_id.blank?
+
+    parent_topic.ancestors.tap { |arr| arr << parent_topic }
   end
 
   def to_s

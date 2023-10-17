@@ -25,9 +25,9 @@ json._links do
   json.set! 'makigas:youtube' do
     json.href "https://youtube.com/playlist?list=#{playlist.youtube_id}"
   end
-  if playlist.forum_url.present?
+  if playlist.display_forum_url.present?
     json.set! 'makigas:forum' do
-      json.href playlist.forum_url
+      json.href playlist.display_forum_url
     end
   end
   if embeds.include?(:topic) && playlist.topic.present?

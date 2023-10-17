@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_104909) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_17_164647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -147,6 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_104909) do
     t.datetime "thumbnail_updated_at"
     t.string "color"
     t.bigint "parent_topic_id"
+    t.string "forum_url"
     t.index ["parent_topic_id"], name: "index_topics_on_parent_topic_id"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end

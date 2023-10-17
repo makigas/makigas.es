@@ -66,6 +66,16 @@ class Playlist < ApplicationRecord
   has_many :videos, -> { order(position: :asc) }, inverse_of: :playlist, dependent: :destroy
   belongs_to :topic, optional: true
 
+  def display_forum_url
+    return forum_url if forum_url.present?
+
+    return nil if topic.blank?
+
+    all_topics = topic.ancestors.tap { |arr| arr << topic }
+    all_urls = all_topics.map(&:forum_url)
+    all_urls.reverse.compact.first
+  end
+
   def total_length
     videos.map(&:duration).reduce(0, :+)
   end
