@@ -9,4 +9,4 @@
           %div.videotoc__data
             = related_video.title
             %br
-            %small= related_video.natural_duration
+            %small= distance_of_time_in_words(related_video.duration)
