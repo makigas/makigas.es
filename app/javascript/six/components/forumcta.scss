@@ -32,8 +32,12 @@
       gap: 0.8rem;
       margin-top: 0;
       align-items: end;
-      p { flex: 1; }
-      p + p { margin-top: 0.6rem; }
+      p {
+        flex: 1;
+      }
+      p + p {
+        margin-top: 0.6rem;
+      }
     }
   }
 
