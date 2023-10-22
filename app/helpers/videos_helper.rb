@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module VideosHelper
+  def forum_utm_params(video)
+    { campaign: 'NuevoForo2024', source: 'makigas.es', medium: 'SubBanner',
+      terrm: video.playlist_id, content: video.id }
+  end
+
   # rubocop:disable Metrics/MethodLength
   def video_episode_jsonld(video)
     video.to_episode_schema.merge(partOfSeries: playlist_jsonld(video.playlist)).deep_merge(

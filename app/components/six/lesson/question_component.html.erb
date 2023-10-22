@@ -1,0 +1,19 @@
+<aside class="forumcta">
+  <p class="forumcta__lead"><strong>Nadie nace sabiendo, ¿te han quedado dudas?</strong></p>
+  <p>
+    Tenemos un foro donde puedes abrir hilos para intentar resolver con la comunidad problemas
+    o dudas que te hayan quedado mientras tratas de seguir alguno de los cursos, o para compartir
+    algo que hayas aprendido o descubierto por el camino.
+  </p>
+
+  <div class="forumcta__btns">
+  <% if forum.present? %>
+  <p>
+    <a class="forumcta__btn" href="<%= sub_forum_url %>">Visitar el foro de este curso &rarr;</a>
+  </p>
+  <% end %>
+  <p>
+    <%= link_to 'Visitar la comunidad →', root_forum_url, class: 'forumcta__btn' %>
+  </p>
+  </div>
+</aside>

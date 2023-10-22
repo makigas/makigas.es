@@ -92,11 +92,20 @@
 
   &__nonotes {
     background: #d9e2f5;
-    padding: 10px;
+    border: 1px solid var(--makigas-brand-washed-out);
+    padding: 1rem;
     border-radius: 8px;
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 1rem;
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 0.8rem;
+    }
 
     &__btn {
       font-size: 0.9em;

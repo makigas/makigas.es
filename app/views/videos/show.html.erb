@@ -96,15 +96,10 @@
           <%= to_markdown(@video.transcription.content).html_safe %>
         </details>
       <% end %>
+      <%= render Six::Lesson::QuestionComponent.new(forum: @video.playlist.display_forum_url, utm: forum_utm_params(@video)) %>
     </div>
     <aside class="videoinfo__links">
       <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
-      <% if @video.playlist.display_forum_url.present? %>
-        <%= render Six::Utils::ForumCallToActionComponent.new(url: @video.playlist.display_forum_url) %>
-        <%= render Six::Utils::DiscordSecondaryCallToActionComponent.new %>
-      <% else %>
-        <%= render Six::Utils::DiscordCallToActionComponent.new %>
-      <% end %>
     </aside>
   <% end %>
 </article>

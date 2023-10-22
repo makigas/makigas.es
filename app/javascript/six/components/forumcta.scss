@@ -1,20 +1,51 @@
+@import "../layout/responsive";
+
 .forumcta {
-  background-color: var(--forumcta-background);
-  color: var(--forumcta-foreground);
-  font-size: 1.1rem;
+  border: 1px solid var(--makigas-brand-washed-out);
+  background: white;
+  box-shadow: 0 2px 4px -1px var(--makigas-brand-washed-out);
+  padding: 1rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
 
-  &__link {
-    color: inherit;
-    text-decoration: none;
-    display: block;
-    padding: 1rem;
+  p {
+    margin: 0;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  p + p {
+    margin-top: 0.8em;
+  }
+
+  &__lead {
+    font-size: 1.1rem;
+  }
+
+  &__btns {
+    padding-top: 0.6rem;
+
+    p + p {
+      margin-top: 1.2rem;
+    }
+
+    @include desktop-layout {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 0;
+      align-items: end;
+      p { flex: 1; }
+      p + p { margin-top: 0.6rem; }
     }
   }
 
-  &__title {
-    font-family: var(--font-title);
+  &__btn {
+    padding: 8px 24px;
+    border-radius: 6px;
+    background: var(--makigas-brand-darker);
+    color: white;
+
+    @include desktop-layout {
+      display: block;
+      text-align: center;
+    }
   }
 }
