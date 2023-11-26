@@ -5,7 +5,7 @@ html {
 }
 
 .navbar-brand .makigas-logo {
-  fill: white;
+  fill: currentColor;
   height: 100%;
 }
 
@@ -18,8 +18,8 @@ html {
 }
 
 .dashboard-header {
-  background: #f5f5f5;
-  border-bottom: 1px solid color.adjust(#f5f5f5, $lightness: -20%);
+  background: var(--bs-secondary-bg);
+  border-bottom: 1px solid var(--bs-tertiary-color);
   margin-bottom: 20px;
   padding-bottom: 1em;
 
