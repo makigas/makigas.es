@@ -29,19 +29,19 @@
         <td>
           <% if video.transcription.present? %>
             <span class="bi bi-badge-cc" aria-hidden="true"></span>
-            <span class="sr-only"><%= t('.with_transcription') %>
+            <span class="visually-hidden"><%= t('.with_transcription') %>
           <% end %>
         </td>
         <td>
           <% if video.show_note.present? %>
             <span class="bi bi-book" aria-hidden="true"></span>
-            <span class="sr-only"><%= t('.with_show_notes') %>
+            <span class="visually-hidden"><%= t('.with_show_notes') %>
           <% end %>
         </td>
         <td>
           <% if video.tags.present? %>
             <span class="bi bi-tag" aria-hidden="true"></span>
-            <span class="sr-only"><%= t('.with_tags') %>
+            <span class="visually-hidden"><%= t('.with_tags') %>
           <% end %>
         </td>
         <td>
