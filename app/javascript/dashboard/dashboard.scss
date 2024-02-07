@@ -51,3 +51,7 @@ form.button_to {
     text-align: center;
   }
 }
+
+[data-bs-theme=dark] {
+  --bs-danger-rgb: 230,113,124;
+}

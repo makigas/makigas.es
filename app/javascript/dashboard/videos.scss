@@ -4,4 +4,32 @@ body.page-videos {
   #duration-seconds {
     width: 100px;
   }
+
+  table {
+    p {
+      margin-bottom: 0;
+    }
+
+    .action-buttons {
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+    }
+
+    tr:hover .action-buttons,
+    tr:focus .action-buttons,
+    tr:focus-within .action-buttons {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion) {
+      .action-buttons {
+        transition: none;
+      }
+    }
+
+    .btn-sm {
+      --bs-btn-padding-x: 0;
+      --bs-btn-padding-y: 0;
+    }
+  }
 }
