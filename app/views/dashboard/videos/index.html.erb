@@ -13,8 +13,12 @@
     <tr>
       <th><%= t('.title') %></th>
       <th><%= t('.playlist') %></th>
-      <th><%= t('.release_date') %></th>
-      <th><%= t('.last_update') %></th>
+      <th><%= link_to dashboard_derive_video_list_params(sort: @sorter.flip('released')) do %>
+        <%= t('.release_date') %> <%= @sorter.arrow('released') %>
+      <% end %></th>
+      <th><%= link_to dashboard_derive_video_list_params(sort: @sorter.flip('updated')) do %>
+        <%= t('.last_update') %> <%= @sorter.arrow('updated') %>
+      <% end %></th>
       <th colspan="3"><%= t('.aspect') %></th>
       <th><%= t('.operations') %></th>
     </tr>

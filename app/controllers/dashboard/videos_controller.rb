@@ -4,8 +4,11 @@ module Dashboard
   class VideosController < Dashboard::DashboardController
     before_action :video_set, only: %i[show edit update destroy move]
 
+    DEFAULT_SORT_CRITERIA = 'released'
+
     def index
-      @videos = Video.order(created_at: :desc).page(params[:page])
+      @sorter = VideoSorter.new(query: params[:sort] || DEFAULT_SORT_CRITERIA)
+      @videos = @sorter.videos.page(params[:page])
     end
 
     def show; end

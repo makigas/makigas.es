@@ -2,6 +2,11 @@
 
 module Dashboard
   module VideosHelper
+    def dashboard_derive_video_list_params(filters = {})
+      valid_filters = filters.slice(:sort, :page)
+      url_for(request.query_parameters.merge(valid_filters))
+    end
+
     def dashboard_video_path(video, options = {})
       dashboard_playlist_video_path(video, options.merge(playlist_id: video.playlist))
     end
