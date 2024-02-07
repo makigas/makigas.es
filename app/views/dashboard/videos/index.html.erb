@@ -11,7 +11,7 @@
 <table class="table table-default table-hover align-middle">
   <thead>
     <tr>
-      <th><%= t('.title') %></th>
+      <th class="primary"><%= t('.title') %></th>
       <th><%= t('.playlist') %></th>
       <th><%= link_to dashboard_derive_video_list_params(sort: @sorter.flip('released')) do %>
         <%= t('.release_date') %> <%= @sorter.arrow('released') %>
@@ -25,13 +25,29 @@
   <tbody>
     <% @videos.each do |video| %>
       <tr>
-        <td>
+        <td class="primary">
+          <button class="toggle-expand">
+            <span class="bi bi-plus-circle" title="Expandir" aria-hidden="true"></span>
+            <span class="bi bi-dash-circle" title="Contraer" aria-hidden="true"></span>
+          </button>
+
           <p><%= link_to video.title, [:dashboard, video] %></p>
 
           <div class="action-buttons">
             <%= link_to t('.edit'), [:edit, :dashboard, video], class: 'btn btn-sm btn-link' %> |
             <%= button_to t('.destroy'), [:dashboard, video], method: :delete, class: 'btn btn-sm btn-link text-danger', data: { confirm: t('.really_destroy') } %>
           </div>
+
+          <dl class="metadata">
+            <dt><%= t('.playlist') %></dt>
+            <dd><%= link_to video.playlist.title, [:dashboard, video.playlist] %></dd>
+
+            <dt><%= t('.release_date') %></dt>
+            <dd><%= l video.published_at, format: :long %></dd>
+
+            <dt><%= t('.last_update') %></dt>
+            <dd><%= distance_of_time_in_words video.updated_at, DateTime.now %></dd>
+          </dl>
         </td>
         <td><%= link_to video.playlist.title, [:dashboard, video.playlist] %></td>
         <td><%= l video.published_at, format: :long %></td>

@@ -10,15 +10,77 @@ body.page-videos {
       margin-bottom: 0;
     }
 
-    .action-buttons {
-      opacity: 0;
-      transition: opacity 0.15s ease-in-out;
+    th, td {
+      display: none;
     }
 
-    tr:hover .action-buttons,
-    tr:focus .action-buttons,
-    tr:focus-within .action-buttons {
-      opacity: 1;
+    th.primary, td.primary {
+      display: table-cell;
+    }
+
+    button.toggle-expand {
+      border: none;
+      background: transparent;
+      font-size: 1.5rem;
+      float: right;
+
+      .bi-plus-circle { display: inline; }
+      .bi-dash-circle { display: none; }
+    }
+
+    tr.expanded button.toggle-expand {
+      .bi-plus-circle { display: none; }
+      .bi-dash-circle { display: inline; }
+    }
+
+    dl.metadata {
+      display: none;
+    }
+
+    .action-buttons {
+      display: none;
+    }
+
+    tr.expanded .action-buttons {
+      display: block;
+    }
+
+
+    tr.expanded dl.metadata {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 10px;
+
+      dt {
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+
+    @media (min-width: 768px) {
+      button.toggle-expand {
+        display: none;
+      }
+
+      dl.metadata {
+        display: none;
+      }
+
+      th, td {
+        display: table-cell;
+      }
+
+      .action-buttons {
+        display: block;
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+      }
+
+      tr:hover .action-buttons,
+      tr:focus .action-buttons,
+      tr:focus-within .action-buttons {
+        opacity: 1;
+      }
     }
 
     @media (prefers-reduced-motion) {
