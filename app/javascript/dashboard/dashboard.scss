@@ -1,11 +1,9 @@
-@use "sass:color";
-
 html {
   font-size: 14px;
 }
 
 .navbar-brand .makigas-logo {
-  fill: currentColor;
+  fill: currentcolor;
   height: 100%;
 }
 
@@ -52,6 +50,6 @@ form.button_to {
   }
 }
 
-[data-bs-theme=dark] {
+[data-bs-theme="dark"] {
   --bs-danger-rgb: 230,113,124;
 }

@@ -1,7 +1,8 @@
 {
-  "plugins": ["stylelint-scss"],
-  "extends": ["stylelint-config-standard-scss"],
+  "extends": ["stylelint-config-recommended"],
+  "customSyntax": "postcss-scss",
   "rules": {
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "function-no-unknown": [true, { "ignoreFunctions": ["saturation"] } ]
   }
 }

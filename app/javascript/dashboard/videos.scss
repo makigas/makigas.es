@@ -57,7 +57,7 @@ body.page-videos {
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       button.toggle-expand {
         display: none;
       }
