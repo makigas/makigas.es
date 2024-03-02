@@ -1,7 +1,5 @@
-@use "sass:color";
-
 body.auth {
-  background: color.adjust(#039, $saturation: -25%);
+  background: color(#039 s(- 25%));
 
   svg {
     fill: white;

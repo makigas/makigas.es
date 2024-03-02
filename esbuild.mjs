@@ -1,5 +1,5 @@
 import * as esbuild from "esbuild";
-import { sassPlugin } from "esbuild-sass-plugin";
+import postcss from "esbuild-postcss";
 
 const options = {
   entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
@@ -7,7 +7,7 @@ const options = {
   sourcemap: true,
   logLevel: "info",
   outdir: "app/assets/builds",
-  target: ["firefox57"],
+  target: ["es2020"],
   platform: "browser",
   loader: {
     ".png": "file",
@@ -17,7 +17,7 @@ const options = {
     ".eot": "file",
     ".ttf": "file",
   },
-  plugins: [sassPlugin()],
+  plugins: [postcss()],
 };
 
 if (process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1) {

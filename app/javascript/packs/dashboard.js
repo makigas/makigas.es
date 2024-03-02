@@ -1,5 +1,5 @@
-import "bootstrap/scss/bootstrap.scss";
-import "bootstrap-icons/font/bootstrap-icons.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import Rails from "@rails/ujs";
 Rails.start();
 
