@@ -31,7 +31,7 @@ if (process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1) {
 
   const ctx = await esbuild.context(options);
   console.log("Ready to trigger again");
-  watcher.on("all", (e) => {
+  watcher.on("all", () => {
     ctx.rebuild();
   });
 }

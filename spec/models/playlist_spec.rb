@@ -120,7 +120,7 @@ RSpec.describe Playlist do
     end
 
     describe 'when the playlist has no public videos' do
-      it 'will not be included' do
+      it 'does not be included' do
         playlist = create(:playlist)
         create(:video, playlist:, published_at: 2.days.after)
         expect(described_class.with_public_videos).not_to include(playlist)
@@ -223,7 +223,7 @@ RSpec.describe Playlist do
       let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
       let(:playlist) { create(:playlist, topic:) }
 
-      it 'will win the closest topic to the playlist' do
+      it 'wins the closest topic to the playlist' do
         expect(playlist.display_forum_url).to eq '/child_topic'
       end
     end
@@ -233,7 +233,7 @@ RSpec.describe Playlist do
       let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
       let(:playlist) { create(:playlist, forum_url: '/playlist', topic:) }
 
-      it 'will win the playlist' do
+      it 'wins the playlist' do
         expect(playlist.display_forum_url).to eq '/playlist'
       end
     end

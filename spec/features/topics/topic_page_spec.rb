@@ -40,7 +40,7 @@ RSpec.describe 'Topic page' do
     it 'does not not include the parent playlists in the child page' do
       visit topic_path(child_topic)
       aggregate_failures do
-        expect(page).not_to have_text parent_playlist.title
+        expect(page).to have_no_text parent_playlist.title
         expect(page).to have_text child_playlist.title
       end
     end
@@ -52,7 +52,7 @@ RSpec.describe 'Topic page' do
 
     it 'does not include an empty playlist' do
       visit topic_path(topic)
-      expect(page).not_to have_text playlist.title
+      expect(page).to have_no_text playlist.title
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe 'Topic page' do
 
     it 'hides the card' do
       visit topic_path(topic)
-      expect(page).not_to have_text playlist.title
+      expect(page).to have_no_text playlist.title
     end
   end
 

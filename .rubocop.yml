@@ -1,5 +1,8 @@
 require:
   - rubocop-rails
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rake
   - rubocop-rspec
 
 AllCops:

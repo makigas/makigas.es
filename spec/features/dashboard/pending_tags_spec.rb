@@ -10,7 +10,7 @@ RSpec.describe 'Pending tags' do
   context 'when not logged in' do
     it 'is not accessible' do
       visit dashboard_pending_tags_path
-      expect(page).not_to have_current_path dashboard_pending_tags_path
+      expect(page).to have_no_current_path dashboard_pending_tags_path
     end
   end
 
@@ -21,10 +21,10 @@ RSpec.describe 'Pending tags' do
       login_as user, scope: :user
     end
 
-    it 'will not present videos that have tags' do
+    it 'does not present videos that have tags' do
       create(:video, title: 'Tagged Video', tags: %w[hello world])
       visit dashboard_pending_tags_path
-      expect(page).not_to have_text 'Tagged Video'
+      expect(page).to have_no_text 'Tagged Video'
     end
 
     it 'allows to set tags for videos without tags' do
@@ -39,7 +39,7 @@ RSpec.describe 'Pending tags' do
 
       within '#pending_tags' do
         fill_in 'Etiquetas para Untagged Video', with: 'hello world how are you'
-        click_button 'Aplicar'
+        click_on 'Aplicar'
       end
 
       expect(video.reload.tags).to match_array %w[hello world how are you]

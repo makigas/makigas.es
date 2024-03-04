@@ -14,6 +14,6 @@ RSpec.describe Six::Search::ResultTopicComponent, type: :component do
   describe 'when a topic is not given' do
     subject { render_inline(described_class.new(topic: nil)) }
 
-    it { is_expected.not_to have_text('Tema:') }
+    it { is_expected.to have_no_text('Tema:') }
   end
 end

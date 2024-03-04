@@ -14,7 +14,7 @@ RSpec.describe 'Dashboard playlists' do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_playlists_path
-      expect(page).not_to have_current_path dashboard_playlists_path
+      expect(page).to have_no_current_path dashboard_playlists_path
     end
   end
 
@@ -38,13 +38,13 @@ RSpec.describe 'Dashboard playlists' do
 
     it 'user can create playlists' do
       visit dashboard_playlists_path
-      click_link 'Nueva Lista'
+      click_on 'Nueva Lista'
       fill_in 'Título', with: 'My Playlist'
       fill_in 'Descripción', with: 'This is a playlist part of my site'
       fill_in 'ID de YouTube', with: 'AABBCCDDEEFF'
       attach_file 'Miniatura', Rails.root.join('spec/fixtures/playlist.png')
       attach_file 'Tarjeta', Rails.root.join('spec/fixtures/card.jpg')
-      click_button 'Crear Lista de reproducción'
+      click_on 'Crear Lista de reproducción'
 
       aggregate_failures do
         expect(page).to have_text 'Lista creada correctamente'
@@ -54,14 +54,14 @@ RSpec.describe 'Dashboard playlists' do
 
     it 'user can attach a playlist to a topic' do
       visit dashboard_playlists_path
-      click_link 'Nueva Lista'
+      click_on 'Nueva Lista'
       fill_in 'Título', with: 'My Playlist'
       fill_in 'Descripción', with: 'This is a playlist part of my site'
       fill_in 'ID de YouTube', with: 'AABBCCDDEEFF'
       attach_file 'Miniatura', Rails.root.join('spec/fixtures/playlist.png')
       attach_file 'Tarjeta', Rails.root.join('spec/fixtures/card.jpg')
       select topic.title, from: 'Tema'
-      click_button 'Crear Lista de reproducción'
+      click_on 'Crear Lista de reproducción'
 
       expect(topic.playlists.count).to eq 1
     end
@@ -69,11 +69,11 @@ RSpec.describe 'Dashboard playlists' do
     it 'user can edit a playlist' do
       visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = '#{playlist.title}']]") do
-        click_link 'Editar'
+        click_on 'Editar'
       end
 
       fill_in 'Título', with: 'My new title'
-      click_button 'Actualizar Lista de reproducción'
+      click_on 'Actualizar Lista de reproducción'
 
       aggregate_failures do
         expect(page).to have_text 'Lista actualizada correctamente'
@@ -84,12 +84,12 @@ RSpec.describe 'Dashboard playlists' do
     it 'user can destroy a playlist' do
       visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = '#{playlist.title}']]") do
-        click_button 'Destruir'
+        click_on 'Destruir'
       end
 
       aggregate_failures do
         expect(page).to have_text 'Lista eliminada correctamente'
-        expect(page).not_to have_link playlist.title
+        expect(page).to have_no_link playlist.title
       end
     end
   end

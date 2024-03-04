@@ -13,13 +13,13 @@ RSpec.describe Five::Catalog::PlaylistMediaCardComponent, type: :component do
 
     it { is_expected.to have_css 'h4', text: playlist.title }
     it { is_expected.to have_css 'p', text: /0 episodios/ }
-    it { is_expected.to have_selector "a[href*='#{playlist.slug}']" }
+    it { is_expected.to have_css "a[href*='#{playlist.slug}']" }
     it { is_expected.to have_selector selector_thumb }
 
     describe 'when the playlist has a video' do
       before { create(:video, playlist:) }
 
-      it { is_expected.not_to have_css 'p', text: /1 episodio/ }
+      it { is_expected.to have_no_css 'p', text: /1 episodio/ }
     end
 
     describe 'when the playlist have multiple videos' do

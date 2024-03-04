@@ -15,12 +15,12 @@ RSpec.describe Six::Search::ResultTagsComponent, type: :component do
   describe 'when tags are not given' do
     subject { render_inline(described_class.new(tags: nil)) }
 
-    it { is_expected.not_to have_text('Etiquetas:') }
+    it { is_expected.to have_no_text('Etiquetas:') }
   end
 
   describe 'when the tag array is empty' do
     subject { render_inline(described_class.new(tags: [])) }
 
-    it { is_expected.not_to have_text('Etiquetas:') }
+    it { is_expected.to have_no_text('Etiquetas:') }
   end
 end

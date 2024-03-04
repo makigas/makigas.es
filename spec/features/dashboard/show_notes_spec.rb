@@ -24,7 +24,7 @@ RSpec.describe 'Dashboard show notes', :js do
 
     it 'is not possible to visit the show notes editor' do
       visit path
-      expect(page).not_to have_current_path path
+      expect(page).to have_no_current_path path
     end
   end
 
@@ -39,22 +39,22 @@ RSpec.describe 'Dashboard show notes', :js do
         end
       end
 
-      it 'will allow me to create some show notes' do
+      it 'allows me to create some show notes' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          click_link 'Editar'
+          click_on 'Editar'
         end
         fill_in 'Contenido', with: 'Estas son mis notas de episodio'
-        click_button 'Crear Notas del episodio'
+        click_on 'Crear Notas del episodio'
         within(:xpath, row) do
           expect(page).to have_text 'Estas son mis notas de episodio'
         end
       end
 
-      it 'will not allow me to delete some show notes' do
+      it 'does not allow me to delete some show notes' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          expect(page).not_to have_link 'Destruir'
+          expect(page).to have_no_link 'Destruir'
         end
       end
     end
@@ -72,13 +72,13 @@ RSpec.describe 'Dashboard show notes', :js do
         end
       end
 
-      it 'will allow me to edit some show notes' do
+      it 'allows me to edit some show notes' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          click_link 'Editar'
+          click_on 'Editar'
         end
         fill_in 'Contenido', with: 'Estas son las nuevas notas de episodio'
-        click_button 'Actualizar Notas del episodio'
+        click_on 'Actualizar Notas del episodio'
         within(:xpath, row) do
           expect(page).to have_text 'Estas son las nuevas notas de episodio'
         end
@@ -88,7 +88,7 @@ RSpec.describe 'Dashboard show notes', :js do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
           page.accept_confirm do
-            click_button 'Destruir'
+            click_on 'Destruir'
           end
         end
 

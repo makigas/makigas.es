@@ -30,7 +30,7 @@ RSpec.describe Six::Search::ResultComponent, type: :component do
 
     it { is_expected.to have_text 'Serie:' }
     it { is_expected.to have_text 'Tema:' }
-    it { is_expected.not_to have_text 'Etiquetas:' }
+    it { is_expected.to have_no_text 'Etiquetas:' }
   end
 
   describe 'without topic' do
@@ -43,7 +43,7 @@ RSpec.describe Six::Search::ResultComponent, type: :component do
     it { is_expected.to have_text video.description }
 
     it { is_expected.to have_text 'Serie:' }
-    it { is_expected.not_to have_text 'Tema:' }
+    it { is_expected.to have_no_text 'Tema:' }
     it { is_expected.to have_text 'Etiquetas:' }
   end
 end

@@ -10,7 +10,7 @@ RSpec.describe 'Dashboard opinions' do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_opinions_path
-      expect(page).not_to have_current_path dashboard_topics_path
+      expect(page).to have_no_current_path dashboard_topics_path
     end
   end
 
@@ -29,13 +29,13 @@ RSpec.describe 'Dashboard opinions' do
 
     it 'user can create opinions' do
       visit dashboard_opinions_path
-      click_link 'Nueva Opinión'
+      click_on 'Nueva Opinión'
 
       fill_in 'De', with: 'Programming and Co'
       fill_in 'Mensaje', with: 'Este es el texto de la opinión'
       fill_in 'URL', with: 'https://www.example.com'
       attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
-      click_button 'Crear Opinión'
+      click_on 'Crear Opinión'
 
       aggregate_failures do
         expect(page).to have_text 'Opinión creada correctamente'
@@ -46,10 +46,10 @@ RSpec.describe 'Dashboard opinions' do
     it 'user can edit opinions' do
       visit dashboard_opinions_path
       within(:xpath, "//tr[.//td//a[text() = 'Programming n Co']]") do
-        click_link 'Editar'
+        click_on 'Editar'
       end
       fill_in 'De', with: 'Programming and Co.'
-      click_button 'Actualizar Opinión'
+      click_on 'Actualizar Opinión'
 
       aggregate_failures do
         expect(page).to have_text 'Opinión actualizada correctamente'
@@ -62,24 +62,24 @@ RSpec.describe 'Dashboard opinions' do
 
       visit dashboard_opinions_path
       within(:xpath, "//tr[.//td//a[text() = '#{opinion.from}']]") do
-        click_button 'Destruir'
+        click_on 'Destruir'
       end
 
       aggregate_failures do
         expect(page).to have_text 'Opinión destruida correctamente'
-        expect(page).not_to have_link opinion.from
+        expect(page).to have_no_link opinion.from
       end
     end
 
     it 'user cannot create invalid opinion' do
       visit dashboard_opinions_path
-      click_link 'Nueva Opinión'
+      click_on 'Nueva Opinión'
       fill_in 'De', with: 'Programming and Co'
       fill_in 'URL', with: 'https://www.example.com'
       attach_file 'Imagen', Rails.root.join('spec/fixtures/opinion.png')
-      click_button 'Crear Opinión'
+      click_on 'Crear Opinión'
 
-      expect(page).not_to have_text 'Opinión creada correctamente'
+      expect(page).to have_no_text 'Opinión creada correctamente'
     end
   end
 end

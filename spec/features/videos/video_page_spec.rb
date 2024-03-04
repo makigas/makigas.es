@@ -46,7 +46,7 @@ RSpec.describe 'Video page' do
 
       aggregate_failures do
         expect(page).to have_http_status :not_found
-        expect(page).not_to have_text video.title
+        expect(page).to have_no_text video.title
       end
     end
   end

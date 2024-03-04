@@ -36,7 +36,7 @@ RSpec.describe 'Topics page' do
     visit videos_path
     aggregate_failures do
       expect(page).to have_text published.title
-      expect(page).not_to have_text scheduled.title
+      expect(page).to have_no_text scheduled.title
     end
   end
 end

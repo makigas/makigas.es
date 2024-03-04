@@ -5,7 +5,9 @@ module.exports = {
     browser: true,
   },
   parserOptions: {
+    parser: "espree",
     sourceType: "module",
+    ecmaVersion: 2022,
   },
   extends: ["eslint:recommended", "plugin:prettier/recommended"],
 };

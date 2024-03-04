@@ -13,7 +13,7 @@ RSpec.describe 'Dashboard topics' do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_topics_path
-      expect(page).not_to have_current_path dashboard_topics_path
+      expect(page).to have_no_current_path dashboard_topics_path
     end
   end
 
@@ -37,12 +37,12 @@ RSpec.describe 'Dashboard topics' do
 
     it 'user can create topics' do
       visit dashboard_topics_path
-      click_link 'Nuevo Tema'
+      click_on 'Nuevo Tema'
       fill_in 'Título', with: 'My Topic'
       fill_in 'Descripción', with: 'This is a featured topic for the website'
       fill_in 'Color', with: '#ff0000'
       attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
-      click_button 'Crear Tema'
+      click_on 'Crear Tema'
 
       aggregate_failures do
         expect(page).to have_text 'Tema creado correctamente'
@@ -53,14 +53,14 @@ RSpec.describe 'Dashboard topics' do
     it 'user can edit topics' do
       visit dashboard_topics_path
       within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
-        click_link 'Editar'
+        click_on 'Editar'
       end
       fill_in 'Título', with: 'My new title'
-      click_button 'Actualizar Tema'
+      click_on 'Actualizar Tema'
 
       aggregate_failures do
         expect(page).to have_text 'Tema actualizado correctamente'
-        expect(page).not_to have_text topic.title
+        expect(page).to have_no_text topic.title
         expect(page).to have_text 'My new title'
       end
     end
@@ -68,26 +68,26 @@ RSpec.describe 'Dashboard topics' do
     it 'user can destroy topics' do
       visit dashboard_topics_path
       within(:xpath, "//tr[.//td//a[text() = '#{topic.title}']]") do
-        click_button 'Destruir'
+        click_on 'Destruir'
       end
 
       aggregate_failures do
         expect(page).to have_text 'Tema eliminado correctamente'
-        expect(page).not_to have_text topic.title
+        expect(page).to have_no_text topic.title
       end
     end
 
     it 'user cannot create invalid topics' do
       visit dashboard_topics_path
-      click_link 'Nuevo Tema'
+      click_on 'Nuevo Tema'
       fill_in 'Descripción', with: 'This is a featured topic for the website'
       fill_in 'Color', with: '#ff0000'
       attach_file 'Miniatura', Rails.root.join('spec/fixtures/topic.png')
-      click_button 'Crear Tema'
+      click_on 'Crear Tema'
 
       aggregate_failures do
-        expect(page).not_to have_text 'Tema creado correctamente'
-        expect(page).not_to have_link 'Nuevo Tema'
+        expect(page).to have_no_text 'Tema creado correctamente'
+        expect(page).to have_no_link 'Nuevo Tema'
       end
     end
   end

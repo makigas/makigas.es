@@ -35,8 +35,8 @@ RSpec.describe 'Playlist page' do
     aggregate_failures do
       expect(page).to have_text video_title(published)
       expect(page).to have_css "a[href*='#{video_path(published)}']"
-      expect(page).not_to have_text video_title(scheduled)
-      expect(page).not_to have_css "a[href*='#{video_path(scheduled)}']"
+      expect(page).to have_no_text video_title(scheduled)
+      expect(page).to have_no_css "a[href*='#{video_path(scheduled)}']"
     end
   end
 

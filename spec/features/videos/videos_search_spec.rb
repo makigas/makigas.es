@@ -17,14 +17,14 @@ RSpec.describe 'Videos search' do
 
       visit videos_path
       within '.videoexplorer__sidebar' do
-        click_link 'Cortos'
+        click_on 'Cortos'
       end
 
       aggregate_failures do
         expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(length: 'short')))
         expect(page).to have_link short.title, href: video_path(short)
-        expect(page).not_to have_link medium.title, href: video_path(medium)
-        expect(page).not_to have_link long.title, href: video_path(long)
+        expect(page).to have_no_link medium.title, href: video_path(medium)
+        expect(page).to have_no_link long.title, href: video_path(long)
       end
     end
 
@@ -36,14 +36,14 @@ RSpec.describe 'Videos search' do
 
       visit videos_path
       within '.videoexplorer__sidebar' do
-        click_link 'Medios'
+        click_on 'Medios'
       end
 
       aggregate_failures do
         expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(length: 'medium')))
-        expect(page).not_to have_link short.title, href: video_path(short)
+        expect(page).to have_no_link short.title, href: video_path(short)
         expect(page).to have_link medium.title, href: video_path(medium)
-        expect(page).not_to have_link long.title, href: video_path(long)
+        expect(page).to have_no_link long.title, href: video_path(long)
       end
     end
 
@@ -54,13 +54,13 @@ RSpec.describe 'Videos search' do
 
       visit videos_path
       within '.videoexplorer__sidebar' do
-        click_link 'Largos'
+        click_on 'Largos'
       end
 
       aggregate_failures do
         expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(length: 'long')))
-        expect(page).not_to have_link short.title, href: video_path(short)
-        expect(page).not_to have_link medium.title, href: video_path(medium)
+        expect(page).to have_no_link short.title, href: video_path(short)
+        expect(page).to have_no_link medium.title, href: video_path(medium)
         expect(page).to have_link long.title, href: video_path(long)
       end
     end
@@ -87,13 +87,13 @@ RSpec.describe 'Videos search' do
 
       visit videos_path
       within '.videoexplorer__sidebar' do
-        click_link 'First Topic'
+        click_on 'First Topic'
       end
 
       aggregate_failures do
         expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(topic: ['first'])))
         expect(page).to have_link first_video.title, href: video_path(first_video)
-        expect(page).not_to have_link second_video.title, href: video_path(second_video)
+        expect(page).to have_no_link second_video.title, href: video_path(second_video)
       end
     end
   end

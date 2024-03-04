@@ -14,6 +14,6 @@ RSpec.describe Six::Search::ResultPlaylistComponent, type: :component do
   describe 'when a playlist is not given' do
     subject { render_inline(described_class.new(playlist: nil)) }
 
-    it { is_expected.not_to have_text('Serie:') }
+    it { is_expected.to have_no_text('Serie:') }
   end
 end

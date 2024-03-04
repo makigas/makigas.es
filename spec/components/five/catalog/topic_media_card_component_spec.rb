@@ -11,7 +11,7 @@ RSpec.describe Five::Catalog::TopicMediaCardComponent, type: :component do
 
     it { is_expected.to have_css 'h4', text: topic.title }
     it { is_expected.to have_css 'p', text: topic.description }
-    it { is_expected.to have_selector "a[href*='#{topic.slug}']" }
+    it { is_expected.to have_css "a[href*='#{topic.slug}']" }
     it { is_expected.to have_selector selector_thumb }
   end
 end

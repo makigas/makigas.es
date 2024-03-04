@@ -18,7 +18,7 @@ RSpec.describe 'Dashboard playlist videos' do
   context 'when not logged in' do
     it 'is not success' do
       visit videos_dashboard_playlist_path(playlist)
-      expect(page).not_to have_current_path videos_dashboard_playlist_path(playlist)
+      expect(page).to have_no_current_path videos_dashboard_playlist_path(playlist)
     end
   end
 
@@ -31,9 +31,9 @@ RSpec.describe 'Dashboard playlist videos' do
 
     it 'user can access this page via dashboard video page' do
       visit dashboard_playlists_path
-      click_link playlist.title
+      click_on playlist.title
       within('.dashboard-page') do
-        click_link 'Vídeos'
+        click_on 'Vídeos'
       end
       expect(page).to have_current_path videos_dashboard_playlist_path(playlist)
     end
@@ -41,7 +41,7 @@ RSpec.describe 'Dashboard playlist videos' do
     it 'user can access this page via video count link' do
       visit dashboard_playlists_path
       within(:xpath, "//tr[.//td//a[text() = '#{playlist.title}']]") do
-        click_link playlist.videos.count.to_s
+        click_on playlist.videos.count.to_s
       end
       expect(page).to have_current_path videos_dashboard_playlist_path(playlist)
     end
@@ -59,7 +59,7 @@ RSpec.describe 'Dashboard playlist videos' do
 
     it 'can create videos for this playlist' do
       visit videos_dashboard_playlist_path(playlist)
-      click_link 'Nuevo vídeo'
+      click_on 'Nuevo vídeo'
 
       aggregate_failures do
         expect(page).to have_text 'Nuevo vídeo'
@@ -70,7 +70,7 @@ RSpec.describe 'Dashboard playlist videos' do
     it 'user can move a video down' do
       visit videos_dashboard_playlist_path(playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{videos[0].title}']]") do
-        click_button 'Bajar'
+        click_on 'Bajar'
       end
 
       aggregate_failures do
@@ -84,7 +84,7 @@ RSpec.describe 'Dashboard playlist videos' do
     it 'user can move a video up' do
       visit videos_dashboard_playlist_path(playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{videos[1].title}']]") do
-        click_button 'Subir'
+        click_on 'Subir'
       end
 
       aggregate_failures do
@@ -98,7 +98,7 @@ RSpec.describe 'Dashboard playlist videos' do
     it 'moving first video up changes nothing' do
       visit videos_dashboard_playlist_path(playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{videos[0].title}']]") do
-        click_button 'Subir'
+        click_on 'Subir'
       end
 
       aggregate_failures do
@@ -112,7 +112,7 @@ RSpec.describe 'Dashboard playlist videos' do
     it 'moving last video down changes nothing' do
       visit videos_dashboard_playlist_path(playlist)
       within(:xpath, "//tr[.//td//a[text() = '#{videos[1].title}']]") do
-        click_button 'Bajar'
+        click_on 'Bajar'
       end
 
       aggregate_failures do

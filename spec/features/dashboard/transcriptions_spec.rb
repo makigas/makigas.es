@@ -24,7 +24,7 @@ RSpec.describe 'Dashboard transcriptions', :js do
 
     it 'is not possible to visit the transcription editor' do
       visit path
-      expect(page).not_to have_current_path path
+      expect(page).to have_no_current_path path
     end
   end
 
@@ -39,22 +39,22 @@ RSpec.describe 'Dashboard transcriptions', :js do
         end
       end
 
-      it 'will allow me to create a transcription' do
+      it 'allows me to create a transcription' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          click_link 'Editar'
+          click_on 'Editar'
         end
         fill_in 'Contenido', with: 'Este es el texto de mi vídeo'
-        click_button 'Crear Transcripción'
+        click_on 'Crear Transcripción'
         within(:xpath, row) do
           expect(page).to have_text 'Este es el texto de mi vídeo'
         end
       end
 
-      it 'will not allow me to delete a transcription' do
+      it 'does not allow me to delete a transcription' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          expect(page).not_to have_link 'Destruir'
+          expect(page).to have_no_link 'Destruir'
         end
       end
     end
@@ -72,13 +72,13 @@ RSpec.describe 'Dashboard transcriptions', :js do
         end
       end
 
-      it 'will allow me to edit a transcription' do
+      it 'allows me to edit a transcription' do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
-          click_link 'Editar'
+          click_on 'Editar'
         end
         fill_in 'Contenido', with: 'Este es el texto de mi vídeo'
-        click_button 'Actualizar Transcripción'
+        click_on 'Actualizar Transcripción'
         within(:xpath, row) do
           expect(page).to have_text 'Este es el texto de mi vídeo'
         end
@@ -88,7 +88,7 @@ RSpec.describe 'Dashboard transcriptions', :js do
         visit dashboard_playlist_video_path(video, playlist_id: playlist.slug)
         within(:xpath, row) do
           page.accept_confirm do
-            click_button 'Destruir'
+            click_on 'Destruir'
           end
         end
 
