@@ -12,18 +12,10 @@
     "@rails/ujs": "^7.0.6",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
-    "esbuild": "^0.18.12",
+    "esbuild": "^0.20.1",
+    "esbuild-postcss": "^0.0.4",
     "klaro": "^0.7.18",
     "normalize.css": "^8.0.1",
-    "string-width": "<5.0.0",
-    "youtube-player": "^5.6.0"
-  },
-  "devDependencies": {
-    "@types/rails__ujs": "^6.0.1",
-    "esbuild-postcss": "^0.0.4",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^5.0.0",
     "postcss": "^8.4.35",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-color-function": "^4.1.0",
@@ -31,13 +23,22 @@
     "postcss-nested": "^6.0.1",
     "postcss-scss": "^4.0.9",
     "postcss-strip-inline-comments": "^0.1.5",
+    "string-width": "<5.0.0",
+    "string-width-cjs": "^5.1.1",
+    "youtube-player": "^5.6.0",
+    "watcher": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/rails__ujs": "^6.0.1",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
     "rimraf": "^5.0.1",
-    "string-width-cjs": "^5.1.1",
-    "stylelint": "^15.10.1",
-    "stylelint-config-standard-scss": "^10.0.0",
-    "stylelint-prettier": "^4.0.0",
-    "stylelint-scss": "^5.0.1"
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.2.0"
   },
   "scripts": {
     "build": "node esbuild.mjs",

@@ -1,5 +1,6 @@
 import * as esbuild from "esbuild";
 import postcss from "esbuild-postcss";
+import Watcher from "watcher";
 
 const options = {
   entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
@@ -20,9 +21,17 @@ const options = {
   plugins: [postcss()],
 };
 
+await esbuild.build(options);
+
 if (process.argv.indexOf("--watch") > -1 || process.argv.indexOf("-w") > -1) {
+  const watcher = new Watcher(["app/components", "app/views"], {
+    recursive: true,
+    ignoreInitial: true,
+  });
+
   const ctx = await esbuild.context(options);
-  await ctx.watch();
-} else {
-  await esbuild.build(options);
+  console.log("Ready to trigger again");
+  watcher.on("all", (e) => {
+    ctx.rebuild();
+  });
 }
