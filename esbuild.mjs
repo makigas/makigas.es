@@ -8,6 +8,8 @@ const options = {
   sourcemap: true,
   logLevel: "info",
   outdir: "app/assets/builds",
+  minify: process.env.NODE_ENV == "production",
+  sourcemap: process.env.NODE_ENV != "production",
   target: ["es2020"],
   platform: "browser",
   loader: {
