@@ -37,7 +37,7 @@ gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.2.0'
 gem 'lookbook', '~> 2.2.1'
-gem 'meilisearch-rails', '~> 0.10.2'
+gem 'meilisearch-rails', '~> 0.12.0'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'rouge'
@@ -66,7 +66,7 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.63.0', require: false
-  gem 'rubocop', '~> 1.61.0', require: false
+  gem 'rubocop', '~> 1.62.0', require: false
   gem 'rubocop-rails', '~> 2.24.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 2.27.0', require: false

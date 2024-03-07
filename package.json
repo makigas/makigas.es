@@ -25,8 +25,8 @@
     "postcss-strip-inline-comments": "^0.1.5",
     "string-width": "<5.0.0",
     "string-width-cjs": "^5.1.1",
-    "youtube-player": "^5.6.0",
-    "watcher": "^2.3.0"
+    "watcher": "^2.3.0",
+    "youtube-player": "^5.6.0"
   },
   "devDependencies": {
     "@types/rails__ujs": "^6.0.1",
