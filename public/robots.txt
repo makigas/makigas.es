@@ -11,11 +11,20 @@ Disallow: /videos?*
 # AI crawlers. These companies grab the content, they profit from it,
 # and then they build products to gatekeep knowledge so that no one has
 # the need to come to the websites that provided the scrapped content.
+# Source: https://darkvisitors.com
+User-agent: anthropic-ai
+Disallow: /
+User-agent: Bytespider
+Disallow: /
 User-Agent: CCBot
+Disallow: /
+User-agent: FacebookBot
 Disallow: /
 User-Agent: Google-Extended
 Disallow: /
 User-Agent: GPTBot
+Disallow: /
+User-agent: omgili
 Disallow: /
 
 # Plagiarism detectors. People should not copy verbatim quotes into their
