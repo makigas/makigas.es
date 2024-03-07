@@ -287,10 +287,10 @@ RSpec.describe Video do
 
     it 'happens after deletion' do
       video = create(:video)
-      gid_descriptor = { '_aj_globalid' => video.to_gid.to_s }
+      params = { primary_key: video.id.to_s, synchronous: nil, index_uid: nil }
       expect do
         video.destroy
-      end.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(gid_descriptor, 'ms_remove_from_index!')
+      end.to have_enqueued_job(MeiliSearch::Rails::MSCleanUpJob).with([params])
     end
   end
 
