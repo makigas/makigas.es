@@ -18,3 +18,9 @@
   --tag-foreground: var(--link-color);
   --tag-background: #cce3f1;
 }
+
+// Klaro
+.klaro .cookie-notice .cm-link.cn-learn-more {
+  --green1: var(--tag-background);
+  text-decoration: underline;
+}

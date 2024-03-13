@@ -3,6 +3,10 @@ import YouTubePlayer from "youtube-player";
 
 /* Build a YouTube player. Keep the player variable to use later. */
 function startYouTubePlayer() {
+  const youtubeIframe = document.querySelector(".ytiframe");
+  if (youtubeIframe) {
+    youtubeIframe.classList.add("ytiframe--loaded");
+  }
   const youtubePlayer = document.getElementById("ytplayer");
   if (youtubePlayer) {
     const player = YouTubePlayer(youtubePlayer, {

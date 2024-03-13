@@ -2,6 +2,36 @@ import * as Klaro from "klaro/dist/klaro-no-css";
 import "klaro/dist/klaro.css";
 import "klaro/dist/translations";
 
+function iframeRenderConsentDialog() {
+  const consent = document.querySelector(".ytiframe .consent");
+  if (consent) {
+    consent.classList.add("consent--visible");
+
+    document.getElementById("iframe-allow-now").addEventListener("click", () => {
+      const manager = window.klaro.getManager();
+      manager.updateConsent("youtube-embed", true);
+      manager.applyConsents(false, true, "youtube-embed");
+      manager.updateConsent("youtube-embed", false);
+    });
+
+    document.getElementById("iframe-allow-always").addEventListener("click", () => {
+      const manager = window.klaro.getManager();
+      manager.updateConsent("youtube-embed", true);
+      if (manager.confirmed) {
+        manager.saveConsents("contextual-accept");
+      }
+      manager.applyConsents(false, true, "youtube-embed");
+    });
+  }
+}
+
+function iframeHideConsentDialog() {
+  const consent = document.querySelector(".ytiframe .consent");
+  if (consent) {
+    consent.classList.remove("consent--visible");
+  }
+}
+
 const config = {
   cookieExpiresAfterDays: 180,
   default: false,
@@ -14,6 +44,18 @@ const config = {
           title: "Servicios de vídeo",
         },
       },
+      consentModal: {
+        title: "Servicios que usan cookies",
+        description:
+          "Aquí puedes ajustar tu configuración para permitir ciertos componentes de la web que pueden depositar cookies en tu navegador.",
+      },
+      consentNotice: {
+        description:
+          "Este sitio web utiliza cookies para reproducir los vídeos en las páginas de artículo. Puedes aceptarlas o rechazarlas. Si no las aceptas no funcionarán los vídeos, aunque a cambio puedes rechazarlas gratis.",
+        learnMore: "Déjame ver",
+      },
+      ok: "Aceptar todo",
+      decline: "Rechazar todo",
       contextualConsent: {
         description: "¿Cargar el contenido externo? {title}",
         acceptOnce: "Sí por esta vez",
@@ -34,10 +76,8 @@ const config = {
     },
   },
   styling: {
-    // Klaro's variable name picking is not very semantic...
-    dark1: "#8eff92",
-    light1: "#333",
-    green1: "#4d6699",
+    "notice-left": "20px",
+    "notice-max-width": "600px",
     "font-size": "16px",
   },
   services: [
@@ -49,6 +89,9 @@ const config = {
       callback(consent) {
         if (consent && window.startYouTubePlayer) {
           window.startYouTubePlayer();
+          iframeHideConsentDialog();
+        } else if (!consent) {
+          iframeRenderConsentDialog();
         }
       },
       translations: {

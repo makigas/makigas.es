@@ -3,18 +3,19 @@
 module Six
   module Base
     class ButtonComponent < ViewComponent::Base
-      def initialize(href: nil, classes: nil, id: nil, text: nil, rel: nil)
+      def initialize(**options)
         super
-        @href = href
-        @classes = classes
-        @id = id
-        @text = text
-        @rel = rel
+        @href = options[:href]
+        @classes = options[:classes]
+        @id = options[:id]
+        @text = options[:text]
+        @rel = options[:rel]
+        @target = options[:target]
       end
 
       private
 
-      attr_reader :href, :classes, :id, :text, :rel
+      attr_reader :href, :classes, :id, :text, :rel, :target
 
       def class_list
         base_classes = ['btn']

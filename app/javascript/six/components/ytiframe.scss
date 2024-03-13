@@ -1,22 +1,39 @@
 .ytiframe {
-  aspect-ratio: 16 / 9;
   width: 100%;
-  background: black;
-  max-height: 70vh;
+
+  background-color: #181818;
+  background-image: var(--thumbnail-url);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+
   display: flex;
   justify-content: center;
 
-  &__iframe {
-    height: 100%;
+  @media screen and (width >= 480px) {
     aspect-ratio: 16 / 9;
-    margin: 0;
-    padding: 0;
-    max-height: 70vh; // WebKit
+    max-height: 70vh;
   }
 
-  &__consent {
+  &__iframe {
     height: 100%;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (width >= 480px) {
+      aspect-ratio: 16 / 9;
+      max-height: 70vh;
+    }
+  }
+
+  &--loaded {
+    aspect-ratio: 16 / 9;
+    max-height: 70vh;
+  }
+
+  &--loaded &__iframe {
+    aspect-ratio: 16 / 9;
+    max-height: 70vh;
   }
 
   // Klaro placeholder
@@ -33,11 +50,13 @@
   }
 
   .klaro.cm-as-context-notice {
-    flex: 1;
-    height: unset;
-    max-width: 600px;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    @media screen and (width >= 480px) {
+      flex: 1;
+      height: unset;
+      max-width: 600px;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
 
     button {
       padding-left: 3ch;
@@ -48,5 +67,54 @@
   #ytplayer {
     width: 100%;
     height: 100%;
+  }
+}
+
+.consent {
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  &--visible {
+    display: block;
+  }
+
+  &__box {
+    --button-foreground: black;
+    height: fit-content;
+    padding: 5px 15px;
+    text-align: center;
+  }
+
+  p {
+    line-height: 1.2;
+    color: white;
+  }
+
+  &__lead {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  small {
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  &__buttons {
+    display: inline-flex;
+    gap: 1rem;
+  }
+
+  @media screen and (width >= 480px) {
+    &--visible {
+      display: flex;
+    }
+    justify-content: center;
+    align-items: center;
+
+    &__box {
+      max-width: 70ch;
+    }
   }
 }

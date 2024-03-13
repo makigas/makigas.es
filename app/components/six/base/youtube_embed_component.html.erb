@@ -1,11 +1,28 @@
-<div class="ytiframe">
+<div class="ytiframe" style="--thumbnail-url: url('https://i1.ytimg.com/vi/<%= youtube_id %>/maxresdefault.jpg');">
   <figure class="ytiframe__iframe">
-    <div class="ytiframe__consent" data-name="youtube-embed">
-      <div id="ytplayer" data-id="<%= youtube_id %>"></div>
-      <noscript>
-        <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
-        </iframe>
-      </noscript>
+    <div class="consent">
+      <div class="consent__box">
+        <p class="consent__lead">Necesito tu permiso</p>
+        <p>
+        ¿Quieres cargar el reproductor de YouTube? Podrían guardarse cookies de terceros en tu
+        navegador. Si no, siempre puedes ir a ver el vídeo a YouTube.
+        </p>
+        <div class="consent__buttons">
+          <%= render Six::Base::ButtonComponent.new(id: "iframe-allow-now", text: 'Permitir esta vez') %>
+          <%= render Six::Base::ButtonComponent.new(id: "iframe-allow-always", text: 'Permitir siempre') %>
+          <%= render Six::Base::ButtonComponent.new(href: "https://youtu.be/#{youtube_id}", text: 'Ver en YouTube →', target: '_blank') %>
+        </div>
+        <p><small>
+          Ves este aviso porque no has establecido aún tus preferencias de cookies
+          o porque las has rechazado previamente. Este sitio web está orgulloso de
+          no usar cookies propias ni servir anuncios.
+        </small></p>
+      </div>
     </div>
+    <div id="ytplayer" data-id="<%= youtube_id %>"></div>
+    <noscript>
+      <iframe id="ytplayer" src="https://www.youtube-nocookie.com/embed/<%= youtube_id %>?showinfo=0" allowfullscreen>
+      </iframe>
+    </noscript>
   </figure>
 </div>
