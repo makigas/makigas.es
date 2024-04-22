@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get :disclaimer, path: 'responsabilidades', to: 'pages#disclaimer'
   get :cookies, to: 'pages#cookies'
   get :discord, to: 'pages#discord'
+  get '/bootcamps-no-autorizados', to: 'pages#bootcamps'
 
   get :dnt, to: 'pages#dnt'
 

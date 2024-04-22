@@ -70,6 +70,23 @@ body {
   }
 }
 
+.fakecamps {
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: #ff9b9b;
+  color: #000000;
+
+  p {
+    margin: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
 .paginator {
   margin-top: 1rem;
   margin-bottom: 1rem;

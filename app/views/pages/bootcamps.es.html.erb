@@ -1,0 +1,141 @@
+<% content_for :title, 'Ese bootcamp es un timo - makigas' %>
+<% content_for :description, 'Últimamente se están haciendo públicos muchos casos de bootcamps o MOOCs que toman contenido creado por otros formadores y lo hacen pasar por el suyo propio para vender sus propias formaciones. Esta es una práctica deceptiva y que resulta perjudicial para los estudiantes, que están entregando dinero a cambio de acceder a un contenido u obtener una certificación de peor calidad de la que esperaban encontrar.' %>
+<% content_for(:tags, 'falsos, bootcamps, pirata') %>
+<% content_for :twitter do %>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@makigas">
+  <meta name="twitter:title" content="Ese bootcamp es un timo - makigas">
+  <meta name="twitter:description" content="Últimamente se están haciendo públicos muchos casos de bootcamps o MOOCs que toman contenido creado por otros formadores y lo hacen pasar por el suyo propio para vender sus propias formaciones. Esta es una práctica deceptiva y que resulta perjudicial para los estudiantes, que están entregando dinero a cambio de acceder a un contenido u obtener una certificación de peor calidad de la que esperaban encontrar.">
+  <meta name="twitter:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+<% end %>
+<% content_for :facebook do %>
+  <meta property="og:url" content="<%= canonical_url %>">
+  <meta property="og:title" content="Ese bootcamp es un timo - makigas">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Últimamente se están haciendo públicos muchos casos de bootcamps o MOOCs que toman contenido creado por otros formadores y lo hacen pasar por el suyo propio para vender sus propias formaciones. Esta es una práctica deceptiva y que resulta perjudicial para los estudiantes, que están entregando dinero a cambio de acceder a un contenido u obtener una certificación de peor calidad de la que esperaban encontrar.">
+  <meta property="og:site_name" content="makigas">
+  <meta property="og:image" content="<%= image_url('/makigas.png', only_path: false) %>">
+<% end %>
+<% content_for :header do %>
+<style>
+  :root {
+    --jumbo-background: #1d448e;
+    --navbar-background: var(--jumbo-background);
+  }
+  .jumbo .wrapper {
+    text-align: center;
+  }
+  .jumbo .wrapper h1 {
+    font-size: 24pt;
+    line-height: 1.2;
+  }
+  .jumbo .wrapper .lead {
+    font-size: 18pt;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+  .colophon {
+    font-size: 14pt;
+  }
+  .colophon p,
+  .colophon li,
+  .colophon h2 {
+    line-height: 1.2;
+    max-width: 800px;
+  }
+  .colophon h2:before {
+    content: none;
+  }
+  .colophon figure {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  @media screen and (min-width: 640px) {
+    .jumbo .wrapper h1 {
+      font-size: 36pt;
+      line-height: 1.3;
+    }
+    .jumbo .wrapper .lead {
+      font-size: 24pt;
+      line-height: 1.3;
+    }
+    .colophon {
+      font-size: 18pt;
+    }
+  }
+</style>
+<% end %>
+
+<% content_for :hero do %>
+  <h1>Ese bootcamp podría querer estafarte</h1>
+  <p class="lead"><strong>
+    Ten cuidado con las plataformas que revenden cursos de programación hechos por otros creadores y no te dejes robar.
+  </strong></p>
+<% end %>
+
+<%= render Six::Base::WrapperComponent.new(tag: 'main', classes: 'colophon') do %>
+<p>
+Últimamente se están haciendo públicos muchos casos de bootcamps o MOOCs que toman contenido creado por otros formadores y lo hacen pasar por el suyo propio para vender sus propias formaciones.
+
+<p>
+Esta es una práctica deceptiva y que resulta perjudicial para los estudiantes, que están entregando dinero a cambio de acceder a un contenido u obtener una certificación de peor calidad de la que esperaban encontrar.
+
+<p>
+No soy ni de lejos el único formador al que le está ocurriendo esto en este momento, y ahora que otros creadores más grandes y conocidos han denunciado que en algunos casos están cobrando hasta 15.000 dólares a estudiantes por acceder a un bootcamp que tiene contenido recortado de otros cursos disponibles en plataformas como YouTube, he decidido compartir también los casos que me afectan a mí para tratar de alertar por mi lado a las personas que pueda avisar.
+
+<p>
+En lo que a mi canal de YouTube respecta, tengo evidencia de que algunas plataformas de formación privadas e independientes que operan como un MOOC están incrustando mi contenido en sus cursos de formación, por el que luego están tratando de cobrar a los estudiantes una certificación que pruebe que han entendido el contenido.
+
+<p>
+Para aclarar las cosas (y también, para no asustar al personal docente de universidades e institutos que estén leyendo esto): <strong>no tengo ningún problema con que mi material se use como bibliografía o como material adicional en formación reglada</strong>; al contrario, me parece un honor que haya personal docente que encuentre que mi contenido cumpla unos mínimos de calidad como para incluirlo en la bibliografía de su temario.
+
+<p>
+Estas páginas a las que sí estoy señalando están vendiendo certificados de formación por <strong>cursos cuyo temario consiste de forma casi exclusiva en contenido tomado de diversos canales de YouTube</strong>, entre ellos el mío, recopilado en una misma página web. El contenido puede verse de forma gratuita, pero estos sitios web invitan a los estudiantes a que compren una certificación para validar que se ha terminado de ver el curso (el cual, recalco, está compuesto en base a lecciones sueltas de varios canales de YouTube puestos de forma secuencial).
+
+<h2>Por qué este tipo de páginas huelen a engaño</h2>
+
+<p>
+Este tipo de prácticas resulta engañoso y deceptivo para los estudiantes y deberían considerarlo un intento de estafa. Estas plataformas están haciendo algo que podría ser equivalente al dropshipping, dando la apariencia de vender una certificación para un curso premium cuando no ha sido elaborado por ellos mismos y cuando los propios creadores del contenido originales podrían ni siquiera establecer la expectativa de que pueda ser considerado premium.
+
+<p>
+Por otra parte, dado que actúan a espaldas de los verdaderos creadores de contenido, existen otros problemas que pueden afectar a los estudiantes que tratan de aprender a partir del contenido que colocan en estas páginas web:
+
+<ul>
+<li>
+El contenido podría no estar estructurado correctamente o resultar confuso de visualizar, debido a que cada creador de contenido puede establecer su propia dinámica en el ritmo de su curso.
+</li>
+<li>
+Dado que el creador de contenido no sabe que están utilizando de este modo su contenido, y dado que los dueños de estas páginas web tampoco poseen el conocimiento necesario, no hay nadie que pueda responder las preguntas que permiten hacer este tipo de páginas web.
+</li>
+<li>
+El contenido puede desaparecer en cualquier momento si el autor original lo retira de la plataforma o lo actualiza, independientemente de si el estudiante cree que al haber pagado por la certificación, va a poder acceder al contenido más adelante.
+</li>
+</ul>
+
+<h2>¿Cómo puedes detectar que el curso que estás viendo ha sido tomado de YouTube?</h2>
+
+<ul>
+<li>
+En los últimos años han aparecido las figuras de los ingenieros de software que tienen buena presencia en redes sociales y es posible que conozcas a unos cuantos. Si reconoces una cara familiar en alguno de los cursos, pero no te suena ver a ese creador promocionando esa página en sus redes sociales, desconfía.
+</li>
+<li>
+Si notas que cada capítulo del curso está narrado por una persona distinta y no mantiene la identidad visual entre capítulos consecutivos, o si detectas que cada capítulo procede de una fuente diferente, desconfía.
+</li>
+<li>
+Si notas que el vídeo ha sido ligeramente modificado, por ejemplo, que la velocidad de reproducción está alterada, el audio ha sido cambiado para distorsionar las voces, o notas que el vídeo se ve borroso, está mal recortado, pixelado, o tiene marcas de agua extrañas en la imagen, es posible que haya sido descargado, re-editado y vuelvo a publicar en su plataforma. En este caso, desconfía.
+</li>
+<li>
+Si notas que junto al vídeo hay una bandeja de preguntas y respuestas similares a las de otras plataformas como Udemy o YouTube, pero nadie parece responder a nada que se pregunte, o al menos, nadie que no sea estudiante también, desconfía.
+</li>
+</ul>
+
+
+<figure>
+<img src="/edutin.png" alt="Edutin">
+<figcaption>En este ejemplo concreto, este sitio web está manipulando el aspecto del reproductor web para esconder de forma sutil parte de la interfaz de usuario del reproductor de YouTube, para dificultar al estudiante detectar el origen del contenido.</figcaption>
+</figure>
+
+<% end %>
