@@ -21,7 +21,7 @@
     margin: 0;
     padding: 0;
 
-    @include desktop-layout {
+    @include wide-layout {
       display: block;
     }
   }
@@ -29,7 +29,7 @@
   &__icon {
     max-width: 96px;
 
-    @include desktop-layout {
+    @include wide-layout {
       max-width: 100%;
     }
   }

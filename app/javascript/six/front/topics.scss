@@ -18,29 +18,23 @@
     }
   }
 
+  &__topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    justify-content: center;
+    gap: 10px;
+  }
+
   @include desktop-layout {
     &__title {
       text-align: center;
       font-size: 1.8rem;
     }
-
-    &__topics {
-      display: flex;
-      margin-left: -10px;
-      margin-right: -10px;
-    }
-
-    &__topic {
-      flex: 1;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
   }
 
   @include wide-layout {
     &__topics {
-      width: 1100px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, 180px);
     }
   }
 }

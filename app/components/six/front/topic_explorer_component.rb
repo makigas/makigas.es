@@ -10,7 +10,8 @@ module Six
         'desarrollo-web' => 'Desarrollo web',
         'lenguajes-de-programacion' => 'Programación',
         'java' => 'Java',
-        'desarrollo-de-juegos' => 'Desarrollo de juegos'
+        'elixir' => 'Elixir',
+        'creamos-una-api-rest-con-quarkus' => 'Quarkus',
       }.freeze
 
       def topics
