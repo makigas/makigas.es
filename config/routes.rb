@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { sessions: 'users/sessions' }
     namespace :dashboard, path: '' do
       root to: 'dashboard#index', as: ''
-      resources :topics
+      resources :topics do
+        get :order
+        put :reorder
+      end
       resources :videos, only: %i[index new create]
       resources :playlists do
         get :videos, on: :member

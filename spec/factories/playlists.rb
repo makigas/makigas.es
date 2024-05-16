@@ -17,6 +17,7 @@
 #  thumbnail_file_size    :bigint
 #  thumbnail_updated_at   :datetime
 #  title                  :string           not null
+#  topic_position         :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  topic_id               :integer

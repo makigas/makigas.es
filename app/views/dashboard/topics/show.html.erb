@@ -42,8 +42,9 @@
   <tr>
     <td><%= t('.playlists') %></td>
     <td>
+      <p><%= link_to t('.order'), dashboard_topic_order_path(@topic) %></p>
       <ul>
-        <% @topic.playlists.each do |playlist| %>
+        <% @topic.playlists.order(topic_position: :asc).each do |playlist| %>
           <li><%= link_to playlist.title, [:dashboard, playlist] %></li>
         <% end %>
       </ul>

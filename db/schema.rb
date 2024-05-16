@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_17_164647) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_16_230210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_164647) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum"
+    t.string "checksum", null: false
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -119,6 +119,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_164647) do
     t.bigint "card_file_size"
     t.datetime "card_updated_at"
     t.string "forum_url"
+    t.integer "topic_position", default: 0, null: false
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end
@@ -179,7 +180,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_17_164647) do
     t.integer "position", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.datetime "published_at", null: false
+    t.datetime "published_at", precision: nil, null: false
     t.string "tags", default: [], array: true
     t.string "twitch_id"
     t.boolean "early_access", default: false, null: false

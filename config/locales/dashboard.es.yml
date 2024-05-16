@@ -199,6 +199,16 @@ es:
         created: Tema creado correctamente.
       destroy:
         destroyed: Tema eliminado correctamente.
+      order:
+        back: Regresar
+        order: Ordenar
+        dashboard: Panel de control
+        topics: Temas
+        position: Posición
+        title: Título
+        actions: Acciones
+        up: Subir
+        down: Bajar
       edit:
         cancel: Cancelar
         dashboard: Panel de control
@@ -220,6 +230,7 @@ es:
         new_topic: Nuevo Tema
         topics: Temas
       show:
+        order: Ordenar
         color: Color
         dashboard: Panel de control
         description: Descripción

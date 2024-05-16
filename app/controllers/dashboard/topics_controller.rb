@@ -2,13 +2,17 @@
 
 module Dashboard
   class TopicsController < Dashboard::DashboardController
-    before_action :topic_set, only: %i[show edit update destroy]
+    before_action :topic_set, only: %i[show edit update destroy order reorder]
 
     def index
       @topics = Topic.order(updated_at: :desc).page(params[:page])
     end
 
     def show; end
+
+    def order
+      @playlists = Playlist.where(topic_id: @topic.id).order(topic_position: :asc)
+    end
 
     def new
       @topic = Topic.new
@@ -33,6 +37,16 @@ module Dashboard
       end
     end
 
+    def reorder
+      @playlist = @topic.playlists.find(params[:playlist])
+      case params[:direction]
+      when 'up'
+        @playlist.move_higher
+      when 'down'
+        @playlist.move_lower
+      end
+    end
+
     def destroy
       @topic.destroy!
       redirect_to %i[dashboard topics], notice: t('.destroyed')
@@ -45,7 +59,7 @@ module Dashboard
     end
 
     def topic_set
-      @topic = Topic.friendly.find(params[:id])
+      @topic = Topic.friendly.find(params[:id] || params[:topic_id])
     end
   end
 end

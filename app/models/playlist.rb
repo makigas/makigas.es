@@ -17,6 +17,7 @@
 #  thumbnail_file_size    :bigint
 #  thumbnail_updated_at   :datetime
 #  title                  :string           not null
+#  topic_position         :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  topic_id               :integer
@@ -31,6 +32,8 @@ class Playlist < ApplicationRecord
   extend FriendlyId
 
   friendly_id :title, use: :slugged
+
+  acts_as_list scope: :topic, column: :topic_position
 
   has_attached_file :thumbnail, styles: {
     thumbnail: '100x100>',

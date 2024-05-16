@@ -7,7 +7,7 @@ json.color topic.color
 
 if embeds.include?(:playlists)
   json.playlists do
-    json.array! topic.playlists, partial: 'playlists/playlist', as: :playlist, embeds: []
+    json.array! topic.playlists.order(topic_position: :asc), partial: 'playlists/playlist', as: :playlist, embeds: []
   end
 end
 
