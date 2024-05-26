@@ -11,7 +11,7 @@ module Six
         'lenguajes-de-programacion' => 'Programación',
         'java' => 'Java',
         'elixir' => 'Elixir',
-        'creamos-una-api-rest-con-quarkus' => 'Quarkus',
+        'creamos-una-api-rest-con-quarkus' => 'Quarkus'
       }.freeze
 
       def topics
