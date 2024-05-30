@@ -9,7 +9,7 @@ module Dashboard
       @key = key
       @label = label
       @params = params
-      @keep = keep.map { |k| [k, params[k]] }.to_h
+      @keep = keep.index_with { |k| params[k] }
     end
 
     private
