@@ -7,13 +7,25 @@
   <h1><%= t('.untranscribed') %></h1>
 <% end %>
 
+<%= form_with method: :get do |f| %>
+  <p>
+  <%= f.label :playlist_id, 'Playlist' %>
+  <%= f.select :playlist_id, @playlists.pluck(:title, :id), selected: params[:playlist_id], include_blank: '(ninguna)' %>
+  </p>
+  <p>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <%= f.submit 'Apply filters', type: :submit, name: nil, class: 'btn btn-primary btn-sm' %>
+  <%= link_to 'Reset', dashboard_pending_show_notes_path, class: 'btn btn-light btn-sm' %>
+  </p>
+  <% end %>
+
 <table class="table">
   <thead>
     <tr>
       <th><%= t('.video') %></th>
-      <th><%= render Dashboard::SortableHeaderComponent.new(key: :playlist, label: t('.playlist'), params:) %></th>
-      <th><%= render Dashboard::SortableHeaderComponent.new(key: :duration, label: t('.duration'), params:) %></th>
-      <th><%= render Dashboard::SortableHeaderComponent.new(key: :publication_date, label: t('.published_at'), params:) %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :playlist, label: t('.playlist'), keep: %i(playlist_id), params:) %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :duration, label: t('.duration'), keep: %i(playlist_id), params:) %></th>
+      <th><%= render Dashboard::SortableHeaderComponent.new(key: :publication_date, label: t('.published_at'), keep: %i(playlist_id), params:) %></th>
       <th><%= t('.actions') %></th>
     </tr>
   </thead>

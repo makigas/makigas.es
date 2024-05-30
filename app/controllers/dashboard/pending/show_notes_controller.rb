@@ -6,7 +6,8 @@ module Dashboard
       before_action :assign_default_sort
 
       def show
-        @videos = Video.unnoted.order(sort_criteria).page(params[:page])
+        @videos = Video.unnoted.where(filter_criteria).order(sort_criteria).page(params[:page])
+        @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
       end
 
       private
@@ -33,6 +34,10 @@ module Dashboard
       def sort_criteria
         criteria = SORT_CRITERIAS[sort_key]
         { criteria => sort_direction }
+      end
+
+      def filter_criteria
+        params.permit(:playlist_id).compact_blank
       end
     end
   end

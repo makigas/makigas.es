@@ -2,13 +2,14 @@
 
 module Dashboard
   class SortableHeaderComponent < ViewComponent::Base
-    attr_reader :key, :params, :label
+    attr_reader :key, :params, :label, :keep
 
-    def initialize(key:, label:, params:)
+    def initialize(key:, label:, params:, keep: {})
       super
       @key = key
       @label = label
       @params = params
+      @keep = keep.map { |k| [k, params[k]] }.to_h
     end
 
     private
