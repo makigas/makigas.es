@@ -14,4 +14,5 @@ import "../dashboard/highlight.scss";
 import "../dashboard/playlists";
 import "../dashboard/videos";
 import "../dashboard/searches";
+import "../dashboard/shownotes";
 import "../dashboard/topics";

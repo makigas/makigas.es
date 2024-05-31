@@ -10,8 +10,17 @@
 <% content_for :toolbar do %>
   <%= link_to t('.cancel'), [:dashboard, @playlist, @video], class: 'btn btn-outline-secondary' %>
 <% end %>
-<%= simple_form_for @show_note, url: dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @playlist.slug) do |f| %>
-  <%= f.input :language, collection: [['es', 'es']], include_blank: false %>
-  <%= f.input :content, input_html: { rows: 10 } %>
-  <%= f.submit class: 'btn btn-success' %>
-<% end %>
+<div class="row">
+  <div class="col-lg-6">
+    <%= simple_form_for @show_note, url: dashboard_playlist_video_show_note_path(video_id: @video.slug, playlist_id: @playlist.slug) do |f| %>
+      <%= f.input :language, collection: [['es', 'es']], include_blank: false %>
+      <%= f.input :content, input_html: { rows: 30 } %>
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div class="col-lg-6">
+    <div class="ratio ratio-16x9">
+      <iframe id="dashboard-video-player" class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.youtube_id %>?enablejsapi=1"></iframe>
+    </div>
+  </div>
+</div>
