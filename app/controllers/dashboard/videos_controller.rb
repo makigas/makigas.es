@@ -8,7 +8,8 @@ module Dashboard
 
     def index
       @sorter = VideoSorter.new(query: params[:sort] || DEFAULT_SORT_CRITERIA)
-      @videos = @sorter.videos.page(params[:page])
+      @videos = @sorter.videos.where(filter_criteria).page(params[:page])
+      @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
     end
 
     def show; end
@@ -74,6 +75,10 @@ module Dashboard
                                     :tags, :playlist_id, :published_at).tap do |video_params|
         video_params[:tags] = video_params[:tags].split if video_params[:tags].present?
       end
+    end
+
+    def filter_criteria
+      params.permit(:playlist_id).compact_blank
     end
   end
 end
