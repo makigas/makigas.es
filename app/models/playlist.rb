@@ -54,7 +54,7 @@ class Playlist < ApplicationRecord
 
   # At least a video must have been published already.
   scope :with_public_videos, lambda {
-    with_public_videos = joins(:videos).where('videos.published_at <= ?', DateTime.current)
+    with_public_videos = joins(:videos).where(videos: { published_at: ..DateTime.current })
     Playlist.where(id: with_public_videos.pluck(:id))
   }
 

@@ -65,7 +65,7 @@ class Video < ApplicationRecord
   scope :filter_by_old_playlist_id, ->(id) { id ? where('old_playlist_ids @> ARRAY[?]::integer[]', id) : self }
 
   # Scope for limiting the amount of videos to those actually published.
-  scope :visible, -> { where('published_at <= ?', DateTime.now) }
+  scope :visible, -> { where(published_at: ..DateTime.now) }
 
   # Scope for getting videos that are available for early access.
   scope :early_access, lambda {
