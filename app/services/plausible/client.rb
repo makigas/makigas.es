@@ -43,7 +43,7 @@ module Plausible
 
     def timeseries_params
       yesterday = DateTime.current.yesterday
-      sixty_days_ago = yesterday - 60.days
+      sixty_days_ago = yesterday - 59.days # one less because otherwise it is one more
 
       date = "#{sixty_days_ago.strftime('%F')},#{yesterday.strftime('%F')}"
       { site_id:, period: 'custom', date:, metrics: 'visits,pageviews,visit_duration' }

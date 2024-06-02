@@ -35,6 +35,22 @@
     </div>
   </div>
   <div class="col-sm-9 col-md-9 col-lg-10">
+
+    <div class="card mb-5">
+      <div class="card-header">
+        Últimos 30 días
+      </div>
+      <div class="card-body row">
+        <% if @statistics.present? %>
+          <%= render Dashboard::DashboardStatisticComponent.new(label: 'Sesiones', value: @statistics[:visits][:value], increment: @statistics[:visits][:delta]) %>
+          <%= render Dashboard::DashboardStatisticComponent.new(label: 'Páginas', value: @statistics[:pageviews][:value], increment: @statistics[:pageviews][:delta]) %>
+          <%= render Dashboard::DashboardStatisticComponent.new(label: 'Tiempo', value: running_time(@statistics[:visit_duration][:value]), increment: @statistics[:visit_duration][:delta]) %>
+        <% else %>
+          <p class="card-text">No se ha podido consultar el servicio de estadísticas externas.</p>
+        <% end %>
+      </div>
+    </div>
+
     <div class="card mb-5">
       <div class="card-header">
         Acciones rápidas

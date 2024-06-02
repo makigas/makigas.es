@@ -12,6 +12,15 @@ module Dashboard
       @topics = Topic.count
       @users = User.count
       @opinions = Opinion.count
+      @statistics = fetch_statistics
+    end
+
+    private
+
+    def fetch_statistics
+      Plausible::Integration.last_30_days(true)
+    rescue Net::HTTPError
+      nil
     end
   end
 end
