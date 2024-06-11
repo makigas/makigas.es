@@ -9,3 +9,9 @@
     @content;
   }
 }
+
+@mixin hdpi-layout {
+  @media (min-width: 1920px) {
+    @content;
+  }
+}

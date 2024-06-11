@@ -33,73 +33,57 @@
     </style>
   <% end %>
 <% end %>
-<article class="videoinfo">
-  <section class="videoinfo__head">
-    <div class="videoinfo__player">
-      <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
-    </div>
-  </section>
 
-  <%= render Six::Base::WrapperComponent.new(tag: :section, classes: 'videoinfo__body', breath: true) do %>
-    <div class="videoinfo__text">
-      <header>
-        <%= render(Six::Base::ButtonGroupComponent.new(style: :flex)) do |g| %>
-          <%= g.with_button(href: playlist_video_path(@video.higher_item || @video, playlist_id: @playlist), rel: :prev) { 'Vídeo anterior' } %>
-          <%= g.with_button(href: playlist_video_path(@video.lower_item || @video, playlist_id: @playlist), rel: :next) { 'Vídeo siguiente' } %>
+<%= render Six::Base::WrapperComponent.new(breath: true) do %>
+<div class="videopage">
+  <article class="videopage__left article">
+    <header class="article__header">
+      <% if @video.playlist.present? %>
+      <p class="article__taxonomy">
+        <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'article__category' %>
+      </p>
+      <% end %>
+      <h1 class="article__title"><%= @video.title %></h1>
+      <p class="article__meta">
+        <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601) %> &bull;
+        <%= t('.duration', duration: running_time(@video.duration)) %>
+        <% if @video.tags.present? %>
+          &bull;
+          <% @video.tags.each do |tag| %>
+            <%= link_to "##{tag}", videos_path(tag:), class: 'article__tag' %>
+          <% end %>
         <% end %>
-        <p class="videoinfo__pldata">
-          <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'videoinfo__pllink' %>
+      </p>
+      <p class="article__summary">
+        <%= @video.description %>
+      </p>
+    </header>
+    <% if @video.youtube_id %>
+      <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
+    <% end %>
+    <% if @video.show_note.present? %>
+      <div class="article__content">
+        <%= to_markdown(@video.show_note.content).html_safe %>
+      </div>
+    <% else %>
+      <div class="article__placeholder">
+        <p>
+        <strong>Este vídeo lamentablemente todavía no tiene notas de episodio.</strong>
+        Todavía quedan algunos vídeos en este sitio web que no tienen artículos
+        de texto por si te gusta más leer que ver vídeos, y parece que esta
+        página es una de ellas.
         </p>
-        <h1 class="videoinfo__title"><%= @video.title %></h1>
-        <p class="videoinfo__meta">
-          <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601) %> &bull;
-          <%= t('.duration', duration: running_time(@video.duration)) %>
-          <% if @video.tags.present? %>
-            &bull;
-            <% @video.tags.each do |tag| %>
-              <%= link_to "##{tag}", videos_path(tag:), class: 'videoinfo__tag' %>
-            <% end %>
-          <% end %>
+        <p class="article__survey">
+        <strong>¡Ayúdame a saber qué es prioritario y qué no!</strong>
+        ¿Te hubiese ayudado encontrar un artículo de texto en esta página junto al vídeo?
+        <button class="btn videoinfo__nonotes__btn" id="notes-survey-yes">Sí</button>
+        <button class="btn videoinfo__nonotes__btn" id="notes-survey-no">No</button>
         </p>
-        <p class="videoinfo__description">
-          <%= @video.description %>
-        </p>
-      </header>
-      <% if @video.show_note.present? %>
-        <div class="videoinfo__shownotes">
-          <%= to_markdown(@video.show_note.content).html_safe %>
-        </div>
-      <% else %>
-        <div class="videoinfo__nonotes">
-          <p>
-          <strong>Este vídeo lamentablemente todavía no tiene notas de episodio.</strong>
-          Todavía quedan algunos vídeos en este sitio web que no tienen artículos
-          de texto por si te gusta más leer que ver vídeos, y parece que esta
-          página es una de ellas.
-
-          <% if @video.transcription.present? %>
-          Hay una transcripción del audio disponible
-          para ayudarte a llegar a este vídeo que puede que te ayude.
-          <% end %>
-          </p>
-          <p class="videoinfo__nonotes__question">
-          <strong>¡Ayúdame a saber qué es prioritario y qué no!</strong>
-          ¿Te hubiese ayudado encontrar un artículo de texto en esta página junto al vídeo?
-          <button class="btn videoinfo__nonotes__btn" id="notes-survey-yes">Sí</button>
-          <button class="btn videoinfo__nonotes__btn" id="notes-survey-no">No</button>
-          </p>
-        </div>
-      <% end %>
-      <% if @video.transcription.present? %>
-        <details class="videoinfo__transcription">
-          <summary>Desplegar transcripción del episodio</summary>
-          <%= to_markdown(@video.transcription.content).html_safe %>
-        </details>
-      <% end %>
-      <%= render Six::Lesson::QuestionComponent.new(forum: @video.playlist.display_forum_url, utm: forum_utm_params(@video)) %>
-    </div>
-    <aside class="videoinfo__links">
-      <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
-    </aside>
+      </div>
+    <% end %>
+  </article>
+  <section class="videopage__sidebar">
+    <%= render Six::Lesson::QuestionComponent.new(forum: @video.playlist.display_forum_url, utm: forum_utm_params(@video)) %>
+    <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
+  </section>
   <% end %>
-</article>

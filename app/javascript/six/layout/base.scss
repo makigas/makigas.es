@@ -43,6 +43,10 @@ body {
       max-width: initial;
     }
   }
+
+  @include hdpi-layout {
+    max-width: 1600px;
+  }
 }
 
 .topicslist {

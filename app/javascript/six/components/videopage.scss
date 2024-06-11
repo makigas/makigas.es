@@ -1,0 +1,33 @@
+@import "../layout/responsive.scss";
+
+.videopage {
+  @include desktop-layout {
+    display: grid;
+    grid-template-columns: auto 300px;
+    gap: 50px;
+  }
+
+  @include wide-layout {
+    grid-template-columns: auto 400px;
+  }
+
+  @include hdpi-layout {
+    gap: 80px;
+  }
+
+  &__sidebar {
+    max-width: 767px;
+    margin: 3rem auto;
+
+    @include desktop-layout {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      position: relative;
+
+      .videotoc {
+        position: sticky;
+        top: 1rem;
+      }
+    }
+  }
+}
