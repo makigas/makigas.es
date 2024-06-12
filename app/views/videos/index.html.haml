@@ -6,7 +6,7 @@
   %meta{name: :robots, content: :noindex}
 
 .videoexplorer
-  = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap') do
+  = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap', slim: true) do
     = render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...')
     .videoexplorer__sidebar
       = render Six::Search::BoxComponent.new do |box|

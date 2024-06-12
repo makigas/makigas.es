@@ -18,6 +18,7 @@ module Six
         classes = ['wrapper']
         classes << 'wrapper--fluid' if @options[:fluid]
         classes << 'wrapper--breath' if @options[:breath]
+        classes << 'wrapper--slim' if @options[:slim]
         classes << @options[:classes] if @options[:classes].present?
         classes.flatten.join(' ')
       end

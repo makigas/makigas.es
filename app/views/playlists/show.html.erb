@@ -34,7 +34,7 @@
 <% content_for :jumbo do %>
   <%= render Six::Layout::PlaylistHeaderComponent.new(playlist: @playlist) %>
 <% end %>
-<%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata') do %>
+<%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata', slim: true) do %>
   <% @playlist.videos.visible.each do |v| %>
     <%= render Six::Explorer::PlaylistVideoCardComponent.new(video: v) %>
   <% end %>

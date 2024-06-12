@@ -47,6 +47,12 @@ body {
   @include hdpi-layout {
     max-width: 1600px;
   }
+
+  &--slim {
+    @include hdpi-layout {
+      max-width: 1280px;
+    }
+  }
 }
 
 .topicslist {

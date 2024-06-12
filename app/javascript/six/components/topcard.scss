@@ -1,13 +1,25 @@
+@import "../layout/responsive.scss";
+
+.topicslist {
+  @include desktop-layout {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include hdpi-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .topcard {
   &__link {
-    /* Flex */
     display: flex;
     gap: 1rem;
-    justify-content: space-between;
 
     /* Dimensions. */
-    margin-bottom: 2rem;
-    padding: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
     border-radius: 12px;
 
     /* Making it look less like a link. */
@@ -22,7 +34,6 @@
 
   &__thumb {
     display: none;
-    flex: 0;
     margin: 0;
 
     @media screen and (min-width: 767px) {

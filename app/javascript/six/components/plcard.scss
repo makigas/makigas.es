@@ -1,5 +1,15 @@
+@import "../layout/responsive.scss";
+
 :root {
   --playlist-card-hover-background: var(--makigas-brand-washed-out);
+}
+
+.playlistslist {
+  display: grid;
+
+  @include wide-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .plcard {
