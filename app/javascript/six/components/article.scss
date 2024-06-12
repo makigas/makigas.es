@@ -37,6 +37,7 @@
     line-height: 1.2;
     font-size: 2rem;
     font-family: var(--font-title);
+    text-wrap: balance;
 
     @include hdpi-layout {
       font-size: 2.5rem;
