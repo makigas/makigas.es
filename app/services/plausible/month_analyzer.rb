@@ -24,18 +24,19 @@ module Plausible
 
     def fold_comparison(this, previous, key)
       delta = (((this[key].to_f / previous[key]) - 1) * 100).round
-      { value: this[key], previous: previous[key], delta: delta }
+      { value: this[key], previous: previous[key], delta: }
+    end
+
+    def reduce_month_step(total, day)
+      duration = day['visit_duration'] * day['visits']
+      { pageviews: total[:pageviews] + day['pageviews'],
+        visit_duration: total[:visit_duration] + duration,
+        visits: total[:visits] + day['visits'] }
     end
 
     def reduce_month(month)
-      accum = month.reduce(Hash::new(0)) do |total, day|
-        duration = day["visit_duration"] * day["visits"]
-        { pageviews: total[:pageviews] + day["pageviews"],
-          visit_duration: total[:visit_duration] + duration,
-          visits: total[:visits] + day["visits"] }
-      end
-      accum[:visit_duration] = (accum[:visit_duration].to_f / accum[:visits]).round
-      accum
+      accum = month.reduce(Hash.new(0), &method(:reduce_month_step))
+      accum.tap { |a| a[:visit_duration] = (a[:visit_duration].to_f / a[:visits]).round }
     end
   end
 end

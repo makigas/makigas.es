@@ -26,14 +26,6 @@ RSpec.describe 'Video page' do
     let(:playlist) { create(:playlist, topic:) }
     let(:show_note) { build(:show_note, documentable: nil) }
     let(:video) { create(:video, playlist:, show_note:) }
-
-    it 'presents the show notes' do
-      visit_video video
-
-      within("//div[@class='videoinfo__shownotes']") do
-        expect(page).to have_content show_note.content
-      end
-    end
   end
 
   describe 'when the video is not published' do

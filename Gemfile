@@ -85,6 +85,7 @@ end
 # Test tools
 group :test do
   gem 'capybara', '~> 3.40.0'
+  gem 'capybara-screenshot', '~> 1.0.26'
   gem 'selenium-webdriver', '~> 4.10'
   gem 'webdrivers', '~> 5.3.1'
 end

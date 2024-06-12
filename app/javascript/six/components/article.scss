@@ -24,7 +24,10 @@
   }
 
   @include desktop-layout {
-    &__taxonomy, &__title, &__summary, &__meta {
+    &__taxonomy,
+    &__title,
+    &__summary,
+    &__meta {
       max-width: 60ch;
       margin-left: auto;
       margin-right: auto;

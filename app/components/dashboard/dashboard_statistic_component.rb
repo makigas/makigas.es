@@ -3,6 +3,7 @@
 module Dashboard
   class DashboardStatisticComponent < ViewComponent::Base
     def initialize(label:, value:, increment:)
+      super
       @label = label
       @value = value
       @increment = increment
@@ -13,9 +14,9 @@ module Dashboard
     attr_reader :label, :value, :increment
 
     def pill_class
-      if increment > 0
+      if increment.positive?
         'text-bg-success'
-      elsif increment < 0
+      elsif increment.negative?
         'text-bg-warning'
       else
         'text-bg-secondary'

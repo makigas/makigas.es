@@ -18,7 +18,7 @@ module Dashboard
     private
 
     def fetch_statistics
-      Plausible::Integration.last_30_days(true)
+      Plausible::Integration.last_30_days(compare: true)
     rescue Net::HTTPError
       nil
     end

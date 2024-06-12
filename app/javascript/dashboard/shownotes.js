@@ -1,3 +1,5 @@
+/* global YT */
+
 const iframe = document.getElementById("dashboard-video-player");
 if (iframe) {
   let player;
@@ -10,25 +12,25 @@ if (iframe) {
   tag.src = "https://www.youtube.com/player_api";
   document.head.appendChild(tag);
 
-  function onPlayPause() {
+  const onPlayPause = () => {
     if (player.getPlayerState() == 1) {
       player.pauseVideo();
     } else {
       player.playVideo();
     }
-  }
+  };
 
-  function onRewind() {
+  const onRewind = () => {
     const current = player.getCurrentTime();
     const next = current >= 15 ? current - 15 : 0;
     player.seekTo(next);
-  }
+  };
 
-  function onChangeSpeed(amount) {
+  const onChangeSpeed = (amount) => {
     const current = player.getPlaybackRate();
-    next = current + amount;
+    const next = current + amount;
     player.setPlaybackRate(next);
-  }
+  };
 
   document.addEventListener("keydown", (e) => {
     if (e.shiftKey) {
