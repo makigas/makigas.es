@@ -21,13 +21,6 @@ RSpec.describe 'Video page' do
     expect(page).to have_css "iframe[src*='www.youtube-nocookie.com/embed/#{video.youtube_id}']"
   end
 
-  describe 'when the video has show notes' do
-    let(:topic) { create(:topic) }
-    let(:playlist) { create(:playlist, topic:) }
-    let(:show_note) { build(:show_note, documentable: nil) }
-    let(:video) { create(:video, playlist:, show_note:) }
-  end
-
   describe 'when the video is not published' do
     before do
       video.update(published_at: 2.days.from_now)

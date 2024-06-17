@@ -11,6 +11,7 @@ import "../dashboard/videos.scss";
 import "../dashboard/auth.scss";
 import "../dashboard/highlight.scss";
 
+import "../dashboard/copy";
 import "../dashboard/playlists";
 import "../dashboard/videos";
 import "../dashboard/searches";

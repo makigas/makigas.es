@@ -23,7 +23,14 @@
   </tr>
   <tr>
     <td><%= t('.permalink') %></td>
-    <td><%= playlist_video_url(@video, playlist_id: @playlist, subdomain: 'www').then { |url| link_to(url, url, target: :blank) } %></td>
+    <td>
+    <p class="mb-1"><%= render Dashboard::CopyComponent.new do %>
+      <%= playlist_video_url(@video, playlist_id: @playlist, subdomain: 'www').then { |url| link_to(url, url, target: :blank) } %>
+    <% end %></p>
+    <p><%= render Dashboard::CopyComponent.new do %>
+      <%= video_by_id_url(@video.youtube_id, subdomain: 'www').then { |url| link_to(url, url, target: :blank) } %>
+    <% end %></p>
+    </td>
   </tr>
   <tr>
     <td><%= t('.youtube_id') %></td>

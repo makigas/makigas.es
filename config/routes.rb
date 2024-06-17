@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
   get :dnt, to: 'pages#dnt'
 
-  get '/v/:id', to: 'videos#find_by_id'
+  get '/v/:id', to: 'videos#find_by_id', as: :video_by_id
 
   # Legacy routes (redirect only).
   get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')

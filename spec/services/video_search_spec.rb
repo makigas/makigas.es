@@ -82,16 +82,16 @@ RSpec.describe VideoSearch, type: :class do
       it 'merges the filters for simple cases' do
         create(:topic, title: 'Real topic', slug: 'real-topic')
         described_class.new('java videos', filters: { topic: %w[real-topic], length: :short }).videos
-        expected_hash = { filter: ['duration <= 300', ['topic_slug = real-topic']] }
+        expected_hash = { filter: ['duration <= 300', an_array_matching(['topic_slug = real-topic'])] }
         expect(videos).to have_received(:search).with('java videos', hash_including(expected_hash))
       end
 
       it 'merges the filters for complex cases' do
-        create(:topic, title: 'Real topic', slug: 'real-topic')
         create(:topic, title: 'Another topic', slug: 'another-topic')
+        create(:topic, title: 'Real topic', slug: 'real-topic')
         described_class.new('java videos', filters: { topic: %w[real-topic another-topic], length: :medium }).videos
         expected_hash = { filter: ['duration > 300', 'duration <= 900',
-                                   ['topic_slug = real-topic', 'topic_slug = another-topic']] }
+                                   an_array_matching(['topic_slug = real-topic', 'topic_slug = another-topic'])] }
         expect(videos).to have_received(:search).with('java videos', hash_including(expected_hash))
       end
     end

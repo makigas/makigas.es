@@ -70,4 +70,8 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :selenium_headless
   Capybara.enable_aria_label = true
+
+  Capybara::Screenshot.register_driver :selenium_headless do |driver, path|
+    driver.browser.save_screenshot path
+  end
 end
