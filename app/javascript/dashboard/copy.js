@@ -11,7 +11,7 @@ for (const copy of copies) {
       continue;
     }
     button.addEventListener("click", () => {
-      let content = node.innerText;
+      let content = node.innerText.trim();
       navigator.clipboard.writeText(content);
       copied.removeAttribute("hidden");
     });
