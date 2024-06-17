@@ -1,6 +1,7 @@
 <%= simple_form_for [:dashboard, @video] do |form| %>
   <%= form.input :title %>
   <%= form.input :description, as: :text %>
+  <%= form.input :excerpt, as: :text %>
   <%= form.input :youtube_id %>
   <%= form.input :twitch_id %>
   <%= form.input :early_access %>

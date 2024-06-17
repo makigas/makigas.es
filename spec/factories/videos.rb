@@ -8,6 +8,7 @@
 #  description      :text             not null
 #  duration         :integer          not null
 #  early_access     :boolean          default(FALSE), not null
+#  excerpt          :text
 #  old_playlist_ids :integer          default([]), not null, is an Array
 #  position         :integer          not null
 #  published_at     :datetime         not null

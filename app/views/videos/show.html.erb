@@ -1,4 +1,4 @@
-<% content_for :title, "#{@video.position}. #{@video.title} – #{@video.playlist.title} – makigas" %>
+<% content_for :title, "#{@video.title} – #{@video.playlist.title} – makigas" %>
 <% content_for :description, @video.description %>
 <% content_for(:tags, @video.tags.sort.join(' ')) if @video.tags.present? %>
 <% content_for :twitter do %>
@@ -55,7 +55,7 @@
         <% end %>
       </p>
       <p class="article__summary">
-        <%= @video.description %>
+        <%= @video.excerpt || @video.description %>
       </p>
     </header>
     <% if @video.youtube_id %>

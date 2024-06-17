@@ -331,6 +331,7 @@ es:
         destroy: Destruir
         duration: Duración
         edit: Editar
+        excerpt: Extracto
         published_at: Fecha de publicación
         playlist: Lista
         permalink: Enlace permanente

@@ -50,6 +50,7 @@ es:
         remember_me: Mantener sesión abierta
       video:
         title: Título
+        excerpt: Extracto
         description: Descripción
         duration: Duración
         position: Posición

@@ -22,6 +22,10 @@
     <td><%= @video.description %></td>
   </tr>
   <tr>
+    <td><%= t('.excerpt') %></td>
+    <td><%= @video.excerpt %></td>
+  </tr>
+  <tr>
     <td><%= t('.permalink') %></td>
     <td>
     <p class="mb-1"><%= render Dashboard::CopyComponent.new do %>
