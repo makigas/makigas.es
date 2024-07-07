@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_17_100108) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_160915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_17_100108) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "ingested_analytics", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "day", null: false
+    t.jsonb "document", null: false
+    t.index ["day"], name: "index_ingested_analytics_on_day"
   end
 
   create_table "links", force: :cascade do |t|
@@ -186,6 +194,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_17_100108) do
     t.boolean "early_access", default: false, null: false
     t.integer "old_playlist_ids", default: [], null: false, array: true
     t.text "excerpt"
+    t.integer "views_total", default: 0
+    t.integer "views_recent", default: 0
     t.index ["early_access"], name: "index_videos_on_early_access"
     t.index ["old_playlist_ids"], name: "index_videos_on_old_playlist_ids"
     t.index ["slug"], name: "index_videos_on_slug"
