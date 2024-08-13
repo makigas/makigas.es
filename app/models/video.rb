@@ -62,6 +62,7 @@ class Video < ApplicationRecord
 
   # Slug. Can be repeated as long as it's on different playlists.
   friendly_id :title, use: %i[slugged scoped history], scope: :playlist
+  has_many :slug_history, class_name: 'FriendlyId::Slug', as: :sluggable
 
   # Old playlist ID
   before_update :track_old_playlist_id, if: :will_save_change_to_playlist_id?
