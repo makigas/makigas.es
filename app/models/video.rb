@@ -42,6 +42,7 @@ class Video < ApplicationRecord
 
     attribute :slug
     attribute :tags
+    attribute(:publication_date) { published_at.to_i }
 
     attribute(:playlist_title) { playlist.title }
     attribute(:playlist_description) { playlist.description }
@@ -51,8 +52,27 @@ class Video < ApplicationRecord
     attribute(:topic_description) { playlist.topic&.description }
     attribute(:topic_slug) { playlist.topic&.slug }
 
+    attribute :views_recent, :views_total
+
     attribute :duration
-    filterable_attributes %i[topic_slug duration tags]
+
+    searchable_attributes %i[
+      title description transcription show_note slug tags
+      playlist_title playlist_description playlist_slug
+      topic_title topic_description topic_slug
+    ]
+    filterable_attributes %i[topic_slug duration tags publication_date]
+    sortable_attributes %i[duration views_recent views_total publication_date]
+
+    ranking_rules [
+      'proximity',
+      'typo',
+      'words',
+      'attribute',
+      'sort',
+      'exactness',
+      'views_recent:desc',
+    ]
   end
 
   # Videos are sorted in a playlist.
