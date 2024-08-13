@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_091846) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_092945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -198,6 +198,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_091846) do
     t.text "excerpt"
     t.integer "views_total", default: 0
     t.integer "views_recent", default: 0
+    t.string "trend_tag"
     t.index ["early_access"], name: "index_videos_on_early_access"
     t.index ["old_playlist_ids"], name: "index_videos_on_old_playlist_ids"
     t.index ["slug"], name: "index_videos_on_slug"

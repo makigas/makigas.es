@@ -15,6 +15,7 @@
 #  slug             :string           not null
 #  tags             :string           default([]), is an Array
 #  title            :string           not null
+#  trend_tag        :string
 #  views_recent     :integer          default(0)
 #  views_total      :integer          default(0)
 #  created_at       :datetime         not null

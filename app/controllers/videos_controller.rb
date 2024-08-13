@@ -8,7 +8,7 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = if filter_params.present?
+    @videos = if filter_params.present? || sort_params.present?
                 VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos
               else
                 Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
@@ -57,6 +57,10 @@ class VideosController < ApplicationController
 
   def filter_params
     params.permit(:q, :length, :tag, topic: [])
+  end
+
+  def sort_params
+    params.permit(:sort)
   end
 
   def canonical_params?
