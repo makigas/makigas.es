@@ -65,16 +65,7 @@ class Video < ApplicationRecord
     filterable_attributes %i[topic_slug duration tags publication_date]
     sortable_attributes %i[duration views_recent views_total publication_date]
 
-    ranking_rules [
-      "sort",
-      "exactness",
-      "attribute",
-      "publication_date:desc",
-      "views_recent:desc",
-      "words",
-      "typo",
-      "proximity",
-    ]
+    ranking_rules %i[sort exactness attribute publication_date:desc views_recent:desc words typo proximity]
   end
 
   # Videos are sorted in a playlist.
@@ -84,7 +75,7 @@ class Video < ApplicationRecord
 
   # Slug. Can be repeated as long as it's on different playlists.
   friendly_id :title, use: %i[slugged scoped history], scope: :playlist
-  has_many :slug_history, class_name: 'FriendlyId::Slug', as: :sluggable
+  has_many :slug_history, class_name: 'FriendlyId::Slug', as: :sluggable, dependent: :destroy
 
   # Old playlist ID
   before_update :track_old_playlist_id, if: :will_save_change_to_playlist_id?
@@ -170,32 +161,11 @@ class Video < ApplicationRecord
     'long' => 'duration > 900'
   }.freeze
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def to_episode_schema
-    { name: title,
-      description:,
-      keywords: tags,
-      dateCreated: created_at.iso8601,
-      dateModified: updated_at.iso8601,
-      datePublished: published_at&.iso8601,
-      timeRequired: schema_duration,
-      duration: schema_duration,
-      image: playlist.card.url(:default),
-      thumbnailUrl: playlist.thumbnail.url(:thumb),
-      episodeNumber: position }
+    Makigas::Jsonld.episode_schema(self)
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def to_video_schema
-    { name: title,
-      description:,
-      thumbnailUrl: "https://i1.ytimg.com/vi/#{youtube_id}/mqdefault.jpg",
-      uploadDate: published_at ? published_at&.iso8601 : created_at.iso8601,
-      duration: schema_duration,
-      embedUrl: "https://www.youtube.com/embed/#{youtube_id}" }
-  end
-
-  def schema_duration
-    ActiveSupport::Duration.build(duration).iso8601
+    Makigas::Jsonld.video_schema(self)
   end
 end

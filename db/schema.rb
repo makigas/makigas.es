@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_092945) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_101745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_092945) do
     t.datetime "updated_at", null: false
     t.date "day", null: false
     t.jsonb "document", null: false
-    t.index ["day"], name: "index_ingested_analytics_on_day"
+    t.index ["day"], name: "index_ingested_analytics_on_day", unique: true
     t.index ["document"], name: "index_ingested_analytics_on_document_", using: :gin
   end
 

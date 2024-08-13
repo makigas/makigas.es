@@ -28,8 +28,8 @@ class VideoSearch
   SORT_QUERIES = {
     'recent' => 'publication_date:desc',
     'popular' => 'views_total:desc',
-    'trending' => 'views_recent:desc',
-  }
+    'trending' => 'views_recent:desc'
+  }.freeze
 
   LENGTH_QUERIES = {
     'short' => ['duration <= 300'],
@@ -43,7 +43,7 @@ class VideoSearch
   end
 
   def sort_criteria
-    return nil unless sort.present?
+    return nil if sort.blank?
 
     [SORT_QUERIES[sort]]
   end

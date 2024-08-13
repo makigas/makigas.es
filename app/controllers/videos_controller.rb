@@ -9,9 +9,9 @@ class VideosController < ApplicationController
 
   def index
     @videos = if filter_params.present? || sort_params.present?
-                VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos
+                results_by_meilisearch
               else
-                Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
+                results_by_database
               end
   end
 
@@ -35,6 +35,14 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def results_by_meilisearch
+    VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos
+  end
+
+  def results_by_database
+    Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
+  end
 
   def find_video
     @playlist = Playlist.friendly.find(params[:playlist_id])
