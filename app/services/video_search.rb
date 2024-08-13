@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class VideoSearch
-  def initialize(query, page: 1, filters: {})
+  def initialize(query, page: 1, filters: {}, sort: nil)
     @query = query
     @page = page
     @filters = filters
+    @sort = sort
   end
 
   def videos
@@ -18,11 +19,17 @@ class VideoSearch
 
   private
 
-  attr_reader :filters
+  attr_reader :filters, :sort
 
   def meilisearch_filters
-    { filter: search_filters, hitsPerPage: 10, page: @page }
+    { filter: search_filters, hitsPerPage: 10, page: @page, sort: sort_criteria }
   end
+
+  SORT_QUERIES = {
+    'recent' => 'publication_date:desc',
+    'popular' => 'views_total:desc',
+    'trending' => 'views_recent:desc',
+  }
 
   LENGTH_QUERIES = {
     'short' => ['duration <= 300'],
@@ -32,7 +39,13 @@ class VideoSearch
   }.freeze
 
   def search_request
-    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters)
+    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
+  end
+
+  def sort_criteria
+    return nil unless sort.present?
+
+    [SORT_QUERIES[sort]]
   end
 
   def search_filters

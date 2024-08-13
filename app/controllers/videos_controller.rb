@@ -9,7 +9,7 @@ class VideosController < ApplicationController
 
   def index
     @videos = if filter_params.present?
-                VideoSearch.new(params[:q], filters: filter_params, page:).videos
+                VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos
               else
                 Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
               end

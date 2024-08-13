@@ -11,6 +11,7 @@
     <tr>
       <th>Búsqueda</th>
       <th>Filtros</th>
+      <th>Orden</th>
       <th colspan="2">Error</th>
       <th>Fecha</th>
     </tr>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= search.query %></td>
         <td><%= search.full_criteria.to_json %></td>
+        <td><%= search.sort.to_json %></td>
         <td>
           <% if search.error.present? %>
             <%= tag(:i,

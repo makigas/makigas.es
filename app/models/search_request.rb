@@ -10,6 +10,7 @@
 #  filters    :jsonb            not null
 #  page       :integer          default(1)
 #  query      :string
+#  sort       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

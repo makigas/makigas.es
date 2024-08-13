@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_07_160915) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_091846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_160915) do
     t.date "day", null: false
     t.jsonb "document", null: false
     t.index ["day"], name: "index_ingested_analytics_on_day"
+    t.index ["document"], name: "index_ingested_analytics_on_document_", using: :gin
   end
 
   create_table "links", force: :cascade do |t|
@@ -140,6 +141,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_160915) do
     t.jsonb "filters", default: "{}", null: false
     t.string "error"
     t.integer "count", default: 0, null: false
+    t.string "sort"
     t.index ["filters"], name: "index_search_requests_on_filters", using: :gin
     t.index ["query"], name: "index_search_requests_on_query"
   end

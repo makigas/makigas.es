@@ -10,6 +10,11 @@
     = render Six::Base::ButtonComponent.new(classes: 'videoexplorer__toggle', id: 'sToggleExplorer').with_content('Filtrar por...')
     .videoexplorer__sidebar
       = render Six::Search::BoxComponent.new do |box|
+        - box.with_title { 'Ordenar resultados' }
+        - box.with_pill(url: derive_search_url(sort: nil), icon_right: params[:sort] && 'x') { 'Predeterminado' }
+        - video_search_sort_criterias.each do |label, criteria|
+          - box.with_pill(url: derive_search_url(sort: criteria), active: params[:sort] == criteria).with_content(label)
+      = render Six::Search::BoxComponent.new do |box|
         - box.with_title { 'Filtrar por duración' }
         - box.with_pill(url: derive_search_url(length: nil), icon_right: params[:length] && 'x') { 'Cualquier duración' }
         - video_search_duration_filters.each do |label, filter|

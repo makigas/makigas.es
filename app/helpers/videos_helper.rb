@@ -42,7 +42,7 @@ module VideosHelper
   end
 
   def derive_search_url(filters = {})
-    valid_filters = filters.slice(:tag, :topic, :length, :q)
+    valid_filters = filters.slice(:tag, :topic, :length, :q, :sort)
     url_for(request.query_parameters.merge(valid_filters))
   end
 
@@ -50,5 +50,11 @@ module VideosHelper
     [['Cortos (<5 min)', 'short'],
      ['Medios (5 a 15 min)', 'medium'],
      ['Largos (>15 min)', 'long']]
+  end
+
+  def video_search_sort_criterias
+    [['Más recientes', 'recent'],
+     ['Más vistos', 'popular'],
+     ['En tendencia', 'trending']]
   end
 end

@@ -65,13 +65,14 @@ class Video < ApplicationRecord
     sortable_attributes %i[duration views_recent views_total publication_date]
 
     ranking_rules [
-      'proximity',
-      'typo',
-      'words',
-      'attribute',
-      'sort',
-      'exactness',
-      'views_recent:desc',
+      "sort",
+      "exactness",
+      "attribute",
+      "publication_date:desc",
+      "views_recent:desc",
+      "words",
+      "typo",
+      "proximity",
     ]
   end
 
