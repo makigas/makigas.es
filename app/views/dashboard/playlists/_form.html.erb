@@ -3,6 +3,7 @@
   <%= form.input :description, as: :text %>
   <%= form.input :youtube_id %>
   <%= form.input :forum_url %>
+  <p><%= form.input :exclude_from_search %></p>
   <%= form.association :topic, include_blank: :translate %>
   <%= form.input :thumbnail, as: :file %>
   <%= form.input :card, as: :file %>

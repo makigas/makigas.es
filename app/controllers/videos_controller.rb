@@ -13,6 +13,7 @@ class VideosController < ApplicationController
               else
                 results_by_database
               end
+    @matching_tag = find_matching_tag
   end
 
   def show
@@ -35,6 +36,10 @@ class VideosController < ApplicationController
   end
 
   private
+
+  def find_matching_tag
+    Tag.find_by(slug: params[:tag]) || Tag.find_by(slug: params[:q]) || Tag.synonym(params[:q])
+  end
 
   def results_by_meilisearch
     VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos

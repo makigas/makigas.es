@@ -1,0 +1,9 @@
+<div class="relatedlists">
+  <h3 class="relatedlists__title"><%= t('.consider_this', count: playlists.count) %></h3>
+
+  <div class="relatedlists__list">
+    <% playlists.each do |playlist| %>
+      <%= render Six::Search::RelatedPlaylistComponent.new(playlist:) %>
+    <% end %>
+  </div>
+</div>

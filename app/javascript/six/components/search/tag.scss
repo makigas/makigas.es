@@ -3,7 +3,7 @@
 }
 
 .searchtag {
-  border: 1px solid var(--button-border-color);
+  border: 1px solid var(--searchtag-border-color);
   box-shadow: 0 1px 1px #00000040;
   border-radius: 5px;
   display: flex;
@@ -15,6 +15,10 @@
 
   &__icon {
     width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    object-position: center;
     object-fit: scale-down;
   }
 

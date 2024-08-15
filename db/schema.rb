@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_15_001737) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_15_183318) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_001737) do
     t.datetime "card_updated_at"
     t.string "forum_url"
     t.integer "topic_position", default: 0, null: false
+    t.boolean "exclude_from_search", default: false, null: false
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end
@@ -156,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_001737) do
     t.string "icon_content_type"
     t.bigint "icon_file_size"
     t.datetime "icon_updated_at"
+    t.string "synonyms", default: [], null: false, array: true
     t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 

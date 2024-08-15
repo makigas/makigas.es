@@ -10,6 +10,7 @@
 #  card_file_size         :bigint
 #  card_updated_at        :datetime
 #  description            :text             not null
+#  exclude_from_search    :boolean          default(FALSE), not null
 #  forum_url              :string
 #  slug                   :string           not null
 #  thumbnail_content_type :string
@@ -123,4 +124,12 @@ class Playlist < ApplicationRecord
       image: card.url(:default) }
   end
   # rubocop:enable Metrics/AbcSize
+
+  def views_recent
+    videos.pluck(:views_recent).sum
+  end
+
+  def views_total
+    videos.pluck(:views_total).sum
+  end
 end

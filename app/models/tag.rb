@@ -9,6 +9,7 @@
 #  icon_file_size    :bigint
 #  icon_updated_at   :datetime
 #  slug              :string           not null
+#  synonyms          :string           default([]), not null, is an Array
 #  title             :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -28,5 +29,18 @@ class Tag < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def self.synonym(syn)
+    where('synonyms @> ARRAY[?]::varchar[]', syn).first
+  end
+
+  after_save :update_synonym_index
+
+  def update_synonym_index
+    index = Video.index
+    syns = index.synonyms
+    syns[slug] = synonyms
+    index.update_synonyms(syns)
   end
 end

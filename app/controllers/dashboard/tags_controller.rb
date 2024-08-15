@@ -40,6 +40,8 @@ class Dashboard::TagsController < Dashboard::DashboardController
   end
 
   def tag_params
-    params.require(:tag).permit(:title, :description, :slug, :icon)
+    params.require(:tag).permit(:title, :description, :slug, :icon, :synonyms).tap do |tag_params|
+      tag_params[:synonyms] = tag_params[:synonyms].split if tag_params[:synonyms].present?
+    end
   end
 end

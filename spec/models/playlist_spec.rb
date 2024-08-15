@@ -10,6 +10,7 @@
 #  card_file_size         :bigint
 #  card_updated_at        :datetime
 #  description            :text             not null
+#  exclude_from_search    :boolean          default(FALSE), not null
 #  forum_url              :string
 #  slug                   :string           not null
 #  thumbnail_content_type :string

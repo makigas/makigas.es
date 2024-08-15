@@ -9,6 +9,7 @@
 #  icon_file_size    :bigint
 #  icon_updated_at   :datetime
 #  slug              :string           not null
+#  synonyms          :string           default([]), not null, is an Array
 #  title             :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

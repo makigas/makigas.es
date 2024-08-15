@@ -193,3 +193,12 @@ es:
     search:
       current_filters_component:
         remove_filter: Eliminar filtro
+      related_playlists_component:
+        consider_this:
+          one: Esta serie podría ser lo que estás buscando
+          other: Estas series podrían ser lo que estás buscando
+      related_playlist_component:
+        episodes:
+          one: "%{count} vídeo"
+          other: "%{count} vídeos"
+        duration: Duración

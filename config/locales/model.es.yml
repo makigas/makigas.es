@@ -24,6 +24,7 @@ es:
         slug: Identificador
         description: Descripción
         icon: Icono
+        synonyms: Sinónimos
       playlist:
         description: Descripción
         thumbnail: Miniatura
@@ -33,6 +34,7 @@ es:
         youtube_id: ID de YouTube
         topic: Tema
         forum_url: URL del foro
+        exclude_from_search: Excluir de la búsqueda
       opinion:
         from: De
         message: Mensaje
@@ -75,3 +77,6 @@ es:
         topic: (Sin tema concreto)
       topic:
         parent_topic: (Sin tema superior)
+    helpers:
+      playlist:
+        exclude_from_search: Si activas esta opción, esta lista nunca será promocionada en las tarjetas de exploración
