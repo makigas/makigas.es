@@ -1,6 +1,11 @@
+:root {
+  --trendbadge-background: rgb(238, 190, 163);
+  --trendbadge-foreground: rgb(129, 65, 0);
+}
+
 .trendbadge {
-  background: var(--tag-background);
-  color: var(--tag-foreground);
+  background: var(--trendbadge-background);
+  color: var(--trendbadge-foreground);
   border-radius: 5px;
   font-size: 0.8em;
   padding: 2px 0.5em;

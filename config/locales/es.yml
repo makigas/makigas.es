@@ -190,3 +190,6 @@ es:
         minutes:
           one: "%{count} minuto"
           other: "%{count} minutos"
+    search:
+      current_filters_component:
+        remove_filter: Eliminar filtro

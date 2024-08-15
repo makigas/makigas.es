@@ -31,6 +31,8 @@
           - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
     .videoexplorer__list
       = render Six::Search::CurrentFiltersComponent.new(filters: params)
+      - Tag.find_by(slug: params[:tag]).tap do |tag|
+        = render Six::Search::TagInformationComponent.new(tag:) if tag.present?
       - if @videos.present?
         = render Six::Search::ResultComponent.with_collection(@videos)
         .paginator= paginate @videos
