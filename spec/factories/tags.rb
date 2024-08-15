@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tags
@@ -21,7 +23,7 @@
 FactoryBot.define do
   factory :tag do
     title { 'Git' }
-    description { 'Git es uno de los sistemas de control de versiones más populares en este momento, así que conocerlo te garantiza un sitio en la industria' }
+    description { 'Git es un sistema de control de versiones' }
     icon { Rack::Test::UploadedFile.new('spec/fixtures/tag.png') }
   end
 end

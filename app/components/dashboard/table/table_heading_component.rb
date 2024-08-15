@@ -11,11 +11,9 @@ module Dashboard
       end
 
       def classes
-        if @primary
-          'primary'
-        else
-          nil
-        end
+        return unless @primary
+
+        'primary'
       end
     end
   end

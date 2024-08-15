@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tags
@@ -20,7 +22,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Tag, type: :model do
+RSpec.describe Tag do
   describe 'validation' do
     it 'is not valid without a title' do
       tag = build(:tag, title: nil)

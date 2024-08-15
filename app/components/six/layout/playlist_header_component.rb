@@ -12,8 +12,8 @@ module Six
         content = @playlist.excerpt.presence || @playlist.description
         render = MarkdownRenderer.new
         markdown = Redcarpet::Markdown.new(render, fenced_code_blocks: true,
-                                                  tables: true, quote: true,
-                                                  prettify: true)
+                                                   tables: true, quote: true,
+                                                   prettify: true)
         markdown.render(content)
       end
 
