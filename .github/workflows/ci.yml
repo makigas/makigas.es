@@ -97,5 +97,8 @@ jobs:
         with:
           ruby-version: '3.3.4'
           bundler-cache: true
-      - name: Build assets
-        run: bundle exec rails assets:precompile
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: yarn install
+      - run: bundle exec rails assets:precompile
