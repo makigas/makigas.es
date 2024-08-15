@@ -41,8 +41,19 @@ class Tag < ApplicationRecord
     Tag.deploy_synonyms
   end
 
+  def self.synonyms_catalog
+    Tag.pluck(:slug, :synonyms).to_h.tap do |index|
+      # Make it bidirectional
+      index.deep_dup.each do |slug, synonyms|
+        synonyms.each do |syn|
+          index[syn] = [] if index[syn].blank?
+          index[syn] << slug
+        end
+      end
+    end
+  end
+
   def self.deploy_synonyms
-    list = Tag.pluck(:slug, :synonyms).to_h
-    Video.index.update_synonyms list
+    Video.index.update_synonyms(synonyms_catalog)
   end
 end
