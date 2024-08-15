@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-alpine
+FROM ruby:3.3.4-alpine
 LABEL maintainer="dani@danirod.es"
 
 # Build variables
@@ -17,12 +17,12 @@ WORKDIR /makigas
 # Install Ruby dependencies
 ADD Gemfile Gemfile.lock /
 RUN apk add --update --no-cache build-base && \
-    gem install bundler:2.4.7 && \
+    gem install bundler:2.5.17 && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install && \
-    rm -rf /vendor/bundle/ruby/3.2.0/cache/*.gem && \
-    find /vendor/bundle/ruby/3.2.0/gems/ -name "*.[co]" -delete && \
+    rm -rf /vendor/bundle/ruby/3.3.0/cache/*.gem && \
+    find /vendor/bundle/ruby/3.3.0/gems/ -name "*.[co]" -delete && \
     apk del build-base
 
 ADD . .

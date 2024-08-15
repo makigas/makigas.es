@@ -7,7 +7,7 @@ require:
   - rubocop-rspec_rails
 
 AllCops:
-  TargetRubyVersion: '3.2'
+  TargetRubyVersion: '3.3'
   NewCops: enable
 
   # Ignore files I have no control over -- Ruby on Rails, Bundle
@@ -43,7 +43,7 @@ AllCops:
     - 'vendor/bundle/**/*'
 
 # Allow scenario to describe Capybara E2E tests.
-RSpec/Capybara/FeatureMethods:
+RSpec/Dialect:
   Exclude:
     - 'spec/features/**/*.rb'
 

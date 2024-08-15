@@ -291,7 +291,7 @@ RSpec.describe Video do
 
     it 'happens after deletion' do
       video = create(:video)
-      params = { primary_key: video.id.to_s, synchronous: nil, index_uid: nil }
+      params = { 'primary_key' => video.id.to_s, 'synchronous' => nil, 'index_uid' => 'Video_test' }
       expect do
         video.destroy
       end.to have_enqueued_job(MeiliSearch::Rails::MSCleanUpJob).with([params])

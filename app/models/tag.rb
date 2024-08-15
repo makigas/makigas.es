@@ -37,12 +37,12 @@ class Tag < ApplicationRecord
     where('synonyms @> ARRAY[?]::varchar[]', syn).first
   end
 
-  after_save :update_synonym_index
+  after_save do
+    Tag.deploy_synonyms
+  end
 
-  def update_synonym_index
-    index = Video.index
-    syns = index.synonyms
-    syns[slug] = synonyms
-    index.update_synonyms(syns)
+  def self.deploy_synonyms
+    list = Tag.pluck(:slug, :synonyms).to_h
+    Video.index.update_synonyms list
   end
 end

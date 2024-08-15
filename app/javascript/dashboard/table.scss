@@ -21,7 +21,9 @@ table.makigas-table {
   }
 
   &--expand {
-    td { white-space: nowrap; }
+    td {
+      white-space: nowrap;
+    }
     td.primary {
       white-space: initial;
       width: 100%;

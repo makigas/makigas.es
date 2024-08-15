@@ -2,10 +2,10 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 3.2.0'
+ruby '~> 3.3.0'
 
 gem 'dotenv-rails', '~> 3.1.0'
-gem 'rake', '~> 13.1.0'
+gem 'rake', '~> 13.2.1'
 
 # Base Ruby on Rails distribution
 gem 'bootsnap', '~> 1.18.3'
@@ -27,28 +27,28 @@ gem 'delayed_job_web'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.143.0'
+gem 'aws-sdk-s3', '~> 1.158.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
-gem 'faraday', '~> 2.9.0'
+gem 'faraday', '~> 2.10.1'
 gem 'friendly_id'
 gem 'haml-rails', '~> 2.0'
 gem 'kaminari'
 gem 'kt-paperclip', '~> 7.2.0'
-gem 'lookbook', '~> 2.2.1'
-gem 'meilisearch-rails', '~> 0.12.0'
+gem 'lookbook', '~> 2.3.2'
+gem 'meilisearch-rails', '~> 0.14.0'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'rouge'
 gem 'simple_form'
 gem 'sitemap_generator', '~> 6.3.0'
-gem 'view_component', '~> 3.11.0'
+gem 'view_component', '~> 3.13.0'
 gem 'view_component-contrib'
 
 # Ops
-gem 'sentry-rails', '~> 5.16.1'
-gem 'sentry-ruby', '~> 5.16.1'
+gem 'sentry-rails', '~> 5.19.0'
+gem 'sentry-ruby', '~> 5.19.0'
 
 group :development do
   # Development tools
@@ -65,12 +65,14 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.63.0', require: false
-  gem 'rubocop', '~> 1.64.1', require: false
+  gem 'overcommit', '~> 0.64.0', require: false
+  gem 'rubocop', '~> 1.65.1', require: false
+  gem 'rubocop-capybara', '~> 2.21.0', require: false
+  gem 'rubocop-factory_bot', '~> 2.26.1', require: false
   gem 'rubocop-rails', '~> 2.25.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 2.29.2', require: false
-  gem 'rubocop-rspec_rails', '~> 2.28.3', require: false
+  gem 'rubocop-rspec', '~> 3.0.4', require: false
+  gem 'rubocop-rspec_rails', '~> 2.30.0', require: false
 end
 
 # Test tools that must be available in development mode
@@ -86,6 +88,5 @@ end
 group :test do
   gem 'capybara', '~> 3.40.0'
   gem 'capybara-screenshot', '~> 1.0.26'
-  gem 'selenium-webdriver', '~> 4.10'
-  gem 'webdrivers', '~> 5.3.1'
+  gem 'selenium-webdriver', '~> 4.23.0'
 end
