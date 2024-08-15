@@ -47,11 +47,3 @@ returns.forEach((button) => {
     form.querySelector("[type=submit]").click();
   });
 });
-
-const toggleExpand = document.querySelectorAll("button.toggle-expand");
-toggleExpand.forEach((button) => {
-  button.addEventListener("click", () => {
-    const row = button.closest("tr");
-    row.classList.toggle("expanded");
-  });
-});

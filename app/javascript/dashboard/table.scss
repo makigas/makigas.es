@@ -1,0 +1,132 @@
+table.makigas-table {
+  table-layout: auto;
+  border-collapse: collapse;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  th,
+  td {
+    display: none;
+  }
+
+  th.primary,
+  td.primary {
+    display: table-cell;
+  }
+
+  td.primary {
+    line-height: 34px;
+  }
+
+  &--expand {
+    td { white-space: nowrap; }
+    td.primary {
+      white-space: initial;
+      width: 100%;
+    }
+  }
+
+  button.toggle-expand {
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    float: right;
+
+    .bi-plus-circle {
+      display: inline;
+    }
+    .bi-dash-circle {
+      display: none;
+    }
+  }
+
+  tr.expanded button.toggle-expand {
+    .bi-plus-circle {
+      display: none;
+    }
+    .bi-dash-circle {
+      display: inline;
+    }
+  }
+
+  dl.metadata {
+    display: none;
+    line-height: var(--bs-body-line-height);
+  }
+
+  .action-buttons {
+    display: none;
+    line-height: var(--bs-body-line-height);
+  }
+
+  tr.expanded .action-buttons {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  tr.expanded dl.metadata {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 15px;
+
+    dt {
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+
+  @media (width >= 768px) {
+    button.toggle-expand {
+      display: none;
+    }
+
+    dl.metadata {
+      display: none;
+    }
+
+    th,
+    td {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    td.primary {
+      line-height: var(--bs-body-line-height);
+    }
+
+    th.image-cell,
+    td.image-cell {
+      vertical-align: middle;
+    }
+
+    th.image-cell img,
+    td.image-cell img {
+      width: 32px;
+    }
+
+    .action-buttons {
+      display: block;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+    }
+
+    tr:hover .action-buttons,
+    tr:focus .action-buttons,
+    tr:focus-within .action-buttons {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    .action-buttons {
+      transition: none;
+    }
+  }
+
+  .btn-sm {
+    --bs-btn-padding-x: 0;
+    --bs-btn-padding-y: 0;
+  }
+}

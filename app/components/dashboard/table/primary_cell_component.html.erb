@@ -1,0 +1,18 @@
+<td class="primary">
+  <button class="toggle-expand">
+    <span class="bi bi-plus-circle" title="Expandir" aria-hidden="true"></span>
+    <span class="bi bi-dash-circle" title="Contraer" aria-hidden="true"></span>
+  </button>
+
+  <%= @label || cell %>
+
+  <% if actions? %>
+    <div class="action-buttons">
+      <%= actions %>
+    </div>
+  <% end %>
+
+  <% if metadata? %>
+    <%= metadata %>
+  <% end %>
+</td>

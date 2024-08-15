@@ -9,6 +9,7 @@ import "../dashboard/playlists.scss";
 import "../dashboard/topics.scss";
 import "../dashboard/videos.scss";
 import "../dashboard/auth.scss";
+import "../dashboard/table.scss";
 import "../dashboard/highlight.scss";
 
 import "../dashboard/copy";
@@ -17,3 +18,4 @@ import "../dashboard/videos";
 import "../dashboard/searches";
 import "../dashboard/shownotes";
 import "../dashboard/topics";
+import "../dashboard/table";
