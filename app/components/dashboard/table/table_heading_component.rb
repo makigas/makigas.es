@@ -7,6 +7,7 @@ module Dashboard
         super
         @label = label
         @primary = opts[:primary]
+        @html_options = opts[:html_options] || {}
       end
 
       def classes
