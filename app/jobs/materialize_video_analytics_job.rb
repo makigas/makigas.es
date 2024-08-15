@@ -33,11 +33,21 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
     end
   end
 
+  def update_playlist_counters(playlist, total_data, recent_data)
+    url = Rails.application.routes.url_helpers.playlist_path(id: playlist.slug)
+    update_without_timestamps do
+      playlist.update(views_total: total_data[url], views_recent: recent_data[url])
+    end
+  end
+
   def update_counters
     total_data = IngestedAnalytic.recordset.group_by_page
     recent_data = IngestedAnalytic.recordset.where(day: 30.days.ago..).group_by_page
     Video.includes(:playlist).find_each do |video|
       update_video_counters(video, total_data, recent_data)
+    end
+    Playlist.find_each do |playlist|
+      update_playlist_counters(playlist, total_data, recent_data)
     end
   end
 

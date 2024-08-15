@@ -13,15 +13,16 @@ module Six
       end
 
       def duration
-        duration = ActiveSupport::Duration.build(total_seconds)
-
-        minutes = duration.in_minutes.to_i % 60
-        hours = duration.in_hours.to_i
-
-        [
-          hours.positive? ? t('.hours', count: hours) : nil,
-          minutes.positive? ? t('.minutes', count: minutes) : nil
-        ].compact.join(', ')
+        duration = helpers.running_time total_seconds, long: true
+        counter = duration.split(':').take(2).join(':')
+        word = if total_seconds >= 3600
+                 'horas'
+               elsif total_seconds >= 60
+                 'minutos'
+               else
+                 'segundos'
+               end
+        "#{counter} #{word}"
       end
 
       private

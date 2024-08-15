@@ -2,7 +2,7 @@
     <%= render Six::Base::WrapperComponent.new(classes: 'plhead__wrap') do %>
         <section class="plhead__data">
         <h1 class="plhead__title"><%= @playlist.title %></h1>
-        <p class="plhead__lead"><%= @playlist.description %></p>
+        <div class="plhead__lead"><%= body.html_safe %></div>
         <%= render Six::Utils::MetaGroupComponent.new(classes: 'plhead__metas') do |g| %>
             <%= g.with_meta(icon: 'list') { "#{@playlist.videos.count} episodios" } %>
             <%= g.with_meta(icon: 'clock') { duration } %>

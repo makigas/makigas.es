@@ -8,6 +8,15 @@ module Six
         @playlist = playlist
       end
 
+      def body
+        content = @playlist.excerpt.presence || @playlist.description
+        render = MarkdownRenderer.new
+        markdown = Redcarpet::Markdown.new(render, fenced_code_blocks: true,
+                                                  tables: true, quote: true,
+                                                  prettify: true)
+        markdown.render(content)
+      end
+
       def duration
         duration = helpers.running_time total_seconds, long: true
         counter = duration.split(':').take(2).join(':')

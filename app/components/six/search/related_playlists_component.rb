@@ -9,7 +9,7 @@ module Six
       end
 
       def playlists
-        @playlists ||= Playlist.includes(:videos).where(id: playlist_ids, exclude_from_search: false).sort_by(&:views_recent).reverse
+        @playlists ||= Playlist.includes(:videos).where(id: playlist_ids, exclude_from_search: false).sort_by { |p| p.views_recent + (p.video_views_recent / p.videos.length) }.reverse
       end
 
       def render?

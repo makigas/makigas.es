@@ -10,6 +10,7 @@
 #  card_file_size         :bigint
 #  card_updated_at        :datetime
 #  description            :text             not null
+#  excerpt                :text
 #  exclude_from_search    :boolean          default(FALSE), not null
 #  forum_url              :string
 #  slug                   :string           not null
@@ -19,6 +20,8 @@
 #  thumbnail_updated_at   :datetime
 #  title                  :string           not null
 #  topic_position         :integer          default(0), not null
+#  views_recent           :integer          default(0)
+#  views_total            :integer          default(0)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  topic_id               :integer
@@ -32,7 +35,7 @@
 class Playlist < ApplicationRecord
   extend FriendlyId
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: %i[slugged history]
 
   acts_as_list scope: :topic, column: :topic_position
 
@@ -125,11 +128,11 @@ class Playlist < ApplicationRecord
   end
   # rubocop:enable Metrics/AbcSize
 
-  def views_recent
+  def video_views_recent
     videos.pluck(:views_recent).sum
   end
 
-  def views_total
+  def video_views_total
     videos.pluck(:views_total).sum
   end
 end
