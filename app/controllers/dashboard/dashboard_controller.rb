@@ -11,7 +11,7 @@ module Dashboard
       @playlists = Playlist.count
       @topics = Topic.count
       @users = User.count
-      @opinions = Opinion.count
+      @tags = Tag.count
       @statistics = fetch_statistics
     end
 

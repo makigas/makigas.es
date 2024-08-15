@@ -1,0 +1,42 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item current"><%= t('.tags') %></li>
+  </ol>
+  <h1><%= t('.tags') %></h1>
+<% end %>
+
+<% content_for :toolbar do %>
+  <%= link_to t('.new_tag'), [:new, :dashboard, :tag], class: 'btn btn-success' %>
+<% end %>
+
+<%= render Dashboard::Table::TableComponent.new(expand: true) do |table| %>
+  <%= table.with_head do |header| %>
+    <%= header.with_heading t('.icon') %>
+    <%= header.with_heading t('.title'), primary: true %>
+    <%= header.with_heading t('.slug') %>
+    <%= header.with_heading t('.videos') %>
+  <% end %>
+  <%= table.with_body do |body| %>
+    <% @tags.each do |tag|  %>
+      <%= body.with_row do |row| %>
+        <%= row.with_cell(class: 'image-cell') do %>
+          <%= image_tag tag.icon.url %>
+        <% end %>
+        <%= row.with_primary(tag.title) do |cell| %>
+          <%= cell.with_actions do %>
+            <%= link_to t('.edit'), [:edit, :dashboard, tag], class: 'btn btn-sm btn-link' %>
+            <%= button_to t('.destroy'), [:dashboard, tag], method: :delete, class: 'btn btn-sm btn-link text-danger', data: { confirm: t('.really_destroy') } %>
+          <% end %>
+          <%= cell.with_metadata do |meta| %>
+            <%= meta.with_key(t('.slug')) { "##{tag.slug}" } %>
+            <%= meta.with_key(t('.description')) { tag.description } %>
+            <%= meta.with_key t('.videos'), Video.filter_by_tag(tag.slug).count %>
+          <% end %>
+        <% end %>
+        <%= row.with_cell "##{tag.slug}" %>
+        <%= row.with_cell Video.filter_by_tag(tag.slug).count %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

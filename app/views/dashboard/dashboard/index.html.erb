@@ -28,9 +28,9 @@
         <p class="d-grid"><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary' %></p>
       </div>
       <div class="col-sm-12 col-xs-6">
-        <h1><span class="bi bi-chat-fill"></span> <%= @opinions %></h1>
-        <p class="lead"><%= t('.opinions', count: @opinions) %></p>
-        <p class="d-grid"><%= link_to t('.manage_opinions'), [:dashboard, :opinions], class: 'btn btn-outline-secondary' %></p>
+        <h1><span class="bi bi-tag"></span> <%= @tags %></h1>
+        <p class="lead"><%= t('.tags', count: @tags) %></p>
+        <p class="d-grid"><%= link_to t('.manage_tags'), [:dashboard, :tags], class: 'btn btn-outline-secondary' %></p>
       </div>
     </div>
   </div>

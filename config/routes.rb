@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       end
       resources :users
       resources :opinions
+      resources :tags
       resource :searches, only: %i[show]
 
       # Pending actions

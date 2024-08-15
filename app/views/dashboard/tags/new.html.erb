@@ -1,0 +1,13 @@
+
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= link_to t('.tags'), [:dashboard, :tags] %></li>
+    <li class="breadcrumb-item current"><%= t('.new_tag') %></li>
+  </ol>
+  <h1><%= t('.new_tag') %></h1>
+<% end %>
+<% content_for :toolbar do %>
+  <%= link_to t('.cancel'), [:dashboard, :tags], class: 'btn btn-outline-secondary' %>
+<% end %>
+<%= render 'form' %>

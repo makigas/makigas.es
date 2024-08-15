@@ -1,6 +1,35 @@
 # This translation file is reserved for dashboard strings.
 es:
   dashboard:
+    tags:
+      create:
+        created: Etiqueta creada correctamente
+      index:
+        icon: Icono
+        dashboard: Panel de control
+        tags: Etiquetas
+        description: Descripción
+        new_tag: Nueva etiqueta
+        title: Título
+        slug: Identificador
+        videos: Vídeos
+        edit: Editar
+        destroy: Destruir
+        really_destroy: '¿Eliminar de forma definitiva esta etiqueta?'
+      edit:
+        dashboard: Dashboard
+        tags: Etiquetas
+        edit_tag: Editar etiqueta
+        cancel: Cancelar
+      update:
+        updated: Etiqueta modificada correctamente
+      destroy:
+        destroyed: Etiqueta eliminada correctamente
+      new:
+        dashboard: Panel de control
+        tags: Etiquetas
+        new_tag: Nueva etiqueta
+        cancel: Cancelar
     dashboard:
       index:
         dashboard: Panel de control
@@ -8,7 +37,7 @@ es:
         manage_playlists: Gestionar listas
         manage_topics: Gestionar temas
         manage_users: Gestionar usuarios
-        manage_opinions: Gestionar opiniones
+        manage_tags: Gestionar etiquetas
         videos:
           one: vídeo
           other: vídeos
@@ -24,6 +53,9 @@ es:
         users:
           one: usuario
           other: usuarios
+        tags:
+          one: etiqueta
+          other: etiquetas
     links:
       create:
         created: Enlace creado correctamente.
@@ -372,4 +404,4 @@ es:
         videos: Vídeos
         view_site: Ver sitio
         navigation: Navegación
-        opinions: Opiniones
+        tags: Etiquetas

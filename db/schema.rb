@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_101745) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_15_001737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -144,6 +144,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_101745) do
     t.string "sort"
     t.index ["filters"], name: "index_search_requests_on_filters", using: :gin
     t.index ["query"], name: "index_search_requests_on_query"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.string "description", null: false
+    t.string "icon_file_name"
+    t.string "icon_content_type"
+    t.bigint "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|

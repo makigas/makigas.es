@@ -2,6 +2,9 @@
 es:
   activerecord:
     models:
+      tag:
+        one: Etiqueta
+        other: Etiquetas
       playlist:
         one: Lista de reproducción
         other: Listas de reproducción
@@ -16,6 +19,11 @@ es:
       video: Vídeo
       user: Usuario
     attributes:
+      tag:
+        title: Título
+        slug: Identificador
+        description: Descripción
+        icon: Icono
       playlist:
         description: Descripción
         thumbnail: Miniatura

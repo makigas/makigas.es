@@ -1,0 +1,7 @@
+<%= simple_form_for [:dashboard, @tag] do |form| %>
+  <%= form.input :title %>
+  <%= form.input :slug %>
+  <%= form.input :description, as: :text %>
+  <%= form.input :icon, as: :file %>
+  <%= form.submit class: 'btn btn-success' %>
+<% end %>
