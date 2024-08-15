@@ -38,9 +38,11 @@ $navbar-size: 40px;
 
   &__grid {
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: "mtoggle logo explore stoggle";
+    grid-template-areas: "mtoggle logo stoggle";
+    align-items: center;
     display: grid;
     gap: 30px;
+    height: 40px;
   }
 
   &__mtoggle {
@@ -51,6 +53,7 @@ $navbar-size: 40px;
     grid-area: logo;
     align-self: center;
     justify-self: center;
+    padding-top: 5px;
 
     a {
       color: inherit;
@@ -59,11 +62,6 @@ $navbar-size: 40px;
     svg {
       height: 21px;
     }
-  }
-
-  &__explore {
-    grid-area: explore;
-    display: none;
   }
 
   &__search {
@@ -121,16 +119,32 @@ $navbar-size: 40px;
     justify-self: end;
   }
 
-  &__explorer {
+  &__menu {
+    grid-area: menu;
+    list-style: none;
+    padding-left: 0;
     display: none;
     position: absolute;
-    top: calc($navbar-size * 1.5);
+    top: calc($navbar-size);
     left: 0;
     width: 100%;
     border-bottom: 2px solid #0003;
     background: var(--navbar-menu-background);
     color: var(--navbar-menu-foreground);
     z-index: 1;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+
+  &__link {
+    color: var(--navbar-foreground);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__button {
@@ -139,23 +153,6 @@ $navbar-size: 40px;
     color: var(--navbar-foreground);
     width: $navbar-size * 1.5;
     height: $navbar-size;
-  }
-
-  &__explorecta {
-    display: none;
-    font-size: inherit;
-    color: inherit;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__caret {
-    vertical-align: middle;
   }
 
   // The curtain is present when the navbar is opened on desktop, in order
@@ -190,11 +187,8 @@ $navbar-size: 40px;
 
     background: var(--navbar-menu-background);
 
-    .navbar__explore,
-    .navbar__explorer {
-      display: block;
-      animation: scale-up 0.5s ease-out;
-      overflow: hidden;
+    .navbar__menu {
+      display: flex;
     }
 
     .navbar__curtain {
@@ -211,7 +205,7 @@ $navbar-size: 40px;
 
     .navbar__stoggle,
     .navbar__mtoggle,
-    .navbar__explore,
+    .navbar__menu,
     .navbar__logo {
       display: none;
     }
@@ -225,7 +219,7 @@ $navbar-size: 40px;
   @include desktop-layout {
     &__grid {
       grid-template-columns: auto auto 1fr;
-      grid-template-areas: "logo explore search socials";
+      grid-template-areas: "logo menu search socials";
     }
 
     &__mtoggle {
@@ -255,26 +249,25 @@ $navbar-size: 40px;
       }
     }
 
-    &__explore {
-      display: block;
+    &__menu {
+      background: transparent;
       position: relative;
-      padding-top: calc($navbar-size / 4);
-      padding-bottom: calc($navbar-size / 4);
-    }
-
-    &__explorecta {
-      display: block;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-    &__explorer {
-      position: absolute;
-      top: 45px;
-      border-radius: 0 15px 15px;
+      display: flex;
+      border-bottom: none;
+      margin-left: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      align-items: center;
+      flex-direction: row;
+      top: 0;
       left: 0;
-      width: 600px;
-      box-shadow: 0 4px 4px #fff3;
+      padding: 0;
+      gap: 2rem;
+      align-self: center;
+    }
+
+    &__link {
+      padding: 0;
     }
 
     &--menu {
@@ -284,22 +277,6 @@ $navbar-size: 40px;
 
       &.navbar--front {
         background: transparent;
-      }
-
-      .navbar__explore {
-        background: var(--navbar-menu-background);
-        color: var(--navbar-menu-foreground);
-        border-radius: 15px 15px 0 0;
-      }
-
-      .navbar__explore,
-      .navbar__explorer {
-        animation: none;
-        overflow: visible;
-      }
-
-      .navbar__explorer {
-        display: block;
       }
     }
   }
