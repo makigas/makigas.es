@@ -18,7 +18,8 @@ Requirements:
 * Ruby 3.3 and Bundler. Older Ruby version are not supported.
 * An up to date PostgreSQL database. Other SQL engines are not supported.
 * [MeiliSearch](https://www.meilisearch.com/), to build the search engine.
-* Node.js + Yarn, for the front-end assets.
+* Node.js + Yarn, for the front-end assets. (Yarn is preferred by Rails,
+  I do not set the rules).
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
 * `imagemagick`. Required for image manipulation on thumbnails and such.
 * A web browser with Selenium support, for running E2E tests.

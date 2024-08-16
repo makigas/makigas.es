@@ -38,7 +38,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
       - name: Setup application
         run: bundle exec rake db:create db:schema:load yarn:install
@@ -82,7 +82,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
       - run: yarn install
       - run: yarn lint && yarn fmt:check
   assets:
@@ -99,6 +99,6 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
       - run: yarn install
       - run: bundle exec rails assets:precompile
