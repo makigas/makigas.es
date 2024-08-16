@@ -1,9 +1,9 @@
 <% if warden.user.present? %>
   <!-- Plausible not loaded: session -->
-<% elsif Rails.application.secrets.plausible_domain.blank? %>
+<% elsif Makigas::Environment.plausible_domain.blank? %>
   <!-- Plausible not loaded: missing domain -->
 <% elsif ENV["PLAUSIBLE_PROXY"].present? %>
-  <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="/js/plausible.js"></script>
+  <script defer data-domain="<%= Makigas::Environment.plausible_domain %>" src="/js/plausible.js"></script>
 <% else %>
-  <script defer data-domain="<%= Rails.application.secrets.plausible_domain %>" src="https://plausible.io/js/plausible.js"></script>
+  <script defer data-domain="<%= Makigas::Environment.plausible_domain %>" src="https://plausible.io/js/plausible.js"></script>
 <% end %>

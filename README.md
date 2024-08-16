@@ -79,18 +79,6 @@ MeiliSearch indexing has been defered to jobs.  If you want to run the
 jobs, use `rake jobs` to spawn a DelayedJob server, or use `rake
 jobs:work` to run the pending commands as a one-off.
 
-## Secrets
-
-makigas.es is using secrets, and it will do until secrets are not supported
-anymore (let's hope this never happens). While there are newer secret storage
-systems in Ruby on Rails nowadays, for an open source application I don't
-understand how that does work, and most big Rails open source projects I've
-looked for inspiration don't do either.
-
-Production secrets are provided using environment variables, following the
-Twelve Factor guidelines. In the future I hope to use a different system or
-to abandon altogether secrets.yml to make this more clear.
-
 ## Seeds
 
 You can use `rails db:seed` to initially seed some test data, such as a

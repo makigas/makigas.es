@@ -24,11 +24,11 @@ module Plausible
     private
 
     def site_id
-      Rails.application.secrets.plausible_domain
+      Makigas::Environment.plausible_domain
     end
 
     def api_key
-      Rails.application.secrets.plausible_api_key
+      Makigas::Environment.plausible_api_key
     end
   end
 end

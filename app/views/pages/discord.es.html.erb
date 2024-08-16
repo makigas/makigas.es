@@ -37,7 +37,7 @@
         en el que estés trabajando, o plantea preguntas.
       </h2>
       <div class="discord__cta">
-        <%= link_to "Unirse al servidor", "https://discord.gg/#{Rails.application.secrets.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
+        <%= link_to "Unirse al servidor", "https://discord.gg/#{Makigas::Environment.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
         <small>(¡es gratuito y funciona muy bien!)</small>
       </div>
       <p>
@@ -61,7 +61,7 @@
       </p>
     </div>
     <div>
-      <iframe src="https://discordapp.com/widget?id=<%= Rails.application.secrets.discord_server_id %>"
+      <iframe src="https://discordapp.com/widget?id=<%= Makigas::Environment.discord_server_id %>"
         id="discord_widget" class="discord__widget" allowtransparency="true" frameborder="0"></iframe>
     </div>
   </div>
