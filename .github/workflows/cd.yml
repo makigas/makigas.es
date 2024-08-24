@@ -16,7 +16,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -28,19 +28,3 @@ jobs:
           tags: ghcr.io/${{ github.repository }}/makigas:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-  deploy:
-    name: Deploy into makigas.es
-    needs: [docker]
-    runs-on: ubuntu-latest
-    environment: public
-    steps:
-    - name: Execute a remote command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        script: |
-          docker compose --project-directory docker/makigas/makigas pull
-          docker compose --project-directory docker/makigas/makigas up -d
