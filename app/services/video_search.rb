@@ -10,11 +10,15 @@ class VideoSearch
 
   def videos
     Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do |v|
-      search_request.tap { |s| s.count = v.length }.save
+      search_request.tap { |s| s.count = v.length }
     end
   rescue MeiliSearch::CommunicationError => e
-    search_request.update(error: e.message)
+    search_request.error = e.message
     raise Makigas::SearchError, e.message
+  end
+
+  def search_request
+    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
   end
 
   private
@@ -37,10 +41,6 @@ class VideoSearch
     'long' => ['duration > 900'],
     'all' => []
   }.freeze
-
-  def search_request
-    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
-  end
 
   def sort_criteria
     return nil if sort.blank?

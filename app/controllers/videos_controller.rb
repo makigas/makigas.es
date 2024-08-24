@@ -42,7 +42,10 @@ class VideosController < ApplicationController
   end
 
   def results_by_meilisearch
-    VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:).videos
+    search = VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:)
+    search.videos
+  ensure
+    search.search_request.save if current_user.blank?
   end
 
   def results_by_database

@@ -12,7 +12,8 @@ RSpec.describe 'Videos search' do
 
     it 'can search for short length videos' do
       # Tune the search service mock for this purpose.
-      inst = instance_double(VideoSearch, videos: Video.where('duration < 300').page(1).per(10))
+      inst = instance_double(VideoSearch, videos: Video.where('duration < 300').page(1).per(10),
+                                          search_request: build(:search_request))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -31,7 +32,7 @@ RSpec.describe 'Videos search' do
     it 'can search for medium length videos' do
       # Tune the search service mock for this purpose.
       videos = Video.where('duration > 300').where('duration <= 900').page(1).per(10)
-      inst = instance_double(VideoSearch, videos:)
+      inst = instance_double(VideoSearch, videos:, search_request: build(:search_request))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -49,7 +50,8 @@ RSpec.describe 'Videos search' do
 
     it 'can search for long length videos' do
       # Tune the search service mock for this purpose.
-      inst = instance_double(VideoSearch, videos: Video.where('duration > 900').page(1).per(10))
+      inst = instance_double(VideoSearch, videos: Video.where('duration > 900').page(1).per(10),
+                                          search_request: build(:search_request))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -63,6 +65,35 @@ RSpec.describe 'Videos search' do
         expect(page).to have_no_link medium.title, href: video_path(medium)
         expect(page).to have_link long.title, href: video_path(long)
       end
+    end
+
+    it 'saves the request history if the user is not logged in' do
+      # Tune the search service mock for this purpose.
+      inst = instance_double(VideoSearch, videos: Video.where('duration > 900').page(1).per(10),
+                                          search_request: build(:search_request))
+      allow(service).to receive(:new).and_return(inst)
+
+      visit videos_path
+      within '.videoexplorer__sidebar' do
+        click_on 'Largos'
+      end
+
+      expect(SearchRequest.count).to eq 1
+    end
+
+    it 'does not save the request history if the user is logged in' do
+      # Tune the search service mock for this purpose.
+      inst = instance_double(VideoSearch, videos: Video.where('duration > 900').page(1).per(10),
+                                          search_request: build(:search_request))
+      allow(service).to receive(:new).and_return(inst)
+
+      login_as create(:user), scope: :user
+      visit videos_path
+      within '.videoexplorer__sidebar' do
+        click_on 'Largos'
+      end
+
+      expect(SearchRequest.count).to eq 0
     end
   end
 
@@ -82,7 +113,7 @@ RSpec.describe 'Videos search' do
     it 'can search for videos in a topic' do
       # Tune the search service mock for this purpose.
       videos = Video.includes(playlist: :topic).where(topics: { title: 'First Topic' }).page(1).per(10)
-      inst = instance_double(VideoSearch, videos:)
+      inst = instance_double(VideoSearch, videos:, search_request: build(:search_request))
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
@@ -95,6 +126,35 @@ RSpec.describe 'Videos search' do
         expect(page).to have_link first_video.title, href: video_path(first_video)
         expect(page).to have_no_link second_video.title, href: video_path(second_video)
       end
+    end
+
+    it 'saves the request history if the user is not logged in' do
+      # Tune the search service mock for this purpose.
+      videos = Video.includes(playlist: :topic).where(topics: { title: 'First Topic' }).page(1).per(10)
+      inst = instance_double(VideoSearch, videos:, search_request: build(:search_request))
+      allow(service).to receive(:new).and_return(inst)
+
+      visit videos_path
+      within '.videoexplorer__sidebar' do
+        click_on 'First Topic'
+      end
+
+      expect(SearchRequest.count).to eq 1
+    end
+
+    it 'does not save the request history if the user is logged in' do
+      # Tune the search service mock for this purpose.
+      videos = Video.includes(playlist: :topic).where(topics: { title: 'First Topic' }).page(1).per(10)
+      inst = instance_double(VideoSearch, videos:, search_request: build(:search_request))
+      allow(service).to receive(:new).and_return(inst)
+
+      login_as create(:user), scope: :user
+      visit videos_path
+      within '.videoexplorer__sidebar' do
+        click_on 'First Topic'
+      end
+
+      expect(SearchRequest.count).to eq 0
     end
   end
 
