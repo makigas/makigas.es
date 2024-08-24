@@ -27,7 +27,7 @@ gem 'delayed_job_web'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.158.0'
+gem 'aws-sdk-s3', '~> 1.159.0'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
@@ -69,7 +69,7 @@ group :development do
   gem 'rubocop', '~> 1.65.1', require: false
   gem 'rubocop-capybara', '~> 2.21.0', require: false
   gem 'rubocop-factory_bot', '~> 2.26.1', require: false
-  gem 'rubocop-rails', '~> 2.25.0', require: false
+  gem 'rubocop-rails', '~> 2.26.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'rubocop-rspec', '~> 3.0.4', require: false
   gem 'rubocop-rspec_rails', '~> 2.30.0', require: false
