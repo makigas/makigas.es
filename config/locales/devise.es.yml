@@ -1,6 +1,6 @@
+---
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
 # Devise 4.2.0, i18n-es: https://gist.github.com/rrussell/3b9c45c560146f35b11b67846fb629c8
-
 es:
   devise:
     confirmations:

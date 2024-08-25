@@ -1,0 +1,20 @@
+---
+es:
+  simple_form:
+    'yes': Sí
+    'no': 'No'
+    required:
+      text: obligatorio
+      mark: '*'
+    error_notifications:
+      default_message: 'Por favor, revisa estos problemas:'
+    hints:
+      playlist:
+        exclude_from_search: Si activas esta opción, esta lista nunca será promocionada en las tarjetas de exploración
+        deprecated: Si activas esta opción, la lista se marca como anticuada y aparece un banner en la página de curso y en cada una de las lecciones.
+    include_blanks:
+      playlist:
+        replacement_playlist: (Ninguna)
+        topic: (Sin tema concreto)
+      topic:
+        parent_topic: (Sin tema superior)

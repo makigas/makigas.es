@@ -1,18 +1,19 @@
+---
 es:
-  views:
-    pagination:
-      first: "&laquo;"
-      last: "&raquo;"
-      previous: "&lsaquo;"
-      next: "&rsaquo;"
-      truncate: "&hellip;"
-      page_navigation: "Navegación de página"
   helpers:
     page_entries_info:
+      more_pages:
+        display_entries: Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total
       one_page:
         display_entries:
-          zero: "No se encontraron %{entry_name}"
-          one: "Mostrando <b>1</b> %{entry_name}"
-          other: "Mostrando <b>los %{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
+          one: Mostrando <b>1</b> %{entry_name}
+          other: Mostrando <b>los %{count}</b> %{entry_name}
+          zero: No se encontraron %{entry_name}
+  views:
+    pagination:
+      first: '&laquo;'
+      last: '&raquo;'
+      next: '&rsaquo;'
+      page_navigation: Navegación de página
+      previous: '&lsaquo;'
+      truncate: '&hellip;'

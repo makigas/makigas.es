@@ -1,61 +1,32 @@
-# This translation file is reserved for dashboard strings.
+---
 es:
   dashboard:
-    tags:
-      create:
-        created: Etiqueta creada correctamente
-      index:
-        icon: Icono
-        dashboard: Panel de control
-        tags: Etiquetas
-        description: Descripción
-        new_tag: Nueva etiqueta
-        title: Título
-        slug: Identificador
-        videos: Vídeos
-        edit: Editar
-        destroy: Destruir
-        really_destroy: '¿Eliminar de forma definitiva esta etiqueta?'
-      edit:
-        dashboard: Dashboard
-        tags: Etiquetas
-        edit_tag: Editar etiqueta
-        cancel: Cancelar
-      update:
-        updated: Etiqueta modificada correctamente
-      destroy:
-        destroyed: Etiqueta eliminada correctamente
-      new:
-        dashboard: Panel de control
-        tags: Etiquetas
-        new_tag: Nueva etiqueta
-        cancel: Cancelar
     dashboard:
       index:
         dashboard: Panel de control
-        manage_videos: Gestionar vídeos
         manage_playlists: Gestionar listas
+        manage_tags: Gestionar etiquetas
         manage_topics: Gestionar temas
         manage_users: Gestionar usuarios
-        manage_tags: Gestionar etiquetas
-        videos:
-          one: vídeo
-          other: vídeos
+        manage_videos: Gestionar vídeos
         opinions:
           one: opinión
           other: opiniones
         playlists:
           one: lista
           other: listas
+        tags:
+          one: etiqueta
+          other: etiquetas
         topics:
           one: tema
           other: temas
         users:
           one: usuario
           other: usuarios
-        tags:
-          one: etiqueta
-          other: etiquetas
+        videos:
+          one: vídeo
+          other: vídeos
     links:
       create:
         created: Enlace creado correctamente.
@@ -63,25 +34,25 @@ es:
         destroyed: Enlace destruido correctamente.
         error: El enlace no se ha podido eliminar.
       edit:
-        dashboard: Panel de control
-        links: Enlaces
         cancel: Cancelar
+        dashboard: Panel de control
         edit: Editar
+        links: Enlaces
       index:
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
+        links: Enlaces
+        name: Nombre
         new_link: Nuevo Enlace
         operations: Operaciones
         really_destroy: Eliminar un enlace no tiene vuelta atrás. ¿De verdad que quieres hacer esto?
-        name: Nombre
-        links: Enlaces
         url: URL
       new:
         cancel: Cancelar
         dashboard: Panel de control
-        new_link: Nuevo Enlace
         links: Enlaces
+        new_link: Nuevo Enlace
       update:
         updated: Enlace actualizado correctamente.
     opinions:
@@ -99,11 +70,11 @@ es:
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
+        from: De
         new_opinion: Nueva Opinión
         operations: Operaciones
-        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
-        from: De
         opinions: Opiniones
+        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
       new:
         cancel: Cancelar
         dashboard: Panel de control
@@ -116,51 +87,46 @@ es:
         edit: Editar
         from: De
         message: Mensaje
-        url: URL
+        opinions: Opinión
         photo: Imagen
         really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
-        opinions: Opinión
+        url: URL
         view_opinion: Ver Opinión
       update:
         updated: Opinión actualizada correctamente.
-    searches:
-      show:
-        searches: Búsquedas
-        dashboard: Panel de control
-        no_results: No proporcionó resultados
     pending:
-      tags:
-        show:
-          dashboard: Panel de control
-          pending: Acciones pendientes
-          untagged: Vídeos sin etiquetar
-          title: Título
-          tags: Etiquetas
-          apply: Aplicar
-          tags_for: Etiquetas para %{video}
       show_notes:
         show:
+          actions: Acciones
+          annotate: Anotar
           dashboard: Panel de control
+          duration: Duración
           pending: Acciones pendientes
+          playlist: Lista de reproducción
+          published_at: Fecha de publicación
           untranscribed: Vídeos sin notas de capítulo
           video: Vídeo
-          playlist: Lista de reproducción
-          duration: Duración
-          actions: Acciones
-          published_at: Fecha de publicación
-          annotate: Anotar
-      transcriptions:
+      tags:
         show:
+          apply: Aplicar
           dashboard: Panel de control
           pending: Acciones pendientes
+          tags: Etiquetas
+          tags_for: Etiquetas para %{video}
+          title: Título
+          untagged: Vídeos sin etiquetar
+      transcriptions:
+        show:
+          actions: Acciones
+          associate: Asociar
+          dashboard: Panel de control
+          duration: Duración
+          pending: Acciones pendientes
+          playlist: Lista de reproducción
+          published_at: Fecha de publicación
+          studio: Ver en YouTube Studio
           untranscribed: Vídeos sin transcribir
           video: Vídeo
-          playlist: Lista de reproducción
-          duration: Duración
-          actions: Acciones
-          published_at: Fecha de publicación
-          associate: Asociar
-          studio: Ver en YouTube Studio
     playlists:
       create:
         created: Lista creada correctamente.
@@ -171,12 +137,17 @@ es:
         dashboard: Panel de control
         edit: Editar
         playlists: Listas
+      form:
+        deprecated: Anticuada
+        icons: Iconos
+        information: Información
+        metadata: Metadatos
       index:
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
         new_playlist: Nueva Lista
-        no_topic: "(sin tema)"
+        no_topic: (sin tema)
         operations: Operaciones
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
@@ -188,67 +159,91 @@ es:
         dashboard: Panel de control
         new_playlist: Nueva Lista
         playlists: Listas
-      form:
-        information: Información
-        metadata: Metadatos
-        deprecated: Anticuada
-        icons: Iconos
       show:
         card: Tarjeta
         color: Color
-        deprecated: Anticuada
-        replaced_with: Reemplazada por
-        deprecated_without_a_replacement: Marcada como anticuada sin reemplazo
+        csv_string_for_youtube_analytics: Cadena de CSV para los grupos de YouTube Analytics
         dashboard: Panel de control
+        deprecated: Anticuada
+        deprecated_without_a_replacement: Marcada como anticuada sin reemplazo
         description: Descripción
         destroy: Destruir
         edit: Editar
         forum_url: URL de foro
-        no_forum: "(sin foro)"
-        no_topic: "(sin tema)"
-        playlists: Listas
-        trends: Tendencias
-        csv_string_for_youtube_analytics: Cadena de CSV para los grupos de YouTube Analytics
+        no_forum: (sin foro)
+        no_topic: (sin tema)
         paste_this_into_the_group_settings: Pega este string en la configuración del grupo de YouTube Analytics para actualizar todos los vídeos que forman parte del mismo
+        playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
+        replaced_with: Reemplazada por
         thumbnail: Miniatura
         title: Título
         topic: Tema
-        videos: Vídeos
+        trends: Tendencias
         twitch_id: ID de Twitch
+        videos: Vídeos
         youtube_id: ID de YouTube
       update:
         updated: Lista actualizada correctamente.
       videos:
         back: Atrás
-        position: Posición
         dashboard: Panel de control
-        playlists: Listas
-        videos: Vídeos
-        edit: Editar
         destroy: Destruir
-        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
-        title: Título
+        down: Bajar
+        edit: Editar
         move: Mover
         new_video: Nuevo vídeo
         operations: Operaciones
+        playlists: Listas
+        position: Posición
+        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
+        title: Título
         up: Subir
-        down: Bajar
+        videos: Vídeos
+    searches:
+      show:
+        dashboard: Panel de control
+        no_results: No proporcionó resultados
+        searches: Búsquedas
+    show_notes:
+      show:
+        cancel: Cancelar
+        dashboard: Panel de control
+        show_notes: Notas de episodio
+    tags:
+      create:
+        created: Etiqueta creada correctamente
+      destroy:
+        destroyed: Etiqueta eliminada correctamente
+      edit:
+        cancel: Cancelar
+        dashboard: Dashboard
+        edit_tag: Editar etiqueta
+        tags: Etiquetas
+      index:
+        dashboard: Panel de control
+        description: Descripción
+        destroy: Destruir
+        edit: Editar
+        icon: Icono
+        new_tag: Nueva etiqueta
+        really_destroy: ¿Eliminar de forma definitiva esta etiqueta?
+        slug: Identificador
+        tags: Etiquetas
+        title: Título
+        videos: Vídeos
+      new:
+        cancel: Cancelar
+        dashboard: Panel de control
+        new_tag: Nueva etiqueta
+        tags: Etiquetas
+      update:
+        updated: Etiqueta modificada correctamente
     topics:
       create:
         created: Tema creado correctamente.
       destroy:
         destroyed: Tema eliminado correctamente.
-      order:
-        back: Regresar
-        order: Ordenar
-        dashboard: Panel de control
-        topics: Temas
-        position: Posición
-        title: Título
-        actions: Acciones
-        up: Subir
-        down: Bajar
       edit:
         cancel: Cancelar
         dashboard: Panel de control
@@ -269,8 +264,17 @@ es:
         dashboard: Panel de control
         new_topic: Nuevo Tema
         topics: Temas
-      show:
+      order:
+        actions: Acciones
+        back: Regresar
+        dashboard: Panel de control
+        down: Bajar
         order: Ordenar
+        position: Posición
+        title: Título
+        topics: Temas
+        up: Subir
+      show:
         color: Color
         dashboard: Panel de control
         description: Descripción
@@ -278,16 +282,23 @@ es:
         edit: Editar
         forum_url: URL del foro
         no_forum: (no hay)
+        none: (Ninguno)
+        order: Ordenar
+        parent_topic: Tema superior
         playlists: Listas
         really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
+        thumbnail: Miniatura
         title: Título
         topics: Temas
-        thumbnail: Miniatura
         view_topic: Ver Tema
-        parent_topic: Tema superior
-        none: (Ninguno)
       update:
         updated: Tema actualizado correctamente.
+    transcriptions:
+      show:
+        cancel: Cancelar
+        dashboard: Panel de control
+        transcription: Transcripción
+        videos: Vídeos
     users:
       create:
         created: Usuario creado correctamente
@@ -297,8 +308,8 @@ es:
       edit:
         cancel: Cancelar
         dashboard: Panel de control
-        users: Usuarios
         edit: Editar
+        users: Usuarios
       index:
         dashboard: Panel de control
         destroy: Destruir
@@ -315,16 +326,16 @@ es:
         new_user: Nuevo Usuario
         users: Usuarios
       show:
+        current_sign_in_at: Hora de inicio de sesión actual
+        current_sign_in_ip: IP del inicio de sesión actual
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
         email: E-mail
-        sign_in_count: Número de veces iniciada sesión
-        current_sign_in_at: Hora de inicio de sesión actual
         last_sign_in_at: Hora del último inicio de sesión
-        current_sign_in_ip: IP del inicio de sesión actual
         last_sign_in_ip: IP del último inicio de sesión
         really_destroy: Eliminar un usuario no tiene vuelta atrás. Una vez eliminado, no podrá iniciar sesión en el sistema.
+        sign_in_count: Número de veces iniciada sesión
         users: Usuarios
       update:
         updated: Usuario actualizado correctamente
@@ -341,14 +352,11 @@ es:
       form:
         save_and_new: Guardar y crear otro
       index:
+        aspect: Aspecto
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
         last_update: Última modificación
-        aspect: Aspecto
-        with_transcription: Con transcripción
-        with_show_notes: Con notas de versión
-        with_tags: Con etiquetas
         new_video: Nuevo Vídeo
         operations: Operaciones
         playlist: Lista
@@ -356,6 +364,9 @@ es:
         release_date: Fecha de publicación
         title: Título
         videos: Vídeos
+        with_show_notes: Con notas de versión
+        with_tags: Con etiquetas
+        with_transcription: Con transcripción
       move:
         moved: Vídeo movido correctamente.
       new:
@@ -364,52 +375,41 @@ es:
         new_video: Nuevo vídeo
         videos: Vídeos
       show:
-        previous: Anterior
-        next: Siguiente
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir
         duration: Duración
         edit: Editar
         excerpt: Extracto
-        published_at: Fecha de publicación
-        playlist: Lista
-        permalink: Enlace permanente
-        really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
-        show_notes: Notas del episodio
+        next: Siguiente
         no_show_notes: (No existen notas del episodio)
-        transcription: Transcripción
         no_transcription: (Transcripción no existente)
+        permalink: Enlace permanente
+        playlist: Lista
+        previous: Anterior
+        published_at: Fecha de publicación
+        really_destroy: Eliminar un vídeo no tiene vuelta atrás. Una vez eliminado, todos sus datos serán borrados y habrá que volver a crearlo de nuevo.
         seconds:
-          one: "%{count} segundo"
-          other: "%{count} segundos"
-        title: Título
+          one: '%{count} segundo'
+          other: '%{count} segundos'
+        show_notes: Notas del episodio
         tags: Etiquetas
         thumbnail: Miniatura
-        videos: Vídeos
+        title: Título
+        transcription: Transcripción
         twitch_id: ID de Twitch
+        videos: Vídeos
         youtube_id: ID de YouTube
       update:
         updated: Vídeo actualizado correctamente.
-    transcriptions:
-      show:
-        dashboard: Panel de control
-        transcription: Transcripción
-        videos: Vídeos
-        cancel: Cancelar
-    show_notes:
-      show:
-        dashboard: Panel de control
-        show_notes: Notas de episodio
-        cancel: Cancelar
   layouts:
     dashboard:
       header:
         log_out: Salir
+        navigation: Navegación
         playlists: Listas
+        tags: Etiquetas
         topics: Temas
         users: Usuarios
         videos: Vídeos
         view_site: Ver sitio
-        navigation: Navegación
-        tags: Etiquetas

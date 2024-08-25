@@ -1,39 +1,33 @@
-# This translation file is reserved for public strings.
+---
 es:
-  five:
-    catalog:
-      playlist_media_card_component:
-        explore_other_videos:
-          one: Explora el resto de vídeos de esta lista de reproducción.
-          other: Una lista de reproducción de %{count} episodios.
-    player:
-      discord_cta_component:
-        title: 👉 ¿Algo no quedó claro?
-        description: Únete a La Comunidad de Makigas en Discord y pide consejo a más desarrolladores si no sabes por dónde seguir.
   front:
-    opinions:
-      title: No lo digo yo, ellos también lo dicen
-      image: Logotipo de %{from}
-    features:
-      title: Piénsalo, ¿cuántas páginas conoces que te enseñen a programar...?
-      free:
-        alt: Pictograma de un billete de dolar
-        title: Gratis
-        text: Lo creas o no, el material es gratuito. Por ahora se financia con anuncios.
-      spanish:
-        alt: Pictograma de una bandera
-        title: En español
-        text: No debemos ocultar la lengua que nos une. Todo está en completo español.
-      informal:
-        alt: Pictograma de un grupo de personas
-        title: Informal
-        text: Educado pero informal. Con el estilo que aparentemente a la gente le gusta.
     about:
-      laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
-      title: ¿Qué es makigas?
       about:
         line0: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software.
         line1: En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
+      laptop: Imagen de un ordenador portátil con el canal de YouTube de makigas en primer plano.
+      title: ¿Qué es makigas?
+    behind:
+      image:
+        alt: Fotografía de Dani hablándole a un micrófono
+        title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
+      title: ¿Qué clase de mente retorcida ideó todo esto?
+    disclaimer:
+      disclaimer: Disclaimer. Las reseñas incluidas en esta página presentan únicamente a modo informativo opiniones que otros autores o individuales han emitido acerca del canal y la página web. No representan necesariamente aprobaciones o relaciones entre el canal y los autores de dichas opiniones y viceversa.
+    features:
+      free:
+        alt: Pictograma de un billete de dolar
+        text: Lo creas o no, el material es gratuito. Por ahora se financia con anuncios.
+        title: Gratis
+      informal:
+        alt: Pictograma de un grupo de personas
+        text: Educado pero informal. Con el estilo que aparentemente a la gente le gusta.
+        title: Informal
+      spanish:
+        alt: Pictograma de una bandera
+        text: No debemos ocultar la lengua que nos une. Todo está en completo español.
+        title: En español
+      title: Piénsalo, ¿cuántas páginas conoces que te enseñen a programar...?
     follow:
       makigas:
         alt: Haz clic aquí para ir a la lista de contenidos disponibles en esta página web.
@@ -46,10 +40,10 @@ es:
         button: Ir al canal
         text: Todo el material lo encontrarás en YouTube. Si quieres ser de los primeros en enterarte, puedes suscribirte al canal para enterarte de lo nuevo.
         title: En YouTube
-    videos:
-      recent_videos_alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
-      recent_videos: Explorar vídeos recientes...
-      title: Últimos vídeos
+    index:
+      meta:
+        description: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software. En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
+        title: Tutoriales gratuitos de programación en castellano
     jumbotron:
       reading:
         button: Seguir leyendo
@@ -59,35 +53,18 @@ es:
       topics:
         button: Explora las temáticas
         title: Visualiza las listas de temas disponibles en esta página web.
-    behind:
-      title: ¿Qué clase de mente retorcida ideó todo esto?
-      image:
-        alt: Fotografía de Dani hablándole a un micrófono
-        title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
-    disclaimer:
-      disclaimer: "Disclaimer. Las reseñas incluidas en esta página presentan únicamente a modo informativo opiniones que otros autores o individuales han emitido acerca del canal y la página web. No representan necesariamente aprobaciones o relaciones entre el canal y los autores de dichas opiniones y viceversa."
-    index:
-      meta:
-        title: Tutoriales gratuitos de programación en castellano
-        description: makigas es un canal de YouTube y una página web con tutoriales sobre distintos temas relacionados con la programación y el desarrollo de software. En el canal de YouTube y en este sitio web encontrarás material para aprender distintas tecnologías o lenguajes de programación a través de vídeos accesibles gratis y en castellano.
+    opinions:
+      image: Logotipo de %{from}
+      title: No lo digo yo, ellos también lo dicen
+    videos:
+      recent_videos: Explorar vídeos recientes...
+      recent_videos_alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
+      title: Últimos vídeos
   layouts:
     cookies:
-      message: "Me obligan a informarte que este sitio usa cookies."
-      dismiss: "Me entero"
-      learn_more: "Lee más sobre las cookies"
-    six:
-      head:
-        videos_feed: Vídeos recientes (ATOM)
-    head:
-      videos_feed: Vídeos recientes (ATOM)
-    header:
-      navigation: Desplegar navegación
-      playlists: Listas
-      topics: Temas
-      videos: Vídeos
-      discord: Discord
-      forum: Foro
-      new: Nuevo
+      dismiss: Me entero
+      learn_more: Lee más sobre las cookies
+      message: Me obligan a informarte que este sitio usa cookies.
     footer:
       copyright:
         cookies: Uso de cookies (EU)
@@ -115,97 +92,110 @@ es:
         telegram: Telegram
         title: Social
         youtube: YouTube
+    head:
+      videos_feed: Vídeos recientes (ATOM)
+    header:
+      discord: Discord
+      forum: Foro
+      navigation: Desplegar navegación
+      new: Nuevo
+      playlists: Listas
+      topics: Temas
+      videos: Vídeos
+    six:
+      head:
+        videos_feed: Vídeos recientes (ATOM)
   playlists:
     index:
-      meta:
-        title: Todas las listas de reproducción
-        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
       episode:
         one: 1 episodio
-        other: "%{count} episodios"
+        other: '%{count} episodios'
+      meta:
+        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
+        title: Todas las listas de reproducción
       title: Todas las listas de reproducción
     show:
       meta:
-        playlist_feed: "Lista: %{playlist} (ATOM)"
-        topic_feed: "Tema: %{topic} (ATOM)"
-  topics:
-    index:
-      meta:
-        title: Todos los temas
-        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
-      title: Todas las temáticas
-    show:
-      meta:
-        description: Explora las listas de reproducción que hay dentro de esta categoría o encuentra contenido adicional.
-        topic_feed: "Tema: %{topic} (ATOM)"
-      episode:
-        one: 1 episodio
-        other: "%{count} episodios"
-  videos:
-    index:
-      meta:
-        title: Todos los vídeos
-        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
-      title: Todos los vídeos
-      duration: "Duración: %{duration}"
-      topic_html: "Tema: %{topic}"
-      playlist_html: "Serie: %{playlist}"
-      tags: Etiquetas
-      filter:
-        by_length: Por duración
-        any_length: Cualquier duración
-        short_videos: Cortos (<5 min)
-        medium_videos: Medios (5..15 min)
-        long_videos: Largos (>15 min)
-        by_topic: Por tema
-        apply_filters: Aplicar filtros
-    search_error:
-      meta:
-        title: Buscar vídeos
-        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
-      title: Buscar vídeos
-    show:
-      this_playlist: Lista de reproducción
-      this_topic: Este tema
-      transcription: Transcripción
-      show_notes: Notas del episodio
-      next: Siguiente
-      part_of_series_html: "Un episodio de %{playlist}"
-      previous: Anterior
-      watch_on_youtube: Ver en YouTube
-      release_date_html: "Fecha de emisión: %{date}"
-      duration: "Duración: %{duration}"
-      preview: Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).
-      unlisted: Este vídeo en este momento está sin listar. Si navegas por los vídeos recientes del canal de YouTube o de la web no lo verás. Considera este enlace como un adelanto que podría sufrir modificaciones o ser eliminado si se encuentran errores y conserva el link si quieres volver a verlo antes de que se publique.
-      links: Enlaces relacionados
-      meta:
-        playlist_feed: "Lista: %{playlist} (ATOM)"
-        topic_feed: "Tema: %{topic} (ATOM)"
+        playlist_feed: 'Lista: %{playlist} (ATOM)'
+        topic_feed: 'Tema: %{topic} (ATOM)'
   six:
     explorer:
       deprecated_playlist_component:
-        there_is_a_newer_version: Hay una versión nueva de este curso
         click_here_to_view_the_updated_version: Haz clic aquí para ver %{title}
-        updated_version: la versión actualizada de este curso
-        this_page_may_not_be-updated: Este curso podría no estar recibiendo actualizaciones de contenido
-        this_course_is_deprecated: Este curso ha sido marcado como anticuado y no se está revisando de forma activa
         information_may_not_be_updated_or_links_may_be_broken: La información podría no estar actualizada o algunos enlaces podrían estar rotos
+        there_is_a_newer_version: Hay una versión nueva de este curso
+        this_course_is_deprecated: Este curso ha sido marcado como anticuado y no se está revisando de forma activa
+        this_page_may_not_be-updated: Este curso podría no estar recibiendo actualizaciones de contenido
+        updated_version: la versión actualizada de este curso
       playlist_card_component:
         hours:
-          one: "%{count} hora"
-          other: "%{count} horas"
+          one: '%{count} hora'
+          other: '%{count} horas'
         minutes:
-          one: "%{count} minuto"
-          other: "%{count} minutos"
+          one: '%{count} minuto'
+          other: '%{count} minutos'
     search:
       current_filters_component:
         remove_filter: Eliminar filtro
+      related_playlist_component:
+        duration: Duración
+        episodes:
+          one: '%{count} vídeo'
+          other: '%{count} vídeos'
       related_playlists_component:
         consider_this:
           one: Esta serie podría ser lo que estás buscando
           other: Estas series podrían ser lo que estás buscando
-      related_playlist_component:
-        episodes:
-          one: "%{count} vídeo"
-          other: "%{count} vídeos"
-        duration: Duración
+  topics:
+    index:
+      meta:
+        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
+        title: Todos los temas
+      title: Todas las temáticas
+    show:
+      episode:
+        one: 1 episodio
+        other: '%{count} episodios'
+      meta:
+        description: Explora las listas de reproducción que hay dentro de esta categoría o encuentra contenido adicional.
+        topic_feed: 'Tema: %{topic} (ATOM)'
+  videos:
+    index:
+      duration: 'Duración: %{duration}'
+      filter:
+        any_length: Cualquier duración
+        apply_filters: Aplicar filtros
+        by_length: Por duración
+        by_topic: Por tema
+        long_videos: Largos (>15 min)
+        medium_videos: Medios (5..15 min)
+        short_videos: Cortos (<5 min)
+      meta:
+        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
+        title: Todos los vídeos
+      playlist_html: 'Serie: %{playlist}'
+      tags: Etiquetas
+      title: Todos los vídeos
+      topic_html: 'Tema: %{topic}'
+    search_error:
+      meta:
+        description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
+        title: Buscar vídeos
+      title: Buscar vídeos
+    show:
+      duration: 'Duración: %{duration}'
+      links: Enlaces relacionados
+      meta:
+        playlist_feed: 'Lista: %{playlist} (ATOM)'
+        topic_feed: 'Tema: %{topic} (ATOM)'
+      next: Siguiente
+      part_of_series_html: Un episodio de %{playlist}
+      preview: Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).
+      previous: Anterior
+      release_date_html: 'Fecha de emisión: %{date}'
+      show_notes: Notas del episodio
+      this_playlist: Lista de reproducción
+      this_topic: Este tema
+      transcription: Transcripción
+      unlisted: Este vídeo en este momento está sin listar. Si navegas por los vídeos recientes del canal de YouTube o de la web no lo verás. Considera este enlace como un adelanto que podría sufrir modificaciones o ser eliminado si se encuentran errores y conserva el link si quieres volver a verlo antes de que se publique.
+      watch_on_youtube: Ver en YouTube

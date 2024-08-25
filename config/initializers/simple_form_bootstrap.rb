@@ -70,8 +70,10 @@ SimpleForm.setup do |config|
     b.wrapper :form_check_wrapper, tag: 'div', class: 'form-check' do |bb|
       bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'form-check-label'
-      bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-      bb.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+    end
+    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    b.wrapper :form_hint_wrapper, tag: 'p', class: 'mt-0 mb-3 ms-4 form-text text-muted' do |bb|
+      bb.use :hint, wrap_with: { tag: 'small' }
     end
   end
 
@@ -178,8 +180,8 @@ SimpleForm.setup do |config|
         bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
         bb.use :label, class: 'form-check-label'
         bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
-        bb.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
       end
+      wr.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
     end
   end
 

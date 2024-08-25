@@ -1,85 +1,75 @@
-# This translation file is reserved for ActiveRecord models and attributes.
+---
 es:
   activerecord:
-    models:
-      tag:
-        one: Etiqueta
-        other: Etiquetas
-      playlist:
-        one: Lista de reproducción
-        other: Listas de reproducción
-      topic: Tema
-      transcription:
-        one: Transcripción
-        other: Transcripciones
-      show_note: Notas del episodio
-      opinion:
-        one: Opinión
-        other: Opiniones
-      video: Vídeo
-      user: Usuario
     attributes:
-      tag:
-        title: Título
-        slug: Identificador
-        description: Descripción
-        icon: Icono
-        synonyms: Sinónimos
-      playlist:
-        deprecated: Anticuada
-        replacement_playlist: Lista de sustitución
-        description: Descripción
-        thumbnail: Miniatura
-        card: Tarjeta
-        slug: URL
-        title: Título
-        youtube_id: ID de YouTube
-        topic: Tema
-        forum_url: URL del foro
-        exclude_from_search: Excluir de la búsqueda
       opinion:
         from: De
         message: Mensaje
-        url: URL
         photo: Imagen
+        url: URL
+      playlist:
+        card: Tarjeta
+        deprecated: Anticuada
+        description: Descripción
+        exclude_from_search: Excluir de la búsqueda
+        forum_url: URL del foro
+        replacement_playlist: Lista de sustitución
+        slug: URL
+        thumbnail: Miniatura
+        title: Título
+        topic: Tema
+        youtube_id: ID de YouTube
+      show_note:
+        content: Contenido
+        language: Idioma
+      tag:
+        description: Descripción
+        icon: Icono
+        slug: Identificador
+        synonyms: Sinónimos
+        title: Título
       topic:
         color: Color
         description: Descripción
-        thumbnail: Miniatura
-        slug: URL
-        title: Título
-        parent_topic: Tema superior
         forum_url: URL del foro
+        parent_topic: Tema superior
+        slug: URL
+        thumbnail: Miniatura
+        title: Título
       transcription:
-        language: Idioma
         content: Contenido
-      show_note:
         language: Idioma
-        content: Contenido
       user:
         email: E-mail
         password: Contraseña
         remember_me: Mantener sesión abierta
       video:
-        title: Título
-        excerpt: Extracto
         description: Descripción
         duration: Duración
-        position: Posición
+        excerpt: Extracto
         natural_duration: Duración
+        playlist: Lista de reproducción
+        position: Posición
+        published_at: Fecha de publicación
         slug: URL
         tags: Etiquetas
         thumbnail: Miniatura
-        playlist: Lista de reproducción
-        published_at: Fecha de publicación
+        title: Título
         youtube_id: ID de YouTube
-  simple_form:
-    include_blanks:
+    models:
+      opinion:
+        one: Opinión
+        other: Opiniones
       playlist:
-        topic: (Sin tema concreto)
-        replacement_playlist: (Ninguna)
-      topic:
-        parent_topic: (Sin tema superior)
-    helpers:
-      playlist:
-        exclude_from_search: Si activas esta opción, esta lista nunca será promocionada en las tarjetas de exploración
+        one: Lista de reproducción
+        other: Listas de reproducción
+      show_note: Notas del episodio
+      tag:
+        one: Etiqueta
+        other: Etiquetas
+      topic: Tema
+      transcription:
+        one: Transcripción
+        other: Transcripciones
+      user: Usuario
+      video: Vídeo
