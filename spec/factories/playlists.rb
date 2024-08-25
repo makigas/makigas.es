@@ -4,33 +4,36 @@
 #
 # Table name: playlists
 #
-#  id                     :integer          not null, primary key
-#  card_content_type      :string
-#  card_file_name         :string
-#  card_file_size         :bigint
-#  card_updated_at        :datetime
-#  description            :text             not null
-#  excerpt                :text
-#  exclude_from_search    :boolean          default(FALSE), not null
-#  forum_url              :string
-#  slug                   :string           not null
-#  thumbnail_content_type :string
-#  thumbnail_file_name    :string
-#  thumbnail_file_size    :bigint
-#  thumbnail_updated_at   :datetime
-#  title                  :string           not null
-#  topic_position         :integer          default(0), not null
-#  views_recent           :integer          default(0)
-#  views_total            :integer          default(0)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  topic_id               :integer
-#  youtube_id             :string           not null
+#  id                      :integer          not null, primary key
+#  card_content_type       :string
+#  card_file_name          :string
+#  card_file_size          :bigint
+#  card_updated_at         :datetime
+#  deprecated              :boolean          default(FALSE), not null
+#  description             :text             not null
+#  excerpt                 :text
+#  exclude_from_search     :boolean          default(FALSE), not null
+#  forum_url               :string
+#  slug                    :string           not null
+#  thumbnail_content_type  :string
+#  thumbnail_file_name     :string
+#  thumbnail_file_size     :bigint
+#  thumbnail_updated_at    :datetime
+#  title                   :string           not null
+#  topic_position          :integer          default(0), not null
+#  views_recent            :integer          default(0)
+#  views_total             :integer          default(0)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  replacement_playlist_id :bigint
+#  topic_id                :integer
+#  youtube_id              :string           not null
 #
 # Indexes
 #
-#  index_playlists_on_slug      (slug) UNIQUE
-#  index_playlists_on_topic_id  (topic_id)
+#  index_playlists_on_replacement_playlist_id  (replacement_playlist_id)
+#  index_playlists_on_slug                     (slug) UNIQUE
+#  index_playlists_on_topic_id                 (topic_id)
 #
 FactoryBot.define do
   factory :playlist do

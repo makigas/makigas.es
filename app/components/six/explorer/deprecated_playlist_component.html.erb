@@ -1,0 +1,10 @@
+<p class="deprnotice">
+    <% if playlist.replacement_playlist.present? %>
+      <%= t('.there_is_a_newer_version') %>.
+      <%= link_to t('.click_here_to_view_the_updated_version', title: playlist.replacement_playlist.title), playlist_path(playlist.replacement_playlist) %>,
+      <%= t('.updated_version') %>.
+    <% else %>
+      <%= t('.this_course_is_deprecated') %>.
+      <%= t('.information_may_not_be_updated_or_links_may_be_broken') %>.
+    <% end %>
+</p>

@@ -17,6 +17,7 @@ import "../six/layout/base.scss";
 import "../six/front.scss";
 import "../six/components/article.scss";
 import "../six/components/button.scss";
+import "../six/components/deprnotice.scss";
 import "../six/components/discordcta.scss";
 import "../six/components/explorer.scss";
 import "../six/components/footer.scss";

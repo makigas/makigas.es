@@ -183,6 +183,13 @@ es:
         topic_feed: "Tema: %{topic} (ATOM)"
   six:
     explorer:
+      deprecated_playlist_component:
+        there_is_a_newer_version: Hay una versión nueva de este curso
+        click_here_to_view_the_updated_version: Haz clic aquí para ver %{title}
+        updated_version: la versión actualizada de este curso
+        this_page_may_not_be-updated: Este curso podría no estar recibiendo actualizaciones de contenido
+        this_course_is_deprecated: Este curso ha sido marcado como anticuado y no se está revisando de forma activa
+        information_may_not_be_updated_or_links_may_be_broken: La información podría no estar actualizada o algunos enlaces podrían estar rotos
       playlist_card_component:
         hours:
           one: "%{count} hora"

@@ -26,6 +26,8 @@ es:
         icon: Icono
         synonyms: Sinónimos
       playlist:
+        deprecated: Anticuada
+        replacement_playlist: Lista de sustitución
         description: Descripción
         thumbnail: Miniatura
         card: Tarjeta
@@ -75,6 +77,7 @@ es:
     include_blanks:
       playlist:
         topic: (Sin tema concreto)
+        replacement_playlist: (Ninguna)
       topic:
         parent_topic: (Sin tema superior)
     helpers:

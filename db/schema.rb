@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_16_094007) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_25_114743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,6 +133,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_16_094007) do
     t.text "excerpt"
     t.integer "views_total", default: 0
     t.integer "views_recent", default: 0
+    t.boolean "deprecated", default: false, null: false
+    t.bigint "replacement_playlist_id"
+    t.index ["replacement_playlist_id"], name: "index_playlists_on_replacement_playlist_id"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end

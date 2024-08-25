@@ -46,7 +46,7 @@ module Dashboard
 
     def playlist_params
       params.require(:playlist).permit(:title, :description, :excerpt, :youtube_id, :forum_url, :topic_id, :card,
-                                       :thumbnail, :exclude_from_search)
+                                       :thumbnail, :exclude_from_search, :deprecated, :replacement_playlist_id)
     end
 
     def playlist_set

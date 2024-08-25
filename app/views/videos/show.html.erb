@@ -58,6 +58,7 @@
         <%= @video.excerpt || @video.description %>
       </p>
     </header>
+    <%= render Six::Explorer::DeprecatedPlaylistComponent.new(playlist: @video.playlist) if @video.playlist.deprecated %>
     <% if @video.youtube_id %>
       <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
     <% end %>

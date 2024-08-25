@@ -35,6 +35,7 @@
   <%= render Six::Layout::PlaylistHeaderComponent.new(playlist: @playlist) %>
 <% end %>
 <%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata', slim: true) do %>
+  <%= render Six::Explorer::DeprecatedPlaylistComponent.new(playlist: @playlist) if @playlist.deprecated %>
   <% @playlist.videos.visible.each do |v| %>
     <%= render Six::Explorer::PlaylistVideoCardComponent.new(video: v) %>
   <% end %>

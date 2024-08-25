@@ -188,9 +188,17 @@ es:
         dashboard: Panel de control
         new_playlist: Nueva Lista
         playlists: Listas
+      form:
+        information: Información
+        metadata: Metadatos
+        deprecated: Anticuada
+        icons: Iconos
       show:
         card: Tarjeta
         color: Color
+        deprecated: Anticuada
+        replaced_with: Reemplazada por
+        deprecated_without_a_replacement: Marcada como anticuada sin reemplazo
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir
