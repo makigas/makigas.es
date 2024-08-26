@@ -9,7 +9,7 @@ RSpec.describe 'Video find by ID' do
   describe 'when the correct video is found' do
     it 'redirects to the correct video page' do
       visit "/v/#{video.youtube_id}"
-      expect(page).to have_current_path playlist_video_path(video, playlist_id: playlist)
+      expect(page).to have_current_path playlist_video_path(video, playlist_id: playlist, ref: 'shortlink')
     end
   end
 

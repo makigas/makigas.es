@@ -25,7 +25,7 @@ class VideosController < ApplicationController
 
   def find_by_id
     @video = Video.find_by!(youtube_id: params[:id])
-    redirect_to playlist_video_path(@video, playlist_id: @video.playlist)
+    redirect_to playlist_video_path(@video, playlist_id: @video.playlist, ref: 'shortlink')
   end
 
   def early
