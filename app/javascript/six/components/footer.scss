@@ -15,7 +15,7 @@
 
     @include desktop-layout {
       display: grid;
-      grid-template-columns: auto 140px 140px;
+      grid-template-columns: auto 160px 160px;
       grid-gap: 0 60px;
       grid-template-rows: repeat(2, auto);
     }
@@ -42,13 +42,13 @@
   }
 
   &__links {
-    grid-column: span 2;
-    display: flex;
     line-height: 2;
     max-width: 400px;
     margin: 0 auto;
 
     @include desktop-layout {
+      grid-column: span 2;
+      display: flex;
       max-width: unset;
       margin: unset;
     }
@@ -62,20 +62,13 @@
 
     @include desktop-layout {
       align-self: start;
+      text-align: right;
     }
 
     a {
       display: inline-block;
       padding-top: 0.3rem;
       padding-bottom: 0.3rem;
-    }
-
-    &:first-child {
-      text-align: left;
-    }
-
-    &:last-child {
-      text-align: right;
     }
   }
 

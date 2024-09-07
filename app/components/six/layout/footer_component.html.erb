@@ -15,13 +15,18 @@
 
       <div class="footer__links">
         <ul class="footer__link">
+          <h3>Cursos destacados</h3>
+          <% popular_playlists.each do |list| %>
+          <li><%= link_to list.title, playlist_path(list) %></li>
+          <% end %>
+        </ul>
+        <ul class="footer__link">
+          <h3>Enlaces</h3>
           <li><a href="/videos">Explorar lecciones</a></li>
           <li><a href="/series">Consultar cursos</a></li>
           <li><a href="/temas">Ver todos los temas</a></li>
-        </ul>
-        <ul class="footer__link">
-          <li><a href="https://foro.makigas.es">Foros</a></li>
-          <li><a href="https://youtube.com/makigas">YouTube</a></li>
+          <li><a href="https://foro.makigas.es">Visitar los foros</a></li>
+          <li><a href="https://youtube.com/makigas">Seguir en YouTube</a></li>
         </ul>
       </div>
     </div>
