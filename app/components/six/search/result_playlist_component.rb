@@ -20,7 +20,7 @@ module Six
       end
 
       def call
-        render Six::Utils::MetaComponent.new(icon: 'list', preffix: 'Serie:') do
+        render Six::Utils::MetaComponent.new(icon: 'list', preffix: 'Curso:') do
           link_to(playlist.title, playlist_path(playlist))
         end
       end

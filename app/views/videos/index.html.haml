@@ -1,9 +1,12 @@
 - content_for :title, "#{t('.meta.title')} - makigas"
 - content_for :description, t('.meta.description')
-- content_for :hero, capture { content_tag(:h1) { t('.title') } }
 - content_for :canonical, videos_url
 - content_for :header do
   %meta{name: :robots, content: :noindex}
+- content_for :hero do
+  = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal)
+- content_for(:navbar) do
+  = render Six::Layout::NavbarComponent.new(show_search: false)
 
 .videoexplorer
   = render Six::Base::WrapperComponent.new(classes: 'videoexplorer__wrap', slim: true) do
