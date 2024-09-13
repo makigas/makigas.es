@@ -1,8 +1,9 @@
 {
-  "extends": ["stylelint-config-recommended"],
+  "extends": ["stylelint-config-recommended-scss"],
   "customSyntax": "postcss-scss",
   "rules": {
     "selector-class-pattern": null,
-    "function-no-unknown": [true, { "ignoreFunctions": ["saturation"] } ]
+    "function-no-unknown": [true, { "ignoreFunctions": ["saturation"] }],
+    "scss/load-partial-extension": null
   }
 }
