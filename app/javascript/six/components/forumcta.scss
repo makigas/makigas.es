@@ -17,6 +17,15 @@
     margin-top: 0.8em;
   }
 
+  &__questions {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &__question + &__question {
+    margin-top: 0.5rem;
+  }
+
   &__lead {
     font-size: 1.1rem;
     line-height: 1.2;

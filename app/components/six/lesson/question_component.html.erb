@@ -1,19 +1,27 @@
 <aside class="forumcta">
-  <p class="forumcta__lead"><strong>Nadie nace sabiendo, ¿te han quedado dudas?</strong></p>
+  <% if threads.present? %>
+  <p class="forumcta__lead"><strong>Hilos relacionados en el foro</strong></p>
+  <ul class="forumcta__questions">
+  <% threads.each do |thread| %>
+  <li class="forumcta__question">
+    <strong><%= link_to thread['title'], "https://foro.makigas.es/d/#{thread['slug']}", target: '_blank' %></strong>
+    <br>
+    de hace <%= time_ago_in_words thread['createdAt'].to_datetime %> por <%= thread['user']['slug'] %>
+  </li>
+  <% end %>
+  </ul>
+  <% else %>
+<p class="forumcta__lead"><strong>En el foro puedes preguntar u opinar de este tema</strong></p>
   <p>
     Tenemos un foro donde puedes abrir hilos para intentar resolver con la comunidad problemas
     o dudas que te hayan quedado mientras tratas de seguir alguno de los cursos, o para compartir
     algo que hayas aprendido o descubierto por el camino.
   </p>
+  <% end %>
 
   <div class="forumcta__btns">
-  <% if forum.present? %>
   <p>
-    <a class="forumcta__btn" href="<%= sub_forum_url %>">Visitar el foro de este curso &rarr;</a>
-  </p>
-  <% end %>
-  <p>
-    <%= link_to 'Visitar la comunidad →', root_forum_url, class: 'forumcta__btn' %>
+    <%= link_to 'Visitar el foro →', root_forum_url, class: 'forumcta__btn' %>
   </p>
   </div>
 </aside>

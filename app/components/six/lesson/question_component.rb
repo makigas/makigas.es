@@ -3,13 +3,23 @@
 module Six
   module Lesson
     class QuestionComponent < ViewComponent::Base
-      def initialize(forum: nil, utm: nil)
+      def initialize(forum: nil, utm: nil, tags: [])
         super
         @forum = forum
         @utm = utm
+        @tags = tags
       end
 
       attr_reader :forum
+
+      def threads
+        return [] if @tags.empty?
+
+        @threads ||= begin
+          req = Forum::DiscussionsTaggedAs.new(*@tags)
+          Forum::Client.new.request(req).values
+        end
+      end
 
       def sub_forum_url
         has_query_string = @forum.include?('?')
