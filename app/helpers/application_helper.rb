@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  # Given a string prefix, such as 'btn', and a hash of extra state attributes, such
+  # as { 'active' => @active, 'disabled' => @disabled }, this function generates
+  # the proper CSS class string using BEM conventions. Every key in the extra hash
+  # will have the prefix preppended.
+  def bem_state(prefix, **extra)
+    extra.each_with_object({ prefix => true }) do |(klass, cond), hash|
+      hash["#{prefix}--#{klass}"] = cond
+    end
+  end
+
   def canonical_url
     parameters = Rack::Utils.parse_nested_query request.query_string
     url_for only_path: false, params: parameters

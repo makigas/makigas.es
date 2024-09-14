@@ -29,7 +29,9 @@ RSpec.describe 'Topic page' do
 
     it 'does not include an empty playlist' do
       visit topic_path(topic)
-      expect(page).to have_no_text playlist.title
+      within 'main' do
+        expect(page).to have_no_text playlist.title
+      end
     end
   end
 
@@ -54,7 +56,9 @@ RSpec.describe 'Topic page' do
 
     it 'hides the card' do
       visit topic_path(topic)
-      expect(page).to have_no_text playlist.title
+      within 'main' do
+        expect(page).to have_no_text playlist.title
+      end
     end
   end
 

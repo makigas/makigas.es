@@ -1,0 +1,9 @@
+%section.sidebarfilter
+  %header.sidebarfilter__title
+    = title || @title
+  %ul.sidebarfilter__body
+    - if pills?
+      - pills.each do |pill|
+        %li= pill
+    - else
+      = content

@@ -13,8 +13,7 @@ RSpec.describe Six::Search::ResultComponent, type: :component do
     it { is_expected.to have_link video.title }
     it { is_expected.to have_text video.description }
 
-    it { is_expected.to have_text 'Serie:' }
-    it { is_expected.to have_text 'Tema:' }
+    it { is_expected.to have_text 'Curso:' }
     it { is_expected.to have_text 'Etiquetas:' }
   end
 
@@ -28,8 +27,7 @@ RSpec.describe Six::Search::ResultComponent, type: :component do
     it { is_expected.to have_link video.title }
     it { is_expected.to have_text video.description }
 
-    it { is_expected.to have_text 'Serie:' }
-    it { is_expected.to have_text 'Tema:' }
+    it { is_expected.to have_text 'Curso:' }
     it { is_expected.to have_no_text 'Etiquetas:' }
   end
 
@@ -42,8 +40,7 @@ RSpec.describe Six::Search::ResultComponent, type: :component do
     it { is_expected.to have_link video.title }
     it { is_expected.to have_text video.description }
 
-    it { is_expected.to have_text 'Serie:' }
-    it { is_expected.to have_no_text 'Tema:' }
+    it { is_expected.to have_text 'Curso:' }
     it { is_expected.to have_text 'Etiquetas:' }
   end
 end

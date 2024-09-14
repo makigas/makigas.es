@@ -1,0 +1,48 @@
+:root {
+  --sidebarpill-background: transparent;
+  --sidebarpill-foreground: currentColor;
+  --sidebarpill-background-hover: #e6e6e6;
+  --sidebarpill-foreground-hover: var(--sidebarpill-foreground);
+  --sidebarpill-background-active: var(--tag-background);
+  --sidebarpill-foreground-active: var(--tag-foreground);
+  --sidebarpill-px: 6px;
+  --sidebarpill-py: 2px;
+}
+
+.sidebarpill {
+  text-decoration: none;
+  background-color: var(--sidebarpill-background);
+  color: var(--sidebarpill-foreground);
+  padding: var(--sidebarpill-py) var(--sidebarpill-px);
+  border-radius: 3px;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: var(--sidebarpill-background-hover);
+    color: var(--sidebarpill-foreground-hover);
+  }
+
+  &--active {
+    background-color: var(--sidebarpill-background-active);
+    color: var(--sidebarpill-foreground-hover);
+  }
+
+  &__icon {
+    height: 1em;
+    vertical-align: text-bottom;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &--forcepad &__content {
+    padding-left: 1.5em;
+  }
+
+  &--forcepad &__icon + &__content {
+    padding-left: 0;
+  }
+}

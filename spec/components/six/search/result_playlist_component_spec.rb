@@ -8,12 +8,12 @@ RSpec.describe Six::Search::ResultPlaylistComponent, type: :component do
 
     let(:playlist) { build(:playlist, title: 'My playlist', slug: 'my-playlist') }
 
-    it { is_expected.to have_text('Serie: My playlist') }
+    it { is_expected.to have_text('Curso: My playlist') }
   end
 
   describe 'when a playlist is not given' do
     subject { render_inline(described_class.new(playlist: nil)) }
 
-    it { is_expected.to have_no_text('Serie:') }
+    it { is_expected.to have_no_text('Curso:') }
   end
 end

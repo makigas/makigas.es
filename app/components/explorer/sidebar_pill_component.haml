@@ -1,0 +1,7 @@
+= link_to @url, class: helpers.bem_state('sidebarpill', active: @active, forcepad: @force_pad_left) do
+  - if @icon_before.present?
+    = feather_icon(@icon_before, class: 'sidebarpill__icon sidebarpill__icon--left')
+  %span.sidebarpill__content
+    = content || @title
+  - if @icon_after.present?
+    = feather_icon(@icon_after, class: 'sidebarpill__icon sidebarpill__icon--right')

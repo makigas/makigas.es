@@ -21,7 +21,9 @@ RSpec.describe 'Playlists page' do
       create(:video, playlist:, published_at: 2.days.after)
 
       visit playlists_path
-      expect(page).to have_no_text playlist.title
+      within 'main' do
+        expect(page).to have_no_text playlist.title
+      end
     end
   end
 

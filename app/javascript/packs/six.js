@@ -37,3 +37,5 @@ import "../six/components/videoexplorer.scss";
 import "../six/components/videopage.scss";
 import "../six/components/videotoc.scss";
 import "../six/components/ytiframe.scss";
+import "../six/components/explorer/sidebarfilter.scss";
+import "../six/components/explorer/sidebarpill.scss";

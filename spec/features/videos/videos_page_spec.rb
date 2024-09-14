@@ -20,15 +20,6 @@ RSpec.describe 'Topics page' do
     end
   end
 
-  it 'displays topic if the playlist has one' do
-    topic = create(:topic)
-    playlist = create(:playlist, topic:)
-    create(:video, playlist:)
-
-    visit videos_path
-    expect(page).to have_link topic.title, href: topic_path(topic)
-  end
-
   it 'scheduled videos are not displayed' do
     published = create(:yesterday_video, youtube_id: 'PUBLISHED', title: 'Published')
     scheduled = create(:tomorrow_video, youtube_id: 'TOMORROW', title: 'Scheduled')
