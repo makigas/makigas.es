@@ -22,6 +22,8 @@ services:
     - 'meili:/data.ms'
     environment:
       MEILI_MASTER_KEY: 'meilikey'
+    ports:
+      - '7700:7700'
   storage:
     image: minio/minio
     volumes:
