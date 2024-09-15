@@ -20,4 +20,9 @@ module PlaylistsHelper
     )
   end
   # rubocop:enable Metrics/MethodLength
+
+  def derive_playlists_url(filters)
+    valid_filters = filters.slice(:topic, :sort)
+    url_for(request.query_parameters.merge(valid_filters))
+  end
 end

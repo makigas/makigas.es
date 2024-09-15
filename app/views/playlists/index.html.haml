@@ -1,0 +1,15 @@
+- content_for :title, "#{t('.meta.title')} – makigas"
+- content_for :description, t('.meta.description')
+
+= render Explorer::SidebarExplorerComponent.new do |explorer|
+  - explorer.with_filter(title: 'Ordenar resultados') do |box|
+    - box.with_pill(url: derive_playlists_url(sort: 'trending'), active: params[:sort].blank? || params[:sort] == 'trending') { 'En tendencia' }
+    - box.with_pill(url: derive_playlists_url(sort: 'popular'), active: params[:sort] == 'popular') { 'Más vistos' }
+    - box.with_pill(url: derive_playlists_url(sort: 'recent'), active: params[:sort] == 'recent') { 'Recientemente actualizados' }
+  - explorer.with_filter(title: 'Filtrar por tema') do |box|
+    - box.with_pill(url: derive_playlists_url(topic: nil), active: params[:topic].blank?) { 'Sin filtro' }
+    - Topic.order(title: :asc).each do |topic|
+      - box.with_pill(url: derive_playlists_url(topic: topic.slug), active: params[:topic] == topic.slug) { topic.title }
+  - explorer.with_main do
+    = render Six::Explorer::PlaylistListComponent.new(playlists: @playlists)
+    .paginator= paginate @playlists

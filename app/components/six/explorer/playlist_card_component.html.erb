@@ -5,7 +5,7 @@
     </figure>
     <section class="plcard__body">
         <h2 class="plcard__title"><%= @playlist.title %></h2>
-        <p><%= @playlist.description %></p>
+        <p class="plcard__description"><%= @playlist.description %></p>
         <%= render Six::Utils::MetaGroupComponent.new(classes: 'plcard__metas') do |g| %>
           <%= g.with_meta(icon: 'list') { "#{@playlist.videos.visible.count} episodios" } %>
           <%= g.with_meta(icon: 'clock') { duration } %>

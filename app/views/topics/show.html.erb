@@ -23,7 +23,7 @@
     :root {
       --navbar-background: <%= @topic.color.paint.darken(20) %>;
       --jumbo-background: <%= @topic.color.paint.darken(20) %>;
-      --playlist-card-hover-background: <%= @topic.color.paint.desaturate(35).lighten(35) %>;
+      --playlist-card-hover-color: <%= @topic.color.paint.desaturate(35).lighten(15) %>;
     }
   </style>
 <% end %>
@@ -31,4 +31,6 @@
   <h1><%= @topic.title %></h1>
 <% end %>
 <%= render Six::Explorer::ChildTopicsComponent.new(topic: @topic) %>
-<%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists.with_public_videos.order('playlists.topic_position' => :asc)) %>
+<%= render Six::Base::WrapperComponent.new(breath: true) do %>
+  <%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists.with_public_videos.order('playlists.topic_position' => :asc)) %>
+<% end %>
