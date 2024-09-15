@@ -1,0 +1,36 @@
+<% content_for :header do %>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to t('.dashboard'), :dashboard %></li>
+    <li class="breadcrumb-item"><%= link_to t('.playlists'), [:dashboard, :playlists] %></li>
+    <li class="breadcrumb-item"><%= link_to @playlist, [:dashboard, @playlist] %></li>
+    <li class="breadcrumb-item current"><%= t('.tags') %></li>
+  </ol>
+  <h1><%= @playlist %></h1>
+<% end %>
+<% content_for :toolbar do %>
+  <%= link_to t('.back'), [:dashboard, @playlist], class: 'btn btn-outline-secondary' %>
+<% end %>
+
+<%= form_with scope: :tags, url: retag_dashboard_playlist_path(@playlist), method: :put do |form| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= t('.episode') %></th>
+        <th scope="col"><%= t('.tags') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @playlist.videos.each do |video| %>
+        <%= form.fields_for "video[]", video do |video_fields| %>
+          <tr>
+            <td><%= video.title %></td>
+            <td><%= video_fields.text_field :tags, class: 'form-control', aria: { label: t(".tags_for", video: video.title)} %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

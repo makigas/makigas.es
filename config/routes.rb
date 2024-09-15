@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :videos, only: %i[index new create]
       resources :playlists do
         get :videos, on: :member
+        get :tags, on: :member
+        put :retag, path: :tags, on: :member
         resources :videos, except: %i[index new create] do
           resources :links
           resource :transcription, only: %i[show create update destroy]

@@ -159,6 +159,8 @@ es:
         dashboard: Panel de control
         new_playlist: Nueva Lista
         playlists: Listas
+      retag:
+        updated: Etiquetas actualizadas correctamente
       show:
         card: Tarjeta
         color: Color
@@ -177,12 +179,20 @@ es:
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         replaced_with: Reemplazada por
         thumbnail: Miniatura
+        tags: Etiquetas
         title: Título
         topic: Tema
         trends: Tendencias
         twitch_id: ID de Twitch
         videos: Vídeos
         youtube_id: ID de YouTube
+      tags:
+        back: Atrás
+        dashboard: Panel de control
+        episode: Episodio
+        playlists: Listas
+        tags: Etiquetado
+        tags_for: "Etiquetas para %{video}"
       update:
         updated: Lista actualizada correctamente.
       videos:

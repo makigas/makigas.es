@@ -2,7 +2,7 @@
 
 module Dashboard
   class PlaylistsController < Dashboard::DashboardController
-    before_action :playlist_set, only: %i[show edit update destroy videos]
+    before_action :playlist_set, only: %i[show edit update destroy videos tags retag]
 
     def index
       @playlists = Playlist.order(updated_at: :desc).page(params[:page])
@@ -15,6 +15,14 @@ module Dashboard
     end
 
     def edit; end
+
+    def tags; end
+
+    def retag
+      videos = videos_to_retag
+      Video.update(videos.keys, videos.values)
+      redirect_to [:tags, :dashboard, @playlist], notice: t('.updated')
+    end
 
     def create
       @playlist = Playlist.new(playlist_params)
@@ -51,6 +59,20 @@ module Dashboard
 
     def playlist_set
       @playlist = Playlist.friendly.find(params[:id])
+    end
+
+    def videos_to_retag
+      {}.tap do |index|
+        params_to_retag[:video].each do |id, params|
+          valid_params = params.permit(:tags)
+          valid_params[:tags] = valid_params[:tags].split.map(&:strip)
+          index[id] = valid_params if valid_params.keys.all? { |k| valid_params[k].present? }
+        end
+      end
+    end
+
+    def params_to_retag
+      params.require(:tags).permit(video: {})
     end
   end
 end
