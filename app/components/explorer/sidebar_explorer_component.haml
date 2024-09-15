@@ -1,0 +1,10 @@
+.sidebarexplorer
+= render Six::Base::WrapperComponent.new(classes: 'sidebarexplorer__wrap') do
+  = render Six::Base::ButtonComponent.new(classes: 'sidebarexplorer__toggle', id: 'sToggleExplorer').with_content('Mostrar filtros')
+  - if filters.present?
+    .sidebarexplorer__background#sBackdropExplorer
+    .sidebarexplorer__sidebar
+      - filters.each do |filter|
+        = filter
+  .sidebarexplorer__list
+    = main

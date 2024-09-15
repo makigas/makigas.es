@@ -17,7 +17,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'Cortos'
       end
 
@@ -36,7 +36,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'Medios'
       end
 
@@ -55,7 +55,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'Largos'
       end
 
@@ -74,7 +74,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'Largos'
       end
 
@@ -89,7 +89,7 @@ RSpec.describe 'Videos search' do
 
       login_as create(:user), scope: :user
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'Largos'
       end
 
@@ -117,12 +117,12 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'First Topic'
       end
 
       aggregate_failures do
-        expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(topic: ['first'])))
+        expect(service).to have_received(:new).with(nil, hash_including(filters: hash_including(topic: 'first')))
         expect(page).to have_link first_video.title, href: video_path(first_video)
         expect(page).to have_no_link second_video.title, href: video_path(second_video)
       end
@@ -135,7 +135,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'First Topic'
       end
 
@@ -150,7 +150,7 @@ RSpec.describe 'Videos search' do
 
       login_as create(:user), scope: :user
       visit videos_path
-      within '.videoexplorer__sidebar' do
+      within '.sidebarexplorer__sidebar' do
         click_on 'First Topic'
       end
 

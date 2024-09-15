@@ -72,7 +72,7 @@ class VideosController < ApplicationController
   end
 
   def filter_params
-    params.permit(:q, :length, :tag, topic: [])
+    params.permit(:q, :length, :tag, :topic)
   end
 
   def sort_params
