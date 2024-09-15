@@ -1,13 +1,41 @@
+@import "../layout/responsive.scss";
+
 $plhead-text-size: 1.15rem;
 
 :root {
   --playlist-header-background: var(--playlist-background);
 }
 
+.playlistview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include wide-layout {
+    flex-direction: row;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    .plhead:before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      background: oklch(from var(--playlist-header-background, var(--makigas-brand)) calc(1.1 * l) c h);
+      right: 100%;
+      height: 100%;
+    }
+  }
+
+  @include hdpi-layout {
+    max-width: 1600px;
+  }
+}
+
 .plhead {
-  background: var(--playlist-header-background, var(--makigas-brand));
+  background: oklch(from var(--playlist-header-background, var(--makigas-brand)) calc(1.1 * l) c h);
   color: var(--playlist-header-foreground, #fff);
   font-size: $plhead-text-size;
+  position: relative;
 
   &__wrap {
     display: flex;
@@ -15,6 +43,32 @@ $plhead-text-size: 1.15rem;
     justify-content: space-between;
     align-items: center;
     gap: 80px;
+    position: sticky;
+    top: 20px;
+
+    @include wide-layout {
+      width: 320px;
+      flex-direction: column-reverse;
+      gap: 0;
+      margin-top: 50px;
+      padding-right: 50px;
+    }
+
+    @include hdpi-layout {
+      width: 500px;
+    }
+  }
+
+  &__metas {
+    @include wide-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .meta + .meta {
+        margin-left: 0;
+      }
+    }
   }
 
   &__data {
