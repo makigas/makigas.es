@@ -8,7 +8,7 @@ $large-icon-size: 30px;
     --searchbar-box-shadow: 2px;
     --searchbar-box-radius: 4px;
     --searchbar-box-background: #fff;
-    --searchbar-box-outline-color: #c0c0c0;
+    --searchbar-box-outline-color: var(--makigas-brand-washed-out);
     --searchbar-box-outline: 4px;
     --searchbar-text-padding: 10px;
   }
@@ -28,7 +28,14 @@ $large-icon-size: 30px;
   width: 100%;
   background: var(--searchbar-box-background);
   border-radius: var(--searchbar-box-radius);
-  box-shadow: 0 var(--searchbar-box-shadow) var(--searchbar-box-shadow) rgb(0 0 0 / 25%);
+
+  &--dark {
+    box-shadow: 0 var(--searchbar-box-shadow) var(--searchbar-box-shadow) rgb(0 0 0 / 25%);
+  }
+
+  &--light {
+    border: 1px solid rgb(0 0 0 / 25%);
+  }
 
   &__label {
     /* Taken from https://www.w3.org/WAI/tutorials/forms/labels/. Note that this
@@ -57,11 +64,11 @@ $large-icon-size: 30px;
     padding: var(--searchbar-text-padding);
     font-size: var(--searchbar-text-size);
     outline: 0;
+  }
 
-    &:focus {
-      transition: box-shadow 0.15s ease-out;
-      box-shadow: 0 0 0 0.25rem var(--searchbar-box-outline-color);
-    }
+  &:focus-within {
+    transition: box-shadow 0.15s ease-out;
+    box-shadow: 0 0 0 0.25rem var(--searchbar-box-outline-color);
   }
 
   &__submit {

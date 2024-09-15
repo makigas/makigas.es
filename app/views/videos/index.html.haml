@@ -3,8 +3,6 @@
 - content_for :canonical, videos_url
 - content_for :header do
   %meta{name: :robots, content: :noindex}
-- content_for :hero do
-  = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal)
 - content_for(:navbar) do
   = render Six::Layout::NavbarComponent.new(show_search: false)
 
@@ -27,6 +25,7 @@
     - Video.tags.sort.each do |tag|
       - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
   - explorer.with_main do
+    = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal, variant: :light)
     = render Six::Search::CurrentFiltersComponent.new(filters: params)
     - if @matching_tag.present? && (params[:page].nil? || params[:page].to_s == "1")
       = render Six::Search::TagInformationComponent.new(tag: @matching_tag)
