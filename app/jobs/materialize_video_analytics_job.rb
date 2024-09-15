@@ -40,6 +40,17 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
     end
   end
 
+  def update_aggregated_playlist_counters
+    sums = Video.where.not(playlist_id: nil)
+                .select('playlist_id', 'sum(views_total) as total', 'sum(views_recent) as recent')
+                .group(:playlist_id)
+    update_without_timestamps do
+      sums.each do |group|
+        group.playlist.update(aggregated_views_total: group.total, aggregated_views_recent: group.recent)
+      end
+    end
+  end
+
   def update_counters
     total_data = IngestedAnalytic.recordset.group_by_page
     recent_data = IngestedAnalytic.recordset.where(day: 30.days.ago..).group_by_page
@@ -49,6 +60,7 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
     Playlist.find_each do |playlist|
       update_playlist_counters(playlist, total_data, recent_data)
     end
+    update_aggregated_playlist_counters
   end
 
   def percentile(data, pvalue)
@@ -70,6 +82,8 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
 
     update_without_timestamps do
       Video.update(trend_tag: nil)
+      break if rising.zero?
+
       Video.where(views_recent: rising..).update(trend_tag: 'rising')
       Video.where(views_recent: popular..).update(trend_tag: 'popular')
     end

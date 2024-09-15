@@ -5,6 +5,9 @@
 # Table name: playlists
 #
 #  id                      :integer          not null, primary key
+#  aggregated_trend_tag    :string
+#  aggregated_views_recent :bigint           default(0), not null
+#  aggregated_views_total  :bigint           default(0), not null
 #  card_content_type       :string
 #  card_file_name          :string
 #  card_file_size          :bigint
