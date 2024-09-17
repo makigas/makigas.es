@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_085354) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_17_171815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,6 +138,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_085354) do
     t.bigint "aggregated_views_total", default: 0, null: false
     t.bigint "aggregated_views_recent", default: 0, null: false
     t.string "aggregated_trend_tag"
+    t.bigint "normalized_views_total", default: 0, null: false
+    t.bigint "normalized_views_recent", default: 0, null: false
     t.index ["replacement_playlist_id"], name: "index_playlists_on_replacement_playlist_id"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
     t.index ["topic_id"], name: "index_playlists_on_topic_id"

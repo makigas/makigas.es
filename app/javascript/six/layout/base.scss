@@ -7,6 +7,8 @@ body {
 
   > main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   > footer {
@@ -157,9 +159,16 @@ body {
     @include desktop-layout {
       display: grid;
       grid-template-columns: 1fr auto;
+      align-items: center;
+      text-align: center;
       gap: 30px;
       padding-top: 30px;
       padding-bottom: 30px;
+    }
+
+    h1, h2, p {
+      margin-top: 12px;
+      margin-bottom: 12px;
     }
   }
 

@@ -40,14 +40,19 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
     end
   end
 
+  def update_aggregated_playlist_counter(group)
+    count = Video.where(playlist_id: group.playlist_id).count
+    group.playlist.update(aggregated_views_total: group.total, aggregated_views_recent: group.recent,
+                          normalized_views_total: group.total / count,
+                          normalized_views_recent: group.recent / count)
+  end
+
   def update_aggregated_playlist_counters
     sums = Video.where.not(playlist_id: nil)
                 .select('playlist_id', 'sum(views_total) as total', 'sum(views_recent) as recent')
                 .group(:playlist_id)
     update_without_timestamps do
-      sums.each do |group|
-        group.playlist.update(aggregated_views_total: group.total, aggregated_views_recent: group.recent)
-      end
+      sums.each { |group| update_aggregated_playlist_counter(group) }
     end
   end
 

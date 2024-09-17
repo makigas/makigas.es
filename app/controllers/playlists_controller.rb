@@ -27,17 +27,17 @@ class PlaylistsController < ApplicationController
     topic = Topic.friendly.find_by(slug: params[:topic])
     return playlists if topic.blank?
 
-    playlists.where(topic:)
+    topic.playlists_with_children
   end
 
   def sort_content(playlists)
     case params[:sort]
     when 'popular'
-      playlists.order(aggregated_views_recent: :desc)
+      playlists.order(normalized_views_recent: :desc)
     when 'recent'
       playlists.sort_by_latest_video
     else
-      playlists.order(aggregated_views_total: :desc)
+      playlists.order(normalized_views_total: :desc)
     end
   end
 

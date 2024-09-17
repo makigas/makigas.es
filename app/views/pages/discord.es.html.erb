@@ -1,14 +1,14 @@
-<% content_for :title, 'Comunidad de Discord para profesionales y estudiantes de la programación – makigas' %>
+<% content_for :title, 'Comunidad de Discord para programadores y estudiantes de programación – makigas' %>
 <% content_for :twitter do %>
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@makigas">
-  <meta name="twitter:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
+  <meta name="twitter:title" content="Comunidad de Discord para programadores y estudiantes de programación">
   <meta name="twitter:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
   <meta name="twitter:image" content="<%= image_url('/makigas.png', only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
   <meta property="og:url" content="<%= canonical_url %>">
-  <meta property="og:title" content="Comunidad de Discord para profesionales y estudiantes de la programación">
+  <meta property="og:title" content="Comunidad de Discord para programadores y estudiantes de programación">
   <meta property="og:type" content="website">
   <meta property="og:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
   <meta property="og:site_name" content="makigas">
@@ -23,41 +23,33 @@
       --button-border-color: #ffffffab;
       --button-focus-border-color: #dddcdc80;
     }
+    body {
+      background: var(--jumbo-background);
+    }
   </style>
 <% end %>
-<% content_for :hero do %>
-  <h1>El Discord oficial de makigas</h1>
-<% end %>
 <div class="discord">
-  <%= render Six::Base::WrapperComponent.new(classes: 'discord__grid') do %>
+  <%= render Six::Base::WrapperComponent.new(classes: 'discord__grid', slim: true) do %>
     <div>
-      <h1>¡Pásate por el Discord oficial de makigas!</h1>
+  <h1>El Discord oficial de makigas</h1>
       <h2>
         Habla con otras personas, comparte ideas, enseña el proyecto
-        en el que estés trabajando, o plantea preguntas.
+        en el que estés trabajando, o plantea preguntas si tienes problemas
+        con tu código.
       </h2>
       <div class="discord__cta">
-        <%= link_to "Unirse al servidor", "https://discord.gg/#{Makigas::Environment.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
-        <small>(¡es gratuito y funciona muy bien!)</small>
+        <%= link_to "Haz clic aquí para unirte", "https://discord.gg/#{Makigas::Environment.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
+        <small>O bien, pega el siguiente invite: <strong><%= Makigas::Environment.discord_server_invite %></strong></small>
       </div>
       <p>
-        <strong>La Comunidad de Makigas</strong> es un servidor creativo y acogedor de Discord en el que podrás hablar y chatear con
-        más desarrolladores, diseñadores, ingenieros y estudiantes de programación para discutir sobre temas de desarrollo, preguntar
-        y responder dudas que puedan surgir, o simplemente distraerse hablando de cualquier tema en los canales de off-topic mientras
-        deberías estar estudiando o trabajando.
+      Este es el servidor de Discord oficial de la <strong>comunidad makigas</strong>, un servidor creativo y acogedor sobre
+      programación en el que podrás hablar y chatear con otros desarrolladores, diseñadores, ingenieros o estudiantes de programación
+      para discutir sobre temas de desarrollo, preguntar y responder dudas que puedan surgir, o simplemente distraerse un rato.
       </p>
       <p>
         Es una gran alternativa para hacer conexiones con otros desarrolladores y personas que tengan gustos parecidos, y también es
         un buen lugar para preguntarle a la comunidad cosas que en los comentarios del canal de YouTube o de la página web pasarían
         ignoradas.
-      </p>
-      <p>
-        Nuestro servidor está organizado en distintos canales para los distintos temas on-topic, como #programación, #webdev o #linux.
-        También hay canales específicos para lenguajes de programación, como #javascript, #python o #go.
-      </p>
-      <p>
-        <strong>Para unirte</strong>, tienes que tener una cuenta de Discord con tu e-mail verificado.
-        Lee las instrucciones en los canales de bienvenida para verificar tu cuenta y pode ver el resto de canales del servidor.
       </p>
     </div>
     <div>

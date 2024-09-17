@@ -17,6 +17,8 @@
 #  excerpt                 :text
 #  exclude_from_search     :boolean          default(FALSE), not null
 #  forum_url               :string
+#  normalized_views_recent :bigint           default(0), not null
+#  normalized_views_total  :bigint           default(0), not null
 #  slug                    :string           not null
 #  thumbnail_content_type  :string
 #  thumbnail_file_name     :string

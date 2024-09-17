@@ -8,6 +8,7 @@ $plhead-text-size: 1.15rem;
 
 .playlistview {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 20px;
 

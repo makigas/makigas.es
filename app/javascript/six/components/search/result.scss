@@ -13,6 +13,10 @@
 
   &__media img {
     width: 140px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+
     @include desktop-layout {
       width: 200px;
     }
