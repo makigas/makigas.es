@@ -99,6 +99,34 @@ body {
   }
 }
 
+.userbar {
+  font-size: 0.9rem;
+  text-align: right;
+  background-color: black;
+  color: white;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  p {
+    margin: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  a {
+    color: white;
+  }
+
+  &__route {
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+}
+
 .paginator {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -166,7 +194,9 @@ body {
       padding-bottom: 30px;
     }
 
-    h1, h2, p {
+    h1,
+    h2,
+    p {
       margin-top: 12px;
       margin-bottom: 12px;
     }
@@ -242,35 +272,6 @@ body {
     @include desktop-layout {
       font-size: 2.2rem;
     }
-  }
-}
-
-.userbar {
-  font-size: 0.9rem;
-  text-align: right;
-  background-color: black;
-  color: white;
-
-  .wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  p {
-    margin: 0;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-  }
-
-  &__route {
-    cursor: help;
-    text-decoration: underline dotted;
-  }
-
-  a,
-  strong {
-    color: white;
   }
 }
 

@@ -9,9 +9,11 @@
 
 = render Explorer::SidebarExplorerComponent.new do |explorer|
   - explorer.with_filter(title: 'Ordenar resultados') do |box|
-    - box.with_pill(url: derive_search_url(sort: nil), active: params[:sort].blank?) { 'Relevancia' }
-    - video_search_sort_criterias.each do |label, criteria|
-      - box.with_pill(url: derive_search_url(sort: criteria), active: params[:sort] == criteria).with_content(label)
+    - if params[:q].present?
+      - box.with_pill(url: derive_search_url(sort: 'relevance'), active: @sort == 'relevance') { 'Relevancia' }
+    - box.with_pill(url: derive_search_url(sort: 'recent'), active: @sort == 'recent') { 'Más recientes' }
+    - box.with_pill(url: derive_search_url(sort: 'popular'), active: @sort == 'popular') { 'Más vistos' }
+    - box.with_pill(url: derive_search_url(sort: 'trending'), active: @sort == 'trending') { 'En tendencia' }
   - explorer.with_filter(title: 'Filtrar por duración') do |box|
     - box.with_pill(url: derive_search_url(length: nil), active: params[:length].blank?) { 'Cualquier duración' }
     - video_search_duration_filters.each do |label, filter|

@@ -30,6 +30,7 @@ class VideoSearch
   end
 
   SORT_QUERIES = {
+    'relevance' => '',
     'recent' => 'publication_date:desc',
     'popular' => 'views_total:desc',
     'trending' => 'views_recent:desc'
@@ -45,7 +46,8 @@ class VideoSearch
   def sort_criteria
     return nil if sort.blank?
 
-    [SORT_QUERIES[sort]]
+    criteria = SORT_QUERIES[sort]
+    criteria.present? ? [criteria] : nil
   end
 
   def search_filters

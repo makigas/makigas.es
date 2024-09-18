@@ -8,7 +8,8 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = if filter_params.present? || sort_params.present?
+    @sort = assign_sort
+    @videos = if filter_params.present?
                 results_by_meilisearch
               else
                 results_by_database
@@ -37,6 +38,16 @@ class VideosController < ApplicationController
 
   private
 
+  def assign_sort
+    return params[:sort] if params[:sort].present?
+
+    if params[:q].present?
+      'relevance'
+    else
+      'recent'
+    end
+  end
+
   def find_matching_tag
     Tag.find_by(slug: params[:tag]) || Tag.find_by(slug: params[:q]) || Tag.synonym(params[:q])
   end
@@ -49,7 +60,17 @@ class VideosController < ApplicationController
   end
 
   def results_by_database
-    Video.visible.includes(playlist: :topic).order(published_at: :desc).page(page).per(10)
+    Video.visible.includes(playlist: :topic).order(database_order).page(page).per(10)
+  end
+
+  DATABASE_SORT_PARAMS = {
+    'recent' => { published_at: :desc },
+    'popular' => { views_total: :desc },
+    'trending' => { views_recent: :desc }
+  }.freeze
+
+  def database_order
+    DATABASE_SORT_PARAMS[sort_params[:sort]] || {}
   end
 
   def find_video
@@ -72,11 +93,11 @@ class VideosController < ApplicationController
   end
 
   def filter_params
-    params.permit(:q, :length, :tag, :topic)
+    params.slice(:q, :length, :tag, :topic)
   end
 
   def sort_params
-    params.permit(:sort)
+    params.slice(:sort)
   end
 
   def canonical_params?
