@@ -12,6 +12,7 @@ const options = {
   target: ["es2020"],
   platform: "browser",
   loader: {
+    ".jpg": "file",
     ".png": "file",
     ".svg": "file",
     ".woff": "file",

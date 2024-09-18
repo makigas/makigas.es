@@ -1,11 +1,17 @@
 .fronthero {
-  background-image: url("assets/hero.png");
-  background-color: var(--makigas-brand-darker);
-  background-repeat: repeat;
+  background-image: url("assets/computer.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   color: white;
   padding-top: 6rem;
   padding-bottom: 4rem;
   text-align: center;
+
+  @include desktop-layout {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
 
   &__title {
     font-family: var(--font-title);
