@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="dark">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,19 @@
     <%= stylesheet_link_tag 'dashboard' %>
     <%= favicon_link_tag '/favicon.ico' %>
     <%= csrf_meta_tags %>
+
+    <script>
+      function updateTheme() {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = prefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+
+      updateTheme();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        updateTheme();
+      });
+    </script>
   </head>
   <body class="no-js <%= "page-#{controller.controller_name}" %>">
     <%= render 'layouts/dashboard/header' %>
