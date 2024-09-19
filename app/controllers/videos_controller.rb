@@ -70,7 +70,7 @@ class VideosController < ApplicationController
   }.freeze
 
   def database_order
-    DATABASE_SORT_PARAMS[sort_params[:sort]] || {}
+    DATABASE_SORT_PARAMS[@sort] || {}
   end
 
   def find_video
