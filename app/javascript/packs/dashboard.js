@@ -19,3 +19,4 @@ import "../dashboard/searches";
 import "../dashboard/shownotes";
 import "../dashboard/topics";
 import "../dashboard/table";
+import "../dashboard/slug";

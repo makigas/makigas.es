@@ -45,6 +45,14 @@
     <td><%= link_to(@video.twitch_id, "https://twitch.tv/videos/#{@video.twitch_id}") if @video.twitch_id.present? %></td>
   </tr>
   <tr>
+    <td><%= t('.slug') %></td>
+    <td>
+      <%= @video.slug %>
+      <%= content_tag(:button, id: 'slugModalOpen', data: { id: @video.id, title: @video.title, slug: @video.slug }, class: 'btn btn-outline-secondary btn-sm') do %>
+        <i class="bi bi-pencil"></i> <%= t('.edit') %>
+      <% end %>
+    </td>
+  <tr>
     <td><%= t('.duration') %></td>
     <td><%= running_time @video.duration %> (<%= t('.seconds', count: @video.duration) %>)</td>
   </tr>
@@ -93,3 +101,5 @@
     </td>
   </tr>
 </table>
+
+<%= render 'slug' %>

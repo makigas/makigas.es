@@ -1,5 +1,14 @@
 ---
 es:
+  activemodel:
+    attributes:
+      modal_slug:
+        reset: Reestablecer al valor por defecto
+        slug: Identificador
+    models:
+      modal_slug:
+        one: Identificador de vídeo
+        other: Identificadores de vídeo
   activerecord:
     attributes:
       opinion:

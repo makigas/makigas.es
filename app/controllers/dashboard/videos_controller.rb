@@ -52,6 +52,12 @@ module Dashboard
       end
     end
 
+    def update_slug
+      @request = ModalSlug.new(update_slug_params)
+      @request.update_slug!
+      redirect_to [:dashboard, @request.video.playlist, @request.video], notice: t('.updated')
+    end
+
     private
 
     def move!(video, direction)
@@ -79,6 +85,10 @@ module Dashboard
 
     def filter_criteria
       params.permit(:playlist_id).compact_blank
+    end
+
+    def update_slug_params
+      params.require(:modal_slug).permit(:id, :slug, :reset)
     end
   end
 end

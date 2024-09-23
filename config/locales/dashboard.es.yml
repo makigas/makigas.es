@@ -178,6 +178,7 @@ es:
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         replaced_with: Reemplazada por
+        slug: Identificador
         thumbnail: Miniatura
         tags: Etiquetas
         title: Título
@@ -403,6 +404,7 @@ es:
           one: '%{count} segundo'
           other: '%{count} segundos'
         show_notes: Notas del episodio
+        slug: Identificador
         tags: Etiquetas
         thumbnail: Miniatura
         title: Título
@@ -412,6 +414,8 @@ es:
         youtube_id: ID de YouTube
       update:
         updated: Vídeo actualizado correctamente.
+      update_slug:
+        updated: Identificador del vídeo actualizado correctamente.
   layouts:
     dashboard:
       header:

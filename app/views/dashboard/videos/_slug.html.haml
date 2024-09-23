@@ -1,0 +1,16 @@
+.modal.fade#slugModal{tabindex: -1, aria: { label: 'slugModalLabel', hidden: true } }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title#slugModalLabel Actualizar identificador
+        %button.btn-close{type: 'button', data: { 'bs-dismiss' => 'modal' }, aria: { label: 'Cerrar' }}
+      = simple_form_for ModalSlug.new, url: update_slug_dashboard_videos_path, method: 'put' do |form|
+        = form.input :id, as: :hidden, input_html: { data: { 'target-id': '' } }
+        .modal-body
+          Actualizar el identificador de <strong data-target-title>este vídeo</strong>.
+          %fieldset.mt-3
+            = form.input :slug, input_html: {data: { 'target-slug': "" }}
+            = form.input :reset, as: :boolean, wrapper_html: {class: 'mt-3' }
+        .modal-footer
+          %button.btn.btn-secondary{type: 'button', data: { 'bs-dismiss' => 'modal' }} Cancelar
+          = form.submit 'Actualizar', class: 'btn btn-primary'

@@ -67,6 +67,8 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include ViewComponent::TestHelpers, type: :component
 
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
   Capybara.javascript_driver = :selenium_headless
   Capybara.enable_aria_label = true
 
