@@ -80,6 +80,11 @@ $plhead-text-size: 1.15rem;
     font-size: 2rem;
   }
 
+  &__permalink {
+    color: currentColor;
+    text-decoration: none;
+  }
+
   &__thumbnail {
     margin: 0;
     display: none;

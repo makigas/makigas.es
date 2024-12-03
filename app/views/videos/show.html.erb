@@ -37,25 +37,29 @@
 
 <%= render Six::Base::WrapperComponent.new(breath: true) do %>
 <div class="videopage">
-  <article class="videopage__left article">
+  <article class="videopage__left article h-entry">
     <header class="article__header">
       <% if @video.playlist.present? %>
       <p class="article__taxonomy">
         <%= link_to @video.playlist.title, playlist_path(@video.playlist), class: 'article__category' %>
       </p>
       <% end %>
-      <h1 class="article__title"><%= @video.title %></h1>
+      <h1 class="article__title p-name">
+        <%= link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'article__permalink u-url' do %>
+          <%= @video.title %>
+        <% end %>
+      </h1>
       <p class="article__meta">
-        <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601) %> &bull;
-        <%= t('.duration', duration: running_time(@video.duration)) %>
+        <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601, class: 'dt-published') %> &bull;
+        <%= content_tag(:data, t('.duration', duration: running_time(@video.duration)), class: 'p-duration', value: ActiveSupport::Duration.build(@video.duration).iso8601) %>
         <% if @video.tags.present? %>
           &bull;
           <% @video.tags.each do |tag| %>
-            <%= link_to "##{tag}", videos_path(tag:), class: 'article__tag' %>
+            <%= link_to "##{tag}", videos_path(tag:), class: 'article__tag p-category' %>
           <% end %>
         <% end %>
       </p>
-      <p class="article__summary">
+      <p class="article__summary p-summary">
         <%= @video.excerpt || @video.description %>
       </p>
     </header>
@@ -64,7 +68,7 @@
       <%= render Six::Base::YoutubeEmbedComponent.new(youtube_id: @video.youtube_id) %>
     <% end %>
     <% if @video.show_note.present? %>
-      <div class="article__content">
+      <div class="article__content e-content">
         <%= to_markdown(@video.show_note.content).html_safe %>
       </div>
     <% else %>

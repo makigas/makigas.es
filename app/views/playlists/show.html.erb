@@ -32,7 +32,7 @@
   <% end %>
 <% end %>
 
-<div class="playlistview">
+<div class="playlistview h-feed">
 <%= render Six::Layout::PlaylistHeaderComponent.new(playlist: @playlist) %>
 <%= render Six::Base::WrapperComponent.new(breath: true, classes: 'playlistsdata', slim: true) do %>
   <%= render Six::Explorer::DeprecatedPlaylistComponent.new(playlist: @playlist) if @playlist.deprecated %>

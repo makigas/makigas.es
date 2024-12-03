@@ -1,13 +1,15 @@
-<article class="videocard">
-  <%= link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'videocard__link' do %>
+<article class="videocard h-entry">
+  <%= link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'videocard__link u-url' do %>
     <h2 class="videocard__title">
-      <span class="videocard__vnum"><%= @video.position %></span>
-      <%= @video.title %>
+      <span class="p-name">
+        <span class="videocard__vnum"><%= @video.position %></span>
+        <%= @video.title %>
+      </span>
       <%= render Six::Utils::TrendComponent.new(video: @video) %>
     </h2>
-    <p class="videocard__desc"><%= @video.description %></p>
+    <p class="videocard__desc p-summary"><%= @video.description %></p>
     <%= render Six::Utils::MetaGroupComponent.new(classes: 'videocard__metas') do |group| %>
-      <%= group.with_meta(icon: 'calendar') { tag.time(published_at, datetime: @video.published_at) } %>
+      <%= group.with_meta(icon: 'calendar') { tag.time(published_at, datetime: @video.published_at, class: 'dt-published') } %>
       <%= group.with_meta(icon: 'clock') { "Duración: #{duration}" } %>
     <% end %>
   <% end %>

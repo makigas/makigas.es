@@ -47,6 +47,11 @@
     }
   }
 
+  &__permalink {
+    color: currentColor;
+    text-decoration: none;
+  }
+
   &__summary {
     font-size: 1.2rem;
     line-height: 1.2;
