@@ -8,6 +8,6 @@ const buttons = document.querySelectorAll(".videoinfo__nonotes__btn");
       console.log("Casted", cast);
     }
 
-    document.querySelector(".videoinfo__nonotes__question").innerText = "Gracias por ayudar a mejorar esta página.";
+    document.querySelector(".article__survey").innerText = "Gracias por ayudar a mejorar esta página.";
   });
 });
