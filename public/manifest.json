@@ -1,17 +1,49 @@
 {
-	"name": "makigas",
-	"icons": [
-		{
-			"src": "\/android-chrome-192x192.png",
-			"sizes": "192x192",
-			"type": "image\/png"
-		},
-		{
-			"src": "\/android-chrome-512x512.png",
-			"sizes": "512x512",
-			"type": "image\/png"
-		}
-	],
-	"theme_color": "#4d6699",
-	"display": "standalone"
+  "name": "makigas",
+  "short_name": "makigas",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/pwa/makigas-mask.svg",
+      "sizes": "any",
+      "purpose": "maskable",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/pwa/makigas-color.png",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#4d6699",
+  "display": "standalone",
+  "lang": "es",
+  "dir": "ltr",
+  "description": "Cursos y consejos para que aprendas a programar que puedes seguir gratis.",
+  "categories": ["education"],
+  "screenshots": [
+    {
+      "src": "/pwa/screenshot-mobile-home.png",
+      "type": "image/png",
+      "sizes": "960x1600"
+    },
+    {
+      "src": "/pwa/screenshot-desktop-home.png",
+      "type": "image/png",
+      "form_factor": "wide",
+      "sizes": "2560x1600"
+    },
+    {
+      "src": "/pwa/screenshot-mobile-lesson.png",
+      "type": "image/png",
+      "sizes": "960x1600"
+    },
+    {
+      "src": "/pwa/screenshot-desktop-lesson.png",
+      "type": "image/png",
+      "form_factor": "wide",
+      "sizes": "2560x1600"
+    }
+  ]
 }

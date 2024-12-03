@@ -37,7 +37,7 @@ class Topic < ApplicationRecord
     small: '180x180>',
     default: '360x360>',
     hidef: '720x720>'
-  }, default_url: '/makigas.png'
+  }, default_url: '/icons/color/makigas-512.png'
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 250 }

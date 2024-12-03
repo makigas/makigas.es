@@ -52,7 +52,7 @@ class Playlist < ApplicationRecord
     small: '180x180>',
     default: '360x360>',
     hidef: '720x720>'
-  }, default_url: '/makigas.png'
+  }, default_url: '/icons/color/makigas-512.png'
 
   has_attached_file :card, styles: {
     thumbnail: '320x180>',

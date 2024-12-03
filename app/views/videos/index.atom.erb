@@ -4,8 +4,8 @@
   <subtitle type="text">Vídeos recientes publicados en makigas</subtitle>
   <updated><%= @videos.pluck(:updated_at).max.iso8601 %></updated>
   <id><%= videos_url(format: :atom) %></id>
-  <icon><%= URI.join(root_url, 'makigas.png') %></icon>
-  <logo><%= URI.join(root_url, 'makigas.png') %></logo>
+  <icon><%= URI.join(root_url, '/icons/color/makigas-512.png') %></icon>
+  <logo><%= URI.join(root_url, '/icons/color/makigas-512.png') %></logo>
   <link rel="self" href="<%= videos_url(format: :atom) %>" type="application/atom+xml" />
   <link rel="alternate" href="<%= videos_url %>" type="text/html" />
   <author><name>makigas.es</name></author>
