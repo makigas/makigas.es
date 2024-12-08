@@ -86,7 +86,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_171815) do
     t.date "day", null: false
     t.jsonb "document", null: false
     t.index ["day"], name: "index_ingested_analytics_on_day", unique: true
-    t.index ["document"], name: "index_ingested_analytics_on_document_", using: :gin
   end
 
   create_table "links", force: :cascade do |t|

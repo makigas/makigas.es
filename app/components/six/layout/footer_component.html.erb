@@ -1,12 +1,15 @@
-<footer class="footer">
+<footer class="footer h-card">
   <%= render Six::Base::WrapperComponent.new do %>
     <div class="footer__about footer__grid">
       <div class="footer__colophon">
         <div class="footer__logo">
+          <a href="/" class="u-url p-name" hidden>
+            <img class="u-logo" src="https://www.makigas.es/icons/color/makigas-512.png" width="1" hidden alt="makigas">
+          </a>
           <%= render Six::Utils::MakigasComponent.new %>
         </div>
         <p>
-          <strong>Aprende conceptos nuevos de programación o descubre una tecnología nueva</strong>.
+          <strong class="p-note">Aprende conceptos nuevos de programación o descubre una tecnología nueva</strong>.
           En esto consiste makigas: un sitio web y un canal de YouTube con tutoriales de programación
           y consejos para desarrolladores, en fcastellano y hablando en un lenguaje simple y humilde.
           Encuentra contenido sobre programación, desarrollo web y desarrollo de software.
@@ -22,7 +25,7 @@
         </ul>
         <ul class="footer__link">
           <h3>Enlaces</h3>
-          <li><a href="/videos">Explorar lecciones</a></li>
+          <li><a href="/videos" rel="feed">Explorar lecciones</a></li>
           <li><a href="/series">Consultar cursos</a></li>
           <li><a href="/temas">Ver todos los temas</a></li>
           <li><a href="https://foro.makigas.es">Visitar los foros</a></li>
@@ -45,7 +48,7 @@
         <strong>Copyright &copy; 2012 - <%= DateTime.now.year %> makigas</strong><br>
       </p>
 
-      <p class="footer__spain">Made in Spain</p>
+      <p class="footer__spain">Made in <span class="p-adr p-country-name">Spain</span></p>
     </div>
   <% end %>
 </footer>
