@@ -59,7 +59,7 @@
           <% end %>
         <% end %>
       </p>
-      <p class="article__summary p-summary">
+      <p class="article__summary <%= @video.show_note.present? ? 'p-summary' : 'e-content' %>">
         <%= @video.excerpt || @video.description %>
       </p>
     </header>

@@ -10,7 +10,7 @@
         <div class="consent__buttons">
           <%= render Six::Base::ButtonComponent.new(id: "iframe-allow-now", text: 'Permitir esta vez') %>
           <%= render Six::Base::ButtonComponent.new(id: "iframe-allow-always", text: 'Permitir siempre') %>
-          <%= render Six::Base::ButtonComponent.new(href: "https://youtu.be/#{youtube_id}", text: 'Ver en YouTube →', target: '_blank') %>
+          <%= render Six::Base::ButtonComponent.new(href: "https://youtu.be/#{youtube_id}", classes: ['u-syndication'], rel: 'syndication', text: 'Ver en YouTube →', target: '_blank') %>
         </div>
         <p><small>
           Ves este aviso porque no has establecido aún tus preferencias de cookies
