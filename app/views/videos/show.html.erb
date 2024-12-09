@@ -17,7 +17,7 @@
   <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
 <% end %>
 <% content_for :meta do %>
-  <meta name="fediverse:creator" content="@danirod@masto.es" />
+  <%= tag(:meta, name: 'fediverse:creator', content: @video.user.fediverse_creator_id) if @video&.user&.fediverse_creator_id.present? %>
   <%= tag(:link, rel: :alternate, href: playlist_url(@playlist, format: :atom), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
   <%= tag(:link, rel: :alternate, href: topic_url(@playlist.topic, format: :atom), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
   <% if @video.scheduled? %>
@@ -36,8 +36,8 @@
 <% end %>
 
 <%= render Six::Base::WrapperComponent.new(breath: true) do %>
-<div class="videopage">
-  <article class="videopage__left article h-entry">
+<div class="videopage h-entry">
+  <article class="videopage__left article">
     <header class="article__header">
       <% if @video.playlist.present? %>
       <p class="article__taxonomy">
@@ -91,6 +91,7 @@
   </article>
   <section class="videopage__sidebar">
     <%= render Six::Lesson::QuestionComponent.new(forum: @video.playlist.display_forum_url, utm: forum_utm_params(@video), tags: @video.tags) %>
+    <%= render Six::Lesson::TeacherComponent.new(user: @video.user) if @video.user.present? %>
     <%= render(Six::Lesson::PartOfPlaylistComponent.new(video: @video)) if @video.playlist.present? %>
   </section>
   <% end %>

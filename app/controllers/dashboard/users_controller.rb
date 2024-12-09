@@ -49,7 +49,7 @@ module Dashboard
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :bio, :bluesky_url, :external_url, :github_url, :linkedin_url, :mastodon_url, :stack_overflow_url, :twitch_url, :twitter_url, :youtube_url, :fediverse_creator_id, :email, :password, :password_confirmation)
     end
   end
 end

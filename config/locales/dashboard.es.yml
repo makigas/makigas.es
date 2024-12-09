@@ -321,6 +321,9 @@ es:
         dashboard: Panel de control
         edit: Editar
         users: Usuarios
+      form:
+        personal_information: Datos básicos
+        social_profiles: Perfiles sociales
       index:
         dashboard: Panel de control
         destroy: Destruir
@@ -337,17 +340,33 @@ es:
         new_user: Nuevo Usuario
         users: Usuarios
       show:
+        avatar: Foto de perfil
+        bio: Biografía
+        bluesky_url: Bluesky
         current_sign_in_at: Hora de inicio de sesión actual
         current_sign_in_ip: IP del inicio de sesión actual
         dashboard: Panel de control
         destroy: Destruir
         edit: Editar
         email: E-mail
+        external_url: URL externa
+        fediverse_creator_id: Atribución del fediverso
+        github_url: GitHub
         last_sign_in_at: Hora del último inicio de sesión
         last_sign_in_ip: IP del último inicio de sesión
+        linkedin_url: LinkedIn
+        mastodon_url: Mastodon
+        name: Nombre
+        personal_information: Información personal
         really_destroy: Eliminar un usuario no tiene vuelta atrás. Una vez eliminado, no podrá iniciar sesión en el sistema.
+        security_information: Información de seguridad
         sign_in_count: Número de veces iniciada sesión
+        social_profiles: Perfiles sociales
+        stack_overflow_url: Stack Overflow
         users: Usuarios
+        twitter_url: Twitter
+        twitch_url: Twitch
+        youtube_url: YouTube
       update:
         updated: Usuario actualizado correctamente
     videos:
@@ -386,6 +405,7 @@ es:
         new_video: Nuevo vídeo
         videos: Vídeos
       show:
+        author: Autor
         dashboard: Panel de control
         description: Descripción
         destroy: Destruir

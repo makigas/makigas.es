@@ -1,6 +1,19 @@
 <%= simple_form_for [:dashboard, @user] do |form| %>
+  <h3><%= t('.personal_information') %></h3>
   <%= form.input :email %>
-  <%= form.input :password %>
-  <%= form.input :password_confirmation %>
+  <%= form.input :name %>
+  <%= form.input :bio, as: :text %>
+
+  <h3><%= t('.social_profiles') %></h3>
+  <%= form.input :bluesky_url %>
+  <%= form.input :external_url %>
+  <%= form.input :github_url %>
+  <%= form.input :linkedin_url %>
+  <%= form.input :mastodon_url %>
+  <%= form.input :stack_overflow_url %>
+  <%= form.input :twitch_url %>
+  <%= form.input :twitter_url %>
+  <%= form.input :youtube_url %>
+  <%= form.input :fediverse_creator_id %>
   <%= form.submit class: 'btn btn-success' %>
 <% end %>

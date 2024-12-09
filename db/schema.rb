@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_17_171815) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_08_231243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -201,6 +201,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_171815) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name", limit: 1024
+    t.string "bio", limit: 1024
+    t.string "twitter_url", limit: 1024
+    t.string "github_url", limit: 1024
+    t.string "mastodon_url", limit: 1024
+    t.string "stack_overflow_url", limit: 1024
+    t.string "linkedin_url", limit: 1024
+    t.string "youtube_url", limit: 1024
+    t.string "twitch_url", limit: 1024
+    t.string "bluesky_url", limit: 1024
+    t.string "external_url", limit: 1024
+    t.string "fediverse_creator_id", limit: 1024
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -224,9 +236,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_17_171815) do
     t.integer "views_total", default: 0
     t.integer "views_recent", default: 0
     t.string "trend_tag"
+    t.bigint "user_id"
     t.index ["early_access"], name: "index_videos_on_early_access"
     t.index ["old_playlist_ids"], name: "index_videos_on_old_playlist_ids"
     t.index ["slug"], name: "index_videos_on_slug"
+    t.index ["user_id"], name: "index_videos_on_user_id"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end
 

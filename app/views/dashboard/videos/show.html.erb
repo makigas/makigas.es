@@ -45,6 +45,10 @@
     <td><%= link_to(@video.twitch_id, "https://twitch.tv/videos/#{@video.twitch_id}") if @video.twitch_id.present? %></td>
   </tr>
   <tr>
+    <td><%= t('.author') %></td>
+    <td><%= @video.user.name if @video.user %></td>
+  </tr>
+  <tr>
     <td><%= t('.slug') %></td>
     <td>
       <%= @video.slug %>

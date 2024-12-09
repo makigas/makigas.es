@@ -80,6 +80,7 @@ module Dashboard
       params.require(:video).permit(:title, :description, :youtube_id, :duration, :twitch_id, :early_access,
                                     :excerpt, :tags, :playlist_id, :published_at).tap do |video_params|
         video_params[:tags] = video_params[:tags].split if video_params[:tags].present?
+        video_params[:user_id] = current_user.id
       end
     end
 

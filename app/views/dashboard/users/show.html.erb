@@ -10,6 +10,36 @@
   <%= link_to t('.edit'), [:edit, :dashboard, @user], class: 'btn btn-success' %>
   <%= button_to t('.destroy'), [:dashboard, @user], method: :delete, class: 'btn btn-danger', data: { confirm: t('.really_destroy') }, disabled: current_user == @user %>
 <% end %>
+<h3><%= t('.personal_information') %></h3>
+<table class="table table-default">
+  <tr>
+    <td><%= t('.name') %></td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td><%= t('.bio') %></td>
+    <td><%= @user.bio %></td>
+  </tr>
+  <tr class="aria-hidden">
+    <td><%= t('.avatar') %></td>
+    <td><%= image_tag @user.gravatar_url(size: 64), alt: '' %></td>
+  </tr>
+</table>
+
+<h3><%= t('.social_profiles') %></h3>
+<table class="table table-default">
+  <% ["twitter", "github", "mastodon", "stack_overflow", "linkedin", "youtube", "twitch", "bluesky", "external"].each do |profile| %>
+    <tr>
+      <td><%= t(".#{profile}_url") %></td>
+      <td><%= link_to @user["#{profile}_url"], @user["#{profile}_url"], target: :blank %></td>
+  <% end %>
+  <tr>
+    <td><%= t('.fediverse_creator_id') %></td>
+    <td><%= @user.fediverse_creator_id %></td>
+  </tr>
+</table>
+
+<h3><%= t('.security_information') %></h3>
 <table class="table table-default">
   <tr>
     <td><%= t('.email') %></td>

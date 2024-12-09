@@ -52,6 +52,7 @@ RSpec.describe 'Dashboard videos', :js do
         expect(page).to have_text 'My video title'
         expect(page).to have_text 'go javascript ruby'
         expect(page).to have_text '1:05:40'
+        expect(page).to have_text 'John Doe'
       end
     end
 

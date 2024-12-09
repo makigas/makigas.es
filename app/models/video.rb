@@ -22,6 +22,7 @@
 #  updated_at       :datetime         not null
 #  playlist_id      :integer          not null
 #  twitch_id        :string
+#  user_id          :bigint
 #  youtube_id       :string           not null
 #
 # Indexes
@@ -29,6 +30,7 @@
 #  index_videos_on_early_access      (early_access)
 #  index_videos_on_old_playlist_ids  (old_playlist_ids)
 #  index_videos_on_slug              (slug)
+#  index_videos_on_user_id           (user_id)
 #  index_videos_on_youtube_id        (youtube_id) UNIQUE
 #
 class Video < ApplicationRecord
@@ -72,6 +74,9 @@ class Video < ApplicationRecord
   belongs_to :playlist
   has_many :links, dependent: :destroy
   acts_as_list scope: :playlist
+
+  # Videos may be related to an user
+  belongs_to :user, optional: true
 
   # Slug. Can be repeated as long as it's on different playlists.
   friendly_id :title, use: %i[slugged scoped history], scope: :playlist

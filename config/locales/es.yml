@@ -134,6 +134,18 @@ es:
         minutes:
           one: '%{count} minuto'
           other: '%{count} minutos'
+    lesson:
+      teacher_component:
+        social:
+          bluesky: Bluesky
+          external: Página personal
+          github: GitHub
+          linkedin: LinkedIn
+          mastodon: Mastodon
+          stack_overflow: Stack Overflow
+          twitch: Twitch
+          twitter: X
+          youtube: YouTube
     search:
       current_filters_component:
         remove_filter: Eliminar filtro
