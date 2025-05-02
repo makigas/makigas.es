@@ -57,8 +57,10 @@
       </div>
       <div class="list-group list-group-flush">
         <%= link_to 'Agregar un nuevo vídeo', new_dashboard_video_path, class: 'list-group-item list-group-item-action' %>
-        <% Video.last.playlist.tap do |playlist| %>
-          <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
+        <% if Video.exists? %>
+          <% Video.last.playlist.tap do |playlist| %>
+            <%= link_to "Agregar un nuevo vídeo en #{playlist.title}", new_dashboard_video_path(playlist_id: playlist.id), class: 'list-group-item list-group-item-action' %>
+          <% end %>
         <% end %>
         <%= link_to 'Revisar las últimas búsquedas', dashboard_searches_path, class: 'list-group-item list-group-item-action' %>
       </div>
@@ -69,17 +71,16 @@
         Acciones que requieren atención
       </div>
       <div class="list-group list-group-flush">
-        <% Video.untagged.count.tap do |untagged_videos| %>
+        <% [Video.untagged.count, Video.untranscribed.count, Video.unnoted.count].tap do |untagged_videos, untranscribed_videos, unnoted_videos| %>
+          <% if untagged_videos.zero? && untranscribed_videos.zero? && unnoted_videos.zero? %>
+            <div class="list-group-item">No hay acciones pendientes de aplicar. Todo está bien.</div>
+          <% end %>
           <% if untagged_videos > 0 %>
             <%= link_to "#{untagged_videos} vídeos pendientes de etiquetar", dashboard_pending_tags_path, class: 'list-group-item list-group-item-action' %>
           <% end %>
-        <% end %>
-        <% Video.untranscribed.count.tap do |untranscribed_videos| %>
           <% if untranscribed_videos > 0 %>
             <%= link_to "#{untranscribed_videos} vídeos pendientes de transcribir", dashboard_pending_transcriptions_path, class: "list-group-item list-group-item-action" %>
           <% end %>
-        <% end %>
-        <% Video.unnoted.count.tap do |unnoted_videos| %>
           <% if unnoted_videos > 0 %>
             <%= link_to "#{unnoted_videos} vídeos pendientes de anotar", dashboard_pending_show_notes_path, class: "list-group-item list-group-item-action" %>
           <% end %>
