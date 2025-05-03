@@ -1,76 +1,94 @@
-.videoauthor { 
-    border: 1px solid var(--makigas-brand-washed-out);
-    background: white;
-    box-shadow: 0 2px 4px -1px var(--makigas-brand-washed-out);
-    padding: 1rem;
-    font-size: 0.9em;
-    margin-bottom: 1rem;
-    border-radius: 10px;
+.videoauthor {
+  border: 1px solid var(--makigas-brand-washed-out);
+  background: white;
+  box-shadow: 0 2px 4px -1px var(--makigas-brand-washed-out);
+  padding: 1rem;
+  font-size: 0.9em;
+  margin-bottom: 1rem;
+  border-radius: 10px;
 
-    p {
-        margin: 0;
-      }
-    
-      p + p {
-        margin-top: 0.8em;
-      }
+  p {
+    margin: 0;
+  }
 
-    &__lead {
-        font-size: 1.1rem;
-        line-height: 1.2;
-        text-wrap: balance;
-        text-align: center;
-      }
+  p + p {
+    margin-top: 0.8em;
+  }
 
-      &__card {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-      }
+  &__lead {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    text-wrap: balance;
+    text-align: center;
+  }
 
-      &__name {
-        font-size: 1rem;
-        font-weight: bold;
-        line-height: 1;
-      }
+  &__card {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
 
-      p.videoauthor__bio {
-        margin-top: 0.2rem;
-      }
+  &__name {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1;
+  }
 
-      &__eurl {
-        color: inherit;
-        text-decoration: none;
-      }
+  p.videoauthor__bio {
+    margin-top: 0.2rem;
+  }
 
-      &__pic {
-        width: 48px;
-        border-radius: 5px;
-      }
+  &__eurl {
+    color: inherit;
+    text-decoration: none;
+  }
 
-      &__socials {
-        margin-top: 1rem;
-      }
+  &__pic {
+    width: 48px;
+    border-radius: 5px;
+  }
 
-      &__social {
-        margin-right: 6px;
-        display: inline-block;
-      }
+  &__socials {
+    margin-top: 1rem;
+  }
 
-      &__social--bluesky { color: #1185fe; }
-      &__social--github { color: black; }
-      &__social--linkedin { color: #0072b1; }
-      &__social--mastodon { color: #563ACC; }
-      &__social--stackoverflow { color: #FF9900; }
-      &__social--twitch { color: #9146FF; }
-      &__social--twitter { color: black; }
-      &__social--youtube { color: #FF0000; }
-      &__social--external { color: #FF9900; }
+  &__social {
+    margin-right: 6px;
+    display: inline-block;
+  }
 
-      &__social svg {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
-      }
+  &__social--bluesky {
+    color: #1185fe;
+  }
+  &__social--github {
+    color: black;
+  }
+  &__social--linkedin {
+    color: #0072b1;
+  }
+  &__social--mastodon {
+    color: #563acc;
+  }
+  &__social--stackoverflow {
+    color: #ff9900;
+  }
+  &__social--twitch {
+    color: #9146ff;
+  }
+  &__social--twitter {
+    color: black;
+  }
+  &__social--youtube {
+    color: #ff0000;
+  }
+  &__social--external {
+    color: #ff9900;
+  }
+
+  &__social svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
 }

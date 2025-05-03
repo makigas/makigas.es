@@ -1,9 +1,11 @@
 :root {
   /* stylelint-disable max-line-length */
-  --font-default: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans",
+  --font-default:
+    system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans",
     "Helvetica Neue", sans-serif;
-  --font-title: montserrat, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell,
-    "Open Sans", "Helvetica Neue", sans-serif;
+  --font-title:
+    montserrat, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
   /* stylelint-enable max-line-length */
 }
 
