@@ -31,7 +31,6 @@ Rails.application.routes.draw do
         end
       end
       resources :users
-      resources :opinions
       resources :tags
       resource :searches, only: %i[show]
 

@@ -11,11 +11,6 @@ es:
         other: Identificadores de vídeo
   activerecord:
     attributes:
-      opinion:
-        from: De
-        message: Mensaje
-        photo: Imagen
-        url: URL
       playlist:
         card: Tarjeta
         deprecated: Anticuada
@@ -66,9 +61,6 @@ es:
         title: Título
         youtube_id: ID de YouTube
     models:
-      opinion:
-        one: Opinión
-        other: Opiniones
       playlist:
         one: Lista de reproducción
         other: Listas de reproducción

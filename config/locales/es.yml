@@ -12,8 +12,6 @@ es:
         alt: Fotografía de Dani hablándole a un micrófono
         title: Normalmente Dani no se prepara tanto para grabar un vídeo. A veces también graba vídeos en pijama o hurgándose la nariz. Pero teniendo en cuenta que esta portada es marketing, no sé qué le puedo decir; mejor será que haga lo que quiera.
       title: ¿Qué clase de mente retorcida ideó todo esto?
-    disclaimer:
-      disclaimer: Disclaimer. Las reseñas incluidas en esta página presentan únicamente a modo informativo opiniones que otros autores o individuales han emitido acerca del canal y la página web. No representan necesariamente aprobaciones o relaciones entre el canal y los autores de dichas opiniones y viceversa.
     features:
       free:
         alt: Pictograma de un billete de dolar
@@ -53,9 +51,6 @@ es:
       topics:
         button: Explora las temáticas
         title: Visualiza las listas de temas disponibles en esta página web.
-    opinions:
-      image: Logotipo de %{from}
-      title: No lo digo yo, ellos también lo dicen
     videos:
       recent_videos: Explorar vídeos recientes...
       recent_videos_alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.

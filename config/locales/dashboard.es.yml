@@ -9,9 +9,6 @@ es:
         manage_topics: Gestionar temas
         manage_users: Gestionar usuarios
         manage_videos: Gestionar vídeos
-        opinions:
-          one: opinión
-          other: opiniones
         playlists:
           one: lista
           other: listas
@@ -55,45 +52,6 @@ es:
         new_link: Nuevo Enlace
       update:
         updated: Enlace actualizado correctamente.
-    opinions:
-      create:
-        created: Opinión creada correctamente.
-      destroy:
-        destroyed: Opinión destruida correctamente.
-      edit:
-        cancel: Cancelar
-        dashboard: Panel de control
-        edit: Editar
-        opinions: Opiniones
-        topics: Opiniones
-      index:
-        dashboard: Panel de control
-        destroy: Destruir
-        edit: Editar
-        from: De
-        new_opinion: Nueva Opinión
-        operations: Operaciones
-        opinions: Opiniones
-        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
-      new:
-        cancel: Cancelar
-        dashboard: Panel de control
-        new_opinion: Nueva Opinión
-        opinions: Opiniones
-      show:
-        dashboard: Panel de control
-        description: Descripción
-        destroy: Destruir
-        edit: Editar
-        from: De
-        message: Mensaje
-        opinions: Opinión
-        photo: Imagen
-        really_destroy: Eliminar una opinión no tiene vuelta atrás. Habrá que insertarla de nuevo si se quiere volver a incorporar en la página. ¿Confirmas querer eliminar esta opinión?
-        url: URL
-        view_opinion: Ver Opinión
-      update:
-        updated: Opinión actualizada correctamente.
     pending:
       show_notes:
         show:
