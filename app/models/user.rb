@@ -47,7 +47,7 @@ class User < ApplicationRecord
   def gravatar_url(size: nil)
     hash = Digest::SHA256.hexdigest(email.strip)
     "https://gravatar.com/avatar/#{hash}".then do |url|
-      url = url + "?s=#{size}" if size.present?
+      url += "?s=#{size}" if size.present?
       url
     end
   end
