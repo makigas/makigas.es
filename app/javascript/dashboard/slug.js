@@ -19,11 +19,13 @@ if (slugModal) {
     slugPlaceholder.select();
   });
 
-  function installSlugModalOpen(node) {
-    node.addEventListener("click", () => {
-      const id = node.getAttribute("data-id");
-      const title = node.getAttribute("data-title");
-      const slug = node.getAttribute("data-slug");
+  const slugModalOpen = document.querySelector("#slugModalOpen");
+
+  if (slugModalOpen) {
+    slugModalOpen.addEventListener("click", () => {
+      const id = slugModalOpen.getAttribute("data-id");
+      const title = slugModalOpen.getAttribute("data-title");
+      const slug = slugModalOpen.getAttribute("data-slug");
       console.log(`Opening modal for ${id} x ${slug}`);
 
       titlePlaceholder.innerText = title;
@@ -33,11 +35,5 @@ if (slugModal) {
       const modal = new Modal(slugModal);
       modal.show();
     });
-  }
-
-  const slugModalOpen = document.querySelector("#slugModalOpen");
-
-  if (slugModalOpen) {
-    installSlugModalOpen(slugModalOpen);
   }
 }
