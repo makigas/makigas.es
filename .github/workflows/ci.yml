@@ -28,8 +28,10 @@ jobs:
           - 7700:7700
     steps:
       - uses: actions/checkout@v4
-      - name: Install libpq-dev
-        run: sudo apt-get -yqq install libpq-dev
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -yqq install imagemagick libpq-dev
       - name: Set up ruby
         uses: ruby/setup-ruby@v1
         with:
