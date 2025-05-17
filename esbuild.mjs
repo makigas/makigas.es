@@ -3,7 +3,7 @@ import postcss from "esbuild-postcss";
 import Watcher from "watcher";
 
 const options = {
-  entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
+  entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js", "app/javascript/packs/seven.js"],
   bundle: true,
   logLevel: "info",
   outdir: "app/assets/builds",
