@@ -11,6 +11,13 @@ es:
         other: Identificadores de vídeo
   activerecord:
     attributes:
+      tip:
+        title: Título
+        description: Descripción
+        content: Contenido
+        youtube_id: ID de YouTube
+        taxonomy: Taxonomía
+        tags: Etiquetas
       playlist:
         card: Tarjeta
         deprecated: Anticuada
@@ -61,6 +68,7 @@ es:
         title: Título
         youtube_id: ID de YouTube
     models:
+      tip: Consejo
       playlist:
         one: Lista de reproducción
         other: Listas de reproducción

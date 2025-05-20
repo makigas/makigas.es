@@ -1,0 +1,28 @@
+= simple_form_for [:dashboard, @tip], url: (@tip.persisted? ? dashboard_tip_path(@tip.id) : dashboard_tips_path) do |f|
+  .container
+    .row
+      .col-lg-7
+        %fieldset.card.mb-4
+          %legend.card-header Contenido
+          .card-body
+            = f.input :title
+            = f.input :content, input_html: { rows: 10 }
+            = f.input :youtube_id
+      .col
+        %fieldset.card.mb-4
+          %legend.card-header Clasificación
+          .card-body
+            = f.input :status, collection: [:draft, :visible, :archived], include_blank: false
+            = f.input :published_at, html5: true
+            = f.association :taxonomy, include_blank: '(Elige uno)'
+            = f.input :tags, as: :string
+
+        %fieldset.card.mb-4
+          %legend.card-header Posicionamiento
+          .card-body
+            = f.input :slug
+            = f.input :description, as: :text
+
+        .text-end
+          = f.submit class: 'btn btn-success'
+

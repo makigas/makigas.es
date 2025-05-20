@@ -1,0 +1,38 @@
+- content_for :header do
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Panel de control', dashboard_path
+    %li.breadcrumb-item= link_to 'Consejos', dashboard_tips_path
+    %li.breadcrumb-item.current= @tip.title
+  %h1= @tip.title
+
+- content_for :toolbar do
+  = link_to 'Editar', edit_dashboard_tip_path(@tip.id), class: 'btn btn-primary'
+  = link_to 'Atrás', dashboard_tips_path, class: 'btn btn-outline-secondary'
+
+%table.table.table-default
+  %tr
+    %td Título
+    %td= @tip.title
+  %tr
+    %td Descripción
+    %td= @tip.description
+  %tr
+    %td Publicación
+    %td= l @tip.published_at, format: :long
+  %tr
+    %td Usuario
+    %td= @tip.user.name
+  %tr
+    %td Contenido
+    %td= to_markdown(@tip.content).html_safe
+  %tr
+    %td ID de YouTube
+    %td= link_to(@tip.youtube_id, "https://youtu.be/#{@tip.youtube_id}", target: :blank) if @tip.youtube_id.present?
+  %tr
+    %td Taxonomía
+    %td |
+      = image_tag(@tip.taxonomy.icon.url, width: 32)
+      = @tip.taxonomy.title
+  %tr
+    %td Otras etiquetas
+    %td= @tip.tags.join(' ')

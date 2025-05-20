@@ -1,0 +1,12 @@
+- content_for :header do
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Panel de control', dashboard_path
+    %li.breadcrumb-item= link_to 'Consejos', dashboard_tips_path
+    %li.breadcrumb-item= link_to @tip.title, dashboard_tip_path(@tip.id)
+    %li.breadcrumb-item.current Editar
+  %h1 Editar
+
+- content_for :toolbar do
+  = link_to 'Atrás', dashboard_tip_path(@tip.id), class: 'btn btn-outline-secondary'
+
+= render 'form'

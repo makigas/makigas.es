@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :videos, only: %i[index new create] do
         put :update_slug, path: 'modal/slug', on: :collection
       end
+      resources :tips
       resources :playlists do
         get :videos, on: :member
         get :tags, on: :member

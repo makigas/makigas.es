@@ -1,0 +1,11 @@
+- content_for :header do
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Panel de control', dashboard_path
+    %li.breadcrumb-item= link_to 'Consejos', dashboard_tips_path
+    %li.breadcrumb-item.current Nuevo consejo
+  %h1 Nuevo consejo
+
+- content_for :toolbar do
+  = link_to 'Atrás', dashboard_tips_path, class: 'btn btn-outline-secondary'
+
+= render 'form'

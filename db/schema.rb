@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_08_231243) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_20_174543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_231243) do
     t.date "day", null: false
     t.jsonb "document", null: false
     t.index ["day"], name: "index_ingested_analytics_on_day", unique: true
+    t.index ["document"], name: "index_ingested_analytics_on_document_", using: :gin
   end
 
   create_table "links", force: :cascade do |t|
@@ -169,6 +170,29 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_08_231243) do
     t.datetime "icon_updated_at"
     t.string "synonyms", default: [], null: false, array: true
     t.index ["slug"], name: "index_tags_on_slug", unique: true
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "title", null: false
+    t.string "description", null: false
+    t.string "status", default: "draft", null: false
+    t.text "content", null: false
+    t.string "youtube_id"
+    t.bigint "user_id"
+    t.bigint "taxonomy_id", null: false
+    t.string "tags", default: [], null: false, array: true
+    t.datetime "published_at", null: false
+    t.integer "views_total", default: 0
+    t.integer "views_recent", default: 0
+    t.index ["published_at"], name: "index_tips_on_published_at"
+    t.index ["slug", "taxonomy_id"], name: "index_tips_on_slug_and_taxonomy_id", unique: true
+    t.index ["tags"], name: "index_tips_on_tags"
+    t.index ["taxonomy_id"], name: "index_tips_on_taxonomy_id"
+    t.index ["user_id"], name: "index_tips_on_user_id"
+    t.index ["youtube_id"], name: "index_tips_on_youtube_id", unique: true
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|

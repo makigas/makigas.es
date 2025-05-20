@@ -18,3 +18,9 @@ es:
         topic: (Sin tema concreto)
       topic:
         parent_topic: (Sin tema superior)
+    options:
+      tip:
+        status:
+          draft: Borrador
+          visible: Visible
+          archived: Archivado

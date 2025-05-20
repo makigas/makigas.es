@@ -1,6 +1,13 @@
 ---
 es:
   dashboard:
+    tips:
+      create:
+        created: Creado correctamente
+      update:
+        updated: Actualizado correctamente
+      destroy:
+        destroyed: Eliminado correctamente
     dashboard:
       index:
         dashboard: Panel de control

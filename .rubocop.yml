@@ -76,6 +76,10 @@ Layout/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'

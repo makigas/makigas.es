@@ -1,0 +1,37 @@
+- content_for :header do
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Panel de control', :dashboard
+    %li.breadcrumb-item.current Consejos
+  %h1 Consejos
+
+- content_for :toolbar do
+  = link_to 'Nuevo consejo', new_dashboard_tip_path, class: 'btn btn-success'
+
+= render(Dashboard::Table::TableComponent.new) do |table|
+  = table.with_head do |head|
+    = head.with_heading 'Título', primary: true
+    = head.with_heading 'Taxonomía'
+    = head.with_heading 'Estado'
+    = head.with_heading 'Publicado'
+    = head.with_heading 'Último cambio'
+  = table.with_body do |body|
+    - @tips.each do |tip|
+      = body.with_row do |row|
+        = row.with_primary do |cell|
+          = cell.with_cell do
+            = link_to tip.title, dashboard_tip_path(tip.id)
+          = cell.with_actions do
+            = link_to 'Editar', edit_dashboard_tip_path(tip.id), class: 'btn btn-sm btn-link'
+            = button_to 'Eliminar', dashboard_tip_path(tip.id), method: :delete, class: 'btn btn-sm btn-link text-danger', data: { confirm: '¿Eliminar realmente?' }
+          = cell.with_metadata do |meta|
+            = meta.with_key 'Taxonomía', tip.taxonomy.title
+            = meta.with_key 'Estado', tip.status
+            = meta.with_key 'Publicado', l(tip.published_at, format: :long)
+            = meta.with_key 'Último cambio', distance_of_time_in_words(tip.updated_at, DateTime.now)
+        = row.with_cell tip.taxonomy.title
+        = row.with_cell tip.status
+        = row.with_cell l(tip.published_at, format: :long)
+        = row.with_cell distance_of_time_in_words(tip.updated_at, DateTime.now)
+
+.paginator
+  = paginate @tips, theme: 'twitter-bootstrap-3'
