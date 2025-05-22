@@ -9,6 +9,7 @@ import "../six/events";
 import "../six/notespoll";
 import "../six/cookies";
 
+import "../six/variables.scss";
 import "../six/layout/colors.scss";
 import "../six/layout/highlight.scss";
 import "../six/layout/responsive.scss";

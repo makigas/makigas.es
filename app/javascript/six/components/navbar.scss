@@ -12,13 +12,6 @@ $navbar-size: 40px;
   }
 }
 
-:root {
-  --navbar-background: var(--makigas-brand-darker);
-  --navbar-foreground: white;
-  --navbar-menu-background: #e3e6ec;
-  --navbar-menu-foreground: black;
-}
-
 .navbar {
   background: var(--navbar-background);
   color: var(--navbar-foreground);

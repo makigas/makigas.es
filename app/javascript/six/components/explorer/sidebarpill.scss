@@ -1,14 +1,3 @@
-:root {
-  --sidebarpill-background: transparent;
-  --sidebarpill-foreground: currentColor;
-  --sidebarpill-background-hover: #e6e6e6;
-  --sidebarpill-foreground-hover: var(--sidebarpill-foreground);
-  --sidebarpill-background-active: var(--tag-background);
-  --sidebarpill-foreground-active: var(--tag-foreground);
-  --sidebarpill-px: 6px;
-  --sidebarpill-py: 2px;
-}
-
 .sidebarpill {
   text-decoration: none;
   background-color: var(--sidebarpill-background);

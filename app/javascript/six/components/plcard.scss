@@ -1,11 +1,5 @@
 @import "../layout/responsive.scss";
 
-:root {
-  --playlist-card-hover-color: var(--makigas-brand-washed-out);
-  --playlist-card-hover-background: oklch(from var(--playlist-card-hover-color) l c h / 30%);
-  --playlist-card-hover-border: var(--playlist-card-hover-color);
-}
-
 .playlistslist {
   display: grid;
 

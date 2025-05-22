@@ -1,13 +1,5 @@
 @import "../layout/responsive.scss";
 
-:root {
-  --button-background: white;
-  --button-active-background: #0000001a;
-  --button-foreground: black;
-  --button-border-color: #0003;
-  --button-focus-border-color: #00000080;
-}
-
 .btn {
   display: inline-block;
   font-family: inherit;
