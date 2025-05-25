@@ -1,0 +1,11 @@
+= tag.header(class: ['plheader', extra_css_classes]) do
+  = image_tag(playlist_icon, srcset: playlist_iconset, class: 'plheader__icon', alt: '')
+  .plheader__data
+    %h1.plheader__title= playlist.title
+    = render Six::Utils::MetaGroupComponent.new(classes: 'plheader__metas') do |g|
+      = g.with_meta(icon: 'list') { "#{@playlist.videos.count} episodios" }
+      = g.with_meta(icon: 'clock') { duration }
+      = g.with_meta(icon: 'dollar-sign') { 'Gratis' }
+      - if transcribed?
+        = g.with_meta(icon: 'file-text') do
+          %abbr{title: 'Todos los episodios de este curso tienen un artículo por si prefieres leer a ver vídeos'} Transcrito

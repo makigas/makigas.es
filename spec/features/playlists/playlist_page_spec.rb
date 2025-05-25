@@ -14,7 +14,7 @@ RSpec.describe 'Playlist page' do
     aggregate_failures do
       expect(page).to have_text playlist.title
       expect(page).to have_text playlist.description
-      expect(page).to have_css "img[src*='#{playlist.thumbnail.url(:small)}']"
+      expect(page).to have_css "img[src*='#{playlist.thumbnail.url}']"
     end
   end
 
@@ -23,7 +23,6 @@ RSpec.describe 'Playlist page' do
 
     aggregate_failures do
       expect(page).to have_text video_title(video)
-      expect(page).to have_text video.description
       expect(page).to have_text '2:13'
       expect(page).to have_css "a[href*='#{video_path(video)}']"
     end

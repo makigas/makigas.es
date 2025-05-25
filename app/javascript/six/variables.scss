@@ -66,4 +66,10 @@
   --trendbadge-foreground: rgb(129, 65, 0);
 
   --searchtag-border-color: #0003;
+
+  --card-background: transparent;
+  --card-foreground: black;
+  --card-hover-color: var(--makigas-brand-washed-out);
+  --card-hover-background: color-mix(in oklch, var(--card-hover-color) 30%, white);
+  --card-hover-border: var(--card-hover-color);
 }

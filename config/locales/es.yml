@@ -114,21 +114,6 @@ es:
         playlist_feed: 'Lista: %{playlist} (ATOM)'
         topic_feed: 'Tema: %{topic} (ATOM)'
   six:
-    explorer:
-      deprecated_playlist_component:
-        click_here_to_view_the_updated_version: Haz clic aquí para ver %{title}
-        information_may_not_be_updated_or_links_may_be_broken: La información podría no estar actualizada o algunos enlaces podrían estar rotos
-        there_is_a_newer_version: Hay una versión nueva de este curso
-        this_course_is_deprecated: Este curso ha sido marcado como anticuado y no se está revisando de forma activa
-        this_page_may_not_be-updated: Este curso podría no estar recibiendo actualizaciones de contenido
-        updated_version: la versión actualizada de este curso
-      playlist_card_component:
-        hours:
-          one: '%{count} hora'
-          other: '%{count} horas'
-        minutes:
-          one: '%{count} minuto'
-          other: '%{count} minutos'
     lesson:
       teacher_component:
         social:

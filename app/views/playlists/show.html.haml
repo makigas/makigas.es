@@ -1,0 +1,9 @@
+= render Six::Base::WrapperComponent.new(classes: 'playlistpage') do
+  = render Makigas::Playlist::HeaderComponent.new(playlist: @playlist, css_classes: 'playlistpage__header')
+  .playlistpage__toolbar
+    = link_to('Descripción', '#description')
+    = link_to('Episodios', '#episodes')
+  %hr.playlistpage__marker#description
+  = render Makigas::Playlist::BodyComponent.new(playlist: @playlist, css_classes: 'playlistpage__body')
+  %hr.playlistpage__marker#episodes
+  = render Makigas::Playlist::EpisodeListComponent.new(playlist: @playlist, css_classes: 'playlistpage__episodes')

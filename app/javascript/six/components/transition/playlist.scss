@@ -1,0 +1,208 @@
+.playlistpage {
+  &__header {
+    background: var(--card-hover-background);
+    padding: 1.5rem 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  &__toolbar {
+    border-bottom: var(--card-hover-borbacder);
+    position: sticky;
+    top: 0;
+    background: var(--card-hover-background);
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: calc(15px - 1.5rem);
+    display: flex;
+    flex-flow: row nowrap;
+
+    a {
+      padding: 0.75rem 1.5rem;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        background: var(--card-hover-border);
+      }
+    }
+  }
+
+  &__marker {
+    position: absolute;
+    transform: translateY(-3rem);
+    visibility: hidden;
+    background: none;
+  }
+
+  &__episodes {
+    padding-top: 1rem;
+  }
+
+  @media screen and (width >= 1024px) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-areas: "head head" "body list";
+    grid-template-columns: 1fr 25rem;
+    column-gap: 2rem;
+
+    &__header {
+      grid-column: 1 / 3;
+      background: none;
+      margin: 1rem 0;
+      padding: 0;
+    }
+
+    &__marker,
+    &__toolbar {
+      display: none;
+    }
+
+    &__body {
+      max-width: 65ch;
+    }
+
+    &__episodes {
+      padding-top: 0;
+    }
+  }
+
+  @media screen and (width >= 1400px) {
+    grid-template-areas: "head list" "body list";
+    grid-template-rows: auto 1fr;
+
+    &__header {
+      grid-column: 1;
+    }
+
+    &__episodes {
+      grid-row: 1 / 3;
+    }
+  }
+
+  @media screen and (width >= 1920px) {
+    max-width: 1280px;
+
+    &__body {
+      font-size: 19px;
+    }
+  }
+}
+
+.plheader {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+  gap: 0.5rem;
+
+  &__data {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    text-wrap-style: balance;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    max-width: 10rem;
+    border-radius: 100%;
+  }
+
+  @media screen and (pointer: fine) {
+    abbr {
+      text-decoration: none;
+      border-bottom: 0.1em dotted currentColor;
+      cursor: help;
+    }
+  }
+
+  @media screen and (width >= 1024px) {
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    gap: 2rem;
+
+    &__data {
+      text-align: start;
+    }
+
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__metas {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.plepisodes {
+  list-style: none;
+  padding-left: 0;
+}
+
+.plbody {
+  position: relative;
+
+  @media screen and (width >= 1024px) {
+    &__content {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr auto;
+      justify-content: space-between;
+    }
+  }
+}
+
+$playlist-episode-number-width: 1.5rem;
+
+.plepisode {
+  &__link {
+    display: block;
+  }
+
+  &__vnum {
+    width: $playlist-episode-number-width;
+    display: inline-block;
+  }
+
+  &__title {
+    display: grid;
+    grid-template-columns: $playlist-episode-number-width 1fr;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  &__desc,
+  &__metas {
+    margin: 0;
+    margin-top: 0.25rem;
+    margin-left: $playlist-episode-number-width;
+    font-size: 0.8em;
+  }
+}
+
+.card {
+  background-color: transparent;
+  color: var(--card-foreground);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: var(--card-hover-background);
+    outline: 1px solid var(--card-hover-border);
+    color: var(--card-hover-foreground, var(--card-foreground));
+  }
+}

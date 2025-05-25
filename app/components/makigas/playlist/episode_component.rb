@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-module Six
-  module Explorer
-    class PlaylistVideoCardComponent < ViewComponent::Base
-      include ViewComponent::Translatable
-
+module Makigas
+  module Playlist
+    class EpisodeComponent < Makigas::Component
       with_collection_parameter :video
 
       def initialize(video:)

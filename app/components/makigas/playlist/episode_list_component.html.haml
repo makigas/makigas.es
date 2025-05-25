@@ -1,0 +1,4 @@
+= tag.ul(class: ['plepisodes', extra_css_classes]) do
+  - videos.visible.each do |video|
+    %li.plepisode
+      = render Makigas::Playlist::EpisodeComponent.new(video:)

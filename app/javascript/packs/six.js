@@ -26,9 +26,7 @@ import "../six/components/forumcta.scss";
 import "../six/components/jumbo.scss";
 import "../six/components/meta.scss";
 import "../six/components/navbar.scss";
-import "../six/components/plhead.scss";
 import "../six/components/plcard.scss";
-import "../six/components/videocard.scss";
 import "../six/components/search/index.scss";
 import "../six/components/topcard.scss";
 import "../six/components/topicthumb.scss";
@@ -41,3 +39,6 @@ import "../six/components/ytiframe.scss";
 import "../six/components/explorer/sidebarexplorer.scss";
 import "../six/components/explorer/sidebarfilter.scss";
 import "../six/components/explorer/sidebarpill.scss";
+
+import "../six/components/transition/article7.scss";
+import "../six/components/transition/playlist.scss";

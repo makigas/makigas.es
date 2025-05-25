@@ -1,0 +1,11 @@
+%p.deprnotice<
+  - if playlist.replacement_playlist.present?
+    Hay una versión nueva de este curso.
+    = succeed(',') do
+      = link_to(playlist_path(playlist.replacement_playlist)) do
+        Haz clic aquí para revisar
+        = playlist.replacement_playlist.title
+    la versión actualizada de este curso.
+  - else
+    Este curso ha sido marcado como anticuado y no está siendo revisado de forma activa.
+    Es posible que la información pueda estar desactualizada o que los enlaces se hayan roto.

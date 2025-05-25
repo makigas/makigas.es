@@ -1,0 +1,19 @@
+// The default format for text (articles, blog posts...) in makigas 7.0
+
+.article7 {
+  line-height: 1.5;
+  font-size: 16px; // 100%
+
+  @media screen and (width >= 768px) {
+    font-size: 17px;
+  }
+  @media screen and (width >= 1024px) {
+    font-size: 18px;
+  }
+  @media screen and (width >= 1400px) {
+    font-size: 19px;
+  }
+  @media screen and (width >= 1920px) {
+    font-size: 20px;
+  }
+}

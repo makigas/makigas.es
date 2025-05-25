@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Six
-  module Explorer
-    class DeprecatedPlaylistComponent < ViewComponent::Base
+module Makigas
+  module Playlist
+    class DeprecatedComponent < Makigas::Component
       def initialize(playlist:)
         super
         @playlist = playlist
