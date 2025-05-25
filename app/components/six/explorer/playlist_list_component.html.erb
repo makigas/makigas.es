@@ -1,5 +1,5 @@
-<%= render Six::Base::WrapperComponent.new(classes: 'playlistslist') do %>
+<ul class="playlistslist">
   <% playlists.each do |pl| %>
-    <%= render Six::Explorer::PlaylistCardComponent.new(playlist: pl) %>
+    <li><%= render Six::Explorer::PlaylistCardComponent.new(playlist: pl) %></li>
   <% end %>
-<% end %>
+</ul>

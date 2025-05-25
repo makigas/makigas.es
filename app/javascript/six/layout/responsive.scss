@@ -5,13 +5,13 @@
 }
 
 @mixin wide-layout {
-  @media (min-width: 1400px) {
+  @media (min-width: 1280px) {
     @content;
   }
 }
 
 @mixin hdpi-layout {
-  @media (min-width: 1920px) {
+  @media (min-width: 1536px) {
     @content;
   }
 }

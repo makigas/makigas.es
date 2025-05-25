@@ -17,46 +17,6 @@ body {
   }
 }
 
-.wrapper {
-  margin-left: 15px;
-  margin-right: 15px;
-
-  &--breath {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  @include desktop-layout {
-    max-width: 992px;
-    margin-left: auto;
-    margin-right: auto;
-
-    &--fluid {
-      max-width: initial;
-      margin-left: 60px;
-      margin-right: 60px;
-    }
-  }
-
-  @include wide-layout {
-    max-width: 1280px;
-
-    &--fluid {
-      max-width: initial;
-    }
-  }
-
-  @include hdpi-layout {
-    max-width: 1600px;
-  }
-
-  &--slim {
-    @include hdpi-layout {
-      max-width: 1280px;
-    }
-  }
-}
-
 .topicslist {
   @include desktop-layout {
     display: grid;

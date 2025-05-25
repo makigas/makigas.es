@@ -1,0 +1,39 @@
+.wrapper {
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  &--breath {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (width >= 768px) {
+    margin-left: auto;
+    margin-right: auto;
+
+    &--fluid {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @media screen and (width >= 1024px) {
+    width: 992px;
+
+    &--fluid {
+      width: initial;
+    }
+  }
+
+  @media screen and (width >= 1280px) {
+    width: 1248px;
+
+    &--fluid {
+      width: initial;
+    }
+  }
+
+  @media screen and (width >= 1536px) {
+    width: 1502px;
+  }
+}

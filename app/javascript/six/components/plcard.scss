@@ -2,6 +2,10 @@
 
 .playlistslist {
   display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
 
   @include hdpi-layout {
     grid-template-columns: repeat(2, 1fr);
@@ -46,20 +50,12 @@
   }
 
   &__link {
-    color: inherit;
-    text-decoration: inherit;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
     padding: 15px;
     border-radius: 12px;
     gap: 15px;
-
-    &:hover,
-    &:active {
-      background-color: var(--playlist-card-hover-background);
-      outline: 1px solid var(--playlist-card-hover-border);
-    }
   }
 
   &__metas {

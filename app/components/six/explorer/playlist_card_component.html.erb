@@ -1,5 +1,5 @@
 <article class="plcard">
-  <%= link_to playlist_path(@playlist), class: 'plcard__link' do %>
+  <%= link_to playlist_path(@playlist), class: 'plcard__link card' do %>
     <figure class="plcard__thumb" aria-hidden="true">
         <%= image_tag @playlist.thumbnail.url(:small), class: 'plcard__img', alt: '' %>
     </figure>

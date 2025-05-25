@@ -40,5 +40,4 @@ import "../six/components/explorer/sidebarexplorer.scss";
 import "../six/components/explorer/sidebarfilter.scss";
 import "../six/components/explorer/sidebarpill.scss";
 
-import "../six/components/transition/article7.scss";
-import "../six/components/transition/playlist.scss";
+import "../six/components/transition/sixdotfive.pcss";
