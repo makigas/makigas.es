@@ -1,5 +1,5 @@
 <div class="topcard">
-  <%= link_to topic_path(@topic), class: 'topcard__link' do %>
+  <%= link_to topic_path(@topic), class: 'topcard__link card' do %>
     <figure class="topcard__thumb" aria-hidden="true">
       <%= image_tag @topic.thumbnail.url(:small), class: 'topcard__icon', alt: '' %>
     </figure>
