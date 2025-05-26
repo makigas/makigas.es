@@ -172,7 +172,15 @@ $navbar-size: 40px;
     background: var(--navbar-menu-background);
 
     .navbar__menu {
-      display: flex;
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: var(--viewport-width);
+      justify-content: center;
+    }
+
+    .navbar__link {
+      margin-left: -1rem;
+      margin-right: -1rem;
     }
 
     .navbar__curtain {
@@ -258,6 +266,10 @@ $navbar-size: 40px;
       --navbar-foreground: white;
 
       background: var(--navbar-background);
+
+      .navbar__menu {
+        display: flex;
+      }
 
       &.navbar--front {
         background: transparent;

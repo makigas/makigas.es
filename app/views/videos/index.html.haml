@@ -18,14 +18,10 @@
     - box.with_pill(url: derive_search_url(length: nil), active: params[:length].blank?) { 'Cualquier duración' }
     - video_search_duration_filters.each do |label, filter|
       - box.with_pill(url: derive_search_url(length: filter), active: params[:length] == filter).with_content(label)
-  - explorer.with_filter(title: 'Filtrar por tema') do |box|
-    - box.with_pill(url: derive_search_url(topic: nil), active: params[:topic].blank?) { 'Cualquier tema' }
-    - Topic.order(title: :asc).each do |topic|
-      - box.with_pill(url: derive_search_url(topic: topic.slug), active: params[:topic].present? && params[:topic] == topic.slug).with_content(topic.title)
   - explorer.with_filter(title: 'Filtrar por etiqueta (BETA)') do |box|
     - box.with_pill(url: derive_search_url(tag: nil), active: params[:tag].blank?) { 'Cualquier etiqueta' }
-    - Video.tags.sort.each do |tag|
-      - box.with_pill(url: derive_search_url(tag: tag), active: params[:tag] == tag).with_content("##{tag}")
+    - Tag.order(title: :asc).each do |tag|
+      - box.with_pill(url: derive_search_url(tag: tag.slug), active: params[:tag] == tag.slug) { tag.title }
   - explorer.with_main do
     = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal, variant: :light)
     = render Six::Search::CurrentFiltersComponent.new(filters: params)

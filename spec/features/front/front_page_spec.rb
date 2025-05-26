@@ -12,10 +12,4 @@ RSpec.feature 'Front page' do
     visit root_path
     expect(page).to have_text '¿Qué es makigas?'
   end
-
-  scenario 'allows the user to navigate for topics' do
-    topic = create(:topic, title: 'Skills nuevas', slug: 'mejora-tus-skills')
-    visit root_path
-    expect(page).to have_text topic.title
-  end
 end

@@ -1,0 +1,6 @@
+%ul.tagexplorer
+  - tags.each do |tag|
+    %li.tagexplorer__tag
+      = link_to(link.call(tag), class: 'tagexplorer__link card') do
+        = image_tag(tag.icon.url, class: 'tagexplorer__logo', width: 64, alt: '')
+        = tag.title

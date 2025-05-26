@@ -1,0 +1,13 @@
+- content_for(:title, "#{t('.meta.title')} - makigas")
+- content_for(:description, t('.meta.description'))
+- content_for(:hero) do
+  %h1= t('.title')
+= render Six::Base::WrapperComponent.new do
+  %ul.topicslist
+    - @tags.each do |tag|
+      %li= render(Makigas::Tag::CardComponent.new(tag:))
+  %p<
+    Seguramente habrá más temas, pero todavía no está migrada la lista completa. Mientras tanto,
+    = succeed('.') do
+      = link_to(videos_path) do
+        usa el explorador para verlo todo

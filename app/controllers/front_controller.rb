@@ -2,6 +2,9 @@
 
 class FrontController < ApplicationController
   def index
-    @recent = Video.visible.order(created_at: :desc).limit(4)
+    @tags = Tag.select('*',
+                       '(SELECT sum(views_recent) FROM videos WHERE videos.tags @> ARRAY[tags.slug]::varchar[]) as pop')
+               .order(pop: :desc)
+               .limit(8)
   end
 end

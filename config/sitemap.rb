@@ -17,12 +17,6 @@ SitemapGenerator::Sitemap.create do
     end
   end
 
-  # Topics
-  add topics_path, priority: 0.8, changefreq: 'weekly'
-  Topic.find_each do |topic|
-    add topic_path(topic), priority: 0.7, changefreq: 'weekly', lastmod: topic.content_updated_at
-  end
-
   add terms_path, priority: 0.5
   add privacy_path, priority: 0.5
   add cookies_path, priority: 0.5

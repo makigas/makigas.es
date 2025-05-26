@@ -1,4 +1,5 @@
 .wrapper {
+  --viewport-width: calc(100% - 2rem);
   margin-left: 1rem;
   margin-right: 1rem;
 
@@ -8,8 +9,10 @@
   }
 
   @media screen and (width >= 768px) {
+    --viewport-width: 736px;
     margin-left: auto;
     margin-right: auto;
+    width: 736px;
 
     &--fluid {
       margin-left: 1rem;
@@ -18,6 +21,7 @@
   }
 
   @media screen and (width >= 1024px) {
+    --viewport-width: 992px;
     width: 992px;
 
     &--fluid {
@@ -26,6 +30,7 @@
   }
 
   @media screen and (width >= 1280px) {
+    --viewport-width: 1248px;
     width: 1248px;
 
     &--fluid {
@@ -34,6 +39,11 @@
   }
 
   @media screen and (width >= 1536px) {
+    --viewport-width: 1502px;
     width: 1502px;
+
+    &--fluid {
+      width: initial;
+    }
   }
 }

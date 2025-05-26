@@ -19,7 +19,16 @@
   <%= render Six::Layout::NavbarComponent.new(show_search: false, classes: 'navbar--front') %>
 <% end %>
 <%= render Six::Front::HeroComponent.new %>
-<%= render Six::Front::TopicExplorerComponent.new if Topic.count.positive? %>
+<%= render Six::Base::WrapperComponent.new(classes: 'frontblock') do %>
+  <header>
+      <h2>O explora las categorías destacadas</h2>
+    </header>
+  <%= render Makigas::Front::TagExplorerComponent.new(tags: @tags, link: lambda { |tag| videos_path(tag: tag.slug) }) if @tags.present? %>
+  <p>
+    <%= render Six::Base::ButtonComponent.new(href: videos_path, text: 'Explorar todo el contenido') %>
+    <%= render Six::Base::ButtonComponent.new(href: tags_path, text: 'Ver todas las categorías') %>
+  </p>
+<% end %>
 <div class="frontblock">
   <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
     <header>

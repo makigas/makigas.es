@@ -19,7 +19,6 @@
 <% content_for :meta do %>
   <%= tag(:meta, name: 'fediverse:creator', content: @video.user.fediverse_creator_id) if @video&.user&.fediverse_creator_id.present? %>
   <%= tag(:link, rel: :alternate, href: playlist_url(@playlist, format: :atom), title: t('.meta.playlist_feed', playlist: @playlist.title), type: 'application/atom+xml') %>
-  <%= tag(:link, rel: :alternate, href: topic_url(@playlist.topic, format: :atom), title: t('.meta.topic_feed', topic: @playlist.topic.title), type: 'application/atom+xml') if @playlist.topic.present? %>
   <% if @video.scheduled? %>
     <meta name="robots" content="noindex">
   <% end %>
@@ -52,12 +51,6 @@
       <p class="article__meta">
         <%= content_tag(:time, l(@video.published_at.to_date, format: :long), datetime: @video.published_at.to_time.iso8601, class: 'dt-published') %> &bull;
         <%= content_tag(:data, t('.duration', duration: running_time(@video.duration)), class: 'p-duration', value: ActiveSupport::Duration.build(@video.duration).iso8601) %>
-        <% if @video.tags.present? %>
-          &bull;
-          <% @video.tags.each do |tag| %>
-            <%= link_to "##{tag}", videos_path(tag:), class: 'article__tag p-category' %>
-          <% end %>
-        <% end %>
       </p>
       <p class="article__summary <%= @video.show_note.present? ? 'p-summary' : 'e-content' %>">
         <%= @video.excerpt || @video.description %>

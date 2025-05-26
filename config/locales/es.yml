@@ -138,6 +138,12 @@ es:
         consider_this:
           one: Esta serie podría ser lo que estás buscando
           other: Estas series podrían ser lo que estás buscando
+  tags:
+    index:
+      meta:
+        description: En makigas.es encontrarás cursos y lecciones para aprender a programar sobre distintos temas.
+        title: Todos los temas
+      title: Todos los temas
   topics:
     index:
       meta:

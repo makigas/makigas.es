@@ -30,9 +30,4 @@ json._links do
       json.href playlist.display_forum_url
     end
   end
-  if embeds.include?(:topic) && playlist.topic.present?
-    json.set! 'makigas:topic' do
-      json.href topic_path(playlist.topic)
-    end
-  end
 end

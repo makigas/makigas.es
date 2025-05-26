@@ -56,9 +56,7 @@ Rails.application.routes.draw do
   get '/temas/:topic/feed' => redirect('/temas/%{topic}.atom')
   get '/series/:playlist/feed' => redirect('/series/%{playlist}.atom')
 
-  resources :topics, path: 'temas', only: %i[index show] do
-    get :feed, on: :member, format: :xml
-  end
+  resources :tags, path: 'temas', only: %i[index]
 
   resources :videos, only: :index
 
@@ -85,6 +83,9 @@ Rails.application.routes.draw do
   get '/topics/:topic' => redirect('/temas/%{topic}')
   get '/topics/:topic/feed' => redirect('/temas/%{topic}.atom')
   get '/topics' => redirect('/temas')
+
+  # Legacy routes for topic
+  get '/temas/:tema' => redirect('/videos?q=%{tema}')
 
   # Legacy routes for the text pages.
   get '/terms' => redirect('/terminos')

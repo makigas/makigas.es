@@ -1,47 +1,30 @@
 @import "../layout/responsive.scss";
 
 .topicslist {
-  @include desktop-layout {
-    display: grid;
-    gap: 50px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include hdpi-layout {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  list-style: none;
+  padding-left: 0;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
+  display: grid;
 }
 
 .topcard {
-  &__link {
-    display: flex;
-    gap: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  align-items: center;
 
-    /* Dimensions. */
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-
-  &__thumb {
-    display: none;
-    margin: 0;
-
-    @media screen and (min-width: 767px) {
-      display: block;
-      width: 96px;
-      height: 96px;
-    }
-  }
+  /* Dimensions. */
+  padding: 1rem;
+  border-radius: 12px;
 
   &__icon {
-    height: 100%;
-    border-radius: 15px;
-  }
-
-  &__body {
-    flex: 1;
-    align-self: center;
+    justify-self: center;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
   }
 
   &__title {
