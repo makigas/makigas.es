@@ -31,6 +31,6 @@
   <h1><%= @topic.title %></h1>
 <% end %>
 <%= render Six::Explorer::ChildTopicsComponent.new(topic: @topic) %>
-<%= render Six::Base::WrapperComponent.new(breath: true) do %>
+<%=  makigas_wrapper(breath: true) do %>
   <%= render Six::Explorer::PlaylistListComponent.new(playlists: @topic.playlists.with_public_videos.order('playlists.topic_position' => :asc)) %>
 <% end %>

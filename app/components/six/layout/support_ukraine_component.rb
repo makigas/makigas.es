@@ -3,6 +3,7 @@
 module Six
   module Layout
     class SupportUkraineComponent < ViewComponent::Base
+      include Makigas::ViewHelper
     end
   end
 end

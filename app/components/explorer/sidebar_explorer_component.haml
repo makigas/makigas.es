@@ -1,5 +1,5 @@
 .sidebarexplorer
-= render Six::Base::WrapperComponent.new(classes: 'sidebarexplorer__wrap') do
+= makigas_wrapper(css_classes: 'sidebarexplorer__wrap') do
   = render Six::Base::ButtonComponent.new(classes: 'sidebarexplorer__toggle', id: 'sToggleExplorer').with_content('Mostrar filtros')
   - if filters.present?
     .sidebarexplorer__background#sBackdropExplorer

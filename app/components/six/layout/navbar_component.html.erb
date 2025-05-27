@@ -1,5 +1,5 @@
 <%= content_tag(:div, class: class_list) do %>
-  <%= render Six::Base::WrapperComponent.new(classes: 'navbar__grid') do %>
+  <%= makigas_wrapper(css_classes: 'navbar__grid') do %>
     <div class="navbar__mtoggle">
       <button class="navbar__button" type="button" id="sToggleMenu" aria-label="Desplegar menú">
         <%= feather_icon 'menu' %>

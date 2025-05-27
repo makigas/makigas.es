@@ -3,6 +3,7 @@
 module Six
   module Explorer
     class ChildTopicsComponent < ViewComponent::Base
+      include Makigas::ViewHelper
       include ViewComponent::Translatable
 
       with_collection_parameter :topic

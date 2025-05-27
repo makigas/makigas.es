@@ -1,4 +1,4 @@
-= render Six::Base::WrapperComponent.new(classes: 'playlistpage') do
+= makigas_wrapper(css_classes: 'playlistpage') do
   = render Makigas::Playlist::HeaderComponent.new(playlist: @playlist, css_classes: 'playlistpage__header')
   .playlistpage__toolbar
     = link_to('Descripción', '#description')

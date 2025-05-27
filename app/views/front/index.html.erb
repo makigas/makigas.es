@@ -19,7 +19,7 @@
   <%= render Six::Layout::NavbarComponent.new(show_search: false, classes: 'navbar--front') %>
 <% end %>
 <%= render Six::Front::HeroComponent.new %>
-<%= render Six::Base::WrapperComponent.new(classes: 'frontblock') do %>
+<%= makigas_wrapper(css_classes: 'frontblock') do %>
   <header>
       <h2>O explora las categorías destacadas</h2>
     </header>
@@ -30,7 +30,7 @@
   </p>
 <% end %>
 <div class="frontblock">
-  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+  <%= makigas_wrapper(css_classes: 'frontblock__wrap') do %>
     <header>
       <small>Brevemente</small>
       <h2>¿Qué es makigas?</h2>
@@ -49,7 +49,7 @@
 </div>
 <hr>
 <div class="frontblock">
-  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+  <%= makigas_wrapper(css_classes: 'frontblock__wrap') do %>
     <header>
       <small>¿Esto de qué va?</small>
       <h2>Mejora programando, pero a tu ritmo</h2>
@@ -75,7 +75,7 @@
 </div>
 <hr>
 <div class="frontblock frontblock--reverse">
-  <%= render Six::Base::WrapperComponent.new(classes: 'frontblock__wrap') do %>
+  <%= makigas_wrapper(css_classes: 'frontblock__wrap') do %>
     <header>
       <small>Conoce más</small>
       <h2>Deja que te hable de este proyecto</h2>

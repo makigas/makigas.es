@@ -3,6 +3,8 @@
 module Six
   module Layout
     class FooterComponent < ViewComponent::Base
+      include Makigas::ViewHelper
+
       def popular_playlists
         popular_playlists_by_index
       end

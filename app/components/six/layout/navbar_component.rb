@@ -3,6 +3,8 @@
 module Six
   module Layout
     class NavbarComponent < ViewComponent::Base
+      include Makigas::ViewHelper
+
       def initialize(show_search: true, search_for: nil, classes: nil)
         super
         @show_search = show_search

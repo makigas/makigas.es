@@ -1,5 +1,5 @@
 <div class="topicexplorer">
-  <%= render Six::Base::WrapperComponent.new(classes: 'topicexplorer__wrap') do %>
+  <%= makigas_wrapper(css_classes: 'topicexplorer__wrap') do %>
     <h2 class="topicexplorer__title">Subcategorías de este tema</h2>
     <div class="topicexplorer__topics">
       <% @topic.child_topics.each do |topic| %>

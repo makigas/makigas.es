@@ -3,6 +3,8 @@
 module Six
   module Utils
     class UserbarComponent < ViewComponent::Base
+      include Makigas::ViewHelper
+
       def initialize(warden:)
         super
         @warden = warden
