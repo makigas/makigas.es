@@ -111,8 +111,10 @@ const config = {
 window.klaroConfig = config;
 window.klaro = Klaro;
 
-document.getElementById("change-klaro-settings").addEventListener("click", () => {
-  Klaro.show();
-});
+if (document.getElementById("change-klaro-settings")) {
+  document.getElementById("change-klaro-settings").addEventListener("click", () => {
+    Klaro.show();
+  });
+}
 
 Klaro.setup(config);
