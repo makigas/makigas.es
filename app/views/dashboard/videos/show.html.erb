@@ -83,7 +83,7 @@
           <%= button_to t('.destroy'), [:dashboard, @playlist, @video, :show_note], method: :delete, class: 'btn btn-sm btn-outline-danger', data: { confirm: '¿De verdad?' } %>
         <% end %>
       </div>
-      <%= @video.show_note.present? ? to_markdown(@video.show_note.content).html_safe : t('.no_show_notes') %>
+      <%= @video.show_note.present? ? makigas_markdown(text: @video.show_note.content) : t('.no_show_notes') %>
     </td>
   </tr>
   <tr>
@@ -98,7 +98,7 @@
         <% end %>
       </div>
       <% if @video.transcription.present? %>
-        <%= to_markdown(@video.transcription.content).html_safe %>
+        <%= makigas_markdown(text: @video.transcription.content) %>
       <% else %>
         <p><%= t('.no_transcription') %></p>
       <% end %>

@@ -32,14 +32,6 @@ module ApplicationHelper
     (hours.to_i * 3600) + (minutes.to_i * 60) + seconds.to_i
   end
 
-  def to_markdown(text)
-    render = MarkdownRenderer.new
-    markdown = Redcarpet::Markdown.new(render, fenced_code_blocks: true,
-                                               tables: true, quote: true,
-                                               prettify: true)
-    markdown.render(text)
-  end
-
   def dnt_requested
     request.headers.include?('DNT') && request.headers['DNT'].starts_with?('1')
   end

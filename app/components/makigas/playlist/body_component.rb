@@ -12,13 +12,8 @@ module Makigas
 
       attr_reader :playlist
 
-      def body
-        content = playlist.excerpt.presence || playlist.description
-        render = MarkdownRenderer.new
-        markdown = Redcarpet::Markdown.new(render, fenced_code_blocks: true,
-                                                   tables: true, quote: true,
-                                                   prettify: true)
-        markdown.render(content)
+      def text
+        playlist.excerpt.presence || playlist.description
       end
     end
   end

@@ -62,7 +62,7 @@
     <% end %>
     <% if @video.show_note.present? %>
       <div class="article__content e-content">
-        <%= to_markdown(@video.show_note.content).html_safe %>
+        <%= makigas_markdown(text: @video.show_note.content) %>
       </div>
     <% else %>
       <div class="article__placeholder">

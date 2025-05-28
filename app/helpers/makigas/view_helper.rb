@@ -4,6 +4,7 @@ module Makigas
   module ViewHelper
     COMPONENTS = {
       layout: 'Makigas::LayoutComponent',
+      markdown: 'Makigas::MarkdownComponent',
       wrapper: 'Makigas::WrapperComponent',
       sidebar: 'Makigas::SidebarComponent'
     }.freeze

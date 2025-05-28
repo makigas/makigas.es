@@ -24,7 +24,7 @@
     %td= @tip.user.name
   %tr
     %td Contenido
-    %td= to_markdown(@tip.content).html_safe
+    %td= makigas_markdown(text: @tip.content)
   %tr
     %td ID de YouTube
     %td= link_to(@tip.youtube_id, "https://youtu.be/#{@tip.youtube_id}", target: :blank) if @tip.youtube_id.present?
