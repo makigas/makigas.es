@@ -1,0 +1,7 @@
+= root_element do
+  - if icon_before.present?
+    = icon(icon_before)
+  %span.SidebarItem__node
+    = value || content
+  - if icon_after.present?
+    = icon(icon_after)

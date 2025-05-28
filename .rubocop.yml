@@ -83,3 +83,9 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*.rb'
+    - 'spec/components/previews/makigas/*.rb'
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'app/components/makigas/**/*.rb'
+    - 'spec/components/previews/makigas/**/*.rb'

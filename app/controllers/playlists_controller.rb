@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
 
   def index
     @playlists = Playlist.with_public_videos
-                         .then { |p| filter_by_topic(p) }
+                         .then { |p| filter_by_tag(p) }
                          .then { |p| sort_content(p) }
                          .page(params[:page]).per(12)
   end
@@ -21,13 +21,13 @@ class PlaylistsController < ApplicationController
 
   private
 
-  def filter_by_topic(playlists)
-    return playlists if params[:topic].blank?
+  def filter_by_tag(playlists)
+    return playlists if params[:tag].blank?
 
-    topic = Topic.friendly.find_by(slug: params[:topic])
-    return playlists if topic.blank?
+    playlist_id = Video.filter_by_tag(params[:tag]).pluck(:playlist_id)
+    return playlists if playlist_id.blank?
 
-    topic.playlists_with_children
+    playlists.where(id: playlist_id)
   end
 
   def sort_content(playlists)

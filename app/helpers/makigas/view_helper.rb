@@ -3,7 +3,9 @@
 module Makigas
   module ViewHelper
     COMPONENTS = {
-      wrapper: 'Makigas::WrapperComponent'
+      layout: 'Makigas::LayoutComponent',
+      wrapper: 'Makigas::WrapperComponent',
+      sidebar: 'Makigas::SidebarComponent'
     }.freeze
 
     COMPONENTS.each do |name, target|

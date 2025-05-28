@@ -17,7 +17,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.sidebarexplorer__sidebar' do
+      within '.Layout__sidebar' do
         click_on 'Cortos'
       end
 
@@ -36,7 +36,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.sidebarexplorer__sidebar' do
+      within '.Layout__sidebar' do
         click_on 'Medios'
       end
 
@@ -55,7 +55,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.sidebarexplorer__sidebar' do
+      within '.Layout__sidebar' do
         click_on 'Largos'
       end
 
@@ -74,7 +74,7 @@ RSpec.describe 'Videos search' do
       allow(service).to receive(:new).and_return(inst)
 
       visit videos_path
-      within '.sidebarexplorer__sidebar' do
+      within '.Layout__sidebar' do
         click_on 'Largos'
       end
 
@@ -89,7 +89,7 @@ RSpec.describe 'Videos search' do
 
       login_as create(:user), scope: :user
       visit videos_path
-      within '.sidebarexplorer__sidebar' do
+      within '.Layout__sidebar' do
         click_on 'Largos'
       end
 

@@ -61,4 +61,8 @@ module ApplicationHelper
       [0, 0] + match.captures
     end
   end
+
+  def active_tags
+    Tag.order(title: :asc)
+  end
 end

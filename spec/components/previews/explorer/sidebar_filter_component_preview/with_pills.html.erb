@@ -1,6 +1,0 @@
-<%= render Explorer::SidebarFilterComponent.new(title: "Ordenar resultados") do |filter| %>
-  <%= filter.with_pill(force_pad_left: true) { 'Relevancia' } %>
-  <%= filter.with_pill(icon_before: 'calendar') { 'Recientes' } %>
-  <%= filter.with_pill(icon_before: 'star') { 'Más vistos' } %>
-  <%= filter.with_pill(icon_before: 'trending-up') { 'En tendencia' } %>
-<% end %>

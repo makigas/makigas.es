@@ -1,0 +1,61 @@
+.SidebarList {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1em;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.SidebarBox {
+  &__header {
+    font-weight: bold;
+    margin: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  &__nodes {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__node {
+    line-height: 1.1;
+  }
+}
+
+.SidebarItem {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 0.5em;
+  gap: 0.25em;
+  cursor: pointer;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 1em;
+
+  &--active {
+    background-color: var(--sidebar-pill-active-color);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--sidebar-pill-hover-color);
+  }
+
+  &__node {
+    flex: 1;
+  }
+
+  &__icon {
+    width: 1em;
+    height: 1em;
+  }
+}

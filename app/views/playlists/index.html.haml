@@ -1,15 +1,16 @@
 - content_for :title, "#{t('.meta.title')} – makigas"
 - content_for :description, t('.meta.description')
 
-= render Explorer::SidebarExplorerComponent.new do |explorer|
-  - explorer.with_filter(title: 'Ordenar resultados') do |box|
-    - box.with_pill(url: derive_playlists_url(sort: 'trending'), active: params[:sort].blank? || params[:sort] == 'trending') { 'En tendencia' }
-    - box.with_pill(url: derive_playlists_url(sort: 'popular'), active: params[:sort] == 'popular') { 'Más vistos' }
-    - box.with_pill(url: derive_playlists_url(sort: 'recent'), active: params[:sort] == 'recent') { 'Recientemente actualizados' }
-  - explorer.with_filter(title: 'Filtrar por tema') do |box|
-    - box.with_pill(url: derive_playlists_url(topic: nil), active: params[:topic].blank?) { 'Sin filtro' }
-    - Topic.order(title: :asc).each do |topic|
-      - box.with_pill(url: derive_playlists_url(topic: topic.slug), active: params[:topic] == topic.slug) { topic.title }
-  - explorer.with_main do
+= makigas_wrapper(breath: true) do
+  = makigas_layout(position: :left, responsive_toggle_button_text: "Mostrar opciones") do |layout|
+    - layout.with_sidebar do |sidebar|
+      - sidebar.with_section(header: 'Ordenar resultados') do |section|
+        - section.with_item(href: derive_playlists_url(sort: 'trending'), active: params[:sort].blank? || params[:sort] == 'trending') { 'En tendencia' }
+        - section.with_item(href: derive_playlists_url(sort: 'popular'), active: params[:sort] == 'popular') { 'Más vistos' }
+        - section.with_item(href: derive_playlists_url(sort: 'recent'), active: params[:sort] == 'recent') { 'Recientemente actualizados' }
+      - sidebar.with_section(header: 'Filtrar por tema') do |section|
+        - section.with_item(href: derive_playlists_url(tag: nil), active: params[:tag].blank?) { 'Cualquier tema' }
+        - active_tags.each do |tag|
+          - section.with_item(href: derive_playlists_url(tag: tag.slug), active: params[:tag] == tag.slug) { tag.title }
     = render Six::Explorer::PlaylistListComponent.new(playlists: @playlists)
     .paginator= paginate @playlists

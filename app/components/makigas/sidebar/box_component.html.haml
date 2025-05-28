@@ -1,0 +1,5 @@
+.SidebarBox
+  = tag.div(class: 'SidebarBox__header') { header } if header.present?
+  %ul.SidebarBox__nodes
+    - items.each do |item|
+      %li.SidebarBox__node= item

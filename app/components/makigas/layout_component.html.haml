@@ -1,0 +1,9 @@
+= tag.div(class: class_list) do
+  - if sidebar?
+    .Layout__backdrop
+    .Layout__toggle
+      = render Six::Base::ButtonComponent.new(classes: 'Layout__button').with_content(responsive_toggle_button_text)
+    %aside.Layout__sidebar
+      = sidebar
+  .Layout__main
+    = content

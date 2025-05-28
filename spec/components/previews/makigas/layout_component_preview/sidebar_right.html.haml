@@ -1,0 +1,4 @@
+= render Makigas::LayoutComponent.new(position: :right) do |layout|
+  - layout.with_sidebar do |sidebar|
+    - sidebar.with_section(header: 'Search for something')
+  This is the main portion of the site.

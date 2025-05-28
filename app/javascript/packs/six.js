@@ -3,7 +3,6 @@ import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 
 import "../six/components/navbar";
-import "../six/components/explorer/sidebarexplorer";
 import "../six/components/videotoc";
 import "../six/events";
 import "../six/notespoll";
@@ -36,8 +35,6 @@ import "../six/components/videoinfo.scss";
 import "../six/components/videopage.scss";
 import "../six/components/videotoc.scss";
 import "../six/components/ytiframe.scss";
-import "../six/components/explorer/sidebarexplorer.scss";
-import "../six/components/explorer/sidebarfilter.scss";
-import "../six/components/explorer/sidebarpill.scss";
 
 import "../six/components/transition/sixdotfive.pcss";
+import "../six/components/transition/sixdotfive.ts";
