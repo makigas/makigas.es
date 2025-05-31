@@ -288,7 +288,7 @@ RSpec.describe Video do
   describe 'indexing' do
     it 'happens after saving' do
       video = build(:video)
-      expect { video.save }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+      expect { video.save }.to have_enqueued_job(Meilisearch::Rails::MSJob).with(video, 'ms_index!')
     end
 
     it 'happens after deletion' do
@@ -296,7 +296,7 @@ RSpec.describe Video do
       params = { 'primary_key' => video.id.to_s, 'synchronous' => nil, 'index_uid' => 'Video_test' }
       expect do
         video.destroy
-      end.to have_enqueued_job(MeiliSearch::Rails::MSCleanUpJob).with([params])
+      end.to have_enqueued_job(Meilisearch::Rails::MSCleanUpJob).with([params])
     end
   end
 

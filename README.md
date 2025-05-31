@@ -17,7 +17,7 @@ Requirements:
 
 * Ruby 3.3 and Bundler. Older Ruby version are not supported.
 * An up to date PostgreSQL database. Other SQL engines are not supported.
-* [MeiliSearch](https://www.meilisearch.com/), to build the search engine.
+* [Meilisearch](https://www.meilisearch.com/), to build the search engine.
 * Node.js + Yarn, for the front-end assets. (Yarn is preferred by Rails,
   I do not set the rules).
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
@@ -62,21 +62,21 @@ by using MySQL, they cannot be fix.
 
 Remember to set the credentials in your .env file if needed for development.
 
-## MeiliSearch
+## Meilisearch
 
-We are using MeiliSearch for the full text search index, which can be
+We are using Meilisearch for the full text search index, which can be
 used to lookup for video content using text that appears in the title,
 description, transcription and text notes of the episode, with the hope
 of making it easier to discover and consume.
 
-You will need to [have MeiliSearch in your development environment
+You will need to [have Meilisearch in your development environment
 installed](https://docs.meilisearch.com/) if you plan to work in the
-search system. It is not necessary anymore to keep MeiliSearch always
+search system. It is not necessary anymore to keep Meilisearch always
 open because indexing has been refered to jobs.
 
 ## DelayedJob
 
-MeiliSearch indexing has been defered to jobs.  If you want to run the
+Meilisearch indexing has been defered to jobs.  If you want to run the
 jobs, use `rake jobs` to spawn a DelayedJob server, or use `rake
 jobs:work` to run the pending commands as a one-off.
 

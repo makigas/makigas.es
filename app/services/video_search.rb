@@ -12,7 +12,7 @@ class VideoSearch
     Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do |v|
       search_request.tap { |s| s.count = v.length }
     end
-  rescue MeiliSearch::CommunicationError => e
+  rescue Meilisearch::CommunicationError => e
     search_request.error = e.message
     raise Makigas::SearchError, e.message
   end

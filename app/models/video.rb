@@ -36,7 +36,7 @@
 class Video < ApplicationRecord
   extend FriendlyId
 
-  include MeiliSearch::Rails
+  include Meilisearch::Rails
   meilisearch enqueue: true, raise_on_failure: Rails.env.development? do
     attribute :title, :description
 

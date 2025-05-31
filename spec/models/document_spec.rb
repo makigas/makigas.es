@@ -53,12 +53,12 @@ RSpec.describe Document do
 
       it 'happens after saving' do
         document = build(:transcription, documentable: video)
-        expect { document.save }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+        expect { document.save }.to have_enqueued_job(Meilisearch::Rails::MSJob).with(video, 'ms_index!')
       end
 
       it 'happens after deletion' do
         document = create(:transcription, documentable: video)
-        expect { document.destroy }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+        expect { document.destroy }.to have_enqueued_job(Meilisearch::Rails::MSJob).with(video, 'ms_index!')
       end
     end
   end
@@ -73,12 +73,12 @@ RSpec.describe Document do
 
       it 'happens after saving' do
         document = build(:show_note, documentable: video)
-        expect { document.save }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+        expect { document.save }.to have_enqueued_job(Meilisearch::Rails::MSJob).with(video, 'ms_index!')
       end
 
       it 'happens after deletion' do
         document = create(:show_note, documentable: video)
-        expect { document.destroy }.to have_enqueued_job(MeiliSearch::Rails::MSJob).with(video, 'ms_index!')
+        expect { document.destroy }.to have_enqueued_job(Meilisearch::Rails::MSJob).with(video, 'ms_index!')
       end
     end
   end
