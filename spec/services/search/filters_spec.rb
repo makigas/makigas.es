@@ -9,7 +9,7 @@ RSpec.describe Search::Filters, type: :class do
     let(:attributes) do
       { query: nil, page: 1, per_page: 20,
         content_type: nil, sort: nil, exclude_obsolete: false,
-        articles: false }
+        articles: false, tag: nil }
     end
 
     it { is_expected.to have_attributes(attributes) }
@@ -20,13 +20,13 @@ RSpec.describe Search::Filters, type: :class do
 
       let(:params) do
         { 'query' => 'install java', 'page' => '2', 'per_page' => '15',
-          'content_type' => 'videos', 'sort' => 'trending',
+          'content_type' => 'videos', 'sort' => 'trending', 'tag' => 'java',
           'exclude_obsolete' => true, 'articles' => true }
       end
 
       let(:attributes) do
         { query: 'install java', page: 2, per_page: 15, content_type: :videos,
-          sort: :trending, exclude_obsolete: true, articles: true }
+          sort: :trending, exclude_obsolete: true, articles: true, tag: 'java' }
       end
 
       it { is_expected.to have_attributes(attributes) }

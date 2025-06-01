@@ -35,6 +35,7 @@ module Search
     def cast
       { query: params[:q],
         page: params[:pagina],
+        tag: params[:tag],
         content_type: CONTENT_TYPES.fetch(in_content_type, nil),
         sort: SORT_CRITERIAS.fetch(in_sort, nil),
         exclude_obsolete: params['sin-obsoletos'].present?,

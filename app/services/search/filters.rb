@@ -16,6 +16,7 @@ module Search
     attribute :query, :string
     attribute :page, :integer, default: 1
     attribute :per_page, :integer, default: 20
+    attribute :tag, :string, default: nil
     attribute :content_type, :symbol, default: nil
     attribute :sort, :symbol, default: nil
     attribute :exclude_obsolete, :boolean, default: false

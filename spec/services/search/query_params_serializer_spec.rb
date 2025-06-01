@@ -21,6 +21,14 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     end
   end
 
+  describe 'tag' do
+    describe 'is casted' do
+      let(:params) { { tag: 'java' } }
+
+      it { is_expected.to eq({ 'tag' => 'java' }) }
+    end
+  end
+
   describe 'page number' do
     describe 'is casted' do
       let(:params) { { page: 4 } }
@@ -64,10 +72,22 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
   end
 
   describe 'filter obsolete' do
-    describe 'included if present' do
+    describe 'included if true' do
       let(:params) { { exclude_obsolete: true } }
 
       it { is_expected.to eq({ 'sin-obsoletos' => '1' }) }
+    end
+
+    describe 'excluded if null' do
+      let(:params) { { exclude_obsolete: nil } }
+
+      it { is_expected.to eq({}) }
+    end
+
+    describe 'excluded if false' do
+      let(:params) { { exclude_obsolete: false } }
+
+      it { is_expected.to eq({}) }
     end
   end
 
@@ -76,6 +96,18 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
       let(:params) { { articles: true } }
 
       it { is_expected.to eq({ 'articulos' => '1' }) }
+    end
+
+    describe 'excluded if null' do
+      let(:params) { { articles: nil } }
+
+      it { is_expected.to eq({}) }
+    end
+
+    describe 'excluded if false' do
+      let(:params) { { articles: false } }
+
+      it { is_expected.to eq({}) }
     end
   end
 end

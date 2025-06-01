@@ -43,6 +43,7 @@ module Search
       { q: filters.query,
         pagina: filters.page,
         type: CONTENT_TYPES[filters.content_type],
+        tag: filters.tag,
         orden: SORT_CRITERIAS[filters.sort],
         'sin-obsoletos' => filters.exclude_obsolete ? '1' : nil,
         articulos: filters.articles ? '1' : nil }

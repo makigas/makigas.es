@@ -19,6 +19,20 @@ RSpec.describe Search::QueryParamsDeserializer, type: :class do
     end
   end
 
+  describe 'tag' do
+    describe 'is casted' do
+      let(:params) { { 'tag' => 'java' } }
+
+      it { is_expected.to have_attributes(tag: 'java') }
+    end
+
+    describe 'fallbacks when not present' do
+      let(:params) { {} }
+
+      it { is_expected.to have_attributes(tag: nil) }
+    end
+  end
+
   describe 'page number' do
     describe 'is casted from number' do
       let(:params) { { 'pagina' => 4 } }
