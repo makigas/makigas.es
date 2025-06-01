@@ -38,33 +38,24 @@ class Video < ApplicationRecord
 
   include Meilisearch::Rails
   meilisearch enqueue: true, raise_on_failure: Rails.env.development? do
-    attribute :title, :description
+    attribute :title, :description, :slug, :tags, :views_recent, :views_total, :duration
 
+    attribute(:deprecated) { playlist.deprecated }
+
+    attribute(:publication_date) { published_at.to_i }
     attribute(:transcription) { transcription&.content }
     attribute(:show_note) { show_note&.content }
-
-    attribute :slug
-    attribute :tags
-    attribute(:publication_date) { published_at.to_i }
+    attribute(:has_show_note) { show_note&.content.present? }
 
     attribute(:playlist_title) { playlist.title }
     attribute(:playlist_description) { playlist.description }
     attribute(:playlist_slug) { playlist.slug }
 
-    attribute(:topic_title) { playlist.topic&.title }
-    attribute(:topic_description) { playlist.topic&.description }
-    attribute(:topic_slug) { playlist.topic&.slug }
-
-    attribute :views_recent, :views_total
-
-    attribute :duration
-
     searchable_attributes %i[
       title description transcription show_note slug tags
       playlist_title playlist_description playlist_slug
-      topic_title topic_description topic_slug
     ]
-    filterable_attributes %i[topic_slug duration tags publication_date]
+    filterable_attributes %i[duration tags publication_date deprecated has_show_note]
     sortable_attributes %i[duration views_recent views_total publication_date]
 
     ranking_rules %i[sort exactness attribute publication_date:desc views_recent:desc words typo proximity]
@@ -88,6 +79,10 @@ class Video < ApplicationRecord
 
   # Scope for limiting the amount of videos to those actually published.
   scope :visible, -> { where(published_at: ..DateTime.now) }
+
+  scope :searchable, lambda {
+                       includes(:playlist).where(published_at: ..DateTime.now, playlist: { exclude_from_search: false })
+                     }
 
   # Scope for getting videos that are available for early access.
   scope :early_access, lambda {

@@ -23,6 +23,7 @@ module Search
     def queries
       [].tap do |queries|
         queries << video_query if search_for?(:videos)
+        queries << playlist_query if search_for?(:playlists)
       end
     end
 
@@ -56,6 +57,33 @@ module Search
         filters << "tags = #{params.tag}" if params.tag.present?
         filters << 'deprecated = false' if params.exclude_obsolete
         filters << 'has_show_note = true' if params.articles
+      end
+    end
+
+    PLAYLIST_SORT_CRITERIAS = {
+      relevance: nil,
+      recent: 'last_publication_date:desc',
+      popular: 'views_total:desc',
+      trending: 'views_recent:desc'
+    }.freeze
+
+    def playlist_query
+      { q: params.query,
+        filter: playlist_filters,
+        sort: clean_sort_criteria(PLAYLIST_SORT_CRITERIAS, params.sort),
+        scope: Playlist.searchable,
+        # TODO: let me customize the weights in a configuration panel
+        # Make the weight only increase by a slight percentage, not more
+        # than 5%, because there are too many decimals and the results
+        # will be skewed.
+        federation_options: { weight: 1.03 } }.compact
+    end
+
+    def playlist_filters
+      [].tap do |filters|
+        filters << "episode_tags = #{params.tag}" if params.tag.present?
+        filters << 'deprecated = false' if params.exclude_obsolete
+        filters << 'has_show_notes = true' if params.articles
       end
     end
 

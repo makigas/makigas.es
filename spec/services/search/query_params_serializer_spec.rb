@@ -59,9 +59,9 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
 
   describe 'sort' do
     describe 'is casted' do
-      let(:params) { { sort: :recent } }
+      let(:params) { { sort: :trending } }
 
-      it { is_expected.to eq({ 'orden' => 'reciente' }) }
+      it { is_expected.to eq({ 'orden' => 'tendencia' }) }
     end
 
     describe 'fallbacks to default' do

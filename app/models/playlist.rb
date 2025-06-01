@@ -70,6 +70,10 @@ class Playlist < ApplicationRecord
     Playlist.where(id: with_public_videos.pluck(:id))
   }
 
+  scope :searchable, lambda {
+    with_public_videos.includes(:videos).where(exclude_from_search: false)
+  }
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
@@ -82,6 +86,31 @@ class Playlist < ApplicationRecord
   belongs_to :topic, optional: true
 
   belongs_to :replacement_playlist, class_name: 'Playlist', optional: true
+
+  include Meilisearch::Rails
+  meilisearch enqueue: true, raise_on_failure: Rails.env.development? do
+    attribute :title, :description, :excerpt, :slug, :views_recent, :views_total, :deprecated
+
+    attribute(:last_publication_date) { videos.pluck(:published_at).max.to_i }
+    attribute(:episode_titles) { videos.pluck(:title) }
+    attribute(:episode_tags) { videos.pluck(:tags).flatten.uniq }
+
+    attribute(:has_show_notes) do
+      # every episode has show notes
+      videos = Video.searchable.where(playlist_id: id)
+      show_notes = ShowNote.where(documentable: videos)
+      show_notes.count == videos.count
+    end
+
+    searchable_attributes %i[
+      title description excerpt slug
+      episode_titles episode_tags
+    ]
+    filterable_attributes %i[episode_tags last_publication_date deprecated has_show_notes]
+    sortable_attributes %i[views_recent views_total last_publication_date]
+
+    ranking_rules %i[sort exactness attribute last_publication_date:desc views_recent:desc words typo proximity]
+  end
 
   def display_forum_url
     return forum_url if forum_url.present?

@@ -34,5 +34,9 @@ module Search
         assign_attributes(k => defaults.send(k))
       end
     end
+
+    def derive(**changeset)
+      self.class.new(attributes).tap { |new| new.assign_attributes(changeset) }
+    end
   end
 end

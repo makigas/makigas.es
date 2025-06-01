@@ -104,4 +104,28 @@ RSpec.describe Search::Filters, type: :class do
       it { is_expected.to have_attributes(sort: nil) }
     end
   end
+
+  describe '.derive' do
+    let(:filters) { described_class.new(attributes) }
+
+    let(:attributes) { { query: 'install java', tag: 'java', content_type: :playlists } }
+
+    describe 'can change the value of a parameter' do
+      subject(:derived) { filters.derive(tag: 'jdk') }
+
+      it { is_expected.to have_attributes(tag: 'jdk') }
+    end
+
+    describe 'can add a parameter that previously was null' do
+      subject(:derived) { filters.derive(sort: :popular) }
+
+      it { is_expected.to have_attributes(sort: :popular) }
+    end
+
+    describe 'can remove a parameter that previously had a value' do
+      subject(:derived) { filters.derive(content_type: nil) }
+
+      it { is_expected.to have_attributes(content_type: nil) }
+    end
+  end
 end

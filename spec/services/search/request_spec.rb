@@ -30,7 +30,7 @@ RSpec.describe Search::Request, type: :class do
       let(:filters) { Search::Filters.new }
 
       it 'includes every content type' do
-        expect(scopes).to contain_exactly('Video')
+        expect(scopes).to contain_exactly('Video', 'Playlist')
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe Search::Request, type: :class do
       let(:filters) { Search::Filters.new(content_type: :playlists) }
 
       it 'filters by playlist' do
-        expect(scopes).to be_empty # TODO: add filters for playlist
+        expect(scopes).to contain_exactly('Playlist')
       end
     end
   end

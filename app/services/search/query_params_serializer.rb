@@ -36,6 +36,15 @@ module Search
     def clean_cast
       cast.tap do |params|
         params.delete(:pagina) if params.include?(:pagina) && params[:pagina] == 1
+        params.delete(:orden) if params[:orden] == SORT_CRITERIAS[default_sort_criteria]
+      end
+    end
+
+    def default_sort_criteria
+      if filters.query.present?
+        :relevance
+      else
+        :recent
       end
     end
 
