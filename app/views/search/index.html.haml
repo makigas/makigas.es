@@ -1,0 +1,44 @@
+- content_for :title, "Explorar contenido - makigas"
+- content_for :description, "En makigas.es encuentras cursos y tutoriales para empezar tu camino en el mundo de la programación o para que aprendas una skill nueva que te sea útil en el trabajo."
+- content_for :canonical, search_url
+- content_for :header do
+  %meta{name: :robots, content: :noindex}
+- content_for(:navbar) do
+  = render Six::Layout::NavbarComponent.new(show_search: false)
+
+= render 'search' do
+  - if @tag.present? && @search_filters.tag.present? && @search_filters.page == 1
+    %div.SearchTagDetails
+      = makigas_tag_information(title: @tag.title, body: @tag.description, icon: @tag.icon.url, icon_hd: @tag.icon.url(:hidef))
+  %div.SearchBox
+    = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal, variant: :light) do |search|
+      - @search_params.slice(:tag, :'sin-obsoletos', :articulos).compact_blank.each do |k, v|
+        - search.with_hidden_field(key: k, value: v)
+    - @search_filters.slice(:query, :tag, :content_type, :exclude_obsolete, :articles).compact_blank.tap do |filters|
+      - if filters.present?
+        .SearchFilterList
+          Filtros activos:
+          - if filters[:content_type] == :videos
+            = makigas_search_filter(label: "Sólo lecciones", url: derive_search_url(@search_filters, content_type: nil))
+          - elsif filters[:content_type] == :playlists
+            = makigas_search_filter(label: "Sólo cursos", url: derive_search_url(@search_filters, content_type: nil))
+          - if filters[:query].present?
+            = makigas_search_filter(label: "Texto: #{filters[:query]}", url: derive_search_url(@search_filters, query: nil))
+          - if filters[:tag].present?
+            = makigas_search_filter(label: "Tema: #{@tag.title}", url: derive_search_url(@search_filters, tag: nil))
+          - if filters[:exclude_obsolete].present?
+            = makigas_search_filter(label: "No mostrar material obsoleto", url: derive_search_url(@search_filters, exclude_obsolete: false))
+          - if filters[:articles].present?
+            = makigas_search_filter(label: "Sólo lecciones con artículo", url: derive_search_url(@search_filters, articles: false))
+
+  - if @search_request.hits.present?
+    %ul.SearchList
+      - @search_request.hits.each do |hit|
+        %li.SearchList__result
+          = makigas_search_result(**search_result_params(hit))
+    = makigas_paginator(page: @search_filters.page, total_pages: @search_request.total_pages, link: ->(p) { derive_search_url(@search_filters, page: p)})
+  - else
+    .SearchNoResults
+      %p.SearchNoResults__emoji= %w[😞 😫 😕 😔 ☹️ 😟 🥺 🤨 😠 😢 😭 😑 🫠 😧 😓 🤐].sample
+      %h1 No se han encontrado resultados
+      %p Prueba a cambiar los filtros de búsqueda. O puede que lo que estés buscando no esté aquí... todavía.

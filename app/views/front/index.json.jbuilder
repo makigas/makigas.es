@@ -5,9 +5,6 @@ json.recent do
 end
 
 json._links do
-  json.set! 'makigas:topics' do
-    json.href topics_path
-  end
   json.set! 'makigas:playlists' do
     json.href playlists_path
   end

@@ -58,7 +58,11 @@ Rails.application.routes.draw do
 
   resources :tags, path: 'temas', only: %i[index]
 
-  resources :videos, only: :index
+  get '/explorar(/:type)(/tema/:tag)', to: 'search#index', as: :search, constraints: {
+    type: /videos|cursos/
+  }
+
+  resources :videos, only: :index, format: :atom
 
   resources :playlists, path: 'series', only: %i[index show] do
     resources :videos, path: '/', only: :show

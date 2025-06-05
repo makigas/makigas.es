@@ -8,7 +8,7 @@ json.published_at video.published_at
 
 if embeds.include?(:playlist)
   json.playlist do
-    json.partial! video.playlist, as: :playlist, embeds: %i[topic]
+    json.partial! video.playlist, as: :playlist, embeds: []
   end
 end
 

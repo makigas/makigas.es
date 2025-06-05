@@ -23,9 +23,9 @@
   <header>
       <h2>O explora las categorías destacadas</h2>
     </header>
-  <%= render Makigas::Front::TagExplorerComponent.new(tags: @tags, link: lambda { |tag| videos_path(tag: tag.slug) }) if @tags.present? %>
+  <%= render Makigas::Front::TagExplorerComponent.new(tags: @tags, link: lambda { |tag| search_path(tag: tag.slug) }) if @tags.present? %>
   <p>
-    <%= render Six::Base::ButtonComponent.new(href: videos_path, text: 'Explorar todo el contenido') %>
+    <%= render Six::Base::ButtonComponent.new(href: search_path, text: 'Explorar todo el contenido') %>
     <%= render Six::Base::ButtonComponent.new(href: tags_path, text: 'Ver todas las categorías') %>
   </p>
 <% end %>

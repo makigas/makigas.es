@@ -5,12 +5,6 @@ json.description playlist.description
 json.slug playlist.slug
 json.count playlist.videos.count
 
-if embeds.include?(:topic) && playlist.topic.present?
-  json.topic do
-    json.partial! playlist.topic, as: :topic, embeds: []
-  end
-end
-
 if embeds.include?(:videos)
   json.videos do
     json.array! playlist.videos, partial: 'videos/video', as: :video, embeds: []

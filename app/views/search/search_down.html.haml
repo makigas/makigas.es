@@ -1,0 +1,8 @@
+= render 'search' do
+  .SearchNoResults
+    %p.SearchNoResults__emoji= %w[😞 😫 😕 😔 ☹️ 😟 🥺 🤨 😠 😢 😭 😑 🫠 😧 😓 🤐].sample
+    %h1 La búsqueda está fallando
+    %p
+      Tenemos problemas para mostrar resultados en este momento. Inténtalo dentro de unos momentos. Recuerda que hay más material en
+      = succeed('.') do
+        = link_to("el canal de YouTube", "https://youtube.com/@makigas", target: :blank)

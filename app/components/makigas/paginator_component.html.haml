@@ -1,0 +1,38 @@
+.Paginator
+  - if first_page?
+    %span.Paginator__first.Paginator--inactive
+      = feather_icon('chevrons-left')
+      Principio
+  - else
+    = link_to link.call(1), class: 'Paginator__first' do
+      = feather_icon('chevrons-left')
+      Principio
+  - if first_page?
+    %span.Paginator__prev.Paginator--inactive
+      = feather_icon('chevron-left')
+      Anterior
+  - else
+    = link_to link.call(page - 1), class: 'Paginator__prev' do
+      = feather_icon('chevron-left')
+      Anterior
+  - page_range.each do |p|
+    - if p == page
+      %span.Paginator__page.Paginator--current= p
+    - else
+      = link_to p, link.call(p), class: 'Paginator__page'
+  - if last_page?
+    %span.Paginator__next.Paginator--inactive
+      Siguiente
+      = feather_icon('chevron-right')
+  - else
+    = link_to link.call(page + 1), class: 'Paginator__next' do
+      Siguiente
+      = feather_icon('chevron-right')
+  - if last_page?
+    %span.Paginator__last.Paginator--inactive
+      Último
+      = feather_icon('chevrons-right')
+  - else
+    = link_to link.call(total_pages), class: 'Paginator__last' do
+      Último
+      = feather_icon('chevrons-right')

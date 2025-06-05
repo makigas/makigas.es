@@ -5,6 +5,12 @@ module Search
   # passing them to the search engine. The search engine will accept one
   # instance of Search::Filters.
   class Filters
+    class << self
+      def clean(**)
+        new(**).tap(&:clean!)
+      end
+    end
+
     include ActiveModel::Model
     include ActiveModel::Attributes
     include ActiveModel::AttributeAssignment

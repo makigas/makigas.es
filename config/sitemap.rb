@@ -5,9 +5,6 @@ SitemapGenerator::Sitemap.default_host = 'https://www.makigas.es'
 SitemapGenerator::Sitemap.create do
   add root_path, priority: 0.9, changefreq: 'daily'
 
-  # Videos
-  add videos_path, priority: 0.9, changefreq: 'daily'
-
   # Playlists
   add playlists_path, priority: 0.9, changefreq: 'weekly'
   Playlist.find_each do |playlist|

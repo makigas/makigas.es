@@ -5,8 +5,13 @@ module Makigas
     COMPONENTS = {
       layout: 'Makigas::LayoutComponent',
       markdown: 'Makigas::MarkdownComponent',
-      wrapper: 'Makigas::WrapperComponent',
-      sidebar: 'Makigas::SidebarComponent'
+      paginator: 'Makigas::PaginatorComponent',
+      search_filter: 'Makigas::SearchFilterComponent',
+      search_result: 'Makigas::SearchResultComponent',
+      sidebar: 'Makigas::SidebarComponent',
+      tag_information: 'Makigas::TagInformationComponent',
+      trend: 'Makigas::TrendComponent',
+      wrapper: 'Makigas::WrapperComponent'
     }.freeze
 
     COMPONENTS.each do |name, target|

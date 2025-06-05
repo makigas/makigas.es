@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
 class VideosController < ApplicationController
-  rescue_from Makigas::SearchError, with: :search_error
-
-  def search_error
-    render :search_error, status: :service_unavailable
-  end
-
   def index
-    @sort = assign_sort
-    @videos = if filter_params.present?
-                results_by_meilisearch
-              else
-                results_by_database
-              end
-    @matching_tag = find_matching_tag
+    @videos = search_request.hits
+    @paginator = search_request.paginator
+    respond_to do |format|
+      format.html { redirect_to(search_path) }
+      format.atom
+      format.json
+    end
   end
 
   def show
@@ -38,45 +32,24 @@ class VideosController < ApplicationController
 
   private
 
-  def assign_sort
-    return params[:sort] if params[:sort].present?
-
-    if params[:q].present?
-      'relevance'
-    else
-      'recent'
-    end
+  def search_request
+    @search_request = Search::Request.new(find_videos_filter)
   end
 
-  def find_matching_tag
-    Tag.find_by(slug: params[:tag]) || Tag.find_by(slug: params[:q]) || Tag.synonym(params[:q])
-  end
-
-  def results_by_meilisearch
-    search = VideoSearch.new(params[:q], filters: filter_params, sort: params[:sort], page:)
-    search.videos
-  ensure
-    search.search_request.save if current_user.blank?
-  end
-
-  def results_by_database
-    Video.visible.includes(playlist: :topic).order(database_order).page(page).per(10)
-  end
-
-  DATABASE_SORT_PARAMS = {
-    'recent' => { published_at: :desc },
-    'popular' => { views_total: :desc },
-    'trending' => { views_recent: :desc }
-  }.freeze
-
-  def database_order
-    DATABASE_SORT_PARAMS[@sort] || {}
+  def find_videos_filter
+    sort = params[:sort] if %w[recent popular trending].include?(params[:sort])
+    Search::Filters.clean(query: params[:q], page: params[:page], tag: params[:tag],
+                          content_type: :videos, sort:, exclude_obsolete: false, articles: false)
   end
 
   def find_video
     @playlist = Playlist.friendly.find(params[:playlist_id])
     @video = @playlist.videos.friendly.find(params[:id], allow_nil: true)
     find_video_in_old_playlist if @video.blank?
+  end
+
+  def canonical_params?
+    params[:playlist_id] == @playlist.slug && params[:id] == @video.slug
   end
 
   # Second chance: the video was not found in this playlist, let's see if the URL points
@@ -86,21 +59,5 @@ class VideosController < ApplicationController
     old_videos = Video.filter_by_old_playlist_id(@playlist.id)
     @video = old_videos.friendly.find(params[:id], allow_nil: true)
     @playlist = @video.playlist if @video.present?
-  end
-
-  def page
-    params.fetch(:page, 1)
-  end
-
-  def filter_params
-    params.slice(:q, :length, :tag, :topic)
-  end
-
-  def sort_params
-    params.slice(:sort)
-  end
-
-  def canonical_params?
-    params[:playlist_id] == @playlist.slug && params[:id] == @video.slug
   end
 end

@@ -6,8 +6,8 @@ end
 
 json._links do
   json.self { json.href videos_path }
-  json.next { json.href path_to_next_page(@videos) } if @videos.next_page.present?
-  json.prev { json.href path_to_prev_page(@videos) } if @videos.prev_page.present?
+  json.next { json.href url_for(request.params.merge(page: @paginator.next_page)) } unless @paginator.last_page?
+  json.prev { json.href url_for(request.params.merge(page: @paginator.prev_page)) } unless @paginator.first_page?
   json.set! 'makigas:filter' do
     json.href "#{videos_path}{?length,topic[]*}"
     json.templated true

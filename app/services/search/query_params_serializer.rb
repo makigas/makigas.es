@@ -26,10 +26,20 @@ module Search
     end
 
     def convert
-      ActiveSupport::HashWithIndifferentAccess.new(clean_cast.compact)
+      ActiveSupport::HashWithIndifferentAccess.new(compact_params)
     end
 
     private
+
+    def compact_params
+      clean_cast.then do |params|
+        # For some reason, the URL helper will not reset the type if switching from something to nil,
+        # unless the value is manually present in the array. Therefore, :type cannot be compacted.
+        clean_params = params.compact
+        clean_params[:type] ||= nil
+        clean_params
+      end
+    end
 
     attr_reader :filters
 

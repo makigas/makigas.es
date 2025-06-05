@@ -37,7 +37,7 @@ class Video < ApplicationRecord
   extend FriendlyId
 
   include Meilisearch::Rails
-  meilisearch enqueue: true, raise_on_failure: Rails.env.development? do
+  meilisearch enqueue: true, raise_on_failure: Rails.env.development?, if: :searchable? do
     attribute :title, :description, :slug, :tags, :views_recent, :views_total, :duration
 
     attribute(:deprecated) { playlist.deprecated }
@@ -83,6 +83,10 @@ class Video < ApplicationRecord
   scope :searchable, lambda {
                        includes(:playlist).where(published_at: ..DateTime.now, playlist: { exclude_from_search: false })
                      }
+
+  def searchable?
+    published_at < DateTime.now && !playlist.exclude_from_search
+  end
 
   # Scope for getting videos that are available for early access.
   scope :early_access, lambda {

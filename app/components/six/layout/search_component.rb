@@ -3,6 +3,10 @@
 module Six
   module Layout
     class SearchComponent < ViewComponent::Base
+      renders_many :hidden_fields, lambda { |key:, value:|
+        tag.input(type: 'hidden', name: key, value:)
+      }
+
       def initialize(query: nil, size: :normal, variant: :dark)
         super
         @query = query

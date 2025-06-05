@@ -1,0 +1,92 @@
+.Paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 0.5em;
+
+  &__first,
+  &__last,
+  &__page {
+    display: none;
+
+    @media screen and (width >= 1024px) {
+      display: inline-flex;
+    }
+  }
+
+  &--current {
+    display: inline-flex;
+  }
+
+  &__prev,
+  &__next {
+    display: inline-flex;
+  }
+
+  &__first,
+  &__prev,
+  &__page,
+  &__next,
+  &__last {
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 3ch;
+    text-decoration: none;
+
+    border: 1px solid oklch(from var(--paginator-color) l c h / 20%);
+    background-color: var(--paginator-background);
+    color: var(--paginator-color);
+
+    &:hover {
+      background-color: var(--paginator-hover-background);
+      color: var(--paginator-hover-color);
+    }
+  }
+
+  &--inactive {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &--current {
+    user-select: none;
+    background-color: var(--paginator-active-background);
+    color: var(--paginator-active-color);
+
+    &:hover {
+      background-color: var(--paginator-active-background);
+      color: var(--paginator-active-color);
+    }
+  }
+
+  &__first,
+  &__prev,
+  &__next,
+  &__last {
+    border-radius: 5px;
+  }
+
+  &__first,
+  &__prev {
+    padding-left: 0.3rem;
+    padding-right: 0.6rem;
+  }
+
+  &__next,
+  &__last {
+    padding-left: 0.6rem;
+    padding-right: 0.3rem;
+  }
+
+  &__page {
+    width: 3ch;
+    border-radius: 100%;
+  }
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+  }
+}

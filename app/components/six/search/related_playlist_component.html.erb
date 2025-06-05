@@ -1,9 +1,0 @@
-<div class="relatedlistnode">
-  <%= link_to @playlist, class: 'relatedlistnode__link' do %>
-  <%= image_tag @playlist.thumbnail.url(:thumbnail), class: 'relatedlistnode__image' %>
-  <div class="relatedlistnode__content">
-    <p class="relatedlistnode__title"><%= @playlist.title %></p>
-    <p><small><%= t('.episodes', count: @playlist.videos.count) %> &bull; <%= t('.duration') %>: <%= duration %></small></p>
-  </div>
-  <% end %>
-</div>

@@ -14,6 +14,10 @@ module Search
       (total_hits.to_f / limit).ceil
     end
 
+    def paginator
+      @paginator ||= Search::Paginator.new(total_pages:, page: params.page)
+    end
+
     private
 
     def results
@@ -76,7 +80,7 @@ module Search
         # Make the weight only increase by a slight percentage, not more
         # than 5%, because there are too many decimals and the results
         # will be skewed.
-        federation_options: { weight: 1.03 } }.compact
+        federation_options: { weight: 1.6 } }.compact
     end
 
     def playlist_filters

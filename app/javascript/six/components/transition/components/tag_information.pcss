@@ -1,0 +1,45 @@
+.TagInformation {
+  font-size: 1.1rem;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.75rem;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+
+    @media screen and (width >= 1280px) {
+      gap: 1.5rem;
+    }
+  }
+
+  &__fig {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__img {
+    height: 4rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+    font-size: 2rem;
+  }
+}

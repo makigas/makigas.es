@@ -1,0 +1,136 @@
+.SearchPage .Layout__main {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1rem;
+  align-content: start;
+}
+
+.SearchList {
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.25rem;
+  margin-top: 0;
+}
+
+.SearchResult {
+  display: grid;
+  gap: 0.5rem;
+  grid-auto-flow: row;
+  align-items: center;
+
+  &__header {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+  }
+
+  &__icon {
+    height: 3rem;
+    object-fit: scale-down;
+    justify-self: center;
+    border: 1px solid oklch(from currentcolor l c h / 20%);
+    border-radius: 5px;
+  }
+
+  &__data {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.25rem;
+    justify-items: start;
+  }
+
+  &__labels,
+  &__title,
+  &__description {
+    margin: 0;
+  }
+
+  &__labels {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  &__label {
+    background-color: black;
+    color: white;
+    padding: 0.05rem 0.4rem;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+
+  &__title {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  &:hover &__title {
+    text-decoration: underline;
+  }
+}
+
+.SearchBox {
+background-color: var(--sidebar-pill-active-color);
+padding: 1rem;
+font-size: 0.9rem;
+}
+
+.SearchFilterList {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.SearchFilter {
+  display: inline-flex;
+  background-color: var(--sidebar-pill-hover-color);
+  line-height: 1;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 5px;
+  padding: 0.1rem 0.5rem;
+
+  &__close {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 1.25rem;
+  }
+}
+
+.SearchNoResults {
+  text-align: center;
+  font-size: 1.5rem;
+  max-width: 40ch;
+  margin: 0 auto;
+  margin-top: 2em;
+
+  &__emoji {
+    font-size: 4em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: 1rem;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  @media screen and (width >= 1024px) {
+    font-size: 2rem;
+  }
+}

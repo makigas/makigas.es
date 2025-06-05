@@ -15,7 +15,7 @@ module Makigas
     attr_reader :position, :responsive_toggle_button_text
 
     def class_list
-      ['Layout', { 'Layout--right': position == :right }]
+      ['Layout', { 'Layout--right': position == :right }, extra_css_classes]
     end
 
     def validate_position(pos)

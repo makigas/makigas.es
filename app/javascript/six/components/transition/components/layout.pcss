@@ -1,4 +1,3 @@
-
 @keyframes Layout--fade {
   from {
     opacity: 0;
@@ -48,7 +47,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 20rem;
+    width: 16rem;
     bottom: 0;
     background: white;
     padding: 1rem;
@@ -72,7 +71,7 @@
 
   @media screen and (width >= 1024px) {
     grid-auto-flow: column;
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 16em 1fr;
     &__sidebar {
       display: block;
       position: relative;
@@ -81,10 +80,11 @@
       animation: none;
       overflow-y: unset;
       padding: 0;
+      font-size: 0.95em;
     }
 
     &--right {
-      grid-template-columns: 1fr 20rem;
+      grid-template-columns: 1fr 16rem;
     }
 
     &--right &__sidebar {

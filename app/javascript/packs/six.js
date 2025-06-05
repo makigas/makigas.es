@@ -29,7 +29,6 @@ import "../six/components/plcard.scss";
 import "../six/components/search/index.scss";
 import "../six/components/topcard.scss";
 import "../six/components/topicthumb.scss";
-import "../six/components/trendbadge.scss";
 import "../six/components/videoauthor.scss";
 import "../six/components/videoinfo.scss";
 import "../six/components/videopage.scss";

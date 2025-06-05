@@ -1,0 +1,20 @@
+= makigas_wrapper(breath: true) do
+  = makigas_layout(position: :left, responsive_toggle_button_text: "Mostrar opciones", css_classes: 'SearchPage') do |layout|
+    - layout.with_sidebar do |sidebar|
+      - sidebar.with_section(header: 'Tipo de contenido') do |section|
+        - section.with_item(href: derive_search_url(@search_filters, content_type: nil, page: 1), active: @search_filters.content_type.nil?, role: :radio) { 'Todo' }
+        - section.with_item(href: derive_search_url(@search_filters, content_type: :videos, page: 1), active: @search_filters.content_type == :videos, role: :radio) { 'Lecciones' }
+        - section.with_item(href: derive_search_url(@search_filters, content_type: :playlists, page: 1), active: @search_filters.content_type == :playlists, role: :radio) { 'Cursos' }
+      - sidebar.with_section(header: 'Ordenar resultados') do |section|
+        - section.with_item(href: derive_search_url(@search_filters, sort: :relevance, page: 1), active: @search_filters.sort == :relevance, role: :radio).with_content('Relevancia') if params[:q].present?
+        - section.with_item(href: derive_search_url(@search_filters, sort: :recent, page: 1), active: @search_filters.sort == :recent, role: :radio) { 'Recientemente actualizado' }
+        - section.with_item(href: derive_search_url(@search_filters, sort: :popular, page: 1), active: @search_filters.sort == :popular, role: :radio) { 'Más vistos' }
+        - section.with_item(href: derive_search_url(@search_filters, sort: :trending, page: 1), active: @search_filters.sort == :trending, role: :radio) { 'En tendencia' }
+      - sidebar.with_section(header: 'Filtrar contenido') do |section|
+        - section.with_item(href: derive_search_url(@search_filters, exclude_obsolete: !@search_filters.exclude_obsolete, page: 1), active: @search_filters.exclude_obsolete, role: :check) { 'Ocultar contenido obsoleto' }
+        - section.with_item(href: derive_search_url(@search_filters, articles: !@search_filters.articles, page: 1), active: @search_filters.articles, role: :check) { 'Ocultar lecciones sin artículo' }
+      - sidebar.with_section(header: 'Explorar tema') do |section|
+        - section.with_item(href: derive_search_url(@search_filters, tag: nil, page: 1), active: @search_filters.tag.blank?, role: :radio) { 'Cualquier tema' }
+        - active_tags.each do |tag|
+          - section.with_item(href: derive_search_url(@search_filters, tag: tag.slug, page: 1), active: @search_filters.tag == tag.slug, role: :radio) { tag.title }
+    - yield

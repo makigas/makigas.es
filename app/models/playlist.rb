@@ -74,6 +74,10 @@ class Playlist < ApplicationRecord
     with_public_videos.includes(:videos).where(exclude_from_search: false)
   }
 
+  def searchable?
+    !exclude_from_search && videos.where(published_at: ..DateTime.current).present?
+  end
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
@@ -88,7 +92,7 @@ class Playlist < ApplicationRecord
   belongs_to :replacement_playlist, class_name: 'Playlist', optional: true
 
   include Meilisearch::Rails
-  meilisearch enqueue: true, raise_on_failure: Rails.env.development? do
+  meilisearch enqueue: true, raise_on_failure: Rails.env.development?, if: :searchable? do
     attribute :title, :description, :excerpt, :slug, :views_recent, :views_total, :deprecated
 
     attribute(:last_publication_date) { videos.pluck(:published_at).max.to_i }

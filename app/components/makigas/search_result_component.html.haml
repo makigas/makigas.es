@@ -1,0 +1,9 @@
+= link_to(url, class: 'card SearchResult') do
+  .SearchResult__header
+    %img{src: icon, srcset:, class: 'SearchResult__icon', alt: ''}
+    .SearchResult__data
+      .SearchResult__labels
+        %span.SearchResult__label= label
+        = makigas_trend(trend:)
+      %p.SearchResult__title= title
+  .SearchResult__description= description.truncate_words(50)

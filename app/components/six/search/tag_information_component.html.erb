@@ -1,7 +1,0 @@
-<div class="searchtag">
-  <%= image_tag @tag.icon.url, alt: @tag.title, class: 'searchtag__icon' %>
-  <div class="searchtag__content">
-    <p class="searchtag__lead"><strong><%= @tag.title %></strong></p>
-    <%= makigas_markdown(text: @tag.description) %>
-  </div>
-</div>
