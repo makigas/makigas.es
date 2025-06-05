@@ -504,7 +504,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
-    uri (0.13.0)
+    uri (0.13.2)
     useragent (0.16.10)
     view_component (3.13.0)
       activesupport (>= 5.2.0, < 8.0)
