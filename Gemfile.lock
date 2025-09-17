@@ -392,8 +392,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.4.2)
     rouge (4.3.0)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -492,7 +491,6 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stringio (3.1.1)
-    strscan (3.1.0)
     temple (0.10.3)
     terrapin (1.0.1)
       climate_control
