@@ -16,7 +16,7 @@ module Jsonld
         field(:description, name: :abstract)
         field(:date_created) { |playlist| playlist.created_at.iso8601 }
         field(:date_modified) { |playlist| playlist.content_updated_at.iso8601 }
-        field(:date_published) { |playlist| playlist.videos.first.published_at.iso8601 }
+        field(:date_published) { |playlist| playlist.videos.first&.published_at&.iso8601 }
         field(:keywords) { |playlist| playlist.videos.pluck(:tags).flatten.uniq.sort }
         field(:thumbnail_url) { |playlist| playlist.thumbnail.url(:thumb) }
         field(:image) { |playlist| playlist.card.url(:thumb) }
