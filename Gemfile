@@ -28,6 +28,7 @@ gem 'delayed_job_web'
 # Application extras
 gem 'acts_as_list'
 gem 'aws-sdk-s3', '~> 1.159.0'
+gem 'blueprinter'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
