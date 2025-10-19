@@ -49,3 +49,17 @@ controlling the Plausible analytics system, or to render YouTube embeds.
 But there is a lot of CSS files in app/javascript/six for the design.
 And there is a lot of technical debt that eventually will have to be
 solved.
+
+## Dani's rules
+
+Here are also a bunch of rules that I have in my project, so that you
+can follow them when you help me:
+
+1. This project currently uses rubocop (I don't know if there is
+   anything better or more modern). Rubocop is very important, so no
+   lint issues should ever happen.
+
+2. For public facing routes, removing them is never a good idea. If a
+   route is ever refactored, the old route should always 301 or 302 to
+   the new location. Because, you know, cool URLs don't change and we
+   don't want to break any bookmark or any link from a trusted source.
