@@ -1,6 +1,6 @@
 # Development & Testing docker-compose, not suitable for production.
 
-version: '3'
+version: "3"
 
 volumes:
   assets:
@@ -12,23 +12,25 @@ services:
   database:
     image: postgres:15-alpine
     volumes:
-    - 'db:/var/lib/postgresql/data'
+      - "db:/var/lib/postgresql/data"
     environment:
-      POSTGRES_USER: 'makigas'
-      POSTGRES_PASSWORD: 'makigas'
-  search:
-    image: getmeili/meilisearch:v1.14
-    volumes:
-    - 'meili:/data.ms'
-    environment:
-      MEILI_MASTER_KEY: 'meilikey'
+      POSTGRES_USER: "makigas"
+      POSTGRES_PASSWORD: "makigas"
     ports:
-      - '7700:7700'
+      - 5432:5432
+  search:
+    image: docker.io/getmeili/meilisearch:v1.23
+    volumes:
+      - "meili:/data.ms"
+    environment:
+      MEILI_MASTER_KEY: "meilikey"
+    ports:
+      - "7700:7700"
   storage:
     image: minio/minio
     volumes:
-    - 'assets:/data'
-    - 'minioconf:/root/.minio'
+      - "assets:/data"
+      - "minioconf:/root/.minio"
     ports:
       - 9000:9000
     environment:
@@ -46,20 +48,20 @@ services:
       - database
       - storage
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       RAILS_ENV: production
-      RAILS_USE_S3: 'true'
-      RAILS_LOG_TO_STDOUT: 'true'
+      RAILS_USE_S3: "true"
+      RAILS_LOG_TO_STDOUT: "true"
       DB_HOST: database
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
-      S3_BUCKET_NAME: 'cdn.makigas.local'
-      S3_HOST_NAME: 'localhost:9000'
-      S3_ENDPOINT: 'http://storage:9000'
+      S3_BUCKET_NAME: "cdn.makigas.local"
+      S3_HOST_NAME: "localhost:9000"
+      S3_ENDPOINT: "http://storage:9000"
       AWS_ACCESS_KEY_ID: 4j7anyzy
       AWS_SECRET_ACCESS_KEY: NM8R5pozNkfHUgFNRx2Zxuxv
-      MINIO_INIT_BUCKET: 'true'
-      MEILISEARCH_HOST: 'http://search:7700'
-      MEILISEARCH_API_KEY: 'meilikey'
+      MINIO_INIT_BUCKET: "true"
+      MEILISEARCH_HOST: "http://search:7700"
+      MEILISEARCH_API_KEY: "meilikey"
