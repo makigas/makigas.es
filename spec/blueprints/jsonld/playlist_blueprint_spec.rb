@@ -16,9 +16,11 @@ RSpec.describe Jsonld::PlaylistBlueprint do
       '@context' => 'https://schema.org/',
       '@graph' => an_object_matching(
         [
-          a_hash_including({ '@id' => 'https://www.makigas.es/#publisher' }),
-          a_hash_including({ '@id' => "https://www.makigas.es/series/#{playlist.slug}#webpage" }),
-          a_hash_including({ '@id' => "https://www.makigas.es/series/#{playlist.slug}#series" })
+          a_hash_including('@id' => 'https://www.makigas.es/#publisher'),
+          a_hash_including('@id' => "https://www.makigas.es/series/#{playlist.slug}#webpage"),
+          a_hash_including('@id' => "https://www.makigas.es/series/#{playlist.slug}#series"),
+          a_hash_including('@id' => "https://www.makigas.es/series/#{playlist.slug}#course"),
+          a_hash_including('@id' => "https://www.makigas.es/series/#{playlist.slug}/#{playlist.videos.first.slug}#lesson")
         ]
       )
     }

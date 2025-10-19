@@ -37,7 +37,7 @@ RSpec.describe Jsonld::VideoBlueprint do
         '@context' => 'https://schema.org/',
         '@graph' => an_object_matching(
           [
-            a_hash_including('@id' => "https://www.makigas.es/#publisher"),
+            a_hash_including('@id' => 'https://www.makigas.es/#publisher'),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#webpage"),
             a_hash_including('@id' => "https://www.makigas.es/users/#{user.id}#author"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail"),
