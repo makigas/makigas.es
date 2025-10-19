@@ -164,12 +164,4 @@ class Video < ApplicationRecord
     'medium' => 'duration > 300 and duration <= 900',
     'long' => 'duration > 900'
   }.freeze
-
-  def to_episode_schema
-    Makigas::Jsonld.episode_schema(self)
-  end
-
-  def to_video_schema
-    Makigas::Jsonld.video_schema(self)
-  end
 end
