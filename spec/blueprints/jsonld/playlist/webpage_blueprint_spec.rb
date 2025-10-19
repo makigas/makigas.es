@@ -31,7 +31,7 @@ RSpec.describe Jsonld::Playlist::WebpageBlueprint do
         'name' => "#{playlist.title} – makigas",
         'description' => playlist.description,
         'publisher' => {
-          '@id' => "https://www.makigas.es/series/#{playlist.slug}#publisher"
+          '@id' => 'https://www.makigas.es/#publisher'
         }
       }
     end

@@ -6,10 +6,12 @@ module Jsonld
 
     field(:@context) { 'https://schema.org/' }
 
-    graph do |blueprints, _playlist|
-      blueprints << Playlist::PublisherBlueprint
-      blueprints << Playlist::WebpageBlueprint
-      blueprints << Playlist::SeriesBlueprint
+    field(:@graph) do |playlist, options|
+      [].tap do |graph|
+        graph << PublisherBlueprint.render_as_hash(playlist, view: :full, host: options[:host])
+        graph << Playlist::WebpageBlueprint.render_as_hash(playlist, view: :full, host: options[:host])
+        graph << Playlist::SeriesBlueprint.render_as_hash(playlist, view: :full, host: options[:host])
+      end
     end
   end
 end

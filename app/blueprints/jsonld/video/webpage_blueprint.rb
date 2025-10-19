@@ -15,7 +15,7 @@ module Jsonld
         field(:name) { |video| "#{video.title} – #{video.playlist.title}" }
         field(:description)
 
-        reference(:publisher, blueprint: Jsonld::Video::PublisherBlueprint)
+        reference(:publisher, blueprint: Jsonld::PublisherBlueprint)
       end
     end
   end

@@ -21,9 +21,9 @@ module Jsonld
         field(:thumbnail_url) { |video| "https://i1.ytimg.com/vi/#{video.youtube_id}/maxresdefault.jpg" }
         field(:time_required) { |video| ActiveSupport::Duration.build(video.duration).iso8601 }
         field(:position, name: :episode_number)
-        reference(:author, blueprint: AuthorBlueprint, if: ->(video) { video.user.present? })
+        association(:user, name: :author, blueprint: Jsonld::User::AuthorBlueprint, exclude_if_nil: true)
+        association(:playlist, name: :part_of_series, blueprint: Jsonld::Playlist::SeriesBlueprint)
         reference(:publisher, blueprint: PublisherBlueprint)
-        reference(:part_of_series, blueprint: SeriesBlueprint)
       end
     end
   end

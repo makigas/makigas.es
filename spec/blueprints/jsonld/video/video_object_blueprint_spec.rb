@@ -68,7 +68,7 @@ RSpec.describe Jsonld::Video::VideoObjectBlueprint do
             '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#episode"
           },
           'author' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#author"
+            '@id' => "https://www.makigas.es/users/#{user.id}#author"
           }
         }
       end

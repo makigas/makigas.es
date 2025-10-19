@@ -34,7 +34,7 @@ RSpec.describe Jsonld::Video::ArticleBlueprint do
         'dateModified' => '2024-09-15T14:23:06Z',
         'datePublished' => '2024-09-13T14:23:06Z',
         'publisher' => {
-          '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"
+          '@id' => 'https://www.makigas.es/#publisher'
         },
         'image' => {
           '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail"
@@ -59,10 +59,10 @@ RSpec.describe Jsonld::Video::ArticleBlueprint do
           'dateModified' => '2024-09-15T14:23:06Z',
           'datePublished' => '2024-09-13T14:23:06Z',
           'author' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#author"
+            '@id' => "https://www.makigas.es/users/#{user.id}#author"
           },
           'publisher' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"
+            '@id' => 'https://www.makigas.es/#publisher'
           },
           'image' => {
             '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail"

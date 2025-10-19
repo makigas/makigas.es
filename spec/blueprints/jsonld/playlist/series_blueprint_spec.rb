@@ -45,7 +45,7 @@ RSpec.describe Jsonld::Playlist::SeriesBlueprint do
         'thumbnailUrl' => playlist.thumbnail.url(:thumb),
         'image' => playlist.card.url(:thumb),
         'publisher' => {
-          '@id' => "https://www.makigas.es/series/#{playlist.slug}#publisher"
+          '@id' => 'https://www.makigas.es/#publisher'
         },
         'url' => "https://www.makigas.es/series/#{playlist.slug}",
         'sameAs' => "https://www.youtube.com/playlist?list=#{playlist.youtube_id}"

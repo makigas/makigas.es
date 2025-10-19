@@ -27,7 +27,7 @@ RSpec.describe Jsonld::Video::WebpageBlueprint do
         'name' => "#{video.title} – #{video.playlist.title}",
         'description' => video.description,
         'publisher' => {
-          '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"
+          '@id' => 'https://www.makigas.es/#publisher'
         }
       }
     end

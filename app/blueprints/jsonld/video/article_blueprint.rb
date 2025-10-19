@@ -14,7 +14,9 @@ module Jsonld
         field(:title, name: :headline)
         field(:date_modified) { |video| video.updated_at.iso8601 }
         field(:date_published) { |video| video.published_at.iso8601 }
-        reference(:author, blueprint: AuthorBlueprint, if: ->(video) { video.user.present? })
+        field(:author, if: ->(_, video, _) { video.user.present? }) do |video, options|
+          Jsonld::User::AuthorBlueprint.render_as_hash(video.user, **options.except(:view))
+        end
         reference(:publisher, blueprint: PublisherBlueprint)
         reference(:image, blueprint: ThumbnailBlueprint)
         reference(:associated_media, blueprint: VideoObjectBlueprint)

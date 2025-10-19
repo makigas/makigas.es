@@ -43,10 +43,10 @@ RSpec.describe Jsonld::Video::EpisodeBlueprint do
         'timeRequired' => 'PT10M15S',
         'episodeNumber' => 5,
         'publisher' => {
-          '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"
+          '@id' => 'https://www.makigas.es/#publisher'
         },
         'partOfSeries' => {
-          '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#series"
+          '@id' => "https://www.makigas.es/series/#{video.playlist.slug}#series"
         }
       }
     end
@@ -74,13 +74,13 @@ RSpec.describe Jsonld::Video::EpisodeBlueprint do
           'timeRequired' => 'PT10M15S',
           'episodeNumber' => 5,
           'author' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#author"
+            '@id' => "https://www.makigas.es/users/#{user.id}#author"
           },
           'publisher' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"
+            '@id' => 'https://www.makigas.es/#publisher'
           },
           'partOfSeries' => {
-            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#series"
+            '@id' => "https://www.makigas.es/series/#{video.playlist.slug}#series"
           }
         }
       end

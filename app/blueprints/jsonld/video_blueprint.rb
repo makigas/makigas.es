@@ -6,15 +6,24 @@ module Jsonld
 
     field(:@context) { 'https://schema.org/' }
 
-    graph do |blueprints, video|
-      blueprints << Video::PublisherBlueprint
-      blueprints << Video::WebpageBlueprint
-      blueprints << Video::AuthorBlueprint if video.user.present?
-      blueprints << Video::ThumbnailBlueprint
-      blueprints << Video::VideoObjectBlueprint
-      blueprints << Video::SeriesBlueprint
-      blueprints << Video::EpisodeBlueprint
-      blueprints << Video::ArticleBlueprint if video.show_note.present?
+    field(:@graph) do |video, options|
+      nodes = [].tap do |graph|
+        graph << PublisherBlueprint.render_as_hash(video, view: :full, host: options[:host])
+        graph << Video::WebpageBlueprint.render_as_hash(video, view: :full, host: options[:host])
+        if video.user.present?
+          graph << User::AuthorBlueprint.render_as_hash(video.user, view: :full,
+                                                                    host: options[:host])
+        end
+        graph << Video::ThumbnailBlueprint.render_as_hash(video, view: :full, host: options[:host])
+        graph << Video::VideoObjectBlueprint.render_as_hash(video, view: :full, host: options[:host])
+        graph << Playlist::SeriesBlueprint.render_as_hash(video.playlist, view: :full, host: options[:host])
+        graph << Video::EpisodeBlueprint.render_as_hash(video, view: :full, host: options[:host])
+        if video.show_note.present?
+          graph << Video::ArticleBlueprint.render_as_hash(video, view: :full,
+                                                                 host: options[:host])
+        end
+      end
+      nodes.uniq { |node| node['@id'] }
     end
   end
 end

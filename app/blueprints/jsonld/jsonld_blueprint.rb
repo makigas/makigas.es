@@ -17,13 +17,5 @@ module Jsonld
         blueprint.render_as_hash(object, view: :default, host: options[:host])
       end
     end
-
-    def self.graph(&)
-      field(:@graph) do |object, options|
-        blueprints = []
-        yield(blueprints, object)
-        blueprints.map { |b| b.render_as_hash(object, view: :full, host: options[:host]) }
-      end
-    end
   end
 end

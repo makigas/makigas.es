@@ -22,7 +22,9 @@ module Jsonld
         field(:url) do |video, options|
           routes.playlist_video_url(video, playlist_id: video.playlist, host: options[:host])
         end
-        reference(:author, blueprint: AuthorBlueprint, if: ->(video) { video.user.present? })
+        field(:author, if: ->(_, video, _) { video.user.present? }) do |video, options|
+          Jsonld::User::AuthorBlueprint.render_as_hash(video.user, **options.except(:view))
+        end
         reference(:encodes_creative_work, blueprint: EpisodeBlueprint)
       end
     end

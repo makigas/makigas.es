@@ -12,11 +12,11 @@ RSpec.describe Jsonld::VideoBlueprint do
       '@context' => 'https://schema.org/',
       '@graph' => an_object_matching(
         [
-          a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher" }),
+          a_hash_including({ '@id' => 'https://www.makigas.es/#publisher' }),
           a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#webpage" }),
           a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail" }),
           a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#video" }),
-          a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#series" }),
+          a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}#series" }),
           a_hash_including({ '@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#episode" })
         ]
       )
@@ -37,12 +37,12 @@ RSpec.describe Jsonld::VideoBlueprint do
         '@context' => 'https://schema.org/',
         '@graph' => an_object_matching(
           [
-            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"),
+            a_hash_including('@id' => "https://www.makigas.es/#publisher"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#webpage"),
-            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#author"),
+            a_hash_including('@id' => "https://www.makigas.es/users/#{user.id}#author"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#video"),
-            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#series"),
+            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}#series"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#episode")
 
           ]
@@ -61,11 +61,11 @@ RSpec.describe Jsonld::VideoBlueprint do
         '@context' => 'https://schema.org/',
         '@graph' => an_object_matching(
           [
-            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#publisher"),
+            a_hash_including('@id' => 'https://www.makigas.es/#publisher'),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#webpage"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#thumbnail"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#video"),
-            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#series"),
+            a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}#series"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#episode"),
             a_hash_including('@id' => "https://www.makigas.es/series/#{video.playlist.slug}/#{video.slug}#article")
 
