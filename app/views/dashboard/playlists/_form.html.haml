@@ -1,0 +1,41 @@
+= simple_form_for [:dashboard, @playlist] do |f|
+  .container
+    .row
+      .col-lg-7
+        %fieldset.card.mb-4
+          %legend.card-header= t('.information')
+          .card-body
+            = f.input :title
+            = f.input :description, as: :text, input_html: { rows: 15 }
+            = f.input :youtube_id
+        %fieldset.card.mb-4
+          %legend.card-header= t('.icons')
+          .card-body
+            .container
+              .row.gy-4
+                .col-sm-6
+                  .card
+                    = image_tag @playlist.thumbnail.url(:thumbnail), class: 'card-img-top mk-media-img', alt: ''
+                    .card-body
+                      = f.input :thumbnail, as: :file
+                .col-sm-6
+                  .card
+                    = image_tag @playlist.card.url(:thumbnail), class: 'card-img-top mk-media-img'
+                    .card-body
+                      = f.input :card, as: :file
+            
+      .col
+        %fieldset.card.mb-4
+          %legend.card-header Conexiones
+          .card-body
+            = f.input :forum_url
+            = f.input :exclude_from_search
+        %fieldset.card.mb-4
+          %legend.card-header Posicionamiento
+          .card-body
+            = f.input :slug
+            = f.input :excerpt, as: :text, input_html: { rows: 10 }
+            = f.input :deprecated
+            = f.association :replacement_playlist, include_blank: :translate
+        .text-end
+          = f.submit class: 'btn btn-success'

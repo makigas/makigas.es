@@ -8,3 +8,8 @@
   margin-bottom: 10px;
   border-bottom: 1px solid #cecece;
 }
+
+.mk-media-img {
+  object-fit: contain;
+  aspect-ratio: 16 / 9;
+}
