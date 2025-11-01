@@ -1,12 +1,8 @@
-<%= makigas_wrapper(css_classes: 'errorpage') do %>
-  <header>
-    <h1>HTTP 422</h1>
-    <h2>😑 No vuelvas a hacer eso</h2>
-  </header>
-  <p>
-    Has intentado hacer una operación que no está permitida con los datos
-    que has proporcionado. Si estás viendo este mensaje de error, sabes muy
-    bien por qué.
-  </p>
-  <p>El ID de esta request fue: <code><%= request.uuid %></code></p>
+<%= makigas_wrapper(css_classes: 'errorpage article7', fluid: true) do %>
+  <%= makigas_wrapper do %>
+    <header>
+      <h1>HTTP 422</h1>
+      <h2>😑 Entidad improcesable</h2>
+    </header>
+  <% end %>
 <% end %>

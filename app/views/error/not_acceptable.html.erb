@@ -1,17 +1,15 @@
-<%= makigas_wrapper(css_classes: 'errorpage') do %>
-  <header>
-    <h1>HTTP 406</h1>
-    <h2>🍋 Inaceptable</h2>
-  </header>
-  <p>
-    Si estás viendo este error en tu navegador web, lo más probable es que se
-    deba a que tu navegador es demasiado antiguo y que deberías actualizarlo
-    a la versión más moderna. Este sitio web ya no se prueba con Internet
-    Explorer. Por favor, actualiza a Microsoft Edge o descarga un navegador más
-    moderno que sea compatible con tu sistema operativo.
-  </p>
-  <p>
-    Si quieres reportar este error por e-mail o Twitter, recuerda indicar
-    que ID de este mensaje de error ha sido: <code><%= request.uuid %></code>
-  </p>
+<%= makigas_wrapper(css_classes: 'errorpage article7', fluid: true) do %>
+  <%= makigas_wrapper do %>
+    <header>
+      <h1>HTTP 406</h1>
+      <h2>🍋 Inaceptable</h2>
+    </header>
+    <p>
+      Si estás viendo este error en tu navegador web, lo más probable es que se
+      deba a que tu navegador es demasiado antiguo y que deberías actualizarlo
+      a la versión más moderna. Este sitio web ya no se prueba con Internet
+      Explorer. Por favor, actualiza a Microsoft Edge o descarga un navegador más
+      moderno que sea compatible con tu sistema operativo.
+    </p>
+  <% end %>
 <% end %>

@@ -1,22 +1,18 @@
-<%= makigas_wrapper(css_classes: 'errorpage') do %>
-  <header>
-    <h1>HTTP 404</h1>
-    <h2>😕 Vaya, no se encuentra esta página.</h2>
-  </header>
-  <p>
-    Has llegado a lo que se conoce como HTTP 404. Has intentado pedir una página
-    web pero nuestros servidores no encuentran esa página por ninguna parte.
-    Y sí, hemos mirado debajo de las alfombras y entre las rendijas del sofá.
-  </p>
-  <ul>
-    <li>Comprueba que la dirección que hayas escrito no contenga errores tipográficos.</li>
-    <li>Verifica que el link que has seguido no sea demasiado antiguo. A veces movemos las cosas de sitio.</li>
-    <li>Visita la portada y prueba a encontrar lo que buscabas tú mismo.</li>
-  </ul>
-  <p>
-    Si crees que esto es un error que no deberías ver, contacta con nosotros
-    <a href="https://github.com/makigas/makigas/issues" target="_blank">por el tracker</a>
-    o por <a href="https://twitter.com/makigas">Twitter</a>
-    y cuéntanos más sobre este hecho.
-  </p>
+<%= makigas_wrapper(css_classes: 'errorpage article7', fluid: true) do %>
+  <%= makigas_wrapper do %>
+    <header>
+      <h1>HTTP 404</h1>
+      <h2>😕 Vaya, no se encuentra esta página.</h2>
+    </header>
+    <p>
+      Has llegado a lo que se conoce como HTTP 404. Has intentado pedir una página
+      web pero nuestros servidores no encuentran esa página por ninguna parte.
+      Y sí, hemos mirado debajo de las alfombras y entre las rendijas del sofá.
+    </p>
+    <ul>
+      <li>Comprueba que la dirección que hayas escrito no contenga errores tipográficos.</li>
+      <li>Verifica que el link que has seguido no sea demasiado antiguo. A veces movemos las cosas de sitio.</li>
+      <li><a href="/">Visita la portada</a> y prueba a encontrar lo que buscabas tú mismo.</li>
+    </ul>
+  <% end %>
 <% end %>

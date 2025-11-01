@@ -37,3 +37,5 @@ import "../six/components/ytiframe.scss";
 
 import "../six/components/transition/sixdotfive.pcss";
 import "../six/components/transition/sixdotfive.ts";
+
+import "../six/pages/error.pcss";
