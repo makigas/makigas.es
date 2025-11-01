@@ -1,8 +1,10 @@
 %article.plepisode.h-entry
   = link_to playlist_video_path(@video, playlist_id: @video.playlist.slug), class: 'plepisode__link card u-url' do
-    %h2.plepisode__title.p-name
-      %span.plepisode__vnum= @video.position
-      = @video.title
-    = render Six::Utils::MetaGroupComponent.new(classes: 'plepisode__metas') do |group|
-      - group.with_meta(icon: 'calendar') { tag.time(published_at, datetime: @video.published_at, class: 'dt-published') }
-      - group.with_meta(icon: 'clock') { duration }
+    .plepisode__media
+      = image_tag("https://i1.ytimg.com/vi/#{@video.youtube_id}/mqdefault.jpg", alt: "", class: 'plepisode__image')
+    .plepisode__text
+      %h2.plepisode__title.p-name
+        = "#{@video.position}. #{@video.title}"
+      .plepisode__desc= @video.description
+      = render Six::Utils::MetaGroupComponent.new(classes: 'plepisode__metas') do |group|
+        - group.with_meta(icon: 'clock') { duration }

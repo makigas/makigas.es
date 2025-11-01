@@ -1,11 +1,8 @@
 - content_for :jsonld do
   = Jsonld::PlaylistBlueprint.render(@playlist, host: request.host).html_safe
-= makigas_wrapper(css_classes: 'playlistpage') do
-  = render Makigas::Playlist::HeaderComponent.new(playlist: @playlist, css_classes: 'playlistpage__header')
-  .playlistpage__toolbar
-    = link_to('Descripción', '#description')
-    = link_to('Episodios', '#episodes')
-  %hr.playlistpage__marker#description
-  = render Makigas::Playlist::BodyComponent.new(playlist: @playlist, css_classes: 'playlistpage__body')
-  %hr.playlistpage__marker#episodes
-  = render Makigas::Playlist::EpisodeListComponent.new(playlist: @playlist, css_classes: 'playlistpage__episodes')
+= makigas_wrapper(css_classes: 'plpagehead', fluid: true) do
+  = makigas_wrapper do
+    = render Makigas::Playlist::HeaderComponent.new(playlist: @playlist)
+= makigas_wrapper(css_classes: 'plpagebody') do
+  = render Makigas::Playlist::BodyComponent.new(playlist: @playlist, css_classes: 'plpagebody__content')
+  = render Makigas::Playlist::EpisodeListComponent.new(playlist: @playlist, css_classes: 'plpagebody__episodes')

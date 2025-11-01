@@ -1,6 +1,7 @@
 .metas {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   gap: 0.5em 1rem;
 
   @media screen and (width >= 768px) {
@@ -11,7 +12,9 @@
 .meta {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
   gap: 0.5rem;
+  line-height: 1;
 
   &__icon {
     width: 1.15em;
