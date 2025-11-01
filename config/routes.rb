@@ -7,95 +7,14 @@ Rails.application.routes.draw do
   get '/422', to: 'error#unprocessable_entity', via: :all
   get '/500', to: 'error#internal_server_error', via: :all
 
-  # Dashboard routes
-  constraints subdomain: 'dashboard' do
-    devise_for :users, controllers: { sessions: 'users/sessions' }
-    namespace :dashboard, path: '' do
-      root to: 'dashboard#index', as: ''
-      resources :topics do
-        get :order
-        put :reorder
-      end
-      resources :videos, only: %i[index new create] do
-        put :update_slug, path: 'modal/slug', on: :collection
-      end
-      resources :tips
-      resources :playlists do
-        get :videos, on: :member
-        get :tags, on: :member
-        put :retag, path: :tags, on: :member
-        resources :videos, except: %i[index new create] do
-          resources :links
-          resource :transcription, only: %i[show create update destroy]
-          resource :show_note, only: %i[show create update destroy]
-          put :move, on: :member
-        end
-      end
-      resources :users
-      resources :tags
-      resource :searches, only: %i[show]
-
-      # Pending actions
-      namespace :pending do
-        resource :tags, only: %w[show update]
-        resource :transcriptions, only: :show
-        resource :show_notes, only: :show
-      end
-    end
-  end
-
-  # Main application routes
-  root to: 'front#index'
-
-  # Early access.
-  get '/early' => redirect('http://early.makigas.es', status: 302)
-  get '/early/videos', to: 'videos#early', format: :json
-
   # Legacy RSS feeds, must come first or there will be conflicts.
   get '/videos/feed' => redirect('/videos.atom')
   get '/temas/:topic/feed' => redirect('/temas/%{topic}.atom')
   get '/series/:playlist/feed' => redirect('/series/%{playlist}.atom')
 
-  resources :tags, path: 'temas', only: %i[index]
-
-  get '/explorar(/:type)(/tema/:tag)', to: 'search#index', as: :search, constraints: {
-    type: /videos|cursos/
-  }
-
-  resources :videos, only: :index, format: :atom
-
-  resources :playlists, path: 'series', only: %i[index show] do
-    resources :videos, path: '/', only: :show
-  end
-  get :terms, path: 'terminos', to: 'pages#terms'
-  get :privacy, path: 'privacidad', to: 'pages#privacy'
-  get :disclaimer, path: 'responsabilidades', to: 'pages#disclaimer'
-  get :cookies, to: 'pages#cookies'
-  get :discord, to: 'pages#discord'
-  get '/bootcamps-no-autorizados', to: 'pages#bootcamps'
-
-  get :dnt, to: 'pages#dnt'
-
-  get '/v/:id', to: 'videos#find_by_id', as: :video_by_id
-
-  # Legacy routes (redirect only).
-  get '/videos/:topic/:playlist/episodio/:video' => redirect('/series/%{playlist}/%{video}')
-  get '/videos/:topic/:playlist' => redirect('/series/%{playlist}')
-  get '/videos/:playlist' => redirect('/series/%{playlist}')
-
-  # Legacy routes for the old topic explorer
-  get '/topics/:topic' => redirect('/temas/%{topic}')
-  get '/topics/:topic/feed' => redirect('/temas/%{topic}.atom')
-  get '/topics' => redirect('/temas')
-
-  # Legacy routes for topic
-  get '/temas/:tema' => redirect('/videos?q=%{tema}')
-
-  # Legacy routes for the text pages.
-  get '/terms' => redirect('/terminos')
-  get '/privacy' => redirect('/privacidad')
-  get '/disclaimer' => redirect('/responsabilidades')
-  get '/about/dnt' => redirect('/dnt')
+  draw(:dashboard)
+  draw(:app)
+  draw(:legacy)
 
   if Rails.env.development?
     mount Lookbook::Engine, at: '/lookbook'
