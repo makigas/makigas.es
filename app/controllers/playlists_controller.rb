@@ -4,10 +4,15 @@ class PlaylistsController < ApplicationController
   before_action :playlist_set, only: %i[show]
 
   def index
-    @playlists = Playlist.with_public_videos
-                         .then { |p| filter_by_tag(p) }
-                         .then { |p| sort_content(p) }
-                         .page(params[:page]).per(12)
+    respond_to do |format|
+      format.html { redirect_to search_path(type: 'cursos') }
+      format.json do
+        @playlists = Playlist.with_public_videos
+                             .then { |p| filter_by_tag(p) }
+                             .then { |p| sort_content(p) }
+                             .page(params[:page]).per(12)
+      end
+    end
   end
 
   def show
