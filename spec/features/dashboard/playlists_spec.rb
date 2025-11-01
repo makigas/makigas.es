@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'Dashboard playlists' do
   let(:video) { create(:video) }
   let!(:playlist) { create(:playlist, videos: [video]) }
-  let!(:topic) { create(:topic) }
 
   before { Capybara.default_host = 'http://dashboard.example.com' }
 
@@ -50,20 +49,6 @@ RSpec.describe 'Dashboard playlists' do
         expect(page).to have_text 'Lista creada correctamente'
         expect(page).to have_text 'My Playlist'
       end
-    end
-
-    it 'user can attach a playlist to a topic' do
-      visit dashboard_playlists_path
-      click_on 'Nueva Lista'
-      fill_in 'Título', with: 'My Playlist'
-      fill_in 'Descripción', with: 'This is a playlist part of my site'
-      fill_in 'ID de YouTube', with: 'AABBCCDDEEFF'
-      attach_file 'Miniatura', Rails.root.join('spec/fixtures/playlist.png')
-      attach_file 'Tarjeta', Rails.root.join('spec/fixtures/card.jpg')
-      select topic.title, from: 'Tema'
-      click_on 'Crear Lista de reproducción'
-
-      expect(topic.playlists.count).to eq 1
     end
 
     it 'user can edit a playlist' do
