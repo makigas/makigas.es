@@ -7,6 +7,7 @@
 # another search engine. GoogleBot, I am looking at you.
 User-Agent: *
 Disallow: /videos?*
+Disallow: /discord
 
 # AI crawlers. These companies grab the content, they profit from it,
 # and then they build products to gatekeep knowledge so that no one has
