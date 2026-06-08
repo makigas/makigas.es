@@ -1,16 +1,19 @@
-<% content_for :title, 'Comunidad de Discord para programadores y estudiantes de programación – makigas' %>
+<% content_for :title, 'El Discord de makigas ha cerrado – makigas' %>
+<% content_for :meta do %>
+  <meta name="robots" content="noindex">
+<% end %>
 <% content_for :twitter do %>
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@makigas">
-  <meta name="twitter:title" content="Comunidad de Discord para programadores y estudiantes de programación">
-  <meta name="twitter:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
+  <meta name="twitter:title" content="El Discord de makigas ha cerrado">
+  <meta name="twitter:description" content="El servidor de Discord de makigas ya no está disponible. Si vienes desde un buscador, la página desaparecerá pronto del índice.">
   <meta name="twitter:image" content="<%= image_url('/icons/color/makigas-512.png', only_path: false) %>">
 <% end %>
 <% content_for :facebook do %>
   <meta property="og:url" content="<%= canonical_url %>">
-  <meta property="og:title" content="Comunidad de Discord para programadores y estudiantes de programación">
+  <meta property="og:title" content="El Discord de makigas ha cerrado">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="Habla con otras personas, comparte ideas, enseña el proyecto en el que estés trabajando, o plantea preguntas.">
+  <meta property="og:description" content="El servidor de Discord de makigas ya no está disponible. Si vienes desde un buscador, la página desaparecerá pronto del índice.">
   <meta property="og:site_name" content="makigas">
   <meta property="og:image" content="<%= image_url('/icons/color/makigas-512.png', only_path: false) %>">
 <% end %>
@@ -31,30 +34,42 @@
 <div class="discord">
   <%= makigas_wrapper(css_classes: 'discord__grid', slim: true) do %>
     <div>
-  <h1>El Discord oficial de makigas</h1>
+      <h1>El Discord de makigas ha cerrado</h1>
       <h2>
-        Habla con otras personas, comparte ideas, enseña el proyecto
-        en el que estés trabajando, o plantea preguntas si tienes problemas
-        con tu código.
+        He cerrado el servidor porque, en la era de la inteligencia artificial, creo que
+        es más fácil y más simple preguntar a ChatGPT o Claude que intentar convencer a
+        una persona en una plataforma como Discord.
       </h2>
-      <div class="discord__cta">
-        <%= link_to "Haz clic aquí para unirte", "https://discord.gg/#{Makigas::Environment.discord_server_invite}", target: :blank, class: 'btn discord__btn' %><br>
-        <small>O bien, pega el siguiente invite: <strong><%= Makigas::Environment.discord_server_invite %></strong></small>
-      </div>
       <p>
-      Este es el servidor de Discord oficial de la <strong>comunidad makigas</strong>, un servidor creativo y acogedor sobre
-      programación en el que podrás hablar y chatear con otros desarrolladores, diseñadores, ingenieros o estudiantes de programación
-      para discutir sobre temas de desarrollo, preguntar y responder dudas que puedan surgir, o simplemente distraerse un rato.
+        Discord es una plataforma que, en mi opinión, trata mal a sus usuarios, es cada
+        vez más codiciosa y no modera lo suficiente para proteger a la gente frente a
+        estafadores y groomers.
       </p>
       <p>
-        Es una gran alternativa para hacer conexiones con otros desarrolladores y personas que tengan gustos parecidos, y también es
-        un buen lugar para preguntarle a la comunidad cosas que en los comentarios del canal de YouTube o de la página web pasarían
-        ignoradas.
+        Por eso he cerrado el servidor. Si aun así necesitas una comunidad de Discord,
+        puedes probar con estos servidores de confianza para mí:
       </p>
+      <ul>
+        <li><%= link_to 'ManzDev', 'https://discord.manz.dev/', target: :blank %>: desarrollo web, HTML, CSS y JavaScript.</li>
+        <li><%= link_to 'Afor Digital', 'https://discord.com/invite/comuafor', target: :blank %>: desarrollo web y diseño web.</li>
+        <li><%= link_to 'Programando en Java', 'https://discord.gg/K3CeetMx2r', target: :blank %>: desarrollo Java.</li>
+        <li><%= link_to 'TodoCode', 'https://discord.gg/MqVqXD2MfR', target: :blank %>: Java y backend.</li>
+        <li><%= link_to 'RothioTome', 'https://discord.gg/JpefMmYfSC', target: :blank %>: desarrollo de videojuegos.</li>
+      </ul>
     </div>
     <div>
-      <iframe src="https://discordapp.com/widget?id=<%= Makigas::Environment.discord_server_id %>"
-        id="discord_widget" class="discord__widget" allowtransparency="true" frameborder="0"></iframe>
+      <p>
+        Si has llegado a esta página desde un resultado de búsqueda, lo siento: el
+        servidor de Discord oficial de makigas ya no está disponible y esta URL debería
+        desaparecer de los índices de buscadores pronto.
+      </p>
+      <p>
+        Durante mucho tiempo fue un punto de encuentro para aprender programación,
+        compartir proyectos, resolver dudas y charlar con otras personas con intereses
+        parecidos. Muchas gracias a todas las personas que lo hicieron posible: quienes
+        moderaron, dieron la bienvenida, respondieron preguntas, propusieron actividades,
+        compartieron recursos o simplemente participaron con buen ánimo.
+      </p>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
