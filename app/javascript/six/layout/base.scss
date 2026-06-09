@@ -139,6 +139,10 @@ body {
   background-color: #2a2a2a;
   color: white;
 
+  a {
+    color: inherit;
+  }
+
   &__grid {
     padding-top: 10px;
     padding-bottom: 10px;
