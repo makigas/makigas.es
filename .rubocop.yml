@@ -70,6 +70,7 @@ Metrics/BlockLength:
   Exclude:
     - config/initializers/simple_form_bootstrap.rb
     - config/routes.rb
+    - config/routes/*.rb
 
 # There are some boilerplate secret keys in the devise.rb file that I'd rather not touch.
 Layout/LineLength:
