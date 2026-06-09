@@ -13,7 +13,7 @@ RSpec.describe 'Dashboard playlists' do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_playlists_path
-      expect(page).to have_no_current_path dashboard_playlists_path
+      expect(page).to have_current_path new_user_session_path
     end
   end
 

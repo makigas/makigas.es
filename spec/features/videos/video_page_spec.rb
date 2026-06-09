@@ -10,7 +10,7 @@ RSpec.describe 'Video page' do
 
     aggregate_failures do
       expect(page).to have_text video.title
-      expect(page).to have_content video.description
+      expect(page).to have_text video.description
       expect(page).to have_link video.playlist.title, href: playlist_path(video.playlist)
     end
   end
@@ -36,8 +36,6 @@ RSpec.describe 'Video page' do
     end
   end
 end
-
-private
 
 def visit_video(video)
   visit playlist_video_path(video, playlist_id: video.playlist)

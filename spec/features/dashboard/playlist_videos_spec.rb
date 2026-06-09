@@ -18,7 +18,7 @@ RSpec.describe 'Dashboard playlist videos' do
   context 'when not logged in' do
     it 'is not success' do
       visit videos_dashboard_playlist_path(playlist)
-      expect(page).to have_no_current_path videos_dashboard_playlist_path(playlist)
+      expect(page).to have_current_path new_user_session_path
     end
   end
 

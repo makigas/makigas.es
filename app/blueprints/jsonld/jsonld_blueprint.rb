@@ -13,7 +13,7 @@ module Jsonld
         ->(_field, object, _options) { cond.call(object) }
       end
 
-      field(name, **opts.merge(if: condition)) do |object, options|
+      field(name, **opts, if: condition) do |object, options|
         blueprint.render_as_hash(object, view: :default, host: options[:host])
       end
     end

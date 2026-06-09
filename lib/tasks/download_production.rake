@@ -14,13 +14,15 @@ class DownloadProduction
     end
   end
 
-  private
-
   ROOT_URL = 'https://www.makigas.es'
+  private_constant :ROOT_URL
 
   CLIENT_HEADERS = {
     Accept: 'application/json'
   }.freeze
+  private_constant :CLIENT_HEADERS
+
+  private
 
   def download_production
     Video.acts_as_list_no_update do

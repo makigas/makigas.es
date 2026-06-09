@@ -9,6 +9,13 @@ module Dashboard
         @videos = Video.untranscribed.order(sort_criteria).page(params[:page])
       end
 
+      SORT_CRITERIAS = {
+        'playlist' => :playlist_id,
+        'publication_date' => :published_at,
+        'duration' => :duration
+      }.freeze
+      private_constant :SORT_CRITERIAS
+
       private
 
       def assign_default_sort
@@ -23,12 +30,6 @@ module Dashboard
       def sort_key
         params[:sort].gsub(/^[+-]/, '')
       end
-
-      SORT_CRITERIAS = {
-        'playlist' => :playlist_id,
-        'publication_date' => :published_at,
-        'duration' => :duration
-      }.freeze
 
       def sort_criteria
         criteria = SORT_CRITERIAS[sort_key]

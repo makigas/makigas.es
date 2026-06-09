@@ -28,7 +28,7 @@ module Dashboard
 
     def destroy
       @show_note = ShowNote.find_by(documentable: @video)
-      @show_note.destroy if @show_note.present?
+      @show_note.presence&.destroy
       redirect_to [:dashboard, @playlist, @video]
     end
 

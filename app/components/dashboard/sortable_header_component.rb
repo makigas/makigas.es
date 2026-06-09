@@ -15,7 +15,7 @@ module Dashboard
     private
 
     def criteria
-      params[:sort].present? ? params[:sort].gsub(/^[+-]/, '') : nil
+      params[:sort].presence&.gsub(/^[+-]/, '')
     end
 
     def sorting?

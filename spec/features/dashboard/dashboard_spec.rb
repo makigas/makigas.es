@@ -10,7 +10,7 @@ RSpec.feature 'Dashboard' do
   context 'when not logged in' do
     it 'is not success' do
       visit dashboard_path
-      expect(page).to have_no_current_path dashboard_topics_path
+      expect(page).to have_current_path new_user_session_path
     end
   end
 

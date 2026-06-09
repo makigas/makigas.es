@@ -24,7 +24,7 @@ RSpec.describe 'Dashboard transcriptions', :js do
 
     it 'is not possible to visit the transcription editor' do
       visit path
-      expect(page).to have_no_current_path path
+      expect(page).to have_current_path new_user_session_path
     end
   end
 

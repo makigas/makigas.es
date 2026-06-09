@@ -33,7 +33,7 @@ module Six
       private
 
       def utm_query
-        utm_params.then { |utm| utm.present? ? utm.to_query : nil }
+        utm_params.then { |utm| utm.presence&.to_query }
       end
 
       def utm_params

@@ -92,6 +92,7 @@ class Playlist < ApplicationRecord
   belongs_to :replacement_playlist, class_name: 'Playlist', optional: true
 
   include Meilisearch::Rails
+
   meilisearch enqueue: true, raise_on_failure: Rails.env.development?, if: :searchable? do
     attribute :title, :description, :excerpt, :slug, :views_recent, :views_total, :deprecated
 

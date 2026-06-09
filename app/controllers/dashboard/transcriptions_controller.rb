@@ -28,7 +28,7 @@ module Dashboard
 
     def destroy
       @transcription = Transcription.find_by(documentable: @video)
-      @transcription.destroy if @transcription.present?
+      @transcription.presence&.destroy
       redirect_to [:dashboard, @playlist, @video]
     end
 

@@ -21,20 +21,13 @@ class VideoSearch
     @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
   end
 
-  private
-
-  attr_reader :filters, :sort
-
-  def meilisearch_filters
-    { filter: search_filters, hitsPerPage: 10, page: @page, sort: sort_criteria }
-  end
-
   SORT_QUERIES = {
     'relevance' => '',
     'recent' => 'publication_date:desc',
     'popular' => 'views_total:desc',
     'trending' => 'views_recent:desc'
   }.freeze
+  private_constant :SORT_QUERIES
 
   LENGTH_QUERIES = {
     'short' => ['duration <= 300'],
@@ -42,6 +35,15 @@ class VideoSearch
     'long' => ['duration > 900'],
     'all' => []
   }.freeze
+  private_constant :LENGTH_QUERIES
+
+  private
+
+  attr_reader :filters, :sort
+
+  def meilisearch_filters
+    { filter: search_filters, hitsPerPage: 10, page: @page, sort: sort_criteria }
+  end
 
   def sort_criteria
     return nil if sort.blank?

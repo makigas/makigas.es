@@ -31,15 +31,16 @@ class VideoSorter
     end
   end
 
-  private
-
-  attr_reader :query
-
   SQL_MAPPINGS = {
     'created' => 'created_at',
     'updated' => 'updated_at',
     'released' => 'published_at'
   }.freeze
+  private_constant :SQL_MAPPINGS
+
+  private
+
+  attr_reader :query
 
   def order
     if query.starts_with?('-')

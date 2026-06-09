@@ -20,8 +20,6 @@ module Plausible
       @analytics ||= client.breakdown(@day)
     end
 
-    def client
-      Plausible::Integration.client
-    end
+    delegate :client, to: :'Plausible::Integration'
   end
 end

@@ -67,13 +67,13 @@ group :development do
 
   # Lint tools
   gem 'overcommit', '~> 0.64.0', require: false
-  gem 'rubocop', '~> 1.65.1', require: false
-  gem 'rubocop-capybara', '~> 2.21.0', require: false
-  gem 'rubocop-factory_bot', '~> 2.26.1', require: false
-  gem 'rubocop-rails', '~> 2.26.0', require: false
-  gem 'rubocop-rake', '~> 0.6.0', require: false
-  gem 'rubocop-rspec', '~> 3.0.4', require: false
-  gem 'rubocop-rspec_rails', '~> 2.30.0', require: false
+  gem 'rubocop', '~> 1.87.0', require: false
+  gem 'rubocop-capybara', '~> 2.23.0', require: false
+  gem 'rubocop-factory_bot', '~> 2.28.0', require: false
+  gem 'rubocop-rails', '~> 2.35.0', require: false
+  gem 'rubocop-rake', '~> 0.7.0', require: false
+  gem 'rubocop-rspec', '~> 3.10.0', require: false
+  gem 'rubocop-rspec_rails', '~> 2.32.0', require: false
 end
 
 # Test tools that must be available in development mode

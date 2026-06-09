@@ -10,14 +10,15 @@ module Six
         @style = style
       end
 
-      private
-
-      attr_reader :style
-
       ALTERNATE_STYLE_CLASSES = {
         flex: 'flex',
         fill: 'fill'
       }.freeze
+      private_constant :ALTERNATE_STYLE_CLASSES
+
+      private
+
+      attr_reader :style
 
       def class_list
         classes = ['btngroup']

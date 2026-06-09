@@ -14,14 +14,15 @@ module Six
         @variant = variant
       end
 
-      private
-
       CSS_CLASSES = {
         normal: 'searchbar--normal',
         large: 'searchbar--large',
         dark: 'searchbar--dark',
         light: 'searchbar--light'
       }.freeze
+      private_constant :CSS_CLASSES
+
+      private
 
       def search_class
         [CSS_CLASSES[@size], CSS_CLASSES[@variant]].join(' ')

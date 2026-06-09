@@ -32,7 +32,7 @@ module ApplicationHelper
     (hours.to_i * 3600) + (minutes.to_i * 60) + seconds.to_i
   end
 
-  def dnt_requested
+  def dnt_requested?
     request.headers.include?('DNT') && request.headers['DNT'].starts_with?('1')
   end
 
