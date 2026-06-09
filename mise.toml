@@ -1,3 +1,4 @@
 [tools]
 node = "24.8"
 ruby = "3.3.6"
+yarn = "1"
