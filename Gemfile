@@ -78,16 +78,16 @@ end
 
 # Test tools that must be available in development mode
 group :development, :test do
-  gem 'factory_bot', '~> 6.4.6'
-  gem 'factory_bot_rails', '~> 6.4.3'
+  gem 'factory_bot', '~> 6.6.0'
+  gem 'factory_bot_rails', '~> 6.5.1'
   gem 'fuubar'
-  gem 'rspec', '~> 3.10'
+  gem 'rspec', '~> 3.13.0'
   gem 'rspec-rails', '~> 6.1.1'
 end
 
 # Test tools
 group :test do
   gem 'capybara', '~> 3.40.0'
-  gem 'capybara-screenshot', '~> 1.0.26'
-  gem 'selenium-webdriver', '~> 4.23.0'
+  gem 'capybara-screenshot', '~> 1.0.27'
+  gem 'selenium-webdriver', '~> 4.44.0'
 end
