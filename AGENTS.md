@@ -1,20 +1,37 @@
 # makigas.es
 
-makigas.es is a Ruby on Rails application that serves both the public
-website and the backoffice dashboard. The codebase dates back to Rails
-4.x and still relies on several legacy conventions that new contributors
-should keep in mind.
+## Code conventions and rules to follow
+
+1. Rubocop must pass. Always check before finishing the turn. Do not
+   consider your solution done if it doesn't pass the cop.
+
+2. Test coverage. Consider running red-light green-light to proof your
+   theories as you work. Write the tests if they don't exist. Do not
+   write code that you cannot test. Your solution is not correct unless
+   there is a test case that asserts that it is correct.
+
+3. Beware of touching the routes.rb. But if you do, always remember to
+   add an HTTP 301/302 for the old URL.
+
+4. Unless you are working on the trunk branch, consider feature branches
+   as safe areas to rollback. Do not write "workarounds" to keep
+   compatibility with code that you just wrote. Just replace the old code
+   with the new one.
 
 ## Stack Notes
 
-- Rails application with ERB and HAML templates alongside ViewComponent
-  components.
-- Paperclip/KtPaperclip is still used for file uploads; ActiveStorage is
-  not enabled.
+- This project uses a lot of ERB and HAML. ViewComponent is useful, but
+  the migration is not finished (and it won't be until genshi-view_component
+  exists).
+
+- We use kt-paperclip, but we crave for a migration towards ActiveStorage.
+
 - JavaScript and CSS are bundled via a custom `esbuild` workflow
   (`npm run bundle:watch`). Bundled assets land in `app/assets/builds/`.
-- Minimal client-side JavaScript; expect server-rendered HTML with light
-  sprinkles for analytics, embeds, and simple interactions.
+
+- Minimal client-side JavaScript; fully traditional server-side HTML with few
+  JavaScript slots for analytics, embeds and simple interactions. Progressive
+  enhancement is always required. Site must work without JavaScript enabled.
 
 ## Key Paths
 
@@ -25,21 +42,3 @@ should keep in mind.
   (backoffice) asset entrypoints.
 - `app/services/`: domain-specific service objects.
 - `spec/`: RSpec test suite.
-
-## Tooling
-
-- Ruby 3.3.6; Rails `~> 7.2`.
-- PostgreSQL database configured via `config/database.yml`; uses env
-  vars for connection details.
-- Always run RuboCop and keep the tree lint-clean.
-- Frontend scripts are exposed through npm:
-  - `npm run build:watch` for esbuild.
-  - `npm run fmt` / `npm run fmt:check` for Prettier.
-  - `npm run lint` for ESLint/Stylelint.
-- Test suite: `bundle exec rspec`.
-
-## Project Rules
-
-1. Keep RuboCop passing; fix or silence offenses before committing.
-2. Preserve public URLs. If a route changes, add a 301/302 redirect from
-   the previous path.
