@@ -1,5 +1,5 @@
 GEM
-  remote: https://gem.coop/
+  remote: https://beta.gem.coop/
   specs:
     actioncable (7.2.1)
       actionpack (= 7.2.1)
@@ -622,7 +622,7 @@ DEPENDENCIES
   web-console (~> 4.2.0)
 
 RUBY VERSION
-   ruby 3.3.4p94
+  ruby 3.3.4p94
 
 BUNDLED WITH
-   2.5.17
+  4.0.18
