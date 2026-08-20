@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+data_dir="${POSTGRES_DATA_DIR:-$project_root/tmp/database}"
+action=""
+
+usage() {
+  cat <<'EOF'
+Usage: scripts/postgres ACTION [-D DATA_DIR]
+
+Actions:
+  init       initialize the cluster if it does not exist
+  start      initialize and start the cluster
+  stop       stop the cluster if it is running
+  status     show the cluster status
+  prepare    start the cluster and run bin/rails db:prepare
+
+Options:
+  -D, --data-dir DIR  use DIR instead of tmp/database
+EOF
+}
+
+die() {
+  printf 'error: %s\n' "$1" >&2
+  exit 1
+}
+
+while (($# > 0)); do
+  case "$1" in
+    init|start|stop|status|prepare)
+      [[ -z "$action" ]] || die "only one action may be specified"
+      action="$1"
+      shift
+      ;;
+    -D|--data-dir)
+      (($# > 1)) || die "$1 requires a directory"
+      data_dir="$2"
+      shift 2
+      ;;
+    --data-dir=*)
+      data_dir="${1#*=}"
+      shift
+      ;;
+    -D*)
+      data_dir="${1#-D}"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      die "unknown argument: $1"
+      ;;
+  esac
+done
+
+[[ -n "$action" ]] || {
+  usage >&2
+  exit 2
+}
+
+command -v initdb >/dev/null || die "initdb was not found in PATH"
+command -v pg_ctl >/dev/null || die "pg_ctl was not found in PATH"
+
+init_cluster() {
+  if [[ -f "$data_dir/PG_VERSION" ]]; then
+    printf 'PostgreSQL cluster already initialized at %s\n' "$data_dir"
+    return
+  fi
+
+  mkdir -p "$data_dir"
+  initdb -D "$data_dir" --username="$(id -un)" --auth=trust
+}
+
+cluster_is_running() {
+  pg_ctl -D "$data_dir" status >/dev/null 2>&1
+}
+
+start_cluster() {
+  init_cluster
+
+  if cluster_is_running; then
+    echo "PostgreSQL is already running"
+  else
+    pg_ctl -D "$data_dir" -l "$data_dir/server.log" start
+  fi
+}
+
+case "$action" in
+  init)
+    init_cluster
+    ;;
+  start)
+    start_cluster
+    ;;
+  stop)
+    if cluster_is_running; then
+      pg_ctl -D "$data_dir" stop
+    else
+      echo "PostgreSQL is not running"
+    fi
+    ;;
+  status)
+    pg_ctl -D "$data_dir" status
+    ;;
+  prepare)
+    start_cluster
+    "$project_root/bin/rails" db:prepare
+    ;;
+esac

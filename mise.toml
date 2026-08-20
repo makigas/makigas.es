@@ -1,4 +1,25 @@
 [tools]
-node = "24.8"
-ruby = "3.3.6"
-yarn = "1"
+ruby = "3.3.4"
+node = "22"
+yarn = "1.22.22"
+postgres = "15"
+
+[tasks."db:init"]
+description = "Initialize the local PostgreSQL cluster"
+run = "scripts/postgres init"
+
+[tasks."db:start"]
+description = "Start the local PostgreSQL cluster"
+run = "scripts/postgres start"
+
+[tasks."db:stop"]
+description = "Stop the local PostgreSQL cluster"
+run = "scripts/postgres stop"
+
+[tasks."db:status"]
+description = "Show the local PostgreSQL cluster status"
+run = "scripts/postgres status"
+
+[tasks."db:prepare"]
+description = "Start PostgreSQL and prepare the Rails databases"
+run = "scripts/postgres prepare"
