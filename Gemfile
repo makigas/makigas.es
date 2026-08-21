@@ -88,6 +88,6 @@ end
 # Test tools
 group :test do
   gem 'capybara', '~> 3.40.0'
-  gem 'capybara-screenshot', '~> 1.0.26'
+  gem 'capybara-screenshot', '~> 1.0.27'
   gem 'selenium-webdriver', '~> 4.47.0'
 end
