@@ -148,10 +148,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.6.2)
-    dotenv (3.1.2)
-    dotenv-rails (3.1.2)
-      dotenv (= 3.1.2)
+    diff-lcs (1.5.1)
+    dotenv (3.2.0)
+    dotenv-rails (3.2.0)
+      dotenv (= 3.2.0)
       railties (>= 6.1)
     drb (2.2.3)
     erb (6.0.4)
@@ -388,7 +388,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.2.1)
+    rake (13.4.2)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
@@ -567,7 +567,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_job_web
   devise
-  dotenv-rails (~> 3.1.0)
+  dotenv-rails (~> 3.2.0)
   factory_bot (~> 6.6.0)
   factory_bot_rails (~> 6.5.1)
   faraday (~> 2.10.1)
@@ -594,7 +594,7 @@ DEPENDENCIES
   rails (~> 7.2, < 7.3.0)
   rails-i18n (~> 7.0.7)
   rails_feather
-  rake (~> 13.2.1)
+  rake (~> 13.4.2)
   redcarpet
   rouge
   rspec (~> 3.13)

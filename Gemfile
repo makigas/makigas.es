@@ -4,8 +4,8 @@ source 'https://beta.gem.coop'
 
 ruby '~> 3.3.0'
 
-gem 'dotenv-rails', '~> 3.1.0'
-gem 'rake', '~> 13.2.1'
+gem 'dotenv-rails', '~> 3.2.0'
+gem 'rake', '~> 13.4.2'
 
 # Base Ruby on Rails distribution
 gem 'bootsnap', '~> 1.18.3'
