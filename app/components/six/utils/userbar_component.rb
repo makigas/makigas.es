@@ -6,7 +6,7 @@ module Six
       include Makigas::ViewHelper
 
       def initialize(warden:)
-        super
+        super()
         @warden = warden
       end
 

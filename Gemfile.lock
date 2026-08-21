@@ -71,7 +71,7 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    acts_as_list (1.2.2)
+    acts_as_list (1.2.6)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     addressable (2.9.0)
@@ -81,17 +81,20 @@ GEM
       rake (>= 10.4, < 14.0)
     ast (2.4.3)
     aws-eventstream (1.3.0)
-    aws-partitions (1.968.0)
-    aws-sdk-core (3.201.5)
+    aws-partitions (1.1281.0)
+    aws-sdk-core (3.254.1)
       aws-eventstream (~> 1, >= 1.3.0)
-      aws-partitions (~> 1, >= 1.651.0)
+      aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
+      base64
+      bigdecimal
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.88.0)
       aws-sdk-core (~> 3, >= 3.201.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.159.0)
-      aws-sdk-core (~> 3, >= 3.201.0)
+    aws-sdk-s3 (1.229.0)
+      aws-sdk-core (~> 3, >= 3.254.1)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.9.1)
@@ -101,7 +104,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    blueprinter (1.2.1)
+    blueprinter (1.3.0)
     bootsnap (1.25.0)
       msgpack (~> 1.5)
     bootstrap-kaminari-views (0.0.5)
@@ -145,10 +148,10 @@ GEM
       delayed_job (> 2.0.3)
       rack-protection (>= 1.5.5)
       sinatra (>= 1.4.4)
-    devise (4.9.4)
+    devise (5.0.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
+      railties (>= 7.0)
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
@@ -165,14 +168,15 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.10.1)
-      faraday-net_http (>= 2.0, < 3.2)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
       logger
     faraday-net_http (3.1.1)
       net-http
     ffi (1.17.0)
     formatador (1.1.0)
-    friendly_id (5.5.1)
+    friendly_id (5.7.0)
       activerecord (>= 4.0.0)
     fuubar (2.5.1)
       rspec-core (~> 3.0)
@@ -206,7 +210,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    haml-rails (2.1.0)
+    haml-rails (3.1.0)
       actionpack (>= 5.1)
       activesupport (>= 5.1)
       haml (>= 4.0.6)
@@ -263,7 +267,7 @@ GEM
     loofah (2.25.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lookbook (2.3.2)
+    lookbook (2.3.14)
       activemodel
       css_parser
       htmlbeautifier (~> 1.3)
@@ -399,8 +403,7 @@ GEM
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
-      tsort
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     regexp_parser (2.12.0)
     reline (0.5.9)
       io-console (~> 0.5)
@@ -408,7 +411,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.4)
-    rouge (4.3.0)
+    rouge (4.7.0)
     rspec (3.13.2)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -495,16 +498,16 @@ GEM
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shellany (0.0.1)
-    simple_form (5.3.1)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
+    simple_form (5.4.1)
+      actionpack (>= 7.0)
+      activemodel (>= 7.0)
     sinatra (4.0.0)
       mustermann (~> 3.0)
       rack (>= 3.0.0, < 4)
       rack-protection (= 4.0.0)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
-    sitemap_generator (6.3.0)
+    sitemap_generator (7.1.1)
       builder (~> 3.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -529,12 +532,12 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
     uri (0.13.0)
-    useragent (0.16.11)
-    view_component (3.13.0)
-      activesupport (>= 5.2.0, < 8.0)
-      concurrent-ruby (~> 1.0)
-      method_source (~> 1.0)
-    view_component-contrib (0.2.3)
+    useragent (0.16.10)
+    view_component (4.12.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
+      concurrent-ruby (~> 1)
+    view_component-contrib (0.2.5)
       ruby-next-core (>= 0.15.0)
       view_component
     warden (1.2.9)
@@ -559,7 +562,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   annotate (~> 3.2.0)
-  aws-sdk-s3 (~> 1.159.0)
+  aws-sdk-s3 (~> 1.229.0)
   blueprinter
   bootsnap (~> 1.25.0)
   bootstrap-kaminari-views (~> 0.0.5)
@@ -574,7 +577,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.2.0)
   factory_bot (~> 6.6.0)
   factory_bot_rails (~> 6.5.1)
-  faraday (~> 2.10.1)
+  faraday (~> 2.14.3)
   friendly_id
   fuubar
   guard (~> 2.18.0)
@@ -582,13 +585,13 @@ DEPENDENCIES
   guard-rspec (~> 4.7.3)
   guard-rubocop (~> 1.5.0)
   guard-shell (~> 0.7.2)
-  haml-rails (~> 2.0)
+  haml-rails (~> 3.1.0)
   jbuilder (~> 2.15.1)
   jsbundling-rails
   kaminari
   kt-paperclip (~> 8.0.0)
   listen (~> 3.9.0)
-  lookbook (~> 2.3.2)
+  lookbook (~> 2.3.14)
   meilisearch-rails (~> 0.16.0)
   nokogiri (~> 1.19.4)
   overcommit (~> 0.72.0)
@@ -615,9 +618,9 @@ DEPENDENCIES
   sentry-rails (~> 5.19.0)
   sentry-ruby (~> 5.19.0)
   simple_form
-  sitemap_generator (~> 6.3.0)
+  sitemap_generator (~> 7.1.1)
   uglifier (>= 1.3.0)
-  view_component (~> 3.13.0)
+  view_component (~> 4.12.0)
   view_component-contrib
   web-console (~> 4.2.0)
 

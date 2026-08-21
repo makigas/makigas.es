@@ -13,7 +13,7 @@ module Six
       end
 
       def initialize(topic:)
-        super
+        super()
         @topic = topic
       end
     end

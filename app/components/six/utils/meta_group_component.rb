@@ -10,7 +10,7 @@ module Six
       renders_many :metas, Six::Utils::MetaComponent
 
       def initialize(tag: 'div', classes: nil)
-        super
+        super()
         @tag = tag
         @classes = classes
       end

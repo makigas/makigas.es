@@ -4,7 +4,7 @@ module Six
   module Explorer
     class PlaylistListComponent < ViewComponent::Base
       def initialize(playlists: [])
-        super
+        super()
         @playlists = playlists
       end
 

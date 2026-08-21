@@ -4,7 +4,7 @@ module Six
   module Explorer
     class TopicThumbnailComponent < ViewComponent::Base
       def initialize(topic: nil, name: nil)
-        super
+        super()
         @topic = topic
         @name = name
       end

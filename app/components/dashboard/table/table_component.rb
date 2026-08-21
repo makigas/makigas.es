@@ -4,7 +4,7 @@ module Dashboard
   module Table
     class TableComponent < ViewComponent::Base
       def initialize(expand: false)
-        super
+        super()
         @expand = expand
       end
 

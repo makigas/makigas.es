@@ -6,7 +6,7 @@ module Six
       include Makigas::ViewHelper
 
       def initialize(text: nil)
-        super
+        super()
         @text = text
       end
 

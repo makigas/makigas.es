@@ -3,7 +3,7 @@
 module Dashboard
   class DashboardStatisticComponent < ViewComponent::Base
     def initialize(label:, value:, increment:)
-      super
+      super()
       @label = label
       @value = value
       @increment = increment

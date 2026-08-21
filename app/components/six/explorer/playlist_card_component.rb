@@ -8,7 +8,7 @@ module Six
       with_collection_parameter :playlist
 
       def initialize(playlist:)
-        super
+        super()
         @playlist = playlist
       end
 

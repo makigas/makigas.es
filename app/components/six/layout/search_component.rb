@@ -3,12 +3,14 @@
 module Six
   module Layout
     class SearchComponent < ViewComponent::Base
+      include RailsFeather::Helper
+
       renders_many :hidden_fields, lambda { |key:, value:|
         tag.input(type: 'hidden', name: key, value:)
       }
 
       def initialize(query: nil, size: :normal, variant: :dark)
-        super
+        super()
         @query = query
         @size = size
         @variant = variant

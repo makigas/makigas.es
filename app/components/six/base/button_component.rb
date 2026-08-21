@@ -4,7 +4,7 @@ module Six
   module Base
     class ButtonComponent < ViewComponent::Base
       def initialize(**options)
-        super
+        super()
         @href = options[:href]
         @classes = options[:classes]
         @id = options[:id]

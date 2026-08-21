@@ -3,9 +3,10 @@
 module Makigas
   class Component < ViewComponent::Base
     include Makigas::ViewHelper
+    include RailsFeather::Helper
 
-    def initialize(css_classes: nil, **ignored_args)
-      super
+    def initialize(css_classes: nil, **_ignored_args)
+      super()
       @css_classes = css_classes
     end
 

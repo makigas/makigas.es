@@ -10,7 +10,7 @@ module Dashboard
       renders_one :metadata, Dashboard::Table::CellMetadataComponent
 
       def initialize(label = nil)
-        super
+        super()
         @label = label
       end
     end

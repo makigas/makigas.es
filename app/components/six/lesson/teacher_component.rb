@@ -6,7 +6,7 @@ module Six
       attr_reader :user
 
       def initialize(user: nil)
-        super
+        super()
         @user = user
       end
 

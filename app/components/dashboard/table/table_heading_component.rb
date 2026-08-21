@@ -4,7 +4,7 @@ module Dashboard
   module Table
     class TableHeadingComponent < ViewComponent::Base
       def initialize(label = nil, **opts)
-        super
+        super()
         @label = label
         @primary = opts[:primary]
         @html_options = opts[:html_options] || {}

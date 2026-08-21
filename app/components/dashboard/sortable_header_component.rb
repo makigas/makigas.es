@@ -5,7 +5,7 @@ module Dashboard
     attr_reader :key, :params, :label, :keep
 
     def initialize(key:, label:, params:, keep: {})
-      super
+      super()
       @key = key
       @label = label
       @params = params

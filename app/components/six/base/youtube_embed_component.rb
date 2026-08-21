@@ -4,7 +4,7 @@ module Six
   module Base
     class YoutubeEmbedComponent < ViewComponent::Base
       def initialize(youtube_id:)
-        super
+        super()
         @youtube_id = youtube_id
       end
 

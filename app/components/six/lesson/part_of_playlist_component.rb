@@ -4,7 +4,7 @@ module Six
   module Lesson
     class PartOfPlaylistComponent < ViewComponent::Base
       def initialize(video:)
-        super
+        super()
         @video = video
       end
 

@@ -6,7 +6,7 @@ module Six
       renders_many :buttons, Six::Base::ButtonComponent
 
       def initialize(style: :list)
-        super
+        super()
         @style = style
       end
 

@@ -4,7 +4,7 @@ module Six
   module Lesson
     class QuestionComponent < ViewComponent::Base
       def initialize(forum: nil, utm: nil, tags: [])
-        super
+        super()
         @forum = forum
         @utm = utm
         @tags = tags
