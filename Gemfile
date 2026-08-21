@@ -55,7 +55,7 @@ group :development do
   # Development tools
   gem 'annotate', '~> 3.2.0'
   gem 'byebug'
-  gem 'listen', '~> 3.9.0'
+  gem 'listen', '~> 3.10.0'
   gem 'web-console', '~> 4.2.0'
 
   # Guard
