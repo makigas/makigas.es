@@ -59,7 +59,7 @@ group :development do
   gem 'web-console', '~> 4.2.0'
 
   # Guard
-  gem 'guard', '~> 2.18.0'
+  gem 'guard', '~> 2.20.2'
   gem 'guard-rails', '~> 0.8.1'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.5.0'
