@@ -21,7 +21,7 @@ gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Job processing
-gem 'delayed_job', '~> 4.1.11'
+gem 'delayed_job', '~> 4.2.0'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 
