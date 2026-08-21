@@ -48,8 +48,8 @@ gem 'view_component', '~> 4.12.0'
 gem 'view_component-contrib'
 
 # Ops
-gem 'sentry-rails', '~> 5.19.0'
-gem 'sentry-ruby', '~> 5.19.0'
+gem 'sentry-rails', '~> 6.7.0'
+gem 'sentry-ruby', '~> 6.7.0'
 
 group :development do
   # Development tools
