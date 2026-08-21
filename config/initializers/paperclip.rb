@@ -53,8 +53,5 @@ if ENV['RAILS_USE_S3'].present?
   end
 end
 
-# Seems to force to use magick at least until they upgrade the package.
-Paperclip.options[:is_windows] = true
-
 # Register URIAdapter so that we can add files by URL under controlled environments.
 Paperclip::HttpUrlProxyAdapter.register

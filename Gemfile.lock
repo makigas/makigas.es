@@ -242,14 +242,14 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kt-paperclip (7.2.2)
+    kt-paperclip (8.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
-      marcel (~> 1.0.1)
+      marcel (>= 1.0.1)
       mime-types
-      terrapin (>= 0.6.0, < 2.0)
-    language_server-protocol (3.17.0.5)
-    launchy (3.1.1)
+      terrapin (>= 0.6.0)
+    language_server-protocol (3.17.0.3)
+    launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
       logger (~> 1.6)
@@ -586,7 +586,7 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   jsbundling-rails
   kaminari
-  kt-paperclip (~> 7.2.0)
+  kt-paperclip (~> 8.0.0)
   listen (~> 3.9.0)
   lookbook (~> 2.3.2)
   meilisearch-rails (~> 0.16.0)
