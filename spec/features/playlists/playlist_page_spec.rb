@@ -42,7 +42,7 @@ RSpec.describe 'Playlist page' do
   private
 
   def video_title(video)
-    "#{video.position} #{video.title}"
+    "#{video.position}. #{video.title}"
   end
 
   def video_path(video)

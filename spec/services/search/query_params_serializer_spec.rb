@@ -10,14 +10,14 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
   describe 'default casting' do
     let(:params) { {} }
 
-    it { is_expected.to be_empty }
+    it { is_expected.to eq({ 'type' => nil }) }
   end
 
   describe 'query' do
     describe 'is casted' do
       let(:params) { { query: 'install java' } }
 
-      it { is_expected.to eq({ 'q' => 'install java' }) }
+      it { is_expected.to eq({ 'q' => 'install java', 'type' => nil }) }
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'is casted' do
       let(:params) { { tag: 'java' } }
 
-      it { is_expected.to eq({ 'tag' => 'java' }) }
+      it { is_expected.to eq({ 'tag' => 'java', 'type' => nil }) }
     end
   end
 
@@ -33,13 +33,13 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'is casted' do
       let(:params) { { page: 4 } }
 
-      it { is_expected.to eq({ 'pagina' => 4 }) }
+      it { is_expected.to eq({ 'pagina' => 4, 'type' => nil }) }
     end
 
     describe 'fallbacks to default' do
       let(:params) { { page: -2 } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'fallbacks to default' do
       let(:params) { { content_type: :skittles } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
   end
 
@@ -61,13 +61,13 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'is casted' do
       let(:params) { { sort: :trending } }
 
-      it { is_expected.to eq({ 'orden' => 'tendencia' }) }
+      it { is_expected.to eq({ 'orden' => 'tendencia', 'type' => nil }) }
     end
 
     describe 'fallbacks to default' do
       let(:params) { { sort: :votes } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
   end
 
@@ -75,19 +75,19 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'included if true' do
       let(:params) { { exclude_obsolete: true } }
 
-      it { is_expected.to eq({ 'sin-obsoletos' => '1' }) }
+      it { is_expected.to eq({ 'sin-obsoletos' => '1', 'type' => nil }) }
     end
 
     describe 'excluded if null' do
       let(:params) { { exclude_obsolete: nil } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
 
     describe 'excluded if false' do
       let(:params) { { exclude_obsolete: false } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
   end
 
@@ -95,19 +95,19 @@ RSpec.describe Search::QueryParamsSerializer, type: :class do
     describe 'included if present' do
       let(:params) { { articles: true } }
 
-      it { is_expected.to eq({ 'articulos' => '1' }) }
+      it { is_expected.to eq({ 'articulos' => '1', 'type' => nil }) }
     end
 
     describe 'excluded if null' do
       let(:params) { { articles: nil } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
 
     describe 'excluded if false' do
       let(:params) { { articles: false } }
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'type' => nil }) }
     end
   end
 end
