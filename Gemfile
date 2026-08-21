@@ -66,13 +66,13 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.64.0', require: false
-  gem 'rubocop', '~> 1.87.0', require: false
-  gem 'rubocop-capybara', '~> 2.23.0', require: false
+  gem 'overcommit', '~> 0.72.0', require: false
+  gem 'rubocop', '~> 1.89.0', require: false
+  gem 'rubocop-capybara', '~> 3.0.0', require: false
   gem 'rubocop-factory_bot', '~> 2.28.0', require: false
-  gem 'rubocop-rails', '~> 2.35.0', require: false
-  gem 'rubocop-rake', '~> 0.7.0', require: false
-  gem 'rubocop-rspec', '~> 3.10.0', require: false
+  gem 'rubocop-rails', '~> 2.37.0', require: false
+  gem 'rubocop-rake', '~> 0.7.1', require: false
+  gem 'rubocop-rspec', '~> 3.10.2', require: false
   gem 'rubocop-rspec_rails', '~> 2.32.0', require: false
 end
 

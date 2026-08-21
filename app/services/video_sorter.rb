@@ -5,6 +5,13 @@ class VideoSorter
     @query = query
   end
 
+  SQL_MAPPINGS = {
+    'created' => 'created_at',
+    'updated' => 'updated_at',
+    'released' => 'published_at'
+  }.freeze
+  private_constant :SQL_MAPPINGS
+
   def videos
     Video.order(order_criteria)
   end
@@ -30,13 +37,6 @@ class VideoSorter
       '↓'
     end
   end
-
-  SQL_MAPPINGS = {
-    'created' => 'created_at',
-    'updated' => 'updated_at',
-    'released' => 'published_at'
-  }.freeze
-  private_constant :SQL_MAPPINGS
 
   private
 

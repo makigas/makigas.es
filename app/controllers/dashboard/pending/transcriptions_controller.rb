@@ -5,16 +5,16 @@ module Dashboard
     class TranscriptionsController < Dashboard::DashboardController
       before_action :assign_default_sort
 
-      def show
-        @videos = Video.untranscribed.order(sort_criteria).page(params[:page])
-      end
-
       SORT_CRITERIAS = {
         'playlist' => :playlist_id,
         'publication_date' => :published_at,
         'duration' => :duration
       }.freeze
       private_constant :SORT_CRITERIAS
+
+      def show
+        @videos = Video.untranscribed.order(sort_criteria).page(params[:page])
+      end
 
       private
 

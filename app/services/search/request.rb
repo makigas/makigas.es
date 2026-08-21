@@ -6,6 +6,22 @@ module Search
       @params = params
     end
 
+    VIDEO_SORT_CRITERIAS = {
+      relevance: nil,
+      recent: 'publication_date:desc',
+      popular: 'views_total:desc',
+      trending: 'views_recent:desc'
+    }.freeze
+    private_constant :VIDEO_SORT_CRITERIAS
+
+    PLAYLIST_SORT_CRITERIAS = {
+      relevance: nil,
+      recent: 'last_publication_date:desc',
+      popular: 'views_total:desc',
+      trending: 'views_recent:desc'
+    }.freeze
+    private_constant :PLAYLIST_SORT_CRITERIAS
+
     delegate :hits, to: :results
 
     def total_pages
@@ -17,37 +33,6 @@ module Search
     def paginator
       @paginator ||= Search::Paginator.new(total_pages:, page: params.page)
     end
-
-    VIDEO_SORT_CRITERIAS = {
-      relevance: nil,
-      recent: 'publication_date:desc',
-      popular: 'views_total:desc',
-      trending: 'views_recent:desc'
-    }.freeze
-    private_constant :VIDEO_SORT_CRITERIAS
-
-    def video_query
-      { q: params.query,
-        filter: video_filters,
-        sort: clean_sort_criteria(VIDEO_SORT_CRITERIAS, params.sort),
-        scope: Video.searchable }.compact
-    end
-
-    def video_filters
-      [].tap do |filters|
-        filters << "tags = #{params.tag}" if params.tag.present?
-        filters << 'deprecated = false' if params.exclude_obsolete
-        filters << 'has_show_note = true' if params.articles
-      end
-    end
-
-    PLAYLIST_SORT_CRITERIAS = {
-      relevance: nil,
-      recent: 'last_publication_date:desc',
-      popular: 'views_total:desc',
-      trending: 'views_recent:desc'
-    }.freeze
-    private_constant :PLAYLIST_SORT_CRITERIAS
 
     private
 
@@ -71,6 +56,21 @@ module Search
     def clean_sort_criteria(hash, value)
       value = hash.fetch(value, nil)
       [value] if value.present?
+    end
+
+    def video_query
+      { q: params.query,
+        filter: video_filters,
+        sort: clean_sort_criteria(VIDEO_SORT_CRITERIAS, params.sort),
+        scope: Video.searchable }.compact
+    end
+
+    def video_filters
+      [].tap do |filters|
+        filters << "tags = #{params.tag}" if params.tag.present?
+        filters << 'deprecated = false' if params.exclude_obsolete
+        filters << 'has_show_note = true' if params.articles
+      end
     end
 
     def playlist_query

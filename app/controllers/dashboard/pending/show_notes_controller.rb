@@ -5,17 +5,17 @@ module Dashboard
     class ShowNotesController < Dashboard::DashboardController
       before_action :assign_default_sort
 
-      def show
-        @videos = Video.unnoted.where(filter_criteria).order(sort_criteria).page(params[:page])
-        @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
-      end
-
       SORT_CRITERIAS = {
         'playlist' => :playlist_id,
         'publication_date' => :published_at,
         'duration' => :duration
       }.freeze
       private_constant :SORT_CRITERIAS
+
+      def show
+        @videos = Video.unnoted.where(filter_criteria).order(sort_criteria).page(params[:page])
+        @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
+      end
 
       private
 

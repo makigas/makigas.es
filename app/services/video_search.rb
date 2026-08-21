@@ -8,19 +8,6 @@ class VideoSearch
     @sort = sort
   end
 
-  def videos
-    Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do |v|
-      search_request.tap { |s| s.count = v.length }
-    end
-  rescue Meilisearch::CommunicationError => e
-    search_request.error = e.message
-    raise Makigas::SearchError, e.message
-  end
-
-  def search_request
-    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
-  end
-
   SORT_QUERIES = {
     'relevance' => '',
     'recent' => 'publication_date:desc',
@@ -36,6 +23,19 @@ class VideoSearch
     'all' => []
   }.freeze
   private_constant :LENGTH_QUERIES
+
+  def videos
+    Video.visible.includes(playlist: :topic).search(@query, meilisearch_filters).tap do |v|
+      search_request.tap { |s| s.count = v.length }
+    end
+  rescue Meilisearch::CommunicationError => e
+    search_request.error = e.message
+    raise Makigas::SearchError, e.message
+  end
+
+  def search_request
+    @search_request ||= SearchRequest.new(query: @query, page: @page, filters: @filters, sort: @sort)
+  end
 
   private
 

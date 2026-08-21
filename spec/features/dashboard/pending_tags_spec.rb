@@ -24,8 +24,8 @@ RSpec.describe 'Pending tags' do
     it 'does not present videos that have tags' do
       create(:video, title: 'Tagged Video', tags: %w[hello world])
       visit dashboard_pending_tags_path
-
-      within '#pending_tags' do
+      aggregate_failures do
+        expect(page).to have_current_path dashboard_pending_tags_path
         expect(page).to have_no_text 'Tagged Video'
       end
     end
