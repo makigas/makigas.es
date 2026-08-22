@@ -1,5 +1,5 @@
 FROM node:22-alpine3.20 AS node
-FROM ruby:3.4.10-alpine
+FROM ruby:4.0.6-alpine
 LABEL maintainer="dani@danirod.es"
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -25,12 +25,13 @@ WORKDIR /makigas
 ADD Gemfile Gemfile.lock /
 RUN apk add --update --no-cache --virtual .build-deps \
       build-base libffi-dev yaml-dev && \
-    gem install bundler:2.5.17 && \
+    gem install bundler:4.0.18 --clear-sources \
+      --source https://beta.gem.coop && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install && \
-    rm -rf /vendor/bundle/ruby/3.4.0/cache/*.gem && \
-    find /vendor/bundle/ruby/3.4.0/gems/ -name "*.[co]" -delete && \
+    rm -rf /vendor/bundle/ruby/4.0.0/cache/*.gem && \
+    find /vendor/bundle/ruby/4.0.0/gems/ -name "*.[co]" -delete && \
     apk del .build-deps
 
 ADD . .
