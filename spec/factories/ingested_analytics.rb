@@ -12,7 +12,8 @@
 #
 # Indexes
 #
-#  index_ingested_analytics_on_day  (day) UNIQUE
+#  index_ingested_analytics_on_day        (day) UNIQUE
+#  index_ingested_analytics_on_document_  (document) USING gin
 #
 FactoryBot.define do
   factory :ingested_analytic do

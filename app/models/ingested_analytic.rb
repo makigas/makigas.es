@@ -12,7 +12,8 @@
 #
 # Indexes
 #
-#  index_ingested_analytics_on_day  (day) UNIQUE
+#  index_ingested_analytics_on_day        (day) UNIQUE
+#  index_ingested_analytics_on_document_  (document) USING gin
 #
 class IngestedAnalytic < ApplicationRecord
   validates :day, presence: true, uniqueness: true

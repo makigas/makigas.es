@@ -15,8 +15,8 @@ gem 'nokogiri', '~> 1.19.4'
 gem 'pg', '~> 1.6.3'
 gem 'puma', '~> 8.0.2'
 gem 'rack-cors'
-gem 'rails', '~> 7.2', '< 7.3.0'
-gem 'rails-i18n', '~> 7.0.7'
+gem 'rails', '8.0.5.1'
+gem 'rails-i18n', '~> 8.0.0'
 gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 
@@ -53,7 +53,7 @@ gem 'sentry-ruby', '~> 6.7.0'
 
 group :development do
   # Development tools
-  gem 'annotate', '~> 3.2.0'
+  gem 'annotaterb', '~> 4.24.0'
   gem 'byebug'
   gem 'listen', '~> 3.10.0'
   gem 'web-console', '~> 4.2.0'
