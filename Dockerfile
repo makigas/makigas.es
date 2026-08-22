@@ -1,5 +1,5 @@
 FROM node:22-alpine3.20 AS node
-FROM ruby:3.3.12-alpine
+FROM ruby:3.4.10-alpine
 LABEL maintainer="dani@danirod.es"
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -29,8 +29,8 @@ RUN apk add --update --no-cache --virtual .build-deps \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install && \
-    rm -rf /vendor/bundle/ruby/3.3.0/cache/*.gem && \
-    find /vendor/bundle/ruby/3.3.0/gems/ -name "*.[co]" -delete && \
+    rm -rf /vendor/bundle/ruby/3.4.0/cache/*.gem && \
+    find /vendor/bundle/ruby/3.4.0/gems/ -name "*.[co]" -delete && \
     apk del .build-deps
 
 ADD . .

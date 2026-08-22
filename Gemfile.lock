@@ -539,7 +539,7 @@ GEM
       sprockets (>= 3.0.0)
     stringio (3.1.1)
     temple (0.10.3)
-    terrapin (1.0.1)
+    terrapin (1.1.1)
       climate_control
     thor (1.5.0)
     tilt (2.4.0)
@@ -574,7 +574,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.36)
+    yard (0.9.37)
     zeitwerk (2.8.2)
 
 PLATFORMS
@@ -648,7 +648,7 @@ DEPENDENCIES
   web-console (~> 4.2.0)
 
 RUBY VERSION
-  ruby 3.3.12
+  ruby 3.4.10
 
 BUNDLED WITH
   4.0.18
