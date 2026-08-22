@@ -1,5 +1,11 @@
+FROM node:22-alpine3.20 AS node
 FROM ruby:3.3.4-alpine
 LABEL maintainer="dani@danirod.es"
+
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
+    ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
 # Build variables
 ENV BUNDLE_PATH=/vendor/bundle
@@ -8,7 +14,7 @@ ENV RAILS_ENV=production
 ENV SECRET_KEY_BASE=placeholder
 
 # Install dependencies.
-RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick nodejs tzdata
+RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick tzdata
 
 # Initializes the working directory.
 RUN mkdir /makigas
@@ -26,11 +32,13 @@ RUN apk add --update --no-cache build-base && \
     apk del build-base
 
 ADD . .
-RUN apk add --no-cache yarn && \
-    yarn install --check-files && \
-    bin/rails assets:precompile && \
+# Avoid a Go garbage collector crash under QEMU's amd64 emulation.
+RUN npm install --global pnpm@11.22.0 && \
+    pnpm install --frozen-lockfile && \
+    GOGC=off bin/rails assets:precompile && \
     rm -rf node_modules && \
-    yarn cache clean && \
-    apk del yarn
+    pnpm store prune && \
+    npm uninstall --global pnpm && \
+    rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx
 
 CMD ["docker/rails_start.sh"]

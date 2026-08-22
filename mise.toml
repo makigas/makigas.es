@@ -1,7 +1,7 @@
 [tools]
 ruby = "3.3.4"
 node = "22"
-yarn = "1.22.22"
+pnpm = "11.22.0"
 postgres = "15"
 
 [tasks."db:init"]

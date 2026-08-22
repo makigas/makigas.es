@@ -23,10 +23,9 @@ docker_data/
 
 # Ignore JavaScript
 node_modules/
+.pnpm-store/
 /public/packs/
 /public/packs-test/
-yarn-debug.log*
-.yarn-integrity
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

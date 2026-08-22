@@ -6,6 +6,7 @@
   "author": "Dani Rodríguez",
   "license": "GPLv3",
   "private": true,
+  "packageManager": "pnpm@11.22.0",
   "dependencies": {
     "@fontsource/montserrat": "5.2.5",
     "@popperjs/core": "2.11.8",

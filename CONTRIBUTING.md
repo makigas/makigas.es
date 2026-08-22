@@ -54,7 +54,7 @@ If you cloned the web application and you were running locally the application
 when the bug happened, please include the following information:
 
 * Operating system running your Ruby engine.
-* Version for the following assets: Ruby, PostgreSQL, Yarn, Node.js version. 
+* Version for the following assets: Ruby, PostgreSQL, pnpm, Node.js version.
 * URL or controller + action you were visiting.
 * Stack trace if available.
 * Expected behaviour. This is what _should_ have happened.

@@ -16,7 +16,7 @@ videos.
 Requirements:
 
 * [mise](https://mise.jdx.dev/), which provides the pinned Ruby, Node.js and
-  Yarn versions for this project. Older Ruby versions are not supported.
+  pnpm versions for this project. Older Ruby versions are not supported.
 * An up to date PostgreSQL database. Other SQL engines are not supported.
 * [Meilisearch](https://www.meilisearch.com/), to build the search engine.
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
@@ -44,9 +44,9 @@ probably your PostgreSQL won't allow unauthenticated connections.
 
 Standard `rails server`, like any other Rails application out there.  Because
 we are using jsbundling-rails, you are expected to be compiling the packs on
-your own. You can do this running `yarn build` to build via esbuild once, or
-`yarn build:watch` in a separate terminal, to keep doing this in the background
-and update the packs everytime you save a JS or CSS file.
+your own. You can do this running `pnpm run build` to build via esbuild once,
+or `pnpm run build:watch` in a separate terminal, to keep doing this in the
+background and update the packs everytime you save a JS or CSS file.
 
 You can also run `bin/guard` to start the application via Guard, which will use
 some guard plugins to keep the application running and up to date, and will

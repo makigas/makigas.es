@@ -46,5 +46,5 @@ guard 'rubocop', all_on_start: false do
 end
 
 guard 'shell', all_on_start: true do
-  watch(%r{^app/javascript/}) { `yarn build` }
+  watch(%r{^app/javascript/}) { `pnpm run build` }
 end
