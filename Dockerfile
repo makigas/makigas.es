@@ -1,5 +1,5 @@
 FROM node:22-alpine3.20 AS node
-FROM ruby:3.3.4-alpine
+FROM ruby:3.3.12-alpine
 LABEL maintainer="dani@danirod.es"
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -14,7 +14,8 @@ ENV RAILS_ENV=production
 ENV SECRET_KEY_BASE=placeholder
 
 # Install dependencies.
-RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick tzdata
+RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick \
+    libffi yaml tzdata
 
 # Initializes the working directory.
 RUN mkdir /makigas
@@ -22,14 +23,15 @@ WORKDIR /makigas
 
 # Install Ruby dependencies
 ADD Gemfile Gemfile.lock /
-RUN apk add --update --no-cache build-base && \
+RUN apk add --update --no-cache --virtual .build-deps \
+      build-base libffi-dev yaml-dev && \
     gem install bundler:2.5.17 && \
     bundle config set no-cache 'true' && \
     bundle config set without 'development test' && \
     bundle install && \
     rm -rf /vendor/bundle/ruby/3.3.0/cache/*.gem && \
     find /vendor/bundle/ruby/3.3.0/gems/ -name "*.[co]" -delete && \
-    apk del build-base
+    apk del .build-deps
 
 ADD . .
 # Avoid a Go garbage collector crash under QEMU's amd64 emulation.

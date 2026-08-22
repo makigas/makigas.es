@@ -2,7 +2,7 @@
 
 source 'https://beta.gem.coop'
 
-ruby '~> 3.3.0'
+ruby '3.3.12'
 
 gem 'dotenv-rails', '~> 3.2.0'
 gem 'rake', '~> 13.4.2'
