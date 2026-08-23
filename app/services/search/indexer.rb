@@ -6,6 +6,7 @@ module Search
       def reindex!(async: true)
         Video.reindex!(1000, !async)
         Playlist.reindex!(1000, !async)
+        Tag.deploy_synonyms
       end
     end
   end

@@ -4,7 +4,6 @@ class RebuildSearchIndexJob < ApplicationJob
   queue_as :default
 
   def perform
-    Video.visible.reindex!
-    Tag.deploy_synonyms
+    Search::Indexer.reindex!
   end
 end
