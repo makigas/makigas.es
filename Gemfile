@@ -13,12 +13,11 @@ gem 'jbuilder', '~> 2.15.1'
 gem 'jsbundling-rails'
 gem 'nokogiri', '~> 1.19.4'
 gem 'pg', '~> 1.6.3'
+gem 'propshaft'
 gem 'puma', '~> 8.0.2'
 gem 'rack-cors'
 gem 'rails', '8.1.3.1'
 gem 'rails-i18n', '~> 8.1.0'
-gem 'sass-rails', '~> 6.0'
-gem 'uglifier', '>= 1.3.0'
 
 # Job processing
 gem 'delayed_job', '~> 4.2.0'
