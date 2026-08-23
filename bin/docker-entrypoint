@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+# If running the Rails server then migrate the existing database. The first
+# form is the direct command used by this image; the second also handles the
+# Rails-generated wrapped command form.
+if { [ "$1" == "./bin/rails" ] && [ "$2" == "server" ]; } || \
+   { [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; }; then
+  rm -f tmp/pids/server.pid
+  ./bin/rails db:migrate
+fi
+
+exec "$@"

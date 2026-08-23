@@ -6,7 +6,7 @@ class SearchEngine
   def initialize
     namespace :makigas do
       desc 'Update search engine index'
-      task(reindex: :environment) { Makigas::Indexer.reindex! }
+      task(reindex: :environment) { RebuildSearchIndexJob.perform_now }
     end
   end
 end

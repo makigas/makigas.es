@@ -9,9 +9,14 @@ if ENV['RAILS_USE_S3'].present?
       bucket: ENV.fetch('S3_BUCKET_NAME', nil),
       region: ENV.fetch('AWS_REGION', 'us-east-1'),
       access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID', nil),
-      secret_key_id: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
     }
   )
+
+  # Garage does not support ACLs, so this hack will be needed.
+  if ENV['S3_ACL_ENABLED'].present?
+    Paperclip::Attachment.default_options[:s3_acl_enabled] = ENV.fetch('S3_ACL_ENABLED') == 'true'
+  end
 
   # Use custom host as primary (s3-us-west-2 instead of s3, for instance).
   # URL before:            s3.amazonaws.com/cdn.makigas.es/hi.css
@@ -43,7 +48,7 @@ if ENV['RAILS_USE_S3'].present?
     end
   end
 
-  # Use a custom endpoint (for instance, Minio or other S3-like APIs)
+  # Use a custom endpoint for an S3-compatible object store such as Garage.
   if ENV['S3_ENDPOINT'].present?
     Paperclip::Attachment.default_options[:s3_region] = ENV.fetch('AWS_REGION', 'us-east-1')
     Paperclip::Attachment.default_options[:s3_options] = {

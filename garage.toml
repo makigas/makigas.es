@@ -1,0 +1,26 @@
+# Single-node Garage configuration for the local Compose stack.
+# The credentials in compose.yaml are development-only values.
+
+metadata_dir = "storage/garage/meta"
+data_dir = "storage/garage/data"
+db_engine = "sqlite"
+
+replication_factor = 1
+rpc_bind_addr = "[::]:3901"
+rpc_public_addr = "127.0.0.1:3901"
+rpc_secret = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+
+[s3_api]
+s3_region = "garage"
+api_bind_addr = "[::]:3900"
+root_domain = ".s3.garage.localhost"
+
+[s3_web]
+bind_addr = "[::]:3902"
+root_domain = ".localhost"
+index = "index.html"
+
+[admin]
+api_bind_addr = "[::]:3903"
+admin_token = "makigas-local-garage-admin-token"
+metrics_token = "makigas-local-garage-metrics-token"

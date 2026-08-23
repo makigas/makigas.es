@@ -1,0 +1,110 @@
+# Development and integration-test stack. It is not suitable for production.
+
+volumes:
+  postgres:
+  garage_data:
+  garage_meta:
+  meilisearch:
+
+services:
+  database:
+    image: docker.io/library/postgres:18.6-alpine
+    volumes:
+      - postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: makigas
+      POSTGRES_USER: makigas
+      POSTGRES_PASSWORD: makigas
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U makigas -d makigas"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  search:
+    image: docker.io/getmeili/meilisearch:v1.53.1
+    volumes:
+      - meilisearch:/meili_data
+    environment:
+      MEILI_ENV: production
+      MEILI_MASTER_KEY: makigas-local-development-master-key-2026
+      MEILI_NO_ANALYTICS: "true"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://127.0.0.1:7700/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  storage:
+    image: docker.io/dxflrs/garage:v2.3.0
+    working_dir: /var/lib/garage
+    volumes:
+      - ./garage.toml:/etc/garage.toml:ro
+      - garage_meta:/var/lib/garage/storage/garage/meta
+      - garage_data:/var/lib/garage/storage/garage/data
+    environment:
+      GARAGE_DEFAULT_ACCESS_KEY: GK0123456789abcdef0123456789abcdef
+      GARAGE_DEFAULT_SECRET_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      GARAGE_DEFAULT_BUCKET: cdn.makigas.local
+    command: ["/garage", "server", "--single-node", "--default-bucket"]
+    ports:
+      - "127.0.0.1:3900:3900"
+      - "127.0.0.1:3902:3902"
+    healthcheck:
+      test: ["CMD", "/garage", "stats", "-a"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  storage-init:
+    image: docker.io/dxflrs/garage:v2.3.0
+    network_mode: service:storage
+    working_dir: /var/lib/garage
+    depends_on:
+      storage:
+        condition: service_healthy
+    volumes:
+      - ./garage.toml:/etc/garage.toml:ro
+      - garage_meta:/var/lib/garage/storage/garage/meta:ro
+    command: ["/garage", "bucket", "website", "--allow", "cdn.makigas.local"]
+
+  web:
+    build: .
+    image: localhost/makigas:dev
+    depends_on:
+      database:
+        condition: service_healthy
+      search:
+        condition: service_healthy
+      storage-init:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      RAILS_USE_S3: "true"
+      S3_ACL_ENABLED: "false"
+      RAILS_LOG_TO_STDOUT: "true"
+      DB_HOST: database
+      DB_NAME: makigas
+      DB_USERNAME: makigas
+      DB_PASSWORD: makigas
+      S3_BUCKET_NAME: cdn.makigas.local
+      S3_HOST_NAME: localhost:3902
+      S3_BUCKET_DOMAIN: "true"
+      S3_HOST_PROTO: http
+      S3_ENDPOINT: http://storage:3900
+      AWS_REGION: garage
+      AWS_ACCESS_KEY_ID: GK0123456789abcdef0123456789abcdef
+      AWS_SECRET_ACCESS_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+      MEILISEARCH_HOST: http://search:7700
+      MEILISEARCH_API_KEY: makigas-local-development-master-key-2026
+    healthcheck:
+      test:
+        ["CMD", "ruby", "-rnet/http", "-e", "exit(Net::HTTP.get_response(URI('http://127.0.0.1:3000/')).is_a?(Net::HTTPSuccess) ? 0 : 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s

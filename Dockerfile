@@ -1,48 +1,76 @@
-FROM node:22-alpine3.20 AS node
-FROM ruby:4.0.6-alpine
-LABEL maintainer="dani@danirod.es"
+# syntax=docker/dockerfile:1
+# check=error=true
 
+ARG RUBY_VERSION=4.0.6
+FROM docker.io/library/ruby:${RUBY_VERSION}-slim AS base
+
+WORKDIR /rails
+
+ENV RAILS_ENV="production" \
+    NODE_ENV="production" \
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development:test" \
+    RAILS_SERVE_STATIC_FILES="1" \
+    SOLID_QUEUE_IN_PUMA="1"
+
+# Keep only libraries required by the running application. ImageMagick and
+# file are required by kt-paperclip; libpq and the PostgreSQL client are used
+# by the application and its entrypoint.
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      file \
+      imagemagick \
+      libjemalloc2 \
+      postgresql-client \
+      tzdata && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
+FROM docker.io/library/node:24.19.0-slim AS node
+
+FROM base AS build
+
+# The asset build uses the same pinned Node and pnpm versions as development.
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
-    ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
+    ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx && \
+    npm install --global pnpm@11.22.0
 
-# Build variables
-ENV BUNDLE_PATH=/vendor/bundle
-ENV NODE_ENV=production
-ENV RAILS_ENV=production
-ENV SECRET_KEY_BASE=placeholder
-ENV SOLID_QUEUE_IN_PUMA=1
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      git \
+      libpq-dev \
+      libyaml-dev \
+      pkg-config && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-# Install dependencies.
-RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick \
-    libffi yaml tzdata
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+    rm -rf "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile -j 1 --gemfile
 
-# Initializes the working directory.
-RUN mkdir /makigas
-WORKDIR /makigas
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
-# Install Ruby dependencies
-ADD Gemfile Gemfile.lock /
-RUN apk add --update --no-cache --virtual .build-deps \
-      build-base libffi-dev yaml-dev && \
-    gem install bundler:4.0.18 --clear-sources \
-      --source https://beta.gem.coop && \
-    bundle config set no-cache 'true' && \
-    bundle config set without 'development test' && \
-    bundle install && \
-    rm -rf /vendor/bundle/ruby/4.0.0/cache/*.gem && \
-    find /vendor/bundle/ruby/4.0.0/gems/ -name "*.[co]" -delete && \
-    apk del .build-deps
+COPY . .
+RUN bundle exec bootsnap precompile -j 1 app/ lib/ && \
+    SECRET_KEY_BASE_DUMMY=1 GOGC=off bin/rails assets:precompile && \
+    rm -rf node_modules
 
-ADD . .
-# Avoid a Go garbage collector crash under QEMU's amd64 emulation.
-RUN npm install --global pnpm@11.22.0 && \
-    pnpm install --frozen-lockfile && \
-    GOGC=off bin/rails assets:precompile && \
-    rm -rf node_modules && \
-    pnpm store prune && \
-    npm uninstall --global pnpm && \
-    rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx
+FROM base
 
-CMD ["docker/rails_start.sh"]
+COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
+COPY --from=build /rails /rails
+
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    mkdir -p db log public/system storage tmp && \
+    chown -R rails:rails db log public/system storage tmp
+
+USER 1000:1000
+
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+EXPOSE 3000
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]

@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:15
+        image: postgres:18.6
         env:
           POSTGRES_DB: postgres
           POSTGRES_USER: postgres
@@ -21,11 +21,12 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       meilisearch:
-        image: getmeili/meilisearch:v1.23
+        image: getmeili/meilisearch:v1.53.1
         env:
           MEILI_MASTER_KEY: meilikey
         ports:
           - 7700:7700
+        options: --health-cmd "curl --fail http://127.0.0.1:7700/health" --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
