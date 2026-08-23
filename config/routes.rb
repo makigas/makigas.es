@@ -16,8 +16,5 @@ Rails.application.routes.draw do
   draw(:app)
   draw(:legacy)
 
-  if Rails.env.development?
-    mount Lookbook::Engine, at: '/lookbook'
-    match('/delayed_job' => DelayedJobWeb, :anchor => false, :via => %i[get post])
-  end
+  mount Lookbook::Engine, at: '/lookbook' if Rails.env.development?
 end

@@ -2,6 +2,8 @@
 
 constraints subdomain: 'dashboard' do
   devise_for :users, controllers: { sessions: 'users/sessions' }
+  mount MissionControl::Jobs::Engine, at: '/jobs'
+
   namespace :dashboard, path: '' do
     root to: 'dashboard#index', as: ''
     resources :topics do

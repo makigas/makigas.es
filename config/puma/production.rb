@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-workers ENV.fetch('WEB_CONCURRENCY', 2)
+workers ENV.fetch('WEB_CONCURRENCY', 2) unless ENV['SOLID_QUEUE_IN_PUMA']
 threads_count = ENV.fetch('RAILS_MAX_THREADS', 5)
 threads threads_count, threads_count
 
@@ -21,3 +21,5 @@ on_worker_boot do
 end
 
 plugin :tmp_restart
+plugin :solid_queue if ENV['SOLID_QUEUE_IN_PUMA']
+solid_queue_mode :async if ENV['SOLID_QUEUE_IN_PUMA']

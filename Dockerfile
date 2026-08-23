@@ -12,6 +12,7 @@ ENV BUNDLE_PATH=/vendor/bundle
 ENV NODE_ENV=production
 ENV RAILS_ENV=production
 ENV SECRET_KEY_BASE=placeholder
+ENV SOLID_QUEUE_IN_PUMA=1
 
 # Install dependencies.
 RUN apk add --update --no-cache file postgresql-dev gcompat imagemagick \

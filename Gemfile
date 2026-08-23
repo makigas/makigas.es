@@ -20,9 +20,8 @@ gem 'rails', '8.1.3.1'
 gem 'rails-i18n', '~> 8.1.0'
 
 # Job processing
-gem 'delayed_job', '~> 4.2.0'
-gem 'delayed_job_active_record'
-gem 'delayed_job_web'
+gem 'mission_control-jobs', '~> 1.1'
+gem 'solid_queue', '~> 1.7'
 
 # Application extras
 gem 'acts_as_list'

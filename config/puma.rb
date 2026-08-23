@@ -28,6 +28,9 @@ port ENV.fetch("PORT", 3000)
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
+preload_app! if ENV['SOLID_QUEUE_IN_PUMA']
+plugin :solid_queue if ENV['SOLID_QUEUE_IN_PUMA']
+solid_queue_mode :async if ENV['SOLID_QUEUE_IN_PUMA']
 
 # Only use a pidfile when requested
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]

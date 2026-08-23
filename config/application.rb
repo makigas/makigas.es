@@ -31,7 +31,9 @@ module Makigas
     # Configure exceptions to show our custom /404 and /500 pages.
     config.exceptions_app = routes
 
-    # Configure Delayed Job
-    config.active_job.queue_adapter = :delayed_job
+    config.active_job.queue_adapter = :solid_queue
+    config.mission_control.jobs.adapters = [:solid_queue]
+    config.mission_control.jobs.base_controller_class = 'Dashboard::MissionControlController'
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end

@@ -3,7 +3,8 @@ default: &default
   port: <%= ENV['DB_PORT'] || '5432' %>
   adapter: <%= ENV['DB_ADAPTER'] || 'postgresql' %>
   encoding: unicode
-  pool: <%= ENV['DB_POOL'] || 5 %>
+  # Puma request threads and Solid Queue worker threads share this pool.
+  pool: <%= ENV['DB_POOL'] || 8 %>
 
 development:
   <<: *default

@@ -74,11 +74,15 @@ installed](https://docs.meilisearch.com/) if you plan to work in the
 search system. It is not necessary anymore to keep Meilisearch always
 open because indexing has been refered to jobs.
 
-## DelayedJob
+## Background jobs
 
-Meilisearch indexing has been defered to jobs.  If you want to run the
-jobs, use `rake jobs` to spawn a DelayedJob server, or use `rake
-jobs:work` to run the pending commands as a one-off.
+Meilisearch indexing is deferred to Active Job and persisted by Solid Queue.
+In production, Puma starts Solid Queue's supervisor, dispatcher and workers in
+the same process when `SOLID_QUEUE_IN_PUMA=1` is set (as it is in the Docker
+image), so no separate worker service is required.
+
+For local development, you can either set `SOLID_QUEUE_IN_PUMA=1` before
+starting Puma or run `bin/jobs --mode async` separately.
 
 ## Seeds
 
