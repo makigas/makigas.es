@@ -54,7 +54,7 @@ group :development do
   gem 'annotaterb', '~> 4.24.0'
   gem 'byebug'
   gem 'listen', '~> 3.10.0'
-  gem 'web-console', '~> 4.2.0'
+  gem 'web-console', '~> 4.3.0'
 
   # Guard
   gem 'guard', '~> 2.20.2'
