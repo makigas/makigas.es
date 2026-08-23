@@ -42,7 +42,7 @@ $large-icon-size: 30px;
      * is mostly a workaround for Firefox accessibility test, given that the
      * input already has an aria-label, but Firefox will not pick it. */
     border: 0;
-    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
     height: 1px;
     margin: -1px;
     overflow: hidden;

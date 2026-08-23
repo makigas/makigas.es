@@ -6,7 +6,7 @@
   @include desktop-layout {
     display: grid;
     grid-template-columns: 2fr auto;
-    grid-gap: 30px;
+    gap: 30px;
   }
 
   &__area {

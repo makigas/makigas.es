@@ -16,12 +16,12 @@
     @include desktop-layout {
       display: grid;
       grid-template-columns: auto 160px 160px;
-      grid-gap: 0 60px;
+      gap: 0 60px;
       grid-template-rows: repeat(2, auto);
     }
 
     @include wide-layout {
-      grid-gap: 0 120px;
+      gap: 0 120px;
     }
   }
 
