@@ -168,6 +168,7 @@ GEM
       logger
     faraday-net_http (3.4.4)
       net-http (~> 0.5)
+    ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-arm64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
     ffi (1.17.4-x86_64-linux-musl)
@@ -225,6 +226,9 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -306,6 +310,8 @@ GEM
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
     mime-types-data (3.2026.0701)
+    mini_magick (5.3.3)
+      logger
     mini_mime (1.1.5)
     minitest (6.0.6)
       drb (~> 2.0)
@@ -337,6 +343,8 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
+    nokogiri (1.19.4-aarch64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.19.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-gnu)
@@ -505,6 +513,9 @@ GEM
       rubocop-rspec (~> 3.5)
     ruby-next-core (1.2.1)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.3.0)
+      ffi (~> 1.12)
+      logger
     rubyzip (3.5.0)
     securerandom (0.4.1)
     selenium-webdriver (4.47.0)
@@ -606,6 +617,7 @@ DEPENDENCIES
   guard-rubocop (~> 1.5.0)
   guard-shell (~> 0.7.2)
   haml-rails (~> 3.1.0)
+  image_processing (~> 1.13)
   jbuilder (~> 2.15.1)
   jsbundling-rails
   kaminari
@@ -635,6 +647,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.7.1)
   rubocop-rspec (~> 3.10.2)
   rubocop-rspec_rails (~> 2.32.0)
+  ruby-vips (~> 2.2)
   selenium-webdriver (~> 4.47.0)
   sentry-rails (~> 6.7.0)
   sentry-ruby (~> 6.7.0)

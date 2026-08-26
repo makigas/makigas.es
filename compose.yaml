@@ -85,6 +85,7 @@ services:
       RAILS_ENV: production
       SECRET_KEY_BASE: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
       RAILS_USE_S3: "true"
+      ACTIVE_STORAGE_SERVICE: s3
       S3_ACL_ENABLED: "false"
       RAILS_LOG_TO_STDOUT: "true"
       DB_HOST: database
@@ -96,6 +97,8 @@ services:
       S3_BUCKET_DOMAIN: "true"
       S3_HOST_PROTO: http
       S3_ENDPOINT: http://storage:3900
+      ACTIVE_STORAGE_S3_ENDPOINT: http://storage:3900
+      S3_FORCE_PATH_STYLE: "true"
       AWS_REGION: garage
       AWS_ACCESS_KEY_ID: GK0123456789abcdef0123456789abcdef
       AWS_SECRET_ACCESS_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef

@@ -14,13 +14,12 @@ ENV RAILS_ENV="production" \
     RAILS_SERVE_STATIC_FILES="1" \
     SOLID_QUEUE_IN_PUMA="1"
 
-# Keep only libraries required by the running application. ImageMagick and
-# file are required by kt-paperclip; libpq and the PostgreSQL client are used
-# by the application and its entrypoint.
+# Keep only libraries required by the running application.
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
       file \
       imagemagick \
+      libvips42 \
       libjemalloc2 \
       postgresql-client \
       tzdata && \
