@@ -25,7 +25,7 @@ RUN apt-get update -qq && \
       tzdata && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-FROM docker.io/library/node:24.19.0-slim AS node
+FROM docker.io/library/node:24.20.0-slim AS node
 
 FROM base AS build
 
@@ -34,7 +34,7 @@ COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
     ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx && \
-    npm install --global pnpm@11.22.0
+    npm install --global pnpm@11.24.0
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
