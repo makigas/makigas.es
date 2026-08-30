@@ -85,19 +85,13 @@ services:
       RAILS_ENV: production
       RAILS_ASSUME_SSL: "false"
       SECRET_KEY_BASE: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
-      RAILS_USE_S3: "true"
       ACTIVE_STORAGE_SERVICE: s3
-      S3_ACL_ENABLED: "false"
       RAILS_LOG_TO_STDOUT: "true"
       DB_HOST: database
       DB_NAME: makigas
       DB_USERNAME: makigas
       DB_PASSWORD: makigas
       S3_BUCKET_NAME: cdn.makigas.local
-      S3_HOST_NAME: localhost:3902
-      S3_BUCKET_DOMAIN: "true"
-      S3_HOST_PROTO: http
-      S3_ENDPOINT: http://storage:3900
       ACTIVE_STORAGE_S3_ENDPOINT: http://storage:3900
       S3_FORCE_PATH_STYLE: "true"
       AWS_REGION: garage

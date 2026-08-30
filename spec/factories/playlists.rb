@@ -8,10 +8,6 @@
 #  aggregated_trend_tag    :string
 #  aggregated_views_recent :bigint           default(0), not null
 #  aggregated_views_total  :bigint           default(0), not null
-#  card_content_type       :string
-#  card_file_name          :string
-#  card_file_size          :bigint
-#  card_updated_at         :datetime
 #  deprecated              :boolean          default(FALSE), not null
 #  description             :text             not null
 #  excerpt                 :text
@@ -20,10 +16,6 @@
 #  normalized_views_recent :bigint           default(0), not null
 #  normalized_views_total  :bigint           default(0), not null
 #  slug                    :string           not null
-#  thumbnail_content_type  :string
-#  thumbnail_file_name     :string
-#  thumbnail_file_size     :bigint
-#  thumbnail_updated_at    :datetime
 #  title                   :string           not null
 #  topic_position          :integer          default(0), not null
 #  views_recent            :integer          default(0)

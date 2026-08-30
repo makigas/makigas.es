@@ -4,19 +4,15 @@
 #
 # Table name: topics
 #
-#  id                     :integer          not null, primary key
-#  color                  :string
-#  description            :string           not null
-#  forum_url              :string
-#  slug                   :string           not null
-#  thumbnail_content_type :string
-#  thumbnail_file_name    :string
-#  thumbnail_file_size    :bigint
-#  thumbnail_updated_at   :datetime
-#  title                  :string           not null
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  parent_topic_id        :bigint
+#  id              :integer          not null, primary key
+#  color           :string
+#  description     :string           not null
+#  forum_url       :string
+#  slug            :string           not null
+#  title           :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  parent_topic_id :bigint
 #
 # Indexes
 #
@@ -64,7 +60,7 @@ RSpec.describe Topic do
   end
 
   describe '#thumbnail_variant' do
-    it 'keeps the Paperclip dimensions and source format' do
+    it 'keeps the original dimensions and source format' do
       topic = build(:topic)
 
       expect(topic.thumbnail_variant(:hidef).variation.transformations).to eq(

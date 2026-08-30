@@ -18,7 +18,6 @@ ENV RAILS_ENV="production" \
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
       file \
-      imagemagick \
       libvips42 \
       libjemalloc2 \
       postgresql-client \

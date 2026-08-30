@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_23_095900) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_230548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -100,10 +100,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_095900) do
     t.string "aggregated_trend_tag"
     t.bigint "aggregated_views_recent", default: 0, null: false
     t.bigint "aggregated_views_total", default: 0, null: false
-    t.string "card_content_type"
-    t.string "card_file_name"
-    t.bigint "card_file_size"
-    t.datetime "card_updated_at"
     t.datetime "created_at", precision: nil, null: false
     t.boolean "deprecated", default: false, null: false
     t.text "description", null: false
@@ -114,10 +110,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_095900) do
     t.bigint "normalized_views_total", default: 0, null: false
     t.bigint "replacement_playlist_id"
     t.string "slug", null: false
-    t.string "thumbnail_content_type"
-    t.string "thumbnail_file_name"
-    t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
     t.string "title", null: false
     t.integer "topic_id"
     t.integer "topic_position", default: 0, null: false
@@ -296,10 +288,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_095900) do
   create_table "tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "description", null: false
-    t.string "icon_content_type"
-    t.string "icon_file_name"
-    t.bigint "icon_file_size"
-    t.datetime "icon_updated_at"
     t.string "slug", null: false
     t.string "synonyms", default: [], null: false, array: true
     t.string "title", null: false
@@ -337,10 +325,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_095900) do
     t.string "forum_url"
     t.bigint "parent_topic_id"
     t.string "slug", null: false
-    t.string "thumbnail_content_type"
-    t.string "thumbnail_file_name"
-    t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
     t.string "title", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["parent_topic_id"], name: "index_topics_on_parent_topic_id"
