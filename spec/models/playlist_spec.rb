@@ -129,7 +129,7 @@ RSpec.describe Playlist do
 
     def image_dimensions(variant)
       require 'vips'
-      image = Vips::Image.new_from_buffer(variant.download)
+      image = Vips::Image.new_from_buffer(variant.download, '')
       [image.width, image.height]
     end
   end
