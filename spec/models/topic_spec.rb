@@ -63,6 +63,16 @@ RSpec.describe Topic do
     end
   end
 
+  describe '#thumbnail_variant' do
+    it 'keeps the Paperclip dimensions and source format' do
+      topic = build(:topic)
+
+      expect(topic.thumbnail_variant(:hidef).variation.transformations).to eq(
+        resize_to_limit: [720, 720], format: 'png'
+      )
+    end
+  end
+
   describe 'slug' do
     it 'generates a slug' do
       topic = create(:topic, title: 'My topic')

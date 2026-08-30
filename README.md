@@ -20,7 +20,7 @@ Requirements:
 * An up to date PostgreSQL database. Other SQL engines are not supported.
 * [Meilisearch](https://www.meilisearch.com/), to build the search engine.
 * `libpq-dev`. If `bundle install` refuses to install pg, check this.
-* `imagemagick`. Required for image manipulation on thumbnails and such.
+* `libvips`. Required by Active Storage for image variants.
 * A web browser with Selenium support, for running E2E tests.
 
 ## Getting the code

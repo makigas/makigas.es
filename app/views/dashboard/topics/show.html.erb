@@ -21,7 +21,7 @@
   </tr>
   <tr>
     <td><%= t('.thumbnail') %></td>
-    <td><%= image_tag @topic.thumbnail.url(:small) %></td>
+    <td><%= image_tag url_for(@topic.thumbnail_variant(:small)) %></td>
   </tr>
   <tr>
     <td><%= t('.parent_topic') %></td>

@@ -39,4 +39,14 @@ RSpec.describe Tag do
       expect(tag).not_to be_valid
     end
   end
+
+  describe '#icon_variant' do
+    it 'keeps the configured dimensions and source format' do
+      tag = build(:tag)
+
+      expect(tag.icon_variant(:default).variation.transformations).to eq(
+        resize_to_limit: [64, 64], format: 'png'
+      )
+    end
+  end
 end

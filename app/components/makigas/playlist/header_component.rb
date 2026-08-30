@@ -13,11 +13,11 @@ module Makigas
       attr_reader :playlist
 
       def playlist_icon
-        playlist.thumbnail.url
+        helpers.url_for(playlist.thumbnail)
       end
 
       def playlist_iconset
-        hidef = playlist.thumbnail.url(:hidef)
+        hidef = helpers.url_for(playlist.thumbnail_variant(:hidef))
         normal = playlist_icon
         "#{normal}, #{hidef} 2x"
       end

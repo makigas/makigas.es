@@ -95,6 +95,45 @@ RSpec.describe Playlist do
     end
   end
 
+  describe 'image variants' do
+    let(:playlist) { build(:playlist) }
+
+    it 'keeps the thumbnail dimensions and source format' do
+      expect(playlist.thumbnail_variant(:small).variation.transformations).to eq(
+        resize_to_limit: [180, 180], format: 'png'
+      )
+    end
+
+    it 'keeps the card dimensions and source format' do
+      expect(playlist.card_variant(:thumbnail).variation.transformations).to eq(
+        resize_to_limit: [320, 180], format: 'jpg'
+      )
+    end
+
+    it 'processes the configured dimensions without changing source formats' do
+      playlist = create(:playlist)
+
+      thumbnail = playlist.thumbnail_variant(:small).processed
+      card = playlist.card_variant(:thumbnail).processed
+      card_default = playlist.card_variant(:default).processed
+
+      aggregate_failures do
+        expect(image_dimensions(thumbnail)).to eq [180, 180]
+        expect(thumbnail.content_type).to eq 'image/png'
+        expect(image_dimensions(card)).to eq [320, 160]
+        expect(card.content_type).to eq 'image/jpeg'
+        expect(image_dimensions(card_default)).to eq [1280, 640]
+        expect(card_default.content_type).to eq 'image/jpeg'
+      end
+    end
+
+    def image_dimensions(variant)
+      require 'vips'
+      image = Vips::Image.new_from_buffer(variant.download)
+      [image.width, image.height]
+    end
+  end
+
   describe '#replacement_playlist' do
     it 'can be nil even when the playlist is deprecated' do
       playlist = build(:playlist, deprecated: true, replacement_playlist: nil)

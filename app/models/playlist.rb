@@ -40,6 +40,7 @@
 #  index_playlists_on_slug                     (slug) UNIQUE
 #  index_playlists_on_topic_id                 (topic_id)
 #
+# rubocop:disable Metrics/ClassLength
 class Playlist < ApplicationRecord
   extend FriendlyId
 
@@ -47,18 +48,21 @@ class Playlist < ApplicationRecord
 
   acts_as_list scope: :topic, column: :topic_position
 
-  has_attached_file :thumbnail, styles: {
-    thumbnail: '100x100>',
-    small: '180x180>',
-    default: '360x360>',
-    hidef: '720x720>'
-  }, default_url: '/icons/color/makigas-512.png'
+  THUMBNAIL_VARIANTS = {
+    thumbnail: [100, 100],
+    small: [180, 180],
+    default: [360, 360],
+    hidef: [720, 720]
+  }.freeze
 
-  has_attached_file :card, styles: {
-    thumbnail: '320x180>',
-    small: '640x360>',
-    default: '1280x720>'
-  }
+  CARD_VARIANTS = {
+    thumbnail: [320, 180],
+    small: [640, 360],
+    default: [1280, 720]
+  }.freeze
+
+  has_one_attached :thumbnail
+  has_one_attached :card
 
   scope :sort_by_latest_video, lambda {
     joins(:videos).group('playlists.id').order(Arel.sql('max(videos.published_at) desc'))
@@ -81,10 +85,8 @@ class Playlist < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, presence: true, length: { maximum: 1500 }
   validates :youtube_id, presence: true, length: { maximum: 100 }
-  validates :thumbnail, presence: true
-  validates :card, presence: true
-  validates_attachment :thumbnail, content_type: { content_type: %r{\Aimage/.*\z} }
-  validates_attachment :card, content_type: { content_type: %r{\Aimage/.*\z} }
+  validates :thumbnail, image_attachment: true
+  validates :card, image_attachment: true
 
   has_many :videos, -> { order(position: :asc) }, inverse_of: :playlist, dependent: :destroy
   belongs_to :topic, optional: true
@@ -142,20 +144,47 @@ class Playlist < ApplicationRecord
   # Returns a HATEOAS-friendly representation of the thumbnails.
   def icons
     %i[hidef default thumbnail].map do |style|
-      { href: thumbnail.url(style),
-        type: thumbnail.content_type,
-        sizes: thumbnail.styles[style].geometry.gsub('>', '') }
+      { attachment: thumbnail_variant(style),
+        type: thumbnail.blob.content_type,
+        sizes: THUMBNAIL_VARIANTS.fetch(style).join('x') }
     end
   end
 
   # Returns a HATEOAS-friendly representation of the cards
   def cards
     %i[default small thumbnail].map do |style|
-      { href: card.url(style),
-        type: card.content_type,
-        sizes: card.styles[style].geometry.gsub('>', '') }
+      { attachment: card_variant(style),
+        type: card.blob.content_type,
+        sizes: CARD_VARIANTS.fetch(style).join('x') }
     end
   end
+
+  def thumbnail_variant(style)
+    thumbnail.variant(resize_to_limit: THUMBNAIL_VARIANTS.fetch(style), format: thumbnail_format)
+  end
+
+  def card_variant(style)
+    card.variant(resize_to_limit: CARD_VARIANTS.fetch(style), format: card_format)
+  end
+
+  private
+
+  def thumbnail_format
+    variant_format(thumbnail)
+  end
+
+  def card_format
+    variant_format(card)
+  end
+
+  def variant_format(attachment)
+    { 'image/jpeg' => 'jpg', 'image/png' => 'png', 'image/gif' => 'gif', 'image/webp' => 'webp',
+      'image/tiff' => 'tiff', 'image/bmp' => 'bmp' }.fetch(attachment.blob.content_type) do
+      attachment.blob.filename.extension_without_delimiter.presence&.downcase || 'png'
+    end
+  end
+
+  public
 
   def video_views_recent
     videos.pluck(:views_recent).sum
@@ -165,3 +194,4 @@ class Playlist < ApplicationRecord
     videos.pluck(:views_total).sum
   end
 end
+# rubocop:enable Metrics/ClassLength

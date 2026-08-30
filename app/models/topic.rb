@@ -32,18 +32,19 @@ class Topic < ApplicationRecord
   has_many :child_topics, class_name: 'Topic', inverse_of: :parent_topic, foreign_key: :parent_topic_id,
                           dependent: :nullify
 
-  has_attached_file :thumbnail, styles: {
-    thumbnail: '100x100>',
-    small: '180x180>',
-    default: '360x360>',
-    hidef: '720x720>'
-  }, default_url: '/icons/color/makigas-512.png'
+  THUMBNAIL_VARIANTS = {
+    thumbnail: [100, 100],
+    small: [180, 180],
+    default: [360, 360],
+    hidef: [720, 720]
+  }.freeze
+
+  has_one_attached :thumbnail
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 250 }
   validates :color, presence: true
-  validates :thumbnail, presence: true
-  validates_attachment :thumbnail, content_type: { content_type: %r{\Aimage/.*\z} }
+  validates :thumbnail, image_attachment: true
 
   # Playlists can survive without a topic, so on delete set the topic to null.
   has_many :playlists, dependent: :nullify
@@ -72,9 +73,26 @@ class Topic < ApplicationRecord
   # Returns a HATEOAS-friendly representation of the thumbnails.
   def icons
     %i[hidef default thumbnail].map do |style|
-      { href: thumbnail.url(style),
-        type: thumbnail.content_type,
-        sizes: thumbnail.styles[style].geometry.gsub('>', '') }
+      { attachment: thumbnail_variant(style),
+        type: thumbnail.blob.content_type,
+        sizes: THUMBNAIL_VARIANTS.fetch(style).join('x') }
+    end
+  end
+
+  def thumbnail_variant(style)
+    thumbnail.variant(resize_to_limit: THUMBNAIL_VARIANTS.fetch(style), format: thumbnail_format)
+  end
+
+  private
+
+  def thumbnail_format
+    variant_format(thumbnail)
+  end
+
+  def variant_format(attachment)
+    { 'image/jpeg' => 'jpg', 'image/png' => 'png', 'image/gif' => 'gif', 'image/webp' => 'webp',
+      'image/tiff' => 'tiff', 'image/bmp' => 'bmp' }.fetch(attachment.blob.content_type) do
+      attachment.blob.filename.extension_without_delimiter.presence&.downcase || 'png'
     end
   end
 end

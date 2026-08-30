@@ -31,7 +31,7 @@
   %tr
     %td Taxonomía
     %td |
-      = image_tag(@tip.taxonomy.icon.url, width: 32)
+      = image_tag(url_for(@tip.taxonomy.icon_variant(:default)), width: 32)
       = @tip.taxonomy.title
   %tr
     %td Otras etiquetas

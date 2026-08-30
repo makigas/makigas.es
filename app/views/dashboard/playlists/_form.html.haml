@@ -15,12 +15,12 @@
               .row.gy-4
                 .col-sm-6
                   .card
-                    = image_tag @playlist.thumbnail.url(:thumbnail), class: 'card-img-top mk-media-img', alt: ''
+                    = image_tag(@playlist.thumbnail.attached? ? url_for(@playlist.thumbnail_variant(:thumbnail)) : '/icons/color/makigas-512.png', class: 'card-img-top mk-media-img', alt: '')
                     .card-body
                       = f.input :thumbnail, as: :file
                 .col-sm-6
                   .card
-                    = image_tag @playlist.card.url(:thumbnail), class: 'card-img-top mk-media-img'
+                    = image_tag(@playlist.card.attached? ? url_for(@playlist.card_variant(:thumbnail)) : '/icons/color/makigas-512.png', class: 'card-img-top mk-media-img')
                     .card-body
                       = f.input :card, as: :file
             

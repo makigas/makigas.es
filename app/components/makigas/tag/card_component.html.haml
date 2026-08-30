@@ -1,3 +1,3 @@
 = link_to(search_path(tag: tag.slug), class: 'topcard card') do
-  %img{src: tag.icon.url, class: 'topcard__icon', alt: ''}
+  %img{src: url_for(tag.icon_variant(:default)), class: 'topcard__icon', alt: ''}
   = tag.title

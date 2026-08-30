@@ -51,11 +51,11 @@
   </tr>
   <tr>
     <td><%= t('.card') %></td>
-    <td><%= image_tag @playlist.card.url(:thumbnail) %></td>
+    <td><%= image_tag url_for(@playlist.card_variant(:thumbnail)) %></td>
   </tr>
   <tr>
     <td><%= t('.thumbnail') %></td>
-    <td><%= image_tag @playlist.thumbnail.url(:thumbnail) %></td>
+    <td><%= image_tag url_for(@playlist.thumbnail_variant(:thumbnail)) %></td>
   </tr>
   <tr>
     <td><%= t('.trends') %>

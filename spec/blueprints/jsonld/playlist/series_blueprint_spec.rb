@@ -42,8 +42,12 @@ RSpec.describe Jsonld::Playlist::SeriesBlueprint do
         'dateModified' => '2024-09-15T14:23:06Z',
         'datePublished' => '2024-09-12T14:23:06Z',
         'keywords' => %w[java maps records],
-        'thumbnailUrl' => playlist.thumbnail.url(:thumb),
-        'image' => playlist.card.url(:thumb),
+        'thumbnailUrl' => Rails.application.routes.url_helpers.rails_representation_url(
+          playlist.thumbnail_variant(:default), host: 'https://www.makigas.es'
+        ),
+        'image' => Rails.application.routes.url_helpers.rails_representation_url(
+          playlist.card_variant(:default), host: 'https://www.makigas.es'
+        ),
         'publisher' => {
           '@id' => 'https://www.makigas.es/#publisher'
         },

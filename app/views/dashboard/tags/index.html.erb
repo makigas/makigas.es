@@ -21,7 +21,7 @@
     <% @tags.each do |tag|  %>
       <%= body.with_row do |row| %>
         <%= row.with_cell(class: 'image-cell') do %>
-          <%= image_tag tag.icon.url %>
+          <%= image_tag url_for(tag.icon_variant(:default)) %>
         <% end %>
         <%= row.with_primary(tag.title) do |cell| %>
           <%= cell.with_actions do %>

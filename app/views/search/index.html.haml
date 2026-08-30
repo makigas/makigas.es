@@ -9,7 +9,7 @@
 = render 'search' do
   - if @tag.present? && @search_filters.tag.present? && @search_filters.page == 1
     %div.SearchTagDetails
-      = makigas_tag_information(title: @tag.title, body: @tag.description, icon: @tag.icon.url, icon_hd: @tag.icon.url(:hidef))
+      = makigas_tag_information(title: @tag.title, body: @tag.description, icon: url_for(@tag.icon_variant(:default)), icon_hd: url_for(@tag.icon_variant(:hidef)))
   %div.SearchBox
     = render Six::Layout::SearchComponent.new(query: params[:q], size: :normal, variant: :light) do |search|
       - @search_params.slice(:tag, :'sin-obsoletos', :articulos).compact_blank.each do |k, v|

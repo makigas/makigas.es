@@ -14,7 +14,7 @@ RSpec.describe 'Playlist page' do
     aggregate_failures do
       expect(page).to have_text playlist.title
       expect(page).to have_text playlist.description
-      expect(page).to have_css "img[src*='#{playlist.thumbnail.url}']"
+      expect(page).to have_css "img[src*='/rails/active_storage/']"
     end
   end
 

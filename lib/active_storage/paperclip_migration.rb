@@ -97,7 +97,7 @@ module ActiveStorage
     end
 
     def blob_attributes(paperclip)
-      key = paperclip.path(:original).to_s.sub(%r{\A/}, '')
+      key = paperclip_key(paperclip)
       raise "missing Paperclip original at #{key}" unless paperclip_original_exists?(paperclip)
 
       checksum, byte_size = checksum_and_size(paperclip)
@@ -124,6 +124,13 @@ module ActiveStorage
       return unless attachment && (!blob || attachment.blob_id != blob.id)
 
       raise "conflicting Active Storage attachment for #{record.class}##{record.id}.#{name}"
+    end
+
+    def paperclip_key(paperclip)
+      path = Pathname.new(paperclip.path(:original).to_s)
+      return path.relative_path_from(Rails.root).to_s if path.absolute? && path.to_s.start_with?(Rails.root.to_s)
+
+      path.to_s.sub(%r{\A/}, '')
     end
 
     def paperclip_original_exists?(paperclip)

@@ -4,8 +4,8 @@
   <subtitle type="text">Una lista de reproducción de makigas</subtitle>
   <updated><%= @videos.pluck(:updated_at).max.iso8601 %></updated>
   <id><%= playlist_url(@playlist, format: :atom) %></id>
-  <icon><%= @playlist.thumbnail.url %></icon>
-  <logo><%= @playlist.thumbnail.url %></logo>
+  <icon><%= rails_representation_url(@playlist.thumbnail_variant(:default)) %></icon>
+  <logo><%= rails_representation_url(@playlist.thumbnail_variant(:default)) %></logo>
   <link rel="self" href="<%= playlist_url(@playlist, format: :atom) %>" type="application/atom+xml" />
   <link rel="alternate" href="<%= playlist_url(@playlist) %>" type="text/html" />
   <author><name>makigas.es</name></author>

@@ -14,11 +14,11 @@ module Six
       attr_reader :topic
 
       def standard_icon
-        topic.thumbnail.url(:default)
+        helpers.url_for(topic.thumbnail_variant(:default))
       end
 
       def hidef_icon
-        topic.thumbnail.url(:hidef)
+        helpers.url_for(topic.thumbnail_variant(:hidef))
       end
 
       def name

@@ -6,7 +6,7 @@
   <meta name="twitter:site" content="@makigas">
   <meta name="twitter:title" content="<%= @video.title %> – <%= @video.playlist.title %>">
   <meta name="twitter:description" content="<%= @video.description %>">
-  <meta name="twitter:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+  <meta name="twitter:image" content="<%= rails_representation_url(@video.playlist.card_variant(:default)) %>">
 <% end %>
 <% content_for :facebook do %>
   <meta property="og:url" content="<%= canonical_url %>">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:description" content="<%= @video.description %>">
   <meta property="og:site_name" content="makigas">
-  <meta property="og:image" content="<%= image_url(@video.playlist.card.url, only_path: false) %>">
+  <meta property="og:image" content="<%= rails_representation_url(@video.playlist.card_variant(:default)) %>">
 <% end %>
 <% content_for :meta do %>
   <%= tag(:meta, name: 'fediverse:creator', content: @video.user.fediverse_creator_id) if @video&.user&.fediverse_creator_id.present? %>

@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get -yqq install imagemagick libpq-dev
+          sudo apt-get -yqq install imagemagick libvips-dev libpq-dev
       - uses: jdx/mise-action@v4
         with:
           install_args: ruby node pnpm

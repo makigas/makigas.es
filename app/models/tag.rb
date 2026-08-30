@@ -21,16 +21,24 @@
 #  index_tags_on_slug  (slug) UNIQUE
 #
 class Tag < ApplicationRecord
-  has_attached_file :icon
+  ICON_VARIANTS = {
+    default: [64, 64],
+    hidef: [128, 128]
+  }.freeze
+
+  has_one_attached :icon
 
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :description, presence: true
-  validates :icon, presence: true
-  validates_attachment :icon, content_type: { content_type: %r{\Aimage/.*\z} }
+  validates :icon, image_attachment: true
 
   def to_param
     slug
+  end
+
+  def icon_variant(style)
+    icon.variant(resize_to_limit: ICON_VARIANTS.fetch(style), format: icon_format)
   end
 
   def self.synonym(syn)
@@ -55,5 +63,14 @@ class Tag < ApplicationRecord
 
   def self.deploy_synonyms
     Video.index.update_synonyms(synonyms_catalog)
+  end
+
+  private
+
+  def icon_format
+    { 'image/jpeg' => 'jpg', 'image/png' => 'png', 'image/gif' => 'gif', 'image/webp' => 'webp',
+      'image/tiff' => 'tiff', 'image/bmp' => 'bmp' }.fetch(icon.blob.content_type) do
+      icon.blob.filename.extension_without_delimiter.presence&.downcase || 'png'
+    end
   end
 end

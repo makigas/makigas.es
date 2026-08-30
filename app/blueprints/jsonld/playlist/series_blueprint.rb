@@ -18,8 +18,12 @@ module Jsonld
         field(:date_modified) { |playlist| playlist.content_updated_at.iso8601 }
         field(:date_published) { |playlist| playlist.videos.first&.published_at&.iso8601 }
         field(:keywords) { |playlist| playlist.videos.pluck(:tags).flatten.uniq.sort }
-        field(:thumbnail_url) { |playlist| playlist.thumbnail.url(:thumb) }
-        field(:image) { |playlist| playlist.card.url(:thumb) }
+        field(:thumbnail_url) do |playlist, options|
+          routes.rails_representation_url(playlist.thumbnail_variant(:default), host: options[:host])
+        end
+        field(:image) do |playlist, options|
+          routes.rails_representation_url(playlist.card_variant(:default), host: options[:host])
+        end
         reference(:publisher, blueprint: PublisherBlueprint)
         field(:url) { |playlist, options| routes.playlist_url(playlist, host: options[:host]) }
         field(:same_as) { |playlist| "https://www.youtube.com/playlist?list=#{playlist.youtube_id}" }

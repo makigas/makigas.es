@@ -6,8 +6,8 @@ module SearchHelper
       description: playlist.description,
       url: playlist_path(playlist),
       label: 'Curso',
-      icon: playlist.thumbnail.url(:small),
-      icon_hd: playlist.thumbnail.url(:hidef) }
+      icon: url_for(playlist.thumbnail_variant(:small)),
+      icon_hd: url_for(playlist.thumbnail_variant(:hidef)) }
   end
 
   def search_result_video(video)

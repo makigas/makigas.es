@@ -14,8 +14,20 @@ end
 json._links do
   json.self { json.href playlist_path(playlist) }
   json.collection { json.href playlists_path }
-  json.icon playlist.icons
-  json.set! 'makigas:card', playlist.cards
+  json.icon do
+    json.array! playlist.icons do |icon|
+      json.href url_for(icon[:attachment])
+      json.type icon[:type]
+      json.sizes icon[:sizes]
+    end
+  end
+  json.set! 'makigas:card' do
+    json.array! playlist.cards do |card|
+      json.href url_for(card[:attachment])
+      json.type card[:type]
+      json.sizes card[:sizes]
+    end
+  end
   json.set! 'makigas:youtube' do
     json.href "https://youtube.com/playlist?list=#{playlist.youtube_id}"
   end
