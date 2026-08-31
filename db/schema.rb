@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_30_230549) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_31_081800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -82,18 +82,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_230549) do
     t.string "url", null: false
     t.bigint "video_id", null: false
     t.index ["video_id"], name: "index_links_on_video_id"
-  end
-
-  create_table "opinions", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "from", null: false
-    t.string "message", null: false
-    t.string "photo_content_type", null: false
-    t.string "photo_file_name", null: false
-    t.bigint "photo_file_size", null: false
-    t.datetime "photo_updated_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "url"
   end
 
   create_table "playlists", id: :serial, force: :cascade do |t|
