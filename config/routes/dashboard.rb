@@ -6,10 +6,6 @@ constraints subdomain: 'dashboard' do
 
   namespace :dashboard, path: '' do
     root to: 'dashboard#index', as: ''
-    resources :topics do
-      get :order
-      put :reorder
-    end
     resources :videos, only: %i[index new create] do
       put :update_slug, path: 'modal/slug', on: :collection
     end

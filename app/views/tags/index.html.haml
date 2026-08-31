@@ -3,7 +3,7 @@
 - content_for(:hero) do
   %h1= t('.title')
 = makigas_wrapper do
-  %ul.topicslist
+  %ul.tagslist
     - @tags.each do |tag|
       %li= render(Makigas::Tag::CardComponent.new(tag:))
   %p<

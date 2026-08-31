@@ -31,9 +31,9 @@ json._links do
   json.set! 'makigas:youtube' do
     json.href "https://youtube.com/playlist?list=#{playlist.youtube_id}"
   end
-  if playlist.display_forum_url.present?
+  if playlist.forum_url.present?
     json.set! 'makigas:forum' do
-      json.href playlist.display_forum_url
+      json.href playlist.forum_url
     end
   end
 end

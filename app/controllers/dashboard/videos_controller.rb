@@ -9,7 +9,7 @@ module Dashboard
     def index
       @sorter = VideoSorter.new(query: params[:sort] || DEFAULT_SORT_CRITERIA)
       @videos = @sorter.videos.where(filter_criteria).page(params[:page])
-      @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
+      @playlists = Playlist.select(:id, :title).order(:created_at)
     end
 
     def show; end

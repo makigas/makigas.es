@@ -17,20 +17,17 @@
 #  normalized_views_total  :bigint           default(0), not null
 #  slug                    :string           not null
 #  title                   :string           not null
-#  topic_position          :integer          default(0), not null
 #  views_recent            :integer          default(0)
 #  views_total             :integer          default(0)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  replacement_playlist_id :bigint
-#  topic_id                :integer
 #  youtube_id              :string           not null
 #
 # Indexes
 #
 #  index_playlists_on_replacement_playlist_id  (replacement_playlist_id)
 #  index_playlists_on_slug                     (slug) UNIQUE
-#  index_playlists_on_topic_id                 (topic_id)
 #
 require 'rails_helper'
 
@@ -79,11 +76,6 @@ RSpec.describe Playlist do
     it 'is not valid without a playlist photo' do
       playlist = build(:playlist, thumbnail: nil)
       expect(playlist).not_to be_valid
-    end
-
-    it 'is valid without a topic' do
-      playlist = build(:playlist, topic: nil)
-      expect(playlist).to be_valid
     end
   end
 
@@ -160,13 +152,6 @@ RSpec.describe Playlist do
     end
   end
 
-  describe 'topic association' do
-    it 'may belong to a topic' do
-      playlist = create(:playlist)
-      expect(playlist).to respond_to(:topic)
-    end
-  end
-
   describe '#with_public_videos' do
     describe 'when the playlist has public videos' do
       it 'gets included' do
@@ -221,12 +206,12 @@ RSpec.describe Playlist do
     end
   end
 
-  describe '#display_forum_url' do
+  describe 'forum URL' do
     describe 'when the playlist has an URL' do
       let(:playlist) { create(:playlist, forum_url: '/playlist') }
 
       it 'matches the URL of the playlist' do
-        expect(playlist.display_forum_url).to eq '/playlist'
+        expect(playlist.forum_url).to eq '/playlist'
       end
     end
 
@@ -234,64 +219,7 @@ RSpec.describe Playlist do
       let(:playlist) { create(:playlist) }
 
       it 'is null' do
-        expect(playlist.display_forum_url).to be_nil
-      end
-    end
-
-    describe 'when the playlist has a topic with URL and the playlist has no URL' do
-      let(:topic) { create(:topic, forum_url: '/topic') }
-      let(:playlist) { create(:playlist, topic:) }
-
-      it 'uses the URL from the topic' do
-        expect(playlist.display_forum_url).to eq '/topic'
-      end
-    end
-
-    describe 'when both playlist and topic have URLs' do
-      let(:topic) { create(:topic, forum_url: '/topic') }
-      let(:playlist) { create(:playlist, forum_url: '/playlist', topic:) }
-
-      it 'uses the URL from the playlist instead' do
-        expect(playlist.display_forum_url).to eq '/playlist'
-      end
-    end
-
-    describe 'when no one has a URL' do
-      let(:topic) { create(:topic) }
-      let(:playlist) { create(:playlist, topic:) }
-
-      it 'returns null' do
-        expect(playlist.display_forum_url).to be_nil
-      end
-    end
-
-    describe 'when the playlist and topic have no URL but the parent topic has' do
-      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
-      let(:topic) { create(:topic, parent_topic:) }
-      let(:playlist) { create(:playlist, topic:) }
-
-      it 'inherits the forum URL from the parent topic' do
-        expect(playlist.display_forum_url).to eq '/parent_topic'
-      end
-    end
-
-    describe 'when the topic hierarchy has multiple forum URLs' do
-      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
-      let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
-      let(:playlist) { create(:playlist, topic:) }
-
-      it 'wins the closest topic to the playlist' do
-        expect(playlist.display_forum_url).to eq '/child_topic'
-      end
-    end
-
-    describe 'when every item has a forum URL' do
-      let(:parent_topic) { create(:topic, forum_url: '/parent_topic') }
-      let(:topic) { create(:topic, forum_url: '/child_topic', parent_topic:) }
-      let(:playlist) { create(:playlist, forum_url: '/playlist', topic:) }
-
-      it 'wins the playlist' do
-        expect(playlist.display_forum_url).to eq '/playlist'
+        expect(playlist.forum_url).to be_nil
       end
     end
   end

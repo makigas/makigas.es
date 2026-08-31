@@ -5,7 +5,6 @@ class DownloadProduction
 
   def initialize
     @playlists = {}
-    @topics = {}
     namespace :makigas do
       desc 'Downloads a copy of the contents of production'
       task download_production: :environment do
@@ -52,7 +51,6 @@ class DownloadProduction
   def upsert_playlist(playlist)
     @playlists[playlist['slug']] ||= Playlist.find_or_initialize_by(slug: playlist['slug']).tap do |p|
       attributes = playlist_attributes(playlist)
-      attributes[:topic] = upsert_topic(playlist['topic']) if playlist['topic'].present?
       p.update(attributes)
     end
   end
@@ -63,19 +61,6 @@ class DownloadProduction
       youtube_id: playlist['_links']['makigas:youtube']['href'].gsub('https://youtube.com/playlist?list=', ''),
       card: get_icon_url_by_size(playlist['_links']['makigas:card'], '1280x720'),
       thumbnail: get_icon_url_by_size(playlist['_links']['icon'], '720x720') }
-  end
-
-  def upsert_topic(topic)
-    @topics[topic['slug']] ||= Topic.find_or_initialize_by(slug: topic['slug']).tap do |t|
-      t.update(topic_attributes(topic))
-    end
-  end
-
-  def topic_attributes(topic)
-    { title: topic['title'],
-      description: topic['description'],
-      color: topic['color'],
-      thumbnail: get_icon_url_by_size(topic.dig('_links', 'icon'), '720x720') }
   end
 
   def get_icon_url_by_size(icons, size)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_30_230548) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_30_230549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -111,15 +111,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_230548) do
     t.bigint "replacement_playlist_id"
     t.string "slug", null: false
     t.string "title", null: false
-    t.integer "topic_id"
-    t.integer "topic_position", default: 0, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "views_recent", default: 0
     t.integer "views_total", default: 0
     t.string "youtube_id", null: false
     t.index ["replacement_playlist_id"], name: "index_playlists_on_replacement_playlist_id"
     t.index ["slug"], name: "index_playlists_on_slug", unique: true
-    t.index ["topic_id"], name: "index_playlists_on_topic_id"
   end
 
   create_table "search_requests", force: :cascade do |t|
@@ -316,19 +313,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_30_230548) do
     t.index ["taxonomy_id"], name: "index_tips_on_taxonomy_id"
     t.index ["user_id"], name: "index_tips_on_user_id"
     t.index ["youtube_id"], name: "index_tips_on_youtube_id", unique: true
-  end
-
-  create_table "topics", id: :serial, force: :cascade do |t|
-    t.string "color"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description", null: false
-    t.string "forum_url"
-    t.bigint "parent_topic_id"
-    t.string "slug", null: false
-    t.string "title", null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["parent_topic_id"], name: "index_topics_on_parent_topic_id"
-    t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

@@ -8,16 +8,24 @@ RSpec.describe 'Redirections' do
     expect(response).to redirect_to '/videos.atom'
   end
 
-  it 'redirects the old XML feed for topics' do
-    create(:topic, slug: 'cooking')
-    get '/topics/cooking/feed'
-    expect(response).to redirect_to '/temas/cooking.atom'
+  it 'redirects the old topic page' do
+    get '/topics/cooking'
+    expect(response).to redirect_to '/explorar/tema/cooking'
   end
 
-  it 'redirects the new XML feed for topics' do
-    create(:topic, slug: 'cooking')
+  it 'redirects the old topic feed URL' do
+    get '/topics/cooking/feed'
+    expect(response).to redirect_to '/explorar/tema/cooking'
+  end
+
+  it 'redirects the old /temas topic feed URL' do
     get '/temas/cooking/feed'
-    expect(response).to redirect_to '/temas/cooking.atom'
+    expect(response).to redirect_to '/explorar/tema/cooking'
+  end
+
+  it 'redirects the old /temas topic page' do
+    get '/temas/cooking'
+    expect(response).to redirect_to '/explorar/tema/cooking'
   end
 
   it 'redirects the XML feed for playlist' do

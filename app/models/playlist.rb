@@ -17,28 +17,23 @@
 #  normalized_views_total  :bigint           default(0), not null
 #  slug                    :string           not null
 #  title                   :string           not null
-#  topic_position          :integer          default(0), not null
 #  views_recent            :integer          default(0)
 #  views_total             :integer          default(0)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  replacement_playlist_id :bigint
-#  topic_id                :integer
 #  youtube_id              :string           not null
 #
 # Indexes
 #
 #  index_playlists_on_replacement_playlist_id  (replacement_playlist_id)
 #  index_playlists_on_slug                     (slug) UNIQUE
-#  index_playlists_on_topic_id                 (topic_id)
 #
 # rubocop:disable Metrics/ClassLength
 class Playlist < ApplicationRecord
   extend FriendlyId
 
   friendly_id :title, use: %i[slugged history]
-
-  acts_as_list scope: :topic, column: :topic_position
 
   THUMBNAIL_VARIANTS = {
     thumbnail: [100, 100],
@@ -81,8 +76,6 @@ class Playlist < ApplicationRecord
   validates :card, image_attachment: true
 
   has_many :videos, -> { order(position: :asc) }, inverse_of: :playlist, dependent: :destroy
-  belongs_to :topic, optional: true
-
   belongs_to :replacement_playlist, class_name: 'Playlist', optional: true
 
   include Meilisearch::Rails
@@ -109,16 +102,6 @@ class Playlist < ApplicationRecord
     sortable_attributes %i[views_recent views_total last_publication_date]
 
     ranking_rules %i[sort exactness attribute last_publication_date:desc views_recent:desc words typo proximity]
-  end
-
-  def display_forum_url
-    return forum_url if forum_url.present?
-
-    return nil if topic.blank?
-
-    all_topics = topic.ancestors.tap { |arr| arr << topic }
-    all_urls = all_topics.map(&:forum_url)
-    all_urls.reverse.compact.first
   end
 
   def total_length

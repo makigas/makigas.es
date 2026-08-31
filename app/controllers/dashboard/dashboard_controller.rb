@@ -9,7 +9,6 @@ module Dashboard
     def index
       @videos = Video.count
       @playlists = Playlist.count
-      @topics = Topic.count
       @users = User.count
       @tags = Tag.count
       @statistics = fetch_statistics

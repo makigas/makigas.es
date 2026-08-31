@@ -12,7 +12,6 @@
   <thead>
     <tr>
       <th><%= t('.title') %></th>
-      <th><%= t('.topic') %></th>
       <th><%= t('.videos') %></th>
       <th><%= t('.operations') %></th>
     </tr>
@@ -21,7 +20,6 @@
     <% @playlists.each do |playlist| %>
       <tr>
         <td><%= link_to playlist.title, [:dashboard, playlist] %></td>
-        <td><%= link_to playlist.topic.title, [:dashboard, playlist.topic] rescue t('.no_topic') %></td>
         <td><%= link_to playlist.videos.length, [:videos, :dashboard, playlist] %></td>
         <td>
           <%= link_to t('.edit'), [:edit, :dashboard, playlist], class: 'btn btn-xs btn-outline-secondary' %>

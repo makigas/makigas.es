@@ -46,10 +46,6 @@
   </tr>
   <% end %>
   <tr>
-    <td><%= t('.topic') %></td>
-    <td><%= link_to @playlist.topic.title, [:dashboard, @playlist.topic] rescue t('.no_topic') %></td>
-  </tr>
-  <tr>
     <td><%= t('.card') %></td>
     <td><%= image_tag url_for(@playlist.card_variant(:thumbnail)) %></td>
   </tr>

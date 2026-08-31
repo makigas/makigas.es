@@ -13,7 +13,6 @@ es:
         dashboard: Panel de control
         manage_playlists: Gestionar listas
         manage_tags: Gestionar etiquetas
-        manage_topics: Gestionar temas
         manage_users: Gestionar usuarios
         manage_videos: Gestionar vídeos
         playlists:
@@ -22,9 +21,6 @@ es:
         tags:
           one: etiqueta
           other: etiquetas
-        topics:
-          one: tema
-          other: temas
         users:
           one: usuario
           other: usuarios
@@ -112,12 +108,10 @@ es:
         destroy: Destruir
         edit: Editar
         new_playlist: Nueva Lista
-        no_topic: (sin tema)
         operations: Operaciones
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
         title: Título
-        topic: Tema
         videos: Vídeos
       new:
         cancel: Cancelar
@@ -138,7 +132,6 @@ es:
         edit: Editar
         forum_url: URL de foro
         no_forum: (sin foro)
-        no_topic: (sin tema)
         paste_this_into_the_group_settings: Pega este string en la configuración del grupo de YouTube Analytics para actualizar todos los vídeos que forman parte del mismo
         playlists: Listas
         really_destroy: Eliminar una lista no tiene vuelta atrás. Sólo puedes eliminar listas que no tengan vídeos en su interior.
@@ -147,7 +140,6 @@ es:
         thumbnail: Miniatura
         tags: Etiquetas
         title: Título
-        topic: Tema
         trends: Tendencias
         twitch_id: ID de Twitch
         videos: Vídeos
@@ -172,7 +164,7 @@ es:
         operations: Operaciones
         playlists: Listas
         position: Posición
-        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
+        really_destroy: Eliminar un vídeo no tiene vuelta atrás.
         title: Título
         up: Subir
         videos: Vídeos
@@ -215,60 +207,6 @@ es:
         tags: Etiquetas
       update:
         updated: Etiqueta modificada correctamente
-    topics:
-      create:
-        created: Tema creado correctamente.
-      destroy:
-        destroyed: Tema eliminado correctamente.
-      edit:
-        cancel: Cancelar
-        dashboard: Panel de control
-        edit: Editar
-        topics: Temas
-      index:
-        dashboard: Panel de control
-        destroy: Destruir
-        edit: Editar
-        new_topic: Nuevo Tema
-        operations: Operaciones
-        playlists: Listas
-        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
-        title: Título
-        topics: Temas
-      new:
-        cancel: Cancelar
-        dashboard: Panel de control
-        new_topic: Nuevo Tema
-        topics: Temas
-      order:
-        actions: Acciones
-        back: Regresar
-        dashboard: Panel de control
-        down: Bajar
-        order: Ordenar
-        position: Posición
-        title: Título
-        topics: Temas
-        up: Subir
-      show:
-        color: Color
-        dashboard: Panel de control
-        description: Descripción
-        destroy: Destruir
-        edit: Editar
-        forum_url: URL del foro
-        no_forum: (no hay)
-        none: (Ninguno)
-        order: Ordenar
-        parent_topic: Tema superior
-        playlists: Listas
-        really_destroy: Eliminar un tema no tiene vuelta atrás. No se perderá información de las listas, que quedarán huérfanas y sin tema.
-        thumbnail: Miniatura
-        title: Título
-        topics: Temas
-        view_topic: Ver Tema
-      update:
-        updated: Tema actualizado correctamente.
     transcriptions:
       show:
         cancel: Cancelar
@@ -408,7 +346,6 @@ es:
         navigation: Navegación
         playlists: Listas
         tags: Etiquetas
-        topics: Temas
         users: Usuarios
         videos: Vídeos
         view_site: Ver sitio

@@ -28,7 +28,6 @@ es:
         slug: URL
         thumbnail: Miniatura
         title: Título
-        topic: Tema
         youtube_id: ID de YouTube
       show_note:
         content: Contenido
@@ -38,14 +37,6 @@ es:
         icon: Icono
         slug: Identificador
         synonyms: Sinónimos
-        title: Título
-      topic:
-        color: Color
-        description: Descripción
-        forum_url: URL del foro
-        parent_topic: Tema superior
-        slug: URL
-        thumbnail: Miniatura
         title: Título
       transcription:
         content: Contenido
@@ -76,7 +67,6 @@ es:
       tag:
         one: Etiqueta
         other: Etiquetas
-      topic: Tema
       transcription:
         one: Transcripción
         other: Transcripciones

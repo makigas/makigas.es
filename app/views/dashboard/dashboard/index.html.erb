@@ -18,11 +18,6 @@
         <p class="d-grid"><%= link_to t('.manage_playlists'), [:dashboard, :playlists], class: 'btn btn-outline-secondary' %></p>
       </div>
       <div class="col-sm-12 col-xs-6">
-        <h1><span class="bi bi-journals"></span> <%= @topics %></h1>
-        <p class="lead"><%= t('.topics', count: @topics) %></p>
-        <p class="d-grid"><%= link_to t('.manage_topics'), [:dashboard, :topics], class: 'btn btn-outline-secondary' %></p>
-      </div>
-      <div class="col-sm-12 col-xs-6">
         <h1><span class="bi bi-person-fill"></span> <%= @users %></h1>
         <p class="lead"><%= t('.users', count: @users) %></p>
         <p class="d-grid"><%= link_to t('.manage_users'), [:dashboard, :users], class: 'btn btn-outline-secondary' %></p>

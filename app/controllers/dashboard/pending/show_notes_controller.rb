@@ -14,7 +14,7 @@ module Dashboard
 
       def show
         @videos = Video.unnoted.where(filter_criteria).order(sort_criteria).page(params[:page])
-        @playlists = Playlist.select(:id, :title).order(:topic_id, :created_at)
+        @playlists = Playlist.select(:id, :title).order(:created_at)
       end
 
       private

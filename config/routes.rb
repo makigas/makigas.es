@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   get '/422', to: 'error#unprocessable_entity', via: :all
   get '/500', to: 'error#internal_server_error', via: :all
 
-  # Legacy RSS feeds, must come first or there will be conflicts.
+  # Legacy feed URLs, must come first or there will be conflicts.
   get '/videos/feed' => redirect('/videos.atom')
-  get '/temas/:topic/feed' => redirect('/temas/%{topic}.atom')
+  get '/temas/:topic/feed' => redirect('/explorar/tema/%{topic}')
   get '/series/:playlist/feed' => redirect('/series/%{playlist}.atom')
 
   draw(:dashboard)

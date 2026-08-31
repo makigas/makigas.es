@@ -5,7 +5,7 @@
   <title type="html"><![CDATA[<%= video.title %>]]></title>
   <summary type="html"><![CDATA[<%= video.description %>]]></summary>
   <category term="<%= video.playlist.title %>" />
-  <%- if video.playlist.topic.present? -%>
-  <category term="<%= video.playlist.topic.title %>" />
+  <%- video.tags.to_a.each do |tag| -%>
+  <category term="<%= tag %>" />
   <%- end -%>
 </entry>

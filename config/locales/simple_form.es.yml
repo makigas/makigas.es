@@ -15,9 +15,6 @@ es:
     include_blanks:
       playlist:
         replacement_playlist: (Ninguna)
-        topic: (Sin tema concreto)
-      topic:
-        parent_topic: (Sin tema superior)
     options:
       tip:
         status:

@@ -48,9 +48,6 @@ es:
         title: Lee más información acerca del proyecto makigas
       subtitle: En esto tan simple consiste makigas
       title_html: Tutoriales de programación <span class="highlighted">gratuitos</span> y en castellano
-      topics:
-        button: Explora las temáticas
-        title: Visualiza las listas de temas disponibles en esta página web.
     videos:
       recent_videos: Explorar vídeos recientes...
       recent_videos_alt: Haz clic aquí para visualizar los últimos vídeos publicados en el canal.
@@ -79,7 +76,6 @@ es:
         front: Principal
         playlists: Listas
         title: Sitio
-        topics: Temas
         videos: Vídeos
       social:
         facebook: Facebook
@@ -95,7 +91,6 @@ es:
       navigation: Desplegar navegación
       new: Nuevo
       playlists: Listas
-      topics: Temas
       videos: Vídeos
     six:
       head:
@@ -112,7 +107,6 @@ es:
     show:
       meta:
         playlist_feed: 'Lista: %{playlist} (ATOM)'
-        topic_feed: 'Tema: %{topic} (ATOM)'
   six:
     lesson:
       teacher_component:
@@ -144,19 +138,6 @@ es:
         description: En makigas.es encontrarás cursos y lecciones para aprender a programar sobre distintos temas.
         title: Todos los temas
       title: Todos los temas
-  topics:
-    index:
-      meta:
-        description: En el canal de makigas encontrarás gratis un montón de listas de reproducción con distintos contenidos temáticos sobre programación y desarrollo de software para que puedas aprender algo nuevo o encontrar la información que necesitas.
-        title: Todos los temas
-      title: Todas las temáticas
-    show:
-      episode:
-        one: 1 episodio
-        other: '%{count} episodios'
-      meta:
-        description: Explora las listas de reproducción que hay dentro de esta categoría o encuentra contenido adicional.
-        topic_feed: 'Tema: %{topic} (ATOM)'
   videos:
     index:
       duration: 'Duración: %{duration}'
@@ -164,7 +145,6 @@ es:
         any_length: Cualquier duración
         apply_filters: Aplicar filtros
         by_length: Por duración
-        by_topic: Por tema
         long_videos: Largos (>15 min)
         medium_videos: Medios (5..15 min)
         short_videos: Cortos (<5 min)
@@ -174,7 +154,6 @@ es:
       playlist_html: 'Serie: %{playlist}'
       tags: Etiquetas
       title: Todos los vídeos
-      topic_html: 'Tema: %{topic}'
     search_error:
       meta:
         description: En el canal de makigas encuentras más de 100 horas de vídeo con contenido de programación y desarrollo de software para que puedas aprender en castellano y de forma completamente gratuita.
@@ -185,7 +164,6 @@ es:
       links: Enlaces relacionados
       meta:
         playlist_feed: 'Lista: %{playlist} (ATOM)'
-        topic_feed: 'Tema: %{topic} (ATOM)'
       next: Siguiente
       part_of_series_html: Un episodio de %{playlist}
       preview: Esto es una vista previa de un vídeo que próximamente estará en YouTube (imagino).
@@ -193,7 +171,6 @@ es:
       release_date_html: 'Fecha de emisión: %{date}'
       show_notes: Notas del episodio
       this_playlist: Lista de reproducción
-      this_topic: Este tema
       transcription: Transcripción
       unlisted: Este vídeo en este momento está sin listar. Si navegas por los vídeos recientes del canal de YouTube o de la web no lo verás. Considera este enlace como un adelanto que podría sufrir modificaciones o ser eliminado si se encuentran errores y conserva el link si quieres volver a verlo antes de que se publique.
       watch_on_youtube: Ver en YouTube

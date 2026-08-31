@@ -17,20 +17,17 @@
 #  normalized_views_total  :bigint           default(0), not null
 #  slug                    :string           not null
 #  title                   :string           not null
-#  topic_position          :integer          default(0), not null
 #  views_recent            :integer          default(0)
 #  views_total             :integer          default(0)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  replacement_playlist_id :bigint
-#  topic_id                :integer
 #  youtube_id              :string           not null
 #
 # Indexes
 #
 #  index_playlists_on_replacement_playlist_id  (replacement_playlist_id)
 #  index_playlists_on_slug                     (slug) UNIQUE
-#  index_playlists_on_topic_id                 (topic_id)
 #
 FactoryBot.define do
   factory :playlist do
@@ -40,6 +37,5 @@ FactoryBot.define do
     thumbnail { Rack::Test::UploadedFile.new('spec/fixtures/playlist.png', 'image/png') }
     card { Rack::Test::UploadedFile.new('spec/fixtures/card.jpg', 'image/jpeg') }
     slug { title&.parameterize }
-    topic factory: %i[topic]
   end
 end
