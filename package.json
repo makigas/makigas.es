@@ -6,7 +6,7 @@
   "author": "Dani Rodríguez",
   "license": "GPLv3",
   "private": true,
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@11.25.0",
   "dependencies": {
     "@fontsource/montserrat": "5.3.0",
     "@popperjs/core": "2.11.8",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/rails__ujs": "6.0.4",
-    "eslint": "10.9.0",
+    "eslint": "10.9.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",
     "globals": "17.11.0",
