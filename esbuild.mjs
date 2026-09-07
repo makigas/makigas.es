@@ -2,7 +2,7 @@ import * as esbuild from "esbuild";
 import postcss from "esbuild-postcss";
 
 const options = {
-  entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js"],
+  entryPoints: ["app/javascript/packs/dashboard.js", "app/javascript/packs/six.js", "app/javascript/packs/seven.js"],
   bundle: true,
   logLevel: "info",
   outdir: "app/assets/builds",
