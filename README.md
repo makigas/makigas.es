@@ -78,8 +78,8 @@ open because indexing has been refered to jobs.
 
 Meilisearch indexing is deferred to Active Job and persisted by Solid Queue.
 In production, Puma starts Solid Queue's supervisor, dispatcher and workers in
-the same process when `SOLID_QUEUE_IN_PUMA=1` is set (as it is in the Docker
-image), so no separate worker service is required.
+the same process when `SOLID_QUEUE_IN_PUMA=1` is set (as it is in
+`compose.yaml`), so no separate worker service is required.
 
 For local development, you can either set `SOLID_QUEUE_IN_PUMA=1` before
 starting Puma or run `bin/jobs --mode async` separately.
