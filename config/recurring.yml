@@ -1,15 +1,7 @@
-# examples:
-#   periodic_cleanup:
-#     class: CleanSoftDeletedRecordsJob
-#     queue: background
-#     args: [ 1000, { batch_size: 500 } ]
-#     schedule: every hour
-#   periodic_cleanup_with_command:
-#     command: "SoftDeletedRecord.due.delete_all"
-#     priority: 2
-#     schedule: at 5am every day
-
 production:
   rebuild_search_index:
     class: RebuildSearchIndexJob
-    schedule: every 6 hours
+    schedule: every hour
+  update_analytics:
+    class: AnalyticUpdaterJob
+    schedule: "0 3 * * * UTC"

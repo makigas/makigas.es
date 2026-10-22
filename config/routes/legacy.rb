@@ -13,6 +13,9 @@ get '/topics' => redirect('/temas')
 # Legacy route for the old topic URL shape
 get '/temas/:tema' => redirect('/explorar/tema/%{tema}')
 
+# Legacy sitemap URL.
+get '/sitemap.xml.gz' => redirect('/sitemap.xml', status: 301)
+
 # Legacy routes for the text pages.
 get '/terms' => redirect('/terminos')
 get '/privacy' => redirect('/privacidad')

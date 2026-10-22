@@ -526,8 +526,6 @@ GEM
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
-    sitemap_generator (7.1.1)
-      builder (~> 3.0)
     solid_queue (1.7.0)
       activejob (>= 7.1)
       activerecord (>= 7.1)
@@ -641,7 +639,6 @@ DEPENDENCIES
   sentry-rails (~> 6.7.0)
   sentry-ruby (~> 6.7.0)
   simple_form
-  sitemap_generator (~> 7.1.1)
   solid_queue (~> 1.7)
   view_component (~> 4.12.0)
   view_component-contrib

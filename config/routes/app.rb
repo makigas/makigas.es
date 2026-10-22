@@ -2,6 +2,9 @@
 
 root to: 'front#index'
 
+# Sitemap
+get '/sitemap.xml', to: 'sitemaps#show', as: :sitemap, format: false
+
 # Explorer
 resources :tags, path: 'temas', only: %i[index]
 get '/explorar(/:type)(/tema/:tag)', to: 'search#index', as: :search,

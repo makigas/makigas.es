@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<% url_options = { host: Sitemap::HOST, protocol: 'https' } %>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc><%= root_url(**url_options) %></loc>
+  </url>
+  <url>
+    <loc><%= playlists_url(**url_options) %></loc>
+  </url>
+  <% Playlist.find_each do |playlist| %>
+    <url>
+      <loc><%= playlist_url(playlist, **url_options) %></loc>
+      <lastmod><%= playlist.content_updated_at.iso8601 %></lastmod>
+    </url>
+    <% playlist.videos.visible.find_each do |video| %>
+      <url>
+        <loc><%= playlist_video_url(video, playlist_id: playlist.slug, **url_options) %></loc>
+        <lastmod><%= video.updated_at.iso8601 %></lastmod>
+      </url>
+    <% end %>
+  <% end %>
+  <% [terms_url(**url_options), privacy_url(**url_options), cookies_url(**url_options),
+      disclaimer_url(**url_options)].each do |url| %>
+    <url>
+      <loc><%= url %></loc>
+    </url>
+  <% end %>
+</urlset>

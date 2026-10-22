@@ -42,5 +42,5 @@ Disallow: /
 
 # Here is my sitemap. It will be faster. The site uses Schema.org formats
 # so if you are looking into a public API, this is what you should want.
-Sitemap: https://www.makigas.es/sitemap.xml.gz
+Sitemap: https://www.makigas.es/sitemap.xml
 

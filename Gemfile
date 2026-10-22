@@ -42,7 +42,6 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'ruby-vips', '~> 2.2', require: false
 gem 'simple_form'
-gem 'sitemap_generator', '~> 7.1.1'
 gem 'view_component', '~> 4.12.0'
 gem 'view_component-contrib'
 
