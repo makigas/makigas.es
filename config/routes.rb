@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # Health check
+  get '/up', to: 'health#show', as: :health
+
   # Application error routes
   get '/404', to: 'error#not_found', via: :all
   get '/406', to: 'error#not_acceptable', via: :all

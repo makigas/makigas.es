@@ -101,7 +101,7 @@ services:
       MEILISEARCH_API_KEY: makigas-local-development-master-key-2026
     healthcheck:
       test:
-        ["CMD", "ruby", "-rnet/http", "-e", "exit(Net::HTTP.get_response(URI('http://127.0.0.1:3000/')).is_a?(Net::HTTPSuccess) ? 0 : 1)"]
+        ["CMD", "ruby", "-rnet/http", "-e", "exit(Net::HTTP.get_response(URI('http://127.0.0.1:3000/up')).is_a?(Net::HTTPSuccess) ? 0 : 1)"]
       interval: 10s
       timeout: 5s
       retries: 10
