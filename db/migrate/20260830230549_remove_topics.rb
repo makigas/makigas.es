@@ -19,6 +19,10 @@ class RemoveTopics < ActiveRecord::Migration[8.1]
   def purge_topic_attachments
     return unless table_exists?(:active_storage_attachments)
 
-    ActiveStorage::Attachment.where(record_type: 'Topic').find_each(&:purge)
+    ActiveStorage::Attachment.where(record_type: 'Topic').find_each do |attachment|
+      # Attachment#purge touches its owner, but the Topic model no longer exists.
+      attachment.delete
+      attachment.blob.purge
+    end
   end
 end
