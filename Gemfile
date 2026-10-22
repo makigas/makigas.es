@@ -53,7 +53,7 @@ gem 'sentry-ruby', '~> 6.7.0'
 group :development do
   # Development tools
   gem 'annotaterb', '~> 4.24.0'
-  gem 'byebug'
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'listen', '~> 3.10.0'
   gem 'web-console', '~> 4.3.0'
 

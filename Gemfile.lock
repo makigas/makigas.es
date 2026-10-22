@@ -114,8 +114,6 @@ GEM
       kaminari (>= 0.13)
       rails (>= 3.1)
     builder (3.3.0)
-    byebug (13.0.0)
-      reline (>= 0.6.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -140,6 +138,9 @@ GEM
       ssrf_filter (~> 1.5)
     csv (3.3.6)
     date (3.5.1)
+    debug (1.11.1)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     devise (5.0.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -589,10 +590,10 @@ DEPENDENCIES
   blueprinter
   bootsnap (~> 1.25.0)
   bootstrap-kaminari-views (~> 0.0.5)
-  byebug
   capybara (~> 3.40.0)
   capybara-screenshot (~> 1.0.27)
   chroma
+  debug
   devise
   dotenv-rails (~> 3.2.0)
   factory_bot (~> 6.6.0)

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'byebug'
 
 RSpec.describe 'Default search' do
   before do
