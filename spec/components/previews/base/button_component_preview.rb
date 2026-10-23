@@ -13,9 +13,8 @@ module Base
     def integrated
       component = Six::Base::ButtonComponent.new(id: 'click_me', text: 'Click aquí')
       render ViewComponentContrib::WrapperComponent.new(component) do |wrapper|
-        # rubocop:disable Rails/OutputSafety
+        # rubocop:disable-next Rails/OutputSafety
         wrapper.content_tag(:p) { "Para ver más opciones, #{wrapper.component}".html_safe }
-        # rubocop:enable Rails/OutputSafety
       end
     end
 

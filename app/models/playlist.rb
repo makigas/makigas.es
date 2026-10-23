@@ -29,7 +29,7 @@
 #  index_playlists_on_replacement_playlist_id  (replacement_playlist_id)
 #  index_playlists_on_slug                     (slug) UNIQUE
 #
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable-next Metrics/ClassLength
 class Playlist < ApplicationRecord
   extend FriendlyId
 
@@ -169,4 +169,3 @@ class Playlist < ApplicationRecord
     videos.pluck(:views_total).sum
   end
 end
-# rubocop:enable Metrics/ClassLength

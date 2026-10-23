@@ -2,58 +2,58 @@
 
 source 'https://beta.gem.coop'
 
-ruby '4.0.6'
+ruby '4.0.8'
 
 gem 'dotenv-rails', '~> 3.2.0'
 gem 'rake', '~> 13.4.2'
 
 # Base Ruby on Rails distribution
-gem 'bootsnap', '~> 1.25.0'
+gem 'bootsnap', '~> 1.26.0'
 gem 'jbuilder', '~> 2.15.1'
 gem 'jsbundling-rails'
 gem 'nokogiri', '~> 1.19.4'
-gem 'pg', '~> 1.6.3'
+gem 'pg', '~> 1.7.0'
 gem 'propshaft'
 gem 'puma', '~> 8.0.2'
 gem 'rack-cors'
-gem 'rails', '8.1.3.1'
+gem 'rails', '8.1.4'
 gem 'rails-i18n', '~> 8.1.0'
 
 # Job processing
-gem 'mission_control-jobs', '~> 1.1'
+gem 'mission_control-jobs', '~> 1.3'
 gem 'solid_queue', '~> 1.7'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.229.0'
+gem 'aws-sdk-s3', '~> 1.235.0'
 gem 'blueprinter'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
 gem 'devise'
-gem 'faraday', '~> 2.14.3'
+gem 'faraday', '~> 2.15.0'
 gem 'friendly_id'
 gem 'haml-rails', '~> 3.1.0'
-gem 'image_processing', '~> 1.13'
+gem 'image_processing', '~> 2.2'
 gem 'kaminari'
 gem 'lookbook', '~> 2.3.14'
-gem 'meilisearch-rails', '~> 0.16.0'
+gem 'meilisearch-rails', '~> 0.17.0'
 gem 'rails_feather'
 gem 'redcarpet'
 gem 'rouge'
 gem 'ruby-vips', '~> 2.2', require: false
 gem 'simple_form'
-gem 'view_component', '~> 4.12.0'
+gem 'view_component', '~> 4.19.0'
 gem 'view_component-contrib'
 
 # Ops
-gem 'sentry-rails', '~> 6.7.0'
-gem 'sentry-ruby', '~> 6.7.0'
+gem 'sentry-rails', '~> 7.1.0'
+gem 'sentry-ruby', '~> 7.1.0'
 
 group :development do
   # Development tools
-  gem 'annotaterb', '~> 4.24.0'
+  gem 'annotaterb', '~> 4.25.0'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
-  gem 'listen', '~> 3.10.0'
+  gem 'listen', '~> 3.10.1'
   gem 'web-console', '~> 4.3.0'
 
   # Guard
@@ -64,14 +64,14 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.72.0', require: false
-  gem 'rubocop', '~> 1.89.0', require: false
-  gem 'rubocop-capybara', '~> 3.0.0', require: false
+  gem 'overcommit', '~> 0.73.0', require: false
+  gem 'rubocop', '~> 1.92.1', require: false
+  gem 'rubocop-capybara', '~> 3.1.0', require: false
   gem 'rubocop-factory_bot', '~> 2.28.0', require: false
-  gem 'rubocop-rails', '~> 2.37.0', require: false
+  gem 'rubocop-rails', '~> 2.38.0', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-rspec', '~> 3.10.2', require: false
-  gem 'rubocop-rspec_rails', '~> 2.32.0', require: false
+  gem 'rubocop-rspec_rails', '~> 2.33.0', require: false
 end
 
 # Test tools that must be available in development mode
@@ -87,5 +87,5 @@ end
 group :test do
   gem 'capybara', '~> 3.40.0'
   gem 'capybara-screenshot', '~> 1.0.27'
-  gem 'selenium-webdriver', '~> 4.47.0'
+  gem 'selenium-webdriver', '~> 4.51.0'
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength
+# rubocop:disable-next Metrics/ClassLength
 class CreateSolidQueueTables < ActiveRecord::Migration[8.1]
   def change
     create_table :solid_queue_blocked_executions do |t|
@@ -166,4 +166,3 @@ class CreateSolidQueueTables < ActiveRecord::Migration[8.1]
     end
   end
 end
-# rubocop:enable Metrics/ClassLength

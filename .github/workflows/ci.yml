@@ -21,19 +21,19 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       meilisearch:
-        image: getmeili/meilisearch:v1.53.1
+        image: getmeili/meilisearch:v1.55.0
         env:
           MEILI_MASTER_KEY: meilikey
         ports:
           - 7700:7700
         options: --health-cmd "curl --fail http://127.0.0.1:7700/health" --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get -yqq install libvips-dev libpq-dev
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5.2.2
         with:
           install_args: ruby node pnpm
       - name: Install Ruby dependencies
@@ -65,10 +65,10 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - name: Install libpq-dev
         run: sudo apt-get -yqq install libpq-dev
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5.2.2
         with:
           install_args: ruby
       - name: Install Ruby dependencies
@@ -79,8 +79,8 @@ jobs:
     name: JavaScript
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: jdx/mise-action@v5.2.2
         with:
           install_args: node pnpm
       - run: pnpm install --frozen-lockfile
@@ -89,10 +89,10 @@ jobs:
     name: Asset precompile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - name: Install libpq-dev
         run: sudo apt-get -yqq install libpq-dev
-      - uses: jdx/mise-action@v4
+      - uses: jdx/mise-action@v5.2.2
         with:
           install_args: ruby node pnpm
       - run: pnpm install --frozen-lockfile
