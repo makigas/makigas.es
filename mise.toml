@@ -1,5 +1,5 @@
 [tools]
-ruby = "4.0.8"
+ruby = "4.0.9"
 node = "24.22.1"
 pnpm = "12.14.0"
 postgres = "18.6"
