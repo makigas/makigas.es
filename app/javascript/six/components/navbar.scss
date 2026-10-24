@@ -139,8 +139,8 @@ $navbar-size: 40px;
     height: $navbar-size;
   }
 
-  // The curtain is present when the navbar is opened on desktop, in order
-  // to have a clickable area to trigger the close of the navbar itself.
+  /* The curtain is present when the navbar is opened on desktop, in order */
+  /* to have a clickable area to trigger the close of the navbar itself. */
   &__curtain {
     top: $navbar-size * 1.5;
     left: 0;

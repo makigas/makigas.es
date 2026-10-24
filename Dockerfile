@@ -28,7 +28,7 @@ ENV RAILS_ENV="production" \
     LD_PRELOAD="/usr/local/lib/libjemalloc.so"
 
 # Throw-away build stage to reduce size of final image
-FROM docker.io/library/node:24.22.1-slim AS node
+FROM docker.io/library/node:26.12.1-slim AS node
 
 FROM base AS build
 
@@ -42,7 +42,7 @@ COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN ln -s ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
     ln -s ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx && \
-    npm install --global pnpm@12.14.0
+    npm install --global pnpm@12.15.0
 
 # Install application gems
 COPY vendor/* ./vendor/
