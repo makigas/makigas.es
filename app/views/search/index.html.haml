@@ -25,7 +25,7 @@
           - if filters[:query].present?
             = makigas_search_filter(label: "Texto: #{filters[:query]}", url: derive_search_url(@search_filters, query: nil))
           - if filters[:tag].present?
-            = makigas_search_filter(label: "Tema: #{@tag.title}", url: derive_search_url(@search_filters, tag: nil))
+            = makigas_search_filter(label: "Tema: #{@tag&.title || filters[:tag]}", url: derive_search_url(@search_filters, tag: nil))
           - if filters[:exclude_obsolete].present?
             = makigas_search_filter(label: "No mostrar material obsoleto", url: derive_search_url(@search_filters, exclude_obsolete: false))
           - if filters[:articles].present?
