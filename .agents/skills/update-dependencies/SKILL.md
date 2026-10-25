@@ -21,16 +21,38 @@ Review these dependency sources:
 - `.github/workflows/{ci,cd}.yml`: Actions, runners, service images and system
   packages.
 
+Record the NodeJS major and Ruby `X.Y` branch configured at the start of the
+task. Check the official [NodeJS release schedule](https://nodejs.org/en/about/previous-releases)
+and [Ruby maintenance branches](https://www.ruby-lang.org/en/downloads/branches/)
+for support status and available releases. Distinguish updates within these
+starting runtime lines from upgrades that require user involvement.
+
 Use `bundle outdated` and `pnpm outdated` to identify updates. Preserve
 configured cooldowns and verify release eligibility separately; outdated
 reports may include releases still within their cooldown.
 
 # Stage 2: Plan
 
-- Target the latest eligible stable releases, including majors, unless the user
-  narrows the scope. Exclude prereleases by default.
-- Review direct dependency changelogs before updating and identify required
-  adaptations. Transitive dependency changelog review is intentionally omitted.
+- For NodeJS, allow stable minor and patch updates only within the major
+  configured at the start of the task, and only on a supported LTS line.
+  For example, `24.2.0` may move to `24.2.1` or `24.3.0`, but not to `25.0.0`
+  or `26.0.0`, even if the newer major is LTS.
+- For Ruby, allow stable patch updates only within the supported `X.Y` branch
+  configured at the start of the task. For example, `3.7.0` may move to
+  `3.7.1`, but `3.6` to `3.7` and `3.7` to `4.0` require user involvement.
+- NodeJS major upgrades and Ruby `X.Y` branch upgrades are report-only and
+  require separate planning and user validation. This also applies when the
+  starting runtime line is unsupported or NodeJS is not LTS; report that status
+  without automatically switching lines.
+- If a dependency or tooling update requires a runtime outside these limits,
+  choose the latest eligible release compatible with the allowed runtimes or
+  defer it and report the requirement. Do not change runtime lines to unblock it.
+- For all other dependencies and tooling, target the latest eligible stable
+  releases, including majors, unless the user narrows the scope. Exclude
+  prereleases by default.
+- Review direct dependency changelogs and runtime release notes before updating
+  and identify required adaptations. Transitive dependency changelog review is
+  intentionally omitted.
 - Review majors and 0.x minor updates closely: esbuild updates have previously
   required rollback after breaking the build.
 
@@ -40,7 +62,8 @@ reports may include releases still within their cooldown.
   `package.json` has no required grouping.
 - Adapt build and lint configuration where required by package changes.
 - Keep repeated versions synchronized; Ruby appears in `mise.toml`, `Gemfile`,
-  `Gemfile.lock` and `Dockerfile`.
+  `Gemfile.lock` and `Dockerfile`. Keep NodeJS pins synchronized wherever present.
+  Check the selected runtimes against dependency and tooling requirements.
 - Then update remaining eligible transitive dependencies and review the diff.
 
 # Stage 4: Verify
@@ -77,4 +100,5 @@ only when its checks pass; report blocked checks as unverified.
 # Stage 5: Summary
 
 Report old → new versions, deferred updates with reasons, and checks that
-passed, failed or could not run.
+passed, failed or could not run. Include runtime support status and newer
+runtime lines that need separate planning and user validation.
