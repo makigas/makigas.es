@@ -31,7 +31,7 @@ RSpec.describe Search::Request, type: :class do
       let(:filters) { Search::Filters.new(tag: 'java') }
 
       it 'is passed to the search engine' do
-        expect(query[:filter]).to include('episode_tags = java')
+        expect(query[:filter]).to include('episode_tags = "java"')
       end
     end
 
