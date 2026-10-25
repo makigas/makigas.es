@@ -10,8 +10,8 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
       [column_name, column_value.to_i]
     end
 
-    playlist = Playlist.find(scopes['playlist_id'])
-    Rails.application.routes.url_helpers.playlist_video_path(id: sluggable.slug, playlist_id: playlist.slug)
+    playlist_slug = playlist_slugs.fetch(scopes['playlist_id']) { Playlist.find(scopes['playlist_id']).slug }
+    Rails.application.routes.url_helpers.playlist_video_path(id: sluggable.slug, playlist_id: playlist_slug)
   end
 
   def update_without_timestamps(&)
@@ -48,7 +48,7 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
   end
 
   def update_aggregated_playlist_counters
-    sums = Video.where.not(playlist_id: nil)
+    sums = Video.where.not(playlist_id: nil).includes(playlist: :slugs)
                 .select('playlist_id', 'sum(views_total) as total', 'sum(views_recent) as recent')
                 .group(:playlist_id)
     update_without_timestamps do
@@ -59,13 +59,17 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
   def update_counters
     total_data = IngestedAnalytic.recordset.group_by_page
     recent_data = IngestedAnalytic.recordset.where(day: 30.days.ago..).group_by_page
-    Video.includes(:playlist).find_each do |video|
+    Video.includes(:playlist, :slug_history, :slugs, :show_note, :transcription).find_each do |video|
       update_video_counters(video, total_data, recent_data)
     end
-    Playlist.find_each do |playlist|
+    Playlist.includes(:slugs).find_each do |playlist|
       update_playlist_counters(playlist, total_data, recent_data)
     end
     update_aggregated_playlist_counters
+  end
+
+  def playlist_slugs
+    @playlist_slugs ||= Playlist.pluck(:id, :slug).to_h
   end
 
   def percentile(data, pvalue)
