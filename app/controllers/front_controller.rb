@@ -6,5 +6,6 @@ class FrontController < ApplicationController
                        '(SELECT sum(views_recent) FROM videos WHERE videos.tags @> ARRAY[tags.slug]::varchar[]) as pop')
                .order(pop: :desc)
                .limit(8)
+               .with_attached_icon
   end
 end
