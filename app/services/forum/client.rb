@@ -21,6 +21,7 @@ module Forum
       @client ||= Faraday.new('https://foro.makigas.es/api/', headers:) do |f|
         f.request :json
         f.response :json
+        f.response :raise_error
       end
     end
 

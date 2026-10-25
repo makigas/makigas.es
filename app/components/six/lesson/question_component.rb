@@ -19,6 +19,8 @@ module Six
           req = Forum::DiscussionsTaggedAs.new(*@tags)
           Forum::Client.new.request(req).values
         end
+      rescue Faraday::Error
+        []
       end
 
       def sub_forum_url
