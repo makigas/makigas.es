@@ -1,0 +1,276 @@
+{
+  "links": {
+    "first": "https://example.com/api/discussions",
+    "next": "https://example.com/api/discussions"
+  },
+  "data": [
+    {
+      "type": "discussions",
+      "id": "1",
+      "attributes": {
+        "title": "Example discussion 1",
+        "slug": "example-discussions-1",
+        "commentCount": 1,
+        "participantCount": 1,
+        "createdAt": "2026-01-01T12:00:00+00:00",
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "lastPostNumber": 1,
+        "canReply": false,
+        "canRename": false,
+        "canDelete": false,
+        "canHide": false,
+        "canTag": false,
+        "subscription": null,
+        "isSticky": false,
+        "canSticky": false,
+        "isLocked": false,
+        "canLock": false
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "type": "users",
+            "id": "1"
+          }
+        },
+        "lastPostedUser": {
+          "data": {
+            "type": "users",
+            "id": "2"
+          }
+        },
+        "tags": {
+          "data": [
+            {
+              "type": "tags",
+              "id": "1"
+            },
+            {
+              "type": "tags",
+              "id": "2"
+            },
+            {
+              "type": "tags",
+              "id": "3"
+            }
+          ]
+        },
+        "firstPost": {
+          "data": {
+            "type": "posts",
+            "id": "1"
+          }
+        }
+      }
+    },
+    {
+      "type": "discussions",
+      "id": "2",
+      "attributes": {
+        "title": "Example discussion 2",
+        "slug": "example-discussions-2",
+        "commentCount": 1,
+        "participantCount": 1,
+        "createdAt": "2026-01-01T12:00:00+00:00",
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "lastPostNumber": 1,
+        "canReply": false,
+        "canRename": false,
+        "canDelete": false,
+        "canHide": false,
+        "canTag": false,
+        "subscription": null,
+        "isSticky": false,
+        "canSticky": false,
+        "isLocked": false,
+        "canLock": false
+      },
+      "relationships": {
+        "user": {
+          "data": {
+            "type": "users",
+            "id": "3"
+          }
+        },
+        "lastPostedUser": {
+          "data": {
+            "type": "users",
+            "id": "4"
+          }
+        },
+        "tags": {
+          "data": [
+            {
+              "type": "tags",
+              "id": "4"
+            },
+            {
+              "type": "tags",
+              "id": "1"
+            },
+            {
+              "type": "tags",
+              "id": "3"
+            }
+          ]
+        },
+        "firstPost": {
+          "data": {
+            "type": "posts",
+            "id": "2"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "type": "users",
+      "id": "1",
+      "attributes": {
+        "username": "Example user 1",
+        "displayName": "Example user 1",
+        "avatarUrl": "https://example.com/image.png",
+        "slug": "example-users-1"
+      }
+    },
+    {
+      "type": "users",
+      "id": "2",
+      "attributes": {
+        "username": "Example user 2",
+        "displayName": "Example user 2",
+        "avatarUrl": "https://example.com/image.png",
+        "slug": "example-users-2"
+      }
+    },
+    {
+      "type": "users",
+      "id": "3",
+      "attributes": {
+        "username": "Example user 3",
+        "displayName": "Example user 3",
+        "avatarUrl": "https://example.com/image.png",
+        "slug": "example-users-3"
+      }
+    },
+    {
+      "type": "users",
+      "id": "4",
+      "attributes": {
+        "username": "Example user 4",
+        "displayName": "Example user 4",
+        "avatarUrl": "https://example.com/image.png",
+        "slug": "example-users-4"
+      }
+    },
+    {
+      "type": "tags",
+      "id": "1",
+      "attributes": {
+        "name": "Example tag 1",
+        "description": "",
+        "slug": "example-tags-1",
+        "color": "#123456",
+        "backgroundUrl": null,
+        "backgroundMode": null,
+        "icon": "example",
+        "discussionCount": 1,
+        "position": null,
+        "defaultSort": null,
+        "isChild": false,
+        "isHidden": false,
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "canStartDiscussion": false,
+        "canAddToDiscussion": false
+      }
+    },
+    {
+      "type": "tags",
+      "id": "2",
+      "attributes": {
+        "name": "Example tag 2",
+        "description": "",
+        "slug": "example-tags-2",
+        "color": "#123456",
+        "backgroundUrl": null,
+        "backgroundMode": null,
+        "icon": "example",
+        "discussionCount": 1,
+        "position": null,
+        "defaultSort": null,
+        "isChild": false,
+        "isHidden": false,
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "canStartDiscussion": false,
+        "canAddToDiscussion": false
+      }
+    },
+    {
+      "type": "tags",
+      "id": "3",
+      "attributes": {
+        "name": "Example tag 3",
+        "description": "example",
+        "slug": "example-tags-3",
+        "color": "#123456",
+        "backgroundUrl": null,
+        "backgroundMode": null,
+        "icon": "",
+        "discussionCount": 1,
+        "position": 1,
+        "defaultSort": null,
+        "isChild": false,
+        "isHidden": false,
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "canStartDiscussion": false,
+        "canAddToDiscussion": false
+      }
+    },
+    {
+      "type": "tags",
+      "id": "4",
+      "attributes": {
+        "name": "Example tag 4",
+        "description": "",
+        "slug": "example-tags-4",
+        "color": "#123456",
+        "backgroundUrl": null,
+        "backgroundMode": null,
+        "icon": "example",
+        "discussionCount": 1,
+        "position": null,
+        "defaultSort": null,
+        "isChild": false,
+        "isHidden": false,
+        "lastPostedAt": "2026-01-01T12:00:00+00:00",
+        "canStartDiscussion": false,
+        "canAddToDiscussion": false
+      }
+    },
+    {
+      "type": "posts",
+      "id": "1",
+      "attributes": {
+        "number": 1,
+        "createdAt": "2026-01-01T12:00:00+00:00",
+        "contentType": "comment",
+        "contentHtml": "<p>A fictional question about programming.</p>",
+        "renderFailed": false,
+        "mentionedByCount": 1
+      }
+    },
+    {
+      "type": "posts",
+      "id": "2",
+      "attributes": {
+        "number": 1,
+        "createdAt": "2026-01-01T12:00:00+00:00",
+        "contentType": "comment",
+        "contentHtml": "<p>A fictional question about programming.</p>",
+        "renderFailed": false,
+        "mentionedByCount": 1
+      }
+    }
+  ]
+}

@@ -21,6 +21,23 @@ RSpec.describe 'Video page' do
     expect(page).to have_css "iframe[src*='www.youtube-nocookie.com/embed/#{video.youtube_id}']"
   end
 
+  it 'shows related forum discussions from the API' do
+    visit_video video
+
+    expect(page).to have_link 'Example discussion 1',
+                              href: 'https://foro.makigas.es/d/example-discussions-1'
+  end
+
+  it 'invites questions when the forum returns no discussions' do
+    stub_request(:get, 'https://foro.makigas.es/api/discussions')
+      .with(query: hash_including('filter' => { 'tag' => 'music,video' }))
+      .to_return(headers: { 'Content-Type' => 'application/json' }, body: '{"data":[],"included":[]}')
+
+    visit_video video
+
+    expect(page).to have_text 'En el foro puedes preguntar u opinar de este tema'
+  end
+
   describe 'when the video is not published' do
     before do
       video.update(published_at: 2.days.from_now)
