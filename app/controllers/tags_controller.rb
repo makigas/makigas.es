@@ -2,6 +2,6 @@
 
 class TagsController < ApplicationController
   def index
-    @tags = Tag.select('tags.*', 'LOWER(tags.title) AS lowertitle').order(lowertitle: :asc)
+    @tags = Tag.with_attached_icon.select('tags.*', 'LOWER(tags.title) AS lowertitle').order(lowertitle: :asc)
   end
 end
