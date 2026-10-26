@@ -18,7 +18,7 @@
     "eslint-formatter-compact": "9.0.1",
     "klaro": "0.7.21",
     "normalize.css": "8.0.1",
-    "postcss": "8.5.30",
+    "postcss": "8.5.31",
     "postcss-advanced-variables": "5.0.0",
     "postcss-import": "17.0.1",
     "postcss-nested": "9.0.0",
