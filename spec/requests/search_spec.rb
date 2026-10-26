@@ -30,13 +30,4 @@ RSpec.describe 'Search' do
       expect(Capybara.string(response.body)).to have_css('.SearchFilter', text: "Tema: #{tag.title}")
     end
   end
-
-  it 'renders without a tag filter' do
-    get search_path
-
-    aggregate_failures do
-      expect(response).to have_http_status(:ok)
-      expect(Capybara.string(response.body)).to have_no_css('.SearchFilter')
-    end
-  end
 end

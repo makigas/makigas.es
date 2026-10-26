@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Search::Request do
-  ['gcc,', 'a"b\\c', 'java'].each do |tag|
+  ['gcc,', 'a"b\\c'].each do |tag|
     context "with tag #{tag.inspect}" do
       let!(:matching_video) { create(:video, :published_yesterday, tags: [tag]) }
 

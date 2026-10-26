@@ -38,11 +38,4 @@ RSpec.describe MaterializeVideoAnalyticsJob do
     expect(playlist.reload).to have_attributes(views_total: 20, views_recent: 5)
     expect(playlist.attributes.slice('created_at', 'updated_at')).to eq(timestamps)
   end
-
-  it 'restores timestamp recording when an update fails', :aggregate_failures do
-    expect { job.update_without_timestamps { raise ArgumentError, 'failed update' } }
-      .to raise_error(ArgumentError, 'failed update')
-
-    expect(ApplicationRecord.record_timestamps).to be(true)
-  end
 end

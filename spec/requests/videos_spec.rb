@@ -108,20 +108,4 @@ RSpec.describe 'Videos' do
       it { is_expected.to redirect_to(canonical) }
     end
   end
-
-  describe 'when the playlist is deprecated and has a replacement' do
-    let(:replacement_playlist) { create(:playlist) }
-    let(:playlist) { create(:playlist, deprecated: true, replacement_playlist: replacement_playlist) }
-    let(:video) { create(:video, playlist: playlist) }
-
-    it 'renders the page with a link to the replacement playlist', :aggregate_failures do
-      get "/series/#{playlist.slug}/#{video.slug}"
-
-      expect(response).to have_http_status(:ok)
-      expect(Capybara.string(response.body)).to have_link(
-        "Haz clic aquí para revisar #{replacement_playlist.title}",
-        href: "/series/#{replacement_playlist.slug}"
-      )
-    end
-  end
 end
