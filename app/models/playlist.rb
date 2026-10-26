@@ -62,7 +62,7 @@ class Playlist < ApplicationRecord
   }
 
   scope :searchable, lambda {
-    with_public_videos.includes(:videos).where(exclude_from_search: false)
+    with_public_videos.with_attached_thumbnail.includes(:videos).where(exclude_from_search: false)
   }
 
   def searchable?
