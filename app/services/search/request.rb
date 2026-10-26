@@ -67,7 +67,7 @@ module Search
 
     def video_filters
       [].tap do |filters|
-        filters << "tags = #{params.tag}" if params.tag.present?
+        filters << "tags = #{params.tag.to_json}" if params.tag.present?
         filters << 'deprecated = false' if params.exclude_obsolete
         filters << 'has_show_note = true' if params.articles
       end
@@ -87,7 +87,7 @@ module Search
 
     def playlist_filters
       [].tap do |filters|
-        filters << "episode_tags = #{params.tag}" if params.tag.present?
+        filters << "episode_tags = #{params.tag.to_json}" if params.tag.present?
         filters << 'deprecated = false' if params.exclude_obsolete
         filters << 'has_show_notes = true' if params.articles
       end
