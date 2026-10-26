@@ -1,7 +1,7 @@
 %p.deprnotice<
   - if playlist.replacement_playlist.present?
     Hay una versión nueva de este curso.
-    = succeed(',') do
+    = helpers.succeed(',') do
       = link_to(playlist_path(playlist.replacement_playlist)) do
         Haz clic aquí para revisar
         = playlist.replacement_playlist.title
