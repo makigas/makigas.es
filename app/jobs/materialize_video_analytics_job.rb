@@ -15,12 +15,12 @@ class MaterializeVideoAnalyticsJob < ApplicationJob
   end
 
   def update_without_timestamps(&)
-    old = ActiveRecord::Base.record_timestamps
+    old = ApplicationRecord.record_timestamps
     begin
-      ActiveRecord::Base.record_timestamps = false
+      ApplicationRecord.record_timestamps = false
       ActiveRecord::Base.transaction(&)
     ensure
-      ActiveRecord::Base.record_timestamps = old
+      ApplicationRecord.record_timestamps = old
     end
   end
 
