@@ -22,7 +22,7 @@ services:
       retries: 10
 
   search:
-    image: docker.io/getmeili/meilisearch:v1.55.0
+    image: docker.io/getmeili/meilisearch:v1.56.0
     volumes:
       - meilisearch:/meili_data
     environment:
