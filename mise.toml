@@ -1,6 +1,6 @@
 [tools]
 ruby = "4.0.9"
-node = "26.12.1"
+node = "26.13.0"
 pnpm = "12.15.0"
 postgres = "18.6"
 
