@@ -18,7 +18,7 @@
     "eslint-formatter-compact": "9.0.1",
     "klaro": "0.7.21",
     "normalize.css": "8.0.1",
-    "postcss": "8.5.31",
+    "postcss": "8.5.32",
     "postcss-advanced-variables": "5.0.0",
     "postcss-import": "17.0.1",
     "postcss-nested": "9.0.1",
@@ -39,7 +39,7 @@
     "stylelint-config-recommended-scss": "17.0.1",
     "stylelint-config-standard-scss": "17.0.0",
     "stylelint-prettier": "5.0.3",
-    "stylelint-scss": "7.3.0"
+    "stylelint-scss": "7.4.0"
   },
   "scripts": {
     "build": "node esbuild.mjs",
