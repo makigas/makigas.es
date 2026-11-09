@@ -2,6 +2,6 @@
 
 # Configure ViewComponent preview paths.
 unless Rails.env.production?
-  Rails.application.config.view_component.default_preview_layout = 'component_preview'
-  Rails.application.config.view_component.preview_paths = [Rails.root.join('spec/components/previews')]
+  Rails.application.config.view_component.previews.default_layout = 'component_preview'
+  Rails.application.config.view_component.previews.paths = [Rails.root.join('spec/components/previews')]
 end
