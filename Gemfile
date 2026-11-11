@@ -16,7 +16,7 @@ gem 'pg', '~> 1.7.0'
 gem 'propshaft'
 gem 'puma', '~> 8.0.2'
 gem 'rack-cors'
-gem 'rails', '8.1.4'
+gem 'rails', '8.1.4.1'
 gem 'rails-i18n', '~> 8.1.0'
 
 # Job processing
@@ -25,7 +25,7 @@ gem 'solid_queue', '~> 1.7'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.235.0'
+gem 'aws-sdk-s3', '~> 1.238.0'
 gem 'blueprinter'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
@@ -42,16 +42,16 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'ruby-vips', '~> 2.2', require: false
 gem 'simple_form'
-gem 'view_component', '~> 4.19.0'
+gem 'view_component', '~> 4.23.0'
 gem 'view_component-contrib'
 
 # Ops
-gem 'sentry-rails', '~> 7.1.0'
-gem 'sentry-ruby', '~> 7.1.0'
+gem 'sentry-rails', '~> 7.2.0'
+gem 'sentry-ruby', '~> 7.2.0'
 
 group :development do
   # Development tools
-  gem 'annotaterb', '~> 4.25.0'
+  gem 'annotaterb', '~> 4.26.0'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'listen', '~> 3.10.1'
   gem 'web-console', '~> 4.3.0'
@@ -64,7 +64,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.73.0', require: false
+  gem 'overcommit', '~> 0.75.0', require: false
   gem 'rubocop', '~> 1.92.1', require: false
   gem 'rubocop-capybara', '~> 3.1.0', require: false
   gem 'rubocop-factory_bot', '~> 2.28.0', require: false
@@ -87,6 +87,6 @@ end
 group :test do
   gem 'capybara', '~> 3.40.0'
   gem 'capybara-screenshot', '~> 1.0.27'
-  gem 'selenium-webdriver', '~> 4.51.0'
+  gem 'selenium-webdriver', '~> 4.52.0'
   gem 'webmock', '~> 3.0'
 end
