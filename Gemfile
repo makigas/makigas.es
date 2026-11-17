@@ -80,7 +80,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.5.1'
   gem 'fuubar'
   gem 'rspec', '~> 3.13'
-  gem 'rspec-rails', '~> 8.0.4'
+  gem 'rspec-rails', '~> 8.1.0'
 end
 
 # Test tools
