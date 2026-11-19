@@ -64,7 +64,7 @@ group :development do
   gem 'guard-shell', '~> 0.7.2'
 
   # Lint tools
-  gem 'overcommit', '~> 0.75.0', require: false
+  gem 'overcommit', '~> 0.76.0', require: false
   gem 'rubocop', '~> 1.92.1', require: false
   gem 'rubocop-capybara', '~> 3.1.0', require: false
   gem 'rubocop-factory_bot', '~> 2.28.0', require: false
