@@ -14,7 +14,7 @@ gem 'jsbundling-rails'
 gem 'nokogiri', '~> 1.19.4'
 gem 'pg', '~> 1.7.0'
 gem 'propshaft'
-gem 'puma', '~> 8.0.2'
+gem 'puma', '~> 8.1.2'
 gem 'rack-cors'
 gem 'rails', '8.1.4.1'
 gem 'rails-i18n', '~> 8.1.0'
@@ -25,7 +25,7 @@ gem 'solid_queue', '~> 1.7'
 
 # Application extras
 gem 'acts_as_list'
-gem 'aws-sdk-s3', '~> 1.238.0'
+gem 'aws-sdk-s3', '~> 1.245.0'
 gem 'blueprinter'
 gem 'bootstrap-kaminari-views', '~> 0.0.5'
 gem 'chroma'
@@ -42,12 +42,12 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'ruby-vips', '~> 2.2', require: false
 gem 'simple_form'
-gem 'view_component', '~> 4.23.0'
+gem 'view_component', '~> 4.24.0'
 gem 'view_component-contrib'
 
 # Ops
-gem 'sentry-rails', '~> 7.2.0'
-gem 'sentry-ruby', '~> 7.2.0'
+gem 'sentry-rails', '~> 7.3.0'
+gem 'sentry-ruby', '~> 7.3.0'
 
 group :development do
   # Development tools
@@ -57,7 +57,7 @@ group :development do
   gem 'web-console', '~> 4.3.0'
 
   # Guard
-  gem 'guard', '~> 2.20.2'
+  gem 'guard', '~> 2.21.0'
   gem 'guard-rails', '~> 0.8.1'
   gem 'guard-rspec', '~> 4.7.3'
   gem 'guard-rubocop', '~> 1.5.0'
@@ -87,6 +87,6 @@ end
 group :test do
   gem 'capybara', '~> 3.40.0'
   gem 'capybara-screenshot', '~> 1.0.27'
-  gem 'selenium-webdriver', '~> 4.52.0'
+  gem 'selenium-webdriver', '~> 4.53.0'
   gem 'webmock', '~> 3.0'
 end
