@@ -8,7 +8,7 @@ volumes:
 
 services:
   database:
-    image: docker.io/library/postgres:18.6-alpine
+    image: docker.io/library/postgres:18.7-alpine
     volumes:
       - postgres:/var/lib/postgresql
     environment:
@@ -22,7 +22,7 @@ services:
       retries: 10
 
   search:
-    image: docker.io/getmeili/meilisearch:v1.56.1
+    image: docker.io/getmeili/meilisearch:v1.57.0
     volumes:
       - meilisearch:/meili_data
     environment:
