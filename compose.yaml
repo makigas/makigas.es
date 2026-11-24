@@ -22,13 +22,14 @@ services:
       retries: 10
 
   search:
-    image: docker.io/getmeili/meilisearch:v1.57.0
+    image: docker.io/getmeili/meilisearch:v1.58.0
     volumes:
       - meilisearch:/meili_data
     environment:
       MEILI_ENV: production
       MEILI_MASTER_KEY: makigas-local-development-master-key-2026
       MEILI_NO_ANALYTICS: "true"
+      MEILI_UPGRADE_DB: ${MEILI_UPGRADE_DB:-false}
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://127.0.0.1:7700/health"]
       interval: 5s
