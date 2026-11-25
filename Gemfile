@@ -42,7 +42,7 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'ruby-vips', '~> 2.2', require: false
 gem 'simple_form'
-gem 'view_component', '~> 4.24.0'
+gem 'view_component', '~> 4.25.0'
 gem 'view_component-contrib'
 
 # Ops
