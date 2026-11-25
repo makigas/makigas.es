@@ -225,13 +225,13 @@ GEM
       railties (>= 5.1)
     hashdiff (1.2.2)
     htmlbeautifier (1.4.3)
-    httparty (0.25.0)
+    httparty (0.25.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    image_processing (2.2.0)
+    image_processing (2.2.1)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -570,7 +570,7 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
-    webmock (3.36.0)
+    webmock (3.38.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -659,4 +659,4 @@ RUBY VERSION
   ruby 4.0.10
 
 BUNDLED WITH
-  4.0.24
+  4.1.0
