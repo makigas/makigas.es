@@ -87,6 +87,6 @@ end
 group :test do
   gem 'capybara', '~> 3.40.0'
   gem 'capybara-screenshot', '~> 1.0.27'
-  gem 'selenium-webdriver', '~> 4.53.0'
+  gem 'selenium-webdriver', '~> 4.54.0'
   gem 'webmock', '~> 3.0'
 end
